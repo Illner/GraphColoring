@@ -10,6 +10,7 @@ namespace GraphColoring
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Graph coloring!");
         }
     }
 }

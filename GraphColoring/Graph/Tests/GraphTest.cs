@@ -1,4 +1,4 @@
-﻿#define writeOut
+﻿#define nowriteOut
 using System;
 using System.IO;
 using System.Diagnostics;
@@ -74,7 +74,7 @@ namespace GraphColoring.Graph.Tests
             catch (Exception e)
             {
                 Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
             }
 
             #if writeOut
@@ -124,7 +124,7 @@ namespace GraphColoring.Graph.Tests
             catch (Exception e)
             {
                 Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
             }
 
             #if writeOut

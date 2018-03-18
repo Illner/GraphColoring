@@ -8,7 +8,7 @@ namespace GraphColoring.Graph
 {
     abstract partial class Graph
     {
-        private enum GraphRepresentationEnum
+        public enum GraphRepresentationEnum
         {
             adjacencyList,      // Adjacency list
             adjacencyMatrix,    // Adjacency matrix

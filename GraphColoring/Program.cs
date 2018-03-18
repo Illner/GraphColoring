@@ -10,7 +10,7 @@ namespace GraphColoring
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Graph coloring!");
+            Graph.Tests.GraphTest graphTest = new Graph.Tests.GraphTest(Graph.Graph.GraphRepresentationEnum.adjacencyMatrix);
         }
     }
 }

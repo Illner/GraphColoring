@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graph\GraphAdjacencyMatrix.cs" />
     <Compile Include="Graph\GraphEdgeList.cs" />
+    <Compile Include="Graph\Tests\GraphTest.cs" />
     <Compile Include="MyException\GraphException.cs" />
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\GraphRepresentationEnum.cs" />
@@ -52,6 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graph\Tests\Graphs\GraphAdjacencyMatrix.txt" />
+    <Content Include="Graph\Tests\Graphs\GraphEdgeList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

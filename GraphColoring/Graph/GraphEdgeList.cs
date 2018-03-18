@@ -10,11 +10,15 @@ namespace GraphColoring.Graph
         /// <summary>
         /// mapping - slouží pro snadné nalezení identifikátoru vrcholu na základě userName vrcholu
         /// </summary>
-        Dictionary<string, int> mapping;
+        private Dictionary<string, int> mapping;
         #endregion
 
         // Constructor
         #region
+        /// <summary>
+        /// Inicializuje graf
+        /// </summary>
+        /// <param name="countVertices">Počet vrcholů grafu</param>
         public GraphEdgeList(int countVertices) : base(countVertices)
         {
             mapping = new Dictionary<string, int>();

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.Graph
 {
@@ -32,6 +29,7 @@ namespace GraphColoring.Graph
         public Graph(int countVertices)
         {
             setCountVertices(countVertices);
+            adjacencyList = new Dictionary<Vertex, List<Vertex>>();
             mapping = new Dictionary<int, Vertex>();
         }
         #endregion
@@ -76,7 +74,8 @@ namespace GraphColoring.Graph
                     throw new MyException.GraphVertexDoesntExist();
 
                 if (adjacencyListVertex.Contains(vertex2))
-                    throw new MyException.GraphDupliciteEdge();
+                    return;
+                    // throw new MyException.GraphDupliciteEdge();
 
                 adjacencyListVertex.Add(vertex2);
 
@@ -103,6 +102,31 @@ namespace GraphColoring.Graph
             return vertex;
         }
         #endregion
+
+        // Testing
+        public void writeOutGraph()
+        {
+            Console.WriteLine("Write out graph");
+            Console.WriteLine("----------");
+            Console.WriteLine("Vertices: ");
+            Console.WriteLine("----------");
+            foreach (Vertex vertex in adjacencyList.Keys)
+            {
+                Console.WriteLine("Identifier: {0}, userName: {1}",vertex.getIdentifier(), vertex.getUserName());
+            }
+
+            Console.WriteLine("-------");
+            Console.WriteLine("Edges: ");
+            Console.WriteLine("-------");
+            foreach (KeyValuePair<Vertex, List<Vertex>> record in adjacencyList)
+            {
+                Console.WriteLine("Vertex: {0} ({1})", record.Key.getUserName(), record.Key.getIdentifier());
+                foreach (Vertex vertex in record.Value)
+                {
+                    Console.WriteLine("{0} ({1}) ", vertex.getUserName(), vertex.getIdentifier());
+                }
+            }
+        } 
 
         // Property
         #region

@@ -32,8 +32,8 @@ namespace GraphColoring.Graph
             for (int i = 0; i < countVertices; i++)
             {
                 vertex = new Vertex();
-                addVertexToAdjacencyList(vertex);
-                mapping.Add(i, vertex.getIdentifier());
+                AddVertexToAdjacencyList(vertex);
+                mapping.Add(i, vertex.GetIdentifier());
             }
         }
         #endregion
@@ -44,23 +44,23 @@ namespace GraphColoring.Graph
         /// Vytvoří hrany pro jeden řádek matice sousednosti
         /// </summary>
         /// <param name="rowAdjacencyMatrix">řádek matice sousednosti</param>
-        public void setOfNeighborsOfVertex(List<bool> rowAdjacencyMatrix)
+        public void SetOfNeighborsOfVertex(List<bool> rowAdjacencyMatrix)
         {
             // Variable
             Vertex vertex1, vertex2;
             int identifierVertex1, identifierVertex2;
 
             mapping.TryGetValue(actualVertex, out identifierVertex1);
-            vertex1 = getVertex(identifierVertex1);
+            vertex1 = GetVertex(identifierVertex1);
             
             for (int i = 0; i < rowAdjacencyMatrix.Count; i++)
             {
                 if (rowAdjacencyMatrix[i])
                 {
                     mapping.TryGetValue(i, out identifierVertex2);
-                    vertex2 = getVertex(identifierVertex2);
+                    vertex2 = GetVertex(identifierVertex2);
 
-                    addEdgeToAdjacencyList(vertex1, vertex2);
+                    AddEdgeToAdjacencyList(vertex1, vertex2);
                 }
             }
 

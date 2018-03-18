@@ -1,4 +1,4 @@
-﻿#define nowriteOut
+﻿#define writeOut
 using System;
 using System.IO;
 using System.Diagnostics;
@@ -67,7 +67,7 @@ namespace GraphColoring.Graph.Tests
                         #endif
 
                         string[] myArray = line.Split(' ');
-                        graphEdgeList.addEdge(myArray[0], myArray[1]);
+                        graphEdgeList.AddEdge(myArray[0], myArray[1]);
                     }
                 }
             }
@@ -79,7 +79,7 @@ namespace GraphColoring.Graph.Tests
 
             #if writeOut
             Console.WriteLine("Graph created");
-            graphEdgeList.writeOutGraph();
+            graphEdgeList.WriteOutGraph();
             #endif
         }
 
@@ -117,7 +117,7 @@ namespace GraphColoring.Graph.Tests
                                 myList.Add(true);
                         }
 
-                        graphAdjacencyMatrix.setOfNeighborsOfVertex(myList);
+                        graphAdjacencyMatrix.SetOfNeighborsOfVertex(myList);
                     }
                 }
             }
@@ -129,7 +129,7 @@ namespace GraphColoring.Graph.Tests
 
             #if writeOut
             Console.WriteLine("Graph created");
-            graphAdjacencyMatrix.writeOutGraph();
+            graphAdjacencyMatrix.WriteOutGraph();
             #endif
         }
     }

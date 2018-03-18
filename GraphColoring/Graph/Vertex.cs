@@ -24,8 +24,8 @@ namespace GraphColoring.Graph
         /// </summary>
         public Vertex()
         {
-            setIdentifier(counter++);
-            setUserName(identifier.ToString());
+            SetIdentifier(counter++);
+            SetUserName(identifier.ToString());
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace GraphColoring.Graph
         /// <param name="userName">Jméno vrcholu, které určil uživatel</param>
         public Vertex(String userName)
         {
-            setIdentifier(counter++);
-            setUserName(userName);
+            SetIdentifier(counter++);
+            SetUserName(userName);
         }
         #endregion
 
@@ -45,7 +45,7 @@ namespace GraphColoring.Graph
         /// Vrátí identifikátor vrcholu
         /// </summary>
         /// <returns>číselný identifikátor</returns>
-        public int getIdentifier()
+        public int GetIdentifier()
         {
             return identifier;
         }
@@ -54,7 +54,7 @@ namespace GraphColoring.Graph
         /// Nastaví identifikátor vrcholu
         /// </summary>
         /// <param name="identifier">nový identifikátor vrcholu</param>
-        private void setIdentifier(int identifier)
+        private void SetIdentifier(int identifier)
         {
             this.identifier = identifier;
         }
@@ -63,7 +63,7 @@ namespace GraphColoring.Graph
         /// Vrátí jméno vrcholu, které určil uživatel
         /// </summary>
         /// <returns>řetězcové jménbo vrcholu</returns>
-        public string getUserName()
+        public string GetUserName()
         {
             return userName;
         }
@@ -72,7 +72,7 @@ namespace GraphColoring.Graph
         /// Nastaví jméno vrcholu, které určil uživatel
         /// </summary>
         /// <param name="userName">nový jméno vrcholu</param>
-        private void setUserName(string userName)
+        private void SetUserName(string userName)
         {
             this.userName = userName;
         }

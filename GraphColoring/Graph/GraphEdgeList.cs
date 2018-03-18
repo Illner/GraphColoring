@@ -32,19 +32,19 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="userNameVertex1">1. vrchol</param>
         /// <param name="userNameVertex2">2. vrchol</param>
-        public void addEdge(string userNameVertex1, string userNameVertex2)
+        public void AddEdge(string userNameVertex1, string userNameVertex2)
         {
             // Variable
             int identifierVertex1, identifierVertex2;
             Vertex vertex1, vertex2;
 
-            identifierVertex1 = getIdentifier(userNameVertex1);
-            identifierVertex2 = getIdentifier(userNameVertex2);
+            identifierVertex1 = GetIdentifier(userNameVertex1);
+            identifierVertex2 = GetIdentifier(userNameVertex2);
 
-            vertex1 = getVertex(identifierVertex1);
-            vertex2 = getVertex(identifierVertex2);
+            vertex1 = GetVertex(identifierVertex1);
+            vertex2 = GetVertex(identifierVertex2);
 
-            addEdgeToAdjacencyList(vertex1, vertex2);
+            AddEdgeToAdjacencyList(vertex1, vertex2);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="userNameVertex">Jméno vrcholu, které určil uživatel</param>
         /// <returns></returns>
-        private int getIdentifier(string userNameVertex)
+        private int GetIdentifier(string userNameVertex)
         {
             int identifierVertex;
 
@@ -63,10 +63,10 @@ namespace GraphColoring.Graph
             }
 
             Vertex vertex = new Vertex(userNameVertex);
-            addVertexToAdjacencyList(vertex);
-            mapping.Add(userNameVertex, vertex.getIdentifier());
+            AddVertexToAdjacencyList(vertex);
+            mapping.Add(userNameVertex, vertex.GetIdentifier());
 
-            return vertex.getIdentifier();
+            return vertex.GetIdentifier();
         }
         #endregion
 

@@ -28,7 +28,7 @@ namespace GraphColoring.Graph
         /// <param name="countVertices">Počet vrcholů grafu</param>
         public Graph(int countVertices)
         {
-            setCountVertices(countVertices);
+            SetCountVertices(countVertices);
             adjacencyList = new Dictionary<Vertex, List<Vertex>>();
             mapping = new Dictionary<int, Vertex>();
         }
@@ -39,7 +39,7 @@ namespace GraphColoring.Graph
         /// <summary>
         /// Zvýší proměnnou countEdges o jedna
         /// </summary>
-        protected void incrementCountEdges()
+        protected void IncrementCountEdges()
         {
             countEdges++;
         }
@@ -48,10 +48,10 @@ namespace GraphColoring.Graph
         /// Přidá do AdjacencyList nový vrchol s prázdným listem hran
         /// </summary>
         /// <param name="vertex">vrchol, který chceme přidat</param>
-        protected void addVertexToAdjacencyList(Vertex vertex)
+        protected void AddVertexToAdjacencyList(Vertex vertex)
         {
             adjacencyList.Add(vertex, new List<Vertex>());
-            mapping.Add(vertex.getIdentifier(), vertex);
+            mapping.Add(vertex.GetIdentifier(), vertex);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="vertex1">1. vrchol</param>
         /// <param name="vertex2">2. vrchol</param>
-        protected void addEdgeToAdjacencyList(Vertex vertex1, Vertex vertex2)
+        protected void AddEdgeToAdjacencyList(Vertex vertex1, Vertex vertex2)
         {
             // Variable
             List<Vertex> adjacencyListVertex;
@@ -91,7 +91,7 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="identifier">identifikátor vrcholu</param>
         /// <returns>vrchol s daným identifikátorem</returns>
-        protected Vertex getVertex(int identifier)
+        protected Vertex GetVertex(int identifier)
         {
             // Variable
             Vertex vertex;
@@ -104,7 +104,7 @@ namespace GraphColoring.Graph
         #endregion
 
         // Testing
-        public void writeOutGraph()
+        public void WriteOutGraph()
         {
             Console.WriteLine("Write out graph");
             Console.WriteLine("----------");
@@ -112,7 +112,7 @@ namespace GraphColoring.Graph
             Console.WriteLine("----------");
             foreach (Vertex vertex in adjacencyList.Keys)
             {
-                Console.WriteLine("Identifier: {0}, userName: {1}",vertex.getIdentifier(), vertex.getUserName());
+                Console.WriteLine("Identifier: {0}, userName: {1}",vertex.GetIdentifier(), vertex.GetUserName());
             }
 
             Console.WriteLine("-------");
@@ -120,10 +120,10 @@ namespace GraphColoring.Graph
             Console.WriteLine("-------");
             foreach (KeyValuePair<Vertex, List<Vertex>> record in adjacencyList)
             {
-                Console.WriteLine("Vertex: {0} ({1})", record.Key.getUserName(), record.Key.getIdentifier());
+                Console.WriteLine("Vertex: {0} ({1})", record.Key.GetUserName(), record.Key.GetIdentifier());
                 foreach (Vertex vertex in record.Value)
                 {
-                    Console.WriteLine("{0} ({1}) ", vertex.getUserName(), vertex.getIdentifier());
+                    Console.WriteLine("{0} ({1}) ", vertex.GetUserName(), vertex.GetIdentifier());
                 }
             }
         } 
@@ -134,7 +134,7 @@ namespace GraphColoring.Graph
         /// Vrátí počet vrcholů grafu
         /// </summary>
         /// <returns>počet vrcholů</returns>
-        public int getCountVertices()
+        public int GetCountVertices()
         {
             return countVertices;
         }
@@ -143,7 +143,7 @@ namespace GraphColoring.Graph
         /// Nastaví počet vrcholů grafu 
         /// </summary>
         /// <param name="countVertices">počet vrcholů</param>
-        private void setCountVertices(int countVertices)
+        private void SetCountVertices(int countVertices)
         {
             this.countVertices = countVertices;
         }
@@ -153,7 +153,7 @@ namespace GraphColoring.Graph
         /// Pokud graf nebyl inicializován, tak vrátí vyjímku §§
         /// </summary>
         /// <returns>počet hran</returns>
-        public int getCountEdges()
+        public int GetCountEdges()
         {
             if (isInicialized)
                 return countEdges;
@@ -165,7 +165,7 @@ namespace GraphColoring.Graph
         /// Nastaví počet hran grafu
         /// </summary>
         /// <param name="countEdges">počet hran</param>
-        private void setCountEdges(int countEdges)
+        private void SetCountEdges(int countEdges)
         {
             this.countEdges = countEdges;
         }

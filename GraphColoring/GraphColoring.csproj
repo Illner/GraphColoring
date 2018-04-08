@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Graph\GraphAdjacencyMatrix.cs" />
     <Compile Include="Graph\GraphEdgeList.cs" />
+    <Compile Include="Graph\IGraphInterface.cs" />
     <Compile Include="Graph\Tests\GraphTest.cs" />
     <Compile Include="MyException\GraphException.cs" />
     <Compile Include="Graph\Graph.cs" />

@@ -1,4 +1,4 @@
-﻿#define nowriteOut
+﻿#define writeOut
 using System;
 using System.IO;
 using System.Diagnostics;
@@ -77,6 +77,8 @@ namespace GraphColoring.Graph.Tests
                 Console.WriteLine(e.Message);
             }
 
+            graphEdgeList.InitializeGraph();
+
             #if writeOut
             Console.WriteLine("Graph created");
             graphEdgeList.WriteOutGraph();
@@ -126,6 +128,8 @@ namespace GraphColoring.Graph.Tests
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
+
+            graphAdjacencyMatrix.InitializeGraph();
 
             #if writeOut
             Console.WriteLine("Graph created");

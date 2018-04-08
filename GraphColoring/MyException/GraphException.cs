@@ -22,6 +22,12 @@ namespace GraphColoring.MyException
 
     /// <summary>
     /// Graph exception
+    /// Graf již byl inicializovaný a požaduje se nová inicializace
+    /// </summary>
+    class GraphAlreadyInitializedException : GraphException { }
+
+    /// <summary>
+    /// Graph exception
     /// Do grafu se snažíme vložit hranu, která již existuje
     /// </summary>
     class GraphDupliciteEdge : GraphException { }
@@ -32,4 +38,9 @@ namespace GraphColoring.MyException
     /// </summary>
     class GraphVertexDoesntExist : GraphException { }
 
+    /// <summary>
+    /// Graph exception
+    /// Pokud počet alokovaných vrcholů (realCountVertices) je větší než počet vrcholů zadaných v konstruktoru (countVertices) 
+    /// </summary>
+    class GraphInvalidCountVertices : GraphException { }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 
 namespace GraphColoring.Graph
@@ -8,13 +9,16 @@ namespace GraphColoring.Graph
         // Variable
         #region
         /// <summary>
-        /// isInitialized - Informace zda je graf inicializován, tj. byly do něj vloženy hrany
+        /// name - Jméno daného grafu (implicitně My graph)
+        /// isInitialized - informace zda je graf inicializován, tj. byly do něj vloženy hrany
         /// realCountVertices - skutečný počet naalokovaných vrcholů, nikoliv předpokládaný počet vrcholů (parametr konstruktoru)
         /// countVertices - počet vrcholů grafu
         /// countEdges - počet hran grafu
         /// adjacencyList - seznam sousedů grafu
         /// mapping - slouží pro snadné nalezení vrcholu na základě identifikátoru
         /// </summary>
+        private string name;
+        private char newLine;
         private bool isInitialized;
         private int realCountVertices;
         private int countVertices, countEdges;
@@ -33,6 +37,9 @@ namespace GraphColoring.Graph
             SetCountVertices(countVertices);
             adjacencyList = new Dictionary<Vertex, List<Vertex>>();
             mapping = new Dictionary<int, Vertex>();
+
+            SetName("My graph");
+            newLine = ReaderWriter.ReaderWriter.GetNewLine();
         }
         #endregion
 
@@ -123,35 +130,36 @@ namespace GraphColoring.Graph
 
             isInitialized = true;
         }
-        #endregion
 
-        // Testing
-        public void WriteOutGraph()
+        override
+        public String ToString()
         {
-            Console.WriteLine("Write out graph");
-            Console.WriteLine("Count of vertices: " + GetCountVertices());
-            Console.WriteLine("Count of real vertices: " + GetRealCountVertices());
-            Console.WriteLine("Count of edges: " + GetCountEdges());
-            Console.WriteLine("----------");
-            Console.WriteLine("Vertices: ");
-            Console.WriteLine("----------");
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.Append("Name of graph: " + GetName() + newLine);
+            stringBuilder.Append("Count of vertices: " + GetCountVertices() + newLine);
+            stringBuilder.Append("Real count of vertices: " + GetRealCountVertices() + newLine);
+            stringBuilder.Append("Count of edges: " + GetCountEdges() + newLine);
+
+            stringBuilder.Append("Vertices: " + newLine);
             foreach (Vertex vertex in adjacencyList.Keys)
             {
-                Console.WriteLine("Identifier: {0}, userName: {1}",vertex.GetIdentifier(), vertex.GetUserName());
+                stringBuilder.Append("-- Identifier: " + vertex.GetIdentifier() + ", userName: " + vertex.GetUserName() + newLine);
             }
 
-            Console.WriteLine("-------");
-            Console.WriteLine("Edges: ");
-            Console.WriteLine("-------");
+            stringBuilder.Append("Edges: " + newLine);
             foreach (KeyValuePair<Vertex, List<Vertex>> record in adjacencyList)
             {
-                Console.WriteLine("Vertex: {0} ({1})", record.Key.GetUserName(), record.Key.GetIdentifier());
+                stringBuilder.Append("-- Vertex: " + record.Key.GetUserName() + " (" + record.Key.GetIdentifier() + ")" + newLine);
                 foreach (Vertex vertex in record.Value)
                 {
-                    Console.WriteLine("{0} ({1}) ", vertex.GetUserName(), vertex.GetIdentifier());
+                    stringBuilder.Append("---- " + vertex.GetUserName() + " (" + vertex.GetIdentifier() + ") " + newLine);
                 }
             }
-        } 
+
+            return stringBuilder.ToString();
+        }
+        #endregion
 
         // Property
         #region
@@ -211,6 +219,24 @@ namespace GraphColoring.Graph
         private void SetCountEdges(int countEdges)
         {
             this.countEdges = countEdges;
+        }
+
+        /// <summary>
+        /// Vrátí název grafu
+        /// </summary>
+        /// <returns>název grafu</returns>
+        public string GetName()
+        {
+            return name;
+        }
+
+        /// <summary>
+        /// Nastaví název daného grafu
+        /// </summary>
+        /// <param name="name">název grafu</param>
+        public void SetName(string name)
+        {
+            this.name = name;
         }
         #endregion
     }

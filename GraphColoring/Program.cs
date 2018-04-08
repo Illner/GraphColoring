@@ -11,6 +11,7 @@ namespace GraphColoring
         static void Main(string[] args)
         {
             Graph.Tests.GraphTest graphTest = new Graph.Tests.GraphTest(Graph.Graph.GraphRepresentationEnum.edgeList);
+            
         }
     }
 }

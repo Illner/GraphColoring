@@ -49,9 +49,11 @@
     <Compile Include="MyException\GraphException.cs" />
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\GraphRepresentationEnum.cs" />
+    <Compile Include="MyException\ReaderWriterException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Graph\Vertex.cs" />
+    <Compile Include="ReaderWriter\IReaderWriterInterface.cs" />
     <Compile Include="ReaderWriter\ReaderWriter.cs" />
   </ItemGroup>
   <ItemGroup>

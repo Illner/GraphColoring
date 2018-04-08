@@ -81,7 +81,7 @@ namespace GraphColoring.Graph.Tests
 
             #if writeOut
             Console.WriteLine("Graph created");
-            graphEdgeList.WriteOutGraph();
+            Console.WriteLine(graphEdgeList.ToString());
             #endif
         }
 
@@ -133,7 +133,7 @@ namespace GraphColoring.Graph.Tests
 
             #if writeOut
             Console.WriteLine("Graph created");
-            graphAdjacencyMatrix.WriteOutGraph();
+            Console.WriteLine(graphAdjacencyMatrix.ToString());
             #endif
         }
     }

@@ -22,9 +22,9 @@ namespace GraphColoring.MyException
     {
         public ReaderWriterInavalidPathException() { }
 
-        ReaderWriterInavalidPathException(string message) : base(message) { }
+        public ReaderWriterInavalidPathException(string message) : base(message) { }
 
-        ReaderWriterInavalidPathException(string message, Exception inner) : base(message, inner) { }
+        public ReaderWriterInavalidPathException(string message, Exception inner) : base(message, inner) { }
     }
 
     /// <summary>
@@ -33,11 +33,23 @@ namespace GraphColoring.MyException
     /// </summary>
     class ReaderWriterNoAuthorizationException : ReaderWriterException
     {
-
         public ReaderWriterNoAuthorizationException() { }
 
-        ReaderWriterNoAuthorizationException(string message) : base(message) { }
+        public ReaderWriterNoAuthorizationException(string message) : base(message) { }
 
-        ReaderWriterNoAuthorizationException(string message, Exception inner) : base(message, inner) { }
+        public ReaderWriterNoAuthorizationException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// ReaderWriter exception
+    /// Špatný typ souboru (!= FILETYPE)
+    /// </summary>
+    class ReaderWriterInvalidFileTypeException : ReaderWriterException
+    {
+        public ReaderWriterInvalidFileTypeException() { }
+
+        public ReaderWriterInvalidFileTypeException(string message) : base(message) { }
+
+        public ReaderWriterInvalidFileTypeException(string message, Exception inner) : base(message, inner) { }
     }
 }

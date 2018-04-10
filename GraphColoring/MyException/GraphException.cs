@@ -22,9 +22,9 @@ namespace GraphColoring.MyException
     {
         public GraphInitializationException() { }
 
-        GraphInitializationException(string message) : base(message) { }
+        public GraphInitializationException(string message) : base(message) { }
 
-        GraphInitializationException(string message, Exception inner) : base(message, inner) { }
+        public GraphInitializationException(string message, Exception inner) : base(message, inner) { }
     }
 
     /// <summary>
@@ -35,47 +35,47 @@ namespace GraphColoring.MyException
     {
         public GraphAlreadyInitializedException() { }
 
-        GraphAlreadyInitializedException(string message) : base(message) { }
+        public GraphAlreadyInitializedException(string message) : base(message) { }
 
-        GraphAlreadyInitializedException(string message, Exception inner) : base(message, inner) { }
+        public GraphAlreadyInitializedException(string message, Exception inner) : base(message, inner) { }
     }
 
     /// <summary>
     /// Graph exception
     /// Do grafu se snažíme vložit hranu, která již existuje
     /// </summary>
-    class GraphDupliciteEdge : GraphException
+    class GraphDupliciteEdgeException : GraphException
     {
-        public GraphDupliciteEdge() { }
+        public GraphDupliciteEdgeException() { }
 
-        GraphDupliciteEdge(string message) : base(message) { }
+        public GraphDupliciteEdgeException(string message) : base(message) { }
 
-        GraphDupliciteEdge(string message, Exception inner) : base(message, inner) { }
+        public GraphDupliciteEdgeException(string message, Exception inner) : base(message, inner) { }
     }
 
     /// <summary>
     /// Graph exception
     /// Vrchol grafu neexistuje
     /// </summary>
-    class GraphVertexDoesntExist : GraphException
+    class GraphVertexDoesntExistException : GraphException
     {
-        public GraphVertexDoesntExist() { }
+        public GraphVertexDoesntExistException() { }
 
-        GraphVertexDoesntExist(string message) : base(message) { }
+        public GraphVertexDoesntExistException(string message) : base(message) { }
 
-        GraphVertexDoesntExist(string message, Exception inner) : base(message, inner) { }
+        public GraphVertexDoesntExistException(string message, Exception inner) : base(message, inner) { }
     }
 
     /// <summary>
     /// Graph exception
     /// Pokud počet alokovaných vrcholů (realCountVertices) je větší než počet vrcholů zadaných v konstruktoru (countVertices) 
     /// </summary>
-    class GraphInvalidCountVertices : GraphException
+    class GraphInvalidCountVerticesException : GraphException
     {
-        public GraphInvalidCountVertices() { }
+        public GraphInvalidCountVerticesException() { }
 
-        GraphInvalidCountVertices(string message) : base(message) { }
+        public GraphInvalidCountVerticesException(string message) : base(message) { }
 
-        GraphInvalidCountVertices(string message, Exception inner) : base(message, inner) { }
+        public GraphInvalidCountVerticesException(string message, Exception inner) : base(message, inner) { }
     }
 }

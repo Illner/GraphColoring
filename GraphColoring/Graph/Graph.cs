@@ -65,7 +65,7 @@ namespace GraphColoring.Graph
 
             SetRealCountVertices(++realCountVertices);
             if (GetCountVertices() < GetRealCountVertices())
-                throw new MyException.GraphInvalidCountVertices();
+                throw new MyException.GraphInvalidCountVerticesException();
 
             SetRealCountVertices(realCountVertices);
         }
@@ -87,7 +87,7 @@ namespace GraphColoring.Graph
             for (int i = 0; i < 2; i++)
             {
                 if (!adjacencyList.TryGetValue(vertex1, out adjacencyListVertex))
-                    throw new MyException.GraphVertexDoesntExist();
+                    throw new MyException.GraphVertexDoesntExistException();
 
                 if (adjacencyListVertex.Contains(vertex2))
                     return;
@@ -115,7 +115,7 @@ namespace GraphColoring.Graph
             Vertex vertex;
 
             if (!mapping.TryGetValue(identifier, out vertex))
-                throw new MyException.GraphVertexDoesntExist();
+                throw new MyException.GraphVertexDoesntExistException();
 
             return vertex;
         }

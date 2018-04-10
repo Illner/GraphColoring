@@ -4,16 +4,18 @@ using System.Text.RegularExpressions;
 
 namespace GraphColoring.ReaderWriter
 {
-    abstract class ReaderWriter : IReaderWriterInterface
+    class ReaderWriter : IReaderWriterInterface
     {
         // Variable
         #region
         /// <summary>
+        /// path - cesta k souboru
         /// newLine - znak pro odřádkování
+        /// FILETYPE - přípona podporovaných souboru = .graph
         /// </summary>
         private string path;
-        private Boolean isPathValid;
         private static char newLine = '\n';
+        private const string FILETYPE = ".graph";
         #endregion
 
         // Constructor
@@ -23,7 +25,7 @@ namespace GraphColoring.ReaderWriter
         /// Nastaví cestu k souboru
         /// </summary>
         /// <param name="path">cesta k souboru</param>
-        ReaderWriter(string path)
+        public ReaderWriter(string path)
         {
             SetPath(path);
             CheckPath();
@@ -37,11 +39,13 @@ namespace GraphColoring.ReaderWriter
         /// </summary>
         private void CheckPath()
         {
+            if (GetPath() == "")
+                throw new MyException.ReaderWriterInavalidPathException(GetPath());
+
             Regex regex = new Regex(@"^[a-zA-Z]:\\$");
             if (!regex.IsMatch(GetPath().Substring(0, 3)))
             {
-                isPathValid = false;
-                return;
+                throw new MyException.ReaderWriterInavalidPathException(GetPath());
             }
 
             string strTheseAreInvalidFileNameChars = new string(Path.GetInvalidPathChars());
@@ -49,11 +53,11 @@ namespace GraphColoring.ReaderWriter
             Regex containsABadCharacterRegex = new Regex("[" + Regex.Escape(strTheseAreInvalidFileNameChars) + "]");
             if (containsABadCharacterRegex.IsMatch(GetPath().Substring(3, GetPath().Length - 3)))
             {
-                isPathValid = false;
-                return;
+                throw new MyException.ReaderWriterInavalidPathException(GetPath());
             }
 
-            isPathValid = true;
+            if (!GetPath().EndsWith(FILETYPE))
+                throw new MyException.ReaderWriterInvalidFileTypeException(GetPath());
         }
 
         /// <summary>
@@ -63,8 +67,16 @@ namespace GraphColoring.ReaderWriter
         /// </summary>
         public void DeleteFile()
         {
-            if (ExistsFile())
-                File.Delete(GetPath());
+            try
+            {
+                if (ExistsFile())
+                    File.Delete(GetPath());
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new MyException.ReaderWriterNoAuthorizationException(GetPath());
+            }
+
         }
 
         /// <summary>
@@ -74,9 +86,15 @@ namespace GraphColoring.ReaderWriter
         /// </summary>
         public void CreateFile()
         {
-            DirectoryInfo directory = new DirectoryInfo(Path.GetFullPath(GetPath()));
-            if (!directory.Exists)
-                directory.Create();
+            try
+            {
+                if (!ExistsFile())
+                    using (File.Create(GetPath())) { }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new MyException.ReaderWriterNoAuthorizationException(GetPath());
+            }
         }
 
         /// <summary>
@@ -87,7 +105,14 @@ namespace GraphColoring.ReaderWriter
         /// </summary>
         public void ClearFile()
         {
-
+            try
+            {
+                File.WriteAllText(GetPath(), string.Empty);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new MyException.ReaderWriterNoAuthorizationException(GetPath());
+            }
         }
 
         /// <summary>
@@ -98,7 +123,14 @@ namespace GraphColoring.ReaderWriter
         /// <returns>true pokud soubor existuje, jinak vrátí false</returns>
         public Boolean ExistsFile()
         {
-            return File.Exists(GetPath());
+            try
+            {
+                return File.Exists(GetPath());
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new MyException.ReaderWriterNoAuthorizationException(GetPath());
+            }
         }
         
         #endregion

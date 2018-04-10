@@ -10,8 +10,8 @@ namespace GraphColoring
     {
         static void Main(string[] args)
         {
-            Graph.Tests.GraphTest graphTest = new Graph.Tests.GraphTest(Graph.Graph.GraphRepresentationEnum.edgeList);
-            
+            // Graph.Tests.GraphTest graphTest = new Graph.Tests.GraphTest(Graph.Graph.GraphRepresentationEnum.adjacencyMatrix);
+            // ReaderWriter.Tests.ReaderWriterTest readerWriterTest = new ReaderWriter.Tests.ReaderWriterTest(ReaderWriter.Tests.ReaderWriterTest.PathEnum.Valid);
         }
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="Graph\Vertex.cs" />
     <Compile Include="ReaderWriter\IReaderWriterInterface.cs" />
     <Compile Include="ReaderWriter\ReaderWriter.cs" />
+    <Compile Include="ReaderWriter\Tests\ReaderWriterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

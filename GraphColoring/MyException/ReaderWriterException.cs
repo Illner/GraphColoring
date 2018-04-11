@@ -52,4 +52,30 @@ namespace GraphColoring.MyException
 
         public ReaderWriterInvalidFileTypeException(string message, Exception inner) : base(message, inner) { }
     }
+
+    /// <summary>
+    /// ReaderWriter exception
+    /// Špatná hlavičkou souboru (!= READERWRITERHEADER + representation)
+    /// </summary>
+    class ReaderWriterInvalidHeaderException : ReaderWriterException
+    {
+        public ReaderWriterInvalidHeaderException() { }
+
+        public ReaderWriterInvalidHeaderException(string message) : base(message) { }
+
+        public ReaderWriterInvalidHeaderException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// ReaderWriter exception
+    /// Špatná core data v souboru.
+    /// </summary>
+    class ReaderWriterInvalidDataException : ReaderWriterException
+    {
+        public ReaderWriterInvalidDataException() { }
+
+        public ReaderWriterInvalidDataException(string message) : base(message) { }
+
+        public ReaderWriterInvalidDataException(string message, Exception inner) : base(message, inner) { }
+    }
 }

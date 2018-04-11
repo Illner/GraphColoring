@@ -55,6 +55,9 @@
     <Compile Include="Graph\Vertex.cs" />
     <Compile Include="ReaderWriter\IReaderWriterInterface.cs" />
     <Compile Include="ReaderWriter\ReaderWriter.cs" />
+    <Compile Include="ReaderWriter\ReaderWriterHeaderEnum.cs" />
+    <Compile Include="ReaderWriter\Reader.cs" />
+    <Compile Include="ReaderWriter\Tests\ReaderTest.cs" />
     <Compile Include="ReaderWriter\Tests\ReaderWriterTest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,17 +4,19 @@ using System.Text.RegularExpressions;
 
 namespace GraphColoring.ReaderWriter
 {
-    class ReaderWriter : IReaderWriterInterface
+    abstract partial class ReaderWriter : IReaderWriterInterface
     {
         // Variable
         #region
         /// <summary>
         /// path - cesta k souboru
         /// newLine - znak pro odřádkování
+        /// DELIMITER - Oddělovač v souboru
         /// FILETYPE - přípona podporovaných souboru = .graph
         /// </summary>
         private string path;
         private static char newLine = '\n';
+        protected const char SEPARATOR = ' ';
         private const string FILETYPE = ".graph";
         #endregion
 
@@ -25,7 +27,7 @@ namespace GraphColoring.ReaderWriter
         /// Nastaví cestu k souboru
         /// </summary>
         /// <param name="path">cesta k souboru</param>
-        public ReaderWriter(string path)
+        protected ReaderWriter(string path)
         {
             SetPath(path);
             CheckPath();

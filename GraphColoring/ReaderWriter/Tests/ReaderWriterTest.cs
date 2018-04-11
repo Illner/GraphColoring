@@ -8,17 +8,21 @@ namespace GraphColoring.ReaderWriter.Tests
     class ReaderWriterTest
     {
         // Variable
+        #region
         ReaderWriter readerWriter;
         Stopwatch stopwatch = new Stopwatch();
 
-        string pathValid = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\Example.graph";
-        string pathEmpty = @"";
-        string pathInvalid = @"Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter/Example.graph";
-        string pathInvalidType = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\Example.txt";
-        string pathFoulder = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\";
-        string pathAuthorization = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\ExampleAuthorization.graph";
-        string text = "Lorem impsum.";
+        string readerWriterPathValid = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\Example.graph";
+        string readerWriterPathEmpty = @"";
+        string readerWriterPathInvalid = @"Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter/Example.graph";
+        string readerWriterPathInvalidType = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\Example.txt";
+        string readerWriterPathFoulder = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\";
+        string readerWriterPathAuthorization = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\ExampleAuthorization.graph";
+        string readerWriterText = "Lorem impsum.";
+        #endregion
 
+        // Enum
+        #region
         public enum PathEnum
         {
             Valid,
@@ -28,7 +32,10 @@ namespace GraphColoring.ReaderWriter.Tests
             Authorization,
             Empty
         }
+        #endregion
 
+        // Constructor
+        #region
         /// <summary>
         /// Vytvoří instanci ReaderWriteru
         /// </summary>
@@ -38,43 +45,43 @@ namespace GraphColoring.ReaderWriter.Tests
             switch (pathEnum)
             {
                 case PathEnum.Valid:
-                    readerWriter = new ReaderWriter(pathValid);
                     stopwatch.Start();
+                    readerWriter = new Reader(readerWriterPathValid);
                     Test();
                     stopwatch.Stop();
                     Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.Invalid:
-                    readerWriter = new ReaderWriter(pathInvalid);
                     stopwatch.Start();
+                    readerWriter = new Reader(readerWriterPathInvalid);
                     Test();
                     stopwatch.Stop();
                     Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.InvalidType:
-                    readerWriter = new ReaderWriter(pathInvalidType);
                     stopwatch.Start();
+                    readerWriter = new Reader(readerWriterPathInvalidType);
                     Test();
                     stopwatch.Stop();
                     Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.Foulder:
-                    readerWriter = new ReaderWriter(pathFoulder);
                     stopwatch.Start();
+                    readerWriter = new Reader(readerWriterPathFoulder);
                     Test();
                     stopwatch.Stop();
                     Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.Authorization:
-                    readerWriter = new ReaderWriter(pathAuthorization);
                     stopwatch.Start();
+                    readerWriter = new Reader(readerWriterPathAuthorization);
                     Test();
                     stopwatch.Stop();
                     Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.Empty:
-                    readerWriter = new ReaderWriter(pathEmpty);
                     stopwatch.Start();
+                    readerWriter = new Reader(readerWriterPathEmpty);
                     Test();
                     stopwatch.Stop();
                     Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
@@ -85,7 +92,10 @@ namespace GraphColoring.ReaderWriter.Tests
                     break;
             }
         }
+        #endregion
 
+        // Method
+        #region
         private void Test()
         {
             #if writeOut
@@ -221,16 +231,16 @@ namespace GraphColoring.ReaderWriter.Tests
 
             #if writeOut
             Console.WriteLine("-------------");
-            Console.WriteLine("Writing out");
+            Console.WriteLine("Writing");
             #endif
 
             using (StreamWriter streamWriter = new StreamWriter(readerWriter.GetPath()))
             {
-                streamWriter.WriteLine(text);
+                streamWriter.WriteLine(readerWriterText);
             }
 
             #if writeOut
-            Console.WriteLine("Text ({0}) was written to file", text);
+            Console.WriteLine("Text ({0}) was written to file", readerWriterText);
             #endif
         }
 
@@ -257,5 +267,6 @@ namespace GraphColoring.ReaderWriter.Tests
             Console.WriteLine("File contents: " + content);
             #endif
         }
+        #endregion
     }
 }

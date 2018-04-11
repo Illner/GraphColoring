@@ -98,61 +98,68 @@ namespace GraphColoring.ReaderWriter.Tests
         #region
         private void Test()
         {
-            #if writeOut
-            Console.WriteLine("Path: " + readerWriter.GetPath());
-            #endif
+            try
+            {
+                #if writeOut
+                Console.WriteLine("Path: " + readerWriter.GetPath());
+                #endif
 
-            // First iteration
-            #if writeOut
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("---------------First iteration");
-            Console.WriteLine("------------------------------");
-            #endif
+                // First iteration
+                #if writeOut
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("---------------First iteration");
+                Console.WriteLine("------------------------------");
+                #endif
 
-            ExistFile();
-            DeleteFile();
-            ExistFile();
-            CreateFile();
-            ExistFile();
-            WriteFile();
-            ReadFile();
-            ClearFile();
-            ExistFile();
-            ReadFile();
-            ExistFile();
+                ExistFile();
+                DeleteFile();
+                ExistFile();
+                CreateFile();
+                ExistFile();
+                WriteFile();
+                ReadFile();
+                ClearFile();
+                ExistFile();
+                ReadFile();
+                ExistFile();
 
-            // Second iteration
-            #if writeOut
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("--------------Second iteration");
-            Console.WriteLine("------------------------------");
-            #endif
+                // Second iteration
+                #if writeOut
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("--------------Second iteration");
+                Console.WriteLine("------------------------------");
+                #endif
 
-            ExistFile();
-            DeleteFile();
-            WriteFile();
-            ReadFile();
-            ClearFile();
-            ExistFile();
+                ExistFile();
+                DeleteFile();
+                WriteFile();
+                ReadFile();
+                ClearFile();
+                ExistFile();
 
-            // Third iteration
-            #if writeOut
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("---------------Third iteration");
-            Console.WriteLine("------------------------------");
-            #endif
+                // Third iteration
+                #if writeOut
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("---------------Third iteration");
+                Console.WriteLine("------------------------------");
+                #endif
 
-            ExistFile();
-            DeleteFile();
-            ExistFile();
-            CreateFile();
-            ExistFile();
-            WriteFile();
-            ReadFile();
-            ClearFile();
-            ExistFile();
-            ReadFile();
-            ExistFile();
+                ExistFile();
+                DeleteFile();
+                ExistFile();
+                CreateFile();
+                ExistFile();
+                WriteFile();
+                ReadFile();
+                ClearFile();
+                ExistFile();
+                ReadFile();
+                ExistFile();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         /// <summary>

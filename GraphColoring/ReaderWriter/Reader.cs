@@ -244,10 +244,5 @@ namespace GraphColoring.ReaderWriter
             return graph;
         }
         #endregion
-
-        // Property
-        #region
-
-        #endregion
     }
 }

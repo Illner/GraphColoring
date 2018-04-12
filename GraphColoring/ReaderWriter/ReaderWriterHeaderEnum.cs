@@ -13,11 +13,11 @@ namespace GraphColoring.ReaderWriter
         /// READERWRITERHEADER - hlavička soborů .graph
         /// </summary>
         protected const string READERWRITERHEADER = "Graph coloring. Graph representation: ";
+        protected const string READERWRITERNAME = "Graph name: ";
+        protected const string READERWRITERCOUNTVERTICES = "Count of the number of vertices: ";
 
         protected enum ReaderWriterHeaderEnum
         {
-            // Error
-            undefined,
             // Adjacency list
             adjacencyList,   
             // Adjacency matrix

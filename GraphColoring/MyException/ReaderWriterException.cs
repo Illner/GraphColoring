@@ -78,4 +78,17 @@ namespace GraphColoring.MyException
 
         public ReaderWriterInvalidDataException(string message, Exception inner) : base(message, inner) { }
     }
+
+    /// <summary>
+    /// ReaderWriter exception
+    /// Špatný formát souboru.
+    /// </summary>
+    class ReaderWriterInvalidFormatException : ReaderWriterException
+    {
+        public ReaderWriterInvalidFormatException() { }
+
+        public ReaderWriterInvalidFormatException(string message) : base(message) { }
+
+        public ReaderWriterInvalidFormatException(string message, Exception inner) : base(message, inner) { }
+    }
 }

@@ -10,12 +10,6 @@ namespace GraphColoring.ReaderWriter
     {
         // Variable
         #region
-        /// <summary>
-        /// graphName - jméno daného grafu
-        /// countVertices - Počet vrcholů grafu
-        /// </summary>
-        private string graphName;
-        private int countVertices;
         #endregion
 
         // Constructor
@@ -32,39 +26,122 @@ namespace GraphColoring.ReaderWriter
         public Graph.Graph ReadFile()
         {
             // Variable
+            Graph.Graph graph = null;
+            Graph.GraphEdgeList graphEdgeList;
+            Graph.GraphAdjacencyMatrix graphAdjacencyMatrix;
+
             string header = "";
-            Graph.Graph graph;
+            int countVertices, numberColors;
             ReaderWriterHeaderEnum graphRepresentationEnum;
+            string line, graphName, numberColorsString = "";
 
-            using (StreamReader streamReader = new StreamReader(GetPath()))
+            using (FileStream fileStream = File.OpenRead(GetPath()))
+            using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
-                header = streamReader.ReadLine();
-            }
+                try
+                {
+                    // Header
+                    header = streamReader.ReadLine();
 
-            if (!header.StartsWith(READERWRITERHEADER))
-                throw new MyException.ReaderWriterInvalidHeaderException();
-            try
-            {
-                graphRepresentationEnum = (ReaderWriterHeaderEnum)Enum.Parse(typeof(ReaderWriterHeaderEnum), header.Split(SEPARATOR).Last());
-            }
-            catch (ArgumentException)
-            {
-                throw new MyException.ReaderWriterInvalidHeaderException();
-            }
+                    /// Invalid header
+                    if (!header.StartsWith(READERWRITERHEADER))
+                        throw new MyException.ReaderWriterInvalidHeaderException();
 
-            switch (graphRepresentationEnum)
-            {
-                case ReaderWriterHeaderEnum.adjacencyList:
-                    graph = ReadFileAdjacencyList();
-                    break;
-                case ReaderWriterHeaderEnum.adjacencyMatrix:
-                    graph = ReadFileAdjacencyMatrix();
-                    break;
-                case ReaderWriterHeaderEnum.edgeList:
-                    graph = ReadFileEdgeList();
-                    break;
-                default:
+                    graphRepresentationEnum = (ReaderWriterHeaderEnum)Enum.Parse(typeof(ReaderWriterHeaderEnum), header.Split(SEPARATOR).Last());
+
+                    // Ballast
+                    line = streamReader.ReadLine();
+                    if (line != READERWRITERBALLAST)
+                        throw new MyException.ReaderWriterInvalidFormatException("Ballast (1)");
+
+                    // Graph name
+                    line = streamReader.ReadLine();
+                    if (!line.StartsWith(READERWRITERNAME))
+                        throw new MyException.ReaderWriterInvalidFormatException("Name");
+                    graphName = line.Substring(READERWRITERNAME.Length);
+
+                    // Count of vertices
+                    line = streamReader.ReadLine();
+                    if (!line.StartsWith(READERWRITERCOUNTVERTICES))
+                        throw new MyException.ReaderWriterInvalidFormatException("Count of vertices");
+                    countVertices = Int32.Parse(line.Substring(READERWRITERCOUNTVERTICES.Length));
+                    if (countVertices < 0)
+                        throw new MyException.ReaderWriterInvalidFormatException("Count of vertices");
+
+                    // Ballast
+                    line = streamReader.ReadLine();
+                    if (line != READERWRITERBALLAST)
+                        throw new MyException.ReaderWriterInvalidFormatException("Ballast (2)");
+
+                    // Graph
+                    line = streamReader.ReadLine();
+                    if (line != READERWRITERGRAPH)
+                        throw new MyException.ReaderWriterInvalidFormatException("Graph");
+                    
+                    switch (graphRepresentationEnum)
+                    {
+                        case ReaderWriterHeaderEnum.adjacencyList:
+                            graphEdgeList = new Graph.GraphEdgeList(countVertices);
+                            graphEdgeList.SetName(graphName);
+
+                            ReadFileAdjacencyList(graphEdgeList, streamReader);
+                            graph = graphEdgeList;
+                            break;
+                        case ReaderWriterHeaderEnum.adjacencyMatrix:
+                            graphAdjacencyMatrix = new Graph.GraphAdjacencyMatrix(countVertices);
+                            graphAdjacencyMatrix.SetName(graphName);
+
+                            ReadFileAdjacencyMatrix(graphAdjacencyMatrix, streamReader, countVertices);
+                            graph = graphAdjacencyMatrix;
+                            break;
+                        case ReaderWriterHeaderEnum.edgeList:
+                            graphEdgeList = new Graph.GraphEdgeList(countVertices);
+                            graphEdgeList.SetName(graphName);
+
+                            ReadFileEdgeList(graphEdgeList, streamReader);
+                            graph = graphEdgeList;
+                            break;
+                        default:
+                            throw new MyException.ReaderWriterInvalidHeaderException();
+                    }
+
+                    // Colored graph
+                    line = streamReader.ReadLine();
+                    if (line != READERWRITERCOLOREDGRAPH)
+                        throw new MyException.ReaderWriterInvalidFormatException("Colored graph");
+
+                    // Number of colors
+                    line = streamReader.ReadLine();
+                    if (!line.StartsWith(READERWRITERNUMBEROFCOLORS) && !line.StartsWith(READERWRITERCHROMATICNUMBER))
+                        throw new MyException.ReaderWriterInvalidFormatException("Number of colors / Chromatic number");
+                    if (line.StartsWith(READERWRITERNUMBEROFCOLORS))
+                        numberColorsString = line.Substring(READERWRITERNUMBEROFCOLORS.Length);
+                    else
+                        numberColorsString = line.Substring(READERWRITERCHROMATICNUMBER.Length);
+
+                    if (numberColorsString != "")
+                    {
+                        numberColors = Int32.Parse(numberColorsString);
+
+                        // Colored graph
+                        // TODO
+                    }
+                }
+                catch (ArgumentException)
+                {
                     throw new MyException.ReaderWriterInvalidHeaderException();
+
+                }
+                catch (FormatException)
+                {
+                    if (numberColorsString == "")
+                        throw new MyException.ReaderWriterInvalidFormatException("Count of vertices (parse)");
+                    throw new MyException.ReaderWriterInvalidFormatException("number of colors / Chromatic number (parse)");
+                }
+                catch (IOException)
+                {
+                    throw new MyException.ReaderWriterInvalidDataException();
+                }
             }
 
             return graph;
@@ -73,223 +150,98 @@ namespace GraphColoring.ReaderWriter
         /// <summary>
         /// Přečte soubor s grafem, který je reprezentován pomocí seznamu sousedů a daný graf vytvoří.
         /// </summary>
-        /// <returns>graf ze souboru</returns>
-        private Graph.Graph ReadFileAdjacencyList()
+        private void ReadFileAdjacencyList(Graph.GraphEdgeList graph, StreamReader streamReader)
         {
             // Variable
-            Graph.GraphEdgeList graph;
+            string line;
             string firstVertex = "", secondVertex;
-            string LEFTSEPARATOR = "(";
-            string RIGHTSEPARATOR = ")";
+            const string LEFTSEPARATOR = "(";
+            const string RIGHTSEPARATOR = ")";
 
-            using (FileStream fileStream = File.OpenRead(GetPath()))
-            using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
+            // Read graph
+            while ((line = streamReader.ReadLine()) != "")
             {
-                try
+                if (!line.StartsWith(LEFTSEPARATOR) && !line.EndsWith(RIGHTSEPARATOR))
                 {
-                    String line;
-
-                    // Header
-                    streamReader.ReadLine();
-
-                    // Empty row
-                    line = streamReader.ReadLine();
-                    if (line.Trim() != "")
-                        throw new MyException.ReaderWriterInvalidFormatException("Ballast");
-
-                    // Graph name
-                    line = streamReader.ReadLine();
-                    if (!line.StartsWith(READERWRITERNAME))
-                        throw new MyException.ReaderWriterInvalidFormatException("Name");
-
-                    graphName = line.Substring(READERWRITERNAME.Length);
-
-                    // Count of vertices
-                    line = streamReader.ReadLine();
-                    if (!line.StartsWith(READERWRITERCOUNTVERTICES))
-                        throw new MyException.ReaderWriterInvalidFormatException("CountVertices");
-
-                    countVertices = Int32.Parse(line.Substring(READERWRITERCOUNTVERTICES.Length));
-
-                    // Create graph
-                    graph = new Graph.GraphEdgeList(countVertices);
-                    graph.SetName(graphName);
-
-                    while ((line = streamReader.ReadLine()) != null)
-                    {
-                        if (!line.StartsWith(LEFTSEPARATOR) && !line.EndsWith(RIGHTSEPARATOR))
-                        {
-                            firstVertex = line;
-                            continue;
-                        }
-
-                        if (line.StartsWith(LEFTSEPARATOR) && line.EndsWith(RIGHTSEPARATOR))
-                        {
-                            secondVertex = line.Substring(1, line.Length - 2);
-                            graph.AddEdge(firstVertex, secondVertex);
-                            continue;
-                        }
-
-                        throw new MyException.ReaderWriterInvalidDataException();    
-                            
-                    }
-
-                    graph.InitializeGraph();
+                    firstVertex = line;
+                    continue;
                 }
-                catch (Exception e)
+
+                if (line.StartsWith(LEFTSEPARATOR) && line.EndsWith(RIGHTSEPARATOR))
                 {
-                    if (e is IOException)
-                        throw new MyException.ReaderWriterInvalidDataException();
-
-                    throw;
+                    secondVertex = line.Substring(1, line.Length - 2);
+                    graph.AddEdge(firstVertex, secondVertex);
+                    continue;
                 }
+
+                throw new MyException.ReaderWriterInvalidDataException();
             }
 
-            return graph;
+            graph.InitializeGraph();
         }
 
         /// <summary>
         /// Přečte soubor s grafem, který je reprezentován pomocí matice sousednosti a daný graf vytvoří.
         /// </summary>
-        /// <returns>graf ze souboru</returns>
-        private Graph.Graph ReadFileAdjacencyMatrix()
+        private void ReadFileAdjacencyMatrix(Graph.GraphAdjacencyMatrix graph, StreamReader streamReader, int countVertices)
         {
             // Variable
-            Graph.GraphAdjacencyMatrix graph;
+            string line;
+            int countRows = 0;
 
-            using (FileStream fileStream = File.OpenRead(GetPath()))
-            using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
+            // Read graph
+            while ((line = streamReader.ReadLine()) != "")
             {
-                try
+                List<string> rowString = line.Split(new char[] { SEPARATOR }).ToList();
+                List<bool> rowBoolean = new List<bool>(rowString.Capacity);
+
+                foreach (String neighbour in rowString)
                 {
-                    String line;
-
-                    // Header
-                    streamReader.ReadLine();
-
-                    // Empty row
-                    line = streamReader.ReadLine();
-                    if (line.Trim() != "")
-                        throw new MyException.ReaderWriterInvalidFormatException("Ballast");
-
-                    // Graph name
-                    line = streamReader.ReadLine();
-                    if (!line.StartsWith(READERWRITERNAME))
-                        throw new MyException.ReaderWriterInvalidFormatException("Name");
-
-                    graphName = line.Substring(READERWRITERNAME.Length);
-
-                    // Count of vertices
-                    line = streamReader.ReadLine();
-                    if (!line.StartsWith(READERWRITERCOUNTVERTICES))
-                        throw new MyException.ReaderWriterInvalidFormatException("CountVertices");
-
-                    countVertices = Int32.Parse(line.Substring(READERWRITERCOUNTVERTICES.Length));
-
-                    // Create graph
-                    graph = new Graph.GraphAdjacencyMatrix(countVertices);
-                    graph.SetName(graphName);
-                    
-                    while ((line = streamReader.ReadLine()) != null)
+                    switch (neighbour)
                     {
-                        List<string> rowString = line.Split(new char[] {SEPARATOR}).ToList();
-                        List<bool> rowBoolean = new List<bool>(rowString.Capacity);
-
-                        foreach(String neighbour in rowString)
-                        {
-                            switch (neighbour)
-                            {
-                                case "0":
-                                    rowBoolean.Add(false);
-                                    break;
-                                case "1":
-                                    rowBoolean.Add(true);
-                                    break;
-                                default:
-                                    throw new MyException.ReaderWriterInvalidDataException();
-                                    break;
-
-                            }
-                        }
-
-                        graph.SetOfNeighborsOfVertex(rowBoolean);
+                        case "0":
+                            rowBoolean.Add(false);
+                            break;
+                        case "1":
+                            rowBoolean.Add(true);
+                            break;
+                        default:
+                            throw new MyException.ReaderWriterInvalidDataException();
                     }
-
-                    graph.InitializeGraph();
                 }
-                catch (Exception e)
-                {
-                    if (e is IOException)
-                        throw new MyException.ReaderWriterInvalidDataException(GetPath());
 
-                    throw;
-                }
+                if (rowBoolean.Capacity != countVertices)
+                    throw new MyException.ReaderWriterInvalidDataException();
+
+                if (++countRows > countVertices)
+                    throw new MyException.ReaderWriterInvalidDataException();
+                
+                graph.SetOfNeighborsOfVertex(rowBoolean);
             }
 
-            return graph;
+            graph.InitializeGraph();
         }
 
         /// <summary>
         /// Přečte soubor s grafem, který je reprezentován pomocí seznamu hran a daný graf vytvoří.
         /// </summary>
-        /// <returns>graf ze souboru</returns>
-        private Graph.Graph ReadFileEdgeList()
+        private void ReadFileEdgeList(Graph.GraphEdgeList graph, StreamReader streamReader)
         {
             // Variable
-            Graph.GraphEdgeList graph;
+            string line;
 
-            using (FileStream fileStream = File.OpenRead(GetPath()))
-            using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
+            // Read graph
+            while ((line = streamReader.ReadLine()) != "")
             {
-                try
-                {
-                    String line;
+                string[] edge = line.Split(SEPARATOR);
 
-                    // Header
-                    streamReader.ReadLine();
+                if (edge.Length != 2)
+                    throw new MyException.ReaderWriterInvalidDataException();
 
-                    // Empty row
-                    line = streamReader.ReadLine();
-                    if (line.Trim() != "")
-                        throw new MyException.ReaderWriterInvalidFormatException("Ballast");
-
-                    // Graph name
-                    line = streamReader.ReadLine();
-                    if (!line.StartsWith(READERWRITERNAME))
-                        throw new MyException.ReaderWriterInvalidFormatException("Name");
-
-                    graphName = line.Substring(READERWRITERNAME.Length);
-
-                    // Count of vertices
-                    line = streamReader.ReadLine();
-                    if (!line.StartsWith(READERWRITERCOUNTVERTICES))
-                        throw new MyException.ReaderWriterInvalidFormatException("CountVertices");
-
-                    countVertices = Int32.Parse(line.Substring(READERWRITERCOUNTVERTICES.Length));
-
-                    // Create graph
-                    graph = new Graph.GraphEdgeList(countVertices);
-                    graph.SetName(graphName);
-                    
-                    while ((line = streamReader.ReadLine()) != null)
-                    {
-                        Console.WriteLine("Line: " + line);
-                        string[] edge = line.Split(SEPARATOR);
-                        graph.AddEdge(edge[0], edge[1]);
-                    }
-
-                    graph.InitializeGraph();
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException || e is FormatException || e is ArgumentNullException)
-                        throw new MyException.ReaderWriterInvalidDataException(GetPath());
-
-                    throw;
-                }
+                graph.AddEdge(edge[0], edge[1]);
             }
 
-            return graph;
+            graph.InitializeGraph();
         }
         #endregion
     }

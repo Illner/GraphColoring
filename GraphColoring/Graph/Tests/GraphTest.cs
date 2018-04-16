@@ -1,7 +1,6 @@
 ﻿#define writeOut
 using System;
 using System.IO;
-using System.Diagnostics;
 using System.Collections.Generic;
 
 namespace GraphColoring.Graph.Tests
@@ -9,31 +8,41 @@ namespace GraphColoring.Graph.Tests
     class GraphTest
     {
         // Variable
+        #region
+        GraphEdgeList graphEdgeList;
+        GraphAdjacencyMatrix graphAdjacencyMatrix;
+
         string pathGraphAdjacencyMatrix = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphAdjacencyMatrix.txt";
         string pathGraphEdgeList = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphEdgeList.txt";
-        GraphAdjacencyMatrix graphAdjacencyMatrix;
-        GraphEdgeList graphEdgeList;
-        Stopwatch stopwatch = new Stopwatch();
+        #endregion
 
-        /// <summary>
-        /// Vytvoří graf, který je zadaný danou reprezentací
-        /// </summary>
-        /// <param name="graphRepresentation">jakou representaci grafu chci otestovat</param>
-        public GraphTest(Graph.GraphRepresentationEnum graphRepresentation)
+        // Constructor
+        #region
+        public GraphTest(Graph.GraphRepresentationEnum graphRepresentationEnum)
         {
-            switch (graphRepresentation)
+            Test(graphRepresentationEnum);
+        }
+
+        public GraphTest()
+        {
+            foreach (Graph.GraphRepresentationEnum graphRepresentationEnum in Enum.GetValues(typeof(Graph.GraphRepresentationEnum)))
+            {
+                Test(graphRepresentationEnum);
+            }
+        }
+        #endregion
+
+        // Method
+        #region
+        private void Test(Graph.GraphRepresentationEnum graphRepresentationEnum)
+        {
+            switch (graphRepresentationEnum)
             {
                 case Graph.GraphRepresentationEnum.edgeList:
-                    stopwatch.Start();
                     GraphEdgeList();
-                    stopwatch.Stop();
-                    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case Graph.GraphRepresentationEnum.adjacencyMatrix:
-                    stopwatch.Start();
                     GraphAdjacencyMatrix();
-                    stopwatch.Stop();
-                    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 default:
                     Console.WriteLine("This graph representation isn't implemented");
@@ -41,9 +50,6 @@ namespace GraphColoring.Graph.Tests
             }
         }
         
-        /// <summary>
-        /// Testuje graf, který je zadán pomocí seznamu hran
-        /// </summary>
         private void GraphEdgeList()
         {
             Console.WriteLine("Testing: Graph edge list");
@@ -84,10 +90,7 @@ namespace GraphColoring.Graph.Tests
             Console.WriteLine(graphEdgeList.ToString());
             #endif
         }
-
-        /// <summary>
-        /// Testuje graf, který je zadán pomocí matice sousednosti
-        /// </summary>
+        
         private void GraphAdjacencyMatrix()
         {
             Console.WriteLine("Testing: Graph adjacency matrix");
@@ -136,5 +139,6 @@ namespace GraphColoring.Graph.Tests
             Console.WriteLine(graphAdjacencyMatrix.ToString());
             #endif
         }
+        #endregion
     }
 }

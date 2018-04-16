@@ -1,7 +1,6 @@
 ﻿#define writeOut
 using System;
 using System.IO;
-using System.Diagnostics;
 
 namespace GraphColoring.ReaderWriter.Tests
 {
@@ -10,7 +9,6 @@ namespace GraphColoring.ReaderWriter.Tests
         // Variable
         #region
         ReaderWriter readerWriter;
-        Stopwatch stopwatch = new Stopwatch();
 
         string readerWriterPathValid = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\Example.graph";
         string readerWriterPathEmpty = @"";
@@ -42,49 +40,47 @@ namespace GraphColoring.ReaderWriter.Tests
         /// <param name="pathEnum">typ path - PathEnum</param>
         public ReaderWriterTest(PathEnum pathEnum)
         {
+            Test(pathEnum);
+        }
+        
+        public ReaderWriterTest()
+        {
+            foreach (PathEnum pathEnum in Enum.GetValues(typeof(PathEnum)))
+            {
+                Test(pathEnum);
+            }
+        }
+        #endregion
+
+        // Method
+        #region
+        private void Test(PathEnum pathEnum)
+        {
             switch (pathEnum)
             {
                 case PathEnum.Valid:
-                    stopwatch.Start();
                     readerWriter = new Reader(readerWriterPathValid);
                     Test();
-                    stopwatch.Stop();
-                    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.Invalid:
-                    stopwatch.Start();
                     readerWriter = new Reader(readerWriterPathInvalid);
                     Test();
-                    stopwatch.Stop();
-                    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.InvalidType:
-                    stopwatch.Start();
                     readerWriter = new Reader(readerWriterPathInvalidType);
                     Test();
-                    stopwatch.Stop();
-                    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.Foulder:
-                    stopwatch.Start();
                     readerWriter = new Reader(readerWriterPathFoulder);
                     Test();
-                    stopwatch.Stop();
-                    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.Authorization:
-                    stopwatch.Start();
                     readerWriter = new Reader(readerWriterPathAuthorization);
                     Test();
-                    stopwatch.Stop();
-                    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 case PathEnum.Empty:
-                    stopwatch.Start();
                     readerWriter = new Reader(readerWriterPathEmpty);
                     Test();
-                    stopwatch.Stop();
-                    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                     break;
                 default:
                     readerWriter = null;
@@ -92,10 +88,7 @@ namespace GraphColoring.ReaderWriter.Tests
                     break;
             }
         }
-        #endregion
 
-        // Method
-        #region
         private void Test()
         {
             try

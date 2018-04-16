@@ -229,11 +229,63 @@ namespace GraphColoring.ReaderWriter
         {
             // Variable
             string line;
+            string[] edge = null;
+            const string LEFTSEPARATOR = "(";
+            const string RIGHTSEPARATOR = ")";
+            int startVertex1Index = 0, endVertex1Index = 0;
+            int startVertex2Index = 0, endVertex2Index = 0;
 
             // Read graph
             while ((line = streamReader.ReadLine()) != "")
             {
-                string[] edge = line.Split(SEPARATOR);
+                if (line.StartsWith(LEFTSEPARATOR) || line.EndsWith(RIGHTSEPARATOR))
+                {
+                    edge = new string[2];
+
+                    // (Vertex name) VertexName
+                    if (line.StartsWith(LEFTSEPARATOR) && !line.EndsWith(RIGHTSEPARATOR))
+                    {
+                        startVertex1Index = 1;
+                        endVertex1Index = line.IndexOf(RIGHTSEPARATOR);
+                        startVertex2Index = endVertex1Index + 2;
+                        endVertex2Index = line.Length;
+
+                        if (endVertex1Index == -1)
+                            throw new MyException.ReaderWriterInvalidDataException();
+                    }
+                    else
+                    {
+                        // VertexName (Vertex name)
+                        if (!line.StartsWith(LEFTSEPARATOR) && line.EndsWith(RIGHTSEPARATOR))
+                        {
+                            startVertex1Index = 0;
+                            endVertex1Index = line.IndexOf(LEFTSEPARATOR) - 1;
+                            startVertex2Index = endVertex1Index + 2;
+                            endVertex2Index = line.Length - 1;
+
+                            if (endVertex1Index == -2)
+                                throw new MyException.ReaderWriterInvalidDataException();
+                        }
+                        // (Vertex name) (Vertex name)
+                        else
+                        {
+                            startVertex1Index = 1;
+                            endVertex1Index = line.IndexOf(RIGHTSEPARATOR);
+                            startVertex2Index = line.LastIndexOf(LEFTSEPARATOR) + 1;
+                            endVertex2Index = line.Length - 1;
+
+                            if (startVertex1Index == startVertex2Index && endVertex1Index == endVertex2Index)
+                                throw new MyException.ReaderWriterInvalidDataException();
+                        }
+                    }
+
+                    edge[0] = line.Substring(startVertex1Index, endVertex1Index - startVertex1Index);
+                    edge[1] = line.Substring(startVertex2Index, endVertex2Index - startVertex2Index);
+                }
+                else
+                {
+                    edge = line.Split(SEPARATOR);
+                }
 
                 if (edge.Length != 2)
                     throw new MyException.ReaderWriterInvalidDataException();

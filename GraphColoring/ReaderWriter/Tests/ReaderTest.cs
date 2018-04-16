@@ -1,6 +1,5 @@
 ﻿#define writeOut
 using System;
-using System.Diagnostics;
 
 namespace GraphColoring.ReaderWriter.Tests
 {
@@ -10,11 +9,11 @@ namespace GraphColoring.ReaderWriter.Tests
         #region
         Reader reader;
         Graph.Graph graph;
-        Stopwatch stopwatch = new Stopwatch();
 
         // GraphEdgeList
         string readerPathGraphEdgeListValid1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListValidNumberColors.graph";
         string readerPathGraphEdgeListValid2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListValidCHromaticNumber.graph";
+        string readerPathGraphEdgeListValidVertexName = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListValidVertexName.graph";
 
         string readerPathGraphEdgeListInvalidHeader1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidHeader1.graph";
         string readerPathGraphEdgeListInvalidHeader2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidHeader2.graph";
@@ -34,6 +33,8 @@ namespace GraphColoring.ReaderWriter.Tests
 
         string readerPathGraphEdgeListInvalidCoreData1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData1.graph";
         string readerPathGraphEdgeListInvalidCoreData2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData2.graph";
+        string readerPathGraphEdgeListInvalidCoreData3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData3.graph";
+        string readerPathGraphEdgeListInvalidCoreData4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData4.graph";
 
         string readerPathGraphEdgeListInvalidColoredGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidColoredGraph.graph";
 
@@ -73,6 +74,7 @@ namespace GraphColoring.ReaderWriter.Tests
         // GraphAdjacencyList
         string readerPathGraphAdjacencyListValid1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListValidNumberColors.graph";
         string readerPathGraphAdjacencyListValid2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListValidChromaticNumber.graph";
+        string readerPathGraphAdjacencyListValidVertexName = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListValidVertexName.graph";
 
         string readerPathGraphAdjacencyListInvalidHeader1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader1.graph";
         string readerPathGraphAdjacencyListInvalidHeader2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader2.graph";
@@ -152,7 +154,7 @@ namespace GraphColoring.ReaderWriter.Tests
 
         // Method
         #region
-        public void Test(GraphEnum graphEnum, PathEnum pathEnum)
+        private void Test(GraphEnum graphEnum, PathEnum pathEnum)
         {
             switch (graphEnum)
             {
@@ -161,43 +163,32 @@ namespace GraphColoring.ReaderWriter.Tests
                     switch (pathEnum)
                     {
                         case PathEnum.Valid:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyListValid1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListValid2);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+                            reader = new Reader(readerPathGraphAdjacencyListValidVertexName);
+                            Test();
                             break;
                         case PathEnum.InvalidHeader:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidHeader1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidHeader2);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidBallast:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidBallast1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidBallast2);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidBallast3);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidGraphName:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidGraphName);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidCountVertices:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidCountVertices1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidCountVertices2);
@@ -206,35 +197,24 @@ namespace GraphColoring.ReaderWriter.Tests
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidCountVertices4);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidGraph:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidGraph);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidCoreData:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidCoreData1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidCoreData2);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidNumberColors:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidColoredGraph);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidNumberColors);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyListInvalidChromaticNumber);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         default:
                             reader = null;
@@ -248,43 +228,30 @@ namespace GraphColoring.ReaderWriter.Tests
                     switch (pathEnum)
                     {
                         case PathEnum.Valid:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyMatrixValid1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixValid2);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidHeader:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidHeader1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidHeader2);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidBallast:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidBallast1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidBallast2);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidBallast3);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidGraphName:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidGraphName);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidCountVertices:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCountVertices1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCountVertices2);
@@ -293,18 +260,12 @@ namespace GraphColoring.ReaderWriter.Tests
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCountVertices4);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidGraph:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidGraph);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidCoreData:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCoreData1);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCoreData2);
@@ -313,19 +274,14 @@ namespace GraphColoring.ReaderWriter.Tests
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCoreData4);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidNumberColors:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidColoredGraph);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidNumberColors);
                             Test();
                             reader = new Reader(readerPathGraphAdjacencyMatrixInvalidChromaticNumber);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         default:
                             reader = null;
@@ -339,43 +295,32 @@ namespace GraphColoring.ReaderWriter.Tests
                     switch (pathEnum)
                     {
                         case PathEnum.Valid:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphEdgeListValid1);
                             Test();
                             reader = new Reader(readerPathGraphEdgeListValid2);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+                            reader = new Reader(readerPathGraphEdgeListValidVertexName);
+                            Test();
                             break;
                         case PathEnum.InvalidHeader:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphEdgeListInvalidHeader1);
                             Test();
                             reader = new Reader(readerPathGraphEdgeListInvalidHeader2);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidBallast:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphEdgeListInvalidBallast1);
                             Test();
                             reader = new Reader(readerPathGraphEdgeListInvalidBallast2);
                             Test();
                             reader = new Reader(readerPathGraphEdgeListInvalidBallast3);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidGraphName:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphEdgeListInvalidGraphName);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidCountVertices:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphEdgeListInvalidCountVertices1);
                             Test();
                             reader = new Reader(readerPathGraphEdgeListInvalidCountVertices2);
@@ -384,35 +329,28 @@ namespace GraphColoring.ReaderWriter.Tests
                             Test();
                             reader = new Reader(readerPathGraphEdgeListInvalidCountVertices4);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidGraph:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphEdgeListInvalidGraph);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         case PathEnum.InvalidCoreData:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphEdgeListInvalidCoreData1);
                             Test();
                             reader = new Reader(readerPathGraphEdgeListInvalidCoreData2);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+                            reader = new Reader(readerPathGraphEdgeListInvalidCoreData3);
+                            Test();
+                            reader = new Reader(readerPathGraphEdgeListInvalidCoreData4);
+                            Test();
                             break;
                         case PathEnum.InvalidNumberColors:
-                            stopwatch.Start();
                             reader = new Reader(readerPathGraphEdgeListInvalidColoredGraph);
                             Test();
                             reader = new Reader(readerPathGraphEdgeListInvalidNumberColors);
                             Test();
                             reader = new Reader(readerPathGraphEdgeListInvalidChromaticNumber);
                             Test();
-                            stopwatch.Stop();
-                            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
                             break;
                         default:
                             reader = null;

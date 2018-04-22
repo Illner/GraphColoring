@@ -59,7 +59,8 @@
     <Compile Include="ReaderWriter\Reader.cs" />
     <Compile Include="ReaderWriter\Tests\ReaderTest.cs" />
     <Compile Include="ReaderWriter\Tests\ReaderWriterTest.cs" />
-    <Compile Include="Tests\Tests.cs" />
+    <Compile Include="Tests\ITestInterface.cs" />
+    <Compile Include="Tests\Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

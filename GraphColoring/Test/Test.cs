@@ -3,7 +3,7 @@ using System.IO;
 
 namespace GraphColoring.Tests
 {
-    class Tests
+    class Test
     {
         // Variable
         #region
@@ -28,23 +28,23 @@ namespace GraphColoring.Tests
 
         // Constructor
         #region
-        public Tests(TestEnum testEnum)
+        public Test(TestEnum testEnum)
         {
-            Test(testEnum);
+            Tests(testEnum);
         }
 
-        public Tests()
+        public Test()
         {
             foreach (TestEnum testEnum in Enum.GetValues(typeof(TestEnum)))
             {
-                Test(testEnum);
+                Tests(testEnum);
             }
         }
         #endregion
 
         // Method
         #region
-        private void Test(TestEnum testEnum)
+        private void Tests(TestEnum testEnum)
         {
             Console.Clear();
 

@@ -1,40 +1,63 @@
-﻿#define writeOut
-using System;
+﻿using System;
 using System.IO;
+using System.Text;
 using System.Collections.Generic;
 
 namespace GraphColoring.Graph.Tests
 {
-    class GraphTest
+    class GraphTest : GraphColoring.Tests.ITestInterface
     {
         // Variable
         #region
-        GraphEdgeList graphEdgeList;
-        GraphAdjacencyMatrix graphAdjacencyMatrix;
+        private StringBuilder stringBuilder;
+        private GraphEdgeList graphEdgeList;
+        private GraphAdjacencyMatrix graphAdjacencyMatrix;
 
-        string pathGraphAdjacencyMatrix = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphAdjacencyMatrix.txt";
-        string pathGraphEdgeList = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphEdgeList.txt";
+        private string pathGraphAdjacencyMatrix = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphAdjacencyMatrix.txt";
+        private string pathGraphEdgeList = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphEdgeList.txt";
         #endregion
 
         // Constructor
         #region
-        public GraphTest(Graph.GraphRepresentationEnum graphRepresentationEnum)
-        {
-            Test(graphRepresentationEnum);
-        }
-
         public GraphTest()
         {
-            foreach (Graph.GraphRepresentationEnum graphRepresentationEnum in Enum.GetValues(typeof(Graph.GraphRepresentationEnum)))
-            {
-                Test(graphRepresentationEnum);
-            }
+            stringBuilder = new StringBuilder();
         }
         #endregion
 
         // Method
         #region
-        private void Test(Graph.GraphRepresentationEnum graphRepresentationEnum)
+        /// <summary>
+        /// Otestuje všechny reprezentace grafu (Graph.GraphRepresentationEnum)
+        /// </summary>
+        /// <returns>Vrátí report</returns>
+        public StringBuilder Test()
+        {
+            stringBuilder.Clear();
+
+            foreach (Graph.GraphRepresentationEnum graphRepresentationEnum in Enum.GetValues(typeof(Graph.GraphRepresentationEnum)))
+            {
+                Testing(graphRepresentationEnum);
+            }
+
+            return stringBuilder;
+        }
+
+        /// <summary>
+        /// Otestuje danou reprezentaci grafu (Graph.GraphReprezentationEnum)
+        /// </summary>
+        /// <param name="graphRepresentationEnum">Reprezentace grafu, kterou chceme otestovat</param>
+        /// <returns>Vrátí report</returns>
+        public StringBuilder Test(Graph.GraphRepresentationEnum graphRepresentationEnum)
+        {
+            stringBuilder.Clear();
+
+            Testing(graphRepresentationEnum);
+
+            return stringBuilder;
+        }
+
+        private void Testing(Graph.GraphRepresentationEnum graphRepresentationEnum)
         {
             switch (graphRepresentationEnum)
             {
@@ -45,14 +68,17 @@ namespace GraphColoring.Graph.Tests
                     GraphAdjacencyMatrix();
                     break;
                 default:
-                    Console.WriteLine("This graph representation isn't implemented");
+                    stringBuilder.AppendLine("This graph representation isn't implemented!");
                     break;
             }
         }
         
+        /// <summary>
+        /// Ze souboru přečte graf (edgeList reprezentace) a daný graf vytvoří
+        /// </summary>
         private void GraphEdgeList()
         {
-            Console.WriteLine("Testing: Graph edge list");
+            stringBuilder.AppendLine("Testing: Graph edge list");
 
             try
             {
@@ -60,57 +86,55 @@ namespace GraphColoring.Graph.Tests
                 {
                     String line = sr.ReadLine();
 
-                    #if writeOut
-                    Console.WriteLine("Read line: " + line);
-                    #endif
+                    stringBuilder.AppendLine("Read line: " + line);
 
                     graphEdgeList = new GraphEdgeList(int.Parse(line));
 
                     while ((line = sr.ReadLine()) != null)
                     {
-                        #if writeOut
-                        Console.WriteLine("Read line: " + line);
-                        #endif
+                        stringBuilder.AppendLine("Read line: " + line);
 
                         string[] myArray = line.Split(' ');
                         graphEdgeList.AddEdge(myArray[0], myArray[1]);
+
+                        stringBuilder.AppendLine("Split line. " + line);
+                        stringBuilder.AppendLine("First edge: " + myArray[0]);
+                        stringBuilder.AppendLine("Second edge: " + myArray[1]);
                     }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
+                stringBuilder.AppendLine("The file could not be read!");
+                stringBuilder.AppendLine(e.Message);
             }
 
             graphEdgeList.InitializeGraph();
-
-            #if writeOut
-            Console.WriteLine("Graph created");
-            Console.WriteLine(graphEdgeList.ToString());
-            #endif
+            
+            stringBuilder.AppendLine("Graph created.");
+            stringBuilder.AppendLine(graphEdgeList.ToString());
         }
         
+        /// <summary>
+        /// Ze souboru přečte graf (adjacencyMatrix reprezentace) a daný graf vytvoří
+        /// </summary>
         private void GraphAdjacencyMatrix()
         {
-            Console.WriteLine("Testing: Graph adjacency matrix");
+            stringBuilder.AppendLine("Testing: Graph adjacency matrix");
 
             try
             {
                 using (StreamReader sr = new StreamReader(pathGraphAdjacencyMatrix))
                 {
                     String line = sr.ReadLine();
-                    #if writeOut
-                    Console.WriteLine("Read line: " + line);
-                    #endif
+
+                    stringBuilder.AppendLine("Read line: " + line);
 
                     graphAdjacencyMatrix = new GraphAdjacencyMatrix(int.Parse(line));
 
                     while ((line = sr.ReadLine()) != null)
                     {
-                        #if writeOut
-                        Console.WriteLine("Read line: " + line);
-                        #endif
+                        stringBuilder.AppendLine("Read line: " + line);
 
                         string[] myArray = line.Split(' ');
                         List<bool> myList = new List<bool>();
@@ -128,16 +152,14 @@ namespace GraphColoring.Graph.Tests
             }
             catch (Exception e)
             {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
+                stringBuilder.AppendLine("The file could not be read!");
+                stringBuilder.AppendLine(e.Message);
             }
 
             graphAdjacencyMatrix.InitializeGraph();
 
-            #if writeOut
-            Console.WriteLine("Graph created");
-            Console.WriteLine(graphAdjacencyMatrix.ToString());
-            #endif
+            stringBuilder.AppendLine("Graph created.");
+            stringBuilder.AppendLine(graphAdjacencyMatrix.ToString());
         }
         #endregion
     }

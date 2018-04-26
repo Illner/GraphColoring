@@ -11,7 +11,7 @@ namespace GraphColoring.Graph
         /// userName - označení vrcholu uživatelem -> např. A, Vertex1 apod.
         /// counter - určuje identifikátor pro nový vrchol
         /// </summary>
-        private int identifier;
+        private long identifier;
         private string userName;
         private static int counter = 0;
         #endregion
@@ -45,7 +45,7 @@ namespace GraphColoring.Graph
         /// Vrátí identifikátor vrcholu
         /// </summary>
         /// <returns>číselný identifikátor</returns>
-        public int GetIdentifier()
+        public long GetIdentifier()
         {
             return identifier;
         }
@@ -54,7 +54,7 @@ namespace GraphColoring.Graph
         /// Nastaví identifikátor vrcholu
         /// </summary>
         /// <param name="identifier">nový identifikátor vrcholu</param>
-        private void SetIdentifier(int identifier)
+        private void SetIdentifier(long identifier)
         {
             this.identifier = identifier;
         }

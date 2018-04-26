@@ -42,6 +42,8 @@ namespace GraphColoring.ReaderWriter.Tests
         private string readerPathGraphEdgeListInvalidNumberColors = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidNumberColors.graph";
         private string readerPathGraphEdgeListInvalidChromaticNumber = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidChromaticNumber.graph";
 
+        private string readerPathGraphEdgeListInvalidUsedAlgorithm = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidUsedAlgorithm.graph";
+
         // GraphAdjacencyMatrix
         private string readerPathGraphAdjacencyMatrixValid1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidNumberColors.graph";
         private string readerPathGraphAdjacencyMatrixValid2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidChromaticNumber.graph";
@@ -72,6 +74,8 @@ namespace GraphColoring.ReaderWriter.Tests
         private string readerPathGraphAdjacencyMatrixInvalidNumberColors = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidNumberColors.graph";
         private string readerPathGraphAdjacencyMatrixInvalidChromaticNumber = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidChromaticNumber.graph";
 
+        private string readerPathGraphAdjacencyMatrixInvalidUsedAlgorithm = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidUsedAlgorithm.graph";
+
         // GraphAdjacencyList
         private string readerPathGraphAdjacencyListValid1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListValidNumberColors.graph";
         private string readerPathGraphAdjacencyListValid2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListValidChromaticNumber.graph";
@@ -100,6 +104,8 @@ namespace GraphColoring.ReaderWriter.Tests
 
         private string readerPathGraphAdjacencyListInvalidNumberColors = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidNumberColors.graph";
         private string readerPathGraphAdjacencyListInvalidChromaticNumber = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidChromaticNumber.graph";
+
+        private string readerPathGraphAdjacencyListInvalidUsedAlgorithm = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidUsedAlgorithm.graph";
         #endregion
 
         // Enum
@@ -114,7 +120,8 @@ namespace GraphColoring.ReaderWriter.Tests
             invalidGraph,
             invalidCoreData,
             invalidColoredGraph,
-            invalidNumberColors
+            invalidNumberColors,
+            invalidUsedAlgorithm
         }
         #endregion
 
@@ -231,6 +238,10 @@ namespace GraphColoring.ReaderWriter.Tests
                                 reader = new Reader(readerPathGraphAdjacencyListInvalidChromaticNumber);
                                 Testing();
                                 break;
+                            case PathEnum.invalidUsedAlgorithm:
+                                reader = new Reader(readerPathGraphAdjacencyListInvalidUsedAlgorithm);
+                                Testing();
+                                break;
                             default:
                                 reader = null;
                                 stringBuilder.AppendLine("This isn't implemented!");
@@ -296,6 +307,10 @@ namespace GraphColoring.ReaderWriter.Tests
                                 reader = new Reader(readerPathGraphAdjacencyMatrixInvalidNumberColors);
                                 Testing();
                                 reader = new Reader(readerPathGraphAdjacencyMatrixInvalidChromaticNumber);
+                                Testing();
+                                break;
+                            case PathEnum.invalidUsedAlgorithm:
+                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidUsedAlgorithm);
                                 Testing();
                                 break;
                             default:
@@ -365,6 +380,10 @@ namespace GraphColoring.ReaderWriter.Tests
                                 reader = new Reader(readerPathGraphEdgeListInvalidNumberColors);
                                 Testing();
                                 reader = new Reader(readerPathGraphEdgeListInvalidChromaticNumber);
+                                Testing();
+                                break;
+                            case PathEnum.invalidUsedAlgorithm:
+                                reader = new Reader(readerPathGraphEdgeListInvalidUsedAlgorithm);
                                 Testing();
                                 break;
                             default:

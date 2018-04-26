@@ -23,7 +23,7 @@ namespace GraphColoring.Graph
         private int realCountVertices;
         private int countVertices, countEdges;
         private Dictionary<Vertex, List<Vertex>> adjacencyList;
-        private Dictionary<int, Vertex> mapping;
+        private Dictionary<long, Vertex> mapping;
         #endregion
 
         // Constructor
@@ -36,7 +36,7 @@ namespace GraphColoring.Graph
         {
             SetCountVertices(countVertices);
             adjacencyList = new Dictionary<Vertex, List<Vertex>>();
-            mapping = new Dictionary<int, Vertex>();
+            mapping = new Dictionary<long, Vertex>();
 
             SetName("My graph");
             newLine = ReaderWriter.ReaderWriter.GetNewLine();
@@ -109,7 +109,7 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="identifier">identifikátor vrcholu</param>
         /// <returns>vrchol s daným identifikátorem</returns>
-        protected Vertex GetVertex(int identifier)
+        protected Vertex GetVertex(long identifier)
         {
             // Variable
             Vertex vertex;

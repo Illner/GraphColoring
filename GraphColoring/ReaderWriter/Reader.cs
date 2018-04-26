@@ -8,10 +8,6 @@ namespace GraphColoring.ReaderWriter
 {
     class Reader : ReaderWriter
     {
-        // Variable
-        #region
-        #endregion
-
         // Constructor
         #region
         public Reader(string path) : base(path) { }
@@ -32,8 +28,8 @@ namespace GraphColoring.ReaderWriter
 
             string header = "";
             int countVertices, numberColors;
+            string line, graphName, numberColorsString;
             ReaderWriterHeaderEnum graphRepresentationEnum;
-            string line, graphName, numberColorsString = "";
 
             using (FileStream fileStream = File.OpenRead(GetPath()))
             using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
@@ -45,38 +41,38 @@ namespace GraphColoring.ReaderWriter
 
                     /// Invalid header
                     if (!header.StartsWith(READERWRITERHEADER))
-                        throw new MyException.ReaderWriterInvalidHeaderException();
+                        throw new MyException.ReaderWriterInvalidHeaderException("Invalid header");
 
                     graphRepresentationEnum = (ReaderWriterHeaderEnum)Enum.Parse(typeof(ReaderWriterHeaderEnum), header.Split(SEPARATOR).Last());
 
                     // Ballast
                     line = streamReader.ReadLine();
                     if (line != READERWRITERBALLAST)
-                        throw new MyException.ReaderWriterInvalidFormatException("Ballast (1)");
+                        throw new MyException.ReaderWriterInvalidFormatException("Missing empty line");
 
                     // Graph name
                     line = streamReader.ReadLine();
                     if (!line.StartsWith(READERWRITERNAME))
-                        throw new MyException.ReaderWriterInvalidFormatException("Name");
+                        throw new MyException.ReaderWriterInvalidFormatException("Invalid name of graph (header)");
                     graphName = line.Substring(READERWRITERNAME.Length);
 
                     // Count of vertices
                     line = streamReader.ReadLine();
                     if (!line.StartsWith(READERWRITERCOUNTVERTICES))
-                        throw new MyException.ReaderWriterInvalidFormatException("Count of vertices");
+                        throw new MyException.ReaderWriterInvalidFormatException("Invalid vertex count (header)");
                     countVertices = Int32.Parse(line.Substring(READERWRITERCOUNTVERTICES.Length));
                     if (countVertices < 0)
-                        throw new MyException.ReaderWriterInvalidFormatException("Count of vertices");
+                        throw new MyException.ReaderWriterInvalidFormatException("Invalid vertex count (not a number)");
 
                     // Ballast
                     line = streamReader.ReadLine();
                     if (line != READERWRITERBALLAST)
-                        throw new MyException.ReaderWriterInvalidFormatException("Ballast (2)");
+                        throw new MyException.ReaderWriterInvalidFormatException("Missing empty line");
 
                     // Graph
                     line = streamReader.ReadLine();
                     if (line != READERWRITERGRAPH)
-                        throw new MyException.ReaderWriterInvalidFormatException("Graph");
+                        throw new MyException.ReaderWriterInvalidFormatException("Invalid graph (header)");
                     
                     switch (graphRepresentationEnum)
                     {
@@ -102,45 +98,49 @@ namespace GraphColoring.ReaderWriter
                             graph = graphEdgeList;
                             break;
                         default:
-                            throw new MyException.ReaderWriterInvalidHeaderException();
+                            throw new MyException.ReaderWriterInvalidHeaderException("Unknown header");
                     }
 
                     // Colored graph
                     line = streamReader.ReadLine();
                     if (line != READERWRITERCOLOREDGRAPH)
-                        throw new MyException.ReaderWriterInvalidFormatException("Colored graph");
+                        throw new MyException.ReaderWriterInvalidFormatException("Invalid colored graph (header)");
 
                     // Number of colors
+                    // TEST
                     line = streamReader.ReadLine();
                     if (!line.StartsWith(READERWRITERNUMBEROFCOLORS) && !line.StartsWith(READERWRITERCHROMATICNUMBER))
-                        throw new MyException.ReaderWriterInvalidFormatException("Number of colors / Chromatic number");
+                        throw new MyException.ReaderWriterInvalidFormatException("Invalid number of colors / chromatic number (header)");
                     if (line.StartsWith(READERWRITERNUMBEROFCOLORS))
                         numberColorsString = line.Substring(READERWRITERNUMBEROFCOLORS.Length);
                     else
                         numberColorsString = line.Substring(READERWRITERCHROMATICNUMBER.Length);
+                    numberColors = Int32.Parse(numberColorsString);
 
-                    if (numberColorsString != "")
-                    {
-                        numberColors = Int32.Parse(numberColorsString);
+                    // Used algorithm
+                    // TEST
+                    line = streamReader.ReadLine();
+                    if (!line.StartsWith(READERWRITERUSEDALGORITHM))
+                        throw new MyException.ReaderWriterInvalidHeaderException("Invalid used algorithm (header)");
 
-                        // Colored graph
-                        // TODO
-                    }
+                    // HOLD ON AlgorithmRepresentation
+
+                    // Colored graph
+                    // TEST
                 }
                 catch (ArgumentException)
                 {
-                    throw new MyException.ReaderWriterInvalidHeaderException();
+                    throw new MyException.ReaderWriterInvalidHeaderException("Invalid header");
 
                 }
                 catch (FormatException)
                 {
-                    if (numberColorsString == "")
-                        throw new MyException.ReaderWriterInvalidFormatException("Count of vertices (parse)");
-                    throw new MyException.ReaderWriterInvalidFormatException("number of colors / Chromatic number (parse)");
+                    throw new MyException.ReaderWriterInvalidFormatException("Invalid vertex count (not a number)");
+                    // throw new MyException.ReaderWriterInvalidFormatException("Invalid chromatic number (not a number)");
                 }
                 catch (IOException)
                 {
-                    throw new MyException.ReaderWriterInvalidDataException();
+                    throw new MyException.ReaderWriterInvalidDataException("Something went wrong with a file");
                 }
             }
 
@@ -174,7 +174,7 @@ namespace GraphColoring.ReaderWriter
                     continue;
                 }
 
-                throw new MyException.ReaderWriterInvalidDataException();
+                throw new MyException.ReaderWriterInvalidDataException("Invalid graph");
             }
 
             graph.InitializeGraph();
@@ -206,15 +206,15 @@ namespace GraphColoring.ReaderWriter
                             rowBoolean.Add(true);
                             break;
                         default:
-                            throw new MyException.ReaderWriterInvalidDataException();
+                            throw new MyException.ReaderWriterInvalidDataException("Invalid graph");
                     }
                 }
 
                 if (rowBoolean.Capacity != countVertices)
-                    throw new MyException.ReaderWriterInvalidDataException();
+                    throw new MyException.ReaderWriterInvalidDataException("Invalid graph");
 
                 if (++countRows > countVertices)
-                    throw new MyException.ReaderWriterInvalidDataException();
+                    throw new MyException.ReaderWriterInvalidDataException("Invalid graph");
                 
                 graph.SetOfNeighborsOfVertex(rowBoolean);
             }
@@ -251,7 +251,7 @@ namespace GraphColoring.ReaderWriter
                         endVertex2Index = line.Length;
 
                         if (endVertex1Index == -1)
-                            throw new MyException.ReaderWriterInvalidDataException();
+                            throw new MyException.ReaderWriterInvalidDataException("Invalid graph");
                     }
                     else
                     {
@@ -264,7 +264,7 @@ namespace GraphColoring.ReaderWriter
                             endVertex2Index = line.Length - 1;
 
                             if (endVertex1Index == -2)
-                                throw new MyException.ReaderWriterInvalidDataException();
+                                throw new MyException.ReaderWriterInvalidDataException("Invalid graph");
                         }
                         // (Vertex name) (Vertex name)
                         else
@@ -275,7 +275,7 @@ namespace GraphColoring.ReaderWriter
                             endVertex2Index = line.Length - 1;
 
                             if (startVertex1Index == startVertex2Index && endVertex1Index == endVertex2Index)
-                                throw new MyException.ReaderWriterInvalidDataException();
+                                throw new MyException.ReaderWriterInvalidDataException("Invalid graph");
                         }
                     }
 
@@ -288,7 +288,7 @@ namespace GraphColoring.ReaderWriter
                 }
 
                 if (edge.Length != 2)
-                    throw new MyException.ReaderWriterInvalidDataException();
+                    throw new MyException.ReaderWriterInvalidDataException("Invalid graph");
 
                 graph.AddEdge(edge[0], edge[1]);
             }

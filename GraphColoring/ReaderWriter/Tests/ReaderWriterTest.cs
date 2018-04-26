@@ -398,7 +398,7 @@ namespace GraphColoring.ReaderWriter.Tests
                 ReadFile();
                 ExistFile();
             }
-            catch (Exception e)
+            catch (MyException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

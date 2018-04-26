@@ -15,11 +15,12 @@ namespace GraphColoring.ReaderWriter
         protected const string READERWRITERHEADER = "Graph coloring. Graph representation: ";
         protected const string READERWRITERBALLAST = "";
         protected const string READERWRITERNAME = "Graph name: ";
-        protected const string READERWRITERCOUNTVERTICES = "Count of the number of vertices: ";
+        protected const string READERWRITERCOUNTVERTICES = "Number of vertices: ";
         protected const string READERWRITERGRAPH = "GRAPH";
         protected const string READERWRITERCOLOREDGRAPH = "COLORED GRAPH";
         protected const string READERWRITERNUMBEROFCOLORS = "Number of colors: ";
         protected const string READERWRITERCHROMATICNUMBER = "Chromatic number: ";
+        protected const string READERWRITERUSEDALGORITHM = "Used algorithm: ";
 
 
         protected enum ReaderWriterHeaderEnum

@@ -12,18 +12,17 @@ namespace GraphColoring.Graph
         /// name - Jméno daného grafu (implicitně My graph)
         /// isInitialized - informace zda je graf inicializován, tj. byly do něj vloženy hrany
         /// realCountVertices - skutečný počet naalokovaných vrcholů, nikoliv předpokládaný počet vrcholů (parametr konstruktoru)
-        /// countVertices - počet vrcholů grafu
-        /// countEdges - počet hran grafu
         /// adjacencyList - seznam sousedů grafu
         /// mapping - slouží pro snadné nalezení vrcholu na základě identifikátoru
+        /// graphProperty - vlastnosti grafu
         /// </summary>
         private string name;
         private char newLine;
         private bool isInitialized;
         private int realCountVertices;
-        private int countVertices, countEdges;
         private Dictionary<Vertex, List<Vertex>> adjacencyList;
         private Dictionary<long, Vertex> mapping;
+        private GraphProperty.GraphProperty graphProperty;
         #endregion
 
         // Constructor
@@ -34,7 +33,7 @@ namespace GraphColoring.Graph
         /// <param name="countVertices">Počet vrcholů grafu</param>
         public Graph(int countVertices)
         {
-            SetCountVertices(countVertices);
+            graphProperty = new GraphProperty.GraphProperty(this, countVertices);
             adjacencyList = new Dictionary<Vertex, List<Vertex>>();
             mapping = new Dictionary<long, Vertex>();
 
@@ -50,7 +49,7 @@ namespace GraphColoring.Graph
         /// </summary>
         protected void IncrementCountEdges()
         {
-            countEdges++;
+            graphProperty.IncrementCountEdges();
         }
 
         /// <summary>
@@ -64,7 +63,7 @@ namespace GraphColoring.Graph
             mapping.Add(vertex.GetIdentifier(), vertex);
 
             SetRealCountVertices(++realCountVertices);
-            if (GetCountVertices() < GetRealCountVertices())
+            if (graphProperty.GetCountVertices() < GetRealCountVertices())
                 throw new MyException.GraphInvalidCountVerticesException();
 
             SetRealCountVertices(realCountVertices);
@@ -101,7 +100,7 @@ namespace GraphColoring.Graph
                 vertex2 = vertex;
             }
 
-            SetCountEdges(++countEdges);
+            graphProperty.IncrementCountEdges();
         }
 
         /// <summary>
@@ -137,9 +136,9 @@ namespace GraphColoring.Graph
             StringBuilder stringBuilder = new StringBuilder();
 
             stringBuilder.Append("Name of graph: " + GetName() + newLine);
-            stringBuilder.Append("Count of vertices: " + GetCountVertices() + newLine);
+            stringBuilder.Append("Count of vertices: " + graphProperty.GetCountVertices() + newLine);
             stringBuilder.Append("Real count of vertices: " + GetRealCountVertices() + newLine);
-            stringBuilder.Append("Count of edges: " + GetCountEdges() + newLine);
+            stringBuilder.Append("Count of edges: " + graphProperty.GetCountEdges() + newLine);
 
             stringBuilder.Append("Vertices: " + newLine);
             foreach (Vertex vertex in adjacencyList.Keys)
@@ -163,23 +162,6 @@ namespace GraphColoring.Graph
 
         // Property
         #region
-        /// <summary>
-        /// Vrátí počet vrcholů grafu
-        /// </summary>
-        /// <returns>počet vrcholů</returns>
-        public int GetCountVertices()
-        {
-            return countVertices;
-        }
-
-        /// <summary>
-        /// Nastaví počet vrcholů grafu 
-        /// </summary>
-        /// <param name="countVertices">počet vrcholů</param>
-        private void SetCountVertices(int countVertices)
-        {
-            this.countVertices = countVertices;
-        }
 
         /// <summary>
         /// Vrátí počet naalokovaných vrcholů grafu
@@ -197,28 +179,6 @@ namespace GraphColoring.Graph
         private void SetRealCountVertices(int countVertices)
         {
             this.realCountVertices = countVertices;
-        }
-
-        /// <summary>
-        /// Vrátí počet hran grafu
-        /// Pokud graf nebyl inicializován, tak vrátí vyjímku GraphInitializationException
-        /// </summary>
-        /// <returns>počet hran</returns>
-        public int GetCountEdges()
-        {
-            if (isInitialized)
-                return countEdges;
-
-            throw new MyException.GraphInitializationException();
-        }
-
-        /// <summary>
-        /// Nastaví počet hran grafu
-        /// </summary>
-        /// <param name="countEdges">počet hran</param>
-        private void SetCountEdges(int countEdges)
-        {
-            this.countEdges = countEdges;
         }
 
         /// <summary>

@@ -123,7 +123,7 @@ namespace GraphColoring.ReaderWriter
                     if (!line.StartsWith(READERWRITERUSEDALGORITHM))
                         throw new MyException.ReaderWriterInvalidHeaderException("Invalid used algorithm (header)");
 
-                    // HOLD ON AlgorithmRepresentation
+                    // HOLD ON AlgorithmEnum
 
                     // Colored graph
                     // TEST

@@ -69,10 +69,5 @@ namespace GraphColoring.Graph
             return vertex.GetIdentifier();
         }
         #endregion
-
-        // Property
-        #region
-
-        #endregion
     }
 }

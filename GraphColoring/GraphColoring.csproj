@@ -42,8 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graph\Edge.cs" />
     <Compile Include="Graph\GraphAdjacencyMatrix.cs" />
+    <Compile Include="Graph\GraphClass\GraphClass.cs" />
+    <Compile Include="Graph\GraphClass\GraphClassEnum.cs" />
     <Compile Include="Graph\GraphEdgeList.cs" />
+    <Compile Include="Graph\GraphProperty\GraphProperty.cs" />
+    <Compile Include="Graph\GraphProperty\IntegerInvariants.cs" />
+    <Compile Include="Graph\GraphProperty\Properties.cs" />
+    <Compile Include="Graph\GraphProperty\RealNumberInvariants.cs" />
+    <Compile Include="Graph\GraphProperty\SequencesAndPolynomials.cs" />
     <Compile Include="Graph\IGraphInterface.cs" />
     <Compile Include="Graph\Tests\GraphTest.cs" />
     <Compile Include="MyException\GraphException.cs" />
@@ -69,6 +77,9 @@
   <ItemGroup>
     <Content Include="Graph\Tests\Graphs\GraphAdjacencyMatrix.txt" />
     <Content Include="Graph\Tests\Graphs\GraphEdgeList.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graph\GraphOperation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

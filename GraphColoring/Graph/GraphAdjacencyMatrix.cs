@@ -11,7 +11,7 @@ namespace GraphColoring.Graph
         /// mapping - slouží pro snadné nalezení identifikátoru vrcholu na základě pořadí vrcholu
         /// actualVertex - slouží jako idendifikátor, na jakém řádku matice jsme a jakému vrcholu nastavujeme sousedy
         /// </summary>
-        private Dictionary<int, long> mapping;
+        private Dictionary<int, int> mapping;
         private int actualVertex = 0;
         #endregion
 
@@ -26,7 +26,7 @@ namespace GraphColoring.Graph
             // Variable
             Vertex vertex;
 
-            mapping = new Dictionary<int, long>();
+            mapping = new Dictionary<int, int>();
 
             // Create vertices
             for (int i = 0; i < countVertices; i++)
@@ -48,7 +48,7 @@ namespace GraphColoring.Graph
         {
             // Variable
             Vertex vertex1, vertex2;
-            long identifierVertex1, identifierVertex2;
+            int identifierVertex1, identifierVertex2;
 
             mapping.TryGetValue(actualVertex, out identifierVertex1);
             vertex1 = GetVertex(identifierVertex1);

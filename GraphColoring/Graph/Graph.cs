@@ -21,7 +21,7 @@ namespace GraphColoring.Graph
         private bool isInitialized;
         private int realCountVertices;
         private Dictionary<Vertex, List<Vertex>> adjacencyList;
-        private Dictionary<long, Vertex> mapping;
+        private Dictionary<int, Vertex> mapping;
         private GraphProperty.GraphProperty graphProperty;
         #endregion
 
@@ -35,7 +35,7 @@ namespace GraphColoring.Graph
         {
             graphProperty = new GraphProperty.GraphProperty(this, countVertices);
             adjacencyList = new Dictionary<Vertex, List<Vertex>>();
-            mapping = new Dictionary<long, Vertex>();
+            mapping = new Dictionary<int, Vertex>();
 
             SetName("My graph");
             newLine = ReaderWriter.ReaderWriter.GetNewLine();
@@ -108,7 +108,7 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="identifier">identifikátor vrcholu</param>
         /// <returns>vrchol s daným identifikátorem</returns>
-        protected Vertex GetVertex(long identifier)
+        protected Vertex GetVertex(int identifier)
         {
             // Variable
             Vertex vertex;
@@ -128,6 +128,26 @@ namespace GraphColoring.Graph
                 throw new MyException.GraphAlreadyInitializedException();
 
             isInitialized = true;
+        }
+
+
+        /// <summary>
+        /// Vrátí list sousedů vrcholu vertex
+        /// </summary>
+        /// <param name="vertex">vrchol pro který vracíme list sousedů</param>
+        /// <returns>list sousedů</returns>
+        public List<Vertex> Neighbours(Vertex vertex)
+        {
+            return adjacencyList[vertex];
+        }
+
+        /// <summary>
+        /// Vrátí list všech vrcholů v grafu
+        /// </summary>
+        /// <returns>lsit všech vrcholů v grafu</returns>
+        public List<Vertex> AllVertices()
+        {
+            return new List<Vertex>(adjacencyList.Keys);
         }
 
         override
@@ -162,7 +182,6 @@ namespace GraphColoring.Graph
 
         // Property
         #region
-
         /// <summary>
         /// Vrátí počet naalokovaných vrcholů grafu
         /// </summary>
@@ -197,6 +216,19 @@ namespace GraphColoring.Graph
         public void SetName(string name)
         {
             this.name = name;
+        }
+
+        /// <summary>
+        /// Vrátí referenci na GraphProperty
+        /// Pokud graf není inicializování, vyvolá se vyjímka GraphWasNotInitializedException
+        /// </summary>
+        /// <returns>referenci na GraphProperty</returns>
+        public GraphProperty.GraphProperty GetGraphProperty()
+        {
+            if (isInitialized)
+                return graphProperty;
+
+            throw new MyException.GraphWasNotInitializedException();
         }
         #endregion
     }

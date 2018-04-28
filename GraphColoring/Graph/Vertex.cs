@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace GraphColoring.Graph
 {
@@ -11,7 +12,7 @@ namespace GraphColoring.Graph
         /// userName - označení vrcholu uživatelem -> např. A, Vertex1 apod.
         /// counter - určuje identifikátor pro nový vrchol
         /// </summary>
-        private long identifier;
+        private int identifier;
         private string userName;
         private static int counter = 0;
         #endregion
@@ -39,13 +40,24 @@ namespace GraphColoring.Graph
         }
         #endregion
 
+        // Method
+        #region
+        public bool Equals(Vertex vertex)
+        {
+            if (identifier == vertex.GetIdentifier() && userName == vertex.GetUserName())
+                return true;
+
+            return false;
+        }
+        #endregion
+
         // Property
         #region
         /// <summary>
         /// Vrátí identifikátor vrcholu
         /// </summary>
         /// <returns>číselný identifikátor</returns>
-        public long GetIdentifier()
+        public int GetIdentifier()
         {
             return identifier;
         }
@@ -54,7 +66,7 @@ namespace GraphColoring.Graph
         /// Nastaví identifikátor vrcholu
         /// </summary>
         /// <param name="identifier">nový identifikátor vrcholu</param>
-        private void SetIdentifier(long identifier)
+        private void SetIdentifier(int identifier)
         {
             this.identifier = identifier;
         }

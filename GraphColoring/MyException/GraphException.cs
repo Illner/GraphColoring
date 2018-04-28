@@ -42,6 +42,19 @@ namespace GraphColoring.MyException
 
     /// <summary>
     /// Graph exception
+    /// Graf nebyl doposud inicializován
+    /// </summary>
+    class GraphWasNotInitializedException : GraphException
+    {
+        public GraphWasNotInitializedException() { }
+
+        public GraphWasNotInitializedException(string message) : base(message) { }
+
+        public GraphWasNotInitializedException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
     /// Do grafu se snažíme vložit hranu, která již existuje
     /// </summary>
     class GraphDupliciteEdgeException : GraphException

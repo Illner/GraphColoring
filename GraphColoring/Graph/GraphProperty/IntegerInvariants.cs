@@ -14,22 +14,20 @@ namespace GraphColoring.Graph.GraphProperty
         /// order - the number of vertices
         /// size - the number of edges
         /// countComponents - Number of connected components
-        /// components - List of connected components
         /// circuitRank - a linear combination of the numbers of edges, vertices, and components
         /// girth - the length of the shortest cycle
         /// vertexConnectivity - the smallest number of vertices whose removal disconnects the graph
         /// edgeConnectivity - the smallest number of edges whose removal disconnects the graph
         /// </summary>
-        private long order;
-        private long size = 0;
-        private long? countComponents;
-        private List<Graph> componentsList;
-        private long? circuitRank;
-        private long? girth;
-        private long? vertexConnectivity;
-        private long? edgeConnectivity;
-        private long? minimumVertexDegree;
-        private long? maximumVertexDegree;
+        private int order;
+        private int size = 0;
+        private int? countComponents;
+        private int? circuitRank;
+        private int? girth;
+        private int? vertexConnectivity;
+        private int? edgeConnectivity;
+        private int? minimumVertexDegree;
+        private int? maximumVertexDegree;
         #endregion
 
         // Method
@@ -43,21 +41,12 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Rozloží graf na komponenty souvislosti
-        /// countComponents, componentsList
-        /// </summary>
-        private void Components()
-        {
-            // TODO countComponents / componentsList
-        }
-
-        /// <summary>
         /// Zjistí circuit rank
         /// circuitRank
         /// </summary>
         private void CircuitRank()
         {
-            // TODO circuit rank
+            circuitRank = GetCountEdges() - GetCountVertices() + GetCountComponents();
         }
 
         /// <summary>
@@ -94,7 +83,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Vrátí počet vrcholů
         /// </summary>
         /// <returns>počet vrcholů</returns>
-        public long GetCountVertices()
+        public int GetCountVertices()
         {
             return order;
         }
@@ -103,7 +92,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Nastaví počet vrcholů
         /// </summary>
         /// <param name="countVertices">počet vrcholů</param>
-        private void SetCountVertices(long countVertices)
+        private void SetCountVertices(int countVertices)
         {
             order = countVertices;
         }
@@ -112,7 +101,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Vrátí počet hran
         /// </summary>
         /// <returns>počet hran</returns>
-        public long GetCountEdges()
+        public int GetCountEdges()
         {
             return size;
         }
@@ -121,82 +110,67 @@ namespace GraphColoring.Graph.GraphProperty
         /// Vrátí počet komponent souvislosti
         /// </summary>
         /// <returns>počet komponent souvislosti</returns>
-        public long GetCountComponents()
+        public int GetCountComponents()
         {
             if (!countComponents.HasValue)
                 Components();
 
-            return (long)countComponents;
-        }
-        
-        /// <summary>
-        /// Vrátí list komponent souvislosti
-        /// Lze přepisovat!!!
-        /// </summary>
-        /// <returns>list komponent souvislosti</returns>
-        public List<Graph> GetComponents()
-        {
-            if (componentsList == null)
-                Components();
-
-            return componentsList;
+            return (int)countComponents;
         }
         
         /// <summary>
         /// Vrátí circuit rank
         /// </summary>
         /// <returns>circuit rank</returns>
-        public long GetCircuitRank()
+        public int GetCircuitRank()
         {
-            if (!countComponents.HasValue)
-                Components();
+            if (!circuitRank.HasValue)
+                CircuitRank();
 
-            CircuitRank();
-
-            return (long)circuitRank;
+            return (int)circuitRank;
         }
         
         /// <summary>
         /// Vrátí girth
         /// </summary>
         /// <returns>girth</returns>
-        public long GetGirth()
+        public int GetGirth()
         {
             if (!girth.HasValue)
                 Girth();
 
-            return (long)girth;
+            return (int)girth;
         }
 
         /// <summary>
         /// Vrátí vrcholovou souvislost
         /// </summary>
         /// <returns>vrcholová souvislost</returns>
-        public long GetVertexConnectivity()
+        public int GetVertexConnectivity()
         {
             if (!vertexConnectivity.HasValue)
                 VertexConnectivity();
 
-            return (long)vertexConnectivity;
+            return (int)vertexConnectivity;
         }
 
         /// <summary>
         /// Vrátí hranovou souvislost
         /// </summary>
         /// <returns>hranová souvislost</returns>
-        public long GetEdgeConnectivity()
+        public int GetEdgeConnectivity()
         {
             if (edgeConnectivity.HasValue)
                 EdgeConnectivity();
 
-            return (long)edgeConnectivity;
+            return (int)edgeConnectivity;
         }
 
         /// <summary>
         /// Vrátí minimální stupeň vrcholu
         /// </summary>
         /// <returns>minimální stupeň vrcholu</returns>
-        public long GetMinimumVertexDegree()
+        public int GetMinimumVertexDegree()
         {
             if (!minimumVertexDegree.HasValue)
             {
@@ -204,14 +178,14 @@ namespace GraphColoring.Graph.GraphProperty
                 minimumVertexDegree = degreeSequence.Min();
             }
 
-            return (long)minimumVertexDegree;
+            return (int)minimumVertexDegree;
         }
         
         /// <summary>
         /// Vrátí maximální stupeň vrcholu
         /// </summary>
         /// <returns>maximální stupeň vrcholu</returns>
-        public long GetMaximumVertexDegree()
+        public int GetMaximumVertexDegree()
         {
             if (!maximumVertexDegree.HasValue)
             {
@@ -219,7 +193,7 @@ namespace GraphColoring.Graph.GraphProperty
                 maximumVertexDegree = degreeSequence.Max();
             }
 
-            return (long)maximumVertexDegree;
+            return (int)maximumVertexDegree;
         }
         #endregion
     }

@@ -47,6 +47,7 @@
     <Compile Include="Graph\GraphClass\GraphClass.cs" />
     <Compile Include="Graph\GraphClass\GraphClassEnum.cs" />
     <Compile Include="Graph\GraphEdgeList.cs" />
+    <Compile Include="Graph\GraphProperty\Component.cs" />
     <Compile Include="Graph\GraphProperty\GraphProperty.cs" />
     <Compile Include="Graph\GraphProperty\IntegerInvariants.cs" />
     <Compile Include="Graph\GraphProperty\Properties.cs" />

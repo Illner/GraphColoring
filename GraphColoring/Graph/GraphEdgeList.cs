@@ -10,7 +10,7 @@ namespace GraphColoring.Graph
         /// <summary>
         /// mapping - slouží pro snadné nalezení identifikátoru vrcholu na základě userName vrcholu
         /// </summary>
-        private Dictionary<string, long> mapping;
+        private Dictionary<string, int> mapping;
         #endregion
 
         // Constructor
@@ -21,7 +21,7 @@ namespace GraphColoring.Graph
         /// <param name="countVertices">Počet vrcholů grafu</param>
         public GraphEdgeList(int countVertices) : base(countVertices)
         {
-            mapping = new Dictionary<string, long>();
+            mapping = new Dictionary<string, int>();
         }
         #endregion
 
@@ -35,7 +35,7 @@ namespace GraphColoring.Graph
         public void AddEdge(string userNameVertex1, string userNameVertex2)
         {
             // Variable
-            long identifierVertex1, identifierVertex2;
+            int identifierVertex1, identifierVertex2;
             Vertex vertex1, vertex2;
 
             identifierVertex1 = GetIdentifier(userNameVertex1);
@@ -53,9 +53,9 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="userNameVertex">Jméno vrcholu, které určil uživatel</param>
         /// <returns></returns>
-        private long GetIdentifier(string userNameVertex)
+        private int GetIdentifier(string userNameVertex)
         {
-            long identifierVertex;
+            int identifierVertex;
 
             if (mapping.TryGetValue(userNameVertex, out identifierVertex))
             {

@@ -15,7 +15,7 @@ namespace GraphColoring.Graph.GraphProperty
 
         // Constructor
         #region
-        public GraphProperty (Graph graph, long countVertices)
+        public GraphProperty (Graph graph, int countVertices)
         {
             this.graph = graph;
             SetCountVertices(countVertices);

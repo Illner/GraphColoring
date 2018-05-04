@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphProperty
 {
@@ -40,7 +38,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void IsPlanar()
         {
-            // TODO isPlannar
+            // HOLD ON induced subgraph
         }
 
         /// <summary>
@@ -48,11 +46,22 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void IsRegular()
         {
-            // TODO isRegular
+            GetDegreeSequence();
+
+            // Variable
+            int firstDegree, lastDegree;
+
+            firstDegree = degreeSequence.First();
+            lastDegree = degreeSequence.Last();
+            
+            if (firstDegree == lastDegree)
+                isRegular = true;
+            else
+                isRegular = false;
         }
         #endregion
 
-        // Property
+        // Property 
         #region
         /// <summary>
         /// Vrátí true pokud je graf souvislý, jinak vrátí false

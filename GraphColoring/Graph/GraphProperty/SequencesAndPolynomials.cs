@@ -21,7 +21,18 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void DegreeSequence()
         {
+            // Variable
+            List<Vertex> allVerticesList;
 
+            degreeSequence = new List<int>(GetCountVertices());
+            allVerticesList = graph.AllVertices();
+
+            foreach (Vertex vertex in allVerticesList)
+            {
+                degreeSequence.Add(graph.CountNeighbours(vertex));
+            }
+
+            degreeSequence.Sort();
         }
         #endregion
 

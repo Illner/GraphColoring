@@ -67,10 +67,5 @@ namespace GraphColoring.Graph
             actualVertex++;
         }
         #endregion
-
-        // Property
-        #region
-
-        #endregion
     }
 }

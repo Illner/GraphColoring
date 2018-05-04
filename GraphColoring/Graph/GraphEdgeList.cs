@@ -31,7 +31,7 @@ namespace GraphColoring.Graph
         /// Do grafu vloží příslušnou hranu mezi vrcholem userNameVertex1 a vrcholem userNameVertex2
         /// </summary>
         /// <param name="userNameVertex1">1. vrchol</param>
-        /// <param name="userNameVertex2">2. vrchol</param>
+        /// <param name="userNameVertex2">2. vrchol</param> 
         public void AddEdge(string userNameVertex1, string userNameVertex2)
         {
             // Variable
@@ -67,6 +67,27 @@ namespace GraphColoring.Graph
             mapping.Add(userNameVertex, vertex.GetIdentifier());
 
             return vertex.GetIdentifier();
+        }
+
+        /// <summary>
+        /// Vytvoří vrchol s uživatelským jménem
+        /// Používá se pouze u vrcholů, které nemají hrany => Ruční vytvoření
+        /// </summary>
+        /// <param name="userName">Uživatelské jméno vrcholu</param>
+        public void AddVertex(string userName)
+        {
+            GetIdentifier(userName);
+        }
+
+        /// <summary>
+        /// Vytvoří vrchol s defaultním jménem
+        /// Používá se pouze u vrcholů, které nemají hrany => Ruční vytvoření
+        /// </summary>
+        public void AddVertex()
+        {
+            Vertex vertex = new Vertex();
+            AddVertexToAdjacencyList(vertex);
+            mapping.Add(vertex.GetUserName(), vertex.GetIdentifier());
         }
         #endregion
     }

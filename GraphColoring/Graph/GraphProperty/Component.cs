@@ -26,19 +26,17 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // Variable
             int componentNumber = 0;
-
-            List<Vertex> vertexList = graph.AllVertices();
-            Dictionary<Vertex, int> vertexDictionary = vertexList.ToDictionary(x => x, x => 0);
+            Dictionary<Vertex, int> allVerticesDictionary = graph.AllVertices().ToDictionary(x => x, x => 0);
 
             // Core algorithm
-            for (int i = 0; i < vertexDictionary.Count; i++)
+            for (int i = 0; i < allVerticesDictionary.Count; i++)
             {
-                KeyValuePair<Vertex, int> record = vertexDictionary.ElementAt(i);
+                KeyValuePair<Vertex, int> record = allVerticesDictionary.ElementAt(i);
 
                 if (record.Value != 0)
                     continue;
                 
-                ComponentsDFS(record.Key, vertexDictionary, ++componentNumber);
+                ComponentsDFS(record.Key, allVerticesDictionary, ++componentNumber);
             }
 
             countComponents = componentNumber;
@@ -48,7 +46,7 @@ namespace GraphColoring.Graph.GraphProperty
 
             for (int i = 1; i <= componentNumber; i++)
             {
-                var vertexComponent = from entry in vertexDictionary
+                var vertexComponent = from entry in allVerticesDictionary
                                       where entry.Value == i
                                       select entry.Key;
 
@@ -58,9 +56,15 @@ namespace GraphColoring.Graph.GraphProperty
                 // Add edges
                 foreach (Vertex vertex1 in vertexComponent)
                 {
-                    List<Vertex> neighboursList = graph.Neighbours(vertex1);
+                    List<Vertex> neighboursVertexList = graph.Neighbours(vertex1);
 
-                    foreach (Vertex vertex2 in neighboursList)
+                    if (neighboursVertexList.Count() == 0)
+                    {
+                        graphComponent.AddVertex(vertex1.GetUserName());
+                        continue;
+                    }
+
+                    foreach (Vertex vertex2 in neighboursVertexList)
                     {
                         graphComponent.AddEdge(vertex1.GetUserName(), vertex2.GetUserName());
                     }
@@ -75,24 +79,24 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // Variable
             Queue<Vertex> vertexQueue = new Queue<Vertex>();
-            List<Vertex> neighboursList;
-            Vertex vertex;
+            List<Vertex> neighboursVertexList;
+            Vertex dequeuedVertex;
 
             vertexQueue.Enqueue(root);
             vertexDictionary[root] = componentNumber;
 
             while (vertexQueue.Count != 0)
             {
-                vertex = vertexQueue.Dequeue();
+                dequeuedVertex = vertexQueue.Dequeue();
 
-                neighboursList = graph.Neighbours(vertex);
+                neighboursVertexList = graph.Neighbours(dequeuedVertex);
 
-                foreach (Vertex vertex1 in neighboursList)
+                foreach (Vertex vertex in neighboursVertexList)
                 {
-                    if (vertexDictionary[vertex1] == 0)
+                    if (vertexDictionary[vertex] == 0)
                     {
-                        vertexDictionary[vertex1] = componentNumber;
-                        vertexQueue.Enqueue(vertex1);
+                        vertexDictionary[vertex] = componentNumber;
+                        vertexQueue.Enqueue(vertex);
                     }
                 }
             }

@@ -62,11 +62,48 @@ namespace GraphColoring.Graph
             adjacencyList.Add(vertex, new List<Vertex>());
             mapping.Add(vertex.GetIdentifier(), vertex);
 
-            SetRealCountVertices(++realCountVertices);
+            IncrementRealCountVertices();
+
             if (graphProperty.GetCountVertices() < GetRealCountVertices())
                 throw new MyException.GraphInvalidCountVerticesException();
+        }
 
-            SetRealCountVertices(realCountVertices);
+        /// <summary>
+        /// Vytvoří kopii grafu
+        /// Pokud graf není inicializovýný, vyvolá se vyjímka GraphInitializationException
+        /// </summary>
+        /// <returns>kopie grafu</returns>
+        public Graph CopyGraph()
+        {
+            if (!isInitialized)
+                throw new MyException.GraphInitializationException();
+
+            // Variable
+            GraphEdgeList graphCopy;
+            List<Vertex> neighboursVertexList;
+            List<Vertex> allVerticesList = AllVertices();
+
+            graphCopy = new GraphEdgeList(GetCountVertices());
+
+            foreach (Vertex vertex1 in allVerticesList)
+            {
+                neighboursVertexList = Neighbours(vertex1);
+
+                if (neighboursVertexList.Count == 0)
+                {
+                    graphCopy.AddVertex(vertex1.GetUserName());
+                    continue;
+                }
+
+                foreach (Vertex vertex2 in neighboursVertexList)
+                {
+                    graphCopy.AddEdge(vertex1.GetUserName(), vertex2.GetUserName());
+                }
+            }
+
+            graphCopy.InitializeGraph();
+
+            return graphCopy;
         }
 
         /// <summary>
@@ -120,7 +157,7 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Inicializuje graf. Pokud už graf byl inicializovaný, tak vrátí vyjímku 
+        /// Inicializuje graf. Pokud už graf byl inicializovaný, tak vrátí vyjímku GraphAlreadyInitializedException
         /// </summary>
         public void InitializeGraph()
         {
@@ -133,12 +170,29 @@ namespace GraphColoring.Graph
 
         /// <summary>
         /// Vrátí list sousedů vrcholu vertex
+        /// Pokud graf není inicializovaný, tak vrátí vyjímku GraphInitializationException
         /// </summary>
         /// <param name="vertex">vrchol pro který vracíme list sousedů</param>
         /// <returns>list sousedů</returns>
         public List<Vertex> Neighbours(Vertex vertex)
         {
+            if (!isInitialized)
+                throw new MyException.GraphInitializationException();
+
             return adjacencyList[vertex];
+        }
+
+        /// <summary>
+        /// Vrátí počet sousedu vrcholu vertex
+        /// </summary>
+        /// <param name="vertex">vrchol, pro který chceme zjistit počet sousedů</param>
+        /// <returns>počet sousedů</returns>
+        public int CountNeighbours(Vertex vertex)
+        {
+            if (!isInitialized)
+                throw new MyException.GraphInitializationException();
+            
+            return Neighbours(vertex).Count;
         }
 
         /// <summary>
@@ -148,6 +202,14 @@ namespace GraphColoring.Graph
         public List<Vertex> AllVertices()
         {
             return new List<Vertex>(adjacencyList.Keys);
+        }
+
+        /// <summary>
+        /// Inkrementuje počet naalokovaných vrcholů (realCountVertices)
+        /// </summary>
+        private void IncrementRealCountVertices()
+        {
+            realCountVertices++;
         }
 
         override
@@ -183,21 +245,21 @@ namespace GraphColoring.Graph
         // Property
         #region
         /// <summary>
+        /// Vrátí počet vrcholů grafu
+        /// </summary>
+        /// <returns>počet vrcholů</returns>
+        public int GetCountVertices()
+        {
+            return graphProperty.GetCountVertices();
+        }
+
+        /// <summary>
         /// Vrátí počet naalokovaných vrcholů grafu
         /// </summary>
         /// <returns>počet naalokovaných vrcholů</returns>
         public int GetRealCountVertices()
         {
             return realCountVertices;
-        }
-
-        /// <summary>
-        /// Nastaví počet doposuď naalokovaných vrcholů
-        /// </summary>
-        /// <param name="countVertices">počet vrcholů</param>
-        private void SetRealCountVertices(int countVertices)
-        {
-            this.realCountVertices = countVertices;
         }
 
         /// <summary>

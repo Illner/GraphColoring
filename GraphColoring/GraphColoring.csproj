@@ -53,6 +53,8 @@
     <Compile Include="Graph\GraphProperty\Properties.cs" />
     <Compile Include="Graph\GraphProperty\RealNumberInvariants.cs" />
     <Compile Include="Graph\GraphProperty\SequencesAndPolynomials.cs" />
+    <Compile Include="Graph\GraphProperty\Tests\ComponentTest.cs" />
+    <Compile Include="Graph\GraphProperty\Tests\DegreeSequenceTest.cs" />
     <Compile Include="Graph\IGraphInterface.cs" />
     <Compile Include="Graph\Tests\GraphTest.cs" />
     <Compile Include="MyException\GraphException.cs" />

@@ -46,6 +46,9 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void CircuitRank()
         {
+            if (!countComponents.HasValue)
+                Components();
+
             circuitRank = GetCountEdges() - GetCountVertices() + GetCountComponents();
         }
 
@@ -175,7 +178,7 @@ namespace GraphColoring.Graph.GraphProperty
             if (!minimumVertexDegree.HasValue)
             {
                 DegreeSequence();
-                minimumVertexDegree = degreeSequence.Min();
+                minimumVertexDegree = degreeSequence.First();
             }
 
             return (int)minimumVertexDegree;
@@ -190,7 +193,7 @@ namespace GraphColoring.Graph.GraphProperty
             if (!maximumVertexDegree.HasValue)
             {
                 DegreeSequence();
-                maximumVertexDegree = degreeSequence.Max();
+                maximumVertexDegree = degreeSequence.Last();
             }
 
             return (int)maximumVertexDegree;

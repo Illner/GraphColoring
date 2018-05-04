@@ -13,9 +13,11 @@ namespace GraphColoring.Tests
 
         // Path
         private string testPath;
-        private string testPathGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph.txt";
-        private string testPathReaderWriter = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter.txt";
-        private string testPathReader = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader.txt";
+        private string testPathGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\Graph.txt";
+        private string testPathReaderWriter = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\ReaderWriter.txt";
+        private string testPathReader = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\Reader.txt";
+        private string testPathGraphComponent = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphComponent.txt";
+        private string testPathGraphDegreeSequence = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphDegreeSequence.txt";
         #endregion
 
         // Enum
@@ -24,7 +26,9 @@ namespace GraphColoring.Tests
         {
             graph,
             readerWriter,
-            reader
+            reader,
+            graphComponent,
+            graphDegreeSequence
         }
         #endregion
 
@@ -62,6 +66,18 @@ namespace GraphColoring.Tests
                     stringBuilder = graphTest.Test();
 
                     testPath = testPathGraph;
+                    break;
+                case TestEnum.graphComponent:
+                    Graph.GraphProperty.Tests.ComponentTest graphComponentTest = new Graph.GraphProperty.Tests.ComponentTest();
+                    stringBuilder = graphComponentTest.Test();
+
+                    testPath = testPathGraphComponent;
+                    break;
+                case TestEnum.graphDegreeSequence:
+                    Graph.GraphProperty.Tests.DegreeSequenceTest degreeSequenceTest = new Graph.GraphProperty.Tests.DegreeSequenceTest();
+                    stringBuilder = degreeSequenceTest.Test();
+
+                    testPath = testPathGraphDegreeSequence;
                     break;
                 case TestEnum.reader:
                     ReaderWriter.Tests.ReaderTest readerTest = new ReaderWriter.Tests.ReaderTest();

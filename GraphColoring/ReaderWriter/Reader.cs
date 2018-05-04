@@ -154,6 +154,7 @@ namespace GraphColoring.ReaderWriter
         {
             // Variable
             string line;
+            bool isK1 = false; // Vrchol, který nemá žádnou hranu
             string firstVertex = "", secondVertex;
             const string LEFTSEPARATOR = "(";
             const string RIGHTSEPARATOR = ")";
@@ -163,7 +164,11 @@ namespace GraphColoring.ReaderWriter
             {
                 if (!line.StartsWith(LEFTSEPARATOR) && !line.EndsWith(RIGHTSEPARATOR))
                 {
+                    if (isK1)
+                        graph.AddVertex(firstVertex);
+
                     firstVertex = line;
+                    isK1 = true;
                     continue;
                 }
 
@@ -171,6 +176,7 @@ namespace GraphColoring.ReaderWriter
                 {
                     secondVertex = line.Substring(1, line.Length - 2);
                     graph.AddEdge(firstVertex, secondVertex);
+                    isK1 = false;
                     continue;
                 }
 
@@ -292,7 +298,10 @@ namespace GraphColoring.ReaderWriter
 
                 graph.AddEdge(edge[0], edge[1]);
             }
-
+            
+            while (graph.GetRealCountVertices() != graph.GetCountVertices())
+                graph.AddVertex();
+            
             graph.InitializeGraph();
         }
         #endregion

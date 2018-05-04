@@ -14,7 +14,7 @@ namespace GraphColoring.Graph
         /// </summary>
         private int identifier;
         private string userName;
-        private static int counter = 0;
+        private static int counter = 1;
         #endregion
 
         // Constructor

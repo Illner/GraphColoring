@@ -12,17 +12,19 @@ namespace GraphColoring.Graph
         /// name - Jméno daného grafu (implicitně My graph)
         /// isInitialized - informace zda je graf inicializován, tj. byly do něj vloženy hrany
         /// realCountVertices - skutečný počet naalokovaných vrcholů, nikoliv předpokládaný počet vrcholů (parametr konstruktoru)
-        /// adjacencyList - seznam sousedů grafu
         /// mapping - slouží pro snadné nalezení vrcholu na základě identifikátoru
         /// graphProperty - vlastnosti grafu
+        /// adjacencyList - seznam sousedů grafu
+        /// graphClass - Třída grafu - GraphClassEnum
         /// </summary>
         private string name;
         private char newLine;
         private bool isInitialized;
         private int realCountVertices;
-        private Dictionary<Vertex, List<Vertex>> adjacencyList;
         private Dictionary<int, Vertex> mapping;
         private GraphProperty.GraphProperty graphProperty;
+        private Dictionary<Vertex, List<Vertex>> adjacencyList;
+        private GraphClass.GraphClass.GraphClassEnum graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         #endregion
 
         // Constructor
@@ -291,6 +293,14 @@ namespace GraphColoring.Graph
                 return graphProperty;
 
             throw new MyException.GraphWasNotInitializedException();
+        }
+
+        public GraphClass.GraphClass.GraphClassEnum GetGraphClass()
+        {
+            if (graphClass == GraphClass.GraphClass.GraphClassEnum.undefined)
+                graphClass = GraphClass.GraphClass.GetGraphClass(this);
+
+            return graphClass;
         }
         #endregion
     }

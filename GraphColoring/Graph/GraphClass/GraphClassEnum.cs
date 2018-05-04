@@ -10,12 +10,12 @@ namespace GraphColoring.Graph.GraphClass
     {
         public enum GraphClassEnum
         {
+            undefined,      // Default value
             completeGraph,  // Kn
-            pathGraph,      // Pn
-            cycleGraph,     // Cn
             treeGraph,      // Tn
-            kPartiteGraph,  // Kn1,n2, ... ,nn
-            none
+            cycleGraph,     // Cn
+            bipartiteGraph, // Kn,m
+            none    
         }
     }
 }

@@ -10,12 +10,14 @@ namespace GraphColoring.Graph.GraphProperty
         #region
         /// <summary>
         /// isConnected - je graf souvislý
-        /// isPlanar - je graf rovinný
         /// isRegular - je graf regulární
+        /// isCyclic - je graf cyklický
+        /// isEulerian - je graf eulerovský - EulerianGraphEnum
         /// </summary>
         private Boolean? isConnected;
-        private Boolean? isPlanar;
         private Boolean? isRegular;
+        private Boolean? isCyclic;
+        private EulerianGraphEnum isEulerian = EulerianGraphEnum.undefined;
         #endregion
 
         // Method
@@ -32,17 +34,10 @@ namespace GraphColoring.Graph.GraphProperty
                 isConnected = true;
             
         }
-        
-        /// <summary>
-        /// Zjistí zda je graf rovinný
-        /// </summary>
-        private void IsPlanar()
-        {
-            // HOLD ON induced subgraph
-        }
 
         /// <summary>
         /// Zjistí zda je graf regulární
+        /// isRegular
         /// </summary>
         private void IsRegular()
         {
@@ -59,6 +54,45 @@ namespace GraphColoring.Graph.GraphProperty
             else
                 isRegular = false;
         }
+        
+        /// <summary>
+        /// Zjistí zda je graf cyklický
+        /// isCyclic
+        /// </summary>
+        private void IsCyclic()
+        {
+            // TODO isCyclic
+        }
+
+        /// <summary>
+        /// Zjistí zda je graf eulerovský
+        /// isEulerian
+        /// </summary>
+        private void IsEulerian()
+        {
+            // Variable
+            int evenDegrees = 0;
+            int oddDegrees = 0;
+
+            if (degreeSequence == null)
+                DegreeSequence();
+
+            foreach(int degree in degreeSequence)
+            {
+                if (degree % 2 == 0)
+                    evenDegrees++;
+                else
+                    oddDegrees++;
+            }
+
+            isEulerian = EulerianGraphEnum.notEulerian;
+
+            if (oddDegrees <= 2)
+                isEulerian = EulerianGraphEnum.semiEulerian;
+
+            if (oddDegrees == 0)
+                isEulerian = EulerianGraphEnum.eulerian;
+        }
         #endregion
 
         // Property 
@@ -74,19 +108,7 @@ namespace GraphColoring.Graph.GraphProperty
 
             return (bool)isConnected;
         }
-
-        /// <summary>
-        /// Vrátí true pokud je graf rovinný, jinak vrátí false
-        /// </summary>
-        /// <returns>true pokud je graf rovinný, jinak vrátí false</returns>
-        public bool GetIsPlanar()
-        {
-            if (!isPlanar.HasValue)
-                IsPlanar();
-
-            return (bool)isPlanar;
-        }
-
+ 
         /// <summary>
         /// Vrátí true pokud je graf regulární, jinak vrátí false
         /// </summary>
@@ -97,6 +119,33 @@ namespace GraphColoring.Graph.GraphProperty
                 IsRegular();
 
             return (bool)isRegular;
+        }
+
+        /// <summary>
+        /// Vrátí true pokud je graf cyklická, jinak vrátí false
+        /// </summary>
+        /// <returns>true pokud je graf cyklický, jinak vrátí false</returns>
+        public bool GetIsCyclic()
+        {
+            if (!isCyclic.HasValue)
+                IsCyclic();
+
+            return (bool)isCyclic;
+        }
+
+        /// <summary>
+        /// Vrátí:
+        /// eulerian, pokud graf obsahuje eulerovský cyklus
+        /// semiEulerian, pokud graf obsahuje eulerovský tah
+        /// notEulerian, pokud graf neobsahuje ani eulerovský cyklus, ani eulerovský tah
+        /// </summary>
+        /// <returns>EulerianGraphEnum</returns>
+        public EulerianGraphEnum GetIsEulerian()
+        {
+            if (isEulerian == EulerianGraphEnum.undefined)
+                IsEulerian();
+
+            return isEulerian;
         }
         #endregion
     }

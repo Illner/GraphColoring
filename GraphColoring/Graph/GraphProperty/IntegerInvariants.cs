@@ -18,6 +18,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// girth - the length of the shortest cycle
         /// vertexConnectivity - the smallest number of vertices whose removal disconnects the graph
         /// edgeConnectivity - the smallest number of edges whose removal disconnects the graph
+        /// number of spanning trees
         /// </summary>
         private int order;
         private int size = 0;
@@ -28,6 +29,7 @@ namespace GraphColoring.Graph.GraphProperty
         private int? edgeConnectivity;
         private int? minimumVertexDegree;
         private int? maximumVertexDegree;
+        private double? cayleysFormula;
         #endregion
 
         // Method
@@ -77,6 +79,15 @@ namespace GraphColoring.Graph.GraphProperty
         private void EdgeConnectivity()
         {
             // TODO edgeConnectivity
+        }
+
+        /// <summary>
+        /// Zjistí celkový počet koster
+        /// cayleysFormula
+        /// </summary>
+        private void CayleysFormula()
+        {
+            cayleysFormula = Math.Pow(GetCountVertices(), (GetCountVertices() - 2));
         }
         #endregion
 
@@ -197,6 +208,18 @@ namespace GraphColoring.Graph.GraphProperty
             }
 
             return (int)maximumVertexDegree;
+        }
+
+        /// <summary>
+        /// Vrátí celkový počet koster grafu
+        /// </summary>
+        /// <returns>celkový počet koster grafu</returns>
+        public double GetCayleysFormula()
+        {
+            if (!cayleysFormula.HasValue)
+                CayleysFormula();
+
+            return (double)cayleysFormula;
         }
         #endregion
     }

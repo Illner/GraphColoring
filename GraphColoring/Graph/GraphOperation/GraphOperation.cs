@@ -45,6 +45,47 @@ namespace GraphColoring.Graph.GraphOperation
 
             return null;
         }
+
+        /// <summary>
+        /// Vytvoří kopii grafu
+        /// Pokud graf není inicializovaný, vyvolá se vyjímka GraphInitializationException
+        /// </summary>
+        /// <param name="graph">graf, který chceme zkopírovat</param>
+        /// <returns>kopie grafu</returns>
+        public static Graph CopyGraph(Graph graph)
+        {
+            if (!graph.GetIsInitialized())
+                throw new MyException.GraphInitializationException();
+
+            // Variable
+            GraphEdgeList graphCopy;
+            List<Vertex> neighboursVertexList;
+            List<Vertex> allVerticesList = graph.AllVertices();
+
+            graphCopy = new GraphEdgeList(graph.GetCountVertices());
+
+            graphCopy.SetName(graph.GetName());
+
+            foreach (Vertex vertex1 in allVerticesList)
+            {
+                neighboursVertexList = graph.Neighbours(vertex1);
+
+                if (neighboursVertexList.Count == 0)
+                {
+                    graphCopy.AddVertex(vertex1.GetUserName());
+                    continue;
+                }
+
+                foreach (Vertex vertex2 in neighboursVertexList)
+                {
+                    graphCopy.AddEdge(vertex1.GetUserName(), vertex2.GetUserName());
+                }
+            }
+
+            graphCopy.InitializeGraph();
+
+            return graphCopy;
+        }
         #endregion
     }
 }

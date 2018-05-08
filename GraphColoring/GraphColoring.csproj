@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graph\Arc.cs" />
     <Compile Include="Graph\Edge.cs" />
     <Compile Include="Graph\GraphAdjacencyMatrix.cs" />
     <Compile Include="Graph\GraphClass\GraphClass.cs" />
@@ -50,13 +51,15 @@
     <Compile Include="Graph\GraphModification\GraphModification.cs" />
     <Compile Include="Graph\GraphOperation\GraphOperation.cs" />
     <Compile Include="Graph\GraphProperty\Component.cs" />
+    <Compile Include="Graph\GraphProperty\Cycle.cs" />
     <Compile Include="Graph\GraphProperty\EulerianGraphEnum.cs" />
     <Compile Include="Graph\GraphProperty\GraphProperty.cs" />
     <Compile Include="Graph\GraphProperty\IntegerInvariants.cs" />
     <Compile Include="Graph\GraphProperty\Properties.cs" />
     <Compile Include="Graph\GraphProperty\RealNumberInvariants.cs" />
-    <Compile Include="Graph\GraphProperty\SequencesAndPolynomials.cs" />
+    <Compile Include="Graph\GraphProperty\SequencesPolynomialsOthers.cs" />
     <Compile Include="Graph\GraphProperty\Tests\ComponentTest.cs" />
+    <Compile Include="Graph\GraphProperty\Tests\CycleTest.cs" />
     <Compile Include="Graph\GraphProperty\Tests\DegreeSequenceTest.cs" />
     <Compile Include="Graph\IGraphInterface.cs" />
     <Compile Include="Graph\Tests\GraphTest.cs" />

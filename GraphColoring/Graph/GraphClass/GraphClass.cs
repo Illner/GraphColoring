@@ -29,6 +29,7 @@ namespace GraphColoring.Graph.GraphClass
 
         /// <summary>
         /// Vrátí true, pokud je graf úplný, jinak vrátí false
+        /// Time complexity: O(1)
         /// </summary>
         /// <param name="graph">Graf, u kterého chceme zjistit zda je úplný</param>
         /// <returns>true pokud je graf úplny, jinak vrátí false</returns>
@@ -43,6 +44,7 @@ namespace GraphColoring.Graph.GraphClass
 
         /// <summary>
         /// Vrátí true, pokud je graf strom, jinak vrátí false
+        /// Time complexity: O(V + E)
         /// </summary>
         /// <param name="graph">graf, u kterého chceme zjistit zda je strom</param>
         /// <returns>true pokud je graf strom, jinak vrátí false</returns>
@@ -58,6 +60,7 @@ namespace GraphColoring.Graph.GraphClass
 
         /// <summary>
         /// Vrátí true, pokud je graf kružnice, jinak vrátí false
+        /// Time complexity: O(V + E)
         /// </summary>
         /// <param name="graph">graf, u kterého chceme zjistit zda je kružnice</param>
         /// <returns>true pokud je graf kružnice, jinak vrátí false</returns>

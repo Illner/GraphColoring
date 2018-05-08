@@ -44,7 +44,10 @@ namespace GraphColoring.Graph.GraphProperty
 
         /// <summary>
         /// Zjistí circuit rank
-        /// circuitRank
+        /// circuitRank, countComponents, componentsList
+        /// BFS
+        /// Time complexity: O(V + E)
+        /// Sace complexity: O(V + E) + vytvořené grafy
         /// </summary>
         private void CircuitRank()
         {
@@ -52,15 +55,6 @@ namespace GraphColoring.Graph.GraphProperty
                 Components();
 
             circuitRank = GetCountEdges() - GetCountVertices() + GetCountComponents();
-        }
-
-        /// <summary>
-        /// Zjistí délku nejkratšího cyklu
-        /// girth
-        /// </summary>
-        private void Girth()
-        {
-            // TODO girth
         }
 
         /// <summary>
@@ -84,6 +78,8 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Zjistí celkový počet koster
         /// cayleysFormula
+        /// Time complexity: O(1)
+        /// Space complexity: O(1)
         /// </summary>
         private void CayleysFormula()
         {
@@ -151,7 +147,7 @@ namespace GraphColoring.Graph.GraphProperty
         public int GetGirth()
         {
             if (!girth.HasValue)
-                Girth();
+                CycleGirth();
 
             return (int)girth;
         }

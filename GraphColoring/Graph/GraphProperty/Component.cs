@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphProperty
 {
@@ -11,7 +9,7 @@ namespace GraphColoring.Graph.GraphProperty
         // Variable
         #region
         /// <summary>
-        /// components - List of connected components
+        /// componentsList - List of connected components
         /// </summary>
         private List<Graph> componentsList;
         #endregion
@@ -21,6 +19,9 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Rozloží graf na komponenty souvislosti
         /// countComponents, componentsList
+        /// BFS
+        /// Time complexity: O(V + E)
+        /// Space complexity: O(V + E) + vytvořené grafy
         /// </summary>
         private void Components()
         {
@@ -35,8 +36,8 @@ namespace GraphColoring.Graph.GraphProperty
 
                 if (record.Value != 0)
                     continue;
-                
-                ComponentsDFS(record.Key, allVerticesDictionary, ++componentNumber);
+
+                ComponentsBFS(record.Key, allVerticesDictionary, ++componentNumber);
             }
 
             countComponents = componentNumber;
@@ -46,9 +47,9 @@ namespace GraphColoring.Graph.GraphProperty
 
             for (int i = 1; i <= componentNumber; i++)
             {
-                var vertexComponent = from entry in allVerticesDictionary
-                                      where entry.Value == i
-                                      select entry.Key;
+                var vertexComponent = from record in allVerticesDictionary
+                                      where record.Value == i
+                                      select record.Key;
 
                 GraphEdgeList graphComponent = new GraphEdgeList(vertexComponent.Count());
                 graphComponent.SetName(graph.GetName());
@@ -75,7 +76,7 @@ namespace GraphColoring.Graph.GraphProperty
             }
         }
 
-        private void ComponentsDFS(Vertex root, Dictionary<Vertex, int> vertexDictionary, int componentNumber)
+        private void ComponentsBFS(Vertex root, Dictionary<Vertex, int> vertexDictionary, int componentNumber)
         {
             // Variable
             Queue<Vertex> vertexQueue = new Queue<Vertex>();
@@ -102,12 +103,11 @@ namespace GraphColoring.Graph.GraphProperty
             }
         }
         #endregion
-
+        
         // Property
         #region
         /// <summary>
         /// Vrátí list komponent souvislosti
-        /// Lze přepisovat!!!
         /// </summary>
         /// <returns>list komponent souvislosti</returns>
         public List<Graph> GetComponents()

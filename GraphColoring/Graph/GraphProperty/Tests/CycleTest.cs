@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace GraphColoring.Graph.GraphProperty.Tests
 {
-    class DegreeSequenceTest : GraphColoring.Tests.ITestInterface
+    class CycleTest : GraphColoring.Tests.ITestInterface
     {
         // Variable
         #region
@@ -13,26 +15,29 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
 
-        string pathGraphDegreeSequence1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence1.graph";
-        string pathGraphDegreeSequence2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence2.graph";
-        string pathGraphDegreeSequence3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence3.graph";
-        string pathGraphDegreeSequence4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence4.graph";
+        // Paths
+        string pathGraphCycle1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle1.graph";
+        string pathGraphCycle2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle2.graph";
+        string pathGraphCycle3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle3.graph";
+        string pathGraphCycle4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle4.graph";
+        string pathGraphCycle5 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle5.graph";
         #endregion
 
         // Enum
         #region
         public enum GraphEnum
         {
-            graphDegreeSequence1,
-            graphDegreeSequence2,
-            graphDegreeSequence3,
-            graphDegreeSequence4
+            graphCycle1,
+            graphCycle2,
+            graphCycle3,
+            graphCycle4,
+            graphCycle5
         }
         #endregion
 
         // Constructor
         #region
-        public DegreeSequenceTest()
+        public CycleTest()
         {
             stringBuilder = new StringBuilder();
         }
@@ -57,7 +62,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 
             return stringBuilder;
         }
-        
+
         /// <summary>
         /// Otestuje daný typ grafu
         /// </summary>
@@ -78,17 +83,20 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             {
                 switch (graphEnum)
                 {
-                    case GraphEnum.graphDegreeSequence1:
-                        testPath = pathGraphDegreeSequence1;
+                    case GraphEnum.graphCycle1:
+                        testPath = pathGraphCycle1;
                         break;
-                    case GraphEnum.graphDegreeSequence2:
-                        testPath = pathGraphDegreeSequence2;
+                    case GraphEnum.graphCycle2:
+                        testPath = pathGraphCycle2;
                         break;
-                    case GraphEnum.graphDegreeSequence3:
-                        testPath = pathGraphDegreeSequence3;
+                    case GraphEnum.graphCycle3:
+                        testPath = pathGraphCycle3;
                         break;
-                    case GraphEnum.graphDegreeSequence4:
-                        testPath = pathGraphDegreeSequence4;
+                    case GraphEnum.graphCycle4:
+                        testPath = pathGraphCycle4;
+                        break;
+                    case GraphEnum.graphCycle5:
+                        testPath = pathGraphCycle5;
                         break;
                     default:
                         stringBuilder.AppendLine("This graph doesn't exist!");
@@ -102,21 +110,19 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 
                     stringBuilder.AppendLine("Graph created.");
                     stringBuilder.AppendLine(graph.ToString());
+                    /*
+                    stringBuilder.AppendLine("Is graph cyclic: " + graph.GetGraphProperty().GetIsCyclic());
+                    stringBuilder.AppendLine("Gridth: " + graph.GetGraphProperty().GetGirth());
+                    */
+                    // TODO Clear
+                    List<Edge> spanningTree;
+                    spanningTree = graph.GetGraphProperty().GetSpanningTreeDFS();
+                    stringBuilder.AppendLine("Spanning tree: ");
 
-                    List<int> degreeSequenceList = graph.GetGraphProperty().GetDegreeSequence();
-
-
-                    stringBuilder.AppendLine("Degree sequence");
-
-                    foreach (int degree in degreeSequenceList)
+                    foreach(Edge edge in spanningTree)
                     {
-                        stringBuilder.Append(degree + " ");
+                        stringBuilder.AppendLine("Edge: (" + edge.GetVertex1().GetIdentifier() + "), (" + edge.GetVertex2().GetIdentifier() + ")");
                     }
-
-                    stringBuilder.AppendLine("");
-                    stringBuilder.AppendLine("Minimum vertex degree: " + graph.GetGraphProperty().GetMinimumVertexDegree());
-                    stringBuilder.AppendLine("Maximum vertex degree: " + graph.GetGraphProperty().GetMaximumVertexDegree());
-                    stringBuilder.AppendLine("Is graph regular: " + graph.GetGraphProperty().GetIsRegular());
                 }
 
                 testPath = "";

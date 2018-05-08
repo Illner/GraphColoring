@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 
@@ -68,44 +69,6 @@ namespace GraphColoring.Graph
 
             if (graphProperty.GetCountVertices() < GetRealCountVertices())
                 throw new MyException.GraphInvalidCountVerticesException();
-        }
-
-        /// <summary>
-        /// Vytvoří kopii grafu
-        /// Pokud graf není inicializovýný, vyvolá se vyjímka GraphInitializationException
-        /// </summary>
-        /// <returns>kopie grafu</returns>
-        public Graph CopyGraph()
-        {
-            if (!isInitialized)
-                throw new MyException.GraphInitializationException();
-
-            // Variable
-            GraphEdgeList graphCopy;
-            List<Vertex> neighboursVertexList;
-            List<Vertex> allVerticesList = AllVertices();
-
-            graphCopy = new GraphEdgeList(GetCountVertices());
-
-            foreach (Vertex vertex1 in allVerticesList)
-            {
-                neighboursVertexList = Neighbours(vertex1);
-
-                if (neighboursVertexList.Count == 0)
-                {
-                    graphCopy.AddVertex(vertex1.GetUserName());
-                    continue;
-                }
-
-                foreach (Vertex vertex2 in neighboursVertexList)
-                {
-                    graphCopy.AddEdge(vertex1.GetUserName(), vertex2.GetUserName());
-                }
-            }
-
-            graphCopy.InitializeGraph();
-
-            return graphCopy;
         }
 
         /// <summary>
@@ -214,6 +177,16 @@ namespace GraphColoring.Graph
             realCountVertices++;
         }
 
+        /// <summary>
+        /// Vrátí první vrchol grafu, tj vrchol, který byl jako první inicializovaný
+        /// </summary>
+        /// <returns>první vrchol</returns>
+        public Vertex GetFirstVertex()
+        {
+            var firstRecord = mapping.First();
+            return firstRecord.Value;
+        }
+
         override
         public String ToString()
         {
@@ -295,12 +268,25 @@ namespace GraphColoring.Graph
             throw new MyException.GraphWasNotInitializedException();
         }
 
+        /// <summary>
+        /// Vrátí třídu grafu - GraphClassEnum
+        /// </summary>
+        /// <returns>třídu grafu</returns>
         public GraphClass.GraphClass.GraphClassEnum GetGraphClass()
         {
             if (graphClass == GraphClass.GraphClass.GraphClassEnum.undefined)
                 graphClass = GraphClass.GraphClass.GetGraphClass(this);
 
             return graphClass;
+        }
+
+        /// <summary>
+        /// Vrátí informaci zda je graf inicializovaný
+        /// </summary>
+        /// <returns>true pokud je graf inicializovaný, jinak vrátí false</returns>
+        public bool GetIsInitialized()
+        {
+            return isInitialized;
         }
         #endregion
     }

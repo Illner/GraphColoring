@@ -18,17 +18,19 @@ namespace GraphColoring.Tests
         private string testPathReader = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\Reader.txt";
         private string testPathGraphComponent = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphComponent.txt";
         private string testPathGraphDegreeSequence = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphDegreeSequence.txt";
+        private string testPathGraphCycle = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphCycle.txt";
         #endregion
 
         // Enum
         #region
-        private enum TestEnum
+        public enum TestEnum
         {
             graph,
             readerWriter,
             reader,
             graphComponent,
-            graphDegreeSequence
+            graphDegreeSequence,
+            graphCycle
         }
         #endregion
 
@@ -55,6 +57,11 @@ namespace GraphColoring.Tests
             }
         }
 
+        public void Test(TestEnum testEnum)
+        {
+            Testing(testEnum);
+        }
+
         private void Testing (TestEnum testEnum)
         {
             stringBuilder.Clear();
@@ -78,6 +85,12 @@ namespace GraphColoring.Tests
                     stringBuilder = degreeSequenceTest.Test();
 
                     testPath = testPathGraphDegreeSequence;
+                    break;
+                case TestEnum.graphCycle:
+                    Graph.GraphProperty.Tests.CycleTest cycleTest = new Graph.GraphProperty.Tests.CycleTest();
+                    stringBuilder = cycleTest.Test();
+
+                    testPath = testPathGraphCycle;
                     break;
                 case TestEnum.reader:
                     ReaderWriter.Tests.ReaderTest readerTest = new ReaderWriter.Tests.ReaderTest();

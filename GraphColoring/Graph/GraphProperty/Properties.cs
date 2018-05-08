@@ -24,7 +24,10 @@ namespace GraphColoring.Graph.GraphProperty
         #region
         /// <summary>
         /// Zjistí zda je graf souvislý
-        /// isConnected
+        /// countComponents, componentsList
+        /// BFS
+        /// Time complexity: O(V + E)
+        /// Sace complexity: O(V + E) + vytvořené grafy
         /// </summary>
         private void IsConnected()
         {
@@ -37,15 +40,18 @@ namespace GraphColoring.Graph.GraphProperty
 
         /// <summary>
         /// Zjistí zda je graf regulární
-        /// isRegular
+        /// isRegular, degreeSequence
+        /// Time complexity: O(V)
+        /// Space complexity: O(V)
         /// </summary>
         private void IsRegular()
         {
-            GetDegreeSequence();
-
             // Variable
             int firstDegree, lastDegree;
 
+            if (degreeSequence == null)
+                GetDegreeSequence();
+            
             firstDegree = degreeSequence.First();
             lastDegree = degreeSequence.Last();
             
@@ -54,19 +60,12 @@ namespace GraphColoring.Graph.GraphProperty
             else
                 isRegular = false;
         }
-        
-        /// <summary>
-        /// Zjistí zda je graf cyklický
-        /// isCyclic
-        /// </summary>
-        private void IsCyclic()
-        {
-            // TODO isCyclic
-        }
 
         /// <summary>
         /// Zjistí zda je graf eulerovský
-        /// isEulerian
+        /// isEulerian, degreeSequence
+        /// Time complexity: O(V)
+        /// Space complexity: O(V)
         /// </summary>
         private void IsEulerian()
         {
@@ -77,7 +76,7 @@ namespace GraphColoring.Graph.GraphProperty
             if (degreeSequence == null)
                 DegreeSequence();
 
-            foreach(int degree in degreeSequence)
+            foreach (int degree in degreeSequence)
             {
                 if (degree % 2 == 0)
                     evenDegrees++;
@@ -128,7 +127,7 @@ namespace GraphColoring.Graph.GraphProperty
         public bool GetIsCyclic()
         {
             if (!isCyclic.HasValue)
-                IsCyclic();
+                CycleIsCyclic();
 
             return (bool)isCyclic;
         }

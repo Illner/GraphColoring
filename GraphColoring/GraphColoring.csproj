@@ -47,6 +47,7 @@
     <Compile Include="Graph\GraphAdjacencyMatrix.cs" />
     <Compile Include="Graph\GraphClass\GraphClass.cs" />
     <Compile Include="Graph\GraphClass\GraphClassEnum.cs" />
+    <Compile Include="Graph\GraphClass\Tests\ClassTest.cs" />
     <Compile Include="Graph\GraphEdgeList.cs" />
     <Compile Include="Graph\GraphModification\GraphModification.cs" />
     <Compile Include="Graph\GraphOperation\GraphOperation.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Graph\GraphProperty\Tests\ComponentTest.cs" />
     <Compile Include="Graph\GraphProperty\Tests\CycleTest.cs" />
     <Compile Include="Graph\GraphProperty\Tests\DegreeSequenceTest.cs" />
+    <Compile Include="Graph\GraphProperty\Tests\SpanningTreeTest.cs" />
     <Compile Include="Graph\IGraphInterface.cs" />
     <Compile Include="Graph\Tests\GraphTest.cs" />
     <Compile Include="MyException\GraphException.cs" />

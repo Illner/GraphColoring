@@ -19,6 +19,8 @@ namespace GraphColoring.Tests
         private string testPathGraphComponent = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphComponent.txt";
         private string testPathGraphDegreeSequence = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphDegreeSequence.txt";
         private string testPathGraphCycle = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphCycle.txt";
+        private string testPathGraphClass = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphClass.txt";
+        private string testPathGraphSpanningTree = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphSpanningTree.txt";
         #endregion
 
         // Enum
@@ -30,7 +32,9 @@ namespace GraphColoring.Tests
             reader,
             graphComponent,
             graphDegreeSequence,
-            graphCycle
+            graphCycle,
+            graphClass,
+            graphSpanningTree
         }
         #endregion
 
@@ -91,6 +95,18 @@ namespace GraphColoring.Tests
                     stringBuilder = cycleTest.Test();
 
                     testPath = testPathGraphCycle;
+                    break;
+                case TestEnum.graphSpanningTree:
+                    Graph.GraphProperty.Tests.SpanningTreeTest spanningTreeTest = new Graph.GraphProperty.Tests.SpanningTreeTest();
+                    stringBuilder = spanningTreeTest.Test();
+
+                    testPath = testPathGraphSpanningTree;
+                    break;
+                case TestEnum.graphClass:
+                    Graph.GraphClass.Tests.ClassTest classTest = new Graph.GraphClass.Tests.ClassTest();
+                    stringBuilder = classTest.Test();
+
+                    testPath = testPathGraphClass;
                     break;
                 case TestEnum.reader:
                     ReaderWriter.Tests.ReaderTest readerTest = new ReaderWriter.Tests.ReaderTest();

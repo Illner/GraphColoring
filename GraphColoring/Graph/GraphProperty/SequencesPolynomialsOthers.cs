@@ -19,7 +19,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// eulerianPath - eulerovský cyklus, nebo eulerovský tah v grafu
         /// </summary>
         private List<int> degreeSequence;
-        private List<Edge> spanningTreeDFS, spanningTreeBFS;
+        private List<Edge> spanningTreeBFS;
         private List<Edge> matching;
         private List<Vertex> cutVertices;
         private List<Edge> bridges;
@@ -61,7 +61,7 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // Variable
             Queue<Vertex> vertexBFSQueue = new Queue<Vertex>();
-            HashSet<Vertex> expandedVertexHashSet = new HashSet<Vertex>();
+            HashSet<Vertex> visitedVertexHashSet = new HashSet<Vertex>();
             List<Vertex> vertexNeighboursList;
             int countVertex = graph.GetCountVertices();
             Vertex root;
@@ -70,7 +70,7 @@ namespace GraphColoring.Graph.GraphProperty
 
             root = graph.GetFirstVertex();
             vertexBFSQueue.Enqueue(root);
-            expandedVertexHashSet.Add(root);
+            visitedVertexHashSet.Add(root);
 
             while (vertexBFSQueue.Count != 0)
             {
@@ -80,58 +80,14 @@ namespace GraphColoring.Graph.GraphProperty
 
                 foreach(Vertex vertexNeighbour in vertexNeighboursList)
                 {
-                    if (expandedVertexHashSet.Contains(vertexNeighbour))
+                    if (visitedVertexHashSet.Contains(vertexNeighbour))
                         continue;
 
                     vertexBFSQueue.Enqueue(vertexNeighbour);
                     spanningTreeBFS.Add(new Edge(vertex, vertexNeighbour));
-                    expandedVertexHashSet.Add(vertexNeighbour);
+                    visitedVertexHashSet.Add(vertexNeighbour);
 
                     if (spanningTreeBFS.Count == countVertex - 1)
-                        return;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Získá kostru grafu pomocí DFS
-        /// spanningTreeDFS
-        /// DFS
-        /// Time complexity: O(V + E)
-        /// Space complexity: O(V + E)
-        /// TODO Not working
-        /// </summary>
-        private void SpanningTreeDFS()
-        {
-            // Variable
-            Stack<Vertex> vertexDFSStack = new Stack<Vertex>();
-            HashSet<Vertex> expandedVertexHashSet = new HashSet<Vertex>();
-            List<Vertex> vertexNeighboursList;
-            int countVertex = graph.GetCountVertices();
-            Vertex root;
-
-            spanningTreeDFS = new List<Edge>();
-
-            root = graph.GetFirstVertex();
-            expandedVertexHashSet.Add(root);
-            vertexDFSStack.Push(root);
-
-            while (vertexDFSStack.Count != 0)
-            {
-                Vertex vertex = vertexDFSStack.Pop();
-
-                vertexNeighboursList = graph.Neighbours(vertex);
-
-                foreach (Vertex vertexNeighbour in vertexNeighboursList)
-                {
-                    if (expandedVertexHashSet.Contains(vertexNeighbour))
-                        continue;
-
-                    vertexDFSStack.Push(vertexNeighbour);
-                    spanningTreeDFS.Add(new Edge(vertex, vertexNeighbour));
-                    expandedVertexHashSet.Add(vertexNeighbour);
-
-                    if (spanningTreeDFS.Count == countVertex - 1)
                         return;
                 }
             }
@@ -178,31 +134,13 @@ namespace GraphColoring.Graph.GraphProperty
 
             return degreeSequence;
         }
-        
-        /// <summary>
-        /// Vrátí kostru grafu vytvořenou pomocí DFS
-        /// Pokud graf není souvislý, tak vrátí prázdnou kostru
-        /// </summary>
-        /// <returns>kostru grafu jako list hran</returns>
-        public List<Edge> GetSpanningTreeDFS()
-        {
-            if (spanningTreeDFS == null)
-            {
-                if (GetIsConnected())
-                    SpanningTreeDFS();
-                else
-                    spanningTreeDFS = new List<Edge>();
-            }
-
-            return spanningTreeDFS;
-        }
 
         /// <summary>
-        /// Vrátí kostru grafu vytvořenou pomocí BFS
+        /// Vrátí kostru grafu
         /// Pokud graf není souvislý, tak vrátí prázdnou kostru
         /// </summary>
-        /// <returns>kostru grafu jako list hran</returns>
-        public List<Edge> GetSpanningTreeBFS()
+        /// <returns>kostru grafu jako list</returns>
+        public List<Edge> GetSpanningTree()
         {
             if (spanningTreeBFS == null)
             {
@@ -213,22 +151,6 @@ namespace GraphColoring.Graph.GraphProperty
             }
 
             return spanningTreeBFS;
-        }
-
-        /// <summary>
-        /// Vrátí kostru grafu
-        /// Pokud graf není souvislý, tak vrátí prázdnou kostru
-        /// </summary>
-        /// <returns>kostru grafu jako list</returns>
-        public List<Edge> GetSpanningTree()
-        {
-            if (spanningTreeBFS != null)
-                return spanningTreeBFS;
-
-            if (spanningTreeDFS != null)
-                return spanningTreeDFS;
-
-            return GetSpanningTreeBFS();
         }
 
         /// <summary>

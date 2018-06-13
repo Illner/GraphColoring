@@ -10,11 +10,11 @@ namespace GraphColoring
     {
         static void Main(string[] args)
         {
-           // Tests.Tests tests = new Tests.Tests(false);
-            // tests.Test();
+             Tests.Tests tests = new Tests.Tests(false);
+             tests.Test();
 
-            Tests.Tests tests = new Tests.Tests(true);
-            tests.Test(Tests.Tests.TestEnum.graphCycle);
+            //Tests.Tests tests = new Tests.Tests(true);
+            //tests.Test(Tests.Tests.TestEnum.graphSpanningTree);
         }
     }
 }

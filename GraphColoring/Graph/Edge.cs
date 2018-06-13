@@ -42,6 +42,12 @@ namespace GraphColoring.Graph
         {
             return vertex2;
         }
+        
+        override
+        public String ToString()
+        {
+            return "(" + vertex1.GetUserName() + ", " + vertex2.GetUserName() + ")";
+        }
         #endregion
     }
 }

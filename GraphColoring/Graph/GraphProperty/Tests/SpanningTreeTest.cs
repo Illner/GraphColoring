@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphProperty.Tests
 {
-    class CycleTest : GraphColoring.Tests.ITestInterface
+    class SpanningTreeTest : GraphColoring.Tests.ITestInterface
     {
         // Variable
         #region
@@ -14,28 +14,26 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private StringBuilder stringBuilder;
 
         // Paths
-        string pathGraphCycle1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle1.graph";
-        string pathGraphCycle2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle2.graph";
-        string pathGraphCycle3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle3.graph";
-        string pathGraphCycle4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle4.graph";
-        string pathGraphCycle5 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Cycle\graphCycle5.graph";
+        string pathGraphSpanningTree1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree1.graph";
+        string pathGraphSpanningTree2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree2.graph";
+        string pathGraphSpanningTree3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree3.graph";
+        string pathGraphSpanningTree4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree4.graph";
         #endregion
 
         // Enum
         #region
         public enum GraphEnum
         {
-            graphCycle1,
-            graphCycle2,
-            graphCycle3,
-            graphCycle4,
-            graphCycle5
+            graphSpanningTree1,
+            graphSpanningTree2,
+            graphSpanningTree3,
+            graphSpanningTree4
         }
         #endregion
 
         // Constructor
         #region
-        public CycleTest()
+        public SpanningTreeTest()
         {
             stringBuilder = new StringBuilder();
         }
@@ -81,20 +79,17 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             {
                 switch (graphEnum)
                 {
-                    case GraphEnum.graphCycle1:
-                        testPath = pathGraphCycle1;
+                    case GraphEnum.graphSpanningTree1:
+                        testPath = pathGraphSpanningTree1;
                         break;
-                    case GraphEnum.graphCycle2:
-                        testPath = pathGraphCycle2;
+                    case GraphEnum.graphSpanningTree2:
+                        testPath = pathGraphSpanningTree2;
                         break;
-                    case GraphEnum.graphCycle3:
-                        testPath = pathGraphCycle3;
+                    case GraphEnum.graphSpanningTree3:
+                        testPath = pathGraphSpanningTree3;
                         break;
-                    case GraphEnum.graphCycle4:
-                        testPath = pathGraphCycle4;
-                        break;
-                    case GraphEnum.graphCycle5:
-                        testPath = pathGraphCycle5;
+                    case GraphEnum.graphSpanningTree4:
+                        testPath = pathGraphSpanningTree4;
                         break;
                     default:
                         stringBuilder.AppendLine("This graph doesn't exist!");
@@ -108,9 +103,15 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 
                     stringBuilder.AppendLine("Graph created.");
                     stringBuilder.AppendLine(graph.ToString());
-                    
-                    stringBuilder.AppendLine("Is graph cyclic: " + graph.GetGraphProperty().GetIsCyclic());
-                    stringBuilder.AppendLine("Gridth: " + graph.GetGraphProperty().GetGirth());
+
+                    stringBuilder.AppendLine("SpanningTree: ");
+
+                    List<Edge> spanningTreeList = graph.GetGraphProperty().GetSpanningTree();
+
+                    foreach (Edge edge in spanningTreeList)
+                    {
+                        stringBuilder.AppendLine(edge.ToString());
+                    }
                 }
 
                 testPath = "";

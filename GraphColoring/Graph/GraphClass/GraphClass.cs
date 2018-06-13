@@ -82,9 +82,52 @@ namespace GraphColoring.Graph.GraphClass
         /// <returns>true pokud je graf bipartitní, jinak vrátí false</returns>
         public static bool IsBipartiteGraph(Graph graph)
         {
-            // TODO IsBipartiteGraph
+            // Variable
+            Vertex vertex;
+            List<Vertex> neighboursVertexList;
+            bool isFirstPartite, isBipartite = true;
 
-            return false;
+            HashSet<Vertex> firstPartite = new HashSet<Vertex>();
+            HashSet<Vertex> secondPartite = new HashSet<Vertex>();
+            Queue<Vertex> vertexQueue = new Queue<Vertex>();
+
+            vertex = graph.GetFirstVertex();
+            vertexQueue.Enqueue(vertex);
+            firstPartite.Add(vertex);
+
+            while(vertexQueue.Count != 0)
+            {
+                vertex = vertexQueue.Dequeue();
+                neighboursVertexList = graph.Neighbours(vertex);
+
+                if (firstPartite.Contains(vertex))
+                    isFirstPartite = true;
+                else
+                    isFirstPartite = false;
+
+                foreach (Vertex neighbourVertex in neighboursVertexList)
+                {
+                    if (!firstPartite.Contains(neighbourVertex) && !secondPartite.Contains(neighbourVertex))
+                    {
+                        if (isFirstPartite)
+                            secondPartite.Add(neighbourVertex);
+                        else
+                            firstPartite.Add(neighbourVertex);
+
+                        vertexQueue.Enqueue(neighbourVertex);
+                    }
+                    else
+                    {
+                        if ((firstPartite.Contains(neighbourVertex) && isFirstPartite) || (secondPartite.Contains(neighbourVertex) && !isFirstPartite))
+                        {
+                            isBipartite = false;
+                        }
+                    }
+                }
+
+            }
+
+            return isBipartite;
         }
         #endregion
     }

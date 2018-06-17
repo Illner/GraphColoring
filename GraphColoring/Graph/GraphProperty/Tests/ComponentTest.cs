@@ -13,18 +13,20 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
         private List<Graph> graphComponentList;
+        private Dictionary<ComponentEnum, string> testsDictionary;
 
         // Paths
-        string pathGraphComponent1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent1.graph";
-        string pathGraphComponent2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent2.graph";
-        string pathGraphComponent3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent3.graph";
-        string pathGraphComponent4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent4.graph";
-        string pathGraphComponent5 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent5.graph";
+        private string testPathGraphComponent = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphComponent.txt";
+        private string graphComponent1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent1.graph";
+        private string graphComponent2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent2.graph";
+        private string graphComponent3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent3.graph";
+        private string graphComponent4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent4.graph";
+        private string graphComponent5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent5.graph";
         #endregion
 
         // Enum
         #region
-        public enum GraphEnum
+        public enum ComponentEnum
         {
             graphComponent1,
             graphComponent2,
@@ -39,6 +41,16 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         public ComponentTest()
         {
             stringBuilder = new StringBuilder();
+
+            // Fill testsDictionary
+            testsDictionary = new Dictionary<ComponentEnum, string>
+            {
+                { ComponentEnum.graphComponent1, graphComponent1Path },
+                { ComponentEnum.graphComponent2, graphComponent2Path },
+                { ComponentEnum.graphComponent3, graphComponent3Path },
+                { ComponentEnum.graphComponent4, graphComponent4Path },
+                { ComponentEnum.graphComponent5, graphComponent5Path }
+            };
         }
         #endregion
 
@@ -52,11 +64,9 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             stringBuilder.Clear();
 
-            foreach (GraphEnum graphEnum in Enum.GetValues(typeof(GraphEnum)))
+            foreach (ComponentEnum componentEnum in testsDictionary.Keys)
             {
-                stringBuilder.AppendLine(graphEnum.ToString());
-
-                Testing(graphEnum);
+                Testing(componentEnum);
             }
 
             return stringBuilder;
@@ -65,70 +75,58 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         /// <summary>
         /// Otestuje daný typ grafu
         /// </summary>
-        /// <param name="graphEnum">daný typ grafu</param>
+        /// <param name="componentEnum">daný typ grafu</param>
         /// <returns>Vrátí report</returns>
-        public StringBuilder Test(GraphEnum graphEnum)
+        public StringBuilder Test(ComponentEnum componentEnum)
         {
             stringBuilder.Clear();
 
-            Testing(graphEnum);
+            Testing(componentEnum);
 
             return stringBuilder;
         }
         
-        private void Testing(GraphEnum graphEnum)
+        private void Testing(ComponentEnum componentEnum)
         {
             try
             {
-                switch (graphEnum)
+                testPath = testsDictionary[componentEnum];
+                
+                reader = new ReaderWriter.Reader(testPath);
+                graph = reader.ReadFile();
+
+                stringBuilder.AppendLine(componentEnum.ToString());
+                stringBuilder.AppendLine("Graph created.");
+                stringBuilder.AppendLine(graph.ToString());
+
+                stringBuilder.AppendLine("Number of components: " + graph.GetGraphProperty().GetCountComponents());
+                stringBuilder.AppendLine("Is graph connected: " + graph.GetGraphProperty().GetIsConnected());
+                stringBuilder.AppendLine("Circuit rank: " + graph.GetGraphProperty().GetCircuitRank());
+
+                graphComponentList = graph.GetGraphProperty().GetComponents();
+
+                foreach (Graph graphComponent in graphComponentList)
                 {
-                    case GraphEnum.graphComponent1:
-                        testPath = pathGraphComponent1;
-                        break;
-                    case GraphEnum.graphComponent2:
-                        testPath = pathGraphComponent2;
-                        break;
-                    case GraphEnum.graphComponent3:
-                        testPath = pathGraphComponent3;
-                        break;
-                    case GraphEnum.graphComponent4:
-                        testPath = pathGraphComponent4;
-                        break;
-                    case GraphEnum.graphComponent5:
-                        testPath = pathGraphComponent5;
-                        break;
-                    default:
-                        stringBuilder.AppendLine("This graph doesn't exist!");
-                        break;
+                    stringBuilder.AppendLine("Graph component.");
+                    stringBuilder.AppendLine(graphComponent.ToString());
                 }
-
-                if (testPath != "")
-                {
-                    reader = new ReaderWriter.Reader(testPath);
-                    graph = reader.ReadFile();
-
-                    stringBuilder.AppendLine("Graph created.");
-                    stringBuilder.AppendLine(graph.ToString());
-
-                    stringBuilder.AppendLine("Number of components: " + graph.GetGraphProperty().GetCountComponents());
-                    stringBuilder.AppendLine("Is graph connected: " + graph.GetGraphProperty().GetIsConnected());
-                    stringBuilder.AppendLine("Circuit rank: " + graph.GetGraphProperty().GetCircuitRank());
-
-                    graphComponentList = graph.GetGraphProperty().GetComponents();
-
-                    foreach (Graph graphComponent in graphComponentList)
-                    {
-                        stringBuilder.AppendLine("Graph component.");
-                        stringBuilder.AppendLine(graphComponent.ToString());
-                    }
-                }
-
-                testPath = "";
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new MyException.TestsMissingTestException(componentEnum.ToString());
             }
             catch (MyException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }
+        }
+        #endregion
+
+        // Property
+        #region
+        public string GetPath()
+        {
+            return testPathGraphComponent;
         }
         #endregion
     }

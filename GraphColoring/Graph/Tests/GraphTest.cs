@@ -10,11 +10,15 @@ namespace GraphColoring.Graph.Tests
         // Variable
         #region
         private StringBuilder stringBuilder;
+
+        // Path
+        private string testPath = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\Graph.txt";
+        private string graphAdjacencyMatrixPath = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphAdjacencyMatrix.txt";
+        private string graphEdgeListPath = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphEdgeList.txt";
+
+        // Instance test
         private GraphEdgeList graphEdgeList;
         private GraphAdjacencyMatrix graphAdjacencyMatrix;
-
-        private string pathGraphAdjacencyMatrix = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphAdjacencyMatrix.txt";
-        private string pathGraphEdgeList = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\Graph\Tests\Graphs\GraphEdgeList.txt";
         #endregion
 
         // Constructor
@@ -82,7 +86,7 @@ namespace GraphColoring.Graph.Tests
 
             try
             {
-                using (StreamReader sr = new StreamReader(pathGraphEdgeList))
+                using (StreamReader sr = new StreamReader(graphEdgeListPath))
                 {
                     String line = sr.ReadLine();
 
@@ -124,7 +128,7 @@ namespace GraphColoring.Graph.Tests
 
             try
             {
-                using (StreamReader sr = new StreamReader(pathGraphAdjacencyMatrix))
+                using (StreamReader sr = new StreamReader(graphAdjacencyMatrixPath))
                 {
                     String line = sr.ReadLine();
 
@@ -160,6 +164,14 @@ namespace GraphColoring.Graph.Tests
 
             stringBuilder.AppendLine("Graph created.");
             stringBuilder.AppendLine(graphAdjacencyMatrix.ToString());
+        }
+        #endregion
+
+        // Property
+        #region
+        public string GetPath()
+        {
+            return testPath;
         }
         #endregion
     }

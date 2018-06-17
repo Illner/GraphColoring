@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Collections.Generic;
+
 
 namespace GraphColoring.ReaderWriter.Tests
 {
@@ -10,7 +12,13 @@ namespace GraphColoring.ReaderWriter.Tests
         private Reader reader;
         private Graph.Graph graph;
         private StringBuilder stringBuilder;
+        private Dictionary<Graph.Graph.GraphRepresentationEnum, Dictionary<PathEnum, List<string>>> testsDictionary;
+        private Dictionary<PathEnum, List<string>> testsGraphEdgeListDictionary;
+        private Dictionary<PathEnum, List<string>> testsGraphAdjacencyMatrixDictionary;
+        private Dictionary<PathEnum, List<string>> testsGraphAdjacencyListDictionary;
 
+        // Paths
+        private string testPathReader = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\Reader.txt";
         // GraphEdgeList
         private string readerPathGraphEdgeListValid1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListValidNumberColors.graph";
         private string readerPathGraphEdgeListValid2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListValidCHromaticNumber.graph";
@@ -130,6 +138,59 @@ namespace GraphColoring.ReaderWriter.Tests
         public ReaderTest()
         {
             stringBuilder = new StringBuilder();
+
+            // Fill testsGraphEdgeListDictionary
+            testsGraphEdgeListDictionary = new Dictionary<PathEnum, List<string>>
+            {
+                { PathEnum.valid, new List<string>() { readerPathGraphEdgeListValid1, readerPathGraphEdgeListValid2, readerPathGraphEdgeListValidVertexName } },
+                { PathEnum.invalidHeader, new List<string>() { readerPathGraphEdgeListInvalidHeader1, readerPathGraphEdgeListInvalidHeader2 } },
+                { PathEnum.invalidBallast, new List<string>() { readerPathGraphEdgeListInvalidBallast1, readerPathGraphEdgeListInvalidBallast2, readerPathGraphEdgeListInvalidBallast3 } },
+                { PathEnum.invalidGraphName, new List<string>() { readerPathGraphEdgeListInvalidGraphName } },
+                { PathEnum.invalidCountVertices, new List<string>() { readerPathGraphEdgeListInvalidCountVertices1, readerPathGraphEdgeListInvalidCountVertices2, readerPathGraphEdgeListInvalidCountVertices3, readerPathGraphEdgeListInvalidCountVertices4 } },
+                { PathEnum.invalidGraph, new List<string>() { readerPathGraphEdgeListInvalidGraph } },
+                { PathEnum.invalidCoreData, new List<string>() { readerPathGraphEdgeListInvalidCoreData1, readerPathGraphEdgeListInvalidCoreData2, readerPathGraphEdgeListInvalidCoreData3, readerPathGraphEdgeListInvalidCoreData4 } },
+                { PathEnum.invalidColoredGraph, new List<string>() { readerPathGraphEdgeListInvalidColoredGraph } },
+                { PathEnum.invalidNumberColors, new List<string>() { readerPathGraphEdgeListInvalidNumberColors, readerPathGraphEdgeListInvalidChromaticNumber } },
+                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerPathGraphEdgeListInvalidUsedAlgorithm } }
+            };
+
+            // Fill testsGraphAdjacencyMatrixDictionary
+            testsGraphAdjacencyMatrixDictionary = new Dictionary<PathEnum, List<string>>
+            {
+                { PathEnum.valid, new List<string>() { readerPathGraphAdjacencyMatrixValid1, readerPathGraphAdjacencyMatrixValid2 } },
+                { PathEnum.invalidHeader, new List<string>() { readerPathGraphAdjacencyMatrixInvalidHeader1, readerPathGraphAdjacencyMatrixInvalidHeader2 } },
+                { PathEnum.invalidBallast, new List<string>() { readerPathGraphAdjacencyMatrixInvalidBallast1, readerPathGraphAdjacencyMatrixInvalidBallast2, readerPathGraphAdjacencyMatrixInvalidBallast3 } },
+                { PathEnum.invalidGraphName, new List<string>() { readerPathGraphAdjacencyMatrixInvalidGraphName } },
+                { PathEnum.invalidCountVertices, new List<string>() { readerPathGraphAdjacencyMatrixInvalidCountVertices1, readerPathGraphAdjacencyMatrixInvalidCountVertices2, readerPathGraphAdjacencyMatrixInvalidCountVertices3, readerPathGraphAdjacencyMatrixInvalidCountVertices4 } },
+                { PathEnum.invalidGraph, new List<string>() { readerPathGraphAdjacencyMatrixInvalidGraph } },
+                { PathEnum.invalidCoreData, new List<string>() { readerPathGraphAdjacencyMatrixInvalidCoreData1, readerPathGraphAdjacencyMatrixInvalidCoreData2, readerPathGraphAdjacencyMatrixInvalidCoreData3, readerPathGraphAdjacencyMatrixInvalidCoreData4 } },
+                { PathEnum.invalidColoredGraph, new List<string>() { readerPathGraphAdjacencyMatrixInvalidColoredGraph } },
+                { PathEnum.invalidNumberColors, new List<string>() { readerPathGraphAdjacencyMatrixInvalidNumberColors, readerPathGraphAdjacencyMatrixInvalidChromaticNumber } },
+                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerPathGraphAdjacencyMatrixInvalidUsedAlgorithm } }
+            };
+
+            // Fill testsGraphAdjacencyListDictionary
+            testsGraphAdjacencyListDictionary = new Dictionary<PathEnum, List<string>>
+            {
+                { PathEnum.valid, new List<string>() { readerPathGraphAdjacencyListValid1, readerPathGraphAdjacencyListValid2, readerPathGraphAdjacencyListValidVertexName } },
+                { PathEnum.invalidHeader, new List<string>() { readerPathGraphAdjacencyListInvalidHeader1, readerPathGraphAdjacencyListInvalidHeader2 } },
+                { PathEnum.invalidBallast, new List<string>() { readerPathGraphAdjacencyListInvalidBallast1, readerPathGraphAdjacencyListInvalidBallast2, readerPathGraphAdjacencyListInvalidBallast3 } },
+                { PathEnum.invalidGraphName, new List<string>() { readerPathGraphAdjacencyListInvalidGraphName } },
+                { PathEnum.invalidCountVertices, new List<string>() { readerPathGraphAdjacencyListInvalidCountVertices1, readerPathGraphAdjacencyListInvalidCountVertices2, readerPathGraphAdjacencyListInvalidCountVertices3, readerPathGraphAdjacencyListInvalidCountVertices4 } },
+                { PathEnum.invalidGraph, new List<string>() { readerPathGraphAdjacencyListInvalidGraph } },
+                { PathEnum.invalidCoreData, new List<string>() { readerPathGraphAdjacencyListInvalidCoreData1, readerPathGraphAdjacencyListInvalidCoreData2 } },
+                { PathEnum.invalidColoredGraph, new List<string>() { readerPathGraphAdjacencyListInvalidColoredGraph } },
+                { PathEnum.invalidNumberColors, new List<string>() { readerPathGraphAdjacencyListInvalidNumberColors, readerPathGraphAdjacencyListInvalidChromaticNumber } },
+                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerPathGraphAdjacencyListInvalidUsedAlgorithm } }
+            };
+
+            // Fill testsDictionary
+            testsDictionary = new Dictionary<Graph.Graph.GraphRepresentationEnum, Dictionary<PathEnum, List<string>>>
+            {
+                { Graph.Graph.GraphRepresentationEnum.adjacencyList, testsGraphAdjacencyListDictionary },
+                { Graph.Graph.GraphRepresentationEnum.adjacencyMatrix, testsGraphAdjacencyMatrixDictionary },
+                { Graph.Graph.GraphRepresentationEnum.edgeList, testsGraphEdgeListDictionary }
+            };
         }
         #endregion
 
@@ -143,16 +204,13 @@ namespace GraphColoring.ReaderWriter.Tests
         {
             stringBuilder.Clear();
 
-            foreach (PathEnum pathEnum in Enum.GetValues(typeof(PathEnum)))
+            foreach (KeyValuePair<Graph.Graph.GraphRepresentationEnum, Dictionary<PathEnum, List<string>>> record in testsDictionary)
             {
-                stringBuilder.AppendLine(pathEnum.ToString());
-
-                foreach (Graph.Graph.GraphRepresentationEnum graphEnum in Enum.GetValues(typeof(Graph.Graph.GraphRepresentationEnum)))
+                stringBuilder.AppendLine(record.Key.ToString());
+                foreach (PathEnum pathEnum in record.Value.Keys)
                 {
-
-                    stringBuilder.AppendLine(graphEnum.ToString());
-
-                    Testing(graphEnum, pathEnum);
+                    stringBuilder.AppendLine(pathEnum.ToString());
+                    Testing(record.Key, pathEnum);
                 }
             }
 
@@ -178,226 +236,30 @@ namespace GraphColoring.ReaderWriter.Tests
         {
             try
             {
+                List<string> pathList = new List<string>();
                 switch (graphEnum)
                 {
                     case Graph.Graph.GraphRepresentationEnum.adjacencyList:
-                        #region
-                        switch (pathEnum)
-                        {
-                            case PathEnum.valid:
-                                reader = new Reader(readerPathGraphAdjacencyListValid1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListValid2);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListValidVertexName);
-                                Testing();
-                                break;
-                            case PathEnum.invalidHeader:
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidHeader1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidHeader2);
-                                Testing();
-                                break;
-                            case PathEnum.invalidBallast:
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidBallast1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidBallast2);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidBallast3);
-                                Testing();
-                                break;
-                            case PathEnum.invalidGraphName:
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidGraphName);
-                                Testing();
-                                break;
-                            case PathEnum.invalidCountVertices:
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidCountVertices1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidCountVertices2);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidCountVertices3);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidCountVertices4);
-                                Testing();
-                                break;
-                            case PathEnum.invalidGraph:
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidGraph);
-                                Testing();
-                                break;
-                            case PathEnum.invalidCoreData:
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidCoreData1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidCoreData2);
-                                Testing();
-                                break;
-                            case PathEnum.invalidNumberColors:
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidColoredGraph);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidNumberColors);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidChromaticNumber);
-                                Testing();
-                                break;
-                            case PathEnum.invalidUsedAlgorithm:
-                                reader = new Reader(readerPathGraphAdjacencyListInvalidUsedAlgorithm);
-                                Testing();
-                                break;
-                            default:
-                                reader = null;
-                                stringBuilder.AppendLine("This isn't implemented!");
-                                break;
-                        }
-                        #endregion
+                        pathList = testsGraphAdjacencyListDictionary[pathEnum];
                         break;
                     case Graph.Graph.GraphRepresentationEnum.adjacencyMatrix:
-                        #region
-                        switch (pathEnum)
-                        {
-                            case PathEnum.valid:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixValid1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixValid2);
-                                Testing();
-                                break;
-                            case PathEnum.invalidHeader:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidHeader1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidHeader2);
-                                Testing();
-                                break;
-                            case PathEnum.invalidBallast:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidBallast1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidBallast2);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidBallast3);
-                                Testing();
-                                break;
-                            case PathEnum.invalidGraphName:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidGraphName);
-                                Testing();
-                                break;
-                            case PathEnum.invalidCountVertices:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCountVertices1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCountVertices2);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCountVertices3);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCountVertices4);
-                                Testing();
-                                break;
-                            case PathEnum.invalidGraph:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidGraph);
-                                Testing();
-                                break;
-                            case PathEnum.invalidCoreData:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCoreData1);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCoreData2);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCoreData3);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidCoreData4);
-                                Testing();
-                                break;
-                            case PathEnum.invalidNumberColors:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidColoredGraph);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidNumberColors);
-                                Testing();
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidChromaticNumber);
-                                Testing();
-                                break;
-                            case PathEnum.invalidUsedAlgorithm:
-                                reader = new Reader(readerPathGraphAdjacencyMatrixInvalidUsedAlgorithm);
-                                Testing();
-                                break;
-                            default:
-                                reader = null;
-                                stringBuilder.AppendLine("This isn't implemented!");
-                                break;
-                        }
-                        #endregion
+                        pathList = testsGraphAdjacencyMatrixDictionary[pathEnum];
                         break;
                     case Graph.Graph.GraphRepresentationEnum.edgeList:
-                        #region
-                        switch (pathEnum)
-                        {
-                            case PathEnum.valid:
-                                reader = new Reader(readerPathGraphEdgeListValid1);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListValid2);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListValidVertexName);
-                                Testing();
-                                break;
-                            case PathEnum.invalidHeader:
-                                reader = new Reader(readerPathGraphEdgeListInvalidHeader1);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidHeader2);
-                                Testing();
-                                break;
-                            case PathEnum.invalidBallast:
-                                reader = new Reader(readerPathGraphEdgeListInvalidBallast1);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidBallast2);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidBallast3);
-                                Testing();
-                                break;
-                            case PathEnum.invalidGraphName:
-                                reader = new Reader(readerPathGraphEdgeListInvalidGraphName);
-                                Testing();
-                                break;
-                            case PathEnum.invalidCountVertices:
-                                reader = new Reader(readerPathGraphEdgeListInvalidCountVertices1);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidCountVertices2);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidCountVertices3);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidCountVertices4);
-                                Testing();
-                                break;
-                            case PathEnum.invalidGraph:
-                                reader = new Reader(readerPathGraphEdgeListInvalidGraph);
-                                Testing();
-                                break;
-                            case PathEnum.invalidCoreData:
-                                reader = new Reader(readerPathGraphEdgeListInvalidCoreData1);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidCoreData2);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidCoreData3);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidCoreData4);
-                                Testing();
-                                break;
-                            case PathEnum.invalidNumberColors:
-                                reader = new Reader(readerPathGraphEdgeListInvalidColoredGraph);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidNumberColors);
-                                Testing();
-                                reader = new Reader(readerPathGraphEdgeListInvalidChromaticNumber);
-                                Testing();
-                                break;
-                            case PathEnum.invalidUsedAlgorithm:
-                                reader = new Reader(readerPathGraphEdgeListInvalidUsedAlgorithm);
-                                Testing();
-                                break;
-                            default:
-                                reader = null;
-                                stringBuilder.AppendLine("This isn't implemented!");
-                                break;
-                        }
-                        #endregion
+                        pathList = testsGraphEdgeListDictionary[pathEnum];
                         break;
                     default:
-                        reader = null;
-                        stringBuilder.AppendLine("This graph representation isn't implemented!");
-                        break;
+                        throw new MyException.TestsMissingTestException(graphEnum.ToString());
                 }
+                foreach (string path in pathList)
+                {
+                    reader = new Reader(path);
+                    Testing();
+                }
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new MyException.TestsMissingTestException(pathEnum.ToString());
             }
             catch (MyException.ReaderWriterException e)
             {
@@ -423,6 +285,14 @@ namespace GraphColoring.ReaderWriter.Tests
             {
                 stringBuilder.AppendLine(e.Message);
             }
+        }
+        #endregion
+
+        // Property
+        #region
+        public string GetPath()
+        {
+            return testPathReader;
         }
         #endregion
     }

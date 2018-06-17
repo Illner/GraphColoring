@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.ReaderWriter.Tests
 {
@@ -8,16 +9,21 @@ namespace GraphColoring.ReaderWriter.Tests
     {
         // Variable
         #region
-        private ReaderWriter readerWriter;
         private StringBuilder stringBuilder;
+        private string readerWriterText = "Lorem impsum.";
+        private Dictionary<PathEnum, string> testsDictionary;
 
+        // Paths
+        private string testPathReaderWriter = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\ReaderWriter.txt";
         private string readerWriterPathValid = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\Example.graph";
-        private string readerWriterPathEmpty = @"";
         private string readerWriterPathInvalid = @"Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter/Example.graph";
         private string readerWriterPathInvalidType = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\Example.txt";
-        private string readerWriterPathFoulder = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\";
+        private string readerWriterPathFolder = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\";
         private string readerWriterPathAuthorization = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\ExampleAuthorization.graph";
-        private string readerWriterText = "Lorem impsum.";
+        private string readerWriterPathEmpty = @"";
+
+        // Instance
+        private ReaderWriter readerWriter;
         #endregion
 
         // Enum
@@ -27,7 +33,7 @@ namespace GraphColoring.ReaderWriter.Tests
             valid,
             invalid,
             invalidType,
-            foulder,
+            folder,
             authorization,
             empty
         }
@@ -48,6 +54,17 @@ namespace GraphColoring.ReaderWriter.Tests
         public ReaderWriterTest()
         {
             stringBuilder = new StringBuilder();
+
+            // Fill testsDictionary
+            testsDictionary = new Dictionary<PathEnum, string>
+            {
+                { PathEnum.valid, readerWriterPathValid },
+                { PathEnum.invalid, readerWriterPathInvalid },
+                { PathEnum.invalidType, readerWriterPathInvalidType },
+                { PathEnum.folder, readerWriterPathFolder },
+                { PathEnum.authorization, readerWriterPathAuthorization },
+                { PathEnum.empty, readerWriterPathEmpty }
+            };
         }
         #endregion
 
@@ -61,7 +78,7 @@ namespace GraphColoring.ReaderWriter.Tests
         {
             stringBuilder.Clear();
 
-            foreach (PathEnum pathEnum in Enum.GetValues(typeof(PathEnum)))
+            foreach (PathEnum pathEnum in testsDictionary.Keys)
             {
                 Testing(pathEnum);
             }
@@ -93,215 +110,31 @@ namespace GraphColoring.ReaderWriter.Tests
         {
             stringBuilder.Clear();
 
+            string path = testsDictionary[pathEnum];
+            readerWriter = new Reader(path);
+
             switch (operationEnum)
             {
                 case OperationEnum.clearFile:
-                    #region
-                    switch (pathEnum)
-                    {
-                        case PathEnum.valid:
-                            readerWriter = new Reader(readerWriterPathValid);
-                            ClearFile();
-                            break;
-                        case PathEnum.invalid:
-                            readerWriter = new Reader(readerWriterPathInvalid);
-                            ClearFile();
-                            break;
-                        case PathEnum.invalidType:
-                            readerWriter = new Reader(readerWriterPathInvalidType);
-                            ClearFile();
-                            break;
-                        case PathEnum.foulder:
-                            readerWriter = new Reader(readerWriterPathFoulder);
-                            ClearFile();
-                            break;
-                        case PathEnum.authorization:
-                            readerWriter = new Reader(readerWriterPathAuthorization);
-                            ClearFile();
-                            break;
-                        case PathEnum.empty:
-                            readerWriter = new Reader(readerWriterPathEmpty);
-                            ClearFile();
-                            break;
-                        default:
-                            stringBuilder.AppendLine("This isn't implemented!");
-                            break;
-                    }
-                    #endregion
+                    ClearFile();
                     break;
                 case OperationEnum.createFile:
-                    #region
-                    switch (pathEnum)
-                    {
-                        case PathEnum.valid:
-                            readerWriter = new Reader(readerWriterPathValid);
-                            CreateFile();
-                            break;
-                        case PathEnum.invalid:
-                            readerWriter = new Reader(readerWriterPathInvalid);
-                            CreateFile();
-                            break;
-                        case PathEnum.invalidType:
-                            readerWriter = new Reader(readerWriterPathInvalidType);
-                            CreateFile();
-                            break;
-                        case PathEnum.foulder:
-                            readerWriter = new Reader(readerWriterPathFoulder);
-                            CreateFile();
-                            break;
-                        case PathEnum.authorization:
-                            readerWriter = new Reader(readerWriterPathAuthorization);
-                            CreateFile();
-                            break;
-                        case PathEnum.empty:
-                            readerWriter = new Reader(readerWriterPathEmpty);
-                            CreateFile();
-                            break;
-                        default:
-                            stringBuilder.AppendLine("This isn't implemented!");
-                            break;
-                    }
-                    #endregion
+                    CreateFile();
                     break;
                 case OperationEnum.deleteFile:
-                    #region
-                    switch (pathEnum)
-                    {
-                        case PathEnum.valid:
-                            readerWriter = new Reader(readerWriterPathValid);
-                            DeleteFile();
-                            break;
-                        case PathEnum.invalid:
-                            readerWriter = new Reader(readerWriterPathInvalid);
-                            DeleteFile();
-                            break;
-                        case PathEnum.invalidType:
-                            readerWriter = new Reader(readerWriterPathInvalidType);
-                            DeleteFile();
-                            break;
-                        case PathEnum.foulder:
-                            readerWriter = new Reader(readerWriterPathFoulder);
-                            DeleteFile();
-                            break;
-                        case PathEnum.authorization:
-                            readerWriter = new Reader(readerWriterPathAuthorization);
-                            DeleteFile();
-                            break;
-                        case PathEnum.empty:
-                            readerWriter = new Reader(readerWriterPathEmpty);
-                            DeleteFile();
-                            break;
-                        default:
-                            stringBuilder.AppendLine("This isn't implemented!");
-                            break;
-                    }
-                    #endregion
+                    DeleteFile();
                     break;
                 case OperationEnum.existFile:
-                    #region
-                    switch (pathEnum)
-                    {
-                        case PathEnum.valid:
-                            readerWriter = new Reader(readerWriterPathValid);
-                            ExistFile();
-                            break;
-                        case PathEnum.invalid:
-                            readerWriter = new Reader(readerWriterPathInvalid);
-                            ExistFile();
-                            break;
-                        case PathEnum.invalidType:
-                            readerWriter = new Reader(readerWriterPathInvalidType);
-                            ExistFile();
-                            break;
-                        case PathEnum.foulder:
-                            readerWriter = new Reader(readerWriterPathFoulder);
-                            ExistFile();
-                            break;
-                        case PathEnum.authorization:
-                            readerWriter = new Reader(readerWriterPathAuthorization);
-                            ExistFile();
-                            break;
-                        case PathEnum.empty:
-                            readerWriter = new Reader(readerWriterPathEmpty);
-                            ExistFile();
-                            break;
-                        default:
-                            stringBuilder.AppendLine("This isn't implemented!");
-                            break;
-                    }
-                    #endregion
+                    ExistFile();
                     break;
                 case OperationEnum.readFile:
-                    #region
-                    switch (pathEnum)
-                    {
-                        case PathEnum.valid:
-                            readerWriter = new Reader(readerWriterPathValid);
-                            ReadFile();
-                            break;
-                        case PathEnum.invalid:
-                            readerWriter = new Reader(readerWriterPathInvalid);
-                            ReadFile();
-                            break;
-                        case PathEnum.invalidType:
-                            readerWriter = new Reader(readerWriterPathInvalidType);
-                            ReadFile();
-                            break;
-                        case PathEnum.foulder:
-                            readerWriter = new Reader(readerWriterPathFoulder);
-                            ReadFile();
-                            break;
-                        case PathEnum.authorization:
-                            readerWriter = new Reader(readerWriterPathAuthorization);
-                            ReadFile();
-                            break;
-                        case PathEnum.empty:
-                            readerWriter = new Reader(readerWriterPathEmpty);
-                            ReadFile();
-                            break;
-                        default:
-                            stringBuilder.AppendLine("This isn't implemented!");
-                            break;
-                    }
-                    #endregion
+                    ReadFile();
                     break;
                 case OperationEnum.writeFile:
-                    #region
-                    switch (pathEnum)
-                    {
-                        case PathEnum.valid:
-                            readerWriter = new Reader(readerWriterPathValid);
-                            WriteFile();
-                            break;
-                        case PathEnum.invalid:
-                            readerWriter = new Reader(readerWriterPathInvalid);
-                            WriteFile();
-                            break;
-                        case PathEnum.invalidType:
-                            readerWriter = new Reader(readerWriterPathInvalidType);
-                            WriteFile();
-                            break;
-                        case PathEnum.foulder:
-                            readerWriter = new Reader(readerWriterPathFoulder);
-                            WriteFile();
-                            break;
-                        case PathEnum.authorization:
-                            readerWriter = new Reader(readerWriterPathAuthorization);
-                            WriteFile();
-                            break;
-                        case PathEnum.empty:
-                            readerWriter = new Reader(readerWriterPathEmpty);
-                            WriteFile();
-                            break;
-                        default:
-                            stringBuilder.AppendLine("This isn't implemented!");
-                            break;
-                    }
-                    #endregion
+                    WriteFile();
                     break;
                 default:
-                    stringBuilder.AppendLine("This operation isn't implemented!");
-                    break;
+                    throw new MyException.TestsMissingTestException(operationEnum.ToString());
             }
 
             return stringBuilder;
@@ -311,37 +144,13 @@ namespace GraphColoring.ReaderWriter.Tests
         {
             try
             {
-                switch (pathEnum)
-                {
-                    case PathEnum.valid:
-                        readerWriter = new Reader(readerWriterPathValid);
-                        Testing();
-                        break;
-                    case PathEnum.invalid:
-                        readerWriter = new Reader(readerWriterPathInvalid);
-                        Testing();
-                        break;
-                    case PathEnum.invalidType:
-                        readerWriter = new Reader(readerWriterPathInvalidType);
-                        Testing();
-                        break;
-                    case PathEnum.foulder:
-                        readerWriter = new Reader(readerWriterPathFoulder);
-                        Testing();
-                        break;
-                    case PathEnum.authorization:
-                        readerWriter = new Reader(readerWriterPathAuthorization);
-                        Testing();
-                        break;
-                    case PathEnum.empty:
-                        readerWriter = new Reader(readerWriterPathEmpty);
-                        Testing();
-                        break;
-                    default:
-                        readerWriter = null;
-                        stringBuilder.AppendLine("This isn't implemented!");
-                        break;
-                }
+                string path = testsDictionary[pathEnum];
+                readerWriter = new Reader(path);
+                Testing();
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new MyException.TestsMissingTestException(pathEnum.ToString());
             }
             catch (MyException.ReaderWriterException e)
             {
@@ -488,6 +297,14 @@ namespace GraphColoring.ReaderWriter.Tests
             }
 
             stringBuilder.AppendLine("File contents: " + content);
+        }
+        #endregion
+
+        // Property
+        #region
+        public string GetPath()
+        {
+            return testPathReaderWriter;
         }
         #endregion
     }

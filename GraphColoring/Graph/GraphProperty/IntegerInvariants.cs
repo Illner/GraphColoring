@@ -36,10 +36,92 @@ namespace GraphColoring.Graph.GraphProperty
         #region
         /// <summary>
         /// Inkrementuje počet hran o jedna
+        /// Pokud není nastavená proměnná canDeIncreaseCountEdges, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
         /// </summary>
         public void IncrementCountEdges()
         {
+            if (!graph.GetCanDeIncreaseCountEdges())
+                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Edge");
+
             size++;
+        }
+
+        /// <summary>
+        /// Dekrementuje počet hran o jedna
+        /// Pokud není nastavená proměnná canDeIncreaseCountEdges, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
+        /// Pokud je počet hran 0, vyvolá se vyjímka GraphInvalidDecrementCountEdges
+        /// </summary>
+        public void DecrementCountEdges()
+        {
+            if (!graph.GetCanDeIncreaseCountEdges())
+                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Edge");
+
+            if (size == 0)
+                throw new MyException.GraphInvalidDecrementCountEdges();
+
+            size--;
+        }
+
+        /// <summary>
+        /// Dekrementuje počet hran o count
+        /// Pokud není nastavená proměnná canDeIncreaseCountEdges, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
+        /// Pokud po dekrementaci bude min nez 0 hran, vyvolá se vyjímka GraphInvalidDecrementCountEdges
+        /// </summary>
+        /// <param name="count">Počet hran pro dekrementaci</param>
+        public void DecrementCountEdges(int count)
+        {
+            if (!graph.GetCanDeIncreaseCountEdges())
+                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Edge");
+
+            if (size - count < 0)
+                throw new MyException.GraphInvalidDecrementCountEdges();
+            
+            size -= count;
+        }
+
+        /// <summary>
+        /// Inkrementuje počet vrcholu o jedna
+        /// Pokud není nastavená proměnná canDeIncreaseCountVertices, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
+        /// </summary>
+        public void IncrementCountVertices()
+        {
+            if (!graph.GetCanDeIncreaseCountVertices())
+                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Vertex");
+
+            order++;
+        }
+
+        /// <summary>
+        /// Dekrementuje počet vrcholu o jedna
+        /// Pokud není nastavená proměnná canDeIncreaseCountVertices, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
+        /// Pokud je počet vrcholů 0, vyvolá se vyjímka GraphInvalidDecrementCountVertices
+        /// </summary>
+        public void DecrementCountVertices()
+        {
+            if (!graph.GetCanDeIncreaseCountVertices())
+                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Vertex");
+
+            if (order == 0)
+                throw new MyException.GraphInvalidDecrementCountVertices();
+
+            order--;
+        }
+
+        /// <summary>
+        /// Dekrementuje počet vrcholu o coun
+        /// Pokud není nastavená proměnná canDeIncreaseCountVertices, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
+        /// Pokud je počet vrcholů 0, vyvolá se vyjímka GraphInvalidDecrementCountVertices
+        /// </summary>
+        /// <param name="count">Počet vrcholu pro dekrementaci</param>
+        public void DecrementCountVertices(int count)
+        {
+            if (!graph.GetCanDeIncreaseCountVertices())
+                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Vertex");
+
+            if (order - count < 0)
+                throw new MyException.GraphInvalidDecrementCountVertices();
+
+            order -= count;
         }
 
         /// <summary>

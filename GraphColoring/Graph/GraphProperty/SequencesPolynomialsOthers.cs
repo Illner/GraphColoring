@@ -63,7 +63,7 @@ namespace GraphColoring.Graph.GraphProperty
             Queue<Vertex> vertexBFSQueue = new Queue<Vertex>();
             HashSet<Vertex> visitedVertexHashSet = new HashSet<Vertex>();
             List<Vertex> vertexNeighboursList;
-            int countVertex = graph.GetCountVertices();
+            int countVertex = graph.GetGraphProperty().GetCountVertices();
             Vertex root;
 
             spanningTreeBFS = new List<Edge>();

@@ -12,17 +12,19 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
+        private Dictionary<SpanningTreeEnum, string> testsDictionary;
 
         // Paths
-        string pathGraphSpanningTree1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree1.graph";
-        string pathGraphSpanningTree2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree2.graph";
-        string pathGraphSpanningTree3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree3.graph";
-        string pathGraphSpanningTree4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree4.graph";
+        private string testPathGraphSpanningTree = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphSpanningTree.txt";
+        private string graphSpanningTree1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree1.graph";
+        private string graphSpanningTree2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree2.graph";
+        private string graphSpanningTree3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree3.graph";
+        private string graphSpanningTree4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree4.graph";
         #endregion
 
         // Enum
         #region
-        public enum GraphEnum
+        public enum SpanningTreeEnum
         {
             graphSpanningTree1,
             graphSpanningTree2,
@@ -36,6 +38,15 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         public SpanningTreeTest()
         {
             stringBuilder = new StringBuilder();
+
+            // Fill testsDictionary
+            testsDictionary = new Dictionary<SpanningTreeEnum, string>
+            {
+                { SpanningTreeEnum.graphSpanningTree1, graphSpanningTree1Path },
+                { SpanningTreeEnum.graphSpanningTree2, graphSpanningTree2Path },
+                { SpanningTreeEnum.graphSpanningTree3, graphSpanningTree3Path },
+                { SpanningTreeEnum.graphSpanningTree4, graphSpanningTree4Path }
+            };
         }
         #endregion
 
@@ -49,11 +60,9 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             stringBuilder.Clear();
 
-            foreach (GraphEnum graphEnum in Enum.GetValues(typeof(GraphEnum)))
+            foreach (SpanningTreeEnum spanningTreeEnum in testsDictionary.Keys)
             {
-                stringBuilder.AppendLine(graphEnum.ToString());
-
-                Testing(graphEnum);
+                Testing(spanningTreeEnum);
             }
 
             return stringBuilder;
@@ -62,64 +71,54 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         /// <summary>
         /// Otestuje daný typ grafu
         /// </summary>
-        /// <param name="graphEnum">daný typ grafu</param>
+        /// <param name="spanningTreeEnum">daný typ grafu</param>
         /// <returns>Vrátí report</returns>
-        public StringBuilder Test(GraphEnum graphEnum)
+        public StringBuilder Test(SpanningTreeEnum spanningTreeEnum)
         {
             stringBuilder.Clear();
 
-            Testing(graphEnum);
+            Testing(spanningTreeEnum);
 
             return stringBuilder;
         }
 
-        private void Testing(GraphEnum graphEnum)
+        private void Testing(SpanningTreeEnum spanningTreeEnum)
         {
             try
             {
-                switch (graphEnum)
+                testPath = testsDictionary[spanningTreeEnum];
+                reader = new ReaderWriter.Reader(testPath);
+                graph = reader.ReadFile();
+
+                stringBuilder.AppendLine(spanningTreeEnum.ToString());
+                stringBuilder.AppendLine("Graph created.");
+                stringBuilder.AppendLine(graph.ToString());
+
+                stringBuilder.AppendLine("SpanningTree: ");
+
+                List<Edge> spanningTreeList = graph.GetGraphProperty().GetSpanningTree();
+
+                foreach (Edge edge in spanningTreeList)
                 {
-                    case GraphEnum.graphSpanningTree1:
-                        testPath = pathGraphSpanningTree1;
-                        break;
-                    case GraphEnum.graphSpanningTree2:
-                        testPath = pathGraphSpanningTree2;
-                        break;
-                    case GraphEnum.graphSpanningTree3:
-                        testPath = pathGraphSpanningTree3;
-                        break;
-                    case GraphEnum.graphSpanningTree4:
-                        testPath = pathGraphSpanningTree4;
-                        break;
-                    default:
-                        stringBuilder.AppendLine("This graph doesn't exist!");
-                        break;
+                    stringBuilder.AppendLine(edge.ToString());
                 }
-
-                if (testPath != "")
-                {
-                    reader = new ReaderWriter.Reader(testPath);
-                    graph = reader.ReadFile();
-
-                    stringBuilder.AppendLine("Graph created.");
-                    stringBuilder.AppendLine(graph.ToString());
-
-                    stringBuilder.AppendLine("SpanningTree: ");
-
-                    List<Edge> spanningTreeList = graph.GetGraphProperty().GetSpanningTree();
-
-                    foreach (Edge edge in spanningTreeList)
-                    {
-                        stringBuilder.AppendLine(edge.ToString());
-                    }
-                }
-
-                testPath = "";
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new MyException.TestsMissingTestException(spanningTreeEnum.ToString());
             }
             catch (MyException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }
+        }
+        #endregion
+
+        // Property
+        #region
+        public string GetPath()
+        {
+            return testPathGraphSpanningTree;
         }
         #endregion
     }

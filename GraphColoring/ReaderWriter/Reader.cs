@@ -298,9 +298,8 @@ namespace GraphColoring.ReaderWriter
 
                 graph.AddEdge(edge[0], edge[1]);
             }
-            
-            while (graph.GetRealCountVertices() != graph.GetCountVertices())
-                graph.AddVertex();
+
+            graph.FullGenerateVertices();
             
             graph.InitializeGraph();
         }

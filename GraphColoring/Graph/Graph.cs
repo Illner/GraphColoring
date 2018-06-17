@@ -16,6 +16,8 @@ namespace GraphColoring.Graph
         /// mapping - slouží pro snadné nalezení vrcholu na základě identifikátoru
         /// graphProperty - vlastnosti grafu
         /// adjacencyList - seznam sousedů grafu
+        /// canDeIncreaseCountVertices - určuje, zda se může zavolat metoda IncrementCountVertices / DecrementCountVertices, true - OK, false - vyvolá se výjimka
+        /// canDeIncreaseCountEdges - určuje, zda se může zavolat metoda IncrementCountEdges / DecrementCountEdges, true - OK, false - vyvolá se výjimka
         /// graphClass - Třída grafu - GraphClassEnum
         /// </summary>
         private string name;
@@ -25,6 +27,7 @@ namespace GraphColoring.Graph
         private Dictionary<int, Vertex> mapping;
         private GraphProperty.GraphProperty graphProperty;
         private Dictionary<Vertex, List<Vertex>> adjacencyList;
+        private bool canDeIncreaseCountVertices, canDeIncreaseCountEdges;
         private GraphClass.GraphClass.GraphClassEnum graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         #endregion
 
@@ -37,6 +40,7 @@ namespace GraphColoring.Graph
         public Graph(int countVertices)
         {
             graphProperty = new GraphProperty.GraphProperty(this, countVertices);
+
             adjacencyList = new Dictionary<Vertex, List<Vertex>>();
             mapping = new Dictionary<int, Vertex>();
 
@@ -47,14 +51,6 @@ namespace GraphColoring.Graph
 
         // Method
         #region
-        /// <summary>
-        /// Zvýší proměnnou countEdges o jedna
-        /// </summary>
-        protected void IncrementCountEdges()
-        {
-            graphProperty.IncrementCountEdges();
-        }
-
         /// <summary>
         /// Přidá do AdjacencyList nový vrchol s prázdným listem hran
         /// Pokud countVertices je menší než realCountVertices, tak vrátí vyjímku GraphInvalidCountVertices
@@ -78,11 +74,13 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="vertex1">1. vrchol</param>
         /// <param name="vertex2">2. vrchol</param>
-        protected void AddEdgeToAdjacencyList(Vertex vertex1, Vertex vertex2)
+        protected void AddEdgeToAdjacencyList(Edge edge)
         {
             // Variable
             List<Vertex> adjacencyListVertex;
             Vertex vertex;
+            Vertex vertex1 = edge.GetVertex1();
+            Vertex vertex2 = edge.GetVertex2();
 
             // Symmetry
             for (int i = 0; i < 2; i++)
@@ -102,7 +100,9 @@ namespace GraphColoring.Graph
                 vertex2 = vertex;
             }
 
+            SetCanDeIncreaseCountEdges(true);
             graphProperty.IncrementCountEdges();
+            SetCanDeIncreaseCountEdges(false);
         }
 
         /// <summary>
@@ -129,7 +129,12 @@ namespace GraphColoring.Graph
             if (isInitialized)
                 throw new MyException.GraphAlreadyInitializedException();
 
+            if (GetRealCountVertices() != graphProperty.GetCountVertices())
+                throw new MyException.GraphInvalidCountVerticesException();
+
             isInitialized = true;
+
+            realCountVertices = GetGraphProperty().GetCountVertices();
         }
 
 
@@ -142,7 +147,7 @@ namespace GraphColoring.Graph
         public List<Vertex> Neighbours(Vertex vertex)
         {
             if (!isInitialized)
-                throw new MyException.GraphInitializationException();
+                throw new MyException.GraphNotInitializationException();
 
             return adjacencyList[vertex];
         }
@@ -155,7 +160,7 @@ namespace GraphColoring.Graph
         public int CountNeighbours(Vertex vertex)
         {
             if (!isInitialized)
-                throw new MyException.GraphInitializationException();
+                throw new MyException.GraphNotInitializationException();
             
             return Neighbours(vertex).Count;
         }
@@ -178,13 +183,70 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
+        /// Dekrementuje počet naalokovaných vrcholů (realCountVertices)
+        /// </summary>
+        private void DecrementRealCountVertices()
+        {
+            realCountVertices--;
+        }
+
+        /// <summary>
         /// Vrátí první vrchol grafu, tj vrchol, který byl jako první inicializovaný
+        /// Pokud graf nemá žádný vrchol, vrátí výjimku GraphDoesntHaveAnyVertices
         /// </summary>
         /// <returns>první vrchol</returns>
         public Vertex GetFirstVertex()
         {
+            if (adjacencyList.Count == 0)
+                throw new MyException.GraphDoesntHaveAnyVertices();
+
             var firstRecord = mapping.First();
             return firstRecord.Value;
+        }
+
+        /// <summary>
+        /// Doinicializuje zbývající vrcholy (do realCountVertex)
+        /// </summary>
+        public void FullGenerateVertices()
+        {
+            if (GetIsInitialized())
+                throw new MyException.GraphInitializationException();
+
+            while (GetRealCountVertices() != graphProperty.GetCountVertices())
+            {
+                Vertex vertex = new Vertex();
+                AddVertexToAdjacencyList(vertex);
+            }
+        }
+
+        /// <summary>
+        /// Vrátí true, pokud daný vrchol v grafu existuje, jinak vrátí false
+        /// Time complexity: O(1)
+        /// </summary>
+        /// <param name="vertex">daný vrchol</param>
+        /// <returns>true, pokud vrchol existuje, jinak false</returns>
+        public bool ExistsVertex(Vertex vertex)
+        {
+            return adjacencyList.ContainsKey(vertex);
+        }
+
+        /// <summary>
+        /// Vrátí true, pokud daná hrana existuje v grafu, jinak vrátí false
+        /// Time complexity: O(1)
+        /// </summary>
+        /// <param name="edge">daná hrana</param>
+        /// <returns>true, pokud hrana existuje, jinak false</returns>
+        public bool ExistsEdge(Edge edge)
+        {
+            // Variable
+            List<Vertex> neighboursList;
+
+            adjacencyList.TryGetValue(edge.GetVertex1(), out neighboursList);
+
+            if (neighboursList == null)
+                return false;
+
+            return neighboursList.Contains(edge.GetVertex2());
         }
 
         override
@@ -219,15 +281,6 @@ namespace GraphColoring.Graph
 
         // Property
         #region
-        /// <summary>
-        /// Vrátí počet vrcholů grafu
-        /// </summary>
-        /// <returns>počet vrcholů</returns>
-        public int GetCountVertices()
-        {
-            return graphProperty.GetCountVertices();
-        }
-
         /// <summary>
         /// Vrátí počet naalokovaných vrcholů grafu
         /// </summary>
@@ -265,7 +318,7 @@ namespace GraphColoring.Graph
             if (isInitialized)
                 return graphProperty;
 
-            throw new MyException.GraphWasNotInitializedException();
+            throw new MyException.GraphNotInitializationException();
         }
 
         /// <summary>
@@ -287,6 +340,44 @@ namespace GraphColoring.Graph
         public bool GetIsInitialized()
         {
             return isInitialized;
+        }
+
+        /// <summary>
+        /// Vráti informaci zda je mozné dekrementovat / inkrementovat pocet vrcholu
+        /// Kvuli omezeni volani funkce IncrementCountVertices a DecrementCountVertices v GraphProperty mimo Graph
+        /// </summary>
+        /// <returns>true pokud je mozno menit hodnotu, jinak vrátí false</returns>
+        public bool GetCanDeIncreaseCountVertices()
+        {
+            return canDeIncreaseCountVertices;
+        }
+
+        /// <summary>
+        /// Nastaví hodnotu canDeIncreaseCountVertices
+        /// </summary>
+        /// <param name="value">hodnota, která se má nastavit</param>
+        private void SetCanDeIncreaseCountVertices(bool value)
+        {
+            canDeIncreaseCountVertices = value;
+        }
+
+        /// <summary>
+        /// Vráti informaci zda je mozné dekrementovat / inkrementovat pocet hran
+        /// Kvuli omezeni volani funkce IncrementCountEdges a DecrementCountEdges v GraphProperty mimo Graph
+        /// </summary>
+        /// <returns>true pokud je mozno menit hodnotu, jinak vrátí false</returns>
+        public bool GetCanDeIncreaseCountEdges()
+        {
+            return canDeIncreaseCountEdges;
+        }
+
+        /// <summary>
+        /// Nastaví hodnotu canDeIncreaseCountVertices
+        /// </summary>
+        /// <param name="value">hodnota, která se má nastavit</param>
+        private void SetCanDeIncreaseCountEdges(bool value)
+        {
+            canDeIncreaseCountEdges = value;
         }
         #endregion
     }

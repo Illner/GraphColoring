@@ -11,7 +11,6 @@ namespace GraphColoring.Graph
 
         // Property
         #region
-        int GetRealCountVertices();
         string GetName();
         void SetName(string name);
         #endregion

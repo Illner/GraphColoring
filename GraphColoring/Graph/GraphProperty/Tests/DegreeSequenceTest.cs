@@ -12,16 +12,19 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
+        private Dictionary<DegreeSequenceEnum, string> testsDictionary;
 
-        string pathGraphDegreeSequence1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence1.graph";
-        string pathGraphDegreeSequence2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence2.graph";
-        string pathGraphDegreeSequence3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence3.graph";
-        string pathGraphDegreeSequence4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence4.graph";
+        // Paths
+        private string testPathGraphDegreeSequence = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphDegreeSequence.txt";
+        private string graphDegreeSequence1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence1.graph";
+        private string graphDegreeSequence2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence2.graph";
+        private string graphDegreeSequence3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence3.graph";
+        private string graphDegreeSequence4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SequencesAndPolynomials\graphDegreeSequence4.graph";
         #endregion
 
         // Enum
         #region
-        public enum GraphEnum
+        public enum DegreeSequenceEnum
         {
             graphDegreeSequence1,
             graphDegreeSequence2,
@@ -35,6 +38,15 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         public DegreeSequenceTest()
         {
             stringBuilder = new StringBuilder();
+
+            // Fill testsDictionary
+            testsDictionary = new Dictionary<DegreeSequenceEnum, string>
+            {
+                { DegreeSequenceEnum.graphDegreeSequence1, graphDegreeSequence1Path },
+                { DegreeSequenceEnum.graphDegreeSequence2, graphDegreeSequence2Path },
+                { DegreeSequenceEnum.graphDegreeSequence3, graphDegreeSequence3Path },
+                { DegreeSequenceEnum.graphDegreeSequence4, graphDegreeSequence4Path }
+            };
         }
         #endregion
 
@@ -48,83 +60,70 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             stringBuilder.Clear();
 
-            foreach (GraphEnum graphEnum in Enum.GetValues(typeof(GraphEnum)))
+            foreach (DegreeSequenceEnum degreeSequenceEnum in testsDictionary.Keys)
             {
-                stringBuilder.AppendLine(graphEnum.ToString());
-
-                Testing(graphEnum);
+                Testing(degreeSequenceEnum);
             }
 
             return stringBuilder;
         }
-        
+
         /// <summary>
         /// Otestuje daný typ grafu
         /// </summary>
-        /// <param name="graphEnum">daný typ grafu</param>
+        /// <param name="degreeSequenceEnum">daný typ grafu</param>
         /// <returns>Vrátí report</returns>
-        public StringBuilder Test(GraphEnum graphEnum)
+        public StringBuilder Test(DegreeSequenceEnum degreeSequenceEnum)
         {
             stringBuilder.Clear();
 
-            Testing(graphEnum);
+            Testing(degreeSequenceEnum);
 
             return stringBuilder;
         }
 
-        private void Testing(GraphEnum graphEnum)
+        private void Testing(DegreeSequenceEnum degreeSequenceEnum)
         {
             try
             {
-                switch (graphEnum)
+                testPath = testsDictionary[degreeSequenceEnum];
+                
+                reader = new ReaderWriter.Reader(testPath);
+                graph = reader.ReadFile();
+
+                stringBuilder.AppendLine(degreeSequenceEnum.ToString());
+                stringBuilder.AppendLine("Graph created.");
+                stringBuilder.AppendLine(graph.ToString());
+
+                List<int> degreeSequenceList = graph.GetGraphProperty().GetDegreeSequence();
+                
+                stringBuilder.AppendLine("Degree sequence");
+                foreach (int degree in degreeSequenceList)
                 {
-                    case GraphEnum.graphDegreeSequence1:
-                        testPath = pathGraphDegreeSequence1;
-                        break;
-                    case GraphEnum.graphDegreeSequence2:
-                        testPath = pathGraphDegreeSequence2;
-                        break;
-                    case GraphEnum.graphDegreeSequence3:
-                        testPath = pathGraphDegreeSequence3;
-                        break;
-                    case GraphEnum.graphDegreeSequence4:
-                        testPath = pathGraphDegreeSequence4;
-                        break;
-                    default:
-                        stringBuilder.AppendLine("This graph doesn't exist!");
-                        break;
+                    stringBuilder.Append(degree + " ");
                 }
 
-                if (testPath != "")
-                {
-                    reader = new ReaderWriter.Reader(testPath);
-                    graph = reader.ReadFile();
-
-                    stringBuilder.AppendLine("Graph created.");
-                    stringBuilder.AppendLine(graph.ToString());
-
-                    List<int> degreeSequenceList = graph.GetGraphProperty().GetDegreeSequence();
-
-
-                    stringBuilder.AppendLine("Degree sequence");
-
-                    foreach (int degree in degreeSequenceList)
-                    {
-                        stringBuilder.Append(degree + " ");
-                    }
-
-                    stringBuilder.AppendLine("");
-                    stringBuilder.AppendLine("Minimum vertex degree: " + graph.GetGraphProperty().GetMinimumVertexDegree());
-                    stringBuilder.AppendLine("Maximum vertex degree: " + graph.GetGraphProperty().GetMaximumVertexDegree());
-                    stringBuilder.AppendLine("Is graph regular: " + graph.GetGraphProperty().GetIsRegular());
-                }
-
-                testPath = "";
+                stringBuilder.AppendLine("");
+                stringBuilder.AppendLine("Minimum vertex degree: " + graph.GetGraphProperty().GetMinimumVertexDegree());
+                stringBuilder.AppendLine("Maximum vertex degree: " + graph.GetGraphProperty().GetMaximumVertexDegree());
+                stringBuilder.AppendLine("Is graph regular: " + graph.GetGraphProperty().GetIsRegular());
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new MyException.TestsMissingTestException(degreeSequenceEnum.ToString());
             }
             catch (MyException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }
+        }
+        #endregion
+
+        // Property
+        #region
+        public string GetPath()
+        {
+            return testPathGraphDegreeSequence;
         }
         #endregion
     }

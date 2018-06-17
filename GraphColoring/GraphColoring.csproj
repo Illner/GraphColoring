@@ -50,6 +50,7 @@
     <Compile Include="Graph\GraphClass\Tests\ClassTest.cs" />
     <Compile Include="Graph\GraphEdgeList.cs" />
     <Compile Include="Graph\GraphModification\GraphModification.cs" />
+    <Compile Include="Graph\GraphModification\Tests\ModificationTest.cs" />
     <Compile Include="Graph\GraphOperation\GraphOperation.cs" />
     <Compile Include="Graph\GraphProperty\Component.cs" />
     <Compile Include="Graph\GraphProperty\Cycle.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\GraphRepresentationEnum.cs" />
     <Compile Include="MyException\ReaderWriterException.cs" />
+    <Compile Include="MyException\TestsException.cs" />
     <Compile Include="MyMath\MyMath.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

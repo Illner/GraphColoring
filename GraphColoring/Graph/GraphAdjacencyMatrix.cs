@@ -60,7 +60,7 @@ namespace GraphColoring.Graph
                     mapping.TryGetValue(i, out identifierVertex2);
                     vertex2 = GetVertex(identifierVertex2);
 
-                    AddEdgeToAdjacencyList(vertex1, vertex2);
+                    AddEdgeToAdjacencyList(new Edge(vertex1, vertex2));
                 }
             }
 

@@ -77,6 +77,7 @@ namespace GraphColoring.Graph.GraphClass
 
         /// <summary>
         /// Vrátí true, pokud je graf bipartitní, jinak vrátí false
+        /// Time complexity: O(V + E)
         /// </summary>
         /// <param name="graph">graf, u kterého chceme zjistit zda je bipartitní</param>
         /// <returns>true pokud je graf bipartitní, jinak vrátí false</returns>

@@ -8,5 +8,6 @@ namespace GraphColoring.Tests
         // Method
         StringBuilder Test();
         // StringBuilder Test(Enum @enum);
+        string GetPath();
     }
 }

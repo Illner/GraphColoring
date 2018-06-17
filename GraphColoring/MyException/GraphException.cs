@@ -16,7 +16,20 @@ namespace GraphColoring.MyException
 
     /// <summary>
     /// Graph exception
-    /// Graf není inicializovaný, tj. NEbyly do něj vloženy hrany 
+    /// Snaha provést nějakou operaci, která požaduje inicializovaný graf
+    /// </summary>
+    class GraphNotInitializationException : GraphException
+    {
+        public GraphNotInitializationException() { }
+
+        public GraphNotInitializationException(string message) : base(message) { }
+
+        public GraphNotInitializationException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
+    /// Snaha provést nějakou operaci, která požaduje NEinicializovaný graf
     /// </summary>
     class GraphInitializationException : GraphException
     {
@@ -38,19 +51,6 @@ namespace GraphColoring.MyException
         public GraphAlreadyInitializedException(string message) : base(message) { }
 
         public GraphAlreadyInitializedException(string message, Exception inner) : base(message, inner) { }
-    }
-
-    /// <summary>
-    /// Graph exception
-    /// Graf nebyl doposud inicializován
-    /// </summary>
-    class GraphWasNotInitializedException : GraphException
-    {
-        public GraphWasNotInitializedException() { }
-
-        public GraphWasNotInitializedException(string message) : base(message) { }
-
-        public GraphWasNotInitializedException(string message, Exception inner) : base(message, inner) { }
     }
 
     /// <summary>
@@ -81,6 +81,45 @@ namespace GraphColoring.MyException
 
     /// <summary>
     /// Graph exception
+    /// Vrchol grafu již existuje
+    /// </summary>
+    class GraphVertexAlreadyExistsException : GraphException
+    {
+        public GraphVertexAlreadyExistsException() { }
+
+        public GraphVertexAlreadyExistsException(string message) : base(message) { }
+
+        public GraphVertexAlreadyExistsException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
+    /// Hrana v grafu neexistuje
+    /// </summary>
+    class GraphEdgeDoesntExistException : GraphException
+    {
+        public GraphEdgeDoesntExistException() { }
+
+        public GraphEdgeDoesntExistException(string message) : base(message) { }
+
+        public GraphEdgeDoesntExistException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
+    /// Hrana v grafu již existuje
+    /// </summary>
+    class GraphEdgeAlreadyExistsException : GraphException
+    {
+        public GraphEdgeAlreadyExistsException() { }
+
+        public GraphEdgeAlreadyExistsException(string message) : base(message) { }
+
+        public GraphEdgeAlreadyExistsException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
     /// Pokud počet alokovaných vrcholů (realCountVertices) je větší než počet vrcholů zadaných v konstruktoru (countVertices) 
     /// </summary>
     class GraphInvalidCountVerticesException : GraphException
@@ -90,5 +129,71 @@ namespace GraphColoring.MyException
         public GraphInvalidCountVerticesException(string message) : base(message) { }
 
         public GraphInvalidCountVerticesException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
+    /// Snaha o dekrementaci nulového počtu vrcholů
+    /// Nebo není oprávnění k dekrementaci
+    /// </summary>
+    class GraphInvalidDecrementCountVertices : GraphException
+    {
+        public GraphInvalidDecrementCountVertices() { }
+
+        public GraphInvalidDecrementCountVertices(string message) : base(message) { }
+
+        public GraphInvalidDecrementCountVertices(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
+    /// Snaha o dekrementaci nulového počtu hran
+    /// </summary>
+    class GraphInvalidDecrementCountEdges : GraphException
+    {
+        public GraphInvalidDecrementCountEdges() { }
+
+        public GraphInvalidDecrementCountEdges(string message) : base(message) { }
+
+        public GraphInvalidDecrementCountEdges(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
+    /// Snaha o inkrementaci / dekrementaci počtu vrcholů / hran mimo Graph
+    /// </summary>
+    class GraphPermissionDeIncrementVerticesEdges : GraphException
+    {
+        public GraphPermissionDeIncrementVerticesEdges() { }
+
+        public GraphPermissionDeIncrementVerticesEdges(string message) : base(message) { }
+
+        public GraphPermissionDeIncrementVerticesEdges(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
+    /// Graf nemá žádné vrcholy
+    /// </summary>
+    class GraphDoesntHaveAnyVertices : GraphException
+    {
+        public GraphDoesntHaveAnyVertices() { }
+
+        public GraphDoesntHaveAnyVertices(string message) : base(message) { }
+
+        public GraphDoesntHaveAnyVertices(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
+    /// Špatný stupen vrchol
+    /// </summary>
+    class GraphInvalidDegreeVertex : GraphException
+    {
+        public GraphInvalidDegreeVertex() { }
+
+        public GraphInvalidDegreeVertex(string message) : base(message) { }
+
+        public GraphInvalidDegreeVertex(string message, Exception inner) : base(message, inner) { }
     }
 }

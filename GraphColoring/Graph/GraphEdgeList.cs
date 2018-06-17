@@ -44,7 +44,7 @@ namespace GraphColoring.Graph
             vertex1 = GetVertex(identifierVertex1);
             vertex2 = GetVertex(identifierVertex2);
 
-            AddEdgeToAdjacencyList(vertex1, vertex2);
+            AddEdgeToAdjacencyList(new Edge(vertex1, vertex2));
         }
 
         /// <summary>
@@ -77,17 +77,6 @@ namespace GraphColoring.Graph
         public void AddVertex(string userName)
         {
             GetIdentifier(userName);
-        }
-
-        /// <summary>
-        /// Vytvoří vrchol s defaultním jménem
-        /// Používá se pouze u vrcholů, které nemají hrany => Ruční vytvoření
-        /// </summary>
-        public void AddVertex()
-        {
-            Vertex vertex = new Vertex();
-            AddVertexToAdjacencyList(vertex);
-            mapping.Add(vertex.GetUserName(), vertex.GetIdentifier());
         }
         #endregion
     }

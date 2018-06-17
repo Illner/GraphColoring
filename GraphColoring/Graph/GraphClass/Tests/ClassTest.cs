@@ -11,22 +11,23 @@ namespace GraphColoring.Graph.GraphClass.Tests
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
-        private List<Graph> graphComponentList;
+        private Dictionary<ClassEnum, string> testsDictionary;
 
         // Paths
-        string pathGraphClass1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass1.graph";
-        string pathGraphClass2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass2.graph";
-        string pathGraphClass3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass3.graph";
-        string pathGraphClass4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass4.graph";
-        string pathGraphClass5 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass5.graph";
-        string pathGraphClass6 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass6.graph";
-        string pathGraphClass7 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass7.graph";
-        string pathGraphClass8 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass8.graph";
+        private string testPathGraphClass = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphClass.txt";
+        private string graphClass1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass1.graph";
+        private string graphClass2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass2.graph";
+        private string graphClass3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass3.graph";
+        private string graphClass4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass4.graph";
+        private string graphClass5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass5.graph";
+        private string graphClass6Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass6.graph";
+        private string graphClass7Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass7.graph";
+        private string graphClass8Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass8.graph";
         #endregion
 
         // Enum
         #region
-        public enum GraphEnum
+        public enum ClassEnum
         {
             graphClass1,
             graphClass2,
@@ -44,6 +45,19 @@ namespace GraphColoring.Graph.GraphClass.Tests
         public ClassTest()
         {
             stringBuilder = new StringBuilder();
+
+            // Fill testsDictionary
+            testsDictionary = new Dictionary<ClassEnum, string>
+            {
+                { ClassEnum.graphClass1, graphClass1Path },
+                { ClassEnum.graphClass2, graphClass2Path },
+                { ClassEnum.graphClass3, graphClass3Path },
+                { ClassEnum.graphClass4, graphClass4Path },
+                { ClassEnum.graphClass5, graphClass5Path },
+                { ClassEnum.graphClass6, graphClass6Path },
+                { ClassEnum.graphClass7, graphClass7Path },
+                { ClassEnum.graphClass8, graphClass8Path }
+            };
         }
         #endregion
 
@@ -57,11 +71,9 @@ namespace GraphColoring.Graph.GraphClass.Tests
         {
             stringBuilder.Clear();
 
-            foreach (GraphEnum graphEnum in Enum.GetValues(typeof(GraphEnum)))
+            foreach (ClassEnum classEnum in testsDictionary.Keys)
             {
-                stringBuilder.AppendLine(graphEnum.ToString());
-
-                Testing(graphEnum);
+                Testing(classEnum);
             }
 
             return stringBuilder;
@@ -72,69 +84,48 @@ namespace GraphColoring.Graph.GraphClass.Tests
         /// </summary>
         /// <param name="graphEnum">daný typ grafu</param>
         /// <returns>Vrátí report</returns>
-        public StringBuilder Test(GraphEnum graphEnum)
+        public StringBuilder Test(ClassEnum classEnum)
         {
             stringBuilder.Clear();
 
-            Testing(graphEnum);
+            Testing(classEnum);
 
             return stringBuilder;
         }
 
-        private void Testing(GraphEnum graphEnum)
+        private void Testing(ClassEnum classEnum)
         {
             try
             {
-                switch (graphEnum)
-                {
-                    case GraphEnum.graphClass1:
-                        testPath = pathGraphClass1;
-                        break;
-                    case GraphEnum.graphClass2:
-                        testPath = pathGraphClass2;
-                        break;
-                    case GraphEnum.graphClass3:
-                        testPath = pathGraphClass3;
-                        break;
-                    case GraphEnum.graphClass4:
-                        testPath = pathGraphClass4;
-                        break;
-                    case GraphEnum.graphClass5:
-                        testPath = pathGraphClass5;
-                        break;
-                    case GraphEnum.graphClass6:
-                        testPath = pathGraphClass6;
-                        break;
-                    case GraphEnum.graphClass7:
-                        testPath = pathGraphClass7;
-                        break;
-                    case GraphEnum.graphClass8:
-                        testPath = pathGraphClass8;
-                        break;
-                    default:
-                        stringBuilder.AppendLine("This graph doesn't exist!");
-                        break;
-                }
+                testPath = testsDictionary[classEnum];
+                
+                reader = new ReaderWriter.Reader(testPath);
+                graph = reader.ReadFile();
 
-                if (testPath != "")
-                {
-                    reader = new ReaderWriter.Reader(testPath);
-                    graph = reader.ReadFile();
+                stringBuilder.AppendLine(classEnum.ToString());
+                stringBuilder.AppendLine("Graph created.");
+                stringBuilder.AppendLine(graph.ToString()); 
 
-                    stringBuilder.AppendLine("Graph created.");
-                    stringBuilder.AppendLine(graph.ToString()); 
+                GraphClass.GraphClassEnum graphClassEnum = GraphClass.GetGraphClass(graph);
 
-                    GraphClass.GraphClassEnum graphClassEnum = GraphClass.GetGraphClass(graph);
-
-                    stringBuilder.AppendLine("Graph class: " + graphClassEnum.ToString());
-                }
-
-                testPath = "";
+                stringBuilder.AppendLine("Graph class: " + graphClassEnum.ToString());
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new MyException.TestsMissingTestException(classEnum.ToString());
             }
             catch (MyException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }
+        }
+        #endregion
+
+        // Property
+        #region
+        public string GetPath()
+        {
+            return testPathGraphClass;
         }
         #endregion
     }

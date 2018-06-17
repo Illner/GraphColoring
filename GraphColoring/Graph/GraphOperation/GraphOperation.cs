@@ -62,7 +62,7 @@ namespace GraphColoring.Graph.GraphOperation
             List<Vertex> neighboursVertexList;
             List<Vertex> allVerticesList = graph.AllVertices();
 
-            graphCopy = new GraphEdgeList(graph.GetCountVertices());
+            graphCopy = new GraphEdgeList(graph.GetGraphProperty().GetCountVertices());
 
             graphCopy.SetName(graph.GetName());
 

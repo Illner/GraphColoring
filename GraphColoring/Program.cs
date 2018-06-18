@@ -15,8 +15,8 @@ namespace GraphColoring
             tests.Test();
            
             /*
-            Graph.GraphModification.Tests.ModificationTest modificationTest = new Graph.GraphModification.Tests.ModificationTest();
-            Console.WriteLine(modificationTest.Test(Graph.GraphModification.Tests.ModificationTest.ModificationEnum.invalid));
+            Graph.GraphOperation.Tests.SubGraphTest subGraphTest = new Graph.GraphOperation.Tests.SubGraphTest();
+            Console.WriteLine(subGraphTest.Test());
             */
             //Tests.Tests tests = new Tests.Tests(true);
             //tests.Test(Tests.Tests.TestEnum.graphSpanningTree);

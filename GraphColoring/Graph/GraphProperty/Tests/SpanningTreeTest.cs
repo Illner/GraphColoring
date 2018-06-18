@@ -16,10 +16,10 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 
         // Paths
         private string testPathGraphSpanningTree = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphSpanningTree.txt";
-        private string graphSpanningTree1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree1.graph";
-        private string graphSpanningTree2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree2.graph";
-        private string graphSpanningTree3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree3.graph";
-        private string graphSpanningTree4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\SpanningTree\graphSpanningTree4.graph";
+        private string graphSpanningTree1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SpanningTree\graphSpanningTree1.graph";
+        private string graphSpanningTree2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SpanningTree\graphSpanningTree2.graph";
+        private string graphSpanningTree3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SpanningTree\graphSpanningTree3.graph";
+        private string graphSpanningTree4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SpanningTree\graphSpanningTree4.graph";
         #endregion
 
         // Enum

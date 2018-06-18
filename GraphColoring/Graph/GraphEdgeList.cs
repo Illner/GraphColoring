@@ -55,9 +55,7 @@ namespace GraphColoring.Graph
         /// <returns></returns>
         private int GetIdentifier(string userNameVertex)
         {
-            int identifierVertex;
-
-            if (mapping.TryGetValue(userNameVertex, out identifierVertex))
+            if (mapping.TryGetValue(userNameVertex, out int identifierVertex))
             {
                 return identifierVertex;
             }

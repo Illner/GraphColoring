@@ -52,6 +52,9 @@
     <Compile Include="Graph\GraphModification\GraphModification.cs" />
     <Compile Include="Graph\GraphModification\Tests\ModificationTest.cs" />
     <Compile Include="Graph\GraphOperation\GraphOperation.cs" />
+    <Compile Include="Graph\GraphOperation\Tests\ComplementTest.cs" />
+    <Compile Include="Graph\GraphOperation\Tests\CopyTest.cs" />
+    <Compile Include="Graph\GraphOperation\Tests\SubGraphTest.cs" />
     <Compile Include="Graph\GraphProperty\Component.cs" />
     <Compile Include="Graph\GraphProperty\Cycle.cs" />
     <Compile Include="Graph\GraphProperty\EulerianGraphEnum.cs" />

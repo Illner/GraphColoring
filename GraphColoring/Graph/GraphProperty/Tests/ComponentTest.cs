@@ -17,11 +17,11 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 
         // Paths
         private string testPathGraphComponent = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphComponent.txt";
-        private string graphComponent1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent1.graph";
-        private string graphComponent2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent2.graph";
-        private string graphComponent3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent3.graph";
-        private string graphComponent4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent4.graph";
-        private string graphComponent5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Component\graphComponent5.graph";
+        private string graphComponent1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent1.graph";
+        private string graphComponent2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent2.graph";
+        private string graphComponent3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent3.graph";
+        private string graphComponent4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent4.graph";
+        private string graphComponent5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent5.graph";
         #endregion
 
         // Enum

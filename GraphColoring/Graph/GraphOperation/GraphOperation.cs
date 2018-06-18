@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.Graph.GraphOperation
 {
@@ -17,9 +16,39 @@ namespace GraphColoring.Graph.GraphOperation
         /// <returns>komplementární graf</returns>
         public static Graph ComplementGraph(Graph graph)
         {
-            // TODO ComplementGraph
+            // Variable
+            GraphEdgeList complementGraph;
+            List<Vertex> vertexList;
+            List<Vertex> neighboursList;
+            List<Vertex> intersectionVertexAndNeighboursList;
 
-            return null;
+            complementGraph = new GraphEdgeList(graph.GetRealCountVertices());
+            complementGraph.SetName("Complement graph - " + graph.GetName());
+            vertexList = graph.AllVertices();
+            
+            // Add edges
+            foreach(Vertex vertex in vertexList)
+            {
+                neighboursList = graph.Neighbours(vertex);
+                neighboursList.Add(vertex);
+
+                intersectionVertexAndNeighboursList = vertexList.FindAll(v => !neighboursList.Contains(v)).ToList();
+                
+                if (intersectionVertexAndNeighboursList.Count == 0)
+                {
+                    complementGraph.AddVertex(vertex.GetUserName());
+                    continue;
+                }
+                
+                foreach (Vertex neighbour in intersectionVertexAndNeighboursList)
+                {
+                    complementGraph.AddEdge(vertex.GetUserName(), neighbour.GetUserName());
+                }
+            }
+            
+            complementGraph.InitializeGraph();
+
+            return complementGraph;
         }
 
         /// <summary>
@@ -37,13 +66,37 @@ namespace GraphColoring.Graph.GraphOperation
         /// <summary>
         /// Vrátí podgraf grafu
         /// </summary>
+        /// <param name="graph">graf, ze kterého chceme vytvořit podgraf<</param>
         /// <param name="vertexList">vrcholy, které má graf podgraf obsahovat</param>
         /// <returns>podgraf</returns>
-        public static Graph SubGraph(List<Vertex> vertexList)
+        public static Graph SubGraph(Graph graph, List<Vertex> vertexList)
         {
-            // TODO SubGraph
+            // Variable
+            GraphEdgeList subGraph;
+            List<Vertex> neighboursList;
 
-            return null;
+            subGraph = new GraphEdgeList(vertexList.Count);
+            subGraph.SetName("Subgraph - " + graph.GetName());
+
+            foreach(Vertex vertex in vertexList)
+            {
+                neighboursList = graph.Neighbours(vertex).Intersect(vertexList).ToList();
+
+                if (neighboursList.Count == 0)
+                {
+                    subGraph.AddVertex(vertex.GetUserName());
+                    continue;
+                }
+
+                foreach(Vertex neighbour in neighboursList)
+                {
+                    subGraph.AddEdge(vertex.GetUserName(), neighbour.GetUserName());
+                }
+            }
+
+            subGraph.InitializeGraph();
+
+            return subGraph;
         }
 
         /// <summary>

@@ -147,6 +147,36 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
+        /// Expanduje daný vrchol v grafu.
+        /// Daný vrchol se rozdělí na dva vrcholy. Dva nově vzniklé vrcholy budou sousedit se všemi sousedy původního vrcholu.
+        /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
+        /// </summary>
+        /// <param name="vertex">vrchol, který chceme expandovat</param>
+        public void VertexExpansion(Vertex vertex)
+        {
+            if (!ExistsVertex(vertex))
+                throw new MyException.GraphVertexDoesntExistException();
+
+            // Variable
+            Vertex vertex1, vertex2;
+            List<Vertex> neighboursList;
+
+            neighboursList = Neighbours(vertex);
+
+            vertex1 = new Vertex(vertex.GetUserName());
+            vertex2 = new Vertex(vertex.GetUserName());
+            VertexDelete(vertex);
+            VertexAdd(vertex1);
+            VertexAdd(vertex2);
+
+            foreach(Vertex neighbour in neighboursList)
+            {
+                EdgeAdd(new Edge(vertex1, neighbour));
+                EdgeAdd(new Edge(vertex2, neighbour));
+            }
+        }    
+        
+        /// <summary>
         /// Přidá hranu do grafu
         /// Pokud hrana v grafu již existuje, vyvolá se výjimka GraphEdgeAlreadyExistsException
         /// </summary>

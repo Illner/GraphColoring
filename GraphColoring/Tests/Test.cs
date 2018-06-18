@@ -26,6 +26,9 @@ namespace GraphColoring.Tests
         Graph.GraphClass.Tests.ClassTest graphClassTest = new Graph.GraphClass.Tests.ClassTest();
         Graph.GraphProperty.Tests.SpanningTreeTest graphSpanningTreeTest = new Graph.GraphProperty.Tests.SpanningTreeTest();
         Graph.GraphModification.Tests.ModificationTest graphModificationTest = new Graph.GraphModification.Tests.ModificationTest();
+        Graph.GraphOperation.Tests.ComplementTest graphComplementTest = new Graph.GraphOperation.Tests.ComplementTest();
+        Graph.GraphOperation.Tests.CopyTest graphCopyTest = new Graph.GraphOperation.Tests.CopyTest();
+        Graph.GraphOperation.Tests.SubGraphTest subGraphTest = new Graph.GraphOperation.Tests.SubGraphTest();
         #endregion
 
         // Enum
@@ -40,7 +43,10 @@ namespace GraphColoring.Tests
             graphCycle,
             graphClass,
             graphSpanningTree,
-            graphModification
+            graphModification,
+            graphComplement,
+            graphCopy,
+            graphSubGraph
         }
         #endregion
 
@@ -66,7 +72,10 @@ namespace GraphColoring.Tests
                 { TestEnum.graphCycle, graphCycleTest },
                 { TestEnum.graphClass, graphClassTest },
                 { TestEnum.graphSpanningTree, graphSpanningTreeTest },
-                { TestEnum.graphModification, graphModificationTest }
+                { TestEnum.graphModification, graphModificationTest },
+                { TestEnum.graphComplement, graphComplementTest },
+                { TestEnum.graphCopy, graphCopyTest },
+                { TestEnum.graphSubGraph, subGraphTest }
             };
         }
         #endregion

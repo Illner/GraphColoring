@@ -174,6 +174,18 @@ namespace GraphColoring.Graph.GraphModification.Tests
             graph.EdgeAdd(new Edge(vertexList.First(), vertexList.Last()));
 
             graph.EdgeContract(new Edge(vertexList.First(), vertexList.Last()));
+            vertexList = graph.AllVertices();
+
+            graph.VertexExpansion(vertexList.First());
+            vertexList = graph.AllVertices();
+
+            graph.VertexExpansion(vertexList.First());
+            vertexList = graph.AllVertices();
+            graph.VertexAdd(new Vertex());
+            vertexList = graph.AllVertices();
+
+            graph.EdgeAdd(new Edge(vertexList.First(), vertexList.Last()));
+            graph.VertexExpansion(vertexList.First());
         }
 
         private void Invalid(Graph graph)
@@ -208,6 +220,12 @@ namespace GraphColoring.Graph.GraphModification.Tests
             catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
             stringBuilder.AppendLine("Invalid vertex degree");
             try { graph.VertexSuppression(vertexNot2DegreeList.First()); }
+            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+
+            // Vertex expansion
+            stringBuilder.AppendLine("Vertex expansion");
+            stringBuilder.AppendLine("Vertex doesn't exist");
+            try { graph.VertexExpansion(new Vertex()); }
             catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Edge add

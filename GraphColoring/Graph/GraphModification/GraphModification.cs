@@ -163,8 +163,8 @@ namespace GraphColoring.Graph
 
             neighboursList = Neighbours(vertex);
 
-            vertex1 = new Vertex(vertex.GetUserName());
-            vertex2 = new Vertex(vertex.GetUserName());
+            vertex1 = new Vertex(vertex.GetUserName() + " (1)");
+            vertex2 = new Vertex(vertex.GetUserName() + " (2)");
             VertexDelete(vertex);
             VertexAdd(vertex1);
             VertexAdd(vertex2);
@@ -174,6 +174,8 @@ namespace GraphColoring.Graph
                 EdgeAdd(new Edge(vertex1, neighbour));
                 EdgeAdd(new Edge(vertex2, neighbour));
             }
+
+            EdgeAdd(new Edge(vertex1, vertex2));
         }    
         
         /// <summary>

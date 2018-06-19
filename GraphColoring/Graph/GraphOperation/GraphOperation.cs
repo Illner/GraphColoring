@@ -58,9 +58,73 @@ namespace GraphColoring.Graph.GraphOperation
         /// <returns>line graf</returns>
         public static Graph LineGraph(Graph graph)
         {
-            // TODO LineGraph
+            // Variable
+            int idVertex1, idVertex2;
+            string idNewVertex, userNameNewVertex;
+            string userNameVertex1, userNameVertex2;
+            GraphEdgeList lineGraph;
+            List<Vertex> vertexList;
+            List<Vertex> neighboursList;
+            Dictionary<string, Vertex> vertexMap;
+            List<Vertex> neighboursNewList;
 
-            return null;
+            lineGraph = new GraphEdgeList(graph.GetGraphProperty().GetCountEdges());
+            lineGraph.SetName("Line graph - " + graph.GetName());
+
+            vertexMap = new Dictionary<string, Vertex>();
+            vertexList = graph.AllVertices();
+
+            foreach (Vertex vertex in vertexList)
+            {
+                idVertex1 = vertex.GetIdentifier();
+                userNameVertex1 = vertex.GetUserName();
+                neighboursList = graph.Neighbours(vertex);
+
+                neighboursNewList = new List<Vertex>();
+
+                foreach (Vertex neighbour in neighboursList)
+                {
+                    idVertex2 = neighbour.GetIdentifier();
+                    userNameVertex2 = neighbour.GetUserName();
+
+                    if (idVertex1 < idVertex2)
+                    {
+                        idNewVertex = idVertex1.ToString() + idVertex2.ToString();
+                        userNameNewVertex = userNameVertex1 + userNameVertex2;
+                    }
+                    else
+                    {
+                        idNewVertex = idVertex2.ToString() + idVertex1.ToString();
+                        userNameNewVertex = userNameVertex2 + userNameVertex1;
+                    }
+
+                    if (!vertexMap.TryGetValue(idNewVertex, out Vertex newVertex))
+                    {
+                        newVertex = new Vertex(userNameNewVertex);
+                        vertexMap.Add(idNewVertex, newVertex);
+                    }
+
+                    neighboursNewList.Add(newVertex);
+                }
+                
+                if (neighboursList.Count == 1)
+                {
+                    lineGraph.AddVertex(neighboursNewList.First().GetUserName());
+                    continue;
+                }
+
+                for (int i = 0; i < neighboursNewList.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < neighboursNewList.Count; j++)
+                    {
+                        lineGraph.AddEdge(neighboursNewList[i].GetUserName(), neighboursNewList[j].GetUserName());
+                    }
+                }
+            }
+
+            lineGraph.InitializeGraph();
+
+            return lineGraph;
         }
 
         /// <summary>

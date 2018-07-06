@@ -21,12 +21,12 @@ namespace GraphColoring.Graph
         /// graphClass - Třída grafu - GraphClassEnum
         /// </summary>
         private string name;
-        private char newLine;
+        protected char newLine;
         private bool isInitialized;
         private int realCountVertices;
-        private Dictionary<int, Vertex> mapping;
-        private GraphProperty.GraphProperty graphProperty;
-        private Dictionary<Vertex, List<Vertex>> adjacencyList;
+        protected Dictionary<int, Vertex> mapping;
+        protected GraphProperty.GraphProperty graphProperty;
+        protected Dictionary<Vertex, List<Vertex>> adjacencyList;
         private bool canDeIncreaseCountVertices, canDeIncreaseCountEdges;
         private GraphClass.GraphClass.GraphClassEnum graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         #endregion

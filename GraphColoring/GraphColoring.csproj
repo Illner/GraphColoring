@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColoredGraph\ColoredGraph.cs" />
+    <Compile Include="Graph\VertexExtended.cs" />
     <Compile Include="Graph\Arc.cs" />
     <Compile Include="Graph\Edge.cs" />
     <Compile Include="Graph\GraphAdjacencyMatrix.cs" />

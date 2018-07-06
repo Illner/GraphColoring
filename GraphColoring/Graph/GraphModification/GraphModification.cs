@@ -19,11 +19,16 @@ namespace GraphColoring.Graph
             if (ExistsVertex(vertex))
                 throw new MyException.GraphVertexAlreadyExistsException();
 
+            VertexExtended vertexExtended = new VertexExtended(vertex.GetIdentifier());
+            vertexExtended.SetColor(vertex.GetColor());
+            vertexExtended.SetUserName(vertex.GetUserName());
+
             SetCanDeIncreaseCountVertices(true);
             GetGraphProperty().IncrementCountVertices();
             SetCanDeIncreaseCountVertices(false);
 
-            AddVertexToAdjacencyList(vertex);
+            AddVertexToAdjacencyList(vertexExtended);
+            vertex = vertexExtended;
         }
 
         /// <summary>
@@ -42,18 +47,18 @@ namespace GraphColoring.Graph
             int count = 0;
             HashSet<Vertex> removeVertexList = new HashSet<Vertex>();
 
-            adjacencyList.Remove(removeVertex);
+            adjacencyList.Remove(ConvertVertexToVertexExtended(removeVertex));
 
-            foreach (List<Vertex> vertexList in adjacencyList.Values)
+            foreach (List<VertexExtended> vertexExtendedList in adjacencyList.Values)
             {
-                foreach (Vertex vertex in vertexList)
+                foreach (VertexExtended vertexExtended in vertexExtendedList)
                 {
-                    if (vertex.Equals(removeVertex))
-                        removeVertexList.Add(vertex);
+                    if (vertexExtended.Equals(removeVertex))
+                        removeVertexList.Add(vertexExtended);
                 }
                 count += removeVertexList.Count;
 
-                vertexList.RemoveAll(x => removeVertexList.Contains(x));
+                vertexExtendedList.RemoveAll(x => removeVertexList.Contains(x));
                 removeVertexList.Clear();
             }
 
@@ -202,11 +207,11 @@ namespace GraphColoring.Graph
                 throw new MyException.GraphEdgeDoesntExistException();
 
             // Variable
-            adjacencyList.TryGetValue(edge.GetVertex1(), out List<Vertex> neighbooursList);
-            neighbooursList.Remove(edge.GetVertex2());
+            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex1()), out List<VertexExtended> neighbooursList);
+            neighbooursList.Remove(ConvertVertexToVertexExtended(edge.GetVertex2()));
 
-            adjacencyList.TryGetValue(edge.GetVertex2(), out neighbooursList);
-            neighbooursList.Remove(edge.GetVertex1());
+            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex2()), out neighbooursList);
+            neighbooursList.Remove(ConvertVertexToVertexExtended(edge.GetVertex1()));
 
             SetCanDeIncreaseCountEdges(true);
             GetGraphProperty().DecrementCountEdges();

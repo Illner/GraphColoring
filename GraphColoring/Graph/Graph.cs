@@ -24,9 +24,9 @@ namespace GraphColoring.Graph
         protected char newLine;
         private bool isInitialized;
         private int realCountVertices;
-        protected Dictionary<int, Vertex> mapping;
+        protected Dictionary<int, VertexExtended> mapping;
         protected GraphProperty.GraphProperty graphProperty;
-        protected Dictionary<Vertex, List<Vertex>> adjacencyList;
+        protected Dictionary<VertexExtended, List<VertexExtended>> adjacencyList;
         private bool canDeIncreaseCountVertices, canDeIncreaseCountEdges;
         private GraphClass.GraphClass.GraphClassEnum graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         #endregion
@@ -41,8 +41,8 @@ namespace GraphColoring.Graph
         {
             graphProperty = new GraphProperty.GraphProperty(this, countVertices);
 
-            adjacencyList = new Dictionary<Vertex, List<Vertex>>();
-            mapping = new Dictionary<int, Vertex>();
+            adjacencyList = new Dictionary<VertexExtended, List<VertexExtended>>();
+            mapping = new Dictionary<int, VertexExtended>();
 
             SetName("My graph");
             newLine = ReaderWriter.ReaderWriter.GetNewLine();
@@ -55,11 +55,11 @@ namespace GraphColoring.Graph
         /// Přidá do AdjacencyList nový vrchol s prázdným listem hran
         /// Pokud countVertices je menší než realCountVertices, tak vrátí vyjímku GraphInvalidCountVertices
         /// </summary>
-        /// <param name="vertex">vrchol, který chceme přidat</param>
-        protected void AddVertexToAdjacencyList(Vertex vertex)
+        /// <param name="vertexExtended">vrchol, který chceme přidat</param>
+        protected void AddVertexToAdjacencyList(VertexExtended vertexExtended)
         {
-            adjacencyList.Add(vertex, new List<Vertex>());
-            mapping.Add(vertex.GetIdentifier(), vertex);
+            adjacencyList.Add(vertexExtended, new List<VertexExtended>());
+            mapping.Add(vertexExtended.GetIdentifier(), vertexExtended);
 
             IncrementRealCountVertices();
 
@@ -77,7 +77,6 @@ namespace GraphColoring.Graph
         protected void AddEdgeToAdjacencyList(Edge edge)
         {
             // Variable
-            List<Vertex> adjacencyListVertex;
             Vertex vertex;
             Vertex vertex1 = edge.GetVertex1();
             Vertex vertex2 = edge.GetVertex2();
@@ -85,14 +84,14 @@ namespace GraphColoring.Graph
             // Symmetry
             for (int i = 0; i < 2; i++)
             {
-                if (!adjacencyList.TryGetValue(vertex1, out adjacencyListVertex))
+                if (!adjacencyList.TryGetValue(ConvertVertexToVertexExtended(vertex1), out List<VertexExtended> adjacencyListVertexExtended))
                     throw new MyException.GraphVertexDoesntExistException();
 
-                if (adjacencyListVertex.Contains(vertex2))
+                if (adjacencyListVertexExtended.Contains(ConvertVertexToVertexExtended(vertex2)))
                     return;
                     // throw new MyException.GraphDupliciteEdge();
 
-                adjacencyListVertex.Add(vertex2);
+                adjacencyListVertexExtended.Add(ConvertVertexToVertexExtended(vertex2));
 
                 // Swap variables
                 vertex = vertex1;
@@ -110,15 +109,12 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="identifier">identifikátor vrcholu</param>
         /// <returns>vrchol s daným identifikátorem</returns>
-        protected Vertex GetVertex(int identifier)
+        protected VertexExtended GetVertex(int identifier)
         {
-            // Variable
-            Vertex vertex;
-
-            if (!mapping.TryGetValue(identifier, out vertex))
+            if (!mapping.TryGetValue(identifier, out VertexExtended vertexExtended))
                 throw new MyException.GraphVertexDoesntExistException();
 
-            return vertex;
+            return vertexExtended;
         }
 
         /// <summary>
@@ -148,8 +144,8 @@ namespace GraphColoring.Graph
         {
             if (!isInitialized)
                 throw new MyException.GraphNotInitializationException();
-
-            return adjacencyList[vertex];
+            
+            return new List<Vertex> (adjacencyList[ConvertVertexToVertexExtended(vertex)]);
         }
 
         /// <summary>
@@ -214,8 +210,8 @@ namespace GraphColoring.Graph
 
             while (GetRealCountVertices() != graphProperty.GetCountVertices())
             {
-                Vertex vertex = new Vertex();
-                AddVertexToAdjacencyList(vertex);
+                VertexExtended vertexExtended = new VertexExtended();
+                AddVertexToAdjacencyList(vertexExtended);
             }
         }
 
@@ -227,7 +223,14 @@ namespace GraphColoring.Graph
         /// <returns>true, pokud vrchol existuje, jinak false</returns>
         public bool ExistsVertex(Vertex vertex)
         {
-            return adjacencyList.ContainsKey(vertex);
+            try
+            {
+                return adjacencyList.ContainsKey(ConvertVertexToVertexExtended(vertex));
+            }
+            catch (KeyNotFoundException)
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -238,15 +241,25 @@ namespace GraphColoring.Graph
         /// <returns>true, pokud hrana existuje, jinak false</returns>
         public bool ExistsEdge(Edge edge)
         {
-            // Variable
-            List<Vertex> neighboursList;
+            if (!ExistsVertex(edge.GetVertex1()) || !ExistsVertex(edge.GetVertex2()))
+                return false;
 
-            adjacencyList.TryGetValue(edge.GetVertex1(), out neighboursList);
+            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex1()), out List<VertexExtended> neighboursList);
 
             if (neighboursList == null)
                 return false;
 
-            return neighboursList.Contains(edge.GetVertex2());
+            return neighboursList.Contains(ConvertVertexToVertexExtended(edge.GetVertex2()));
+        }
+
+        /// <summary>
+        /// Konvertuje Vertex na VertexExtended
+        /// </summary>
+        /// <param name="vertex">daný Vertex</param>
+        /// <returns>daný VertexExtended</returns>
+        private VertexExtended ConvertVertexToVertexExtended(Vertex vertex)
+        {
+            return mapping[vertex.GetIdentifier()];
         }
 
         override
@@ -260,18 +273,18 @@ namespace GraphColoring.Graph
             stringBuilder.Append("Count of edges: " + graphProperty.GetCountEdges() + newLine);
 
             stringBuilder.Append("Vertices: " + newLine);
-            foreach (Vertex vertex in adjacencyList.Keys)
+            foreach (VertexExtended vertexExtended in adjacencyList.Keys)
             {
-                stringBuilder.Append("-- Identifier: " + vertex.GetIdentifier() + ", userName: " + vertex.GetUserName() + newLine);
+                stringBuilder.Append("-- Identifier: " + vertexExtended.GetIdentifier() + ", userName: " + vertexExtended.GetUserName() + newLine);
             }
 
             stringBuilder.Append("Edges: " + newLine);
-            foreach (KeyValuePair<Vertex, List<Vertex>> record in adjacencyList)
+            foreach (KeyValuePair<VertexExtended, List<VertexExtended>> record in adjacencyList)
             {
                 stringBuilder.Append("-- Vertex: " + record.Key.GetUserName() + " (" + record.Key.GetIdentifier() + ")" + newLine);
-                foreach (Vertex vertex in record.Value)
+                foreach (VertexExtended vertexExtended in record.Value)
                 {
-                    stringBuilder.Append("---- " + vertex.GetUserName() + " (" + vertex.GetIdentifier() + ") " + newLine);
+                    stringBuilder.Append("---- " + vertexExtended.GetUserName() + " (" + vertexExtended.GetIdentifier() + ") " + newLine);
                 }
             }
 

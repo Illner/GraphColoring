@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.ColoredGraph
 {
-    class ColoredGraph : Graph.Graph
+    class ColoredGraph
     {
 
     }

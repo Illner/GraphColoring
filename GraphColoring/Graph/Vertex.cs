@@ -13,7 +13,7 @@ namespace GraphColoring.Graph
         /// counter - určuje identifikátor pro nový vrchol
         /// </summary>
         protected int? color;
-        private int identifier;
+        protected int identifier;
         private string userName;
         private static int counter = 1;
         #endregion
@@ -43,13 +43,20 @@ namespace GraphColoring.Graph
             SetUserName(userName);
             color = null;
         }
+
+        /// <summary>
+        /// Nepoužívat!!!!!!!!!!!!
+        /// Slouží pouze pro VertexExtended(int), aby se neikrementoval counter
+        /// </summary>
+        /// <param name="useless">nic</param>
+        protected Vertex(Boolean useless) { }
         #endregion
 
         // Method
         #region
         public bool Equals(Vertex vertex)
         {
-            if (identifier == vertex.GetIdentifier() && userName == vertex.GetUserName())
+            if (identifier == vertex.GetIdentifier() && userName == vertex.GetUserName() && GetColor() == vertex.GetColor())
                 return true;
 
             return false;
@@ -71,7 +78,7 @@ namespace GraphColoring.Graph
         /// Nastaví identifikátor vrcholu
         /// </summary>
         /// <param name="identifier">nový identifikátor vrcholu</param>
-        private void SetIdentifier(int identifier)
+        protected void SetIdentifier(int identifier)
         {
             this.identifier = identifier;
         }
@@ -89,7 +96,7 @@ namespace GraphColoring.Graph
         /// Nastaví jméno vrcholu, které určil uživatel
         /// </summary>
         /// <param name="userName">nový jméno vrcholu</param>
-        private void SetUserName(string userName)
+        protected void SetUserName(string userName)
         {
             this.userName = userName;
         }

@@ -10,7 +10,7 @@ namespace GraphColoring.Graph
         /// <summary>
         /// mapping - slouží pro snadné nalezení identifikátoru vrcholu na základě userName vrcholu
         /// </summary>
-        private Dictionary<string, int> mapping;
+        private new Dictionary<string, int> mapping;
         #endregion
 
         // Constructor
@@ -60,11 +60,11 @@ namespace GraphColoring.Graph
                 return identifierVertex;
             }
 
-            Vertex vertex = new Vertex(userNameVertex);
-            AddVertexToAdjacencyList(vertex);
-            mapping.Add(userNameVertex, vertex.GetIdentifier());
+            VertexExtended vertexExtended = new VertexExtended(userNameVertex);
+            AddVertexToAdjacencyList(vertexExtended);
+            mapping.Add(userNameVertex, vertexExtended.GetIdentifier());
 
-            return vertex.GetIdentifier();
+            return vertexExtended.GetIdentifier();
         }
 
         /// <summary>

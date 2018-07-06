@@ -81,7 +81,6 @@ namespace GraphColoring.Graph.GraphModification.Tests
             try
             {
                 testPath = testsDictionary[modificationEnum];
-
                 reader = new ReaderWriter.Reader(testPath);
                 graph = reader.ReadFile();
 

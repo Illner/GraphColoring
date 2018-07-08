@@ -14,7 +14,7 @@ namespace GraphColoring.Graph
         public VertexExtended(String userName) : base(userName) { }
         /// <summary>
         /// Vytvoří nový vrchol typu VertexExtended s daným identifikátorem
-        /// Bez userName (null) a bez color (null)
+        /// Bez userName (null) a bez color (0)
         /// Pouze pro GraphModification.VertexAdd !!!!!!!!!!!!!!!!!!!!!!!!!
         /// </summary>
         /// <param name="identifier">Identifikátor vrcholu</param>
@@ -28,11 +28,11 @@ namespace GraphColoring.Graph
         #region
         /// <summary>
         /// Resetuje barvu vrcholu
-        /// Ńastaví color na null
+        /// Nastaví color na 0
         /// </summary>
         public void ResetColor()
         {
-            color = null;
+            color = 0;
         }
         #endregion
 
@@ -42,7 +42,7 @@ namespace GraphColoring.Graph
         /// Nastaví barvu vrcholu
         /// </summary>
         /// <param name="color">barva vrcholu</param>
-        public void SetColor(int? color)
+        public void SetColor(int color)
         {
             this.color = color;
         }

@@ -17,7 +17,7 @@ namespace GraphColoring.Graph
             /// unColoredVertexList - list všech NEobarvených vrcholů grafu
             /// </summary>
             private Graph graph;
-            private Dictionary<int?, HashSet<Vertex>> usedColorsDictionary;
+            private Dictionary<int, HashSet<Vertex>> usedColorsDictionary;
             private HashSet<Vertex> coloredVertexHashSet;
             private HashSet<Vertex> unColoredVertexHashSet;
             #endregion
@@ -29,9 +29,9 @@ namespace GraphColoring.Graph
                 this.graph = graph;
                 coloredVertexHashSet = new HashSet<Vertex>();
                 unColoredVertexHashSet = new HashSet<Vertex>(graph.AllVertices());
-                usedColorsDictionary = new Dictionary<int?, HashSet<Vertex>>()
+                usedColorsDictionary = new Dictionary<int, HashSet<Vertex>>()
                 {
-                    { null, new HashSet<Vertex>(unColoredVertexHashSet) }
+                    { 0, new HashSet<Vertex>(unColoredVertexHashSet) }
                 };
             }
             #endregion
@@ -47,9 +47,9 @@ namespace GraphColoring.Graph
             {
                 // Variable
                 List<Vertex> neighboursList;
-                int? colorVertex = vertex.GetColor();
+                int colorVertex = vertex.GetColor();
 
-                if (colorVertex == null)
+                if (colorVertex == 0)
                     return true;
 
                 neighboursList = graph.Neighbours(vertex);
@@ -97,12 +97,12 @@ namespace GraphColoring.Graph
 
             /// <summary>
             /// Vrátí obarvení daného vrcholu
-            /// Pokud vrchol není obarven, tak vrátí null
+            /// Pokud vrchol není obarven, tak vrátí 0
             /// Pokud daný vrchol neexistuje v grafu, tak vrátí výjimku GraphVertexDoesntExistException
             /// </summary>
             /// <param name="vertex">daný vrchol</param>
             /// <returns>obarvení vrcholu</returns>
-            public int? GetColorVertex(Vertex vertex)
+            public int GetColorVertex(Vertex vertex)
             {
                 VertexExtended vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
 
@@ -133,20 +133,20 @@ namespace GraphColoring.Graph
             public int GreedyColoring(Vertex vertex)
             {
                 // Variable
-                int? neighbourColor;
+                int neighbourColor;
                 List<Vertex> neighboursList;
                 List<int> neighboursColorList;
 
                 neighboursList = graph.Neighbours(vertex);
-                neighboursColorList = new List<int>() { -1 };
+                neighboursColorList = new List<int>() { 0 };
 
                 // Get neighbours colors
                 foreach(Vertex neighbour in neighboursList)
                 {
                     neighbourColor = neighbour.GetColor();
 
-                    if (neighbourColor != null)
-                        neighboursColorList.Add((int)neighbourColor);
+                    if (neighbourColor != 0)
+                        neighboursColorList.Add(neighbourColor);
                 }
 
                 neighboursColorList.Sort();
@@ -166,14 +166,14 @@ namespace GraphColoring.Graph
             {
                 VertexExtended vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
 
-                if (vertexExtended == null)
+                if (vertexExtended.GetColor() == 0)
                     return false;
 
                 return true;
             }
 
             /// <summary>
-            /// Resetne obarvení pro daný vrchol (barvu nastaví na null)
+            /// Resetne obarvení pro daný vrchol (barvu nastaví na 0)
             /// Pokud daný vrchol neexistuje v grafu, tak vrátí výjimku GraphVertexDoesntExistException
             /// </summary>
             /// <param name="vertex">daný vrchol</param>
@@ -185,7 +185,7 @@ namespace GraphColoring.Graph
                     return;
                 
                 vertexExtended.ResetColor();
-                ChangeVertexInHashSets(vertex, null);
+                ChangeVertexInHashSets(vertex, 0);
             }
 
             /// <summary>
@@ -194,11 +194,11 @@ namespace GraphColoring.Graph
             /// </summary>
             /// <param name="vertex">daný vrchol</param>
             /// <param name="color">dané obarvení</param>
-            private void ChangeVertexInHashSets(Vertex vertex, int ?color)
+            private void ChangeVertexInHashSets(Vertex vertex, int color)
             {
                 // Variable
                 VertexExtended vertexExtended;
-                int? vertexColor;
+                int vertexColor;
 
                 vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
                 vertexColor = vertex.GetColor();
@@ -207,14 +207,14 @@ namespace GraphColoring.Graph
                     return;
 
                 // coloredVertexHashSet, unColoredVertexHashSet
-                if (color == null)
+                if (color == 0)
                 {
                     coloredVertexHashSet.Remove(vertex);
                     unColoredVertexHashSet.Add(vertex);
                 }
                 else
                 {
-                    if (vertexColor == null)
+                    if (vertexColor == 0)
                     {
                         unColoredVertexHashSet.Remove(vertex);
                         coloredVertexHashSet.Add(vertex);
@@ -257,7 +257,7 @@ namespace GraphColoring.Graph
             /// <returns>počet barev</returns>
             public int GetCountUsedColors()
             {
-                return usedColorsDictionary.Count();
+                return usedColorsDictionary.Count() - 1;
             }
 
             /// <summary>

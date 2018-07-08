@@ -42,7 +42,6 @@ namespace GraphColoring.Graph
         public Graph(int countVertices)
         {
             graphProperty = new GraphProperty.GraphProperty(this, countVertices);
-            coloredGraph = new ColoredGgraph(this);
 
             adjacencyList = new Dictionary<VertexExtended, List<VertexExtended>>();
             mapping = new Dictionary<int, VertexExtended>();
@@ -134,6 +133,7 @@ namespace GraphColoring.Graph
             isInitialized = true;
 
             realCountVertices = GetGraphProperty().GetCountVertices();
+            coloredGraph = new ColoredGgraph(this);
         }
 
 
@@ -230,7 +230,7 @@ namespace GraphColoring.Graph
             {
                 return adjacencyList.ContainsKey(ConvertVertexToVertexExtended(vertex));
             }
-            catch (KeyNotFoundException)
+            catch (MyException.GraphVertexDoesntExistException)
             {
                 return false;
             }

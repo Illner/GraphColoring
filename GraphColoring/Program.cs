@@ -10,10 +10,10 @@ namespace GraphColoring
     {
         static void Main(string[] args) 
         {
-            /*
+            
             Tests.Tests tests = new Tests.Tests(false);
             tests.Test();
-            */
+            
             /*
             Graph.GraphModification.Tests.ModificationTest lineGraphTest = new Graph.GraphModification.Tests.ModificationTest();
             Console.WriteLine(lineGraphTest.Test());

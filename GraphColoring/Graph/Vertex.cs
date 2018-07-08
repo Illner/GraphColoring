@@ -7,12 +7,12 @@ namespace GraphColoring.Graph
         // Variable
         #region
         /// <summary>
-        /// color - barva vrcholu, pokud vrchol nemá přiřazenou barvu, tak color = null
+        /// color - barva vrcholu, pokud vrchol nemá přiřazenou barvu, tak color = 0
         /// identifier - číselný identifikátor vrcholu
         /// userName - označení vrcholu uživatelem -> např. A, Vertex1 apod.
         /// counter - určuje identifikátor pro nový vrchol
         /// </summary>
-        protected int? color;
+        protected int color;
         protected int identifier;
         private string userName;
         private static int counter = 1;
@@ -23,25 +23,25 @@ namespace GraphColoring.Graph
         /// <summary>
         /// Vytvoří vrchol
         /// Jméno vrcholu bude stejné jako jeho identifikátor
-        /// Barva vrcholu bude nastavena na null
+        /// Barva vrcholu bude nastavena na 0
         /// </summary>
         public Vertex()
         {
             SetIdentifier(counter++);
             SetUserName(identifier.ToString());
-            color = null;
+            color = 0;
         }
 
         /// <summary>
         /// Vytvoří vrchol
-        /// Barva vrcholu bude nastavena na null
+        /// Barva vrcholu bude nastavena na 0
         /// </summary>
         /// <param name="userName">Jméno vrcholu, které určil uživatel</param>
         public Vertex(String userName)
         {
             SetIdentifier(counter++);
             SetUserName(userName);
-            color = null;
+            color = 0;
         }
 
         /// <summary>
@@ -103,10 +103,10 @@ namespace GraphColoring.Graph
 
         /// <summary>
         /// Vrátí barvu vrcholu
-        /// Pokud vrchol nemá přiřazenou barvu, tak vrátí null
+        /// Pokud vrchol nemá přiřazenou barvu, tak vrátí 0
         /// </summary>
         /// <returns>barva vrcholu</returns>
-        public int? GetColor()
+        public int GetColor()
         {
             return color;
         }

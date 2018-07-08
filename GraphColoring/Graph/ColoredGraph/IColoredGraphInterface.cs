@@ -8,7 +8,7 @@ namespace GraphColoring.Graph
         // Method
         #region
         void ColorVertex(Vertex vertex, int color);
-        int? GetColorVertex(Vertex vertex);
+        int GetColorVertex(Vertex vertex);
         bool IsVertexColored(Vertex vertex);
         void ResetColorVertex(Vertex vertex);
 

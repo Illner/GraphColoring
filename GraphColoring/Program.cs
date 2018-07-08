@@ -10,10 +10,10 @@ namespace GraphColoring
     {
         static void Main(string[] args) 
         {
-            
+            /*
             Tests.Tests tests = new Tests.Tests(false);
             tests.Test();
-
+            */
             /*
             Graph.GraphModification.Tests.ModificationTest lineGraphTest = new Graph.GraphModification.Tests.ModificationTest();
             Console.WriteLine(lineGraphTest.Test());
@@ -24,11 +24,7 @@ namespace GraphColoring
             ReaderWriter.Reader reader = new ReaderWriter.Reader(@"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\graph.graph");
             Graph.Graph graph = reader.ReadFile();
 
-            Console.WriteLine(graph.ToString());
-
-            Graph.Graph lineGraph = Graph.GraphOperation.GraphOperation.LineGraph(graph);
-
-            Console.WriteLine(lineGraph.ToString());
+            graph.GetColoredGraph().GetUnColoredVertexList();
             */
         }
     }

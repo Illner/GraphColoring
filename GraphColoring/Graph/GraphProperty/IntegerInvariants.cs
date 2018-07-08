@@ -145,7 +145,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void VertexConnectivity()
         {
-            // TODO vertexConnectivity
+            // TODO VertexConnectivity - R1809
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void EdgeConnectivity()
         {
-            // TODO edgeConnectivity
+            // TODO edgeConnectivity - R1809
         }
 
         /// <summary>

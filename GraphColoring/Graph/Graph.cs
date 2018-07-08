@@ -13,6 +13,7 @@ namespace GraphColoring.Graph
         /// name - Jméno daného grafu (implicitně My graph)
         /// isInitialized - informace zda je graf inicializován, tj. byly do něj vloženy hrany
         /// realCountVertices - skutečný počet naalokovaných vrcholů, nikoliv předpokládaný počet vrcholů (parametr konstruktoru)
+        /// coloredGraph - obarvení grafu
         /// mapping - slouží pro snadné nalezení vrcholu na základě identifikátoru
         /// graphProperty - vlastnosti grafu
         /// adjacencyList - seznam sousedů grafu
@@ -24,6 +25,7 @@ namespace GraphColoring.Graph
         protected char newLine;
         private bool isInitialized;
         private int realCountVertices;
+        private ColoredGgraph coloredGraph;
         protected Dictionary<int, VertexExtended> mapping;
         protected GraphProperty.GraphProperty graphProperty;
         protected Dictionary<VertexExtended, List<VertexExtended>> adjacencyList;
@@ -40,6 +42,7 @@ namespace GraphColoring.Graph
         public Graph(int countVertices)
         {
             graphProperty = new GraphProperty.GraphProperty(this, countVertices);
+            coloredGraph = new ColoredGgraph(this);
 
             adjacencyList = new Dictionary<VertexExtended, List<VertexExtended>>();
             mapping = new Dictionary<int, VertexExtended>();
@@ -98,7 +101,7 @@ namespace GraphColoring.Graph
                 vertex1 = vertex2;
                 vertex2 = vertex;
             }
-
+            
             SetCanDeIncreaseCountEdges(true);
             graphProperty.IncrementCountEdges();
             SetCanDeIncreaseCountEdges(false);
@@ -254,12 +257,20 @@ namespace GraphColoring.Graph
 
         /// <summary>
         /// Konvertuje Vertex na VertexExtended
+        /// Pokud daný vrchol neexistuje v grafu, tak vrátí výjimku GraphVertexDoesntExistException
         /// </summary>
         /// <param name="vertex">daný Vertex</param>
         /// <returns>daný VertexExtended</returns>
-        private VertexExtended ConvertVertexToVertexExtended(Vertex vertex)
+        protected VertexExtended ConvertVertexToVertexExtended(Vertex vertex)
         {
-            return mapping[vertex.GetIdentifier()];
+            try
+            {
+                return mapping[vertex.GetIdentifier()];
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new MyException.GraphVertexDoesntExistException();
+            }
         }
 
         override
@@ -391,6 +402,19 @@ namespace GraphColoring.Graph
         private void SetCanDeIncreaseCountEdges(bool value)
         {
             canDeIncreaseCountEdges = value;
+        }
+
+        /// <summary>
+        /// Vrátí referenci na ColoredGraph
+        /// Pokud graf není inicializování, vyvolá se vyjímka GraphWasNotInitializedException
+        /// </summary>
+        /// <returns>referenci na ColoredGraph</returns>
+        public IColoredGraphInterface GetColoredGraph()
+        {
+            if (isInitialized)
+                return coloredGraph;
+
+            throw new MyException.GraphNotInitializationException();
         }
         #endregion
     }

@@ -99,7 +99,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void Matching()
         {
-            // TODO Matching
+            // TODO Matching - R1809
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void CutVertices()
         {
-            // TODO CutVertices
+            // TODO CutVertices - R1809
         }
 
         /// <summary>
@@ -117,10 +117,10 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         private void Bridges()
         {
-            // TODO Bridges
+            // TODO Bridges - R1809
         }
         #endregion
-            
+
         // Property
         #region
         /// <summary>

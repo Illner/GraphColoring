@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GraphColoring.Graph.GraphOperation
 {
-    class GraphOperation
+    static class GraphOperation
     {
         // Method
         #region

@@ -16,6 +16,9 @@ namespace GraphColoring.Graph
         List<Vertex> CheckValidColor();
         void GreedyColoring(List<Vertex> vertexList);
         int GreedyColoring(Vertex vertex);
+        bool InicializeColoredGraph();
+        void DeinicializationColoredGraph();
+        void ResetColors();
         #endregion
 
         // Property
@@ -23,6 +26,7 @@ namespace GraphColoring.Graph
         int GetCountUsedColors();
         List<Vertex> GetColoredVertexList();
         List<Vertex> GetUnColoredVertexList();
+        bool GetIsInicializedColoredGraph();
         #endregion
     }
 }

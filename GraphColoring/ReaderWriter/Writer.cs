@@ -20,7 +20,7 @@ namespace GraphColoring.ReaderWriter
 
         // Method
         #region
-        // HOLD ON GraphColor
+        // HOLD ON GraphColor, ColoringAlgorithm
         #endregion
 
         // Property

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Graph\ColoredGraph\ColoredGraph.cs" />
     <Compile Include="Graph\ColoredGraph\IColoredGraphInterface.cs" />
+    <Compile Include="Graph\ColoredGraph\Tests\ColoredGraphTest.cs" />
     <Compile Include="Graph\VertexExtended.cs" />
     <Compile Include="Graph\Arc.cs" />
     <Compile Include="Graph\Edge.cs" />

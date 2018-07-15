@@ -196,4 +196,30 @@ namespace GraphColoring.MyException
 
         public GraphInvalidDegreeVertex(string message, Exception inner) : base(message, inner) { }
     }
+
+    /// <summary>
+    /// (Colored) Graph exception
+    /// Snaha provést nějakou operaci, která požaduje inicializovaný obarvený graf
+    /// </summary>
+    class ColoredGraphNotInitializationException : GraphException
+    {
+        public ColoredGraphNotInitializationException() { }
+
+        public ColoredGraphNotInitializationException(string message) : base(message) { }
+
+        public ColoredGraphNotInitializationException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// (Colored) Graph Exception
+    /// Graf již byl inicializován a je snaha o druhou inicializaci
+    /// </summary>
+    class ColoredGraphAlreadyInitializedException : GraphException
+    {
+        public ColoredGraphAlreadyInitializedException() { }
+
+        public ColoredGraphAlreadyInitializedException(string message) : base(message) { }
+
+        public ColoredGraphAlreadyInitializedException(string message, Exception inner) : base(message, inner) { }
+    }
 }

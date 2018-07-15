@@ -6,6 +6,7 @@ namespace GraphColoring.Graph
     {
         // Variable
         #region
+        private static int defaultColor = 0;
         #endregion
 
         // Constructor
@@ -32,7 +33,7 @@ namespace GraphColoring.Graph
         /// </summary>
         public void ResetColor()
         {
-            color = 0;
+            color = GetDefaultColor();
         }
         #endregion
 
@@ -54,6 +55,15 @@ namespace GraphColoring.Graph
         new public void SetUserName(string userName)
         {
             base.SetUserName(userName);
+        }
+
+        /// <summary>
+        /// Vrátí defaultní barvu. Zpravidla 0.
+        /// </summary>
+        /// <returns>defaultní barvu</returns>
+        public static int GetDefaultColor()
+        {
+            return defaultColor;
         }
         #endregion
     }

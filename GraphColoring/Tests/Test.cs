@@ -30,6 +30,7 @@ namespace GraphColoring.Tests
         Graph.GraphOperation.Tests.CopyTest graphCopyTest = new Graph.GraphOperation.Tests.CopyTest();
         Graph.GraphOperation.Tests.SubGraphTest subGraphTest = new Graph.GraphOperation.Tests.SubGraphTest();
         Graph.GraphOperation.Tests.LineGraphTest lineGraphTest = new Graph.GraphOperation.Tests.LineGraphTest();
+        Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
         #endregion
 
         // Enum
@@ -48,7 +49,8 @@ namespace GraphColoring.Tests
             graphComplement,
             graphCopy,
             graphSubGraph,
-            graphLineGraph
+            graphLineGraph,
+            coloredGraph
         }
         #endregion
 
@@ -78,7 +80,8 @@ namespace GraphColoring.Tests
                 { TestEnum.graphComplement, graphComplementTest },
                 { TestEnum.graphCopy, graphCopyTest },
                 { TestEnum.graphSubGraph, subGraphTest },
-                { TestEnum.graphLineGraph, lineGraphTest }
+                { TestEnum.graphLineGraph, lineGraphTest },
+                { TestEnum.coloredGraph, coloredGraphTest }
             };
         }
         #endregion

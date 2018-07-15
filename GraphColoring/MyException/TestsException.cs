@@ -27,4 +27,17 @@ namespace GraphColoring.MyException
 
         public TestsMissingTestException(string message, Exception inner) : base(message, inner) { }
     }
+
+    /// <summary>
+    /// Tests exception
+    /// Něco je špatně v testu
+    /// </summary>
+    class SomethingWrongTestException : TestsException
+    {
+        public SomethingWrongTestException() { }
+
+        public SomethingWrongTestException(string message) : base(message) { }
+
+        public SomethingWrongTestException(string message, Exception inner) : base(message, inner) { }
+    }
 }

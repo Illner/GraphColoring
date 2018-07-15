@@ -22,7 +22,6 @@ namespace GraphColoring.Graph
         /// graphClass - Třída grafu - GraphClassEnum
         /// </summary>
         private string name;
-        protected char newLine;
         private bool isInitialized;
         private int realCountVertices;
         private ColoredGgraph coloredGraph;
@@ -47,7 +46,6 @@ namespace GraphColoring.Graph
             mapping = new Dictionary<int, VertexExtended>();
 
             SetName("My graph");
-            newLine = ReaderWriter.ReaderWriter.GetNewLine();
         }
         #endregion
 
@@ -278,24 +276,24 @@ namespace GraphColoring.Graph
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.Append("Name of graph: " + GetName() + newLine);
-            stringBuilder.Append("Count of vertices: " + graphProperty.GetCountVertices() + newLine);
-            stringBuilder.Append("Real count of vertices: " + GetRealCountVertices() + newLine);
-            stringBuilder.Append("Count of edges: " + graphProperty.GetCountEdges() + newLine);
+            stringBuilder.AppendLine("Name of graph: " + GetName());
+            stringBuilder.AppendLine("Count of vertices: " + graphProperty.GetCountVertices());
+            stringBuilder.AppendLine("Real count of vertices: " + GetRealCountVertices());
+            stringBuilder.AppendLine("Count of edges: " + graphProperty.GetCountEdges());
 
-            stringBuilder.Append("Vertices: " + newLine);
+            stringBuilder.AppendLine("Vertices: ");
             foreach (VertexExtended vertexExtended in adjacencyList.Keys)
             {
-                stringBuilder.Append("-- Identifier: " + vertexExtended.GetIdentifier() + ", userName: " + vertexExtended.GetUserName() + newLine);
+                stringBuilder.AppendLine("-- Identifier: " + vertexExtended.GetIdentifier() + ", userName: " + vertexExtended.GetUserName());
             }
 
-            stringBuilder.Append("Edges: " + newLine);
+            stringBuilder.AppendLine("Edges: ");
             foreach (KeyValuePair<VertexExtended, List<VertexExtended>> record in adjacencyList)
             {
-                stringBuilder.Append("-- Vertex: " + record.Key.GetUserName() + " (" + record.Key.GetIdentifier() + ")" + newLine);
+                stringBuilder.AppendLine("-- Vertex: " + record.Key.GetUserName() + " (" + record.Key.GetIdentifier() + ")");
                 foreach (VertexExtended vertexExtended in record.Value)
                 {
-                    stringBuilder.Append("---- " + vertexExtended.GetUserName() + " (" + vertexExtended.GetIdentifier() + ") " + newLine);
+                    stringBuilder.AppendLine("---- " + vertexExtended.GetUserName() + " (" + vertexExtended.GetIdentifier() + ") ");
                 }
             }
 

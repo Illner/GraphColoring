@@ -189,6 +189,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
 
         private void Invalid(Graph graph)
         {
+            // Variable
             List<Vertex> vertexList = graph.AllVertices();
             List<Vertex> vertexNot2DegreeList = new List<Vertex>();
             vertexNot2DegreeList = vertexList.Where(v => graph.CountNeighbours(v) != 2).ToList();

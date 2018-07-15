@@ -10,6 +10,7 @@ namespace GraphColoring.Graph
         #region
         /// <summary>
         /// Přidá vrchol do grafu
+        /// ColoredGraph se deinicializuje
         /// Pokud vrchol již v grafu existuje, vyvolá výjimku GraphVertexAlreadyExistsException
         /// </summary>
         /// <param name="vertex">vrchol, který chceme přidat</param>
@@ -29,10 +30,16 @@ namespace GraphColoring.Graph
 
             AddVertexToAdjacencyList(vertexExtended);
             vertex = vertexExtended;
+
+            // ColoredGraph
+            coloredGraph.AddVertexInHashSets(vertex);
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
         }
 
         /// <summary>
         /// Odstraní vrchol z grafu
+        /// ColoredGraph se deinicializuje
         /// Pokud vrchol neexistuje, vyvolá se výjimka GraphVertexDoesntExistException
         /// Time complexity: O(V + E)
         /// </summary>
@@ -65,8 +72,7 @@ namespace GraphColoring.Graph
             mapping.Remove(removeVertex.GetIdentifier());
 
             DecrementRealCountVertices();
-
-
+            
             SetCanDeIncreaseCountVertices(true);
             GetGraphProperty().DecrementCountVertices();
             SetCanDeIncreaseCountVertices(false);
@@ -74,10 +80,16 @@ namespace GraphColoring.Graph
             SetCanDeIncreaseCountEdges(true);
             GetGraphProperty().DecrementCountEdges(count);
             SetCanDeIncreaseCountEdges(false);
+
+            // ColoredGraph
+            coloredGraph.RemoveVertexInHashSets(removeVertex);
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
         }
 
         /// <summary>
         /// Kontrahuje vrchol v grafu
+        /// ColoredGraph se deinicializuje
         /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
         /// </summary>
         /// <param name="vertex">vrchol, který chceme kontrahovat</param>
@@ -117,18 +129,30 @@ namespace GraphColoring.Graph
 
             // Delete vertices
             foreach (Vertex removeVertex in neighboursList)
+            {
                 VertexDelete(removeVertex);
+
+                // ColoredGraph
+                coloredGraph.RemoveVertexInHashSets(removeVertex);
+            }
 
             // Add vertex
             VertexAdd(newVertex);
+            // ColoredGraph
+            coloredGraph.AddVertexInHashSets(newVertex);
 
             // Add edges
             foreach (Vertex neighbour in neighboursVertexUnionList)
                 EdgeAdd(new Edge(newVertex, neighbour));
+
+            // ColoredGraph
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
         }
 
         /// <summary>
         /// Odstraní vrchol z grafu, kde vrchol je stupne 2
+        /// ColoredGraph se deinicializuje
         /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
         /// Pokud vrchol má jiny stupen nez 2, vyvolá výjimku GraphInvalidDegreeVertex
         /// </summary>
@@ -148,12 +172,20 @@ namespace GraphColoring.Graph
             vertex2 = Neighbours(vertex).Last();
 
             VertexDelete(vertex);
+            // ColoredGraph
+            coloredGraph.RemoveVertexInHashSets(vertex);
+
             EdgeAdd(new Edge(vertex1, vertex2));
+
+            // ColoredGraph
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
         }
 
         /// <summary>
         /// Expanduje daný vrchol v grafu.
         /// Daný vrchol se rozdělí na dva vrcholy. Dva nově vzniklé vrcholy budou sousedit se všemi sousedy původního vrcholu.
+        /// ColoredGraph se deinicializuje
         /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
         /// </summary>
         /// <param name="vertex">vrchol, který chceme expandovat</param>
@@ -171,8 +203,14 @@ namespace GraphColoring.Graph
             vertex1 = new Vertex(vertex.GetUserName() + " (1)");
             vertex2 = new Vertex(vertex.GetUserName() + " (2)");
             VertexDelete(vertex);
+            // ColoredGraph
+            coloredGraph.RemoveVertexInHashSets(vertex);
+
             VertexAdd(vertex1);
             VertexAdd(vertex2);
+            // ColoredGraph
+            coloredGraph.AddVertexInHashSets(vertex1);
+            coloredGraph.AddVertexInHashSets(vertex2);
 
             foreach(Vertex neighbour in neighboursList)
             {
@@ -181,10 +219,15 @@ namespace GraphColoring.Graph
             }
 
             EdgeAdd(new Edge(vertex1, vertex2));
-        }    
-        
+
+            // ColoredGraph
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
+        }
+
         /// <summary>
         /// Přidá hranu do grafu
+        /// ColoredGraph se deinicializuje
         /// Pokud hrana v grafu již existuje, vyvolá se výjimka GraphEdgeAlreadyExistsException
         /// </summary>
         /// <param name="edge">hrana, kterou chceme přidat</param>
@@ -194,10 +237,15 @@ namespace GraphColoring.Graph
                 throw new MyException.GraphEdgeAlreadyExistsException();
 
             AddEdgeToAdjacencyList(edge);
+
+            // ColoredGraph
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
         }
 
         /// <summary>
         /// Odstraní hranu v grafu
+        /// ColoredGraph se deinicializuje
         /// Pokud hrana v grafu neexistuje, vyvolá se výjimka GraphEdgeDoesntExistException
         /// </summary>
         /// <param name="edge">hrana, kterou chceme odstranit</param>
@@ -216,10 +264,15 @@ namespace GraphColoring.Graph
             SetCanDeIncreaseCountEdges(true);
             GetGraphProperty().DecrementCountEdges();
             SetCanDeIncreaseCountEdges(false);
+
+            // ColoredGraph
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
         }
 
         /// <summary>
         /// Kontrahuje hranu v grafu
+        /// ColoredGraph se deinicializuje
         /// Pokud hrana v grafu neexistuje, vyvolá se výjimka GraphEdgeDoesntExistException
         /// </summary>
         /// <param name="edge">hrana, kterou chceme kontrahovat</param>
@@ -254,10 +307,15 @@ namespace GraphColoring.Graph
             // Add edges
             foreach (Vertex neighbour in neighboursList)
                 EdgeAdd(new Edge(newVertex, neighbour));
+
+            // ColoredGraph
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
         }
 
         /// <summary>
         /// Dana hrana se nahradi cestou delky 2
+        /// ColoredGraph se deinicializuje
         /// Pokud hrana v grafu neexistuje, vrátí výjimku GraphEdgeDoesntExistException
         /// </summary>
         /// <param name="edge">daná hrana</param>
@@ -273,6 +331,10 @@ namespace GraphColoring.Graph
             VertexAdd(newVertex);
             EdgeAdd(new Edge(edge.GetVertex1(), newVertex));
             EdgeAdd(new Edge(newVertex, edge.GetVertex2()));
+
+            // ColoredGraph
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                coloredGraph.DeinicializationColoredGraph();
         }
         #endregion
     }

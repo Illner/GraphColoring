@@ -42,6 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithm.cs" />
+    <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithmEnum.cs" />
+    <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\GreedyIndependentSet.cs" />
+    <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmInterface.cs" />
+    <Compile Include="GraphColoringAlgorithm\SaturationLargestFirstSequence\SaturationLargestFirstSequence.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\ConnectedSequential\ConnectedSequential.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\GraphColoringSequenceAlgorithm.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\LargestFirstSequence.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\Optimal\Optimal.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\RandomSequence\RandomSequence.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\SmallestLastSequence.cs" />
     <Compile Include="Graph\ColoredGraph\ColoredGraph.cs" />
     <Compile Include="Graph\ColoredGraph\IColoredGraphInterface.cs" />
     <Compile Include="Graph\ColoredGraph\Tests\ColoredGraphTest.cs" />

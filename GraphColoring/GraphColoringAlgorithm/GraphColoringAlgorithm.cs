@@ -11,8 +11,8 @@ namespace GraphColoring.GraphColoringAlgorithm
         /// graph - daný graf
         /// coloredGraph - pointer na coloredGraf v grafu
         /// </summary>
-        private Graph.Graph graph;
-        private Graph.IColoredGraphInterface coloredGraph;
+        protected Graph.Graph graph;
+        protected Graph.IColoredGraphInterface coloredGraph;
         #endregion
 
         // Constructor
@@ -26,7 +26,10 @@ namespace GraphColoring.GraphColoringAlgorithm
 
         // Method
         #region
-        // Obarví daný graf
+        /// <summary>
+        /// Obarví graf
+        /// Exceptions: AlgorithmInvalidVertexSequence, AlgorithmGraphIsNotColored
+        /// </summary>
         public abstract void Color();
         #endregion
 

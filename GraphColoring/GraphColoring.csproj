@@ -85,6 +85,7 @@
     <Compile Include="Graph\GraphProperty\Tests\SpanningTreeTest.cs" />
     <Compile Include="Graph\IGraphInterface.cs" />
     <Compile Include="Graph\Tests\GraphTest.cs" />
+    <Compile Include="MyException\GraphColoringAlgorithmExceptions.cs" />
     <Compile Include="MyException\GraphException.cs" />
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\GraphRepresentationEnum.cs" />

@@ -23,11 +23,25 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         #region
         /// <summary>
         /// Obarví daný graf
+        /// Pokud nesedí sekvence vrcholů, vrátí AlgorithmInvalidVertexSequence
+        /// Něco se nepovedlo - AlgorithmGraphIsNotColored
         /// </summary>
         override
         public void Color()
         {
-            // TODO Color (GraphColoringSequenceAlgorithm) - R1807
+            if (vertextexSequenceList.Count != graph.GetRealCountVertices())
+                throw new MyException.AlgorithmInvalidVertexSequence();
+
+            // Unique vertices in list
+            if (vertextexSequenceList.Distinct().Count() != vertextexSequenceList.Count())
+                throw new MyException.AlgorithmInvalidVertexSequence();
+
+            coloredGraph.GreedyColoring(vertextexSequenceList);
+
+            bool isColored = coloredGraph.InicializeColoredGraph();
+
+            if (!isColored)
+                throw new MyException.AlgorithmGraphIsNotColored();
         }
 
         /// <summary>

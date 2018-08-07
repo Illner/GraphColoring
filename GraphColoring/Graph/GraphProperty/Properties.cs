@@ -52,8 +52,8 @@ namespace GraphColoring.Graph.GraphProperty
             if (degreeSequence == null)
                 GetDegreeSequence();
             
-            firstDegree = degreeSequence.First();
-            lastDegree = degreeSequence.Last();
+            firstDegree = degreeSequenceInt.First();
+            lastDegree = degreeSequenceInt.Last();
             
             if (firstDegree == lastDegree)
                 isRegular = true;
@@ -76,7 +76,7 @@ namespace GraphColoring.Graph.GraphProperty
             if (degreeSequence == null)
                 DegreeSequence();
 
-            foreach (int degree in degreeSequence)
+            foreach (int degree in degreeSequenceInt)
             {
                 if (degree % 2 == 0)
                     evenDegrees++;

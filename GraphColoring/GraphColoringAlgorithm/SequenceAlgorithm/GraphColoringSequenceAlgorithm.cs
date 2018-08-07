@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
     {
         // Variable
         #region
-        private List<Graph.Vertex> vertextexSequenceList;
+        protected List<Graph.Vertex> vertextexSequenceList;
         #endregion
 
         // Constructor
@@ -29,6 +29,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         override
         public void Color()
         {
+            CreateVertexSequence();
+
             if (vertextexSequenceList.Count != graph.GetRealCountVertices())
                 throw new MyException.AlgorithmInvalidVertexSequence();
 
@@ -48,6 +50,23 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         /// Vytvoří posloupnost vrcholů
         /// </summary>
         protected abstract void CreateVertexSequence();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected void TryChangeColoring()
+        {
+            // TODO TryChangeColoring - R1807
+
+        }
+        #endregion
+
+        // Property
+        #region
+        public List<Graph.Vertex> GetVertextexSequenceList()
+        {
+            return vertextexSequenceList;
+        }
         #endregion
     }
 }

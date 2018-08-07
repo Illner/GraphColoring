@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
 {
-    class RandomSequence : GraphColoringSequenceAlgorithm
+    sealed class RandomSequence : GraphColoringSequenceAlgorithm
     {
-        // Variable
-        #region
-
-        #endregion
-
         // Constructor
         #region
         public RandomSequence(Graph.Graph graph) : base(graph)
@@ -27,7 +22,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
         override
         protected void CreateVertexSequence()
         {
-            // TODO CreateVertexSequence (RandomSequence) - R1807
+            vertextexSequenceList = graph.AllVertices();
+            MyMath.MyMath.FisherYatesShuffle(vertextexSequenceList);
         }
         #endregion
     }

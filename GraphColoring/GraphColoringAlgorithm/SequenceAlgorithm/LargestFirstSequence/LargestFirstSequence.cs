@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
     {
         // Variable
         #region
-
+        private List<Graph.Vertex> degreeSequenceVertexReverse;
         #endregion
 
         // Constructor
@@ -27,7 +27,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         override
         protected void CreateVertexSequence()
         {
-            // TODO CreateVertexSequence (LargestFirstSequence) - R1807
+            degreeSequenceVertexReverse = graph.GetGraphProperty().GetDegreeSequenceVertex();
+            degreeSequenceVertexReverse.Reverse();
+            vertextexSequenceList = degreeSequenceVertexReverse;
         }
         #endregion
     }

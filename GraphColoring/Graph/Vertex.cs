@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace GraphColoring.Graph
 {
@@ -60,6 +61,16 @@ namespace GraphColoring.Graph
                 return true;
 
             return false;
+        }
+
+        override
+        public String ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("Vertex (" + GetIdentifier() + "): " + GetUserName());
+
+            return stringBuilder.ToString();
         }
         #endregion
 

@@ -18,7 +18,9 @@ namespace GraphColoring.Graph.GraphProperty
         /// bridges - mosty grafu
         /// eulerianPath - eulerovský cyklus, nebo eulerovský tah v grafu
         /// </summary>
-        private List<int> degreeSequence;
+        private List<KeyValuePair<Vertex, int>> degreeSequence;
+        private List<Vertex> degreeSequenceVertex;
+        private List<int> degreeSequenceInt;
         private List<Edge> spanningTreeBFS;
         private List<Edge> matching;
         private List<Vertex> cutVertices;
@@ -31,23 +33,27 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Získá skóre grafu
         /// degreeSequence
-        /// Time complexity: O(V)
+        /// Time complexity: O(V^2)
         /// Space complexity: O(V)
         /// </summary>
         private void DegreeSequence()
         {
             // Variable
             List<Vertex> allVerticesList;
+            Dictionary<Vertex, int> degreeSequenceDictionary;
 
-            degreeSequence = new List<int>(GetCountVertices());
+            degreeSequenceDictionary = new Dictionary<Vertex, int>(GetCountVertices());
             allVerticesList = graph.AllVertices();
 
             foreach (Vertex vertex in allVerticesList)
             {
-                degreeSequence.Add(graph.CountNeighbours(vertex));
+                degreeSequenceDictionary.Add(vertex, graph.CountNeighbours(vertex));
             }
+            
+            degreeSequence = (from record in degreeSequenceDictionary orderby record.Value select record).ToList();
 
-            degreeSequence.Sort();
+            degreeSequenceInt = (from record in degreeSequence select record.Value).ToList();
+            degreeSequenceVertex = (from record in degreeSequence select record.Key).ToList();
         }
 
         /// <summary>
@@ -126,13 +132,25 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Vrátí skóre grafu
         /// </summary>
+        /// <returns>skóre grafu jako list Vertexů</returns>
+        public List<Vertex> GetDegreeSequenceVertex()
+        {
+            if (degreeSequence == null)
+                DegreeSequence();
+
+            return degreeSequenceVertex;
+        }
+
+        /// <summary>
+        /// Vrátí skóre grafu
+        /// </summary>
         /// <returns>skóre grafu jako list intů</returns>
         public List<int> GetDegreeSequence()
         {
             if (degreeSequence == null)
                 DegreeSequence();
 
-            return degreeSequence;
+            return degreeSequenceInt;
         }
 
         /// <summary>

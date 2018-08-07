@@ -8,6 +8,13 @@ namespace GraphColoring.MyMath
 {
     static class MyMath
     {
+        // Variable
+        #region
+        private static Random random = new Random();
+        #endregion
+
+        // Method
+        #region
         /// <summary>
         /// Spočítá kombinační číslo
         /// </summary>
@@ -45,5 +52,24 @@ namespace GraphColoring.MyMath
 
             return i * Factorial(i - 1);
         }
+
+        /// <summary>
+        /// Fisher–Yates shuffle
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        public static void FisherYatesShuffle<T>(this IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+        #endregion
     }
 }

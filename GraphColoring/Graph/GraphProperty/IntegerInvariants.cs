@@ -267,7 +267,7 @@ namespace GraphColoring.Graph.GraphProperty
             if (!minimumVertexDegree.HasValue)
             {
                 DegreeSequence();
-                minimumVertexDegree = degreeSequence.First();
+                minimumVertexDegree = degreeSequenceInt.First();
             }
 
             return (int)minimumVertexDegree;
@@ -282,7 +282,7 @@ namespace GraphColoring.Graph.GraphProperty
             if (!maximumVertexDegree.HasValue)
             {
                 DegreeSequence();
-                maximumVertexDegree = degreeSequence.Last();
+                maximumVertexDegree = degreeSequenceInt.Last();
             }
 
             return (int)maximumVertexDegree;

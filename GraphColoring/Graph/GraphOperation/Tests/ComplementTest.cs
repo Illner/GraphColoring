@@ -15,11 +15,11 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private Dictionary<ComplementEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphComplement = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphComplement.txt";
-        private string graphComplement1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\Complement\graphComplement1.graph";
-        private string graphComplement2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\Complement\graphComplement2.graph";
-        private string graphComplement3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\Complement\graphComplement3.graph";
-        private string graphComplement4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\Complement\graphComplement4.graph";
+        private string testPathGraphComplement = @"Testing\Test\GraphComplement.txt";
+        private string graphComplement1 = ComplementResource.graphComplement1;
+        private string graphComplement2 = ComplementResource.graphComplement2;
+        private string graphComplement3 = ComplementResource.graphComplement3;
+        private string graphComplement4 = ComplementResource.graphComplement4;
         #endregion
 
         // Enum
@@ -42,10 +42,10 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<ComplementEnum, string>
             {
-                { ComplementEnum.graphComplement1, graphComplement1Path },
-                { ComplementEnum.graphComplement2, graphComplement2Path },
-                { ComplementEnum.graphComplement3, graphComplement3Path },
-                { ComplementEnum.graphComplement4, graphComplement4Path }
+                { ComplementEnum.graphComplement1, graphComplement1 },
+                { ComplementEnum.graphComplement2, graphComplement2 },
+                { ComplementEnum.graphComplement3, graphComplement3 },
+                { ComplementEnum.graphComplement4, graphComplement4 }
             };
         }
         #endregion
@@ -86,9 +86,9 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         {
             try
             {
-                testPath = testsDictionary[complementEnum];
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[complementEnum]);
 
-                reader = new ReaderWriter.Reader(testPath);
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(complementEnum.ToString());

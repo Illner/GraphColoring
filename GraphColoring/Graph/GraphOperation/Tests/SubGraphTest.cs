@@ -18,13 +18,13 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private Dictionary<SubGraphEnum, Tuple<string,int>> testsDictionary;
 
         // Paths
-        private string testPathGraphSubGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphSubGraph.txt";
-        private string graphSubGraph1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\SubGraph\graphSubGraph1.graph";
-        private string graphSubGraph2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\SubGraph\graphSubGraph1.graph";
-        private string graphSubGraph3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\SubGraph\graphSubGraph2.graph";
-        private string graphSubGraph4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\SubGraph\graphSubGraph3.graph";
-        private string graphSubGraph5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\SubGraph\graphSubGraph4.graph";
-        private string graphSubGraph6Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\SubGraph\graphSubGraph4.graph";
+        private string testPathGraphSubGraph = @"Testing\Test\GraphSubGraph.txt";
+        private string graphSubGraph1 = SubGraphResource.graphSubGraph1;
+        private string graphSubGraph2 = SubGraphResource.graphSubGraph1;
+        private string graphSubGraph3 = SubGraphResource.graphSubGraph2;
+        private string graphSubGraph4 = SubGraphResource.graphSubGraph3;
+        private string graphSubGraph5 = SubGraphResource.graphSubGraph4;
+        private string graphSubGraph6 = SubGraphResource.graphSubGraph4;
         #endregion
 
         // Enum
@@ -49,12 +49,12 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<SubGraphEnum, Tuple<string, int>>
             {
-                { SubGraphEnum.graphSubGraph1, new Tuple<string, int>(graphSubGraph1Path, 4) },
-                { SubGraphEnum.graphSubGraph2, new Tuple<string, int>(graphSubGraph2Path, 6) },
-                { SubGraphEnum.graphSubGraph3, new Tuple<string, int>(graphSubGraph3Path, 3) },
-                { SubGraphEnum.graphSubGraph4, new Tuple<string, int>(graphSubGraph4Path, 4) },
-                { SubGraphEnum.graphSubGraph5, new Tuple<string, int>(graphSubGraph5Path, 1) },
-                { SubGraphEnum.graphSubGraph6, new Tuple<string, int>(graphSubGraph6Path, 0) }
+                { SubGraphEnum.graphSubGraph1, new Tuple<string, int>(graphSubGraph1, 4) },
+                { SubGraphEnum.graphSubGraph2, new Tuple<string, int>(graphSubGraph2, 6) },
+                { SubGraphEnum.graphSubGraph3, new Tuple<string, int>(graphSubGraph3, 3) },
+                { SubGraphEnum.graphSubGraph4, new Tuple<string, int>(graphSubGraph4, 4) },
+                { SubGraphEnum.graphSubGraph5, new Tuple<string, int>(graphSubGraph5, 1) },
+                { SubGraphEnum.graphSubGraph6, new Tuple<string, int>(graphSubGraph6, 0) }
             };
         }
         #endregion
@@ -95,10 +95,10 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         {
             try
             {
-                testPath = testsDictionary[subGraphEnum].Item1;
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[subGraphEnum].Item1);
                 countVertices = testsDictionary[subGraphEnum].Item2;
 
-                reader = new ReaderWriter.Reader(testPath);
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(subGraphEnum.ToString());

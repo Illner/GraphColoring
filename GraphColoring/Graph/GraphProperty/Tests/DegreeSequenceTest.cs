@@ -15,11 +15,11 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private Dictionary<DegreeSequenceEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphDegreeSequence = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphDegreeSequence.txt";
-        private string graphDegreeSequence1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SequencesAndPolynomials\graphDegreeSequence1.graph";
-        private string graphDegreeSequence2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SequencesAndPolynomials\graphDegreeSequence2.graph";
-        private string graphDegreeSequence3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SequencesAndPolynomials\graphDegreeSequence3.graph";
-        private string graphDegreeSequence4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SequencesAndPolynomials\graphDegreeSequence4.graph";
+        private string testPathGraphDegreeSequence = @"Testing\Test\GraphDegreeSequence.txt";
+        private string graphDegreeSequence1 = DegreeSequenceResource.graphDegreeSequence1;
+        private string graphDegreeSequence2 = DegreeSequenceResource.graphDegreeSequence2;
+        private string graphDegreeSequence3 = DegreeSequenceResource.graphDegreeSequence3;
+        private string graphDegreeSequence4 = DegreeSequenceResource.graphDegreeSequence4;
         #endregion
 
         // Enum
@@ -42,10 +42,10 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<DegreeSequenceEnum, string>
             {
-                { DegreeSequenceEnum.graphDegreeSequence1, graphDegreeSequence1Path },
-                { DegreeSequenceEnum.graphDegreeSequence2, graphDegreeSequence2Path },
-                { DegreeSequenceEnum.graphDegreeSequence3, graphDegreeSequence3Path },
-                { DegreeSequenceEnum.graphDegreeSequence4, graphDegreeSequence4Path }
+                { DegreeSequenceEnum.graphDegreeSequence1, graphDegreeSequence1 },
+                { DegreeSequenceEnum.graphDegreeSequence2, graphDegreeSequence2 },
+                { DegreeSequenceEnum.graphDegreeSequence3, graphDegreeSequence3 },
+                { DegreeSequenceEnum.graphDegreeSequence4, graphDegreeSequence4 }
             };
         }
         #endregion
@@ -86,9 +86,9 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             try
             {
-                testPath = testsDictionary[degreeSequenceEnum];
-                
-                reader = new ReaderWriter.Reader(testPath);
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[degreeSequenceEnum]);
+
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(degreeSequenceEnum.ToString());

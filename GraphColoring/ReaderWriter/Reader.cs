@@ -11,6 +11,7 @@ namespace GraphColoring.ReaderWriter
         // Constructor
         #region
         public Reader(string path) : base(path) { }
+        public Reader(string path, bool checkPath) : base(path, checkPath) { }
         #endregion
 
         // Method
@@ -106,27 +107,35 @@ namespace GraphColoring.ReaderWriter
                     if (line != READERWRITERCOLOREDGRAPH)
                         throw new MyException.ReaderWriterInvalidFormatException("Invalid colored graph (header)");
 
-                    // Number of colors
-                    // TEST
-                    line = streamReader.ReadLine();
-                    if (!line.StartsWith(READERWRITERNUMBEROFCOLORS) && !line.StartsWith(READERWRITERCHROMATICNUMBER))
-                        throw new MyException.ReaderWriterInvalidFormatException("Invalid number of colors / chromatic number (header)");
-                    if (line.StartsWith(READERWRITERNUMBEROFCOLORS))
-                        numberColorsString = line.Substring(READERWRITERNUMBEROFCOLORS.Length);
-                    else
-                        numberColorsString = line.Substring(READERWRITERCHROMATICNUMBER.Length);
-                    numberColors = Int32.Parse(numberColorsString);
+                    while (!streamReader.EndOfStream)
+                    {
+                        // Number of colors
+                        line = streamReader.ReadLine();
+                        if (!line.StartsWith(READERWRITERNUMBEROFCOLORS) && !line.StartsWith(READERWRITERCHROMATICNUMBER))
+                            throw new MyException.ReaderWriterInvalidFormatException("Invalid number of colors / chromatic number (header)");
+                        if (line.StartsWith(READERWRITERNUMBEROFCOLORS))
+                            numberColorsString = line.Substring(READERWRITERNUMBEROFCOLORS.Length);
+                        else
+                            numberColorsString = line.Substring(READERWRITERCHROMATICNUMBER.Length);
+                        numberColors = Int32.Parse(numberColorsString);
 
-                    // Used algorithm
-                    // TEST
-                    line = streamReader.ReadLine();
-                    if (!line.StartsWith(READERWRITERUSEDALGORITHM))
-                        throw new MyException.ReaderWriterInvalidHeaderException("Invalid used algorithm (header)");
+                        // Used algorithm
+                        line = streamReader.ReadLine();
+                        if (!line.StartsWith(READERWRITERUSEDALGORITHM))
+                            throw new MyException.ReaderWriterInvalidHeaderException("Invalid used algorithm (header)");
 
-                    // HOLD ON AlgorithmEnum
+                        line = line.Substring(READERWRITERUSEDALGORITHM.Length);
 
-                    // Colored graph
-                    // TEST
+                        if (!Enum.GetNames(typeof(GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)).Contains(line))
+                            throw new MyException.ReaderWriterInvalidFormatException("Unknown algorithm");
+
+                        // Colored graph
+                        line = streamReader.ReadLine();
+                        while (line != null && line != "")
+                        {
+                            line = streamReader.ReadLine();
+                        }
+                    }
                 }
                 catch (ArgumentException)
                 {

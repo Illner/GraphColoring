@@ -15,11 +15,11 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private Dictionary<CopyEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphCopy = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphCopy.txt";
-        private string graphCopy1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\Copy\graphCopy1.graph";
-        private string graphCopy2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\Copy\graphCopy2.graph";
-        private string graphCopy3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\Copy\graphCopy3.graph";
-        private string graphCopy4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\Copy\graphCopy4.graph";
+        private string testPathGraphCopy = @"Testing\Test\GraphCopy.txt";
+        private string graphCopy1 = CopyResource.graphCopy1;
+        private string graphCopy2 = CopyResource.graphCopy2;
+        private string graphCopy3 = CopyResource.graphCopy3;
+        private string graphCopy4 = CopyResource.graphCopy4;
         #endregion
 
         // Enum
@@ -42,10 +42,10 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<CopyEnum, string>
             {
-                { CopyEnum.graphCopy1, graphCopy1Path },
-                { CopyEnum.graphCopy2, graphCopy2Path },
-                { CopyEnum.graphCopy3, graphCopy3Path },
-                { CopyEnum.graphCopy4, graphCopy4Path }
+                { CopyEnum.graphCopy1, graphCopy1 },
+                { CopyEnum.graphCopy2, graphCopy2 },
+                { CopyEnum.graphCopy3, graphCopy3 },
+                { CopyEnum.graphCopy4, graphCopy4 }
             };
         }
         #endregion
@@ -86,9 +86,9 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         {
             try
             {
-                testPath = testsDictionary[copyEnum];
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[copyEnum]);
 
-                reader = new ReaderWriter.Reader(testPath);
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(copyEnum.ToString());

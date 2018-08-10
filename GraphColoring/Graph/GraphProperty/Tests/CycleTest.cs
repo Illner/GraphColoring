@@ -15,12 +15,12 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private Dictionary<CycleEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphCycle = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphCycle.txt";
-        private string graphCycle1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Cycle\graphCycle1.graph";
-        private string graphCycle2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Cycle\graphCycle2.graph";
-        private string graphCycle3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Cycle\graphCycle3.graph";
-        private string graphCycle4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Cycle\graphCycle4.graph";
-        private string graphCycle5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Cycle\graphCycle5.graph";
+        private string testPathGraphCycle = @"Testing\Test\GraphCycle.txt";
+        private string graphCycle1 = CycleResource.graphCycle1;
+        private string graphCycle2 = CycleResource.graphCycle2;
+        private string graphCycle3 = CycleResource.graphCycle3;
+        private string graphCycle4 = CycleResource.graphCycle4;
+        private string graphCycle5 = CycleResource.graphCycle5;
         #endregion
 
         // Enum
@@ -44,11 +44,11 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<CycleEnum, string>
             {
-                { CycleEnum.graphCycle1, graphCycle1Path },
-                { CycleEnum.graphCycle2, graphCycle2Path },
-                { CycleEnum.graphCycle3, graphCycle3Path },
-                { CycleEnum.graphCycle4, graphCycle4Path },
-                { CycleEnum.graphCycle5, graphCycle5Path }
+                { CycleEnum.graphCycle1, graphCycle1 },
+                { CycleEnum.graphCycle2, graphCycle2 },
+                { CycleEnum.graphCycle3, graphCycle3 },
+                { CycleEnum.graphCycle4, graphCycle4 },
+                { CycleEnum.graphCycle5, graphCycle5 }
             };
         }
         #endregion
@@ -89,9 +89,9 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             try
             {
-                testPath = testsDictionary[cycleEnum];
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[cycleEnum]);
 
-                reader = new ReaderWriter.Reader(testPath);
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(cycleEnum.ToString());

@@ -14,15 +14,15 @@ namespace GraphColoring.Graph.GraphClass.Tests
         private Dictionary<ClassEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphClass = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphClass.txt";
-        private string graphClass1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass1.graph";
-        private string graphClass2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass2.graph";
-        private string graphClass3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass3.graph";
-        private string graphClass4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass4.graph";
-        private string graphClass5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass5.graph";
-        private string graphClass6Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass6.graph";
-        private string graphClass7Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass7.graph";
-        private string graphClass8Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Class\graphClass8.graph";
+        private string testPathGraphClass = @"Testing\Test\GraphClass.txt";
+        private string graphClass1 = ClassResource.graphClass1;
+        private string graphClass2 = ClassResource.graphClass2;
+        private string graphClass3 = ClassResource.graphClass3;
+        private string graphClass4 = ClassResource.graphClass4;
+        private string graphClass5 = ClassResource.graphClass5;
+        private string graphClass6 = ClassResource.graphClass6;
+        private string graphClass7 = ClassResource.graphClass7;
+        private string graphClass8 = ClassResource.graphClass8;
         #endregion
 
         // Enum
@@ -49,14 +49,14 @@ namespace GraphColoring.Graph.GraphClass.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<ClassEnum, string>
             {
-                { ClassEnum.graphClass1, graphClass1Path },
-                { ClassEnum.graphClass2, graphClass2Path },
-                { ClassEnum.graphClass3, graphClass3Path },
-                { ClassEnum.graphClass4, graphClass4Path },
-                { ClassEnum.graphClass5, graphClass5Path },
-                { ClassEnum.graphClass6, graphClass6Path },
-                { ClassEnum.graphClass7, graphClass7Path },
-                { ClassEnum.graphClass8, graphClass8Path }
+                { ClassEnum.graphClass1, graphClass1 },
+                { ClassEnum.graphClass2, graphClass2 },
+                { ClassEnum.graphClass3, graphClass3 },
+                { ClassEnum.graphClass4, graphClass4 },
+                { ClassEnum.graphClass5, graphClass5 },
+                { ClassEnum.graphClass6, graphClass6 },
+                { ClassEnum.graphClass7, graphClass7 },
+                { ClassEnum.graphClass8, graphClass8 }
             };
         }
         #endregion
@@ -97,9 +97,9 @@ namespace GraphColoring.Graph.GraphClass.Tests
         {
             try
             {
-                testPath = testsDictionary[classEnum];
-                
-                reader = new ReaderWriter.Reader(testPath);
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[classEnum]);
+
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(classEnum.ToString());

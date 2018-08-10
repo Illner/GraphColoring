@@ -4,7 +4,7 @@ namespace GraphColoring.GraphColoringAlgorithm
 {
     abstract partial class GraphColoringAlgorithm : IGraphColoringAlgorithmInterface
     {
-        enum GraphColoringAlgorithmEnum
+        public enum GraphColoringAlgorithmEnum
         {
             Optimal,
 	        RandomSequence,
@@ -15,7 +15,8 @@ namespace GraphColoring.GraphColoringAlgorithm
 	        SmallestLastSequenceInterchange,
 	        ConnectedSequential,
 	        SaturationLargestFirstSequence,
-	        GreedyIndependentSet
+	        GreedyIndependentSet,
+            XXX // Test
         }
     }
 }

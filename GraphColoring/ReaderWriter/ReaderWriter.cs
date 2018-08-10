@@ -32,6 +32,19 @@ namespace GraphColoring.ReaderWriter
             SetPath(path);
             CheckPath();
         }
+
+        /// <summary>
+        /// Inicializuje ReaderWriter
+        /// Nastaví cestu k souboru
+        /// </summary>
+        /// <param name="path">cesta k souboru</param>
+        /// <param name="checkPath">má se provádět kontrola cesty</param>
+        protected ReaderWriter(string path, bool checkPath)
+        {
+            SetPath(path);
+            if (checkPath)
+                CheckPath();
+        }
         #endregion
 
         // Method

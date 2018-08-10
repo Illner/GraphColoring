@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,7 +56,62 @@
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\SmallestLastSequence.cs" />
     <Compile Include="Graph\ColoredGraph\ColoredGraph.cs" />
     <Compile Include="Graph\ColoredGraph\IColoredGraphInterface.cs" />
+    <Compile Include="Graph\ColoredGraph\Tests\ColoredGraphResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColoredGraphResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Graph\ColoredGraph\Tests\ColoredGraphTest.cs" />
+    <Compile Include="Graph\GraphClass\Tests\ClassResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClassResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphModification\Tests\ModificationResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModificationResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphOperation\Tests\ComplementResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComplementResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphOperation\Tests\CopyResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CopyResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphOperation\Tests\LineGraphResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LineGraphResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphOperation\Tests\SubGraphResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SubGraphResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphProperty\Tests\ComponentResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComponentResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphProperty\Tests\CycleResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CycleResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphProperty\Tests\DegreeSequenceResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DegreeSequenceResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphProperty\Tests\SpanningTreeResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpanningTreeResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Graph\VertexExtended.cs" />
     <Compile Include="Graph\Arc.cs" />
     <Compile Include="Graph\Edge.cs" />
@@ -84,7 +140,6 @@
     <Compile Include="Graph\GraphProperty\Tests\DegreeSequenceTest.cs" />
     <Compile Include="Graph\GraphProperty\Tests\SpanningTreeTest.cs" />
     <Compile Include="Graph\IGraphInterface.cs" />
-    <Compile Include="Graph\Tests\GraphTest.cs" />
     <Compile Include="MyException\GraphColoringAlgorithmExceptions.cs" />
     <Compile Include="MyException\GraphException.cs" />
     <Compile Include="Graph\Graph.cs" />
@@ -99,19 +154,238 @@
     <Compile Include="ReaderWriter\ReaderWriter.cs" />
     <Compile Include="ReaderWriter\ReaderWriterHeaderEnum.cs" />
     <Compile Include="ReaderWriter\Reader.cs" />
+    <Compile Include="ReaderWriter\Tests\ReaderResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReaderResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="ReaderWriter\Tests\ReaderTest.cs" />
     <Compile Include="ReaderWriter\Tests\ReaderWriterTest.cs" />
+    <Compile Include="ReaderWriter\Tests\WriterResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WriterResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReaderWriter\Tests\WriterTest.cs" />
     <Compile Include="ReaderWriter\Writer.cs" />
     <Compile Include="Tests\ITestInterface.cs" />
     <Compile Include="Tests\Test.cs" />
+    <Compile Include="Tests\TestResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass5.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass6.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass7.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass8.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphModification\graphModification.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\Complement\graphComplement1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\Complement\graphComplement2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\Complement\graphComplement3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\Complement\graphComplement4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\Copy\graphCopy1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\Copy\graphCopy2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\Copy\graphCopy3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\Copy\graphCopy4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\LineGraph\graphLineGraph1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\LineGraph\graphLineGraph2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\LineGraph\graphLineGraph3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\LineGraph\graphLineGraph4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\LineGraph\graphLineGraph5.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\SubGraph\graphSubGraph1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\SubGraph\graphSubGraph2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\SubGraph\graphSubGraph3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphOperation\SubGraph\graphSubGraph4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent5.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Cycle\graphCycle1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Cycle\graphCycle2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Cycle\graphCycle3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Cycle\graphCycle4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Cycle\graphCycle5.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\SequencesPolynomialsOthers\graphDegreeSequence1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\SequencesPolynomialsOthers\graphDegreeSequence2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\SequencesPolynomialsOthers\graphDegreeSequence3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\SequencesPolynomialsOthers\graphDegreeSequence4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\SpanningTree\graphSpanningTree1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\SpanningTree\graphSpanningTree2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\SpanningTree\graphSpanningTree3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\SpanningTree\graphSpanningTree4.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast3.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidChromaticNumber.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidColoredGraph.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCoreData1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCoreData2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices3.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices4.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidGraph.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidGraphName.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidNumberColors.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidUsedAlgorithm.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidChromaticNumber.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidNumberColors.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidVertexName.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast3.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidChromaticNumber.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidColoredGraph.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData3.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData4.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices3.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices4.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidGraph.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidGraphName.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidHeader1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidHeader2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidNumberColors.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidUsedAlgorithm.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidChromaticNumber.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidNumberColors.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast3.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidChromaticNumber.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidColoredGraph.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData3.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData4.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices3.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices4.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidGraph.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidGraphName.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidHeader1.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidHeader2.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidNumberColors.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidUsedAlgorithm.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidChromaticNumber.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidNumberColors.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidVertexName.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph.graph" />
+    <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph2.graph" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Graph\Tests\Graphs\GraphAdjacencyMatrix.txt" />
-    <Content Include="Graph\Tests\Graphs\GraphEdgeList.txt" />
+    <EmbeddedResource Include="Graph\ColoredGraph\Tests\ColoredGraphResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColoredGraphResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphClass\Tests\ClassResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClassResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphModification\Tests\ModificationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModificationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphOperation\Tests\ComplementResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComplementResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphOperation\Tests\CopyResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CopyResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphOperation\Tests\LineGraphResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LineGraphResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphOperation\Tests\SubGraphResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SubGraphResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphProperty\Tests\ComponentResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComponentResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphProperty\Tests\CycleResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CycleResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphProperty\Tests\DegreeSequenceResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DegreeSequenceResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphProperty\Tests\SpanningTreeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SpanningTreeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReaderWriter\Tests\ReaderResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReaderResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReaderWriter\Tests\WriterResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WriterResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\TestResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TestResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\ColoredGraphStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphClassStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphComplementStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphCopyStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphLineGraphStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphModificationStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphSpanningTreeStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphSubGraphStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\WriterStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphComponentStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphCycleStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphDegreeSequenceStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\ReaderStandard.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,12 +15,12 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private Dictionary<LineGraphEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphLineGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphLineGraph.txt";
-        private string graphLineGraph1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\LineGraph\graphLineGraph1.graph";
-        private string graphLineGraph2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\LineGraph\graphLineGraph2.graph";
-        private string graphLineGraph3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\LineGraph\graphLineGraph3.graph";
-        private string graphLineGraph4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\LineGraph\graphLineGraph4.graph";
-        private string graphLineGraph5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Operation\LineGraph\graphLineGraph5.graph";
+        private string testPathGraphLineGraph = @"Testing\Test\GraphLineGraph.txt";
+        private string graphLineGraph1 = LineGraphResource.graphLineGraph1;
+        private string graphLineGraph2 = LineGraphResource.graphLineGraph2;
+        private string graphLineGraph3 = LineGraphResource.graphLineGraph3;
+        private string graphLineGraph4 = LineGraphResource.graphLineGraph4;
+        private string graphLineGraph5 = LineGraphResource.graphLineGraph5;
         #endregion
 
         // Enum
@@ -44,11 +44,11 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<LineGraphEnum, string>
             {
-                { LineGraphEnum.graphLineGraph1, graphLineGraph1Path },
-                { LineGraphEnum.graphLineGraph2, graphLineGraph2Path },
-                { LineGraphEnum.graphLineGraph3, graphLineGraph3Path },
-                { LineGraphEnum.graphLineGraph4, graphLineGraph4Path },
-                { LineGraphEnum.graphLineGraph5, graphLineGraph5Path }
+                { LineGraphEnum.graphLineGraph1, graphLineGraph1 },
+                { LineGraphEnum.graphLineGraph2, graphLineGraph2 },
+                { LineGraphEnum.graphLineGraph3, graphLineGraph3 },
+                { LineGraphEnum.graphLineGraph4, graphLineGraph4 },
+                { LineGraphEnum.graphLineGraph5, graphLineGraph5 }
             };
         }
         #endregion
@@ -89,9 +89,9 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         {
             try
             {
-                testPath = testsDictionary[lineGraphEnum];
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[lineGraphEnum]);
 
-                reader = new ReaderWriter.Reader(testPath);
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(lineGraphEnum.ToString());

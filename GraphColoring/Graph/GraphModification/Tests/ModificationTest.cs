@@ -16,8 +16,8 @@ namespace GraphColoring.Graph.GraphModification.Tests
         private Dictionary<ModificationEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphModification = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphModification.txt";
-        private string graphModification1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Modification\graphModification.graph";
+        private string testPathGraphModification = @"Testing\Test\GraphModification.txt";
+        private string graphModification1 = ModificationResource.graphModification;
         #endregion
 
         // Enum
@@ -38,8 +38,8 @@ namespace GraphColoring.Graph.GraphModification.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<ModificationEnum, string>
             {
-                { ModificationEnum.valid, graphModification1Path },
-                { ModificationEnum.invalid, graphModification1Path }
+                { ModificationEnum.valid, graphModification1 },
+                { ModificationEnum.invalid, graphModification1 }
             };
         }
         #endregion
@@ -80,8 +80,8 @@ namespace GraphColoring.Graph.GraphModification.Tests
         { 
             try
             {
-                testPath = testsDictionary[modificationEnum];
-                reader = new ReaderWriter.Reader(testPath);
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[modificationEnum]);
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(modificationEnum.ToString());

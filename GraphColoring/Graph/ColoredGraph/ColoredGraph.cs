@@ -386,6 +386,36 @@ namespace GraphColoring.Graph
 
                 return stringBuilder.ToString();
             }
+
+            /// <summary>
+            /// Vrátí seznam použitých barev
+            /// </summary>
+            /// <returns>seznam použitých barev</returns>
+            public List<int> UsedColors()
+            {
+                // Variable
+                List<int> usedColorsList;
+
+                usedColorsList = usedColorsDictionary.Keys.ToList();
+                usedColorsList.Remove(VertexExtended.GetDefaultColor());
+
+                return usedColorsList;
+            }
+
+            /// <summary>
+            /// Vrátí seznam vrcholů, které jsou obarveny danou barvou
+            /// </summary>
+            /// <param name="color">daná barva</param>
+            /// <returns>seznam vrcholů</returns>
+            public List<Vertex> ColoredVertices(int color)
+            {
+                // Variable
+                HashSet<Vertex> vertexHashSet = new HashSet<Vertex>();
+
+                usedColorsDictionary.TryGetValue(color, out vertexHashSet);
+
+                return vertexHashSet.ToList();
+            }
             #endregion
 
             // Property

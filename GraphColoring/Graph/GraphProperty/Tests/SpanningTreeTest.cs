@@ -15,11 +15,11 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private Dictionary<SpanningTreeEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphSpanningTree = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphSpanningTree.txt";
-        private string graphSpanningTree1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SpanningTree\graphSpanningTree1.graph";
-        private string graphSpanningTree2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SpanningTree\graphSpanningTree2.graph";
-        private string graphSpanningTree3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SpanningTree\graphSpanningTree3.graph";
-        private string graphSpanningTree4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\SpanningTree\graphSpanningTree4.graph";
+        private string testPathGraphSpanningTree = @"Testing\Test\GraphSpanningTree.txt";
+        private string graphSpanningTree1 = SpanningTreeResource.graphSpanningTree1;
+        private string graphSpanningTree2 = SpanningTreeResource.graphSpanningTree2;
+        private string graphSpanningTree3 = SpanningTreeResource.graphSpanningTree3;
+        private string graphSpanningTree4 = SpanningTreeResource.graphSpanningTree4;
         #endregion
 
         // Enum
@@ -42,10 +42,10 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<SpanningTreeEnum, string>
             {
-                { SpanningTreeEnum.graphSpanningTree1, graphSpanningTree1Path },
-                { SpanningTreeEnum.graphSpanningTree2, graphSpanningTree2Path },
-                { SpanningTreeEnum.graphSpanningTree3, graphSpanningTree3Path },
-                { SpanningTreeEnum.graphSpanningTree4, graphSpanningTree4Path }
+                { SpanningTreeEnum.graphSpanningTree1, graphSpanningTree1 },
+                { SpanningTreeEnum.graphSpanningTree2, graphSpanningTree2 },
+                { SpanningTreeEnum.graphSpanningTree3, graphSpanningTree3 },
+                { SpanningTreeEnum.graphSpanningTree4, graphSpanningTree4 }
             };
         }
         #endregion
@@ -86,8 +86,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             try
             {
-                testPath = testsDictionary[spanningTreeEnum];
-                reader = new ReaderWriter.Reader(testPath);
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[spanningTreeEnum]);
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(spanningTreeEnum.ToString());

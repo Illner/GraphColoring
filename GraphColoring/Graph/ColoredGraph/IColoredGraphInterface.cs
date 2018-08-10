@@ -19,6 +19,8 @@ namespace GraphColoring.Graph
         bool InicializeColoredGraph();
         void DeinicializationColoredGraph();
         void ResetColors();
+        List<int> UsedColors();
+        List<Vertex> ColoredVertices(int color);
         #endregion
 
         // Property

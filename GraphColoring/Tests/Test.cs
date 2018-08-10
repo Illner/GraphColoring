@@ -11,13 +11,12 @@ namespace GraphColoring.Tests
         #region
         private Boolean consolePrint;
         private StringBuilder stringBuilder;
-        private Dictionary<TestEnum, ITestInterface> testsDictionary;
+        private Dictionary<TestEnum, Tuple<ITestInterface, string>> testsDictionary;
 
         // Paths
         private string testPath;
 
         // Instance test
-        Graph.Tests.GraphTest graphTest = new Graph.Tests.GraphTest();
         ReaderWriter.Tests.ReaderWriterTest readerWriterTest = new ReaderWriter.Tests.ReaderWriterTest();
         ReaderWriter.Tests.ReaderTest readerTest = new ReaderWriter.Tests.ReaderTest();
         Graph.GraphProperty.Tests.ComponentTest graphComponentTest = new Graph.GraphProperty.Tests.ComponentTest();
@@ -31,13 +30,13 @@ namespace GraphColoring.Tests
         Graph.GraphOperation.Tests.SubGraphTest subGraphTest = new Graph.GraphOperation.Tests.SubGraphTest();
         Graph.GraphOperation.Tests.LineGraphTest lineGraphTest = new Graph.GraphOperation.Tests.LineGraphTest();
         Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
+        ReaderWriter.Tests.WriterTest writerTest = new ReaderWriter.Tests.WriterTest();
         #endregion
 
         // Enum
         #region
         public enum TestEnum
         {
-            graph,
             readerWriter,
             reader,
             graphComponent,
@@ -50,7 +49,8 @@ namespace GraphColoring.Tests
             graphCopy,
             graphSubGraph,
             graphLineGraph,
-            coloredGraph
+            coloredGraph,
+            writer
         }
         #endregion
 
@@ -66,22 +66,21 @@ namespace GraphColoring.Tests
             stringBuilder = new StringBuilder();
 
             // Fill testsDictionary
-            testsDictionary = new Dictionary<TestEnum, ITestInterface>
+            testsDictionary = new Dictionary<TestEnum, Tuple<ITestInterface, string>>
             {
-                { TestEnum.graph, graphTest },
-                { TestEnum.readerWriter, readerWriterTest },
-                { TestEnum.reader, readerTest },
-                { TestEnum.graphComponent, graphComponentTest },
-                { TestEnum.graphDegreeSequence, graphDegreeSequenceTest },
-                { TestEnum.graphCycle, graphCycleTest },
-                { TestEnum.graphClass, graphClassTest },
-                { TestEnum.graphSpanningTree, graphSpanningTreeTest },
-                { TestEnum.graphModification, graphModificationTest },
-                { TestEnum.graphComplement, graphComplementTest },
-                { TestEnum.graphCopy, graphCopyTest },
-                { TestEnum.graphSubGraph, subGraphTest },
-                { TestEnum.graphLineGraph, lineGraphTest },
-                { TestEnum.coloredGraph, coloredGraphTest }
+                { TestEnum.reader, new Tuple<ITestInterface, string>(readerTest, TestResource.ReaderStandard) },
+                { TestEnum.graphComponent, new Tuple<ITestInterface, string>(graphComponentTest, TestResource.GraphComponentStandard) },
+                { TestEnum.graphDegreeSequence, new Tuple<ITestInterface, string>(graphDegreeSequenceTest, TestResource.GraphDegreeSequenceStandard) },
+                { TestEnum.graphCycle, new Tuple<ITestInterface, string>(graphCycleTest, TestResource.GraphCycleStandard) },
+                { TestEnum.graphClass, new Tuple<ITestInterface, string>(graphClassTest, TestResource.GraphClassStandard) },
+                { TestEnum.graphSpanningTree, new Tuple<ITestInterface, string>(graphSpanningTreeTest, TestResource.GraphSpanningTreeStandard) },
+                { TestEnum.graphModification, new Tuple<ITestInterface, string>(graphModificationTest, TestResource.GraphModificationStandard) },
+                { TestEnum.graphComplement, new Tuple<ITestInterface, string>(graphComplementTest, TestResource.GraphComplementStandard) },
+                { TestEnum.graphCopy, new Tuple<ITestInterface, string>(graphCopyTest, TestResource.GraphCopyStandard) },
+                { TestEnum.graphSubGraph, new Tuple<ITestInterface, string>(subGraphTest, TestResource.GraphSubGraphStandard) },
+                { TestEnum.graphLineGraph, new Tuple<ITestInterface, string>(lineGraphTest, TestResource.GraphLineGraphStandard) },
+                { TestEnum.coloredGraph, new Tuple<ITestInterface, string>(coloredGraphTest, TestResource.ColoredGraphStandard) },
+                { TestEnum.writer, new Tuple<ITestInterface, string>(writerTest, TestResource.WriterStandard) }
             };
         }
         #endregion
@@ -105,12 +104,20 @@ namespace GraphColoring.Tests
         {
             stringBuilder.Clear();
 
-            ITestInterface test = testsDictionary[testEnum];
+            ITestInterface test = testsDictionary[testEnum].Item1;
 
             stringBuilder = test.Test();
+            stringBuilder.AppendLine();
 
             if (consolePrint)
-                Console.WriteLine(stringBuilder);
+            {
+                String template = testsDictionary[testEnum].Item2;
+
+                if (String.Compare(template, stringBuilder.ToString()) == 0)
+                    Console.WriteLine("OK   " + testEnum.ToString());
+                else
+                    Console.WriteLine("NOK  " + testEnum.ToString());
+            }
             else
             {
                 testPath = test.GetPath();
@@ -118,6 +125,23 @@ namespace GraphColoring.Tests
                 streamWriter.WriteLine(stringBuilder.ToString());
                 streamWriter.Flush();
             }
+        }
+
+        /// <summary>
+        /// Vytvoří soubor s daným obsahem
+        /// </summary>
+        /// <param name="content">obsah souboru</param>
+        /// <returns>název souboru</returns>
+        public static string CreateTestFile(string content)
+        {
+            // Variable
+            string fileName = "TestFile.temp";
+
+            File.WriteAllText(fileName, content);
+
+            //File.SetAttributes(fileName, FileAttributes.Hidden);
+
+            return fileName;
         }
         #endregion
     }

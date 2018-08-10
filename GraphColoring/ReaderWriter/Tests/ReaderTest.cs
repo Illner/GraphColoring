@@ -18,102 +18,102 @@ namespace GraphColoring.ReaderWriter.Tests
         private Dictionary<PathEnum, List<string>> testsGraphAdjacencyListDictionary;
 
         // Paths
-        private string testPathReader = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\Reader.txt";
+        private string testPathReader = @"Testing\Test\Reader.txt";
         // GraphEdgeList
-        private string readerPathGraphEdgeListValid1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListValidNumberColors.graph";
-        private string readerPathGraphEdgeListValid2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListValidCHromaticNumber.graph";
-        private string readerPathGraphEdgeListValidVertexName = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListValidVertexName.graph";
+        private string readerGraphEdgeListValid1 = ReaderResource.GraphEdgeListValidNumberColors;
+        private string readerGraphEdgeListValid2 = ReaderResource.GraphEdgeListValidChromaticNumber;
+        private string readerGraphEdgeListValidVertexName = ReaderResource.GraphEdgeListValidVertexName;
 
-        private string readerPathGraphEdgeListInvalidHeader1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidHeader1.graph";
-        private string readerPathGraphEdgeListInvalidHeader2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidHeader2.graph";
+        private string readerGraphEdgeListInvalidHeader1 = ReaderResource.GraphEdgeListInvalidHeader1;
+        private string readerGraphEdgeListInvalidHeader2 = ReaderResource.GraphEdgeListInvalidHeader2;
 
-        private string readerPathGraphEdgeListInvalidBallast1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidBallast1.graph";
-        private string readerPathGraphEdgeListInvalidBallast2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidBallast2.graph";
-        private string readerPathGraphEdgeListInvalidBallast3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidBallast3.graph";
+        private string readerGraphEdgeListInvalidBallast1 = ReaderResource.GraphEdgeListInvalidBallast1;
+        private string readerGraphEdgeListInvalidBallast2 = ReaderResource.GraphEdgeListInvalidBallast2;
+        private string readerGraphEdgeListInvalidBallast3 = ReaderResource.GraphEdgeListInvalidBallast3;
 
-        private string readerPathGraphEdgeListInvalidGraphName = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidGraphName.graph";
+        private string readerGraphEdgeListInvalidGraphName = ReaderResource.GraphEdgeListInvalidGraphName;
 
-        private string readerPathGraphEdgeListInvalidCountVertices1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices1.graph";
-        private string readerPathGraphEdgeListInvalidCountVertices2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices2.graph";
-        private string readerPathGraphEdgeListInvalidCountVertices3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices3.graph";
-        private string readerPathGraphEdgeListInvalidCountVertices4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices4.graph";
+        private string readerGraphEdgeListInvalidCountVertices1 = ReaderResource.GraphEdgeListInvalidCountVertices1;
+        private string readerGraphEdgeListInvalidCountVertices2 = ReaderResource.GraphEdgeListInvalidCountVertices2;
+        private string readerGraphEdgeListInvalidCountVertices3 = ReaderResource.GraphEdgeListInvalidCountVertices3;
+        private string readerGraphEdgeListInvalidCountVertices4 = ReaderResource.GraphEdgeListInvalidCountVertices4;
 
-        private string readerPathGraphEdgeListInvalidGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidGraph.graph";
+        private string readerGraphEdgeListInvalidGraph = ReaderResource.GraphEdgeListInvalidGraph;
 
-        private string readerPathGraphEdgeListInvalidCoreData1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData1.graph";
-        private string readerPathGraphEdgeListInvalidCoreData2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData2.graph";
-        private string readerPathGraphEdgeListInvalidCoreData3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData3.graph";
-        private string readerPathGraphEdgeListInvalidCoreData4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData4.graph";
+        private string readerGraphEdgeListInvalidCoreData1 = ReaderResource.GraphEdgeListInvalidCoreData1;
+        private string readerGraphEdgeListInvalidCoreData2 = ReaderResource.GraphEdgeListInvalidCoreData2;
+        private string readerGraphEdgeListInvalidCoreData3 = ReaderResource.GraphEdgeListInvalidCoreData3;
+        private string readerGraphEdgeListInvalidCoreData4 = ReaderResource.GraphEdgeListInvalidCoreData4;
 
-        private string readerPathGraphEdgeListInvalidColoredGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidColoredGraph.graph";
+        private string readerGraphEdgeListInvalidColoredGraph = ReaderResource.GraphEdgeListInvalidColoredGraph;
 
-        private string readerPathGraphEdgeListInvalidNumberColors = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidNumberColors.graph";
-        private string readerPathGraphEdgeListInvalidChromaticNumber = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidChromaticNumber.graph";
+        private string readerGraphEdgeListInvalidNumberColors = ReaderResource.GraphEdgeListInvalidNumberColors;
+        private string readerGraphEdgeListInvalidChromaticNumber = ReaderResource.GraphEdgeListInvalidChromaticNumber;
 
-        private string readerPathGraphEdgeListInvalidUsedAlgorithm = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphEdgeList\GraphEdgeListInvalidUsedAlgorithm.graph";
+        private string readerGraphEdgeListInvalidUsedAlgorithm = ReaderResource.GraphEdgeListInvalidUsedAlgorithm;
 
         // GraphAdjacencyMatrix
-        private string readerPathGraphAdjacencyMatrixValid1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidNumberColors.graph";
-        private string readerPathGraphAdjacencyMatrixValid2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidChromaticNumber.graph";
+        private string readerGraphAdjacencyMatrixValid1 = ReaderResource.GraphAdjacencyMatrixValidNumberColors;
+        private string readerGraphAdjacencyMatrixValid2 = ReaderResource.GraphAdjacencyMatrixValidChromaticNumber;
 
-        private string readerPathGraphAdjacencyMatrixInvalidHeader1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidHeader1.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidHeader2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidHeader2.graph";
+        private string readerGraphAdjacencyMatrixInvalidHeader1 = ReaderResource.GraphAdjacencyMatrixInvalidHeader1;
+        private string readerGraphAdjacencyMatrixInvalidHeader2 = ReaderResource.GraphAdjacencyMatrixInvalidHeader2;
 
-        private string readerPathGraphAdjacencyMatrixInvalidBallast1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast1.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidBallast2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast2.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidBallast3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast3.graph";
+        private string readerGraphAdjacencyMatrixInvalidBallast1 = ReaderResource.GraphAdjacencyMatrixInvalidBallast1;
+        private string readerGraphAdjacencyMatrixInvalidBallast2 = ReaderResource.GraphAdjacencyMatrixInvalidBallast2;
+        private string readerGraphAdjacencyMatrixInvalidBallast3 = ReaderResource.GraphAdjacencyMatrixInvalidBallast3;
 
-        private string readerPathGraphAdjacencyMatrixInvalidGraphName = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidGraphName.graph";
+        private string readerGraphAdjacencyMatrixInvalidGraphName = ReaderResource.GraphAdjacencyMatrixInvalidGraphName;
 
-        private string readerPathGraphAdjacencyMatrixInvalidCountVertices1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices1.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidCountVertices2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices2.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidCountVertices3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices3.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidCountVertices4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices4.graph";
+        private string readerGraphAdjacencyMatrixInvalidCountVertices1 = ReaderResource.GraphAdjacencyMatrixInvalidCountVertices1;
+        private string readerGraphAdjacencyMatrixInvalidCountVertices2 = ReaderResource.GraphAdjacencyMatrixInvalidCountVertices2;
+        private string readerGraphAdjacencyMatrixInvalidCountVertices3 = ReaderResource.GraphAdjacencyMatrixInvalidCountVertices3;
+        private string readerGraphAdjacencyMatrixInvalidCountVertices4 = ReaderResource.GraphAdjacencyMatrixInvalidCountVertices4;
 
-        private string readerPathGraphAdjacencyMatrixInvalidGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidGraph.graph";
+        private string readerGraphAdjacencyMatrixInvalidGraph = ReaderResource.GraphAdjacencyMatrixInvalidGraph;
 
-        private string readerPathGraphAdjacencyMatrixInvalidCoreData1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData1.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidCoreData2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData2.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidCoreData3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData3.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidCoreData4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData4.graph";
+        private string readerGraphAdjacencyMatrixInvalidCoreData1 = ReaderResource.GraphAdjacencyMatrixInvalidCoreData1;
+        private string readerGraphAdjacencyMatrixInvalidCoreData2 = ReaderResource.GraphAdjacencyMatrixInvalidCoreData2;
+        private string readerGraphAdjacencyMatrixInvalidCoreData3 = ReaderResource.GraphAdjacencyMatrixInvalidCoreData3;
+        private string readerGraphAdjacencyMatrixInvalidCoreData4 = ReaderResource.GraphAdjacencyMatrixInvalidCoreData4;
 
-        private string readerPathGraphAdjacencyMatrixInvalidColoredGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidColoredGraph.graph";
+        private string readerGraphAdjacencyMatrixInvalidColoredGraph = ReaderResource.GraphAdjacencyMatrixInvalidColoredGraph;
 
-        private string readerPathGraphAdjacencyMatrixInvalidNumberColors = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidNumberColors.graph";
-        private string readerPathGraphAdjacencyMatrixInvalidChromaticNumber = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidChromaticNumber.graph";
+        private string readerGraphAdjacencyMatrixInvalidNumberColors = ReaderResource.GraphAdjacencyMatrixInvalidNumberColors;
+        private string readerGraphAdjacencyMatrixInvalidChromaticNumber = ReaderResource.GraphAdjacencyMatrixInvalidChromaticNumber;
 
-        private string readerPathGraphAdjacencyMatrixInvalidUsedAlgorithm = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidUsedAlgorithm.graph";
+        private string readerGraphAdjacencyMatrixInvalidUsedAlgorithm = ReaderResource.GraphAdjacencyMatrixInvalidUsedAlgorithm;
 
         // GraphAdjacencyList
-        private string readerPathGraphAdjacencyListValid1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListValidNumberColors.graph";
-        private string readerPathGraphAdjacencyListValid2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListValidChromaticNumber.graph";
-        private string readerPathGraphAdjacencyListValidVertexName = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListValidVertexName.graph";
+        private string readerGraphAdjacencyListValid1 = ReaderResource.GraphAdjacencyListValidNumberColors;
+        private string readerGraphAdjacencyListValid2 = ReaderResource.GraphAdjacencyListValidChromaticNumber;
+        private string readerGraphAdjacencyListValidVertexName = ReaderResource.GraphAdjacencyListValidVertexName;
 
-        private string readerPathGraphAdjacencyListInvalidHeader1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader1.graph";
-        private string readerPathGraphAdjacencyListInvalidHeader2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader2.graph";
+        private string readerGraphAdjacencyListInvalidHeader1 = ReaderResource.GraphAdjacencyListInvalidHeader1;
+        private string readerGraphAdjacencyListInvalidHeader2 = ReaderResource.GraphAdjacencyListInvalidHeader2;
 
-        private string readerPathGraphAdjacencyListInvalidBallast1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast1.graph";
-        private string readerPathGraphAdjacencyListInvalidBallast2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast2.graph";
-        private string readerPathGraphAdjacencyListInvalidBallast3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast3.graph";
+        private string readerGraphAdjacencyListInvalidBallast1 = ReaderResource.GraphAdjacencyListInvalidBallast1;
+        private string readerGraphAdjacencyListInvalidBallast2 = ReaderResource.GraphAdjacencyListInvalidBallast2;
+        private string readerGraphAdjacencyListInvalidBallast3 = ReaderResource.GraphAdjacencyListInvalidBallast3;
 
-        private string readerPathGraphAdjacencyListInvalidGraphName = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidGraphName.graph";
+        private string readerGraphAdjacencyListInvalidGraphName = ReaderResource.GraphAdjacencyListInvalidGraphName;
 
-        private string readerPathGraphAdjacencyListInvalidCountVertices1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices1.graph";
-        private string readerPathGraphAdjacencyListInvalidCountVertices2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices2.graph";
-        private string readerPathGraphAdjacencyListInvalidCountVertices3 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices3.graph";
-        private string readerPathGraphAdjacencyListInvalidCountVertices4 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices4.graph";
+        private string readerGraphAdjacencyListInvalidCountVertices1 = ReaderResource.GraphAdjacencyListInvalidCountVertices1;
+        private string readerGraphAdjacencyListInvalidCountVertices2 = ReaderResource.GraphAdjacencyListInvalidCountVertices2;
+        private string readerGraphAdjacencyListInvalidCountVertices3 = ReaderResource.GraphAdjacencyListInvalidCountVertices3;
+        private string readerGraphAdjacencyListInvalidCountVertices4 = ReaderResource.GraphAdjacencyListInvalidCountVertices4;
 
-        private string readerPathGraphAdjacencyListInvalidGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidGraph.graph";
+        private string readerGraphAdjacencyListInvalidGraph = ReaderResource.GraphAdjacencyListInvalidGraph;
 
-        private string readerPathGraphAdjacencyListInvalidCoreData1 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCoreData1.graph";
-        private string readerPathGraphAdjacencyListInvalidCoreData2 = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCoreData2.graph";
+        private string readerGraphAdjacencyListInvalidCoreData1 = ReaderResource.GraphAdjacencyListInvalidCoreData1;
+        private string readerGraphAdjacencyListInvalidCoreData2 = ReaderResource.GraphAdjacencyListInvalidCoreData2;
 
-        private string readerPathGraphAdjacencyListInvalidColoredGraph = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidColoredGraph.graph";
+        private string readerGraphAdjacencyListInvalidColoredGraph = ReaderResource.GraphAdjacencyListInvalidColoredGraph;
 
-        private string readerPathGraphAdjacencyListInvalidNumberColors = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidNumberColors.graph";
-        private string readerPathGraphAdjacencyListInvalidChromaticNumber = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidChromaticNumber.graph";
+        private string readerGraphAdjacencyListInvalidNumberColors = ReaderResource.GraphAdjacencyListInvalidNumberColors;
+        private string readerGraphAdjacencyListInvalidChromaticNumber = ReaderResource.GraphAdjacencyListInvalidChromaticNumber;
 
-        private string readerPathGraphAdjacencyListInvalidUsedAlgorithm = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidUsedAlgorithm.graph";
+        private string readerGraphAdjacencyListInvalidUsedAlgorithm = ReaderResource.GraphAdjacencyListInvalidUsedAlgorithm;
         #endregion
 
         // Enum
@@ -142,46 +142,46 @@ namespace GraphColoring.ReaderWriter.Tests
             // Fill testsGraphEdgeListDictionary
             testsGraphEdgeListDictionary = new Dictionary<PathEnum, List<string>>
             {
-                { PathEnum.valid, new List<string>() { readerPathGraphEdgeListValid1, readerPathGraphEdgeListValid2, readerPathGraphEdgeListValidVertexName } },
-                { PathEnum.invalidHeader, new List<string>() { readerPathGraphEdgeListInvalidHeader1, readerPathGraphEdgeListInvalidHeader2 } },
-                { PathEnum.invalidBallast, new List<string>() { readerPathGraphEdgeListInvalidBallast1, readerPathGraphEdgeListInvalidBallast2, readerPathGraphEdgeListInvalidBallast3 } },
-                { PathEnum.invalidGraphName, new List<string>() { readerPathGraphEdgeListInvalidGraphName } },
-                { PathEnum.invalidCountVertices, new List<string>() { readerPathGraphEdgeListInvalidCountVertices1, readerPathGraphEdgeListInvalidCountVertices2, readerPathGraphEdgeListInvalidCountVertices3, readerPathGraphEdgeListInvalidCountVertices4 } },
-                { PathEnum.invalidGraph, new List<string>() { readerPathGraphEdgeListInvalidGraph } },
-                { PathEnum.invalidCoreData, new List<string>() { readerPathGraphEdgeListInvalidCoreData1, readerPathGraphEdgeListInvalidCoreData2, readerPathGraphEdgeListInvalidCoreData3, readerPathGraphEdgeListInvalidCoreData4 } },
-                { PathEnum.invalidColoredGraph, new List<string>() { readerPathGraphEdgeListInvalidColoredGraph } },
-                { PathEnum.invalidNumberColors, new List<string>() { readerPathGraphEdgeListInvalidNumberColors, readerPathGraphEdgeListInvalidChromaticNumber } },
-                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerPathGraphEdgeListInvalidUsedAlgorithm } }
+                { PathEnum.valid, new List<string>() { readerGraphEdgeListValid1, readerGraphEdgeListValid2, readerGraphEdgeListValidVertexName } },
+                { PathEnum.invalidHeader, new List<string>() { readerGraphEdgeListInvalidHeader1, readerGraphEdgeListInvalidHeader2 } },
+                { PathEnum.invalidBallast, new List<string>() { readerGraphEdgeListInvalidBallast1, readerGraphEdgeListInvalidBallast2, readerGraphEdgeListInvalidBallast3 } },
+                { PathEnum.invalidGraphName, new List<string>() { readerGraphEdgeListInvalidGraphName } },
+                { PathEnum.invalidCountVertices, new List<string>() { readerGraphEdgeListInvalidCountVertices1, readerGraphEdgeListInvalidCountVertices2, readerGraphEdgeListInvalidCountVertices3, readerGraphEdgeListInvalidCountVertices4 } },
+                { PathEnum.invalidGraph, new List<string>() { readerGraphEdgeListInvalidGraph } },
+                { PathEnum.invalidCoreData, new List<string>() { readerGraphEdgeListInvalidCoreData1, readerGraphEdgeListInvalidCoreData2, readerGraphEdgeListInvalidCoreData3, readerGraphEdgeListInvalidCoreData4 } },
+                { PathEnum.invalidColoredGraph, new List<string>() { readerGraphEdgeListInvalidColoredGraph } },
+                { PathEnum.invalidNumberColors, new List<string>() { readerGraphEdgeListInvalidNumberColors, readerGraphEdgeListInvalidChromaticNumber } },
+                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerGraphEdgeListInvalidUsedAlgorithm } }
             };
 
             // Fill testsGraphAdjacencyMatrixDictionary
             testsGraphAdjacencyMatrixDictionary = new Dictionary<PathEnum, List<string>>
             {
-                { PathEnum.valid, new List<string>() { readerPathGraphAdjacencyMatrixValid1, readerPathGraphAdjacencyMatrixValid2 } },
-                { PathEnum.invalidHeader, new List<string>() { readerPathGraphAdjacencyMatrixInvalidHeader1, readerPathGraphAdjacencyMatrixInvalidHeader2 } },
-                { PathEnum.invalidBallast, new List<string>() { readerPathGraphAdjacencyMatrixInvalidBallast1, readerPathGraphAdjacencyMatrixInvalidBallast2, readerPathGraphAdjacencyMatrixInvalidBallast3 } },
-                { PathEnum.invalidGraphName, new List<string>() { readerPathGraphAdjacencyMatrixInvalidGraphName } },
-                { PathEnum.invalidCountVertices, new List<string>() { readerPathGraphAdjacencyMatrixInvalidCountVertices1, readerPathGraphAdjacencyMatrixInvalidCountVertices2, readerPathGraphAdjacencyMatrixInvalidCountVertices3, readerPathGraphAdjacencyMatrixInvalidCountVertices4 } },
-                { PathEnum.invalidGraph, new List<string>() { readerPathGraphAdjacencyMatrixInvalidGraph } },
-                { PathEnum.invalidCoreData, new List<string>() { readerPathGraphAdjacencyMatrixInvalidCoreData1, readerPathGraphAdjacencyMatrixInvalidCoreData2, readerPathGraphAdjacencyMatrixInvalidCoreData3, readerPathGraphAdjacencyMatrixInvalidCoreData4 } },
-                { PathEnum.invalidColoredGraph, new List<string>() { readerPathGraphAdjacencyMatrixInvalidColoredGraph } },
-                { PathEnum.invalidNumberColors, new List<string>() { readerPathGraphAdjacencyMatrixInvalidNumberColors, readerPathGraphAdjacencyMatrixInvalidChromaticNumber } },
-                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerPathGraphAdjacencyMatrixInvalidUsedAlgorithm } }
+                { PathEnum.valid, new List<string>() { readerGraphAdjacencyMatrixValid1, readerGraphAdjacencyMatrixValid2 } },
+                { PathEnum.invalidHeader, new List<string>() { readerGraphAdjacencyMatrixInvalidHeader1, readerGraphAdjacencyMatrixInvalidHeader2 } },
+                { PathEnum.invalidBallast, new List<string>() { readerGraphAdjacencyMatrixInvalidBallast1, readerGraphAdjacencyMatrixInvalidBallast2, readerGraphAdjacencyMatrixInvalidBallast3 } },
+                { PathEnum.invalidGraphName, new List<string>() { readerGraphAdjacencyMatrixInvalidGraphName } },
+                { PathEnum.invalidCountVertices, new List<string>() { readerGraphAdjacencyMatrixInvalidCountVertices1, readerGraphAdjacencyMatrixInvalidCountVertices2, readerGraphAdjacencyMatrixInvalidCountVertices3, readerGraphAdjacencyMatrixInvalidCountVertices4 } },
+                { PathEnum.invalidGraph, new List<string>() { readerGraphAdjacencyMatrixInvalidGraph } },
+                { PathEnum.invalidCoreData, new List<string>() { readerGraphAdjacencyMatrixInvalidCoreData1, readerGraphAdjacencyMatrixInvalidCoreData2, readerGraphAdjacencyMatrixInvalidCoreData3, readerGraphAdjacencyMatrixInvalidCoreData4 } },
+                { PathEnum.invalidColoredGraph, new List<string>() { readerGraphAdjacencyMatrixInvalidColoredGraph } },
+                { PathEnum.invalidNumberColors, new List<string>() { readerGraphAdjacencyMatrixInvalidNumberColors, readerGraphAdjacencyMatrixInvalidChromaticNumber } },
+                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerGraphAdjacencyMatrixInvalidUsedAlgorithm } }
             };
 
             // Fill testsGraphAdjacencyListDictionary
             testsGraphAdjacencyListDictionary = new Dictionary<PathEnum, List<string>>
             {
-                { PathEnum.valid, new List<string>() { readerPathGraphAdjacencyListValid1, readerPathGraphAdjacencyListValid2, readerPathGraphAdjacencyListValidVertexName } },
-                { PathEnum.invalidHeader, new List<string>() { readerPathGraphAdjacencyListInvalidHeader1, readerPathGraphAdjacencyListInvalidHeader2 } },
-                { PathEnum.invalidBallast, new List<string>() { readerPathGraphAdjacencyListInvalidBallast1, readerPathGraphAdjacencyListInvalidBallast2, readerPathGraphAdjacencyListInvalidBallast3 } },
-                { PathEnum.invalidGraphName, new List<string>() { readerPathGraphAdjacencyListInvalidGraphName } },
-                { PathEnum.invalidCountVertices, new List<string>() { readerPathGraphAdjacencyListInvalidCountVertices1, readerPathGraphAdjacencyListInvalidCountVertices2, readerPathGraphAdjacencyListInvalidCountVertices3, readerPathGraphAdjacencyListInvalidCountVertices4 } },
-                { PathEnum.invalidGraph, new List<string>() { readerPathGraphAdjacencyListInvalidGraph } },
-                { PathEnum.invalidCoreData, new List<string>() { readerPathGraphAdjacencyListInvalidCoreData1, readerPathGraphAdjacencyListInvalidCoreData2 } },
-                { PathEnum.invalidColoredGraph, new List<string>() { readerPathGraphAdjacencyListInvalidColoredGraph } },
-                { PathEnum.invalidNumberColors, new List<string>() { readerPathGraphAdjacencyListInvalidNumberColors, readerPathGraphAdjacencyListInvalidChromaticNumber } },
-                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerPathGraphAdjacencyListInvalidUsedAlgorithm } }
+                { PathEnum.valid, new List<string>() { readerGraphAdjacencyListValid1, readerGraphAdjacencyListValid2, readerGraphAdjacencyListValidVertexName } },
+                { PathEnum.invalidHeader, new List<string>() { readerGraphAdjacencyListInvalidHeader1, readerGraphAdjacencyListInvalidHeader2 } },
+                { PathEnum.invalidBallast, new List<string>() { readerGraphAdjacencyListInvalidBallast1, readerGraphAdjacencyListInvalidBallast2, readerGraphAdjacencyListInvalidBallast3 } },
+                { PathEnum.invalidGraphName, new List<string>() { readerGraphAdjacencyListInvalidGraphName } },
+                { PathEnum.invalidCountVertices, new List<string>() { readerGraphAdjacencyListInvalidCountVertices1, readerGraphAdjacencyListInvalidCountVertices2, readerGraphAdjacencyListInvalidCountVertices3, readerGraphAdjacencyListInvalidCountVertices4 } },
+                { PathEnum.invalidGraph, new List<string>() { readerGraphAdjacencyListInvalidGraph } },
+                { PathEnum.invalidCoreData, new List<string>() { readerGraphAdjacencyListInvalidCoreData1, readerGraphAdjacencyListInvalidCoreData2 } },
+                { PathEnum.invalidColoredGraph, new List<string>() { readerGraphAdjacencyListInvalidColoredGraph } },
+                { PathEnum.invalidNumberColors, new List<string>() { readerGraphAdjacencyListInvalidNumberColors, readerGraphAdjacencyListInvalidChromaticNumber } },
+                { PathEnum.invalidUsedAlgorithm, new List<string>() { readerGraphAdjacencyListInvalidUsedAlgorithm } }
             };
 
             // Fill testsDictionary
@@ -236,24 +236,24 @@ namespace GraphColoring.ReaderWriter.Tests
         {
             try
             {
-                List<string> pathList = new List<string>();
+                List<string> fileList = new List<string>();
                 switch (graphEnum)
                 {
                     case Graph.Graph.GraphRepresentationEnum.adjacencyList:
-                        pathList = testsGraphAdjacencyListDictionary[pathEnum];
+                        fileList = testsGraphAdjacencyListDictionary[pathEnum];
                         break;
                     case Graph.Graph.GraphRepresentationEnum.adjacencyMatrix:
-                        pathList = testsGraphAdjacencyMatrixDictionary[pathEnum];
+                        fileList = testsGraphAdjacencyMatrixDictionary[pathEnum];
                         break;
                     case Graph.Graph.GraphRepresentationEnum.edgeList:
-                        pathList = testsGraphEdgeListDictionary[pathEnum];
+                        fileList = testsGraphEdgeListDictionary[pathEnum];
                         break;
                     default:
                         throw new MyException.TestsMissingTestException(graphEnum.ToString());
                 }
-                foreach (string path in pathList)
+                foreach (string file in fileList)
                 {
-                    reader = new Reader(path);
+                    reader = new Reader(GraphColoring.Tests.Tests.CreateTestFile(file), false);
                     Testing();
                 }
             }

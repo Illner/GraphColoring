@@ -10,28 +10,30 @@ namespace GraphColoring
     {
         static void Main(string[] args) 
         {
-            /*
-            Tests.Tests tests = new Tests.Tests(false);
+            
+            Tests.Tests tests = new Tests.Tests(true);
             tests.Test();
-            */
+            
             /*
             Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
             Console.WriteLine(coloredGraphTest.Test(Graph.ColoredGraph.Tests.ColoredGraphTest.ColoredGraphEnum.valid));
             */
             //Tests.Tests tests = new Tests.Tests(true);
-            //tests.Test(Tests.Tests.TestEnum.graphSpanningTree);
-            
+            //tests.Test(Tests.Tests.TestEnum.coloredGraph);
+            /*
             ReaderWriter.Reader reader = new ReaderWriter.Reader(@"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\graph.graph");
+            ReaderWriter.Writer writer = new ReaderWriter.Writer(@"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\graph.graph");
+
             Graph.Graph graph = reader.ReadFile();
 
             graph.GetColoredGraph().GetUnColoredVertexList();
 
-            GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm algorithm = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph);
+            GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm algorithm = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph);
 
             algorithm.Color();
 
-            Console.WriteLine(graph.GetColoredGraph().ToString());
-            
+            writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.RandomSequence, true);
+            */
         }
     }
 }

@@ -16,12 +16,12 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private Dictionary<ComponentEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphComponent = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\GraphComponent.txt";
-        private string graphComponent1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent1.graph";
-        private string graphComponent2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent2.graph";
-        private string graphComponent3Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent3.graph";
-        private string graphComponent4Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent4.graph";
-        private string graphComponent5Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\Property\Component\graphComponent5.graph";
+        private string testPathGraphComponent = @"Testing\Test\GraphComponent.txt";
+        private string graphComponent1 = ComponentResource.graphComponent1;
+        private string graphComponent2 = ComponentResource.graphComponent2;
+        private string graphComponent3 = ComponentResource.graphComponent3;
+        private string graphComponent4 = ComponentResource.graphComponent4;
+        private string graphComponent5 = ComponentResource.graphComponent5;
         #endregion
 
         // Enum
@@ -45,11 +45,11 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<ComponentEnum, string>
             {
-                { ComponentEnum.graphComponent1, graphComponent1Path },
-                { ComponentEnum.graphComponent2, graphComponent2Path },
-                { ComponentEnum.graphComponent3, graphComponent3Path },
-                { ComponentEnum.graphComponent4, graphComponent4Path },
-                { ComponentEnum.graphComponent5, graphComponent5Path }
+                { ComponentEnum.graphComponent1, graphComponent1 },
+                { ComponentEnum.graphComponent2, graphComponent2 },
+                { ComponentEnum.graphComponent3, graphComponent3 },
+                { ComponentEnum.graphComponent4, graphComponent4 },
+                { ComponentEnum.graphComponent5, graphComponent5 }
             };
         }
         #endregion
@@ -90,9 +90,9 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             try
             {
-                testPath = testsDictionary[componentEnum];
-                
-                reader = new ReaderWriter.Reader(testPath);
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[componentEnum]);
+
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(componentEnum.ToString());

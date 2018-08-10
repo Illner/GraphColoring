@@ -16,9 +16,8 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
         private Dictionary<ColoredGraphEnum, string> testsDictionary;
 
         // Paths
-        private string testPathGraphCycle = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\ColoredGraph.txt";
-        private string coloredGraph1Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\ColoredGraph\coloredGraph1.graph";
-        private string coloredGraph2Path = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\ColoredGraph\coloredGraph1.graph";
+        private string testPathColoredGraph = @"Testing\Test\ColoredGraph.txt";
+        private string coloredGraph1 = ColoredGraphResource.coloredGraph1;
         #endregion
 
         // Enum
@@ -39,8 +38,8 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             // Fill testsDictionary
             testsDictionary = new Dictionary<ColoredGraphEnum, string>
             {
-                { ColoredGraphEnum.valid, coloredGraph1Path },
-                { ColoredGraphEnum.invalid, coloredGraph2Path }
+                { ColoredGraphEnum.valid, coloredGraph1 },
+                { ColoredGraphEnum.invalid, coloredGraph1 }
             };
         }
         #endregion
@@ -81,8 +80,8 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
         {
             try
             {
-                testPath = testsDictionary[coloredGraphEnum];
-                reader = new ReaderWriter.Reader(testPath);
+                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[coloredGraphEnum]);
+                reader = new ReaderWriter.Reader(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(coloredGraphEnum.ToString());
@@ -326,7 +325,7 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
         #region
         public string GetPath()
         {
-            return testPathGraphCycle;
+            return testPathColoredGraph;
         }
         #endregion
     }

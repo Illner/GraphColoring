@@ -17,5 +17,40 @@ namespace GraphColoring.Graph.GraphProperty
             SetCountVertices(countVertices);
         }
         #endregion
+
+        // Method
+        #region
+        /// <summary>
+        /// Resetuje všechny vlastnosti grafu
+        /// </summary>
+        public void Reset()
+        {
+            // SequencesPolynomialsOthers
+            degreeSequence = null;
+            spanningTreeBFS = null;
+            matching = null;
+            cutVertices = null;
+            bridges = null;
+
+            // Properties
+            isConnected = null;
+            isRegular = null;
+            isCyclic = null;
+            isEulerian = EulerianGraphEnum.undefined;
+
+            // Component
+            componentsList = null;
+
+            // IntegralInvariants
+            countComponents = null;
+            circuitRank = null;
+            girth = null;
+            vertexConnectivity = null;
+            edgeConnectivity = null;
+            minimumVertexDegree = null;
+            maximumVertexDegree = null;
+            cayleysFormula = null;
+        }
+        #endregion
     }
 }

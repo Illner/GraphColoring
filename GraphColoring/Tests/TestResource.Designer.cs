@@ -401,6 +401,42 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to largestFirstSequence1
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 0
+        ///Real count of vertices: 0
+        ///Count of edges: 0
+        ///Vertices: 
+        ///Edges: 
+        ///Vertex color: 
+        ///
+        ///largestFirstSequence2
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 1
+        ///Real count of vertices: 1
+        ///Count of edges: 0
+        ///Vertices: 
+        ///-- Identifier: 843, userName: 843
+        ///Edges: 
+        ///-- Vertex: 843 (843)
+        ///Vertex color: 
+        ///-- Vertex: 843, color: 1
+        ///
+        ///largestFirstSequence3
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 6
+        ///Real count of [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LargestFirstSequenceStandard {
+            get {
+                return ResourceManager.GetString("LargestFirstSequenceStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to adjacencyList
         ///valid
         ///Reading file: TestFile.temp
@@ -430,12 +466,49 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to smallestLastSequence1
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 0
+        ///Real count of vertices: 0
+        ///Count of edges: 0
+        ///Vertices: 
+        ///Edges: 
+        ///Vertex color: 
+        ///
+        ///smallestLastSequence2
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 1
+        ///Real count of vertices: 1
+        ///Count of edges: 0
+        ///Vertices: 
+        ///-- Identifier: 859, userName: 859
+        ///Edges: 
+        ///-- Vertex: 859 (859)
+        ///Vertex color: 
+        ///-- Vertex: 859, color: 1
+        ///
+        ///smallestLastSequence3
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 6
+        ///Real count of [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SmallestLastSequenceStandard {
+            get {
+                return ResourceManager.GetString("SmallestLastSequenceStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to write
         ///OK
         ///recordExists
         ///OK
         ///first
         ///OK
+        ///
         ///
         ///.
         /// </summary>

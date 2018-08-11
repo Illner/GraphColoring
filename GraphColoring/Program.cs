@@ -18,21 +18,22 @@ namespace GraphColoring
             Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
             Console.WriteLine(coloredGraphTest.Test(Graph.ColoredGraph.Tests.ColoredGraphTest.ColoredGraphEnum.valid));
             */
-            //Tests.Tests tests = new Tests.Tests(true);
-            //tests.Test(Tests.Tests.TestEnum.coloredGraph);
+            //Tests.Tests tests = new Tests.Tests(false);
+            //tests.Test(Tests.Tests.TestEnum.smallestLastSequence);
             /*
-            ReaderWriter.Reader reader = new ReaderWriter.Reader(@"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\graph.graph");
-            ReaderWriter.Writer writer = new ReaderWriter.Writer(@"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Graph\graph.graph");
+            ReaderWriter.Reader reader = new ReaderWriter.Reader(@"Testing\Graph\graph.graph", false);
+            ReaderWriter.Writer writer = new ReaderWriter.Writer(@"Testing\Graph\graph.graph", false);
 
             Graph.Graph graph = reader.ReadFile();
 
             graph.GetColoredGraph().GetUnColoredVertexList();
 
-            GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm algorithm = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph);
+            GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm algorithm = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
 
             algorithm.Color();
 
-            writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.RandomSequence, true);
+            writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.SmallestLastSequence, false);
+            Console.WriteLine(graph.GetColoredGraph());
             */
         }
     }

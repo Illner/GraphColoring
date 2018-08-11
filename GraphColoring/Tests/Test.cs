@@ -10,6 +10,7 @@ namespace GraphColoring.Tests
         // Variable
         #region
         private Boolean consolePrint;
+        private static string fileName = "TestFile.temp";
         private StringBuilder stringBuilder;
         private Dictionary<TestEnum, Tuple<ITestInterface, string>> testsDictionary;
 
@@ -31,6 +32,8 @@ namespace GraphColoring.Tests
         Graph.GraphOperation.Tests.LineGraphTest lineGraphTest = new Graph.GraphOperation.Tests.LineGraphTest();
         Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
         ReaderWriter.Tests.WriterTest writerTest = new ReaderWriter.Tests.WriterTest();
+        GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests.LargestFirstSequenceTest largestFirstSequenceTest = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests.LargestFirstSequenceTest();
+        GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceTest smallestLastSequenceTest = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceTest();
         #endregion
 
         // Enum
@@ -50,7 +53,9 @@ namespace GraphColoring.Tests
             graphSubGraph,
             graphLineGraph,
             coloredGraph,
-            writer
+            writer,
+            largestFirstSequence,
+            smallestLastSequence
         }
         #endregion
 
@@ -80,7 +85,9 @@ namespace GraphColoring.Tests
                 { TestEnum.graphSubGraph, new Tuple<ITestInterface, string>(subGraphTest, TestResource.GraphSubGraphStandard) },
                 { TestEnum.graphLineGraph, new Tuple<ITestInterface, string>(lineGraphTest, TestResource.GraphLineGraphStandard) },
                 { TestEnum.coloredGraph, new Tuple<ITestInterface, string>(coloredGraphTest, TestResource.ColoredGraphStandard) },
-                { TestEnum.writer, new Tuple<ITestInterface, string>(writerTest, TestResource.WriterStandard) }
+                { TestEnum.writer, new Tuple<ITestInterface, string>(writerTest, TestResource.WriterStandard) },
+                { TestEnum.largestFirstSequence, new Tuple<ITestInterface, string>(largestFirstSequenceTest, TestResource.LargestFirstSequenceStandard) },
+                { TestEnum.smallestLastSequence, new Tuple<ITestInterface, string>(smallestLastSequenceTest, TestResource.SmallestLastSequenceStandard) }
             };
         }
         #endregion
@@ -107,13 +114,16 @@ namespace GraphColoring.Tests
             ITestInterface test = testsDictionary[testEnum].Item1;
 
             stringBuilder = test.Test();
+
+            // :(
+            stringBuilder.AppendLine();
             stringBuilder.AppendLine();
 
             if (consolePrint)
             {
                 String template = testsDictionary[testEnum].Item2;
 
-                if (String.Compare(template, stringBuilder.ToString()) == 0)
+                if (template.Equals(stringBuilder.ToString()))
                     Console.WriteLine("OK   " + testEnum.ToString());
                 else
                     Console.WriteLine("NOK  " + testEnum.ToString());
@@ -125,6 +135,8 @@ namespace GraphColoring.Tests
                 streamWriter.WriteLine(stringBuilder.ToString());
                 streamWriter.Flush();
             }
+
+            DeleteTestFile();
         }
 
         /// <summary>
@@ -134,14 +146,20 @@ namespace GraphColoring.Tests
         /// <returns>název souboru</returns>
         public static string CreateTestFile(string content)
         {
-            // Variable
-            string fileName = "TestFile.temp";
-
             File.WriteAllText(fileName, content);
 
             //File.SetAttributes(fileName, FileAttributes.Hidden);
 
             return fileName;
+        }
+
+        /// <summary>
+        /// Odstraní soubor
+        /// </summary>
+        public static void DeleteTestFile()
+        {
+            ReaderWriter.ReaderWriter reader = new ReaderWriter.Reader(fileName, false);
+            reader.DeleteFile();
         }
         #endregion
     }

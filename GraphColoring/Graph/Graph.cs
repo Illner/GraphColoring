@@ -15,6 +15,7 @@ namespace GraphColoring.Graph
         /// realCountVertices - skutečný počet naalokovaných vrcholů, nikoliv předpokládaný počet vrcholů (parametr konstruktoru)
         /// coloredGraph - obarvení grafu
         /// mapping - slouží pro snadné nalezení vrcholu na základě identifikátoru
+        /// mappingUserName - slouží pro snadné nalezení vrcholu na základě userName
         /// graphProperty - vlastnosti grafu
         /// adjacencyList - seznam sousedů grafu
         /// canDeIncreaseCountVertices - určuje, zda se může zavolat metoda IncrementCountVertices / DecrementCountVertices, true - OK, false - vyvolá se výjimka
@@ -26,6 +27,7 @@ namespace GraphColoring.Graph
         private int realCountVertices;
         private ColoredGgraph coloredGraph;
         protected Dictionary<int, VertexExtended> mapping;
+        protected Dictionary<string, VertexExtended> mappingUserName;
         protected GraphProperty.GraphProperty graphProperty;
         protected Dictionary<VertexExtended, List<VertexExtended>> adjacencyList;
         private bool canDeIncreaseCountVertices, canDeIncreaseCountEdges;
@@ -44,6 +46,7 @@ namespace GraphColoring.Graph
 
             adjacencyList = new Dictionary<VertexExtended, List<VertexExtended>>();
             mapping = new Dictionary<int, VertexExtended>();
+            mappingUserName = new Dictionary<string, VertexExtended>();
 
             SetName("My graph");
         }
@@ -60,6 +63,7 @@ namespace GraphColoring.Graph
         {
             adjacencyList.Add(vertexExtended, new List<VertexExtended>());
             mapping.Add(vertexExtended.GetIdentifier(), vertexExtended);
+            mappingUserName.Add(vertexExtended.GetUserName(), vertexExtended);
 
             IncrementRealCountVertices();
 
@@ -112,6 +116,20 @@ namespace GraphColoring.Graph
         protected VertexExtended GetVertex(int identifier)
         {
             if (!mapping.TryGetValue(identifier, out VertexExtended vertexExtended))
+                throw new MyException.GraphVertexDoesntExistException();
+
+            return vertexExtended;
+        }
+
+        /// <summary>
+        /// Vrátí Vertex s daným userName
+        /// Pokud daný vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
+        /// </summary>
+        /// <param name="userName">jméno vrcholu</param>
+        /// <returns>vrchol s daným userName</returns>
+        public Vertex GetVertex(string userName)
+        {
+            if (!mappingUserName.TryGetValue(userName, out VertexExtended vertexExtended))
                 throw new MyException.GraphVertexDoesntExistException();
 
             return vertexExtended;

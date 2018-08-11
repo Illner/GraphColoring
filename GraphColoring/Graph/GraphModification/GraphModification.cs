@@ -35,6 +35,9 @@ namespace GraphColoring.Graph
             coloredGraph.AddVertexInHashSets(vertex);
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
 
         /// <summary>
@@ -85,6 +88,9 @@ namespace GraphColoring.Graph
             coloredGraph.RemoveVertexInHashSets(removeVertex);
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
 
         /// <summary>
@@ -148,6 +154,9 @@ namespace GraphColoring.Graph
             // ColoredGraph
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
 
         /// <summary>
@@ -180,6 +189,9 @@ namespace GraphColoring.Graph
             // ColoredGraph
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
 
         /// <summary>
@@ -223,6 +235,9 @@ namespace GraphColoring.Graph
             // ColoredGraph
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
 
         /// <summary>
@@ -241,6 +256,9 @@ namespace GraphColoring.Graph
             // ColoredGraph
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
 
         /// <summary>
@@ -268,6 +286,9 @@ namespace GraphColoring.Graph
             // ColoredGraph
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
 
         /// <summary>
@@ -311,6 +332,9 @@ namespace GraphColoring.Graph
             // ColoredGraph
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
 
         /// <summary>
@@ -335,6 +359,9 @@ namespace GraphColoring.Graph
             // ColoredGraph
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
+
+            // GraphProperty
+            GetGraphProperty().Reset();
         }
         #endregion
     }

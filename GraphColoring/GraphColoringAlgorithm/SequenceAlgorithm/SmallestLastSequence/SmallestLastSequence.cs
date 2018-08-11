@@ -27,7 +27,20 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
         override
         protected void CreateVertexSequence()
         {
-            // TODO CreateVertexSequence (SmallestLastSequence) - R1807
+            // Variable
+            Graph.Vertex vertex;
+            List<Graph.Vertex> VertexList = new List<Graph.Vertex>();
+            Graph.Graph copyGraph;
+
+            copyGraph = Graph.GraphOperation.GraphOperation.CopyGraph(graph);
+            while (copyGraph.GetRealCountVertices() != 0)
+            {
+                vertex = copyGraph.GetGraphProperty().GetDegreeSequenceVertex().First();
+                VertexList.Add(graph.GetVertex(vertex.GetUserName()));
+                copyGraph.VertexDelete(vertex);
+            }
+
+            vertextexSequenceList = VertexList;
         }
         #endregion
     }

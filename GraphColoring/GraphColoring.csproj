@@ -51,9 +51,21 @@
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\ConnectedSequential\ConnectedSequential.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\GraphColoringSequenceAlgorithm.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\LargestFirstSequence.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\Tests\LargestFirstSequenceResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LargestFirstSequenceResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\Tests\LargestFirstSequenceTest.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\Optimal\Optimal.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\RandomSequence\RandomSequence.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\SmallestLastSequence.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\Tests\SmallestLastSequenceResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SmallestLastSequenceResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\Tests\SmallestLastSequenceTest.cs" />
     <Compile Include="Graph\ColoredGraph\ColoredGraph.cs" />
     <Compile Include="Graph\ColoredGraph\IColoredGraphInterface.cs" />
     <Compile Include="Graph\ColoredGraph\Tests\ColoredGraphResource.Designer.cs">
@@ -178,6 +190,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence1.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence2.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence3.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence1.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence2.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence3.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SmallestLastSequence\smallestLastSequence1.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SmallestLastSequence\smallestLastSequence2.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SmallestLastSequence\smallestLastSequence3.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SmallestLastSequence\smallestLastSequence4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SmallestLastSequence\smallestLastSequence5.graph" />
+    <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence1.graph" />
+    <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence2.graph" />
+    <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence3.graph" />
+    <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence4.graph" />
     <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass2.graph" />
@@ -290,6 +319,14 @@
     <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph2.graph" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\Tests\LargestFirstSequenceResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LargestFirstSequenceResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\Tests\SmallestLastSequenceResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SmallestLastSequenceResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Graph\ColoredGraph\Tests\ColoredGraphResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ColoredGraphResource.Designer.cs</LastGenOutput>
@@ -386,6 +423,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\ReaderStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\LargestFirstSequenceStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\SmallestLastSequenceStandard.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

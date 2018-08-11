@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence
 {
-    class LargestFirstSequence : GraphColoringSequenceAlgorithm
+    sealed class LargestFirstSequence : GraphColoringSequenceAlgorithm
     {
         // Variable
         #region

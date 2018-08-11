@@ -26,13 +26,11 @@ namespace GraphColoring
 
             Graph.Graph graph = reader.ReadFile();
 
-            graph.GetColoredGraph().GetUnColoredVertexList();
-
-            GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm algorithm = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
+            GraphColoringAlgorithm.Optimal.Optimal algorithm = new GraphColoringAlgorithm.Optimal.Optimal(graph);
 
             algorithm.Color();
 
-            writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.SmallestLastSequence, false);
+            //writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.Optimal, true);
             Console.WriteLine(graph.GetColoredGraph());
             */
         }

@@ -8,11 +8,6 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
 {
     class SmallestLastSequence : GraphColoringSequenceAlgorithm
     {
-        // Variable
-        #region
-
-        #endregion
-
         // Constructor
         #region
         public SmallestLastSequence(Graph.Graph graph) : base(graph)

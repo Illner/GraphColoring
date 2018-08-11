@@ -57,7 +57,7 @@
       <DependentUpon>LargestFirstSequenceResource.resx</DependentUpon>
     </Compile>
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\Tests\LargestFirstSequenceTest.cs" />
-    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\Optimal\Optimal.cs" />
+    <Compile Include="GraphColoringAlgorithm\Optimal\Optimal.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\RandomSequence\RandomSequence.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\SmallestLastSequence.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\Tests\SmallestLastSequenceResource.Designer.cs">

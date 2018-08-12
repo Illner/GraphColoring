@@ -30,12 +30,12 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
             // Variable
             int countUsedColors;
             Graph.IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
-            
-            foreach(var vertexList in MyMath.MyMath.GeneratePermutations(graph.AllVertices()))
+            optimalVertexList = new List<Graph.Vertex>();
+
+            foreach (var vertexList in MyMath.MyMath.GeneratePermutations(graph.AllVertices()))
             {
                 coloredGraph.GreedyColoring(vertexList.ToList());
                 coloredGraph.InicializeColoredGraph();
-
                 countUsedColors = coloredGraph.GetCountUsedColors();
 
                 if (optimalCountColors > countUsedColors)

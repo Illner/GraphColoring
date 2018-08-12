@@ -47,6 +47,12 @@
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithmEnum.cs" />
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\GreedyIndependentSet.cs" />
     <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmInterface.cs" />
+    <Compile Include="GraphColoringAlgorithm\Optimal\Tests\OptimalResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OptimalResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphColoringAlgorithm\Optimal\Tests\OptimalTest.cs" />
     <Compile Include="GraphColoringAlgorithm\SaturationLargestFirstSequence\SaturationLargestFirstSequence.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\ConnectedSequential\ConnectedSequential.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\GraphColoringSequenceAlgorithm.cs" />
@@ -78,6 +84,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphExamples\GraphMediumResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GraphMediumResource.resx</DependentUpon>
     </Compile>
     <Compile Include="Graph\GraphModification\Tests\ModificationResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -194,6 +205,10 @@
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence2.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence3.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal1.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal2.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal3.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal4.graph" />
     <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence1.graph" />
     <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence2.graph" />
     <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence3.graph" />
@@ -207,6 +222,7 @@
     <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence2.graph" />
     <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence3.graph" />
     <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence4.graph" />
+    <None Include="bin\Debug\Testing\GraphExamples\Medium\medium1_48_5.graph" />
     <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass2.graph" />
@@ -319,6 +335,10 @@
     <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph2.graph" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GraphColoringAlgorithm\Optimal\Tests\OptimalResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OptimalResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\Tests\LargestFirstSequenceResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LargestFirstSequenceResource.Designer.cs</LastGenOutput>
@@ -335,6 +355,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ClassResource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphExamples\GraphMediumResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GraphMediumResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Graph\GraphModification\Tests\ModificationResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -429,6 +453,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\SmallestLastSequenceStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\OptimalStandard.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

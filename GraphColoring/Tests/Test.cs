@@ -34,6 +34,7 @@ namespace GraphColoring.Tests
         ReaderWriter.Tests.WriterTest writerTest = new ReaderWriter.Tests.WriterTest();
         GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests.LargestFirstSequenceTest largestFirstSequenceTest = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests.LargestFirstSequenceTest();
         GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceTest smallestLastSequenceTest = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceTest();
+        GraphColoringAlgorithm.Optimal.Tests.OptimalTest optimalTest = new GraphColoringAlgorithm.Optimal.Tests.OptimalTest();
         #endregion
 
         // Enum
@@ -55,7 +56,8 @@ namespace GraphColoring.Tests
             coloredGraph,
             writer,
             largestFirstSequence,
-            smallestLastSequence
+            smallestLastSequence,
+            optimal
         }
         #endregion
 
@@ -87,7 +89,8 @@ namespace GraphColoring.Tests
                 { TestEnum.coloredGraph, new Tuple<ITestInterface, string>(coloredGraphTest, TestResource.ColoredGraphStandard) },
                 { TestEnum.writer, new Tuple<ITestInterface, string>(writerTest, TestResource.WriterStandard) },
                 { TestEnum.largestFirstSequence, new Tuple<ITestInterface, string>(largestFirstSequenceTest, TestResource.LargestFirstSequenceStandard) },
-                { TestEnum.smallestLastSequence, new Tuple<ITestInterface, string>(smallestLastSequenceTest, TestResource.SmallestLastSequenceStandard) }
+                { TestEnum.smallestLastSequence, new Tuple<ITestInterface, string>(smallestLastSequenceTest, TestResource.SmallestLastSequenceStandard) },
+                { TestEnum.optimal, new Tuple<ITestInterface, string>(optimalTest, TestResource.OptimalStandard) }
             };
         }
         #endregion

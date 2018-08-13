@@ -222,4 +222,17 @@ namespace GraphColoring.MyException
 
         public ColoredGraphAlreadyInitializedException(string message, Exception inner) : base(message, inner) { }
     }
+
+    /// <summary>
+    /// (Colored) Graph Exception
+    /// Saturation nebyl inicializován (saturation = false)
+    /// </summary>
+    class ColoredGraphNotInitializationSaturation : GraphException
+    {
+        public ColoredGraphNotInitializationSaturation() { }
+
+        public ColoredGraphNotInitializationSaturation(string message) : base(message) { }
+
+        public ColoredGraphNotInitializationSaturation(string message, Exception inner) : base(message, inner) { }
+    }
 }

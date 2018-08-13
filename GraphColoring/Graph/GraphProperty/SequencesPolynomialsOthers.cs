@@ -130,7 +130,7 @@ namespace GraphColoring.Graph.GraphProperty
         // Property
         #region
         /// <summary>
-        /// Vrátí skóre grafu
+        /// Vrátí skóre grafu - od největšího po nejměnší
         /// </summary>
         /// <returns>skóre grafu jako list Vertexů</returns>
         public List<Vertex> GetDegreeSequenceVertex()

@@ -17,12 +17,16 @@ namespace GraphColoring.Graph
             /// countUsedColor - dosavadní počet použitých barev pro obarvení grafu
             /// coloredVertexList - list všech obarvených vrcholů grafu
             /// unColoredVertexList - list všech NEobarvených vrcholů grafu
+            /// isSaturation - informace, zda se pracuje s nasyceností grafu
+            /// saturationDegreeSequence - dictionary obsahující vrchol a jeho nasycenost
             /// </summary>
             private bool isInicializedColoredGraph;
             private Graph graph;
             private Dictionary<int, HashSet<Vertex>> usedColorsDictionary;
             private HashSet<Vertex> coloredVertexHashSet;
             private HashSet<Vertex> unColoredVertexHashSet;
+            private bool isSaturation;
+            private Dictionary<Vertex, int> saturationDegreeSequence;
             #endregion
 
             // Constructor
@@ -104,6 +108,18 @@ namespace GraphColoring.Graph
                 
                 ChangeVertexInHashSets(vertex, color);
                 vertexExtended.SetColor(color);
+
+                // Saturation
+                if (isSaturation)
+                {
+                    List<Vertex> saturationVertex = graph.Neighbours(vertex);
+                    saturationVertex.Add(vertex);
+
+                    foreach (Vertex vertexSaturation in saturationVertex)
+                    {
+                        EvaluateSaturation(vertexSaturation);
+                    }
+                }
             }
 
             /// <summary>
@@ -365,6 +381,59 @@ namespace GraphColoring.Graph
                     ChangeVertexInHashSets(vertex, VertexExtended.GetDefaultColor());
                     vertexExtended.ResetColor();
                 }
+            }
+
+            /// <summary>
+            /// Spočítá nasycenost pro daný vrchol
+            /// </summary>
+            /// <param name="vertex">daný vrchol</param>
+            private void EvaluateSaturation(Vertex vertex)
+            {
+                // Variable
+                HashSet<int> neighboursColors = new HashSet<int>();
+                List<Vertex> neighboursVertex = graph.Neighbours(vertex);
+
+                foreach(Vertex neighbourVertex in neighboursVertex)
+                {
+                    int color = neighbourVertex.GetColor();
+
+                    if (color == VertexExtended.GetDefaultColor())
+                        continue;
+
+                    neighboursColors.Add(color);
+                }
+
+                saturationDegreeSequence[vertex] = neighboursColors.Count;
+            }
+
+            /// <summary>
+            /// Nastaví saturation
+            /// </summary>
+            /// <param name="saturation">true - pracuje se s nasyceností vrcholů, false - nepracuje se s nasyceností vrcholů</param>
+            public void SetSaturation(bool saturation)
+            {
+                isSaturation = saturation;
+
+                if (isSaturation)
+                {
+                    saturationDegreeSequence = new Dictionary<Vertex, int>();
+
+                    foreach(Vertex vertex in graph.AllVertices())
+                    {
+                        saturationDegreeSequence.Add(vertex, 0);
+                    }
+                }
+            }
+               
+            /// <summary>
+            /// Vrátí seznam vrcholů seřazený podle jejich nasycenosti - od největší po nejmenší
+            /// </summary>
+            /// <returns>seznam vrcholů seřazený podle jejich nasycenosti</returns>
+            public List<Vertex> GetSaturationDegreeSequence()
+            {
+                List<Vertex> saturationDegreeSequenceVertex = saturationDegreeSequence.Keys.ToList();
+                saturationDegreeSequenceVertex.Sort();
+                return saturationDegreeSequenceVertex;
             }
 
             override

@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential
 {
-    class ConnectedSequential : GraphColoringSequenceAlgorithm
+    sealed class ConnectedSequential : GraphColoringSequenceAlgorithm
     {
-        // Variable
-        #region
-
-        #endregion
-
         // Constructor
         #region
         public ConnectedSequential(Graph.Graph graph) : base(graph)

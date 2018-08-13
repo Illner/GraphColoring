@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
 {
-    class SaturationLargestFirstSequence : GraphColoringAlgorithm
+    sealed class SaturationLargestFirstSequence : GraphColoringAlgorithm
     {
-        // Variable
-        #region
-
-        #endregion
-
         // Constructor
         #region
         public SaturationLargestFirstSequence(Graph.Graph graph) : base(graph)

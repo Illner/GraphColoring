@@ -137,5 +137,27 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests {
                 return ResourceManager.GetString("optimal4", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph coloring. Graph representation: adjacencyMatrix
+        ///
+        ///Graph name: Name
+        ///Number of vertices: 6
+        ///
+        ///GRAPH
+        ///0 1 1 0 0 0
+        ///1 0 1 0 0 0
+        ///1 1 0 0 0 0
+        ///0 0 0 0 1 1
+        ///0 0 0 1 0 1
+        ///0 0 0 1 1 0
+        ///
+        ///COLORED GRAPH.
+        /// </summary>
+        internal static string optimal5 {
+            get {
+                return ResourceManager.GetString("optimal5", resourceCulture);
+            }
+        }
     }
 }

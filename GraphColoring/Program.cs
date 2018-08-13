@@ -19,14 +19,14 @@ namespace GraphColoring
             Console.WriteLine(coloredGraphTest.Test(Graph.ColoredGraph.Tests.ColoredGraphTest.ColoredGraphEnum.valid));
             */
             //Tests.Tests tests = new Tests.Tests(false);
-            //tests.Test(Tests.Tests.TestEnum.optimal);
+            //tests.Test(Tests.Tests.TestEnum.saturationLargestFirstSequence);
             /*
-            ReaderWriter.Reader reader = new ReaderWriter.Reader(Tests.Tests.CreateTestFile(Graph.GraphExamples.GraphMediumResource.medium1_48_5), false);
-            ReaderWriter.Writer writer = new ReaderWriter.Writer(Tests.Tests.CreateTestFile(Graph.GraphExamples.GraphMediumResource.medium1_48_5), false);
+            ReaderWriter.Reader reader = new ReaderWriter.Reader(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence3), false);
+            ReaderWriter.Writer writer = new ReaderWriter.Writer(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence3), false);
 
             Graph.Graph graph = reader.ReadFile();
 
-            GraphColoringAlgorithm.GraphColoringAlgorithm algorithm = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph);
+            GraphColoringAlgorithm.GraphColoringAlgorithm algorithm = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
 
             algorithm.Color();
 

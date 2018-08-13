@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests {
+namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LargestFirstSequenceResource {
+    internal class SaturationLargestFirstSequenceResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LargestFirstSequenceResource() {
+        internal SaturationLargestFirstSequenceResource() {
         }
         
         /// <summary>
@@ -39,8 +39,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests" +
-                            ".LargestFirstSequenceResource", typeof(LargestFirstSequenceResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests.Saturat" +
+                            "ionLargestFirstSequenceResource", typeof(SaturationLargestFirstSequenceResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -71,9 +71,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence1 {
+        internal static string saturationLF1 {
             get {
-                return ResourceManager.GetString("largestFirstSequence1", resourceCulture);
+                return ResourceManager.GetString("saturationLF1", resourceCulture);
             }
         }
         
@@ -88,9 +88,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence2 {
+        internal static string saturationLF2 {
             get {
-                return ResourceManager.GetString("largestFirstSequence2", resourceCulture);
+                return ResourceManager.GetString("saturationLF2", resourceCulture);
             }
         }
         
@@ -110,9 +110,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence3 {
+        internal static string saturationLF3 {
             get {
-                return ResourceManager.GetString("largestFirstSequence3", resourceCulture);
+                return ResourceManager.GetString("saturationLF3", resourceCulture);
             }
         }
         
@@ -135,9 +135,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence4 {
+        internal static string saturationLF4 {
             get {
-                return ResourceManager.GetString("largestFirstSequence4", resourceCulture);
+                return ResourceManager.GetString("saturationLF4", resourceCulture);
             }
         }
         
@@ -161,9 +161,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence5 {
+        internal static string saturationLF5 {
             get {
-                return ResourceManager.GetString("largestFirstSequence5", resourceCulture);
+                return ResourceManager.GetString("saturationLF5", resourceCulture);
             }
         }
     }

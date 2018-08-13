@@ -29,6 +29,19 @@ namespace GraphColoring.MyException
 
     /// <summary>
     /// Graph exception
+    /// Graf není souvislý. U ConnectedSequentialAlgorithm.
+    /// </summary>
+    class GraphIsNotConnected : GraphException
+    {
+        public GraphIsNotConnected() { }
+
+        public GraphIsNotConnected(string message) : base(message) { }
+
+        public GraphIsNotConnected(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
     /// Snaha provést nějakou operaci, která požaduje NEinicializovaný graf
     /// </summary>
     class GraphInitializationException : GraphException

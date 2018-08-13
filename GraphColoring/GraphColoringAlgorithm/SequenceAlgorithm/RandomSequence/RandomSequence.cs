@@ -22,8 +22,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
         override
         protected void CreateVertexSequence()
         {
-            vertextexSequenceList = graph.AllVertices();
-            MyMath.MyMath.FisherYatesShuffle(vertextexSequenceList);
+            vertexSequenceList = graph.AllVertices();
+            MyMath.MyMath.FisherYatesShuffle(vertexSequenceList);
         }
         #endregion
     }

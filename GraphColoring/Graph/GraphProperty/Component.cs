@@ -28,6 +28,14 @@ namespace GraphColoring.Graph.GraphProperty
             // Variable
             int componentNumber = 0;
             Dictionary<Vertex, int> allVerticesDictionary = graph.AllVertices().ToDictionary(x => x, x => 0);
+            
+            if (graph.GetRealCountVertices() == 0)
+            {
+                countComponents = 1;
+                componentsList = new List<Graph>(componentNumber);
+                componentsList.Add(graph);
+                return;
+            }
 
             // Core algorithm
             for (int i = 0; i < allVerticesDictionary.Count; i++)

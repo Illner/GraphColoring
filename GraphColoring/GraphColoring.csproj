@@ -54,7 +54,19 @@
     </Compile>
     <Compile Include="GraphColoringAlgorithm\Optimal\Tests\OptimalTest.cs" />
     <Compile Include="GraphColoringAlgorithm\SaturationLargestFirstSequence\SaturationLargestFirstSequence.cs" />
+    <Compile Include="GraphColoringAlgorithm\SaturationLargestFirstSequence\Tests\SaturationLargestFirstSequenceResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaturationLargestFirstSequenceResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphColoringAlgorithm\SaturationLargestFirstSequence\Tests\SaturationLargestFirstSequenceTest.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\ConnectedSequential\ConnectedSequential.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\ConnectedSequential\Tests\ConnectedSequentialTest.cs" />
+    <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\ConnectedSequential\Tests\ConnectedSequentialResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConnectedSequentialResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\GraphColoringSequenceAlgorithm.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\LargestFirstSequence.cs" />
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\Tests\LargestFirstSequenceResource.Designer.cs">
@@ -201,14 +213,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential1.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential2.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential3.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential5.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence1.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence2.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence3.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence5.graph" />
     <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal1.graph" />
     <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal2.graph" />
     <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal3.graph" />
     <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Optimal\optimal5.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SaturationLF\saturationLF1.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SaturationLF\saturationLF2.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SaturationLF\saturationLF3.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SaturationLF\saturationLF4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\SaturationLF\saturationLF5.graph" />
     <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence1.graph" />
     <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence2.graph" />
     <None Include="bin\Debug\Testing\Algorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence3.graph" />
@@ -339,6 +363,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>OptimalResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="GraphColoringAlgorithm\SaturationLargestFirstSequence\Tests\SaturationLargestFirstSequenceResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SaturationLargestFirstSequenceResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphColoringAlgorithm\SequenceAlgorithm\ConnectedSequential\Tests\ConnectedSequentialResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConnectedSequentialResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\Tests\LargestFirstSequenceResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LargestFirstSequenceResource.Designer.cs</LastGenOutput>
@@ -456,6 +488,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\OptimalStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\SaturationLargestFirstSequenceStandard.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

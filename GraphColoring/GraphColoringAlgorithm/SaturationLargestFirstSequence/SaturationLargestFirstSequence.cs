@@ -23,11 +23,31 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
         #region
         /// <summary>
         /// Obarví daný graf
+        /// Pokud graf je již inicializovaný, tak vrátí ColoredGraphAlreadyInitializedException
+        /// Něco se nepovedlo - AlgorithmGraphIsNotColored
         /// </summary>
         override
         public void Color()
         {
-            // TODO Color (SaturationLargestFirstSequence) - R1807
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                throw new MyException.ColoredGraphAlreadyInitializedException();
+
+            coloredGraph.ResetColors();
+
+            coloredGraph.SetSaturation(true);
+
+            Graph.Vertex vertex = coloredGraph.GetSaturationDegreeSequence();
+
+            while (vertex != null)
+            {
+                coloredGraph.ColorVertex(vertex, coloredGraph.GreedyColoring(vertex));
+                vertex = coloredGraph.GetSaturationDegreeSequence();
+            }
+
+            bool isColored = coloredGraph.InicializeColoredGraph();
+
+            if (!isColored)
+                throw new MyException.AlgorithmGraphIsNotColored();
         }
         #endregion
     }

@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
     {
         // Variable
         #region
-        protected List<Graph.Vertex> vertextexSequenceList;
+        protected List<Graph.Vertex> vertexSequenceList;
         #endregion
 
         // Constructor
@@ -23,22 +23,26 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         #region
         /// <summary>
         /// Obarví daný graf
+        /// Pokud graf je již inicializovaný, tak vrátí ColoredGraphAlreadyInitializedException
         /// Pokud nesedí sekvence vrcholů, vrátí AlgorithmInvalidVertexSequence
         /// Něco se nepovedlo - AlgorithmGraphIsNotColored
         /// </summary>
         override
         public void Color()
         {
+            if (coloredGraph.GetIsInicializedColoredGraph())
+                throw new MyException.ColoredGraphAlreadyInitializedException();
+
             CreateVertexSequence();
 
-            if (vertextexSequenceList.Count != graph.GetRealCountVertices())
+            if (vertexSequenceList.Count != graph.GetRealCountVertices())
                 throw new MyException.AlgorithmInvalidVertexSequence();
 
             // Unique vertices in list
-            if (vertextexSequenceList.Distinct().Count() != vertextexSequenceList.Count())
+            if (vertexSequenceList.Distinct().Count() != vertexSequenceList.Count())
                 throw new MyException.AlgorithmInvalidVertexSequence();
 
-            coloredGraph.GreedyColoring(vertextexSequenceList);
+            coloredGraph.GreedyColoring(vertexSequenceList);
 
             bool isColored = coloredGraph.InicializeColoredGraph();
 
@@ -65,7 +69,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         #region
         public List<Graph.Vertex> GetVertextexSequenceList()
         {
-            return vertextexSequenceList;
+            return vertexSequenceList;
         }
         #endregion
     }

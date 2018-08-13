@@ -22,6 +22,7 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
         private string algorithmOptimal2 = OptimalResource.optimal2;
         private string algorithmOptimal3 = OptimalResource.optimal3;
         private string algorithmOptimal4 = OptimalResource.optimal4;
+        private string algorithmOptimal5 = OptimalResource.optimal5;
         #endregion
 
         // Enum
@@ -31,7 +32,8 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
             optimal1,
             optimal2,
             optimal3,
-            optimal4
+            optimal4,
+            optimal5
         }
         #endregion
 
@@ -47,7 +49,8 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
                 { OptimalEnum.optimal1, algorithmOptimal1 },
                 { OptimalEnum.optimal2, algorithmOptimal2 },
                 { OptimalEnum.optimal3, algorithmOptimal3 },
-                { OptimalEnum.optimal4, algorithmOptimal4 }
+                { OptimalEnum.optimal4, algorithmOptimal4 },
+                { OptimalEnum.optimal5, algorithmOptimal5 }
             };
         }
         #endregion

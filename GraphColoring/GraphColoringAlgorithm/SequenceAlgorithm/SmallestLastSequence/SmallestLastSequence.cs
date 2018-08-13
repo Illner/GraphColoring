@@ -35,7 +35,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
                 copyGraph.VertexDelete(vertex);
             }
 
-            vertextexSequenceList = VertexList;
+            vertexSequenceList = VertexList;
         }
         #endregion
     }

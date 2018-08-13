@@ -27,7 +27,36 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         override
         protected void CreateVertexSequence()
         {
-            // TODO CreateVertexSequence (ConnectedSequential) - R1807
+            // Variable
+            List<Graph.Edge> spanningTreeBFS;
+            List<Graph.Vertex> VertexList = new List<Graph.Vertex>();
+            
+            // Graph is not connected
+            if (!graph.GetGraphProperty().GetIsConnected())
+                throw new MyException.GraphIsNotConnected(graph.ToString());
+                
+            if (graph.GetRealCountVertices() == 1)
+            {
+                VertexList.Add(graph.GetFirstVertex());
+            }
+            else
+            {
+                if (graph.GetRealCountVertices() > 1)
+                {
+                    spanningTreeBFS = graph.GetGraphProperty().GetSpanningTree();
+
+                    foreach (Graph.Edge edge in spanningTreeBFS)
+                    {
+                        if (!VertexList.Contains(edge.GetVertex1()))
+                            VertexList.Add(edge.GetVertex1());
+
+                        if (!VertexList.Contains(edge.GetVertex2()))
+                            VertexList.Add(edge.GetVertex2());
+                    }
+                }
+            }
+
+            vertexSequenceList = VertexList;
         }
         #endregion
     }

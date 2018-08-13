@@ -21,6 +21,8 @@ namespace GraphColoring.Graph
         void ResetColors();
         List<int> UsedColors();
         List<Vertex> ColoredVertices(int color);
+        void SetSaturation(bool saturation);
+        Vertex GetSaturationDegreeSequence();
         #endregion
 
         // Property

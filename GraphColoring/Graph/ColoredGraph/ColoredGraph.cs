@@ -372,7 +372,7 @@ namespace GraphColoring.Graph
 
                 if (isInicializedColoredGraph)
                     throw new MyException.ColoredGraphAlreadyInitializedException();
-                
+
                 vertexList = graph.AllVertices();
 
                 foreach (Vertex vertex in vertexList)
@@ -381,6 +381,10 @@ namespace GraphColoring.Graph
                     ChangeVertexInHashSets(vertex, VertexExtended.GetDefaultColor());
                     vertexExtended.ResetColor();
                 }
+
+                // Saturation
+                if (isSaturation)
+                    SetSaturation(true);
             }
 
             /// <summary>
@@ -392,6 +396,15 @@ namespace GraphColoring.Graph
                 // Variable
                 HashSet<int> neighboursColors = new HashSet<int>();
                 List<Vertex> neighboursVertex = graph.Neighbours(vertex);
+
+                if (vertex.GetColor() != VertexExtended.GetDefaultColor())
+                {
+                    saturationDegreeSequence.Remove(vertex);
+                    return;
+                }
+                else
+                    neighboursVertex.Add(vertex);
+                
 
                 foreach(Vertex neighbourVertex in neighboursVertex)
                 {
@@ -418,7 +431,7 @@ namespace GraphColoring.Graph
                 {
                     saturationDegreeSequence = new Dictionary<Vertex, int>();
 
-                    foreach(Vertex vertex in graph.AllVertices())
+                    foreach (Vertex vertex in graph.AllVertices())
                     {
                         saturationDegreeSequence.Add(vertex, 0);
                     }
@@ -426,14 +439,22 @@ namespace GraphColoring.Graph
             }
                
             /// <summary>
-            /// Vrátí seznam vrcholů seřazený podle jejich nasycenosti - od největší po nejmenší
+            /// Vrátí vrchol, který je nejvíce nasycený
             /// </summary>
-            /// <returns>seznam vrcholů seřazený podle jejich nasycenosti</returns>
-            public List<Vertex> GetSaturationDegreeSequence()
+            /// <returns>vrchol s největší nasyceností</returns>
+            public Vertex GetSaturationDegreeSequence()
             {
-                List<Vertex> saturationDegreeSequenceVertex = saturationDegreeSequence.Keys.ToList();
-                saturationDegreeSequenceVertex.Sort();
-                return saturationDegreeSequenceVertex;
+                // Variable
+                int max = int.MinValue;
+                Vertex vertexMax = null;
+
+                foreach (KeyValuePair<Vertex, int> record in saturationDegreeSequence)
+                {
+                    if (record.Value > max)
+                        vertexMax = record.Key;
+                }
+                
+                return vertexMax;
             }
 
             override

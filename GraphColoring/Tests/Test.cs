@@ -35,6 +35,8 @@ namespace GraphColoring.Tests
         GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests.LargestFirstSequenceTest largestFirstSequenceTest = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests.LargestFirstSequenceTest();
         GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceTest smallestLastSequenceTest = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceTest();
         GraphColoringAlgorithm.Optimal.Tests.OptimalTest optimalTest = new GraphColoringAlgorithm.Optimal.Tests.OptimalTest();
+        GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests.SaturationLargestFirstSequenceTest saturationLargestFirstSequenceTest = new GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests.SaturationLargestFirstSequenceTest();
+        GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests.ConnectedSequentialTest connectedSequentialTest = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests.ConnectedSequentialTest();
         #endregion
 
         // Enum
@@ -57,7 +59,9 @@ namespace GraphColoring.Tests
             writer,
             largestFirstSequence,
             smallestLastSequence,
-            optimal
+            optimal,
+            saturationLargestFirstSequence,
+            connectedSequential
         }
         #endregion
 
@@ -90,7 +94,9 @@ namespace GraphColoring.Tests
                 { TestEnum.writer, new Tuple<ITestInterface, string>(writerTest, TestResource.WriterStandard) },
                 { TestEnum.largestFirstSequence, new Tuple<ITestInterface, string>(largestFirstSequenceTest, TestResource.LargestFirstSequenceStandard) },
                 { TestEnum.smallestLastSequence, new Tuple<ITestInterface, string>(smallestLastSequenceTest, TestResource.SmallestLastSequenceStandard) },
-                { TestEnum.optimal, new Tuple<ITestInterface, string>(optimalTest, TestResource.OptimalStandard) }
+                { TestEnum.optimal, new Tuple<ITestInterface, string>(optimalTest, TestResource.OptimalStandard) },
+                { TestEnum.saturationLargestFirstSequence, new Tuple<ITestInterface, string>(saturationLargestFirstSequenceTest, TestResource.SaturationLargestFirstSequenceStandard) },
+                { TestEnum.connectedSequential, new Tuple<ITestInterface, string>(connectedSequentialTest, TestResource.SaturationLargestFirstSequenceStandard) }
             };
         }
         #endregion

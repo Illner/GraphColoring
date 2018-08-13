@@ -20,6 +20,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         private string algorithmLargestFirstSequence2 = LargestFirstSequenceResource.largestFirstSequence2;
         private string algorithmLargestFirstSequence3 = LargestFirstSequenceResource.largestFirstSequence3;
         private string algorithmLargestFirstSequence4 = LargestFirstSequenceResource.largestFirstSequence4;
+        private string algorithmLargestFirstSequence5 = LargestFirstSequenceResource.largestFirstSequence5;
         #endregion
 
         // Enum
@@ -29,7 +30,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             largestFirstSequence1,
             largestFirstSequence2,
             largestFirstSequence3,
-            largestFirstSequence4
+            largestFirstSequence4,
+            largestFirstSequence5
         }
         #endregion
 
@@ -45,7 +47,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
                 { LargestFirstSequenceEnum.largestFirstSequence1, algorithmLargestFirstSequence1 },
                 { LargestFirstSequenceEnum.largestFirstSequence2, algorithmLargestFirstSequence2 },
                 { LargestFirstSequenceEnum.largestFirstSequence3, algorithmLargestFirstSequence3 },
-                { LargestFirstSequenceEnum.largestFirstSequence4, algorithmLargestFirstSequence4 }
+                { LargestFirstSequenceEnum.largestFirstSequence4, algorithmLargestFirstSequence4 },
+                { LargestFirstSequenceEnum.largestFirstSequence5, algorithmLargestFirstSequence5 }
             };
         }
         #endregion

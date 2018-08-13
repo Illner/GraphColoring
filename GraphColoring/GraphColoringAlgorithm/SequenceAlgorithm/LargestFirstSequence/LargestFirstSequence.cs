@@ -29,7 +29,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         {
             degreeSequenceVertexReverse = graph.GetGraphProperty().GetDegreeSequenceVertex();
             degreeSequenceVertexReverse.Reverse();
-            vertextexSequenceList = degreeSequenceVertexReverse;
+            vertexSequenceList = degreeSequenceVertexReverse;
         }
         #endregion
     }

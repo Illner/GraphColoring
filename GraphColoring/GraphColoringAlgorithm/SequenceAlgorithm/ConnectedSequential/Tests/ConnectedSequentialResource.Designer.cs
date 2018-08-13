@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests {
+namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LargestFirstSequenceResource {
+    internal class ConnectedSequentialResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LargestFirstSequenceResource() {
+        internal ConnectedSequentialResource() {
         }
         
         /// <summary>
@@ -39,8 +39,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests" +
-                            ".LargestFirstSequenceResource", typeof(LargestFirstSequenceResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests." +
+                            "ConnectedSequentialResource", typeof(ConnectedSequentialResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -71,9 +71,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence1 {
+        internal static string connectedSequential1 {
             get {
-                return ResourceManager.GetString("largestFirstSequence1", resourceCulture);
+                return ResourceManager.GetString("connectedSequential1", resourceCulture);
             }
         }
         
@@ -88,31 +88,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence2 {
+        internal static string connectedSequential2 {
             get {
-                return ResourceManager.GetString("largestFirstSequence2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Graph coloring. Graph representation: adjacencyMatrix
-        ///
-        ///Graph name: Name
-        ///Number of vertices: 6
-        ///
-        ///GRAPH
-        ///0 1 1 0 0 0
-        ///1 0 1 0 0 0
-        ///1 1 0 0 0 0
-        ///0 0 0 0 1 1
-        ///0 0 0 1 0 1
-        ///0 0 0 1 1 0
-        ///
-        ///COLORED GRAPH.
-        /// </summary>
-        internal static string largestFirstSequence3 {
-            get {
-                return ResourceManager.GetString("largestFirstSequence3", resourceCulture);
+                return ResourceManager.GetString("connectedSequential2", resourceCulture);
             }
         }
         
@@ -135,9 +113,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence4 {
+        internal static string connectedSequential3 {
             get {
-                return ResourceManager.GetString("largestFirstSequence4", resourceCulture);
+                return ResourceManager.GetString("connectedSequential3", resourceCulture);
             }
         }
         
@@ -161,9 +139,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         ///
         ///COLORED GRAPH.
         /// </summary>
-        internal static string largestFirstSequence5 {
+        internal static string connectedSequential4 {
             get {
-                return ResourceManager.GetString("largestFirstSequence5", resourceCulture);
+                return ResourceManager.GetString("connectedSequential4", resourceCulture);
             }
         }
     }

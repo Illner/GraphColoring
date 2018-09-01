@@ -46,6 +46,12 @@
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithm.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithmEnum.cs" />
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\GreedyIndependentSet.cs" />
+    <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\Tests\GreedyIndependentSetResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GreedyIndependentSetResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\Tests\GreedyIndependentSetTest.cs" />
     <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmInterface.cs" />
     <Compile Include="GraphColoringAlgorithm\Optimal\Tests\OptimalResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -218,6 +224,11 @@
     <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential3.graph" />
     <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential4.graph" />
     <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential5.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\GreedyIndependentSet\greedyIndependentSet1.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\GreedyIndependentSet\greedyIndependentSet2.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\GreedyIndependentSet\greedyIndependentSet3.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\GreedyIndependentSet\greedyIndependentSet4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\GreedyIndependentSet\greedyIndependentSet5.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence1.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence2.graph" />
     <None Include="bin\Debug\Testing\Algorithm\LargestFirstSequence\largestFirstSequence3.graph" />
@@ -359,6 +370,10 @@
     <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph2.graph" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GraphColoringAlgorithm\GreedyIndependentSet\Tests\GreedyIndependentSetResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GreedyIndependentSetResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GraphColoringAlgorithm\Optimal\Tests\OptimalResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>OptimalResource.Designer.cs</LastGenOutput>
@@ -494,6 +509,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\ConnectedSequentialStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GreedyIndependentSetStandard.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

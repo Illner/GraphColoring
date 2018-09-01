@@ -95,8 +95,25 @@ namespace GraphColoring.Graph.GraphProperty.Tests
                 stringBuilder.AppendLine("Graph created.");
                 stringBuilder.AppendLine(graph.ToString());
 
-                List<int> degreeSequenceList = graph.GetGraphProperty().GetDegreeSequence();
+                // Sorted
+                List<int> degreeSequenceList = graph.GetGraphProperty().GetDegreeSequence(true);
                 
+                stringBuilder.AppendLine("Degree sequence");
+                foreach (int degree in degreeSequenceList)
+                {
+                    stringBuilder.Append(degree + " ");
+                }
+
+                stringBuilder.AppendLine("");
+                stringBuilder.AppendLine("Minimum vertex degree: " + graph.GetGraphProperty().GetMinimumVertexDegree());
+                stringBuilder.AppendLine("Maximum vertex degree: " + graph.GetGraphProperty().GetMaximumVertexDegree());
+                stringBuilder.AppendLine("Is graph regular: " + graph.GetGraphProperty().GetIsRegular());
+
+                graph.GetGraphProperty().Reset();
+
+                // Unsorted
+                degreeSequenceList = graph.GetGraphProperty().GetDegreeSequence(false);
+
                 stringBuilder.AppendLine("Degree sequence");
                 foreach (int degree in degreeSequenceList)
                 {

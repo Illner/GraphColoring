@@ -434,6 +434,35 @@ namespace GraphColoring.Tests {
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid vertex count (0)
+        ///GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 1
+        ///Real count of vertices: 1
+        ///Count of edges: 0
+        ///Vertices: 
+        ///-- Identifier: 1, userName: 1
+        ///Edges: 
+        ///-- Vertex: 1 (1)
+        ///Vertex color: 
+        ///-- Vertex: 1, color: 1
+        ///
+        ///GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 6
+        ///Real count of vertices: 6
+        ///Count of edges: 6
+        ///Vert [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string GreedyIndependentSetStandard {
+            get {
+                return ResourceManager.GetString("GreedyIndependentSetStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid vertex count (0)
         ///largestFirstSequence2
         ///Graph colored.
         ///Name of graph: Name

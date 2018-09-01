@@ -30,7 +30,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             copyGraph = Graph.GraphOperation.GraphOperation.CopyGraph(graph);
             while (copyGraph.GetRealCountVertices() != 0)
             {
-                vertex = copyGraph.GetGraphProperty().GetDegreeSequenceVertex().First();
+                vertex = copyGraph.GetGraphProperty().GetDegreeSequenceVertex(true).First();
                 VertexList.Add(graph.GetVertex(vertex.GetUserName()));
                 copyGraph.VertexDelete(vertex);
             }

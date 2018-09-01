@@ -37,6 +37,7 @@ namespace GraphColoring.Tests
         GraphColoringAlgorithm.Optimal.Tests.OptimalTest optimalTest = new GraphColoringAlgorithm.Optimal.Tests.OptimalTest();
         GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests.SaturationLargestFirstSequenceTest saturationLargestFirstSequenceTest = new GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests.SaturationLargestFirstSequenceTest();
         GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests.ConnectedSequentialTest connectedSequentialTest = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests.ConnectedSequentialTest();
+        GraphColoringAlgorithm.GreedyIndependentSet.Tests.GreedyIndependentSetTest greedyIndependentSetTest = new GraphColoringAlgorithm.GreedyIndependentSet.Tests.GreedyIndependentSetTest();
         #endregion
 
         // Enum
@@ -61,7 +62,8 @@ namespace GraphColoring.Tests
             smallestLastSequence,
             optimal,
             saturationLargestFirstSequence,
-            connectedSequential
+            connectedSequential,
+            greedyIndependentSet
         }
         #endregion
 
@@ -96,7 +98,8 @@ namespace GraphColoring.Tests
                 { TestEnum.smallestLastSequence, new Tuple<ITestInterface, string>(smallestLastSequenceTest, TestResource.SmallestLastSequenceStandard) },
                 { TestEnum.optimal, new Tuple<ITestInterface, string>(optimalTest, TestResource.OptimalStandard) },
                 { TestEnum.saturationLargestFirstSequence, new Tuple<ITestInterface, string>(saturationLargestFirstSequenceTest, TestResource.SaturationLargestFirstSequenceStandard) },
-                { TestEnum.connectedSequential, new Tuple<ITestInterface, string>(connectedSequentialTest, TestResource.ConnectedSequentialStandard) }
+                { TestEnum.connectedSequential, new Tuple<ITestInterface, string>(connectedSequentialTest, TestResource.ConnectedSequentialStandard) },
+                { TestEnum.greedyIndependentSet, new Tuple<ITestInterface, string>(greedyIndependentSetTest, TestResource.GreedyIndependentSetStandard) }
             };
         }
         #endregion

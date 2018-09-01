@@ -23,6 +23,7 @@ namespace GraphColoring.Graph
         List<Vertex> ColoredVertices(int color);
         void SetSaturation(bool saturation);
         Vertex GetSaturationDegreeSequence();
+        bool AreAllVerticesColored();
         #endregion
 
         // Property

@@ -27,6 +27,7 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // SequencesPolynomialsOthers
             degreeSequence = null;
+            isDegreeSequenceSorted = false;
             spanningTreeBFS = null;
             matching = null;
             cutVertices = null;

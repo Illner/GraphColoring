@@ -49,11 +49,8 @@ namespace GraphColoring.Graph.GraphProperty
             // Variable
             int firstDegree, lastDegree;
 
-            if (degreeSequence == null)
-                GetDegreeSequence();
-            
-            firstDegree = degreeSequenceInt.First();
-            lastDegree = degreeSequenceInt.Last();
+            firstDegree = GetMinimumVertexDegree();
+            lastDegree = GetMaximumVertexDegree();
             
             if (firstDegree == lastDegree)
                 isRegular = true;
@@ -74,7 +71,7 @@ namespace GraphColoring.Graph.GraphProperty
             int oddDegrees = 0;
 
             if (degreeSequence == null)
-                DegreeSequence();
+                DegreeSequence(false);
 
             foreach (int degree in degreeSequenceInt)
             {

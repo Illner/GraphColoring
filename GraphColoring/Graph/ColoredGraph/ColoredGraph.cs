@@ -506,6 +506,18 @@ namespace GraphColoring.Graph
 
                 return vertexHashSet.ToList();
             }
+
+            /// <summary>
+            /// Pokud jsou všechny vrcholy grafu obarveny, tak vrátí true, jinak false
+            /// </summary>
+            /// <returns>true, pokud jsou všechny vrcholy grafu obarveny, jinak false</returns>
+            public bool AreAllVerticesColored()
+            {
+                if (unColoredVertexHashSet.Count == 0)
+                    return true;
+
+                return false;
+            }
             #endregion
 
             // Property

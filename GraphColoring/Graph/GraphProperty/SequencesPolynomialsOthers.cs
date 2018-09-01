@@ -12,6 +12,7 @@ namespace GraphColoring.Graph.GraphProperty
         #region
         /// <summary>
         /// degreeSequence - skóre grafu
+        /// isDegreeSequenceSorted - je setříděné skóre grafu
         /// spanningTree - kostra grafu
         /// matching - maximální párování grafu
         /// cutVertices - artikulace grafu
@@ -19,6 +20,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// eulerianPath - eulerovský cyklus, nebo eulerovský tah v grafu
         /// </summary>
         private List<KeyValuePair<Vertex, int>> degreeSequence;
+        private bool isDegreeSequenceSorted = false;
         private List<Vertex> degreeSequenceVertex;
         private List<int> degreeSequenceInt;
         private List<Edge> spanningTreeBFS;
@@ -33,10 +35,11 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Získá skóre grafu
         /// degreeSequence
-        /// Time complexity: O(V^2)
+        /// Time complexity: O(V^2) / O(V)
         /// Space complexity: O(V)
         /// </summary>
-        private void DegreeSequence()
+        /// <param name="sorted">setřídit skóre</param>
+        private void DegreeSequence(bool sorted)
         {
             // Variable
             List<Vertex> allVerticesList;
@@ -49,8 +52,13 @@ namespace GraphColoring.Graph.GraphProperty
             {
                 degreeSequenceDictionary.Add(vertex, graph.CountNeighbours(vertex));
             }
-            
-            degreeSequence = (from record in degreeSequenceDictionary orderby record.Value select record).ToList();
+
+            if (sorted)
+                degreeSequence = (from record in degreeSequenceDictionary orderby record.Value select record).ToList();
+            else
+                degreeSequence = (from record in degreeSequenceDictionary select record).ToList();
+
+            isDegreeSequenceSorted = sorted;
 
             degreeSequenceInt = (from record in degreeSequence select record.Value).ToList();
             degreeSequenceVertex = (from record in degreeSequence select record.Key).ToList();
@@ -129,14 +137,19 @@ namespace GraphColoring.Graph.GraphProperty
 
         // Property
         #region
+
         /// <summary>
-        /// Vrátí skóre grafu - od největšího po nejměnší
+        /// Vrátí skóre grafu
         /// </summary>
+        /// <param name="sorted">má se setřídit</param>
         /// <returns>skóre grafu jako list Vertexů</returns>
-        public List<Vertex> GetDegreeSequenceVertex()
+        public List<Vertex> GetDegreeSequenceVertex(bool sorted)
         {
             if (degreeSequence == null)
-                DegreeSequence();
+                DegreeSequence(sorted);
+
+            if (!isDegreeSequenceSorted && sorted)
+                DegreeSequence(sorted);
 
             return degreeSequenceVertex;
         }
@@ -144,11 +157,15 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Vrátí skóre grafu
         /// </summary>
+        /// <param name="sorted">má se setřídit</param>
         /// <returns>skóre grafu jako list intů</returns>
-        public List<int> GetDegreeSequence()
+        public List<int> GetDegreeSequence(bool sorted)
         {
             if (degreeSequence == null)
-                DegreeSequence();
+                DegreeSequence(sorted);
+
+            if (!isDegreeSequenceSorted && sorted)
+                DegreeSequence(sorted);
 
             return degreeSequenceInt;
         }

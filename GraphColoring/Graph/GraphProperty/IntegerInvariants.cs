@@ -18,7 +18,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// girth - the length of the shortest cycle
         /// vertexConnectivity - the smallest number of vertices whose removal disconnects the graph
         /// edgeConnectivity - the smallest number of edges whose removal disconnects the graph
-        /// number of spanning trees
+        /// cayleysFormula - number of spanning trees
         /// </summary>
         private int order;
         private int size = 0;
@@ -266,13 +266,34 @@ namespace GraphColoring.Graph.GraphProperty
         {
             if (!minimumVertexDegree.HasValue)
             {
-                DegreeSequence();
-                minimumVertexDegree = degreeSequenceInt.First();
+                GetDegreeSequence(false);
+
+                if (isDegreeSequenceSorted)
+                {
+                    minimumVertexDegree = degreeSequenceInt.First();
+                }
+                else
+                {
+                    minimumVertexDegree = degreeSequenceInt.Min();
+                }
             }
 
             return (int)minimumVertexDegree;
         }
-        
+
+        /// <summary>
+        /// Vrátí první vrchol s daným stupněm.
+        /// </summary>
+        /// <param name="degree">daný stupěň</param>
+        /// <returns>vrchol s daným stupněm</returns>
+        public Vertex GetVertexWithDegree(int degree)
+        {
+            if (degreeSequence == null)
+                GetDegreeSequence(false);
+
+            return (from record in degreeSequence where record.Value == degree select record.Key).First();
+        }
+
         /// <summary>
         /// Vrátí maximální stupeň vrcholu
         /// </summary>
@@ -281,8 +302,12 @@ namespace GraphColoring.Graph.GraphProperty
         {
             if (!maximumVertexDegree.HasValue)
             {
-                DegreeSequence();
-                maximumVertexDegree = degreeSequenceInt.Last();
+                GetDegreeSequence(false);
+
+                if (isDegreeSequenceSorted)
+                    maximumVertexDegree = degreeSequenceInt.Last();
+                else
+                    maximumVertexDegree = degreeSequenceInt.Max();
             }
 
             return (int)maximumVertexDegree;

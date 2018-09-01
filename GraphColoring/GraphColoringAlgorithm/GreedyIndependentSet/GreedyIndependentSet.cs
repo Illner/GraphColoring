@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
 {
-    class GreedyIndependentSet : GraphColoringAlgorithm
+    sealed class GreedyIndependentSet : GraphColoringAlgorithm
     {
         // Variable
         #region
-
+        int color = 1;
+        Graph.Graph copyGraph;
         #endregion
 
         // Constructor
@@ -27,7 +28,30 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
         override
         public void Color()
         {
-            // TODO Color (GreedyIndependentSet) - R1807
+            // Variable
+            Graph.Vertex vertex;
+            List<Graph.Vertex> neighboursVertexList;
+
+            while (!graph.GetColoredGraph().AreAllVerticesColored())
+            {
+                copyGraph = Graph.GraphOperation.GraphOperation.SubGraph(graph, graph.GetColoredGraph().GetUnColoredVertexList());
+
+                while (copyGraph.GetRealCountVertices() != 0)
+                {
+                    vertex = copyGraph.GetGraphProperty().GetVertexWithDegree(copyGraph.GetGraphProperty().GetMinimumVertexDegree());
+                    neighboursVertexList = copyGraph.Neighbours(vertex);
+
+                    copyGraph.VertexDelete(vertex);
+                    foreach (Graph.Vertex neighbour in neighboursVertexList)
+                    {
+                        copyGraph.VertexDelete(neighbour);
+                    }
+                    
+                    graph.GetColoredGraph().ColorVertex(graph.GetVertex(vertex.GetUserName()), color);
+                }
+
+                color++;
+            }
         }
         #endregion
     }

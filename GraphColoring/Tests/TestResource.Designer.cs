@@ -92,6 +92,38 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid vertex count (0)
+        ///connectedSequential2
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 1
+        ///Real count of vertices: 1
+        ///Count of edges: 0
+        ///Vertices: 
+        ///-- Identifier: 967, userName: 967
+        ///Edges: 
+        ///-- Vertex: 967 (967)
+        ///Vertex color: 
+        ///-- Vertex: 967, color: 1
+        ///
+        ///connectedSequential3
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 9
+        ///Real count of vertices: 9
+        ///Count of edges: 12
+        ///Vertices: 
+        ///-- Identifier: 969, userName: 969
+        ///-- Identifier: 970, userName: 970
+        ///-- Identifier: 971, userNam [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ConnectedSequentialStandard {
+            get {
+                return ResourceManager.GetString("ConnectedSequentialStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to graphClass1
         ///Graph created.
         ///Name of graph: Name
@@ -401,16 +433,7 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to largestFirstSequence1
-        ///Graph colored.
-        ///Name of graph: Name
-        ///Count of vertices: 0
-        ///Real count of vertices: 0
-        ///Count of edges: 0
-        ///Vertices: 
-        ///Edges: 
-        ///Vertex color: 
-        ///
+        ///   Looks up a localized string similar to Invalid vertex count (0)
         ///largestFirstSequence2
         ///Graph colored.
         ///Name of graph: Name
@@ -428,7 +451,12 @@ namespace GraphColoring.Tests {
         ///Graph colored.
         ///Name of graph: Name
         ///Count of vertices: 6
-        ///Real count of [rest of string was truncated]&quot;;.
+        ///Real count of vertices: 6
+        ///Count of edges: 6
+        ///Vertices: 
+        ///-- Identifier: 844, userName: 844
+        ///-- Identifier: 845, userName: 845
+        ///-- Identifier: 846, userNa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LargestFirstSequenceStandard {
             get {
@@ -444,22 +472,22 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 10
         ///Vertices: 
-        ///-- Identifier: 911, userName: 911
-        ///-- Identifier: 912, userName: 912
-        ///-- Identifier: 913, userName: 913
-        ///-- Identifier: 914, userName: 914
-        ///-- Identifier: 915, userName: 915
-        ///-- Identifier: 916, userName: 916
+        ///-- Identifier: 921, userName: 921
+        ///-- Identifier: 922, userName: 922
+        ///-- Identifier: 923, userName: 923
+        ///-- Identifier: 924, userName: 924
+        ///-- Identifier: 925, userName: 925
+        ///-- Identifier: 926, userName: 926
         ///Edges: 
-        ///-- Vertex: 911 (911)
-        ///---- 913 (913) 
-        ///---- 915 (915) 
-        ///-- Vertex: 912 (912)
-        ///---- 913 (913) 
-        ///---- 914 (914) 
-        ///---- 915 (915) 
-        ///---- 916 (916) 
-        ///-- Vertex: 913 (913 [rest of string was truncated]&quot;;.
+        ///-- Vertex: 921 (921)
+        ///---- 923 (923) 
+        ///---- 925 (925) 
+        ///-- Vertex: 922 (922)
+        ///---- 923 (923) 
+        ///---- 924 (924) 
+        ///---- 925 (925) 
+        ///---- 926 (926) 
+        ///-- Vertex: 923 (923 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string OptimalStandard {
             get {
@@ -497,16 +525,7 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to saturationLargestFirstSequence1
-        ///Graph colored.
-        ///Name of graph: Name
-        ///Count of vertices: 0
-        ///Real count of vertices: 0
-        ///Count of edges: 0
-        ///Vertices: 
-        ///Edges: 
-        ///Vertex color: 
-        ///
+        ///   Looks up a localized string similar to Invalid vertex count (0)
         ///saturationLargestFirstSequence2
         ///Graph colored.
         ///Name of graph: Name
@@ -514,16 +533,22 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 925, userName: 925
+        ///-- Identifier: 941, userName: 941
         ///Edges: 
-        ///-- Vertex: 925 (925)
+        ///-- Vertex: 941 (941)
         ///Vertex color: 
-        ///-- Vertex: 925, color: 1
+        ///-- Vertex: 941, color: 1
         ///
         ///saturationLargestFirstSequence3
         ///Graph colored.
         ///Name of graph: Name
-        ///Count [rest of string was truncated]&quot;;.
+        ///Count of vertices: 6
+        ///Real count of vertices: 6
+        ///Count of edges: 6
+        ///Vertices: 
+        ///-- Identifier: 942, userName: 942
+        ///-- Identifier: 943, userName: 943
+        ///-- Ide [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SaturationLargestFirstSequenceStandard {
             get {
@@ -532,16 +557,7 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to smallestLastSequence1
-        ///Graph colored.
-        ///Name of graph: Name
-        ///Count of vertices: 0
-        ///Real count of vertices: 0
-        ///Count of edges: 0
-        ///Vertices: 
-        ///Edges: 
-        ///Vertex color: 
-        ///
+        ///   Looks up a localized string similar to Invalid vertex count (0)
         ///smallestLastSequence2
         ///Graph colored.
         ///Name of graph: Name
@@ -549,17 +565,22 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 859, userName: 859
+        ///-- Identifier: 869, userName: 869
         ///Edges: 
-        ///-- Vertex: 859 (859)
+        ///-- Vertex: 869 (869)
         ///Vertex color: 
-        ///-- Vertex: 859, color: 1
+        ///-- Vertex: 869, color: 1
         ///
         ///smallestLastSequence3
         ///Graph colored.
         ///Name of graph: Name
         ///Count of vertices: 6
-        ///Real count of [rest of string was truncated]&quot;;.
+        ///Real count of vertices: 6
+        ///Count of edges: 6
+        ///Vertices: 
+        ///-- Identifier: 871, userName: 871
+        ///-- Identifier: 872, userName: 872
+        ///-- Identifier: 873, userNa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SmallestLastSequenceStandard {
             get {
@@ -574,6 +595,7 @@ namespace GraphColoring.Tests {
         ///OK
         ///first
         ///OK
+        ///
         ///
         ///
         ///.

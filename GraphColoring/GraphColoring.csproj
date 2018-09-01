@@ -492,5 +492,8 @@
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\SaturationLargestFirstSequenceStandard.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\ConnectedSequentialStandard.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

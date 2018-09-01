@@ -96,7 +96,7 @@ namespace GraphColoring.Tests
                 { TestEnum.smallestLastSequence, new Tuple<ITestInterface, string>(smallestLastSequenceTest, TestResource.SmallestLastSequenceStandard) },
                 { TestEnum.optimal, new Tuple<ITestInterface, string>(optimalTest, TestResource.OptimalStandard) },
                 { TestEnum.saturationLargestFirstSequence, new Tuple<ITestInterface, string>(saturationLargestFirstSequenceTest, TestResource.SaturationLargestFirstSequenceStandard) },
-                { TestEnum.connectedSequential, new Tuple<ITestInterface, string>(connectedSequentialTest, TestResource.SaturationLargestFirstSequenceStandard) }
+                { TestEnum.connectedSequential, new Tuple<ITestInterface, string>(connectedSequentialTest, TestResource.ConnectedSequentialStandard) }
             };
         }
         #endregion
@@ -125,6 +125,7 @@ namespace GraphColoring.Tests
             stringBuilder = test.Test();
 
             // :(
+            stringBuilder.AppendLine();
             stringBuilder.AppendLine();
             stringBuilder.AppendLine();
 

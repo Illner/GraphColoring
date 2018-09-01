@@ -64,6 +64,8 @@ namespace GraphColoring.ReaderWriter
                     countVertices = Int32.Parse(line.Substring(READERWRITERCOUNTVERTICES.Length));
                     if (countVertices < 0)
                         throw new MyException.ReaderWriterInvalidFormatException("Invalid vertex count (not a number)");
+                    if (countVertices == 0)
+                        throw new MyException.ReaderWriterInvalidFormatException("Invalid vertex count (0)");
 
                     // Ballast
                     line = streamReader.ReadLine();

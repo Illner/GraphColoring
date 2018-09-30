@@ -8,7 +8,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
     {
         // Variable
         #region
-        private Graph graph;
+        private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
@@ -95,7 +95,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
                 stringBuilder.AppendLine("Graph created.");
                 stringBuilder.AppendLine(graph.ToString());
 
-                Graph graphCopy = GraphOperation.CopyGraph(graph);
+                IGraphInterface graphCopy = GraphOperation.CopyGraph(graph);
 
                 stringBuilder.AppendLine("Copied graph.");
                 stringBuilder.AppendLine(graphCopy.ToString());

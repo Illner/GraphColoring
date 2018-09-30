@@ -11,12 +11,12 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
         // Variable
         #region
         int color = 1;
-        Graph.Graph copyGraph;
+        Graph.IGraphInterface copyGraph;
         #endregion
 
         // Constructor
         #region
-        public GreedyIndependentSet(Graph.Graph graph) : base(graph)
+        public GreedyIndependentSet(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
 

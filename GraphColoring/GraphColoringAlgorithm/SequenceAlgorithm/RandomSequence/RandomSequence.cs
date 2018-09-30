@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
     {
         // Constructor
         #region
-        public RandomSequence(Graph.Graph graph) : base(graph)
+        public RandomSequence(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
 

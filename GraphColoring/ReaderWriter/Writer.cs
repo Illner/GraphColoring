@@ -27,7 +27,7 @@ namespace GraphColoring.ReaderWriter
         /// </summary>
         /// <param name="graph">Obarvený graf</param>
         /// <param name="graphColoringAlgorithm">Algoritmus, který byl využit při obarvení grafu</param>
-        public bool WriteFile(Graph.Graph graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithm, bool isOptimal)
+        public bool WriteFile(Graph.IGraphInterface graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithm, bool isOptimal)
         {
             // Variable
             Graph.IColoredGraphInterface coloredGraph;

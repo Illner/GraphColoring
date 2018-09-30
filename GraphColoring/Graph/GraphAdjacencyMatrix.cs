@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.Graph
 {
-    class GraphAdjacencyMatrix : Graph
+    class GraphAdjacencyMatrix : Graph, IGraphAdjacencyMatrixInterface
     {
         // Variable
         #region

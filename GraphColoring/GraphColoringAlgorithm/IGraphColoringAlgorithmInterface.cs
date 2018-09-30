@@ -5,6 +5,6 @@ namespace GraphColoring.GraphColoringAlgorithm
     interface IGraphColoringAlgorithmInterface
     {
         void Color();
-        Graph.Graph GetGraph();
+        Graph.IGraphInterface GetGraph();
     }
 }

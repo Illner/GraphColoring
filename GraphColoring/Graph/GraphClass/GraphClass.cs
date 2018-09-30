@@ -10,7 +10,7 @@ namespace GraphColoring.Graph.GraphClass
     {
         // Method
         #region
-        public static GraphClassEnum GetGraphClass(Graph graph)
+        public static GraphClassEnum GetGraphClass(IGraphInterface graph)
         {
             if (IsCompleteGraph(graph))
                 return GraphClassEnum.completeGraph;
@@ -33,7 +33,7 @@ namespace GraphColoring.Graph.GraphClass
         /// </summary>
         /// <param name="graph">Graf, u kterého chceme zjistit zda je úplný</param>
         /// <returns>true pokud je graf úplny, jinak vrátí false</returns>
-        public static bool IsCompleteGraph(Graph graph)
+        public static bool IsCompleteGraph(IGraphInterface graph)
         {
             // |E| = (|V|)C(2)
             if (graph.GetGraphProperty().GetCountEdges() == MyMath.MyMath.nCr(graph.GetGraphProperty().GetCountVertices(), 2))
@@ -48,7 +48,7 @@ namespace GraphColoring.Graph.GraphClass
         /// </summary>
         /// <param name="graph">graf, u kterého chceme zjistit zda je strom</param>
         /// <returns>true pokud je graf strom, jinak vrátí false</returns>
-        public static bool IsTreeGraph(Graph graph)
+        public static bool IsTreeGraph(IGraphInterface graph)
         {
             // Graph is connected and |E| = |V| - 1 // Euler's formula
             if ((graph.GetGraphProperty().GetIsConnected()) &&
@@ -64,7 +64,7 @@ namespace GraphColoring.Graph.GraphClass
         /// </summary>
         /// <param name="graph">graf, u kterého chceme zjistit zda je kružnice</param>
         /// <returns>true pokud je graf kružnice, jinak vrátí false</returns>
-        public static bool IsCycleGraph(Graph graph)
+        public static bool IsCycleGraph(IGraphInterface graph)
         {
             // Graph is connected and 2-regular
             if ((graph.GetGraphProperty().GetIsConnected()) &&
@@ -81,7 +81,7 @@ namespace GraphColoring.Graph.GraphClass
         /// </summary>
         /// <param name="graph">graf, u kterého chceme zjistit zda je bipartitní</param>
         /// <returns>true pokud je graf bipartitní, jinak vrátí false</returns>
-        public static bool IsBipartiteGraph(Graph graph)
+        public static bool IsBipartiteGraph(IGraphInterface graph)
         {
             // Variable
             Vertex vertex;

@@ -14,10 +14,10 @@ namespace GraphColoring.Graph.GraphOperation
         /// </summary>
         /// <param name="graph">graf, ze kterého chceme vytvořit komplementární graf</param>
         /// <returns>komplementární graf</returns>
-        public static Graph ComplementGraph(Graph graph)
+        public static IGraphInterface ComplementGraph(IGraphInterface graph)
         {
             // Variable
-            GraphEdgeList complementGraph;
+            IGraphEdgeListInterface complementGraph;
             List<Vertex> vertexList;
             List<Vertex> neighboursList;
             List<Vertex> intersectionVertexAndNeighboursList;
@@ -56,13 +56,13 @@ namespace GraphColoring.Graph.GraphOperation
         /// </summary>
         /// <param name="graph">graf, ze kterého chceme vytvořit line graf</param>
         /// <returns>line graf</returns>
-        public static Graph LineGraph(Graph graph)
+        public static IGraphInterface LineGraph(IGraphInterface graph)
         {
             // Variable
             int idVertex1, idVertex2;
             string idNewVertex, userNameNewVertex;
             string userNameVertex1, userNameVertex2;
-            GraphEdgeList lineGraph;
+            IGraphEdgeListInterface lineGraph;
             List<Vertex> vertexList;
             List<Vertex> neighboursList;
             Dictionary<string, Vertex> vertexMap;
@@ -133,10 +133,10 @@ namespace GraphColoring.Graph.GraphOperation
         /// <param name="graph">graf, ze kterého chceme vytvořit podgraf<</param>
         /// <param name="vertexList">vrcholy, které má graf podgraf obsahovat</param>
         /// <returns>podgraf</returns>
-        public static Graph SubGraph(Graph graph, List<Vertex> vertexList)
+        public static IGraphInterface SubGraph(IGraphInterface graph, List<Vertex> vertexList)
         {
             // Variable
-            GraphEdgeList subGraph;
+            IGraphEdgeListInterface subGraph;
             List<Vertex> neighboursList;
 
             subGraph = new GraphEdgeList(vertexList.Count);
@@ -169,13 +169,13 @@ namespace GraphColoring.Graph.GraphOperation
         /// </summary>
         /// <param name="graph">graf, který chceme zkopírovat</param>
         /// <returns>kopie grafu</returns>
-        public static Graph CopyGraph(Graph graph)
+        public static IGraphInterface CopyGraph(IGraphInterface graph)
         {
             if (!graph.GetIsInitialized())
                 throw new MyException.GraphInitializationException();
 
             // Variable
-            GraphEdgeList graphCopy;
+            IGraphEdgeListInterface graphCopy;
             List<Vertex> neighboursVertexList;
             List<Vertex> allVerticesList = graph.AllVertices();
 

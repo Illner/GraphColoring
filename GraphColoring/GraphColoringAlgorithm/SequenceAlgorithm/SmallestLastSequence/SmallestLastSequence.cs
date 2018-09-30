@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
     {
         // Constructor
         #region
-        public SmallestLastSequence(Graph.Graph graph) : base(graph)
+        public SmallestLastSequence(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
 
@@ -25,7 +25,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             // Variable
             Graph.Vertex vertex;
             List<Graph.Vertex> VertexList = new List<Graph.Vertex>();
-            Graph.Graph copyGraph;
+            Graph.IGraphInterface copyGraph;
 
             copyGraph = Graph.GraphOperation.GraphOperation.CopyGraph(graph);
             while (copyGraph.GetRealCountVertices() != 0)

@@ -15,7 +15,7 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
 
         // Constructor
         #region
-        public Optimal(Graph.Graph graph) : base(graph)
+        public Optimal(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
 

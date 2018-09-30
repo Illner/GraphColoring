@@ -15,7 +15,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
 
         // Constructor
         #region
-        public GraphColoringSequenceAlgorithm(Graph.Graph graph) : base(graph)
+        public GraphColoringSequenceAlgorithm(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
 

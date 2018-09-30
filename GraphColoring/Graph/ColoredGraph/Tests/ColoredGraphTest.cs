@@ -9,7 +9,7 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
     {
         // Variable
         #region
-        private Graph graph;
+        private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
@@ -113,7 +113,7 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             }
         }
 
-        private void Valid(Graph graph)
+        private void Valid(IGraphInterface graph)
         {
             // Variable
             List<Vertex> vertexList = graph.AllVertices();
@@ -253,7 +253,7 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
                 throw new MyException.SomethingWrongTestException();
         }
 
-        private void Invalid(Graph graph)
+        private void Invalid(IGraphInterface graph)
         {
             // Variable
             List<Vertex> vertexList = graph.AllVertices();

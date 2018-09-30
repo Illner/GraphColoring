@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
     {
         // Variable
         #region
-        private Graph.Graph graph;
+        private Graph.IGraphInterface graph;
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;

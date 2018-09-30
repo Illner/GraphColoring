@@ -8,7 +8,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
     {
         // Variable
         #region
-        private Graph graph;
+        private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
@@ -95,7 +95,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
                 stringBuilder.AppendLine("Graph created.");
                 stringBuilder.AppendLine(graph.ToString());
 
-                Graph graphComplement = GraphOperation.ComplementGraph(graph);
+                IGraphInterface graphComplement = GraphOperation.ComplementGraph(graph);
                 
                 stringBuilder.AppendLine("Complement graph.");
                 stringBuilder.AppendLine(graphComplement.ToString());

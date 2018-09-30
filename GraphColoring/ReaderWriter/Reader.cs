@@ -20,12 +20,12 @@ namespace GraphColoring.ReaderWriter
         /// Přečte soubor s grafem a vytvoří daný graf.
         /// </summary>
         /// <returns>graf ze souboru</returns>
-        public Graph.Graph ReadFile()
+        public Graph.IGraphInterface ReadFile()
         {
             // Variable
-            Graph.Graph graph = null;
-            Graph.GraphEdgeList graphEdgeList;
-            Graph.GraphAdjacencyMatrix graphAdjacencyMatrix;
+            Graph.IGraphInterface graph = null;
+            Graph.IGraphEdgeListInterface graphEdgeList;
+            Graph.IGraphAdjacencyMatrixInterface graphAdjacencyMatrix;
 
             string header = "";
             int countVertices, numberColors;
@@ -161,7 +161,7 @@ namespace GraphColoring.ReaderWriter
         /// <summary>
         /// Přečte soubor s grafem, který je reprezentován pomocí seznamu sousedů a daný graf vytvoří.
         /// </summary>
-        private void ReadFileAdjacencyList(Graph.GraphEdgeList graph, StreamReader streamReader)
+        private void ReadFileAdjacencyList(Graph.IGraphEdgeListInterface graph, StreamReader streamReader)
         {
             // Variable
             string line;
@@ -200,7 +200,7 @@ namespace GraphColoring.ReaderWriter
         /// <summary>
         /// Přečte soubor s grafem, který je reprezentován pomocí matice sousednosti a daný graf vytvoří.
         /// </summary>
-        private void ReadFileAdjacencyMatrix(Graph.GraphAdjacencyMatrix graph, StreamReader streamReader, int countVertices)
+        private void ReadFileAdjacencyMatrix(Graph.IGraphAdjacencyMatrixInterface graph, StreamReader streamReader, int countVertices)
         {
             // Variable
             string line;
@@ -242,7 +242,7 @@ namespace GraphColoring.ReaderWriter
         /// <summary>
         /// Přečte soubor s grafem, který je reprezentován pomocí seznamu hran a daný graf vytvoří.
         /// </summary>
-        private void ReadFileEdgeList(Graph.GraphEdgeList graph, StreamReader streamReader)
+        private void ReadFileEdgeList(Graph.IGraphEdgeListInterface graph, StreamReader streamReader)
         {
             // Variable
             string line;

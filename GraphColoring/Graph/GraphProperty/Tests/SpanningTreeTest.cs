@@ -8,7 +8,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
     {
         // Variable
         #region
-        private Graph graph;
+        private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;

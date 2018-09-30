@@ -85,7 +85,7 @@ namespace GraphColoring.ReaderWriter.Tests
         {
             try
             {
-                Graph.Graph graph;
+                Graph.IGraphInterface graph;
                 GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence randomSequence;
                 GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence largestFirstSequence;
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[pathEnum]);

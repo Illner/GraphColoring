@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenerateGraph\ErdosRenyiModel.cs" />
+    <Compile Include="GenerateGraph\ErdosRenyiModelProbabilityEnum.cs" />
+    <Compile Include="GenerateGraph\IGenerateGraphInterface.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithm.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithmEnum.cs" />
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\GreedyIndependentSet.cs" />
@@ -153,6 +156,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpanningTreeResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Graph\IGraphAdjacencyMatrixInterface.cs" />
+    <Compile Include="Graph\IGraphEdgeListInterface.cs" />
     <Compile Include="Graph\VertexExtended.cs" />
     <Compile Include="Graph\Arc.cs" />
     <Compile Include="Graph\Edge.cs" />
@@ -181,7 +186,8 @@
     <Compile Include="Graph\GraphProperty\Tests\DegreeSequenceTest.cs" />
     <Compile Include="Graph\GraphProperty\Tests\SpanningTreeTest.cs" />
     <Compile Include="Graph\IGraphInterface.cs" />
-    <Compile Include="MyException\GraphColoringAlgorithmExceptions.cs" />
+    <Compile Include="MyException\GenerateGraphException.cs" />
+    <Compile Include="MyException\GraphColoringAlgorithmException.cs" />
     <Compile Include="MyException\GraphException.cs" />
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\GraphRepresentationEnum.cs" />

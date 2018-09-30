@@ -11,13 +11,13 @@ namespace GraphColoring.GraphColoringAlgorithm
         /// graph - daný graf
         /// coloredGraph - pointer na coloredGraf v grafu
         /// </summary>
-        protected Graph.Graph graph;
+        protected Graph.IGraphInterface graph;
         protected Graph.IColoredGraphInterface coloredGraph;
         #endregion
 
         // Constructor
         #region
-        public GraphColoringAlgorithm(Graph.Graph graph)
+        public GraphColoringAlgorithm(Graph.IGraphInterface graph)
         {
             this.graph = graph;
             coloredGraph = graph.GetColoredGraph();
@@ -39,7 +39,7 @@ namespace GraphColoring.GraphColoringAlgorithm
         /// vrátí graf
         /// </summary>
         /// <returns>daný graf</returns>
-        public Graph.Graph GetGraph()
+        public Graph.IGraphInterface GetGraph()
         {
             return graph;
         }

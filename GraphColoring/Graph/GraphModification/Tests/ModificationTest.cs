@@ -9,7 +9,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
     {
         // Variable
         #region
-        private Graph graph;
+        private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;
@@ -109,7 +109,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
             }
         }
 
-        private void Valid(Graph graph)
+        private void Valid(IGraphInterface graph)
         {
             // Variable
             Vertex vertex1 = new Vertex("Vrchol 1");
@@ -187,7 +187,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
             graph.VertexExpansion(vertexList.First());
         }
 
-        private void Invalid(Graph graph)
+        private void Invalid(IGraphInterface graph)
         {
             // Variable
             List<Vertex> vertexList = graph.AllVertices();

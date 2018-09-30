@@ -8,7 +8,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
     {
         // Variable
         #region
-        private Graph.Graph graph;
+        private Graph.IGraphInterface graph;
         private String testPath;
         private ReaderWriter.Reader reader;
         private StringBuilder stringBuilder;

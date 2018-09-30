@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
     {
         // Constructor
         #region
-        public ConnectedSequential(Graph.Graph graph) : base(graph)
+        public ConnectedSequential(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
 

@@ -9,7 +9,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
     {
         // Variable
         #region
-        private Graph graph;
+        private IGraphInterface graph;
         private String testPath;
         private int countVertices;
         private ReaderWriter.Reader reader;
@@ -105,7 +105,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
                 stringBuilder.AppendLine("Graph created.");
                 stringBuilder.AppendLine(graph.ToString());
 
-                Graph subGraph = GraphOperation.SubGraph(graph, graph.AllVertices().Take(countVertices).ToList());
+                IGraphInterface subGraph = GraphOperation.SubGraph(graph, graph.AllVertices().Take(countVertices).ToList());
 
                 stringBuilder.AppendLine("Subgraph created.");
                 stringBuilder.AppendLine(subGraph.ToString());

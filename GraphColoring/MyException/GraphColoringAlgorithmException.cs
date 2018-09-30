@@ -5,19 +5,19 @@ namespace GraphColoring.MyException
     /// <summary>
     /// Graph exceptions
     /// </summary>
-    class GraphColoringAlgorithmExceptions : Exception
+    class GraphColoringAlgorithmException : Exception
     {
-         public GraphColoringAlgorithmExceptions() { }
+         public GraphColoringAlgorithmException() { }
 
-         public GraphColoringAlgorithmExceptions(string message) : base(message) { }
+         public GraphColoringAlgorithmException(string message) : base(message) { }
 
-         public GraphColoringAlgorithmExceptions(string message, Exception inner) : base(message, inner) { }
+         public GraphColoringAlgorithmException(string message, Exception inner) : base(message, inner) { }
     }
 
     /// <summary>
     /// Nevalidní sekvence vrcholů (méně vrcholů, opakující se vrcholy apod.)
     /// </summary>
-    class AlgorithmInvalidVertexSequence : GraphColoringAlgorithmExceptions
+    class AlgorithmInvalidVertexSequence : GraphColoringAlgorithmException
     {
         public AlgorithmInvalidVertexSequence() { }
 
@@ -29,7 +29,7 @@ namespace GraphColoring.MyException
     /// <summary>
     /// Graf není obarven
     /// </summary>
-    class AlgorithmGraphIsNotColored : GraphColoringAlgorithmExceptions
+    class AlgorithmGraphIsNotColored : GraphColoringAlgorithmException
     {
         public AlgorithmGraphIsNotColored() { }
 

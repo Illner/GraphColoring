@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
     {
         // Constructor
         #region
-        public SaturationLargestFirstSequence(Graph.Graph graph) : base(graph)
+        public SaturationLargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
 

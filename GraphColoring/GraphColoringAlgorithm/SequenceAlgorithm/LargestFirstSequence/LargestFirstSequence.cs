@@ -15,7 +15,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
 
         // Constructor
         #region
-        public LargestFirstSequence(Graph.Graph graph) : base(graph)
+        public LargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
 

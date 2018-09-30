@@ -10,7 +10,7 @@ namespace GraphColoring.ReaderWriter.Tests
         // Variable
         #region
         private Reader reader;
-        private Graph.Graph graph;
+        private Graph.IGraphInterface graph;
         private StringBuilder stringBuilder;
         private Dictionary<Graph.Graph.GraphRepresentationEnum, Dictionary<PathEnum, List<string>>> testsDictionary;
         private Dictionary<PathEnum, List<string>> testsGraphEdgeListDictionary;

@@ -93,6 +93,34 @@ namespace GraphColoring.Tests {
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid vertex count (0)
+        ///GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 1
+        ///Real count of vertices: 1
+        ///Count of edges: 0
+        ///Vertices: 
+        ///-- Identifier: 5078, userName: 5078
+        ///Edges: 
+        ///-- Vertex: 5078 (5078)
+        ///Vertex color: 
+        ///-- Vertex: 5078, color: 1
+        ///
+        ///GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm
+        ///Graph colored.
+        ///Name of graph: Name
+        ///Count of vertices: 6
+        ///Real count of vertices: 6
+        ///Count of [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CombinationStandard {
+            get {
+                return ResourceManager.GetString("CombinationStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid vertex count (0)
         ///connectedSequential2
         ///Graph colored.
         ///Name of graph: Name
@@ -120,6 +148,28 @@ namespace GraphColoring.Tests {
         internal static string ConnectedSequentialStandard {
             get {
                 return ResourceManager.GetString("ConnectedSequentialStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to erdosRenyiModelCDividedByNLessThanOne
+        ///OK
+        ///erdosRenyiModelCDividedByNMoreThanOne
+        ///OK
+        ///erdosRenyiModelCLogNDividedByN
+        ///OK
+        ///erdosRenyiModelNotAssigned
+        ///OK
+        ///invalidVerticesCount
+        ///Byla vyvolána výjimka typu GraphColoring.MyException.GraphInvalidCountVerticesException.
+        ///
+        ///
+        ///
+        ///.
+        /// </summary>
+        internal static string GenerateGraphErdosRenyiModelStandard {
+            get {
+                return ResourceManager.GetString("GenerateGraphErdosRenyiModelStandard", resourceCulture);
             }
         }
         
@@ -441,19 +491,18 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 1, userName: 1
+        ///-- Identifier: 1007, userName: 1007
         ///Edges: 
-        ///-- Vertex: 1 (1)
+        ///-- Vertex: 1007 (1007)
         ///Vertex color: 
-        ///-- Vertex: 1, color: 1
+        ///-- Vertex: 1007, color: 1
         ///
         ///GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet
         ///Graph colored.
         ///Name of graph: Name
         ///Count of vertices: 6
         ///Real count of vertices: 6
-        ///Count of edges: 6
-        ///Vert [rest of string was truncated]&quot;;.
+        ///Count of [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GreedyIndependentSetStandard {
             get {

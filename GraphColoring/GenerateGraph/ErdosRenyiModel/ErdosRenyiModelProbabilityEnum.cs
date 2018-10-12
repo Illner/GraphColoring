@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphColoring.GenerateGraph
+namespace GraphColoring.GenerateGraph.ErdosRenyiModel
 {
     partial class ErdosRenyiModel : IGenerateGraphInterface
     {

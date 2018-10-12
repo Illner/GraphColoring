@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
 {
-    sealed class SaturationLargestFirstSequence : GraphColoringAlgorithm
+    sealed class SaturationLargestFirstSequence : GraphColoringAlgorithm, IGraphColoringAlgorithmStepInterface
     {
+        // Variable
+        #region
+        bool staurationOnStep;
+        #endregion
+
         // Constructor
         #region
         public SaturationLargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
@@ -43,6 +48,22 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
 
             if (!isColored)
                 throw new MyException.AlgorithmGraphIsNotColored();
+        }
+
+        /// <summary>
+        /// Vrátí nejnasytěnější vrchol, který není obarvený.
+        /// Pokud jsou všechny obarveny, tak vrátí null
+        /// </summary>
+        /// <returns>vrchol</returns>
+        public Graph.Vertex Step()
+        {
+            if (!staurationOnStep)
+            {
+                coloredGraph.SetSaturation(true);
+                staurationOnStep = true;
+            }
+
+            return coloredGraph.GetSaturationDegreeSequence();
         }
         #endregion
     }

@@ -29,6 +29,7 @@ namespace GraphColoring.Graph.GraphProperty
         private int? edgeConnectivity;
         private int? minimumVertexDegree;
         private int? maximumVertexDegree;
+        private double? averageVertexDegree;
         private double? cayleysFormula;
         #endregion
 
@@ -311,6 +312,22 @@ namespace GraphColoring.Graph.GraphProperty
             }
 
             return (int)maximumVertexDegree;
+        }
+
+        /// <summary>
+        /// Vrátí průměrný stupeň vrcholu
+        /// </summary>
+        /// <returns>průměrný stupeň vrcholu</returns>
+        public double GetAverageVertexDegree()
+        {
+            if (!averageVertexDegree.HasValue)
+            {
+                GetDegreeSequence(false);
+
+                averageVertexDegree = degreeSequenceInt.Average();
+            }
+
+            return (double)averageVertexDegree;
         }
 
         /// <summary>

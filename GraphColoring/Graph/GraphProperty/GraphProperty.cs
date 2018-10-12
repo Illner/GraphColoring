@@ -50,6 +50,7 @@ namespace GraphColoring.Graph.GraphProperty
             edgeConnectivity = null;
             minimumVertexDegree = null;
             maximumVertexDegree = null;
+            averageVertexDegree = null;
             cayleysFormula = null;
         }
         #endregion

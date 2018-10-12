@@ -43,9 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenerateGraph\ErdosRenyiModel.cs" />
-    <Compile Include="GenerateGraph\ErdosRenyiModelProbabilityEnum.cs" />
+    <Compile Include="GenerateGraph\ErdosRenyiModel\ErdosRenyiModel.cs" />
+    <Compile Include="GenerateGraph\ErdosRenyiModel\ErdosRenyiModelProbabilityEnum.cs" />
+    <Compile Include="GenerateGraph\ErdosRenyiModel\Tests\ErdosRenyiModelTest.cs" />
     <Compile Include="GenerateGraph\IGenerateGraphInterface.cs" />
+    <Compile Include="GraphColoringAlgorithm\CombinationAlgorithm\CombinationAlgorithm.cs" />
+    <Compile Include="GraphColoringAlgorithm\CombinationAlgorithm\Tests\CombinationAlgorithmResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CombinationAlgorithmResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphColoringAlgorithm\CombinationAlgorithm\Tests\CombinationAlgorithmTest.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithm.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithmEnum.cs" />
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\GreedyIndependentSet.cs" />
@@ -56,6 +64,7 @@
     </Compile>
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\Tests\GreedyIndependentSetTest.cs" />
     <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmInterface.cs" />
+    <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmStepInterface.cs" />
     <Compile Include="GraphColoringAlgorithm\Optimal\Tests\OptimalResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -225,6 +234,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\Testing\Algorithm\Combination\combination1.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Combination\combination2.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Combination\combination3.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Combination\combination4.graph" />
+    <None Include="bin\Debug\Testing\Algorithm\Combination\combination5.graph" />
     <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential1.graph" />
     <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential2.graph" />
     <None Include="bin\Debug\Testing\Algorithm\ConnectedSequential\connectedSequential3.graph" />
@@ -376,6 +390,10 @@
     <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph2.graph" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GraphColoringAlgorithm\CombinationAlgorithm\Tests\CombinationAlgorithmResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CombinationAlgorithmResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GraphColoringAlgorithm\GreedyIndependentSet\Tests\GreedyIndependentSetResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GreedyIndependentSetResource.Designer.cs</LastGenOutput>
@@ -518,6 +536,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\GreedyIndependentSetStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GenerateGraphErdosRenyiModel.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GenerateGraphErdosRenyiModelStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphDegreeSequence.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\CombinationStandard.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

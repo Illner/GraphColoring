@@ -38,6 +38,8 @@ namespace GraphColoring.Tests
         GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests.SaturationLargestFirstSequenceTest saturationLargestFirstSequenceTest = new GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests.SaturationLargestFirstSequenceTest();
         GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests.ConnectedSequentialTest connectedSequentialTest = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests.ConnectedSequentialTest();
         GraphColoringAlgorithm.GreedyIndependentSet.Tests.GreedyIndependentSetTest greedyIndependentSetTest = new GraphColoringAlgorithm.GreedyIndependentSet.Tests.GreedyIndependentSetTest();
+        GenerateGraph.ErdosRenyiModel.Tests.ErdosRenyiModelTest generateGraphErdosRenyiModelTest = new GenerateGraph.ErdosRenyiModel.Tests.ErdosRenyiModelTest();
+        GraphColoringAlgorithm.CombinationAlgorithm.Tests.CombinationAlgorithmTest combinationAlgorithmTest = new GraphColoringAlgorithm.CombinationAlgorithm.Tests.CombinationAlgorithmTest();
         #endregion
 
         // Enum
@@ -63,7 +65,9 @@ namespace GraphColoring.Tests
             optimal,
             saturationLargestFirstSequence,
             connectedSequential,
-            greedyIndependentSet
+            greedyIndependentSet,
+            generateGraphErdosRanyiModel,
+            combinationAlgorithm
         }
         #endregion
 
@@ -99,7 +103,9 @@ namespace GraphColoring.Tests
                 { TestEnum.optimal, new Tuple<ITestInterface, string>(optimalTest, TestResource.OptimalStandard) },
                 { TestEnum.saturationLargestFirstSequence, new Tuple<ITestInterface, string>(saturationLargestFirstSequenceTest, TestResource.SaturationLargestFirstSequenceStandard) },
                 { TestEnum.connectedSequential, new Tuple<ITestInterface, string>(connectedSequentialTest, TestResource.ConnectedSequentialStandard) },
-                { TestEnum.greedyIndependentSet, new Tuple<ITestInterface, string>(greedyIndependentSetTest, TestResource.GreedyIndependentSetStandard) }
+                { TestEnum.greedyIndependentSet, new Tuple<ITestInterface, string>(greedyIndependentSetTest, TestResource.GreedyIndependentSetStandard) },
+                { TestEnum.generateGraphErdosRanyiModel, new Tuple<ITestInterface, string>(generateGraphErdosRenyiModelTest, TestResource.GenerateGraphErdosRenyiModelStandard) },
+                { TestEnum.combinationAlgorithm, new Tuple<ITestInterface, string>(combinationAlgorithmTest, TestResource.CombinationStandard) }
             };
         }
         #endregion

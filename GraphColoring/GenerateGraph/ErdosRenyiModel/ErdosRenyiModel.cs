@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GraphColoring.GenerateGraph
+namespace GraphColoring.GenerateGraph.ErdosRenyiModel
 {
     partial class ErdosRenyiModel : IGenerateGraphInterface
     {
@@ -61,7 +61,7 @@ namespace GraphColoring.GenerateGraph
             switch (erdosRenyiModelProbabilityEnum)
             {
                 case ErdosRenyiModelProbabilityEnum.cDividedByNLessThanOne:
-                    probability = random.Next(25000, 99999) / countVertices;
+                    probability = random.Next(10000, 99999) / countVertices;
                     break;
                 case ErdosRenyiModelProbabilityEnum.cDividedByNMoreThanOne:
                     probability = random.Next(100000, 200000) / countVertices;

@@ -11,51 +11,10 @@ namespace GraphColoring
     {
         static void Main(string[] args) 
         {
-            /*
+            
             Tests.Tests tests = new Tests.Tests(true);
             tests.Test();
-            */
-            List<int> myList = new List<int>();
-            for (int i = 0; i < 1000; i++)
-            {
-                GenerateGraph.ErdosRenyiModel generateGraph = new GenerateGraph.ErdosRenyiModel(1000, GenerateGraph.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.cDividedByNLessThanOne);
-                Graph.IGraphInterface graph = generateGraph.GenerateGraph();
-
-                //Console.WriteLine(i);
-                myList.Add(generateGraph.probability);
-            }
-            Console.WriteLine("95");
-            Console.WriteLine("Average: " + myList.Average());
-            Console.WriteLine("Max: " + myList.Max());
-            Console.WriteLine("Min: " + myList.Min());
-
-            myList = new List<int>();
-            for (int i = 0; i < 1000; i++)
-            {
-                GenerateGraph.ErdosRenyiModel generateGraph = new GenerateGraph.ErdosRenyiModel(1000, GenerateGraph.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.cDividedByNMoreThanOne);
-                Graph.IGraphInterface graph = generateGraph.GenerateGraph();
-
-                //Console.WriteLine(i);
-                myList.Add(generateGraph.probability);
-            }
-            Console.WriteLine("150");
-            Console.WriteLine("Average: " + myList.Average());
-            Console.WriteLine("Max: " + myList.Max());
-            Console.WriteLine("Min: " + myList.Min());
-
-            myList = new List<int>();
-            for (int i = 0; i < 1000; i++)
-            {
-                GenerateGraph.ErdosRenyiModel generateGraph = new GenerateGraph.ErdosRenyiModel(1000, GenerateGraph.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.cLogNDividedByN);
-                Graph.IGraphInterface graph = generateGraph.GenerateGraph();
-
-                //Console.WriteLine(i);
-                myList.Add(generateGraph.probability);
-            }
-            Console.WriteLine("700");
-            Console.WriteLine("Average: " + myList.Average());
-            Console.WriteLine("Max: " + myList.Max());
-            Console.WriteLine("Min: " + myList.Min());
+            
 
             /*
             Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
@@ -66,10 +25,12 @@ namespace GraphColoring
             /*
             ReaderWriter.Reader reader = new ReaderWriter.Reader(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence5), false);
             ReaderWriter.Writer writer = new ReaderWriter.Writer(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence5), false);
+            
+            GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(1000);
+            Graph.IGraphInterface graph = erdosRenyiModel.GenerateGraph();
 
-            Graph.Graph graph = reader.ReadFile();
 
-            GraphColoringAlgorithm.GraphColoringAlgorithm algorithm = new GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph);
+            GraphColoringAlgorithm.GraphColoringAlgorithm algorithm = new GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph);
 
             algorithm.Color();
 

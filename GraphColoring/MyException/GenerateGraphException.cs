@@ -29,4 +29,16 @@ namespace GraphColoring.MyException
 
         public ErdosReneiModelProbabilityEnumMissing(string message, Exception inner) : base(message, inner) { }
     }
+
+    /// <summary>
+    /// Není vybrána volba p
+    /// </summary>
+    class ErdosReneiModelChoosePNotAssigned : Exception
+    {
+        public ErdosReneiModelChoosePNotAssigned() { }
+
+        public ErdosReneiModelChoosePNotAssigned(string message) : base(message) { }
+
+        public ErdosReneiModelChoosePNotAssigned(string message, Exception inner) : base(message, inner) { }
+    }
 }

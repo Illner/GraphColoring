@@ -10,8 +10,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
     {
         // Variable
         #region
-        int color = 1;
-        Graph.IGraphInterface copyGraph;
+        private int color = 1;
+        private Graph.IGraphInterface copyGraph;
         #endregion
 
         // Constructor
@@ -46,7 +46,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
                     {
                         copyGraph.VertexDelete(neighbour);
                     }
-                    
+
                     graph.GetColoredGraph().ColorVertex(graph.GetVertex(vertex.GetUserName()), color);
                 }
 

@@ -107,6 +107,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
                 stringBuilder.AppendLine("");
                 stringBuilder.AppendLine("Minimum vertex degree: " + graph.GetGraphProperty().GetMinimumVertexDegree());
                 stringBuilder.AppendLine("Maximum vertex degree: " + graph.GetGraphProperty().GetMaximumVertexDegree());
+                stringBuilder.AppendLine("Average vertex degree: " + graph.GetGraphProperty().GetAverageVertexDegree());
                 stringBuilder.AppendLine("Is graph regular: " + graph.GetGraphProperty().GetIsRegular());
 
                 graph.GetGraphProperty().Reset();
@@ -123,6 +124,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
                 stringBuilder.AppendLine("");
                 stringBuilder.AppendLine("Minimum vertex degree: " + graph.GetGraphProperty().GetMinimumVertexDegree());
                 stringBuilder.AppendLine("Maximum vertex degree: " + graph.GetGraphProperty().GetMaximumVertexDegree());
+                stringBuilder.AppendLine("Average vertex degree: " + graph.GetGraphProperty().GetAverageVertexDegree());
                 stringBuilder.AppendLine("Is graph regular: " + graph.GetGraphProperty().GetIsRegular());
             }
             catch (KeyNotFoundException)

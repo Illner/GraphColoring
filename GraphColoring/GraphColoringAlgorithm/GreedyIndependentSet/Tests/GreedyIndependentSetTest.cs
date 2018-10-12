@@ -76,7 +76,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
         /// <summary>
         /// Otestuje daný typ grafu
         /// </summary>
-        /// <param name="optimal">daný typ grafu</param>
+        /// <param name="greedyIndependentSet">daný typ grafu</param>
         /// <returns>Vrátí report</returns>
         public StringBuilder Test(GreedyIndependentSetEnum greedyIndependentSet)
         {

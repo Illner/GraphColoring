@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence
 {
-    sealed class LargestFirstSequence : GraphColoringSequenceAlgorithm
+    sealed class LargestFirstSequence : GraphColoringSequenceAlgorithm, IGraphColoringAlgorithmStepInterface
     {
         // Variable
         #region
@@ -30,6 +30,28 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             degreeSequenceVertexReverse = graph.GetGraphProperty().GetDegreeSequenceVertex(true);
             degreeSequenceVertexReverse.Reverse();
             vertexSequenceList = degreeSequenceVertexReverse;
+        }
+
+        /// <summary>
+        /// Vrátí vrchol s největším stupněm, který ještě není obarven
+        /// Pokud jsou všechny vrcholy obarveny, tak vrátí null
+        /// </summary>
+        /// <returns>vrchol</returns>
+        public Graph.Vertex Step()
+        {
+            if (degreeSequenceVertexReverse == null)
+            {
+                degreeSequenceVertexReverse = graph.GetGraphProperty().GetDegreeSequenceVertex(true);
+                degreeSequenceVertexReverse.Reverse();
+            }
+
+            foreach (Graph.Vertex vertex in degreeSequenceVertexReverse)
+            {
+                if (vertex.GetColor() == Graph.VertexExtended.GetDefaultColor())
+                    return vertex;
+            }
+
+            return null;
         }
         #endregion
     }

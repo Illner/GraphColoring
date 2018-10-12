@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence
 {
-    class SmallestLastSequence : GraphColoringSequenceAlgorithm
+    class SmallestLastSequence : GraphColoringSequenceAlgorithm, IGraphColoringAlgorithmStepInterface
     {
         // Constructor
         #region
@@ -36,6 +36,41 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             }
 
             vertexSequenceList = VertexList;
+        }
+
+        /// <summary>
+        /// Vrátí vrchol s nejmenším stupňem v podgrafu s neobarvenými vrcholy
+        /// Pokud je graf obarvený, tak vrátí null
+        /// </summary>
+        /// <returns>vrchol</returns>
+        public Graph.Vertex Step()
+        {
+            // Variable
+            Graph.Vertex copyVertex;
+            Graph.IGraphInterface copyGraph;
+            Graph.IColoredGraphInterface coloredCopyGraph;
+
+            copyGraph = Graph.GraphOperation.GraphOperation.CopyGraph(graph);
+            coloredCopyGraph = copyGraph.GetColoredGraph();
+
+            // Duplicate colors from graph to copyGraph
+            foreach (Graph.Vertex vertex in graph.AllVertices())
+            {
+                if (vertex.GetColor() != Graph.VertexExtended.GetDefaultColor())
+                    coloredCopyGraph.ColorVertex(copyGraph.GetVertex(vertex.GetUserName()), vertex.GetColor());
+            }
+
+            foreach (Graph.Vertex vertex in copyGraph.GetColoredGraph().GetColoredVertexList())
+            {
+                copyGraph.VertexDelete(vertex);
+            }
+
+            copyVertex = copyGraph.GetGraphProperty().GetDegreeSequenceVertex(true).FirstOrDefault();
+
+            if (copyVertex == null)
+                return null;
+
+            return graph.GetVertex(copyVertex.GetUserName());
         }
         #endregion
     }

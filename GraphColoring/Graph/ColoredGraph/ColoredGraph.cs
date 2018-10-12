@@ -358,6 +358,8 @@ namespace GraphColoring.Graph
                     throw new MyException.ColoredGraphNotInitializationException();
                 
                 isInicializedColoredGraph = false;
+
+                isSaturation = false;
             }
 
             /// <summary>
@@ -394,7 +396,7 @@ namespace GraphColoring.Graph
             private void EvaluateSaturation(Vertex vertex)
             {
                 // Variable
-                HashSet<int> neighboursColors = new HashSet<int>();
+                List<int> neighboursColors = new List<int>();
                 List<Vertex> neighboursVertex = graph.Neighbours(vertex);
 
                 if (vertex.GetColor() != VertexExtended.GetDefaultColor())
@@ -402,8 +404,6 @@ namespace GraphColoring.Graph
                     saturationDegreeSequence.Remove(vertex);
                     return;
                 }
-                else
-                    neighboursVertex.Add(vertex);
                 
 
                 foreach(Vertex neighbourVertex in neighboursVertex)
@@ -425,6 +425,9 @@ namespace GraphColoring.Graph
             /// <param name="saturation">true - pracuje se s nasyceností vrcholů, false - nepracuje se s nasyceností vrcholů</param>
             public void SetSaturation(bool saturation)
             {
+                if (isSaturation == saturation)
+                    return;
+
                 isSaturation = saturation;
 
                 if (isSaturation)
@@ -448,12 +451,18 @@ namespace GraphColoring.Graph
                 int max = int.MinValue;
                 Vertex vertexMax = null;
 
+                if (isSaturation == false)
+                    throw new MyException.ColoredGraphNotInitializationSaturation();
+
                 foreach (KeyValuePair<Vertex, int> record in saturationDegreeSequence)
                 {
                     if (record.Value > max)
+                    {
                         vertexMax = record.Key;
+                        max = record.Value;
+                    }
                 }
-                
+
                 return vertexMax;
             }
 

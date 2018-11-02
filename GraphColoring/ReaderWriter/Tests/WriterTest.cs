@@ -101,7 +101,7 @@ namespace GraphColoring.ReaderWriter.Tests
                             graph = reader.ReadFile();
                             randomSequence = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph);
                             randomSequence.Color();
-                            writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.RandomSequence, false);
+                            writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, false);
                             reader.ReadFile();
                             stringBuilder.AppendLine("OK");
                             break;
@@ -109,7 +109,7 @@ namespace GraphColoring.ReaderWriter.Tests
                             graph = reader.ReadFile();
                             largestFirstSequence = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph);
                             largestFirstSequence.Color();
-                            if (!writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.LargestFirstSequence, false))
+                            if (!writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, false))
                                 stringBuilder.AppendLine("OK");
                             else
                                 stringBuilder.AppendLine("NOK");
@@ -119,7 +119,7 @@ namespace GraphColoring.ReaderWriter.Tests
                             graph = reader.ReadFile();
                             randomSequence = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph);
                             randomSequence.Color();
-                            writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.RandomSequence, false);
+                            writer.WriteFile(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, false);
                             reader.ReadFile();
                             stringBuilder.AppendLine("OK");
                             break;

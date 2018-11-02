@@ -54,6 +54,8 @@
       <DependentUpon>CombinationAlgorithmResource.resx</DependentUpon>
     </Compile>
     <Compile Include="GraphColoringAlgorithm\CombinationAlgorithm\Tests\CombinationAlgorithmTest.cs" />
+    <Compile Include="GraphColoringAlgorithm\GeneticAlgorithm\GeneticAlgorithm.cs" />
+    <Compile Include="GraphColoringAlgorithm\GeneticAlgorithm\Tests\GeneticAlgorithmTest.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithm.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithmEnum.cs" />
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\GreedyIndependentSet.cs" />
@@ -548,6 +550,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\CombinationStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GeneticAlgorithmStandard.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

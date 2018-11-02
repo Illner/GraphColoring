@@ -6,16 +6,19 @@ namespace GraphColoring.GraphColoringAlgorithm
     {
         public enum GraphColoringAlgorithmEnum
         {
-            Optimal,
-	        RandomSequence,
-	        LargestFirstSequence,
-	        SmallestLastSequence,
-	        RandomSequenceInterchange,
-	        LargestFirstSequenceInterchange,
-	        SmallestLastSequenceInterchange,
-	        ConnectedSequential,
-	        SaturationLargestFirstSequence,
-	        GreedyIndependentSet,
+            optimal,
+	        randomSequence,
+	        largestFirstSequence,
+	        smallestLastSequence,
+	        randomSequenceInterchange,
+	        largestFirstSequenceInterchange,
+	        smallestLastSequenceInterchange,
+	        connectedSequential,
+	        saturationLargestFirstSequence,
+	        greedyIndependentSet,
+            combinationAlgorithm,
+            geneticAlgortihm,
+            probabilityAlgorithm,
             XXX // Test
         }
     }

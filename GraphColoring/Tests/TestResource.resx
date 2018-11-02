@@ -130,6 +130,9 @@
   <data name="GenerateGraphErdosRenyiModelStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Testing\Test\GenerateGraphErdosRenyiModelStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="GeneticAlgorithmStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Testing\Test\GeneticAlgorithmStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="GraphClassStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Testing\Test\GraphClassStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

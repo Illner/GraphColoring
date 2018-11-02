@@ -21,16 +21,17 @@ namespace GraphColoring
             Console.WriteLine(coloredGraphTest.Test(Graph.ColoredGraph.Tests.ColoredGraphTest.ColoredGraphEnum.valid));
             */
             //Tests.Tests tests = new Tests.Tests(false);
-            //tests.Test(Tests.Tests.TestEnum.greedyIndependentSet);
+            //tests.Test(Tests.Tests.TestEnum.geneticAlgorithm);
             /*
             ReaderWriter.Reader reader = new ReaderWriter.Reader(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence5), false);
             ReaderWriter.Writer writer = new ReaderWriter.Writer(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence5), false);
+            */
             
-            GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(1000);
+            /*
+            GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(60, GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.cLogNDividedByN);
             Graph.IGraphInterface graph = erdosRenyiModel.GenerateGraph();
 
-
-            GraphColoringAlgorithm.GraphColoringAlgorithm algorithm = new GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph);
+            GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm algorithm = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 100);
 
             algorithm.Color();
 
@@ -38,6 +39,26 @@ namespace GraphColoring
             Console.WriteLine(graph.GetColoredGraph());
             Console.WriteLine("Colors: " + graph.GetColoredGraph().GetCountUsedColors());
             */
+        }
+
+        public static void TestGraph(int countVerticies)
+        {
+            // Variable
+            Graph.IGraphInterface generatedGraph;
+            Graph.GraphProperty.GraphProperty graphProperty;
+            GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel;
+            //
+            bool isConnected;
+            bool isReguelar;
+            bool isCyclic;
+
+
+            // Generate graph
+            erdosRenyiModel = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(countVerticies);
+            generatedGraph = erdosRenyiModel.GenerateGraph();
+            graphProperty = generatedGraph.GetGraphProperty();
+
+            // Graph property
         }
     }
 }

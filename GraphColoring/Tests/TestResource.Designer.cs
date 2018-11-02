@@ -174,6 +174,21 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm
+        ///Graph colored.
+        ///Is valid colored: True
+        ///
+        ///
+        ///
+        ///.
+        /// </summary>
+        internal static string GeneticAlgorithmStandard {
+            get {
+                return ResourceManager.GetString("GeneticAlgorithmStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to graphClass1
         ///Graph created.
         ///Name of graph: Name

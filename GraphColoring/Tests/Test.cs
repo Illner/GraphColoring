@@ -40,6 +40,7 @@ namespace GraphColoring.Tests
         GraphColoringAlgorithm.GreedyIndependentSet.Tests.GreedyIndependentSetTest greedyIndependentSetTest = new GraphColoringAlgorithm.GreedyIndependentSet.Tests.GreedyIndependentSetTest();
         GenerateGraph.ErdosRenyiModel.Tests.ErdosRenyiModelTest generateGraphErdosRenyiModelTest = new GenerateGraph.ErdosRenyiModel.Tests.ErdosRenyiModelTest();
         GraphColoringAlgorithm.CombinationAlgorithm.Tests.CombinationAlgorithmTest combinationAlgorithmTest = new GraphColoringAlgorithm.CombinationAlgorithm.Tests.CombinationAlgorithmTest();
+        GraphColoringAlgorithm.GeneticAlgorithm.Tests.GeneticAlgorithmTest geneticAlgorithmTest = new GraphColoringAlgorithm.GeneticAlgorithm.Tests.GeneticAlgorithmTest();
         #endregion
 
         // Enum
@@ -67,7 +68,8 @@ namespace GraphColoring.Tests
             connectedSequential,
             greedyIndependentSet,
             generateGraphErdosRanyiModel,
-            combinationAlgorithm
+            combinationAlgorithm,
+            geneticAlgorithm
         }
         #endregion
 
@@ -105,8 +107,9 @@ namespace GraphColoring.Tests
                 { TestEnum.connectedSequential, new Tuple<ITestInterface, string>(connectedSequentialTest, TestResource.ConnectedSequentialStandard) },
                 { TestEnum.greedyIndependentSet, new Tuple<ITestInterface, string>(greedyIndependentSetTest, TestResource.GreedyIndependentSetStandard) },
                 { TestEnum.generateGraphErdosRanyiModel, new Tuple<ITestInterface, string>(generateGraphErdosRenyiModelTest, TestResource.GenerateGraphErdosRenyiModelStandard) },
-                { TestEnum.combinationAlgorithm, new Tuple<ITestInterface, string>(combinationAlgorithmTest, TestResource.CombinationStandard) }
-            };
+                { TestEnum.combinationAlgorithm, new Tuple<ITestInterface, string>(combinationAlgorithmTest, TestResource.CombinationStandard) },
+                { TestEnum.geneticAlgorithm, new Tuple<ITestInterface, string>(geneticAlgorithmTest, TestResource.GeneticAlgorithmStandard) }
+        };
         }
         #endregion
 

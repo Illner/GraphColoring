@@ -73,7 +73,7 @@ namespace GraphColoring.ReaderWriter
             // Variable
             string line;
             
-            if (graphColoringAlgorithm == GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.RandomSequence)
+            if (graphColoringAlgorithm == GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence)
                 return false;
                 
             using (FileStream fileStream = File.OpenRead(GetPath()))

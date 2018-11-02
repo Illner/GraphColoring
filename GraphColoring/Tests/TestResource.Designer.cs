@@ -189,6 +189,38 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to bridgesCutVertices1
+        ///Graph created.
+        ///Name of graph: Name
+        ///Count of vertices: 5
+        ///Real count of vertices: 5
+        ///Count of edges: 5
+        ///Vertices: 
+        ///-- Identifier: 5173, userName: 1
+        ///-- Identifier: 5174, userName: 0
+        ///-- Identifier: 5175, userName: 2
+        ///-- Identifier: 5176, userName: 3
+        ///-- Identifier: 5177, userName: 4
+        ///Edges: 
+        ///-- Vertex: 1 (5173)
+        ///---- 0 (5174) 
+        ///---- 2 (5175) 
+        ///-- Vertex: 0 (5174)
+        ///---- 1 (5173) 
+        ///---- 2 (5175) 
+        ///---- 3 (5176) 
+        ///-- Vertex: 2 (5175)
+        ///---- 0 (5174) 
+        ///---- 1 (5173) 
+        ///-- Vertex: 3 (5176)        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string GraphBridgesCutVerticesStandard {
+            get {
+                return ResourceManager.GetString("GraphBridgesCutVerticesStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to graphClass1
         ///Graph created.
         ///Name of graph: Name

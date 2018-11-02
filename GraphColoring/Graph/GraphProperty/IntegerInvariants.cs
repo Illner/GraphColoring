@@ -16,8 +16,6 @@ namespace GraphColoring.Graph.GraphProperty
         /// countComponents - Number of connected components
         /// circuitRank - a linear combination of the numbers of edges, vertices, and components
         /// girth - the length of the shortest cycle
-        /// vertexConnectivity - the smallest number of vertices whose removal disconnects the graph
-        /// edgeConnectivity - the smallest number of edges whose removal disconnects the graph
         /// cayleysFormula - number of spanning trees
         /// </summary>
         private int order;
@@ -25,8 +23,6 @@ namespace GraphColoring.Graph.GraphProperty
         private int? countComponents;
         private int? circuitRank;
         private int? girth;
-        private int? vertexConnectivity;
-        private int? edgeConnectivity;
         private int? minimumVertexDegree;
         private int? maximumVertexDegree;
         private double? averageVertexDegree;
@@ -141,24 +137,6 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Zjistí vrcvholovou souvislost
-        /// vertexConnectivity
-        /// </summary>
-        private void VertexConnectivity()
-        {
-            // TODO VertexConnectivity - R1809
-        }
-
-        /// <summary>
-        /// Zjistí hranovou souvislost
-        /// edgeConnectivity
-        /// </summary>
-        private void EdgeConnectivity()
-        {
-            // TODO edgeConnectivity - R1809
-        }
-
-        /// <summary>
         /// Zjistí celkový počet koster
         /// cayleysFormula
         /// Time complexity: O(1)
@@ -233,30 +211,6 @@ namespace GraphColoring.Graph.GraphProperty
                 CycleGirth();
 
             return (int)girth;
-        }
-
-        /// <summary>
-        /// Vrátí vrcholovou souvislost
-        /// </summary>
-        /// <returns>vrcholová souvislost</returns>
-        public int GetVertexConnectivity()
-        {
-            if (!vertexConnectivity.HasValue)
-                VertexConnectivity();
-
-            return (int)vertexConnectivity;
-        }
-
-        /// <summary>
-        /// Vrátí hranovou souvislost
-        /// </summary>
-        /// <returns>hranová souvislost</returns>
-        public int GetEdgeConnectivity()
-        {
-            if (edgeConnectivity.HasValue)
-                EdgeConnectivity();
-
-            return (int)edgeConnectivity;
         }
 
         /// <summary>

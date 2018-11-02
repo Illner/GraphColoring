@@ -32,6 +32,7 @@ namespace GraphColoring.Graph.GraphProperty
             matching = null;
             cutVertices = null;
             bridges = null;
+            timeBridgesCutVertices = 0;
 
             // Properties
             isConnected = null;
@@ -46,8 +47,6 @@ namespace GraphColoring.Graph.GraphProperty
             countComponents = null;
             circuitRank = null;
             girth = null;
-            vertexConnectivity = null;
-            edgeConnectivity = null;
             minimumVertexDegree = null;
             maximumVertexDegree = null;
             averageVertexDegree = null;

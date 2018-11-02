@@ -147,6 +147,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SubGraphResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Graph\GraphProperty\Tests\BridgesCutVerticesResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BridgesCutVerticesResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphProperty\Tests\BridgesCutVerticesTest.cs" />
     <Compile Include="Graph\GraphProperty\Tests\ComponentResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -307,6 +313,10 @@
     <None Include="bin\Debug\Testing\Graph\GraphOperation\SubGraph\graphSubGraph2.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphOperation\SubGraph\graphSubGraph3.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphOperation\SubGraph\graphSubGraph4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest4.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent2.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent3.graph" />
@@ -453,6 +463,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SubGraphResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphProperty\Tests\BridgesCutVerticesResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BridgesCutVerticesResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Graph\GraphProperty\Tests\ComponentResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ComponentResource.Designer.cs</LastGenOutput>
@@ -553,6 +567,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\GeneticAlgorithmStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\BridgesCutVerticesStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\GraphBridgesCutVerticesStandard.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

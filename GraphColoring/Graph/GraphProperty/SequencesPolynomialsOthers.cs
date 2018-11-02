@@ -27,6 +27,7 @@ namespace GraphColoring.Graph.GraphProperty
         private List<Edge> matching;
         private List<Vertex> cutVertices;
         private List<Edge> bridges;
+        private int timeBridgesCutVertices = 0;
         // private List<arc> eulerianPath;
         #endregion
 
@@ -117,21 +118,81 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Získá všechny artikulace grafu
-        /// cutVertices
+        /// Get all bridges and cut vertices
+        /// bridges, cutVertices
+        /// DFS
+        /// Time complexity: O(V + E)
+        /// Space complexity: O(V)
         /// </summary>
-        private void CutVertices()
+        private void BridgesCutVertices()
         {
-            // TODO CutVertices - R1809
+            // Variable
+            List<Vertex> allVertices;
+            HashSet<Vertex> visitedVertexHashSet = new HashSet<Vertex>();
+            Dictionary<Vertex, int> discoveryTimesDictionary = new Dictionary<Vertex, int>();
+            Dictionary<Vertex, int> lowDictionary = new Dictionary<Vertex, int>();
+            Dictionary<Vertex, Vertex> parentDictionary = new Dictionary<Vertex, Vertex>();
+
+            allVertices = graph.AllVertices();
+
+            foreach(Vertex vertex in allVertices)
+            {
+                if (!visitedVertexHashSet.Contains(vertex))
+                    BridgesCutVerticesRecursion(vertex, visitedVertexHashSet, discoveryTimesDictionary, lowDictionary, parentDictionary);
+            }
         }
 
-        /// <summary>
-        /// Získá všechny mosty grafu
-        /// bridges
-        /// </summary>
-        private void Bridges()
+        private void BridgesCutVerticesRecursion(Vertex vertex, HashSet<Vertex> visitedVertexHashSet, Dictionary<Vertex, int> discoveryTimesDictionary, Dictionary<Vertex, int> lowDictionary, Dictionary<Vertex, Vertex> parentDictionary)
         {
-            // TODO Bridges - R1809
+            // Variable
+            int children = 0;
+            cutVertices = new List<Vertex>();
+            bridges = new List<Edge>();
+            List<Vertex> neighboursList = graph.Neighbours(vertex);
+
+            visitedVertexHashSet.Add(vertex);
+
+            if (!discoveryTimesDictionary.ContainsKey(vertex))
+                discoveryTimesDictionary.Add(vertex, 0);
+
+            if (!lowDictionary.ContainsKey(vertex))
+                lowDictionary.Add(vertex, 0);
+
+            discoveryTimesDictionary[vertex] = lowDictionary[vertex] = ++timeBridgesCutVertices;
+
+            foreach(Vertex neighbour in neighboursList)
+            {
+                if (!visitedVertexHashSet.Contains(neighbour))
+                {
+                    children++;
+                    
+                    if (!parentDictionary.ContainsKey(neighbour))
+                        parentDictionary.Add(neighbour, vertex);
+                    else
+                        parentDictionary[neighbour] = vertex;
+
+                    BridgesCutVerticesRecursion(neighbour, visitedVertexHashSet, discoveryTimesDictionary, lowDictionary, parentDictionary);
+
+                    if (!lowDictionary.ContainsKey(neighbour))
+                        lowDictionary.Add(neighbour, 0);
+                    
+                    lowDictionary[vertex] = Math.Min(lowDictionary[vertex], lowDictionary[neighbour]);
+                    
+                    if (!parentDictionary.ContainsKey(vertex) && children > 1)
+                        cutVertices.Add(vertex);
+
+                    if (parentDictionary.ContainsKey(vertex) && lowDictionary[neighbour] >= discoveryTimesDictionary[vertex])
+                        cutVertices.Add(vertex);
+
+                    if (lowDictionary[neighbour] > discoveryTimesDictionary[vertex])
+                        bridges.Add(new Edge(vertex, neighbour));
+                }
+                else
+                {
+                    if (!parentDictionary.ContainsKey(vertex) || parentDictionary[vertex] != neighbour)
+                        lowDictionary[vertex] = Math.Min(lowDictionary[vertex], discoveryTimesDictionary[neighbour]);
+                }
+            }
         }
         #endregion
 
@@ -207,7 +268,7 @@ namespace GraphColoring.Graph.GraphProperty
         public List<Vertex> GetCutVertices()
         {
             if (cutVertices == null)
-                CutVertices();
+                BridgesCutVertices();
 
             return cutVertices;
         }
@@ -219,7 +280,7 @@ namespace GraphColoring.Graph.GraphProperty
         public List<Edge> GetBridges()
         {
             if (bridges == null)
-                Bridges();
+                BridgesCutVertices();
 
             return bridges;
         }

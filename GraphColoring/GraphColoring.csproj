@@ -31,10 +31,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -104,6 +108,9 @@
       <DependentUpon>SmallestLastSequenceResource.resx</DependentUpon>
     </Compile>
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\Tests\SmallestLastSequenceTest.cs" />
+    <Compile Include="GraphVisualization\FileNameExtension.cs" />
+    <Compile Include="GraphVisualization\GraphVisualization.cs" />
+    <Compile Include="GraphVisualization\IGraphVisualizationInterface.cs" />
     <Compile Include="Graph\ColoredGraph\ColoredGraph.cs" />
     <Compile Include="Graph\ColoredGraph\IColoredGraphInterface.cs" />
     <Compile Include="Graph\ColoredGraph\Tests\ColoredGraphResource.Designer.cs">
@@ -173,8 +180,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpanningTreeResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Graph\IArcInterface.cs" />
+    <Compile Include="Graph\IEdgeInterface.cs" />
     <Compile Include="Graph\IGraphAdjacencyMatrixInterface.cs" />
     <Compile Include="Graph\IGraphEdgeListInterface.cs" />
+    <Compile Include="Graph\IVertexInterface.cs" />
     <Compile Include="Graph\VertexExtended.cs" />
     <Compile Include="Graph\Arc.cs" />
     <Compile Include="Graph\Edge.cs" />
@@ -203,21 +213,37 @@
     <Compile Include="Graph\GraphProperty\Tests\DegreeSequenceTest.cs" />
     <Compile Include="Graph\GraphProperty\Tests\SpanningTreeTest.cs" />
     <Compile Include="Graph\IGraphInterface.cs" />
+    <Compile Include="GUI\GraphColoringForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GraphColoringForm.Designer.cs">
+      <DependentUpon>GraphColoringForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyException\GenerateGraphException.cs" />
     <Compile Include="MyException\GraphColoringAlgorithmException.cs" />
     <Compile Include="MyException\GraphException.cs" />
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\GraphRepresentationEnum.cs" />
+    <Compile Include="MyException\GraphVisualizationException.cs" />
     <Compile Include="MyException\ReaderWriterException.cs" />
     <Compile Include="MyException\TestsException.cs" />
     <Compile Include="MyMath\MyMath.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Graph\Vertex.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphVisualization\ConvertGraphToDot.cs" />
+    <Compile Include="ReaderWriter\IReaderGraphInterface.cs" />
     <Compile Include="ReaderWriter\IReaderWriterInterface.cs" />
+    <Compile Include="GraphVisualization\IConvertGraphToDotInterface.cs" />
+    <Compile Include="ReaderWriter\IWriterGraphInterface.cs" />
     <Compile Include="ReaderWriter\ReaderWriter.cs" />
     <Compile Include="ReaderWriter\ReaderWriterHeaderEnum.cs" />
-    <Compile Include="ReaderWriter\Reader.cs" />
+    <Compile Include="ReaderWriter\ReaderGraph.cs" />
     <Compile Include="ReaderWriter\Tests\ReaderResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -231,7 +257,7 @@
       <DependentUpon>WriterResource.resx</DependentUpon>
     </Compile>
     <Compile Include="ReaderWriter\Tests\WriterTest.cs" />
-    <Compile Include="ReaderWriter\Writer.cs" />
+    <Compile Include="ReaderWriter\WriterGraph.cs" />
     <Compile Include="Tests\ITestInterface.cs" />
     <Compile Include="Tests\Test.cs" />
     <Compile Include="Tests\TestResource.Designer.cs">
@@ -317,6 +343,7 @@
     <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest2.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest3.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest5.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent2.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent3.graph" />
@@ -400,6 +427,9 @@
     <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidVertexName.graph" />
     <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph.graph" />
     <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph2.graph" />
+    <None Include="GraphVisualization\DOT\config6">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GraphColoringAlgorithm\CombinationAlgorithm\Tests\CombinationAlgorithmResource.resx">
@@ -483,6 +513,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SpanningTreeResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\GraphColoringForm.resx">
+      <DependentUpon>GraphColoringForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReaderWriter\Tests\ReaderResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ReaderResource.Designer.cs</LastGenOutput>
@@ -494,6 +531,7 @@
     <EmbeddedResource Include="Tests\TestResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TestResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -573,6 +611,89 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\GraphBridgesCutVerticesStandard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GraphVisualization\DOT\cdt.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\cgraph.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\dot.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\freetype6.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\gvc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\gvplugin_core.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\gvplugin_dot_layout.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\gvplugin_gd.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\gvplugin_gdiplus.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\iconv.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\intl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\jpeg62.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libcairo-2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libexpat-1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libexpat.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libfontconfig-1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libfreetype-6.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libglib-2.0-0.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libgmodule-2.0-0.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libgobject-2.0-0.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libgthread-2.0-0.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libpng12.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libpng14-14.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\libxml2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\ltdl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\Pathplan.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphVisualization\DOT\zlib1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

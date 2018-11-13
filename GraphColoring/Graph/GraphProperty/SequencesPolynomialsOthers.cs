@@ -19,14 +19,14 @@ namespace GraphColoring.Graph.GraphProperty
         /// bridges - mosty grafu
         /// eulerianPath - eulerovský cyklus, nebo eulerovský tah v grafu
         /// </summary>
-        private List<KeyValuePair<Vertex, int>> degreeSequence;
+        private List<KeyValuePair<IVertexInterface, int>> degreeSequence;
         private bool isDegreeSequenceSorted = false;
-        private List<Vertex> degreeSequenceVertex;
+        private List<IVertexInterface> degreeSequenceVertex;
         private List<int> degreeSequenceInt;
-        private List<Edge> spanningTreeBFS;
-        private List<Edge> matching;
-        private List<Vertex> cutVertices;
-        private List<Edge> bridges;
+        private List<IEdgeInterface> spanningTreeBFS;
+        private List<IEdgeInterface> matching;
+        private List<IVertexInterface> cutVertices;
+        private List<IEdgeInterface> bridges;
         private int timeBridgesCutVertices = 0;
         // private List<arc> eulerianPath;
         #endregion
@@ -43,13 +43,13 @@ namespace GraphColoring.Graph.GraphProperty
         private void DegreeSequence(bool sorted)
         {
             // Variable
-            List<Vertex> allVerticesList;
-            Dictionary<Vertex, int> degreeSequenceDictionary;
+            List<IVertexInterface> allVerticesList;
+            Dictionary<IVertexInterface, int> degreeSequenceDictionary;
 
-            degreeSequenceDictionary = new Dictionary<Vertex, int>(GetCountVertices());
+            degreeSequenceDictionary = new Dictionary<IVertexInterface, int>(GetCountVertices());
             allVerticesList = graph.AllVertices();
 
-            foreach (Vertex vertex in allVerticesList)
+            foreach (IVertexInterface vertex in allVerticesList)
             {
                 degreeSequenceDictionary.Add(vertex, graph.CountNeighbours(vertex));
             }
@@ -75,13 +75,13 @@ namespace GraphColoring.Graph.GraphProperty
         private void SpanningTreeBFS()
         {
             // Variable
-            Queue<Vertex> vertexBFSQueue = new Queue<Vertex>();
-            HashSet<Vertex> visitedVertexHashSet = new HashSet<Vertex>();
-            List<Vertex> vertexNeighboursList;
+            Queue<IVertexInterface> vertexBFSQueue = new Queue<IVertexInterface>();
+            HashSet<IVertexInterface> visitedVertexHashSet = new HashSet<IVertexInterface>();
+            List<IVertexInterface> vertexNeighboursList;
             int countVertex = graph.GetGraphProperty().GetCountVertices();
-            Vertex root;
+            IVertexInterface root;
 
-            spanningTreeBFS = new List<Edge>();
+            spanningTreeBFS = new List<IEdgeInterface>();
 
             root = graph.GetFirstVertex();
             vertexBFSQueue.Enqueue(root);
@@ -89,11 +89,11 @@ namespace GraphColoring.Graph.GraphProperty
 
             while (vertexBFSQueue.Count != 0)
             {
-                Vertex vertex = vertexBFSQueue.Dequeue();
+                IVertexInterface vertex = vertexBFSQueue.Dequeue();
 
                 vertexNeighboursList = graph.Neighbours(vertex);
 
-                foreach(Vertex vertexNeighbour in vertexNeighboursList)
+                foreach(IVertexInterface vertexNeighbour in vertexNeighboursList)
                 {
                     if (visitedVertexHashSet.Contains(vertexNeighbour))
                         continue;
@@ -120,6 +120,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Get all bridges and cut vertices
         /// bridges, cutVertices
+        /// Must be connected!
         /// DFS
         /// Time complexity: O(V + E)
         /// Space complexity: O(V)
@@ -127,28 +128,31 @@ namespace GraphColoring.Graph.GraphProperty
         private void BridgesCutVertices()
         {
             // Variable
-            List<Vertex> allVertices;
-            HashSet<Vertex> visitedVertexHashSet = new HashSet<Vertex>();
-            Dictionary<Vertex, int> discoveryTimesDictionary = new Dictionary<Vertex, int>();
-            Dictionary<Vertex, int> lowDictionary = new Dictionary<Vertex, int>();
-            Dictionary<Vertex, Vertex> parentDictionary = new Dictionary<Vertex, Vertex>();
+            List<IVertexInterface> allVertices;
+            HashSet<IVertexInterface> visitedVertexHashSet = new HashSet<IVertexInterface>();
+            Dictionary<IVertexInterface, int> discoveryTimesDictionary = new Dictionary<IVertexInterface, int>();
+            Dictionary<IVertexInterface, int> lowDictionary = new Dictionary<IVertexInterface, int>();
+            Dictionary<IVertexInterface, IVertexInterface> parentDictionary = new Dictionary<IVertexInterface, IVertexInterface>();
+
+            if (!graph.GetGraphProperty().GetIsConnected())
+                throw new MyException.GraphException.GraphIsNotConnected();
 
             allVertices = graph.AllVertices();
 
-            foreach(Vertex vertex in allVertices)
+            foreach(IVertexInterface vertex in allVertices)
             {
                 if (!visitedVertexHashSet.Contains(vertex))
                     BridgesCutVerticesRecursion(vertex, visitedVertexHashSet, discoveryTimesDictionary, lowDictionary, parentDictionary);
             }
         }
 
-        private void BridgesCutVerticesRecursion(Vertex vertex, HashSet<Vertex> visitedVertexHashSet, Dictionary<Vertex, int> discoveryTimesDictionary, Dictionary<Vertex, int> lowDictionary, Dictionary<Vertex, Vertex> parentDictionary)
+        private void BridgesCutVerticesRecursion(IVertexInterface vertex, HashSet<IVertexInterface> visitedVertexHashSet, Dictionary<IVertexInterface, int> discoveryTimesDictionary, Dictionary<IVertexInterface, int> lowDictionary, Dictionary<IVertexInterface, IVertexInterface> parentDictionary)
         {
             // Variable
             int children = 0;
-            cutVertices = new List<Vertex>();
-            bridges = new List<Edge>();
-            List<Vertex> neighboursList = graph.Neighbours(vertex);
+            cutVertices = new List<IVertexInterface>();
+            bridges = new List<IEdgeInterface>();
+            List<IVertexInterface> neighboursList = graph.Neighbours(vertex);
 
             visitedVertexHashSet.Add(vertex);
 
@@ -160,7 +164,7 @@ namespace GraphColoring.Graph.GraphProperty
 
             discoveryTimesDictionary[vertex] = lowDictionary[vertex] = ++timeBridgesCutVertices;
 
-            foreach(Vertex neighbour in neighboursList)
+            foreach(IVertexInterface neighbour in neighboursList)
             {
                 if (!visitedVertexHashSet.Contains(neighbour))
                 {
@@ -204,7 +208,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         /// <param name="sorted">má se setřídit</param>
         /// <returns>skóre grafu jako list Vertexů</returns>
-        public List<Vertex> GetDegreeSequenceVertex(bool sorted)
+        public List<IVertexInterface> GetDegreeSequenceVertex(bool sorted)
         {
             if (degreeSequence == null)
                 DegreeSequence(sorted);
@@ -236,14 +240,14 @@ namespace GraphColoring.Graph.GraphProperty
         /// Pokud graf není souvislý, tak vrátí prázdnou kostru
         /// </summary>
         /// <returns>kostru grafu jako list</returns>
-        public List<Edge> GetSpanningTree()
+        public List<IEdgeInterface> GetSpanningTree()
         {
             if (spanningTreeBFS == null)
             {
                 if (GetIsConnected())
                     SpanningTreeBFS();
                 else
-                    spanningTreeBFS = new List<Edge>();
+                    spanningTreeBFS = new List<IEdgeInterface>();
             }
 
             return spanningTreeBFS;
@@ -253,7 +257,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Vrátí párování grafu
         /// </summary>
         /// <returns>párování grafu jako list hran</returns>
-        public List<Edge> GetMatching()
+        public List<IEdgeInterface> GetMatching()
         {
             if (matching == null)
                 Matching();
@@ -265,7 +269,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Vrátí artikulace grafu
         /// </summary>
         /// <returns>artikulace grafu jako list vrcholů</returns>
-        public List<Vertex> GetCutVertices()
+        public List<IVertexInterface> GetCutVertices()
         {
             if (cutVertices == null)
                 BridgesCutVertices();
@@ -277,7 +281,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Vrátí mosty grafu
         /// </summary>
         /// <returns>mosty grafu jako list hran</returns>
-        public List<Edge> GetBridges()
+        public List<IEdgeInterface> GetBridges()
         {
             if (bridges == null)
                 BridgesCutVertices();

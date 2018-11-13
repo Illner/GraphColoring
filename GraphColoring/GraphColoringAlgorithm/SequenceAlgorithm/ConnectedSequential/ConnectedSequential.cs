@@ -11,7 +11,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         // Constructor
         #region
         public ConnectedSequential(Graph.IGraphInterface graph) : base(graph)
-        { }
+        {
+            name = "Connected sequenctial algorithm";
+        }
         #endregion
 
         // Method
@@ -23,12 +25,12 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         protected void CreateVertexSequence()
         {
             // Variable
-            List<Graph.Edge> spanningTreeBFS;
-            List<Graph.Vertex> VertexList = new List<Graph.Vertex>();
+            List<Graph.IEdgeInterface> spanningTreeBFS;
+            List<Graph.IVertexInterface> VertexList = new List<Graph.IVertexInterface>();
             
             // Graph is not connected
             if (!graph.GetGraphProperty().GetIsConnected())
-                throw new MyException.GraphIsNotConnected(graph.ToString());
+                throw new MyException.GraphException.GraphIsNotConnected(graph.ToString());
                 
             if (graph.GetRealCountVertices() == 1)
             {
@@ -40,7 +42,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
                 {
                     spanningTreeBFS = graph.GetGraphProperty().GetSpanningTree();
 
-                    foreach (Graph.Edge edge in spanningTreeBFS)
+                    foreach (Graph.IEdgeInterface edge in spanningTreeBFS)
                     {
                         if (!VertexList.Contains(edge.GetVertex1()))
                             VertexList.Add(edge.GetVertex1());

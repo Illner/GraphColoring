@@ -140,5 +140,34 @@ namespace GraphColoring.Graph.GraphProperty.Tests {
                 return ResourceManager.GetString("bridgesCutVerticesTest4", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph coloring. Graph representation: adjacencyMatrix
+        ///
+        ///Graph name: Name
+        ///Number of vertices: 13
+        ///
+        ///GRAPH
+        ///0 1 1 1 1 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 1 0 0 0 0 0 0 0
+        ///0 0 0 0 1 0 0 0 0 0 0 0 0
+        ///0 0 0 0 0 0 0 1 0 0 0 0 0
+        ///0 0 0 0 0 0 1 0 1 0 0 0 0
+        ///0 0 0 0 0 0 0 1 0 0 0 0 0
+        ///0 0 0 0 0 0 0 0 0 0 1 1 1
+        ///0 0 0 0 0 0 0 0 0 1 0 0 0
+        ///0 0 0 0 0 0 0 0 0 1 0 0 0
+        ///0 0 0 0 0 0 0 0 0 1 0 0 0
+        ///
+        ///COLORED GRAPH.
+        /// </summary>
+        internal static string bridgesCutVerticesTest5 {
+            get {
+                return ResourceManager.GetString("bridgesCutVerticesTest5", resourceCulture);
+            }
+        }
     }
 }

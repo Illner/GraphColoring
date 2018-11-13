@@ -12,7 +12,7 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
         #region
         private Graph.IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<OptimalEnum, string> testsDictionary;
 
@@ -93,7 +93,7 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[optimal]);
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 Optimal optimalAlgorithm = new Optimal(graph);
@@ -105,9 +105,9 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(optimal.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(optimal.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

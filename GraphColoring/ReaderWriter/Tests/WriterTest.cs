@@ -10,8 +10,8 @@ namespace GraphColoring.ReaderWriter.Tests
     {
         // Variable
         #region
-        private Reader reader;
-        private Writer writer;
+        private IReaderGraphInterface reader;
+        private WriterGraph writer;
         private String testPath;
         private StringBuilder stringBuilder;
         private Dictionary<PathEnum, string> testsDictionary;
@@ -89,8 +89,8 @@ namespace GraphColoring.ReaderWriter.Tests
                 GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence randomSequence;
                 GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence largestFirstSequence;
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[pathEnum]);
-                reader = new Reader(testPath, false);
-                writer = new Writer(testPath, false);
+                reader = new ReaderGraph(testPath, false);
+                writer = new WriterGraph(testPath, false);
 
                 stringBuilder.AppendLine(pathEnum.ToString());
                 try
@@ -128,20 +128,20 @@ namespace GraphColoring.ReaderWriter.Tests
                             break;
                     }
                 }
-                catch (MyException.ReaderWriterException e)
+                catch (MyException.ReaderWriterException.ReaderWriterException e)
                 {
                     stringBuilder.AppendLine(e.Message);
                 }
-                catch (MyException.GraphException e)
+                catch (MyException.GraphException.GraphException e)
                 {
                     stringBuilder.AppendLine(e.Message);
                 }
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(pathEnum.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(pathEnum.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

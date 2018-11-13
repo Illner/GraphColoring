@@ -9,7 +9,7 @@ namespace GraphColoring.Graph.GraphClass.Tests
         #region
         private IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<ClassEnum, string> testsDictionary;
 
@@ -99,7 +99,7 @@ namespace GraphColoring.Graph.GraphClass.Tests
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[classEnum]);
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(classEnum.ToString());
@@ -112,9 +112,9 @@ namespace GraphColoring.Graph.GraphClass.Tests
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(classEnum.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(classEnum.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
         #region
         private Graph.IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<SaturationLargestFirstSequenceEnum, string> testsDictionary;
 
@@ -91,7 +91,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[saturationLargestFirstSequence]);
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 SaturationLargestFirstSequence saturationLargestFirstSequenceAlgorithm = new SaturationLargestFirstSequence(graph);
@@ -103,9 +103,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(saturationLargestFirstSequence.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(saturationLargestFirstSequence.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

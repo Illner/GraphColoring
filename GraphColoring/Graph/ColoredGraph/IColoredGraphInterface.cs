@@ -7,31 +7,31 @@ namespace GraphColoring.Graph
     {
         // Method
         #region
-        void ColorVertex(Vertex vertex, int color);
-        int GetColorVertex(Vertex vertex);
-        bool IsVertexColored(Vertex vertex);
-        void ResetColorVertex(Vertex vertex);
+        void ColorVertex(IVertexInterface vertex, int color);
+        int GetColorVertex(IVertexInterface vertex);
+        bool IsVertexColored(IVertexInterface vertex);
+        void ResetColorVertex(IVertexInterface vertex);
 
-        bool CheckValidColor(Vertex vertex);
-        List<Vertex> CheckValidColor();
-        void GreedyColoring(List<Vertex> vertexList);
-        int GreedyColoring(Vertex vertex);
+        bool CheckValidColor(IVertexInterface vertex);
+        List<IVertexInterface> CheckValidColor();
+        void GreedyColoring(List<IVertexInterface> vertexList);
+        int GreedyColoring(IVertexInterface vertex);
         bool IsValidColored();
         bool InicializeColoredGraph();
         void DeinicializationColoredGraph();
         void ResetColors();
         List<int> UsedColors();
-        List<Vertex> ColoredVertices(int color);
+        List<IVertexInterface> ColoredVertices(int color);
         void SetSaturation(bool saturation);
-        Vertex GetSaturationDegreeSequence();
+        IVertexInterface GetSaturationDegreeSequence();
         bool AreAllVerticesColored();
         #endregion
 
         // Property
         #region
         int GetCountUsedColors();
-        List<Vertex> GetColoredVertexList();
-        List<Vertex> GetUnColoredVertexList();
+        List<IVertexInterface> GetColoredVertexList();
+        List<IVertexInterface> GetUnColoredVertexList();
         bool GetIsInicializedColoredGraph();
         #endregion
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GraphColoring.MyException
+namespace GraphColoring.MyException.GraphColoringAlgorithmException
 {
     /// <summary>
     /// Graph exceptions
@@ -60,5 +60,17 @@ namespace GraphColoring.MyException
         public AlgorithmGraphGeneticAlgorithmRandomNumberOutRange(string message) : base(message) { }
 
         public AlgorithmGraphGeneticAlgorithmRandomNumberOutRange(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Algorithm doesn't exist
+    /// </summary>
+    class AlgorithmDoesntExist : GraphColoringAlgorithmException
+    {
+        public AlgorithmDoesntExist() { }
+
+        public AlgorithmDoesntExist(string message) : base(message) { }
+
+        public AlgorithmDoesntExist(string message, Exception inner) : base(message, inner) { }
     }
 }

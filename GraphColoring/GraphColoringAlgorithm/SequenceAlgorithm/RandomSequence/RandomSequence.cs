@@ -11,7 +11,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
         // Constructor
         #region
         public RandomSequence(Graph.IGraphInterface graph) : base(graph)
-        { }
+        {
+            name = "Random sequence algorithm";
+        }
         #endregion
 
         // Method

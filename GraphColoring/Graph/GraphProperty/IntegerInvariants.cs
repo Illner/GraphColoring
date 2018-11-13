@@ -38,7 +38,7 @@ namespace GraphColoring.Graph.GraphProperty
         public void IncrementCountEdges()
         {
             if (!graph.GetCanDeIncreaseCountEdges())
-                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Edge");
+                throw new MyException.GraphException.GraphPermissionDeIncrementVerticesEdges("Edge");
 
             size++;
         }
@@ -51,10 +51,10 @@ namespace GraphColoring.Graph.GraphProperty
         public void DecrementCountEdges()
         {
             if (!graph.GetCanDeIncreaseCountEdges())
-                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Edge");
+                throw new MyException.GraphException.GraphPermissionDeIncrementVerticesEdges("Edge");
 
             if (size == 0)
-                throw new MyException.GraphInvalidDecrementCountEdges();
+                throw new MyException.GraphException.GraphInvalidDecrementCountEdges();
 
             size--;
         }
@@ -68,10 +68,10 @@ namespace GraphColoring.Graph.GraphProperty
         public void DecrementCountEdges(int count)
         {
             if (!graph.GetCanDeIncreaseCountEdges())
-                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Edge");
+                throw new MyException.GraphException.GraphPermissionDeIncrementVerticesEdges("Edge");
 
             if (size - count < 0)
-                throw new MyException.GraphInvalidDecrementCountEdges();
+                throw new MyException.GraphException.GraphInvalidDecrementCountEdges();
             
             size -= count;
         }
@@ -83,7 +83,7 @@ namespace GraphColoring.Graph.GraphProperty
         public void IncrementCountVertices()
         {
             if (!graph.GetCanDeIncreaseCountVertices())
-                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Vertex");
+                throw new MyException.GraphException.GraphPermissionDeIncrementVerticesEdges("Vertex");
 
             order++;
         }
@@ -96,10 +96,10 @@ namespace GraphColoring.Graph.GraphProperty
         public void DecrementCountVertices()
         {
             if (!graph.GetCanDeIncreaseCountVertices())
-                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Vertex");
+                throw new MyException.GraphException.GraphPermissionDeIncrementVerticesEdges("Vertex");
 
             if (order == 0)
-                throw new MyException.GraphInvalidDecrementCountVertices();
+                throw new MyException.GraphException.GraphInvalidDecrementCountVertices();
 
             order--;
         }
@@ -113,10 +113,10 @@ namespace GraphColoring.Graph.GraphProperty
         public void DecrementCountVertices(int count)
         {
             if (!graph.GetCanDeIncreaseCountVertices())
-                throw new MyException.GraphPermissionDeIncrementVerticesEdges("Vertex");
+                throw new MyException.GraphException.GraphPermissionDeIncrementVerticesEdges("Vertex");
 
             if (order - count < 0)
-                throw new MyException.GraphInvalidDecrementCountVertices();
+                throw new MyException.GraphException.GraphInvalidDecrementCountVertices();
 
             order -= count;
         }
@@ -241,7 +241,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         /// <param name="degree">daný stupěň</param>
         /// <returns>vrchol s daným stupněm</returns>
-        public Vertex GetVertexWithDegree(int degree)
+        public IVertexInterface GetVertexWithDegree(int degree)
         {
             if (degreeSequence == null)
                 GetDegreeSequence(false);

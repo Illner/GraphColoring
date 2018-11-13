@@ -7,26 +7,26 @@ namespace GraphColoring.Graph
     {
         // Method
         #region
-        Vertex GetVertex(string userName);
+        IVertexInterface GetVertex(string userName);
         void InitializeGraph();
         String ToString();
-        List<Vertex> Neighbours(Vertex vertex);
-        int CountNeighbours(Vertex vertex);
-        List<Vertex> AllVertices();
-        Vertex GetFirstVertex();
+        List<IVertexInterface> Neighbours(IVertexInterface vertex);
+        int CountNeighbours(IVertexInterface vertex);
+        List<IVertexInterface> AllVertices();
+        IVertexInterface GetFirstVertex();
         void FullGenerateVertices();
-        bool ExistsVertex(Vertex vertex);
-        bool ExistsEdge(Edge edge);
+        bool ExistsVertex(IVertexInterface vertex);
+        bool ExistsEdge(IEdgeInterface edge);
 
-        void VertexAdd(Vertex vertex);
-        void VertexDelete(Vertex vertex);
-        void VertexContract(Vertex vertex);
-        void VertexSuppression(Vertex vertex);
-        void VertexExpansion(Vertex vertex);
-        void EdgeAdd(Edge edge);
-        void EdgeDelete(Edge edge);
-        void EdgeContract(Edge edge);
-        void EdgeSubdivision(Edge edge);
+        void VertexAdd(IVertexInterface vertex);
+        void VertexDelete(IVertexInterface vertex);
+        void VertexContract(IVertexInterface vertex);
+        void VertexSuppression(IVertexInterface vertex);
+        void VertexExpansion(IVertexInterface vertex);
+        void EdgeAdd(IEdgeInterface edge);
+        void EdgeDelete(IEdgeInterface edge);
+        void EdgeContract(IEdgeInterface edge);
+        void EdgeSubdivision(IEdgeInterface edge);
         #endregion
 
         // Property

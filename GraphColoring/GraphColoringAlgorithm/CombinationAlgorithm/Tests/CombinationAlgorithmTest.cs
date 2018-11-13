@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
         #region
         private Graph.IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<CombinationEnum, string> testsDictionary;
 
@@ -91,7 +91,7 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[combination]);
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 CombinationAlgorithm combinationAlgorithm = new CombinationAlgorithm(graph);
@@ -103,9 +103,9 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(combination.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(combination.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

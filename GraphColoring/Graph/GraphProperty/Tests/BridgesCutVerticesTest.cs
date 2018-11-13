@@ -12,7 +12,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         #region
         private IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<BridgesCutVerticesEnum, string> testsDictionary;
 
@@ -22,6 +22,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private string bridgesCutVertices2 = BridgesCutVerticesResource.bridgesCutVerticesTest2;
         private string bridgesCutVertices3 = BridgesCutVerticesResource.bridgesCutVerticesTest3;
         private string bridgesCutVertices4 = BridgesCutVerticesResource.bridgesCutVerticesTest4;
+        private string bridgesCutVertices5 = BridgesCutVerticesResource.bridgesCutVerticesTest5;
         #endregion
 
         // Enum
@@ -31,7 +32,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             bridgesCutVertices1,
             bridgesCutVertices2,
             bridgesCutVertices3,
-            bridgesCutVertices4
+            bridgesCutVertices4,
+            bridgesCutVertices5
         }
         #endregion
 
@@ -47,7 +49,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
                 { BridgesCutVerticesEnum.bridgesCutVertices1, bridgesCutVertices1 },
                 { BridgesCutVerticesEnum.bridgesCutVertices2, bridgesCutVertices2 },
                 { BridgesCutVerticesEnum.bridgesCutVertices3, bridgesCutVertices3 },
-                { BridgesCutVerticesEnum.bridgesCutVertices4, bridgesCutVertices4 }
+                { BridgesCutVerticesEnum.bridgesCutVertices4, bridgesCutVertices4 },
+                { BridgesCutVerticesEnum.bridgesCutVertices5, bridgesCutVertices5 }
             };
         }
         #endregion
@@ -90,7 +93,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[bridgesCutVerticesEnum]);
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(bridgesCutVerticesEnum.ToString());
@@ -110,9 +113,13 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(bridgesCutVerticesEnum.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(bridgesCutVerticesEnum.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
+            {
+                stringBuilder.AppendLine(e.Message);
+            }
+            catch (MyException.GraphException.GraphIsNotConnected e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

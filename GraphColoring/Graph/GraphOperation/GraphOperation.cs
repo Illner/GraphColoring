@@ -18,16 +18,16 @@ namespace GraphColoring.Graph.GraphOperation
         {
             // Variable
             IGraphEdgeListInterface complementGraph;
-            List<Vertex> vertexList;
-            List<Vertex> neighboursList;
-            List<Vertex> intersectionVertexAndNeighboursList;
+            List<IVertexInterface> vertexList;
+            List<IVertexInterface> neighboursList;
+            List<IVertexInterface> intersectionVertexAndNeighboursList;
 
             complementGraph = new GraphEdgeList(graph.GetRealCountVertices());
             complementGraph.SetName("Complement graph - " + graph.GetName());
             vertexList = graph.AllVertices();
             
             // Add edges
-            foreach(Vertex vertex in vertexList)
+            foreach(IVertexInterface vertex in vertexList)
             {
                 neighboursList = graph.Neighbours(vertex);
                 neighboursList.Add(vertex);
@@ -40,7 +40,7 @@ namespace GraphColoring.Graph.GraphOperation
                     continue;
                 }
                 
-                foreach (Vertex neighbour in intersectionVertexAndNeighboursList)
+                foreach (IVertexInterface neighbour in intersectionVertexAndNeighboursList)
                 {
                     complementGraph.AddEdge(vertex.GetUserName(), neighbour.GetUserName());
                 }
@@ -63,26 +63,26 @@ namespace GraphColoring.Graph.GraphOperation
             string idNewVertex, userNameNewVertex;
             string userNameVertex1, userNameVertex2;
             IGraphEdgeListInterface lineGraph;
-            List<Vertex> vertexList;
-            List<Vertex> neighboursList;
-            Dictionary<string, Vertex> vertexMap;
-            List<Vertex> neighboursNewList;
+            List<IVertexInterface> vertexList;
+            List<IVertexInterface> neighboursList;
+            Dictionary<string, IVertexInterface> vertexMap;
+            List<IVertexInterface> neighboursNewList;
 
             lineGraph = new GraphEdgeList(graph.GetGraphProperty().GetCountEdges());
             lineGraph.SetName("Line graph - " + graph.GetName());
 
-            vertexMap = new Dictionary<string, Vertex>();
+            vertexMap = new Dictionary<string, IVertexInterface>();
             vertexList = graph.AllVertices();
 
-            foreach (Vertex vertex in vertexList)
+            foreach (IVertexInterface vertex in vertexList)
             {
                 idVertex1 = vertex.GetIdentifier();
                 userNameVertex1 = vertex.GetUserName();
                 neighboursList = graph.Neighbours(vertex);
 
-                neighboursNewList = new List<Vertex>();
+                neighboursNewList = new List<IVertexInterface>();
 
-                foreach (Vertex neighbour in neighboursList)
+                foreach (IVertexInterface neighbour in neighboursList)
                 {
                     idVertex2 = neighbour.GetIdentifier();
                     userNameVertex2 = neighbour.GetUserName();
@@ -98,7 +98,7 @@ namespace GraphColoring.Graph.GraphOperation
                         userNameNewVertex = userNameVertex2 + userNameVertex1;
                     }
 
-                    if (!vertexMap.TryGetValue(idNewVertex, out Vertex newVertex))
+                    if (!vertexMap.TryGetValue(idNewVertex, out IVertexInterface newVertex))
                     {
                         newVertex = new Vertex(userNameNewVertex);
                         vertexMap.Add(idNewVertex, newVertex);
@@ -133,16 +133,16 @@ namespace GraphColoring.Graph.GraphOperation
         /// <param name="graph">graf, ze kterého chceme vytvořit podgraf<</param>
         /// <param name="vertexList">vrcholy, které má graf podgraf obsahovat</param>
         /// <returns>podgraf</returns>
-        public static IGraphInterface SubGraph(IGraphInterface graph, List<Vertex> vertexList)
+        public static IGraphInterface SubGraph(IGraphInterface graph, List<IVertexInterface> vertexList)
         {
             // Variable
             IGraphEdgeListInterface subGraph;
-            List<Vertex> neighboursList;
+            List<IVertexInterface> neighboursList;
 
             subGraph = new GraphEdgeList(vertexList.Count);
             subGraph.SetName("Subgraph - " + graph.GetName());
 
-            foreach(Vertex vertex in vertexList)
+            foreach(IVertexInterface vertex in vertexList)
             {
                 neighboursList = graph.Neighbours(vertex).Intersect(vertexList).ToList();
 
@@ -152,7 +152,7 @@ namespace GraphColoring.Graph.GraphOperation
                     continue;
                 }
 
-                foreach(Vertex neighbour in neighboursList)
+                foreach(IVertexInterface neighbour in neighboursList)
                 {
                     subGraph.AddEdge(vertex.GetUserName(), neighbour.GetUserName());
                 }
@@ -172,18 +172,18 @@ namespace GraphColoring.Graph.GraphOperation
         public static IGraphInterface CopyGraph(IGraphInterface graph)
         {
             if (!graph.GetIsInitialized())
-                throw new MyException.GraphInitializationException();
+                throw new MyException.GraphException.GraphInitializationException();
 
             // Variable
             IGraphEdgeListInterface graphCopy;
-            List<Vertex> neighboursVertexList;
-            List<Vertex> allVerticesList = graph.AllVertices();
+            List<IVertexInterface> neighboursVertexList;
+            List<IVertexInterface> allVerticesList = graph.AllVertices();
 
             graphCopy = new GraphEdgeList(graph.GetGraphProperty().GetCountVertices());
 
             graphCopy.SetName(graph.GetName());
 
-            foreach (Vertex vertex1 in allVerticesList)
+            foreach (IVertexInterface vertex1 in allVerticesList)
             {
                 neighboursVertexList = graph.Neighbours(vertex1);
 
@@ -193,7 +193,7 @@ namespace GraphColoring.Graph.GraphOperation
                     continue;
                 }
 
-                foreach (Vertex vertex2 in neighboursVertexList)
+                foreach (IVertexInterface vertex2 in neighboursVertexList)
                 {
                     graphCopy.AddEdge(vertex1.GetUserName(), vertex2.GetUserName());
                 }

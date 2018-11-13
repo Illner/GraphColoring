@@ -11,7 +11,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
         #region
         private IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<ModificationEnum, string> testsDictionary;
 
@@ -81,7 +81,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
             try
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[modificationEnum]);
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(modificationEnum.ToString());
@@ -97,7 +97,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
                         Invalid(graph);
                         break;
                     default:
-                        throw new MyException.TestsMissingTestException(modificationEnum.ToString());
+                        throw new MyException.TestsException.TestsMissingTestException(modificationEnum.ToString());
                 }
 
                 stringBuilder.AppendLine("Graph modified.");
@@ -105,19 +105,19 @@ namespace GraphColoring.Graph.GraphModification.Tests
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(modificationEnum.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(modificationEnum.ToString());
             }
         }
 
         private void Valid(IGraphInterface graph)
         {
             // Variable
-            Vertex vertex1 = new Vertex("Vrchol 1");
-            Vertex vertex2 = new Vertex("Vrchol 2");
-            Vertex vertex3 = new Vertex("Vrchol 3");
-            List<Vertex> vertexList = graph.AllVertices();
-            Vertex lastVertex = vertexList.Last();
-            List<Vertex> vertex2DegreeList = new List<Vertex>();
+            IVertexInterface vertex1 = new Vertex("Vrchol 1");
+            IVertexInterface vertex2 = new Vertex("Vrchol 2");
+            IVertexInterface vertex3 = new Vertex("Vrchol 3");
+            List<IVertexInterface> vertexList = graph.AllVertices();
+            IVertexInterface lastVertex = vertexList.Last();
+            List<IVertexInterface> vertex2DegreeList = new List<IVertexInterface>();
 
             graph.VertexAdd(vertex1);
             graph.VertexAdd(vertex2);
@@ -190,67 +190,67 @@ namespace GraphColoring.Graph.GraphModification.Tests
         private void Invalid(IGraphInterface graph)
         {
             // Variable
-            List<Vertex> vertexList = graph.AllVertices();
-            List<Vertex> vertexNot2DegreeList = new List<Vertex>();
+            List<IVertexInterface> vertexList = graph.AllVertices();
+            List<IVertexInterface> vertexNot2DegreeList = new List<IVertexInterface>();
             vertexNot2DegreeList = vertexList.Where(v => graph.CountNeighbours(v) != 2).ToList();
-            Edge edge = new Edge(vertexList.First(), graph.Neighbours(vertexList.First()).First());
+            IEdgeInterface edge = new Edge(vertexList.First(), graph.Neighbours(vertexList.First()).First());
 
             // Vertex add
             stringBuilder.AppendLine("Vertex add");
             stringBuilder.AppendLine("Vertex exists");
             try { graph.VertexAdd(vertexList.First()); }
-            catch(MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch(MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Vertex delete
             stringBuilder.AppendLine("Vertex delete");
             stringBuilder.AppendLine("Vertex doesn't exist");
             try { graph.VertexDelete(new Vertex()); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Vertex contract
             stringBuilder.AppendLine("Vertex contract");
             stringBuilder.AppendLine("Vertex doesn't exist");
             try { graph.VertexContract(new Vertex()); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Vertex suppression
             stringBuilder.AppendLine("Vertex suppression");
             stringBuilder.AppendLine("Vertex doesn't exist");
             try { graph.VertexSuppression(new Vertex()); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
             stringBuilder.AppendLine("Invalid vertex degree");
             try { graph.VertexSuppression(vertexNot2DegreeList.First()); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Vertex expansion
             stringBuilder.AppendLine("Vertex expansion");
             stringBuilder.AppendLine("Vertex doesn't exist");
             try { graph.VertexExpansion(new Vertex()); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Edge add
             stringBuilder.AppendLine("Edge add");
             stringBuilder.AppendLine("Edge exists");
             try { graph.EdgeAdd(edge); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Edge delete
             stringBuilder.AppendLine("Edge delete");
             stringBuilder.AppendLine("Edge doesn't exist");
             try { graph.EdgeDelete(new Edge(new Vertex(), new Vertex())); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Edge contract 
             stringBuilder.AppendLine("Edge contract");
             stringBuilder.AppendLine("Edge doesn't exist");
             try { graph.EdgeContract(new Edge(new Vertex(), new Vertex())); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Edge subdivision
             stringBuilder.AppendLine("Edge subdivision");
             stringBuilder.AppendLine("Edge doesn't exist");
             try { graph.EdgeSubdivision(new Edge(new Vertex(), new Vertex())); }
-            catch (MyException.GraphException e) { stringBuilder.AppendLine(e.Message); }
+            catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
         }
         #endregion
 

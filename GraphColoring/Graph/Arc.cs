@@ -2,7 +2,7 @@
 
 namespace GraphColoring.Graph
 {
-    class Arc
+    class Arc : IArcInterface
     {
         // Variable
         #region
@@ -11,13 +11,13 @@ namespace GraphColoring.Graph
         /// vertexTo - druhá složka z uspořádané dvojice vrcholů orientované hrany
         /// vertexFrom -> vertexTo
         /// </summary>
-        private Vertex vertexFrom;
-        private Vertex vertexTo;
+        private IVertexInterface vertexFrom;
+        private IVertexInterface vertexTo;
         #endregion
 
         // Constructor
         #region
-        public Arc(Vertex vertexFrom, Vertex vertexTo)
+        public Arc(IVertexInterface vertexFrom, IVertexInterface vertexTo)
         {
             this.vertexFrom = vertexFrom;
             this.vertexTo = vertexTo;
@@ -30,7 +30,7 @@ namespace GraphColoring.Graph
         /// Vráí první složku z uspořádané dvojice vrcholů orientované hrany
         /// </summary>
         /// <returns>první složku z uspořádané dvojice vrcholů orientované hrany</returns>
-        public Vertex GetVertexFrom()
+        public IVertexInterface GetVertexFrom()
         {
             return vertexFrom;
         }
@@ -39,7 +39,7 @@ namespace GraphColoring.Graph
         /// Vrátí druhou složku z uspořádané dvojice vrcholů orientované hrany
         /// </summary>
         /// <returns>druhou složku z uspořádané dvojice vrcholů orientované hrany</returns>
-        public Vertex GetVertexTo()
+        public IVertexInterface GetVertexTo()
         {
             return vertexTo;
         }

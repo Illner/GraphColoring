@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GraphColoring.MyException
+namespace GraphColoring.MyException.TestsException
 {
     /// <summary>
     /// Tests exception

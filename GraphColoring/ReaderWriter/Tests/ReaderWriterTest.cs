@@ -111,7 +111,7 @@ namespace GraphColoring.ReaderWriter.Tests
             stringBuilder.Clear();
 
             string path = testsDictionary[pathEnum];
-            readerWriter = new Reader(path);
+            readerWriter = new ReaderGraph(path);
 
             switch (operationEnum)
             {
@@ -134,7 +134,7 @@ namespace GraphColoring.ReaderWriter.Tests
                     WriteFile();
                     break;
                 default:
-                    throw new MyException.TestsMissingTestException(operationEnum.ToString());
+                    throw new MyException.TestsException.TestsMissingTestException(operationEnum.ToString());
             }
 
             return stringBuilder;
@@ -145,14 +145,14 @@ namespace GraphColoring.ReaderWriter.Tests
             try
             {
                 string path = testsDictionary[pathEnum];
-                readerWriter = new Reader(path);
+                readerWriter = new ReaderGraph(path);
                 Testing();
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(pathEnum.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(pathEnum.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }
@@ -207,7 +207,7 @@ namespace GraphColoring.ReaderWriter.Tests
                 ReadFile();
                 ExistFile();
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

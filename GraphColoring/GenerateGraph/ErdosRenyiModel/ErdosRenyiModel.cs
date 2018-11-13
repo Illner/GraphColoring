@@ -19,7 +19,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
         private ErdosRenyiModelProbabilityEnum erdosRenyiModelProbabilityEnum = ErdosRenyiModelProbabilityEnum.notAssigned;
         public int probability;
         private const string GRAPHNAME = "RandomGraph";
-        private HashSet<Graph.Vertex> usedVerticesHashSet;
+        private HashSet<Graph.IVertexInterface> usedVerticesHashSet;
         #endregion
 
         // Constructor
@@ -33,7 +33,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
         {
             SetCountVertices(countVertices);
             this.erdosRenyiModelProbabilityEnum = erdosRenyiModelProbabilityEnum;
-            usedVerticesHashSet = new HashSet<Graph.Vertex>();
+            usedVerticesHashSet = new HashSet<Graph.IVertexInterface>();
 
             // Create graph
             graph = new Graph.GraphEdgeList(countVertices);
@@ -70,7 +70,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
                     probability = (int)(random.Next(100000, 200000) * Math.Log(countVertices) / countVertices);
                     break;
                 default:
-                    throw new MyException.ErdosReneiModelProbabilityEnumMissing(erdosRenyiModelProbabilityEnum.ToString());
+                    throw new MyException.GenerateGraphException.ErdosReneiModelProbabilityEnumMissing(erdosRenyiModelProbabilityEnum.ToString());
             }
         }
 
@@ -79,9 +79,9 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
             // Variable
             int probabilityEdge;
 
-            foreach (Graph.Vertex firstVertex in graph.AllVertices())
+            foreach (Graph.IVertexInterface firstVertex in graph.AllVertices())
             {
-                foreach (Graph.Vertex secondVertex in graph.AllVertices())
+                foreach (Graph.IVertexInterface secondVertex in graph.AllVertices())
                 {
                     // No duplicates
                     if (usedVerticesHashSet.Contains(secondVertex))
@@ -118,7 +118,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
         private void SetCountVertices(int countVertices)
         {
             if (countVertices <= 0)
-                throw new MyException.GraphInvalidCountVerticesException();
+                throw new MyException.GraphException.GraphInvalidCountVerticesException();
 
             this.countVertices = countVertices;
         }

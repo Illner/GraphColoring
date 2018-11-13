@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         #region
         private Graph.IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<LargestFirstSequenceEnum, string> testsDictionary;
 
@@ -91,7 +91,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[largestFirstSequence]);
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 LargestFirstSequence largestFirstSequenceAlgorithm = new LargestFirstSequence(graph);
@@ -103,9 +103,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(largestFirstSequence.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(largestFirstSequence.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

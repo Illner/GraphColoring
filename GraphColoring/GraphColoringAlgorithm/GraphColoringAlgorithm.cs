@@ -8,9 +8,11 @@ namespace GraphColoring.GraphColoringAlgorithm
         // Variable
         #region
         /// <summary>
+        /// name - algorithm name (default: Algorithm)
         /// graph - daný graf
         /// coloredGraph - pointer na coloredGraf v grafu
         /// </summary>
+        protected string name = "Algorithm";
         protected Graph.IGraphInterface graph;
         protected Graph.IColoredGraphInterface coloredGraph;
         #endregion
@@ -31,6 +33,12 @@ namespace GraphColoring.GraphColoringAlgorithm
         /// Exceptions: AlgorithmInvalidVertexSequence, AlgorithmGraphIsNotColored
         /// </summary>
         public abstract void Color();
+
+        override
+        public string ToString()
+        {
+            return name;
+        }
         #endregion
 
         // Properly

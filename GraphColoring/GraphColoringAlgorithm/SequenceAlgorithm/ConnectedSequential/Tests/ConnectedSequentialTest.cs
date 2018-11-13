@@ -12,7 +12,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         #region
         private Graph.IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<ConnectedSequentialEnum, string> testsDictionary;
 
@@ -90,7 +90,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[connectedSequential]);
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 ConnectedSequential optimalAlgorithm = new ConnectedSequential(graph);
@@ -102,9 +102,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(connectedSequential.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(connectedSequential.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

@@ -10,7 +10,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         #region
         private IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<SpanningTreeEnum, string> testsDictionary;
 
@@ -87,7 +87,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             try
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[spanningTreeEnum]);
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(spanningTreeEnum.ToString());
@@ -96,18 +96,18 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 
                 stringBuilder.AppendLine("SpanningTree: ");
 
-                List<Edge> spanningTreeList = graph.GetGraphProperty().GetSpanningTree();
+                List<IEdgeInterface> spanningTreeList = graph.GetGraphProperty().GetSpanningTree();
 
-                foreach (Edge edge in spanningTreeList)
+                foreach (IEdgeInterface edge in spanningTreeList)
                 {
                     stringBuilder.AppendLine(edge.ToString());
                 }
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(spanningTreeEnum.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(spanningTreeEnum.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

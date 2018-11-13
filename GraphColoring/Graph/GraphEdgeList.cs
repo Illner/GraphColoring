@@ -36,7 +36,7 @@ namespace GraphColoring.Graph
         {
             // Variable
             int identifierVertex1, identifierVertex2;
-            Vertex vertex1, vertex2;
+            IVertexInterface vertex1, vertex2;
 
             identifierVertex1 = GetIdentifier(userNameVertex1);
             identifierVertex2 = GetIdentifier(userNameVertex2);

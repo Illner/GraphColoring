@@ -55,12 +55,12 @@ namespace GraphColoring.ReaderWriter
         private void CheckPath()
         {
             if (GetPath() == "")
-                throw new MyException.ReaderWriterInavalidPathException("Invalid path");
+                throw new MyException.ReaderWriterException.ReaderWriterInavalidPathException("Invalid path");
 
             Regex regex = new Regex(@"^[a-zA-Z]:\\$");
             if (!regex.IsMatch(GetPath().Substring(0, 3)))
             {
-                throw new MyException.ReaderWriterInavalidPathException("Invalid path");
+                throw new MyException.ReaderWriterException.ReaderWriterInavalidPathException("Invalid path");
             }
 
             string strTheseAreInvalidFileNameChars = new string(Path.GetInvalidPathChars());
@@ -68,11 +68,11 @@ namespace GraphColoring.ReaderWriter
             Regex containsABadCharacterRegex = new Regex("[" + Regex.Escape(strTheseAreInvalidFileNameChars) + "]");
             if (containsABadCharacterRegex.IsMatch(GetPath().Substring(3, GetPath().Length - 3)))
             {
-                throw new MyException.ReaderWriterInavalidPathException("Invalid path");
+                throw new MyException.ReaderWriterException.ReaderWriterInavalidPathException("Invalid path");
             }
             
             if (!GetPath().EndsWith(FILETYPE))
-                throw new MyException.ReaderWriterInvalidFileTypeException("Invalid file format");
+                throw new MyException.ReaderWriterException.ReaderWriterInvalidFileTypeException("Invalid file format");
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace GraphColoring.ReaderWriter
             }
             catch (UnauthorizedAccessException)
             {
-                throw new MyException.ReaderWriterNoAuthorizationException("No authorization");
+                throw new MyException.ReaderWriterException.ReaderWriterNoAuthorizationException("No authorization");
             }
 
         }
@@ -108,7 +108,7 @@ namespace GraphColoring.ReaderWriter
             }
             catch (UnauthorizedAccessException)
             {
-                throw new MyException.ReaderWriterNoAuthorizationException("No authorization");
+                throw new MyException.ReaderWriterException.ReaderWriterNoAuthorizationException("No authorization");
             }
         }
 
@@ -126,7 +126,7 @@ namespace GraphColoring.ReaderWriter
             }
             catch (UnauthorizedAccessException)
             {
-                throw new MyException.ReaderWriterNoAuthorizationException("No authorization");
+                throw new MyException.ReaderWriterException.ReaderWriterNoAuthorizationException("No authorization");
             }
         }
 
@@ -144,7 +144,7 @@ namespace GraphColoring.ReaderWriter
             }
             catch (UnauthorizedAccessException)
             {
-                throw new MyException.ReaderWriterNoAuthorizationException("No authorization");
+                throw new MyException.ReaderWriterException.ReaderWriterNoAuthorizationException("No authorization");
             }
         }
         

@@ -11,7 +11,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
         // Constructor
         #region
         public SmallestLastSequence(Graph.IGraphInterface graph) : base(graph)
-        { }
+        {
+            name = "Smallest last sequence algorithm";
+        }
         #endregion
 
         // Method
@@ -23,8 +25,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
         protected void CreateVertexSequence()
         {
             // Variable
-            Graph.Vertex vertex;
-            List<Graph.Vertex> VertexList = new List<Graph.Vertex>();
+            Graph.IVertexInterface vertex;
+            List<Graph.IVertexInterface> VertexList = new List<Graph.IVertexInterface>();
             Graph.IGraphInterface copyGraph;
 
             copyGraph = Graph.GraphOperation.GraphOperation.CopyGraph(graph);
@@ -43,10 +45,10 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
         /// Pokud je graf obarvený, tak vrátí null
         /// </summary>
         /// <returns>vrchol</returns>
-        public Graph.Vertex Step()
+        public Graph.IVertexInterface Step()
         {
             // Variable
-            Graph.Vertex copyVertex;
+            Graph.IVertexInterface copyVertex;
             Graph.IGraphInterface copyGraph;
             Graph.IColoredGraphInterface coloredCopyGraph;
 
@@ -54,13 +56,13 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             coloredCopyGraph = copyGraph.GetColoredGraph();
 
             // Duplicate colors from graph to copyGraph
-            foreach (Graph.Vertex vertex in graph.AllVertices())
+            foreach (Graph.IVertexInterface vertex in graph.AllVertices())
             {
                 if (vertex.GetColor() != Graph.VertexExtended.GetDefaultColor())
                     coloredCopyGraph.ColorVertex(copyGraph.GetVertex(vertex.GetUserName()), vertex.GetColor());
             }
 
-            foreach (Graph.Vertex vertex in copyGraph.GetColoredGraph().GetColoredVertexList())
+            foreach (Graph.IVertexInterface vertex in copyGraph.GetColoredGraph().GetColoredVertexList())
             {
                 copyGraph.VertexDelete(vertex);
             }

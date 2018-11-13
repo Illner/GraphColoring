@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GraphColoring.ReaderWriter
 {
-    class Writer : ReaderWriter
+    class WriterGraph : ReaderWriter, IWriterGraphInterface
     {
         // Variable
         #region
@@ -15,8 +15,8 @@ namespace GraphColoring.ReaderWriter
 
         // Constructor
         #region
-        public Writer(string path) : base(path) { }
-        public Writer(string path, bool checkPath) : base(path, checkPath) { }
+        public WriterGraph(string path) : base(path) { }
+        public WriterGraph(string path, bool checkPath) : base(path, checkPath) { }
         #endregion
 
         // Method
@@ -35,7 +35,7 @@ namespace GraphColoring.ReaderWriter
             coloredGraph = graph.GetColoredGraph();
 
             if (!coloredGraph.GetIsInicializedColoredGraph())
-                throw new MyException.ColoredGraphNotInitializationException();
+                throw new MyException.GraphException.ColoredGraphNotInitializationException();
 
             if (CheckIfRecordExists(graphColoringAlgorithm))
                 return false;
@@ -58,7 +58,7 @@ namespace GraphColoring.ReaderWriter
 
                 foreach(int color in colorList)
                 {
-                    List<Graph.Vertex> vertexList = coloredGraph.ColoredVertices(color);
+                    List<Graph.IVertexInterface> vertexList = coloredGraph.ColoredVertices(color);
 
                     streamWriter.WriteLine("- " + color);
                     vertexList.ForEach(vertex => { streamWriter.WriteLine("-- " + vertex.GetUserName() + " (" + vertex.GetIdentifier() + ") "); });

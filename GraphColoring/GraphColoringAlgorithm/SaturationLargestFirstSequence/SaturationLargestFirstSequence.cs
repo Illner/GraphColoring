@@ -16,7 +16,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
         // Constructor
         #region
         public SaturationLargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
-        { }
+        {
+            name = "Saturation largest first sequence algorithm";
+        }
         #endregion
 
         // Method
@@ -30,13 +32,13 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
         public void Color()
         {
             if (coloredGraph.GetIsInicializedColoredGraph())
-                throw new MyException.ColoredGraphAlreadyInitializedException();
+                throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
             coloredGraph.ResetColors();
 
             coloredGraph.SetSaturation(true);
 
-            Graph.Vertex vertex = coloredGraph.GetSaturationDegreeSequence();
+            Graph.IVertexInterface vertex = coloredGraph.GetSaturationDegreeSequence();
 
             while (vertex != null)
             {
@@ -47,7 +49,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
             bool isColored = coloredGraph.InicializeColoredGraph();
 
             if (!isColored)
-                throw new MyException.AlgorithmGraphIsNotColored();
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
         /// Pokud jsou všechny obarveny, tak vrátí null
         /// </summary>
         /// <returns>vrchol</returns>
-        public Graph.Vertex Step()
+        public Graph.IVertexInterface Step()
         {
             if (!staurationOnStep)
             {

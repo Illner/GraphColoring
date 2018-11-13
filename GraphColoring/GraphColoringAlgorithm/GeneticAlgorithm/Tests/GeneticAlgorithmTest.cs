@@ -84,9 +84,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.Tests
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(geneticAlgorithm.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(geneticAlgorithm.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

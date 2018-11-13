@@ -79,7 +79,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
                         graph = erdosRenyiModel.GenerateGraph();
 
                         if (graph.GetRealCountVertices() != COUNTVERTICES)
-                            throw new MyException.GraphInvalidCountVerticesException("The number of vertices of generated graph is wrong!");
+                            throw new MyException.GraphException.GraphInvalidCountVerticesException("The number of vertices of generated graph is wrong!");
 
                         stringBuilder.AppendLine("OK");
                         break;
@@ -89,7 +89,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
                         graph = erdosRenyiModel.GenerateGraph();
 
                         if (graph.GetRealCountVertices() != COUNTVERTICES)
-                            throw new MyException.GraphInvalidCountVerticesException("The number of vertices of generated graph is wrong!");
+                            throw new MyException.GraphException.GraphInvalidCountVerticesException("The number of vertices of generated graph is wrong!");
 
                         stringBuilder.AppendLine("OK");
                         break;
@@ -99,7 +99,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
                         graph = erdosRenyiModel.GenerateGraph();
 
                         if (graph.GetRealCountVertices() != COUNTVERTICES)
-                            throw new MyException.GraphInvalidCountVerticesException("The number of vertices of generated graph is wrong!");
+                            throw new MyException.GraphException.GraphInvalidCountVerticesException("The number of vertices of generated graph is wrong!");
 
                         stringBuilder.AppendLine("OK");
                         break;
@@ -109,10 +109,10 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
                         graph = erdosRenyiModel.GenerateGraph();
 
                         if (erdosRenyiModel.GetErdosRenyiModelProbabilityEnum() == ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.notAssigned)
-                            throw new MyException.ErdosReneiModelChoosePNotAssigned();
+                            throw new MyException.GenerateGraphException.ErdosReneiModelChoosePNotAssigned();
 
                         if (graph.GetRealCountVertices() != COUNTVERTICES)
-                            throw new MyException.GraphInvalidCountVerticesException("The number of vertices of generated graph is wrong!");
+                            throw new MyException.GraphException.GraphInvalidCountVerticesException("The number of vertices of generated graph is wrong!");
 
                         stringBuilder.AppendLine("OK");
                         break;
@@ -122,7 +122,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
                         graph = erdosRenyiModel.GenerateGraph();
                         break;
                     default:
-                        throw new MyException.TestsMissingTestException();
+                        throw new MyException.TestsException.TestsMissingTestException();
                 }
             }
             catch (Exception e)

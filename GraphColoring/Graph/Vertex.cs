@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GraphColoring.Graph
 {
-    class Vertex
+    class Vertex : IVertexInterface
     {
         // Variable
         #region
@@ -55,7 +55,7 @@ namespace GraphColoring.Graph
 
         // Method
         #region
-        public bool Equals(Vertex vertex)
+        public bool Equals(IVertexInterface vertex)
         {
             if (identifier == vertex.GetIdentifier() && userName == vertex.GetUserName() && GetColor() == vertex.GetColor())
                 return true;

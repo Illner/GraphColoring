@@ -84,13 +84,13 @@ namespace GraphColoring.Graph.GraphClass
         public static bool IsBipartiteGraph(IGraphInterface graph)
         {
             // Variable
-            Vertex vertex;
-            List<Vertex> neighboursVertexList;
+            IVertexInterface vertex;
+            List<IVertexInterface> neighboursVertexList;
             bool isFirstPartite, isBipartite = true;
 
-            HashSet<Vertex> firstPartite = new HashSet<Vertex>();
-            HashSet<Vertex> secondPartite = new HashSet<Vertex>();
-            Queue<Vertex> vertexQueue = new Queue<Vertex>();
+            HashSet<IVertexInterface> firstPartite = new HashSet<IVertexInterface>();
+            HashSet<IVertexInterface> secondPartite = new HashSet<IVertexInterface>();
+            Queue<IVertexInterface> vertexQueue = new Queue<IVertexInterface>();
 
             vertex = graph.GetFirstVertex();
             vertexQueue.Enqueue(vertex);
@@ -106,7 +106,7 @@ namespace GraphColoring.Graph.GraphClass
                 else
                     isFirstPartite = false;
 
-                foreach (Vertex neighbourVertex in neighboursVertexList)
+                foreach (IVertexInterface neighbourVertex in neighboursVertexList)
                 {
                     if (!firstPartite.Contains(neighbourVertex) && !secondPartite.Contains(neighbourVertex))
                     {

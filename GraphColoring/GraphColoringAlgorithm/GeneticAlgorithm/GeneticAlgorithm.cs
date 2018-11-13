@@ -10,16 +10,16 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
     {
         // Variable
         #region
-        private List<List<Graph.Vertex>> populationList;
-        private List<List<Graph.Vertex>> newPopulationList;
-        private List<Tuple<List<Graph.Vertex>, List<Graph.Vertex>>> parentPopulationList;
+        private List<List<Graph.IVertexInterface>> populationList;
+        private List<List<Graph.IVertexInterface>> newPopulationList;
+        private List<Tuple<List<Graph.IVertexInterface>, List<Graph.IVertexInterface>>> parentPopulationList;
         private List<double> fitnessFunctionPopulationCumulativeDistributionfunctionList;
         private int populationSize;
         private Random random;
         private int countOfIteration;
         private int stateSize;
         private int bestColorUsed = Int32.MaxValue;
-        private List<Graph.Vertex> bestState;
+        private List<Graph.IVertexInterface> bestState;
         #endregion
 
         // Constructor
@@ -29,10 +29,10 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         /// </summary>
         /// <param name="graph">Graph</param>
         /// <param name="populationSize">Size of population</param>
-        public GeneticAlgorithm(Graph.IGraphInterface graph, int populationSize) : base(graph)
+        public GeneticAlgorithm(Graph.IGraphInterface graph, int populationSize = 10) : base(graph)
         {
             if (populationSize < 1)
-                throw new MyException.AlgorithmGraphGeneticAlgorithmInvalidPopulationCount();
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphGeneticAlgorithmInvalidPopulationCount();
 
             random = new Random();
 
@@ -41,6 +41,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
                 populationSize++;
 
             this.populationSize = populationSize;
+            name = "Genetic algorithm";
         }
         #endregion
 
@@ -66,8 +67,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             {
                 // new iteration
                 FillFfitnessFunctionPopulationCumulativeDistributionfunctionList();
-                newPopulationList = new List<List<Graph.Vertex>>();
-                parentPopulationList = new List<Tuple<List<Graph.Vertex>, List<Graph.Vertex>>>();
+                newPopulationList = new List<List<Graph.IVertexInterface>>();
+                parentPopulationList = new List<Tuple<List<Graph.IVertexInterface>, List<Graph.IVertexInterface>>>();
 
                 // Set parents - parallel
                 Parallel.For(0, populationSize / 2, index  => {
@@ -81,15 +82,15 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
 
                     lock (parentPopulationList)
                     {
-                        parentPopulationList.Add(new Tuple<List<Graph.Vertex>, List<Graph.Vertex>>(populationList.ElementAt(indexFirstParent), populationList.ElementAt(indexSecondParent)));
+                        parentPopulationList.Add(new Tuple<List<Graph.IVertexInterface>, List<Graph.IVertexInterface>>(populationList.ElementAt(indexFirstParent), populationList.ElementAt(indexSecondParent)));
                     }
                 });
 
                 // Core - parallel
                 Parallel.ForEach(parentPopulationList, parents => 
                 {
-                    List<Graph.Vertex> firstState, firstStateCrossOver;
-                    List<Graph.Vertex> secondState, secondStateCrossOver;
+                    List<Graph.IVertexInterface> firstState, firstStateCrossOver;
+                    List<Graph.IVertexInterface> secondState, secondStateCrossOver;
 
                     firstState = parents.Item1;
                     secondState = parents.Item2;
@@ -119,12 +120,13 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             }
 
             coloredGraph.GreedyColoring(bestState);
+            coloredGraph.InicializeColoredGraph();
         }
 
-        private List<Graph.Vertex> GetRandomVerticesList()
+        private List<Graph.IVertexInterface> GetRandomVerticesList()
         {
             // Varibale
-            List<Graph.Vertex> state;
+            List<Graph.IVertexInterface> state;
 
             state = graph.AllVertices();
             MyMath.MyMath.FisherYatesShuffle(state);
@@ -134,7 +136,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
 
         private void CreatePopulation()
         {
-            populationList = new List<List<Graph.Vertex>>();
+            populationList = new List<List<Graph.IVertexInterface>>();
 
             for (int i = 0; i < populationSize; i++)
             {
@@ -147,13 +149,13 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         /// </summary>
         /// <param name="state">List of vertices</param>
         /// <returns>1 / color number</returns>
-        private double FitnessFunction(List<Graph.Vertex> state)
+        private double FitnessFunction(List<Graph.IVertexInterface> state)
         {
             coloredGraph.ResetColors();
             coloredGraph.GreedyColoring(state);
 
             if (!coloredGraph.IsValidColored())
-                throw new MyException.AlgorithmGraphIsNotColored("Genetic algorithm - fitness function");
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored("Genetic algorithm - fitness function");
 
             int usedColors = coloredGraph.GetCountUsedColors();
 
@@ -175,7 +177,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             double sum = 0;
             fitnessFunctionPopulationCumulativeDistributionfunctionList = new List<double>();
 
-            foreach(List<Graph.Vertex> state in populationList)
+            foreach(List<Graph.IVertexInterface> state in populationList)
             {
                 sum += FitnessFunction(state);
                 fitnessFunctionPopulationCumulativeDistributionfunctionList.Add(sum);
@@ -207,13 +209,13 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             return --index;
         }
 
-        private void Crossover(ref List<Graph.Vertex> firstState, ref List<Graph.Vertex> secondState)
+        private void Crossover(ref List<Graph.IVertexInterface> firstState, ref List<Graph.IVertexInterface> secondState)
         {
             // Variable
             int tempIndex;
             int crossover = random.Next(stateSize);
-            Graph.Vertex firstVertex, secondVertex;
-            List<Graph.Vertex> firstTemp, secondTemp;
+            Graph.IVertexInterface firstVertex, secondVertex;
+            List<Graph.IVertexInterface> firstTemp, secondTemp;
 
             firstTemp = firstState.ToList();
             secondTemp = secondState.ToList();
@@ -230,7 +232,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
                 tempIndex = firstState.FindIndex(x => x == secondVertex);
 
                 if (tempIndex > stateSize)
-                    throw new MyException.AlgorithmGraphGeneticAlgorithmRandomNumberOutRange("First crossover");
+                    throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphGeneticAlgorithmRandomNumberOutRange("First crossover");
 
                 firstState[i] = secondVertex;
                 firstState[tempIndex] = firstVertex;
@@ -251,7 +253,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
                 tempIndex = secondState.FindIndex(x => x == firstVertex);
 
                 if (tempIndex > stateSize)
-                    throw new MyException.AlgorithmGraphGeneticAlgorithmRandomNumberOutRange("Second crossover");
+                    throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphGeneticAlgorithmRandomNumberOutRange("Second crossover");
 
                 secondState[i] = firstVertex;
                 secondState[tempIndex] = secondVertex;
@@ -264,12 +266,12 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         /// Choose 2 random points in the encoding and swap between them.
         /// </summary>
         /// <param name="state">State</param>
-	    private void RandomSwapMutation (ref List<Graph.Vertex> state)
+	    private void RandomSwapMutation (ref List<Graph.IVertexInterface> state)
         {
             // Variable
             int firstPoint;
             int secondPoint;
-            Graph.Vertex vertex;
+            Graph.IVertexInterface vertex;
 
             firstPoint = random.Next(0, stateSize);
             secondPoint = random.Next(0, stateSize);
@@ -283,11 +285,11 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         /// Choose 1 random point in the encoding and swap it with the geneto its right.
         /// </summary>
         /// <param name="state"></param>
-	    private void AdjacentSwapMutation(ref List<Graph.Vertex> state)
+	    private void AdjacentSwapMutation(ref List<Graph.IVertexInterface> state)
         {
             // Variable
             int point;
-            Graph.Vertex vertex;
+            Graph.IVertexInterface vertex;
 
             point = random.Next(0, stateSize - 1);
 
@@ -300,7 +302,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         /// Select 2 random points in the encoding and invert the order ofthe genes. 
         /// </summary>
         /// <param name="state">State</param>
-	    private void InvertedExchangeMutation(ref List<Graph.Vertex> state)
+	    private void InvertedExchangeMutation(ref List<Graph.IVertexInterface> state)
         {
             // Variable
             int firstPoint, secondPoint;
@@ -319,7 +321,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             state.Reverse(firstPoint, secondPoint-firstPoint);
         }
 
-        private void ReverseMutation(ref List<Graph.Vertex> state)
+        private void ReverseMutation(ref List<Graph.IVertexInterface> state)
         {
             state.Reverse();
         }

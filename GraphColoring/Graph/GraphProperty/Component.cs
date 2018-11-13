@@ -11,7 +11,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// componentsList - List of connected components
         /// </summary>
-        private List<Graph> componentsList;
+        private List<IGraphInterface> componentsList;
         #endregion
 
         // Method
@@ -27,12 +27,12 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // Variable
             int componentNumber = 0;
-            Dictionary<Vertex, int> allVerticesDictionary = graph.AllVertices().ToDictionary(x => x, x => 0);
+            Dictionary<IVertexInterface, int> allVerticesDictionary = graph.AllVertices().ToDictionary(x => x, x => 0);
             
             if (graph.GetRealCountVertices() == 0)
             {
                 countComponents = 1;
-                componentsList = new List<Graph>(componentNumber);
+                componentsList = new List<IGraphInterface>(componentNumber);
                 componentsList.Add(graph);
                 return;
             }
@@ -40,7 +40,7 @@ namespace GraphColoring.Graph.GraphProperty
             // Core algorithm
             for (int i = 0; i < allVerticesDictionary.Count; i++)
             {
-                KeyValuePair<Vertex, int> record = allVerticesDictionary.ElementAt(i);
+                KeyValuePair<IVertexInterface, int> record = allVerticesDictionary.ElementAt(i);
 
                 if (record.Value != 0)
                     continue;
@@ -51,7 +51,7 @@ namespace GraphColoring.Graph.GraphProperty
             countComponents = componentNumber;
 
             // Create graphs
-            componentsList = new List<Graph>(componentNumber);
+            componentsList = new List<IGraphInterface>(componentNumber);
 
             for (int i = 1; i <= componentNumber; i++)
             {
@@ -63,9 +63,9 @@ namespace GraphColoring.Graph.GraphProperty
                 graphComponent.SetName(graph.GetName());
 
                 // Add edges
-                foreach (Vertex vertex1 in vertexComponent)
+                foreach (IVertexInterface vertex1 in vertexComponent)
                 {
-                    List<Vertex> neighboursVertexList = graph.Neighbours(vertex1);
+                    List<IVertexInterface> neighboursVertexList = graph.Neighbours(vertex1);
 
                     if (neighboursVertexList.Count() == 0)
                     {
@@ -73,7 +73,7 @@ namespace GraphColoring.Graph.GraphProperty
                         continue;
                     }
 
-                    foreach (Vertex vertex2 in neighboursVertexList)
+                    foreach (IVertexInterface vertex2 in neighboursVertexList)
                     {
                         graphComponent.AddEdge(vertex1.GetUserName(), vertex2.GetUserName());
                     }
@@ -84,12 +84,12 @@ namespace GraphColoring.Graph.GraphProperty
             }
         }
 
-        private void ComponentsBFS(Vertex root, Dictionary<Vertex, int> vertexDictionary, int componentNumber)
+        private void ComponentsBFS(IVertexInterface root, Dictionary<IVertexInterface, int> vertexDictionary, int componentNumber)
         {
             // Variable
-            Queue<Vertex> vertexQueue = new Queue<Vertex>();
-            List<Vertex> neighboursVertexList;
-            Vertex dequeuedVertex;
+            Queue<IVertexInterface> vertexQueue = new Queue<IVertexInterface>();
+            List<IVertexInterface> neighboursVertexList;
+            IVertexInterface dequeuedVertex;
 
             vertexQueue.Enqueue(root);
             vertexDictionary[root] = componentNumber;
@@ -100,7 +100,7 @@ namespace GraphColoring.Graph.GraphProperty
 
                 neighboursVertexList = graph.Neighbours(dequeuedVertex);
 
-                foreach (Vertex vertex in neighboursVertexList)
+                foreach (IVertexInterface vertex in neighboursVertexList)
                 {
                     if (vertexDictionary[vertex] == 0)
                     {
@@ -118,7 +118,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Vrátí list komponent souvislosti
         /// </summary>
         /// <returns>list komponent souvislosti</returns>
-        public List<Graph> GetComponents()
+        public List<IGraphInterface> GetComponents()
         {
             if (componentsList == null)
                 Components();

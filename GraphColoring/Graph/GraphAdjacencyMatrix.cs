@@ -47,7 +47,7 @@ namespace GraphColoring.Graph
         public void SetOfNeighborsOfVertex(List<bool> rowAdjacencyMatrix)
         {
             // Variable
-            Vertex vertex1, vertex2;
+            IVertexInterface vertex1, vertex2;
 
             mapping.TryGetValue(actualVertex, out int identifierVertex1);
             vertex1 = GetVertex(identifierVertex1);

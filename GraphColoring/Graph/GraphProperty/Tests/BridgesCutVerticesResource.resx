@@ -130,4 +130,7 @@
   <data name="bridgesCutVerticesTest4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="bridgesCutVerticesTest5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest5.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

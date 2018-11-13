@@ -68,7 +68,7 @@ namespace GraphColoring.Graph
             IncrementRealCountVertices();
 
             if (graphProperty.GetCountVertices() < GetRealCountVertices())
-                throw new MyException.GraphInvalidCountVerticesException();
+                throw new MyException.GraphException.GraphInvalidCountVerticesException();
         }
 
         /// <summary>
@@ -78,18 +78,18 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="vertex1">1. vrchol</param>
         /// <param name="vertex2">2. vrchol</param>
-        protected void AddEdgeToAdjacencyList(Edge edge)
+        protected void AddEdgeToAdjacencyList(IEdgeInterface edge)
         {
             // Variable
-            Vertex vertex;
-            Vertex vertex1 = edge.GetVertex1();
-            Vertex vertex2 = edge.GetVertex2();
+            IVertexInterface vertex;
+            IVertexInterface vertex1 = edge.GetVertex1();
+            IVertexInterface vertex2 = edge.GetVertex2();
 
             // Symmetry
             for (int i = 0; i < 2; i++)
             {
                 if (!adjacencyList.TryGetValue(ConvertVertexToVertexExtended(vertex1), out List<VertexExtended> adjacencyListVertexExtended))
-                    throw new MyException.GraphVertexDoesntExistException();
+                    throw new MyException.GraphException.GraphVertexDoesntExistException();
 
                 if (adjacencyListVertexExtended.Contains(ConvertVertexToVertexExtended(vertex2)))
                     return;
@@ -116,7 +116,7 @@ namespace GraphColoring.Graph
         protected VertexExtended GetVertex(int identifier)
         {
             if (!mapping.TryGetValue(identifier, out VertexExtended vertexExtended))
-                throw new MyException.GraphVertexDoesntExistException();
+                throw new MyException.GraphException.GraphVertexDoesntExistException();
 
             return vertexExtended;
         }
@@ -127,10 +127,10 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="userName">jméno vrcholu</param>
         /// <returns>vrchol s daným userName</returns>
-        public Vertex GetVertex(string userName)
+        public IVertexInterface GetVertex(string userName)
         {
             if (!mappingUserName.TryGetValue(userName, out VertexExtended vertexExtended))
-                throw new MyException.GraphVertexDoesntExistException();
+                throw new MyException.GraphException.GraphVertexDoesntExistException();
 
             return vertexExtended;
         }
@@ -141,10 +141,10 @@ namespace GraphColoring.Graph
         public void InitializeGraph()
         {
             if (isInitialized)
-                throw new MyException.GraphAlreadyInitializedException();
+                throw new MyException.GraphException.GraphAlreadyInitializedException();
 
             if (GetRealCountVertices() != graphProperty.GetCountVertices())
-                throw new MyException.GraphInvalidCountVerticesException();
+                throw new MyException.GraphException.GraphInvalidCountVerticesException();
 
             isInitialized = true;
 
@@ -159,12 +159,12 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="vertex">vrchol pro který vracíme list sousedů</param>
         /// <returns>list sousedů</returns>
-        public List<Vertex> Neighbours(Vertex vertex)
+        public List<IVertexInterface> Neighbours(IVertexInterface vertex)
         {
             if (!isInitialized)
-                throw new MyException.GraphNotInitializationException();
+                throw new MyException.GraphException.GraphNotInitializationException();
             
-            return new List<Vertex> (adjacencyList[ConvertVertexToVertexExtended(vertex)]);
+            return new List<IVertexInterface> (adjacencyList[ConvertVertexToVertexExtended(vertex)]);
         }
 
         /// <summary>
@@ -172,10 +172,10 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="vertex">vrchol, pro který chceme zjistit počet sousedů</param>
         /// <returns>počet sousedů</returns>
-        public int CountNeighbours(Vertex vertex)
+        public int CountNeighbours(IVertexInterface vertex)
         {
             if (!isInitialized)
-                throw new MyException.GraphNotInitializationException();
+                throw new MyException.GraphException.GraphNotInitializationException();
             
             return Neighbours(vertex).Count;
         }
@@ -184,9 +184,9 @@ namespace GraphColoring.Graph
         /// Vrátí list všech vrcholů v grafu
         /// </summary>
         /// <returns>lsit všech vrcholů v grafu</returns>
-        public List<Vertex> AllVertices()
+        public List<IVertexInterface> AllVertices()
         {
-            return new List<Vertex>(adjacencyList.Keys);
+            return new List<IVertexInterface>(adjacencyList.Keys);
         }
 
         /// <summary>
@@ -210,10 +210,10 @@ namespace GraphColoring.Graph
         /// Pokud graf nemá žádný vrchol, vrátí výjimku GraphDoesntHaveAnyVertices
         /// </summary>
         /// <returns>první vrchol</returns>
-        public Vertex GetFirstVertex()
+        public IVertexInterface GetFirstVertex()
         {
             if (adjacencyList.Count == 0)
-                throw new MyException.GraphDoesntHaveAnyVertices();
+                throw new MyException.GraphException.GraphDoesntHaveAnyVertices();
 
             var firstRecord = mapping.First();
             return firstRecord.Value;
@@ -225,7 +225,7 @@ namespace GraphColoring.Graph
         public void FullGenerateVertices()
         {
             if (GetIsInitialized())
-                throw new MyException.GraphInitializationException();
+                throw new MyException.GraphException.GraphInitializationException();
 
             while (GetRealCountVertices() != graphProperty.GetCountVertices())
             {
@@ -240,13 +240,13 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="vertex">daný vrchol</param>
         /// <returns>true, pokud vrchol existuje, jinak false</returns>
-        public bool ExistsVertex(Vertex vertex)
+        public bool ExistsVertex(IVertexInterface vertex)
         {
             try
             {
                 return adjacencyList.ContainsKey(ConvertVertexToVertexExtended(vertex));
             }
-            catch (MyException.GraphVertexDoesntExistException)
+            catch (MyException.GraphException.GraphVertexDoesntExistException)
             {
                 return false;
             }
@@ -258,7 +258,7 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="edge">daná hrana</param>
         /// <returns>true, pokud hrana existuje, jinak false</returns>
-        public bool ExistsEdge(Edge edge)
+        public bool ExistsEdge(IEdgeInterface edge)
         {
             if (!ExistsVertex(edge.GetVertex1()) || !ExistsVertex(edge.GetVertex2()))
                 return false;
@@ -277,7 +277,7 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="vertex">daný Vertex</param>
         /// <returns>daný VertexExtended</returns>
-        protected VertexExtended ConvertVertexToVertexExtended(Vertex vertex)
+        protected VertexExtended ConvertVertexToVertexExtended(IVertexInterface vertex)
         {
             try
             {
@@ -285,7 +285,7 @@ namespace GraphColoring.Graph
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.GraphVertexDoesntExistException();
+                throw new MyException.GraphException.GraphVertexDoesntExistException();
             }
         }
 
@@ -358,7 +358,7 @@ namespace GraphColoring.Graph
             if (isInitialized)
                 return graphProperty;
 
-            throw new MyException.GraphNotInitializationException();
+            throw new MyException.GraphException.GraphNotInitializationException();
         }
 
         /// <summary>
@@ -430,7 +430,7 @@ namespace GraphColoring.Graph
             if (isInitialized)
                 return coloredGraph;
 
-            throw new MyException.GraphNotInitializationException();
+            throw new MyException.GraphException.GraphNotInitializationException();
         }
         #endregion
     }

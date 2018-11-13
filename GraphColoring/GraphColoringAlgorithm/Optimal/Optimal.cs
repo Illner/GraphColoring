@@ -9,14 +9,16 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
     {
         // Variable
         #region
-        private List<Graph.Vertex> optimalVertexList;
+        private List<Graph.IVertexInterface> optimalVertexList;
         private int optimalCountColors = int.MaxValue;
         #endregion
 
         // Constructor
         #region
         public Optimal(Graph.IGraphInterface graph) : base(graph)
-        { }
+        {
+            name = "Optimal algorithm";
+        }
         #endregion
 
         // Method
@@ -30,7 +32,7 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
             // Variable
             int countUsedColors;
             Graph.IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
-            optimalVertexList = new List<Graph.Vertex>();
+            optimalVertexList = new List<Graph.IVertexInterface>();
 
             foreach (var vertexList in MyMath.MyMath.GeneratePermutations(graph.AllVertices()))
             {

@@ -17,7 +17,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
         // Constructor
         #region
         public GreedyIndependentSet(Graph.IGraphInterface graph) : base(graph)
-        { }
+        {
+            name = "Greedy independent set algorithm";
+        }
         #endregion
 
         // Method
@@ -29,8 +31,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
         public void Color()
         {
             // Variable
-            Graph.Vertex vertex;
-            List<Graph.Vertex> neighboursVertexList;
+            Graph.IVertexInterface vertex;
+            List<Graph.IVertexInterface> neighboursVertexList;
 
             while (!graph.GetColoredGraph().AreAllVerticesColored())
             {
@@ -42,7 +44,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
                     neighboursVertexList = copyGraph.Neighbours(vertex);
 
                     copyGraph.VertexDelete(vertex);
-                    foreach (Graph.Vertex neighbour in neighboursVertexList)
+                    foreach (Graph.IVertexInterface neighbour in neighboursVertexList)
                     {
                         copyGraph.VertexDelete(neighbour);
                     }
@@ -52,6 +54,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
 
                 color++;
             }
+
+            coloredGraph.InicializeColoredGraph();
         }
         #endregion
     }

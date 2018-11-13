@@ -8,6 +8,6 @@ namespace GraphColoring.GraphColoringAlgorithm
 {
     interface IGraphColoringAlgorithmStepInterface
     {
-        Graph.Vertex Step();
+        Graph.IVertexInterface Step();
     }
 }

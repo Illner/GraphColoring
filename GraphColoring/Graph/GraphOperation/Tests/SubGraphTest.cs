@@ -12,7 +12,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private IGraphInterface graph;
         private String testPath;
         private int countVertices;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         // Tuple<cesta k souboru, pocet vrcholu v podgrafu>
         private Dictionary<SubGraphEnum, Tuple<string,int>> testsDictionary;
@@ -98,7 +98,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[subGraphEnum].Item1);
                 countVertices = testsDictionary[subGraphEnum].Item2;
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 stringBuilder.AppendLine(subGraphEnum.ToString());
@@ -112,9 +112,9 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(subGraphEnum.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(subGraphEnum.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

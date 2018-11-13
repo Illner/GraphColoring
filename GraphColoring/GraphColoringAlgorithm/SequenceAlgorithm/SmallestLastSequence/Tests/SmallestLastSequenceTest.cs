@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
         #region
         private Graph.IGraphInterface graph;
         private String testPath;
-        private ReaderWriter.Reader reader;
+        private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<SmallestLastSequenceEnum, string> testsDictionary;
 
@@ -91,7 +91,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             {
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[smallestLastSequence]);
 
-                reader = new ReaderWriter.Reader(testPath, false);
+                reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();
 
                 SmallestLastSequence smallestLastSequenceAlgorithm = new SmallestLastSequence(graph);
@@ -103,9 +103,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(smallestLastSequence.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(smallestLastSequence.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

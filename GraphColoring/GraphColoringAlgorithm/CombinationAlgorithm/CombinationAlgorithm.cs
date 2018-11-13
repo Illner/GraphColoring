@@ -18,6 +18,7 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
         public CombinationAlgorithm(Graph.IGraphInterface graph) : base(graph)
         {
             algorithmList = new List<IGraphColoringAlgorithmStepInterface>();
+            name = "Combination algorithm";
         }
         #endregion
 
@@ -31,7 +32,7 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
         {
             // Variable
             int helper = 0;
-            Graph.Vertex vertex;
+            Graph.IVertexInterface vertex;
 
             // Initialize
             largestFirstSequence = new SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph);
@@ -53,6 +54,8 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
 
                 helper++;
             }
+
+            coloredGraph.InicializeColoredGraph();
         }
         #endregion
     }

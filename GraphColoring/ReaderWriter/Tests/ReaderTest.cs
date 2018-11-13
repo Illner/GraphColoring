@@ -9,7 +9,7 @@ namespace GraphColoring.ReaderWriter.Tests
     {
         // Variable
         #region
-        private Reader reader;
+        private ReaderGraph reader;
         private Graph.IGraphInterface graph;
         private StringBuilder stringBuilder;
         private Dictionary<Graph.Graph.GraphRepresentationEnum, Dictionary<PathEnum, List<string>>> testsDictionary;
@@ -249,19 +249,19 @@ namespace GraphColoring.ReaderWriter.Tests
                         fileList = testsGraphEdgeListDictionary[pathEnum];
                         break;
                     default:
-                        throw new MyException.TestsMissingTestException(graphEnum.ToString());
+                        throw new MyException.TestsException.TestsMissingTestException(graphEnum.ToString());
                 }
                 foreach (string file in fileList)
                 {
-                    reader = new Reader(GraphColoring.Tests.Tests.CreateTestFile(file), false);
+                    reader = new ReaderGraph(GraphColoring.Tests.Tests.CreateTestFile(file), false);
                     Testing();
                 }
             }
             catch (KeyNotFoundException)
             {
-                throw new MyException.TestsMissingTestException(pathEnum.ToString());
+                throw new MyException.TestsException.TestsMissingTestException(pathEnum.ToString());
             }
-            catch (MyException.ReaderWriterException e)
+            catch (MyException.ReaderWriterException.ReaderWriterException e)
             {
                 stringBuilder.AppendLine(e.Message);
             }

@@ -10,13 +10,15 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
     {
         // Variable
         #region
-        private List<Graph.Vertex> degreeSequenceVertexReverse;
+        private List<Graph.IVertexInterface> degreeSequenceVertexReverse;
         #endregion
 
         // Constructor
         #region
         public LargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
-        { }
+        {
+            name = "Largest first sequence algorithm";
+        }
         #endregion
 
         // Method
@@ -37,7 +39,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         /// Pokud jsou všechny vrcholy obarveny, tak vrátí null
         /// </summary>
         /// <returns>vrchol</returns>
-        public Graph.Vertex Step()
+        public Graph.IVertexInterface Step()
         {
             if (degreeSequenceVertexReverse == null)
             {
@@ -45,7 +47,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
                 degreeSequenceVertexReverse.Reverse();
             }
 
-            foreach (Graph.Vertex vertex in degreeSequenceVertexReverse)
+            foreach (Graph.IVertexInterface vertex in degreeSequenceVertexReverse)
             {
                 if (vertex.GetColor() == Graph.VertexExtended.GetDefaultColor())
                     return vertex;

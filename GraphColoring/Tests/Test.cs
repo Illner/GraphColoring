@@ -183,7 +183,7 @@ namespace GraphColoring.Tests
         /// </summary>
         public static void DeleteTestFile()
         {
-            ReaderWriter.ReaderWriter reader = new ReaderWriter.Reader(fileName, false);
+            ReaderWriter.ReaderWriter reader = new ReaderWriter.ReaderGraph(fileName, false);
             reader.DeleteFile();
         }
         #endregion

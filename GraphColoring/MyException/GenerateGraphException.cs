@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphColoring.MyException
+namespace GraphColoring.MyException.GenerateGraphException
 {
     /// <summary>
     /// Generate graph exceptions

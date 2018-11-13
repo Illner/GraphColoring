@@ -14,11 +14,11 @@ namespace GraphColoring.Graph
         /// Pokud vrchol již v grafu existuje, vyvolá výjimku GraphVertexAlreadyExistsException
         /// </summary>
         /// <param name="vertex">vrchol, který chceme přidat</param>
-        public void VertexAdd(Vertex vertex)
+        public void VertexAdd(IVertexInterface vertex)
         {
             // Vertex exists
             if (ExistsVertex(vertex))
-                throw new MyException.GraphVertexAlreadyExistsException();
+                throw new MyException.GraphException.GraphVertexAlreadyExistsException();
 
             VertexExtended vertexExtended = new VertexExtended(vertex.GetIdentifier());
             vertexExtended.SetColor(vertex.GetColor());
@@ -47,15 +47,15 @@ namespace GraphColoring.Graph
         /// Time complexity: O(V + E)
         /// </summary>
         /// <param name="removeVertex">vrchol, který chceme odstranit</param>
-        public void VertexDelete(Vertex removeVertex)
+        public void VertexDelete(IVertexInterface removeVertex)
         {
             // Vertex doesn't exist
             if (!ExistsVertex(removeVertex))
-                throw new MyException.GraphVertexDoesntExistException();
+                throw new MyException.GraphException.GraphVertexDoesntExistException();
 
             // Variable
             int count = 0;
-            HashSet<Vertex> removeVertexList = new HashSet<Vertex>();
+            HashSet<IVertexInterface> removeVertexList = new HashSet<IVertexInterface>();
 
             adjacencyList.Remove(ConvertVertexToVertexExtended(removeVertex));
 
@@ -99,32 +99,32 @@ namespace GraphColoring.Graph
         /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
         /// </summary>
         /// <param name="vertex">vrchol, který chceme kontrahovat</param>
-        public void VertexContract(Vertex vertex)
+        public void VertexContract(IVertexInterface vertex)
         {
             if (!ExistsVertex(vertex))
-                throw new MyException.GraphVertexDoesntExistException();
+                throw new MyException.GraphException.GraphVertexDoesntExistException();
 
             if (CountNeighbours(vertex) == 0)
                 return;
 
             // Variable
             string nameNewVertex;
-            List<Vertex> neighboursVertexList, neighboursVertexUnionList, neighboursList;
+            List<IVertexInterface> neighboursVertexList, neighboursVertexUnionList, neighboursList;
             
-            neighboursVertexUnionList = new List<Vertex>();
+            neighboursVertexUnionList = new List<IVertexInterface>();
 
             neighboursList = Neighbours(vertex);
             VertexDelete(vertex);
 
             nameNewVertex = vertex.GetUserName();
-            foreach(Vertex neighbour in neighboursList)
+            foreach(IVertexInterface neighbour in neighboursList)
             {
                 nameNewVertex += neighbour.GetUserName();
             }
 
-            Vertex newVertex = new Vertex(nameNewVertex);
+            IVertexInterface newVertex = new Vertex(nameNewVertex);
 
-            foreach(Vertex neighbour in neighboursList)
+            foreach(IVertexInterface neighbour in neighboursList)
             {
                 neighboursVertexList = Neighbours(neighbour);
 
@@ -134,7 +134,7 @@ namespace GraphColoring.Graph
             neighboursVertexUnionList = neighboursVertexUnionList.Except(neighboursList).ToList();
 
             // Delete vertices
-            foreach (Vertex removeVertex in neighboursList)
+            foreach (IVertexInterface removeVertex in neighboursList)
             {
                 VertexDelete(removeVertex);
 
@@ -148,7 +148,7 @@ namespace GraphColoring.Graph
             coloredGraph.AddVertexInHashSets(newVertex);
 
             // Add edges
-            foreach (Vertex neighbour in neighboursVertexUnionList)
+            foreach (IVertexInterface neighbour in neighboursVertexUnionList)
                 EdgeAdd(new Edge(newVertex, neighbour));
 
             // ColoredGraph
@@ -166,16 +166,16 @@ namespace GraphColoring.Graph
         /// Pokud vrchol má jiny stupen nez 2, vyvolá výjimku GraphInvalidDegreeVertex
         /// </summary>
         /// <param name="vertex">Daný vrchol</param>
-        public void VertexSuppression(Vertex vertex)
+        public void VertexSuppression(IVertexInterface vertex)
         {
             if (!ExistsVertex(vertex))
-                throw new MyException.GraphVertexDoesntExistException();
+                throw new MyException.GraphException.GraphVertexDoesntExistException();
 
             if (CountNeighbours(vertex) != 2)
-                throw new MyException.GraphInvalidDegreeVertex();
+                throw new MyException.GraphException.GraphInvalidDegreeVertex();
 
             // Variable
-            Vertex vertex1, vertex2;
+            IVertexInterface vertex1, vertex2;
 
             vertex1 = Neighbours(vertex).First();
             vertex2 = Neighbours(vertex).Last();
@@ -201,14 +201,14 @@ namespace GraphColoring.Graph
         /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
         /// </summary>
         /// <param name="vertex">vrchol, který chceme expandovat</param>
-        public void VertexExpansion(Vertex vertex)
+        public void VertexExpansion(IVertexInterface vertex)
         {
             if (!ExistsVertex(vertex))
-                throw new MyException.GraphVertexDoesntExistException();
+                throw new MyException.GraphException.GraphVertexDoesntExistException();
 
             // Variable
-            Vertex vertex1, vertex2;
-            List<Vertex> neighboursList;
+            IVertexInterface vertex1, vertex2;
+            List<IVertexInterface> neighboursList;
 
             neighboursList = Neighbours(vertex);
 
@@ -224,7 +224,7 @@ namespace GraphColoring.Graph
             coloredGraph.AddVertexInHashSets(vertex1);
             coloredGraph.AddVertexInHashSets(vertex2);
 
-            foreach(Vertex neighbour in neighboursList)
+            foreach(IVertexInterface neighbour in neighboursList)
             {
                 EdgeAdd(new Edge(vertex1, neighbour));
                 EdgeAdd(new Edge(vertex2, neighbour));
@@ -246,10 +246,10 @@ namespace GraphColoring.Graph
         /// Pokud hrana v grafu již existuje, vyvolá se výjimka GraphEdgeAlreadyExistsException
         /// </summary>
         /// <param name="edge">hrana, kterou chceme přidat</param>
-        public void EdgeAdd(Edge edge)
+        public void EdgeAdd(IEdgeInterface edge)
         {
             if (ExistsEdge(edge))
-                throw new MyException.GraphEdgeAlreadyExistsException();
+                throw new MyException.GraphException.GraphEdgeAlreadyExistsException();
 
             AddEdgeToAdjacencyList(edge);
 
@@ -267,10 +267,10 @@ namespace GraphColoring.Graph
         /// Pokud hrana v grafu neexistuje, vyvolá se výjimka GraphEdgeDoesntExistException
         /// </summary>
         /// <param name="edge">hrana, kterou chceme odstranit</param>
-        public void EdgeDelete(Edge edge)
+        public void EdgeDelete(IEdgeInterface edge)
         {
             if (!ExistsEdge(edge))
-                throw new MyException.GraphEdgeDoesntExistException();
+                throw new MyException.GraphException.GraphEdgeDoesntExistException();
 
             // Variable
             adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex1()), out List<VertexExtended> neighbooursList);
@@ -297,14 +297,14 @@ namespace GraphColoring.Graph
         /// Pokud hrana v grafu neexistuje, vyvolá se výjimka GraphEdgeDoesntExistException
         /// </summary>
         /// <param name="edge">hrana, kterou chceme kontrahovat</param>
-        public void EdgeContract(Edge edge)
+        public void EdgeContract(IEdgeInterface edge)
         {
             if (!ExistsEdge(edge))
-                throw new MyException.GraphEdgeDoesntExistException();
+                throw new MyException.GraphException.GraphEdgeDoesntExistException();
 
             // Variable
             int neighbours1Count, neighbours2Count, neighboursCount;
-            List<Vertex> neighboursVertex1List, neighboursVertex2List, neighboursList;
+            List<IVertexInterface> neighboursVertex1List, neighboursVertex2List, neighboursList;
 
             EdgeDelete(edge);
 
@@ -316,7 +316,7 @@ namespace GraphColoring.Graph
             neighboursList = neighboursVertex1List.Union(neighboursVertex2List).ToList();
             neighboursCount = neighboursList.Count;
 
-            Vertex newVertex = new Vertex(edge.GetVertex1().GetUserName() + edge.GetVertex2().GetUserName());
+            IVertexInterface newVertex = new Vertex(edge.GetVertex1().GetUserName() + edge.GetVertex2().GetUserName());
 
             // Delete vertices
             VertexDelete(edge.GetVertex1());
@@ -326,7 +326,7 @@ namespace GraphColoring.Graph
             VertexAdd(newVertex);
 
             // Add edges
-            foreach (Vertex neighbour in neighboursList)
+            foreach (IVertexInterface neighbour in neighboursList)
                 EdgeAdd(new Edge(newVertex, neighbour));
 
             // ColoredGraph
@@ -343,14 +343,14 @@ namespace GraphColoring.Graph
         /// Pokud hrana v grafu neexistuje, vrátí výjimku GraphEdgeDoesntExistException
         /// </summary>
         /// <param name="edge">daná hrana</param>
-        public void EdgeSubdivision(Edge edge)
+        public void EdgeSubdivision(IEdgeInterface edge)
         {
             if (!ExistsEdge(edge))
-                throw new MyException.GraphEdgeDoesntExistException();
+                throw new MyException.GraphException.GraphEdgeDoesntExistException();
 
             EdgeDelete(edge);
 
-            Vertex newVertex = new Vertex();
+            IVertexInterface newVertex = new Vertex();
 
             VertexAdd(newVertex);
             EdgeAdd(new Edge(edge.GetVertex1(), newVertex));

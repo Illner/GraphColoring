@@ -10,7 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
     {
         // Variable
         #region
-        protected List<Graph.Vertex> vertexSequenceList;
+        protected List<Graph.IVertexInterface> vertexSequenceList;
         #endregion
 
         // Constructor
@@ -31,23 +31,23 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         public void Color()
         {
             if (coloredGraph.GetIsInicializedColoredGraph())
-                throw new MyException.ColoredGraphAlreadyInitializedException();
+                throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
             CreateVertexSequence();
 
             if (vertexSequenceList.Count != graph.GetRealCountVertices())
-                throw new MyException.AlgorithmInvalidVertexSequence();
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmInvalidVertexSequence();
 
             // Unique vertices in list
             if (vertexSequenceList.Distinct().Count() != vertexSequenceList.Count())
-                throw new MyException.AlgorithmInvalidVertexSequence();
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmInvalidVertexSequence();
 
             coloredGraph.GreedyColoring(vertexSequenceList);
 
             bool isColored = coloredGraph.InicializeColoredGraph();
 
             if (!isColored)
-                throw new MyException.AlgorithmGraphIsNotColored();
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
 
         // Property
         #region
-        public List<Graph.Vertex> GetVertextexSequenceList()
+        public List<Graph.IVertexInterface> GetVertextexSequenceList()
         {
             return vertexSequenceList;
         }

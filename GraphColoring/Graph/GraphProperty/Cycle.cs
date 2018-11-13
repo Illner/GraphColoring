@@ -14,7 +14,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// cycleDisjointSetDictionary (CycleIsCyclic) - struktura pro získání reprezentanta vrcholu
         /// </summary>
-        private Dictionary<Vertex, Vertex> cycleDisjointSetDictionary;
+        private Dictionary<IVertexInterface, IVertexInterface> cycleDisjointSetDictionary;
         #endregion
 
         /// <summary>
@@ -25,10 +25,10 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // Variable
             private int depth;
-            private Vertex vertex;
+            private IVertexInterface vertex;
 
             // Constructor
-            public CycleNode(Vertex vertex, int depth)
+            public CycleNode(IVertexInterface vertex, int depth)
             {
                 this.vertex = vertex;
                 this.depth = depth;
@@ -48,7 +48,7 @@ namespace GraphColoring.Graph.GraphProperty
             /// Vrátí vrchol
             /// </summary>
             /// <returns>vrchol</returns>
-            public Vertex GetVertex()
+            public IVertexInterface GetVertex()
             {
                 return vertex;
             }
@@ -67,7 +67,7 @@ namespace GraphColoring.Graph.GraphProperty
         private void CycleGirth()
         {
             // Variable
-            List<Vertex> allVerticesList;
+            List<IVertexInterface> allVerticesList;
             int actualBestGirth = int.MaxValue;
             object myLock = new object();
 
@@ -105,13 +105,13 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         /// <param name="root">Vrchol, který bude kořenem v BFS</param>
         /// <returns>délku cyklu</returns>
-        private int CycleGirthBFSParallel(Vertex root)
+        private int CycleGirthBFSParallel(IVertexInterface root)
         {
             // Variable
             int bestGirth = int.MaxValue;
             Queue<CycleNode> nodeBFSQueue = new Queue<CycleNode>();
-            Dictionary<Vertex, int> nodeDictionary = new Dictionary<Vertex, int>();
-            List<Vertex> vertexNeighboursList = new List<Vertex>();
+            Dictionary<IVertexInterface, int> nodeDictionary = new Dictionary<IVertexInterface, int>();
+            List<IVertexInterface> vertexNeighboursList = new List<IVertexInterface>();
 
             CycleNode rootNode = new CycleNode(root, 0);
             nodeBFSQueue.Enqueue(rootNode);
@@ -124,7 +124,7 @@ namespace GraphColoring.Graph.GraphProperty
 
                 vertexNeighboursList = graph.Neighbours(node.GetVertex());
 
-                foreach (Vertex vertexNeighbour in vertexNeighboursList)
+                foreach (IVertexInterface vertexNeighbour in vertexNeighboursList)
                 {
                     // Tento vrchol jsme doposud neviděli
                     if (!nodeDictionary.ContainsKey(vertexNeighbour))
@@ -170,16 +170,16 @@ namespace GraphColoring.Graph.GraphProperty
         private void CycleIsCyclic()
         {
             // Variable
-            List<Vertex> allVerticesList;
-            List<Vertex> vertexNeighboursList;
-            HashSet<Vertex> expandedVerticesHashSet;
+            List<IVertexInterface> allVerticesList;
+            List<IVertexInterface> vertexNeighboursList;
+            HashSet<IVertexInterface> expandedVerticesHashSet;
 
-            cycleDisjointSetDictionary = new Dictionary<Vertex, Vertex>(GetCountVertices());
-            expandedVerticesHashSet = new HashSet<Vertex>();
+            cycleDisjointSetDictionary = new Dictionary<IVertexInterface, IVertexInterface>(GetCountVertices());
+            expandedVerticesHashSet = new HashSet<IVertexInterface>();
             allVerticesList = graph.AllVertices();
 
             // Create disjoint set
-            foreach(Vertex vertex in allVerticesList)
+            foreach(IVertexInterface vertex in allVerticesList)
             {
                 cycleDisjointSetDictionary.Add(vertex, vertex);
             }
@@ -187,17 +187,17 @@ namespace GraphColoring.Graph.GraphProperty
             // Core algorithm
             isCyclic = false;
 
-            foreach(Vertex vertex in allVerticesList)
+            foreach(IVertexInterface vertex in allVerticesList)
             {
                 vertexNeighboursList = graph.Neighbours(vertex);
 
-                foreach(Vertex neighbourVertex in vertexNeighboursList)
+                foreach(IVertexInterface neighbourVertex in vertexNeighboursList)
                 {
                     if (expandedVerticesHashSet.Contains(neighbourVertex))
                         continue;
 
-                    Vertex vertex1Representative = CycleFind(vertex);
-                    Vertex vertex2Representative = CycleFind(neighbourVertex);
+                    IVertexInterface vertex1Representative = CycleFind(vertex);
+                    IVertexInterface vertex2Representative = CycleFind(neighbourVertex);
 
                     if (vertex1Representative == vertex2Representative)
                     {
@@ -218,7 +218,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         /// <param name="vertex">vrchol, ke kterému hledáme reprezentanta</param>
         /// <returns>reprezentant vrcholu</returns>
-        private Vertex CycleFind(Vertex vertex)
+        private IVertexInterface CycleFind(IVertexInterface vertex)
         {
             return cycleDisjointSetDictionary[vertex];
         }
@@ -229,14 +229,14 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         /// <param name="vertex1">vrchol z první komponenty</param>
         /// <param name="vertex2">vrchol z druhé komponenty</param>
-        private void CycleUnion(Vertex vertex1, Vertex vertex2)
+        private void CycleUnion(IVertexInterface vertex1, IVertexInterface vertex2)
         {
-            Vertex vertex1Representative = CycleFind(vertex1);
-            Vertex vertex2Representative = CycleFind(vertex2);
+            IVertexInterface vertex1Representative = CycleFind(vertex1);
+            IVertexInterface vertex2Representative = CycleFind(vertex2);
             
             for (int i = 0; i < cycleDisjointSetDictionary.Count; i++)
             {
-                Vertex vertex = cycleDisjointSetDictionary.ElementAt(i).Key;
+                IVertexInterface vertex = cycleDisjointSetDictionary.ElementAt(i).Key;
                 if (cycleDisjointSetDictionary[vertex] == vertex2Representative)
                     cycleDisjointSetDictionary[vertex] = vertex1Representative;
             }

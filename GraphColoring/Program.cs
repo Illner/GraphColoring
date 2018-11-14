@@ -13,16 +13,16 @@ namespace GraphColoring
         [STAThread]
         static void Main(string[] args) 
         {
-            /*
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
-            */
             
             
+            /*
             Tests.Tests tests = new Tests.Tests(true);
             tests.Test();
-            
+            */
 
             /*
             Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();

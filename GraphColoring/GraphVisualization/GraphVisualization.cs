@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.IO;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 
 namespace GraphColoring.GraphVisualization
 {
@@ -11,7 +12,7 @@ namespace GraphColoring.GraphVisualization
         // Variable
         private Image image;
         private List<Graph.IGraphInterface> graphList;
-        private bool createdGraphVisualizationInitialization;
+        private const int MAXALLOWEDVERTICES = 100;
         private FileNameExtensionEnum fileNameExtensionEnum;
         private IConvertGraphToDotInterface convertGraphToDot;
 
@@ -102,6 +103,17 @@ namespace GraphColoring.GraphVisualization
         {
             if (image != null)
                 return;
+            
+            // Max count of vertices
+            int sumVertices = 0;
+            foreach (Graph.IGraphInterface graph in graphList)
+                sumVertices += graph.GetRealCountVertices();
+
+            if (sumVertices > MAXALLOWEDVERTICES)
+            {
+                CreateImageGraphToLarge();
+                return;
+            }
 
             // Convertor from graph to DOT
             convertGraphToDot = new ConvertGraphToDot(graphList);
@@ -165,6 +177,24 @@ namespace GraphColoring.GraphVisualization
                 throw new MyException.GraphVisualizationException.GraphVisualizationNotInitializationException();
 
             return image;
+        }
+
+        private void CreateImageGraphToLarge()
+        {
+            Bitmap bitmap = new Bitmap(500, 500);
+
+            RectangleF rectanglef = new RectangleF(0, 100, 500, 300);
+
+            Graphics g = Graphics.FromImage(bitmap);
+
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.DrawString("The graph has so many vertices. \nMaximum " + MAXALLOWEDVERTICES + " vertices are allowed.", new Font("Ariel", 20), Brushes.Black, rectanglef);
+
+            g.Flush();
+
+            image = bitmap;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace GraphColoring.GraphVisualization
         private List<Graph.IVertexInterface> cutVerticesList;
         private List<Graph.IEdgeInterface> bridgesList;
         private List<Graph.IVertexInterface> verticesList;
+        private const int MAXCOLORS = 15;
         private int maximumDegree;
         private int minimumDegree;
         private StringBuilder stringBuilder;
@@ -64,6 +65,7 @@ namespace GraphColoring.GraphVisualization
                 // Vertices
                 string text;
                 int vertexDegree;
+                bool useColor = graph.GetColoredGraph().GetCountUsedColors() < MAXCOLORS ? true : false;
 
                 // Graph properties
                 verticesList = graph.AllVertices();
@@ -88,8 +90,8 @@ namespace GraphColoring.GraphVisualization
 
                     if (cutVerticesList.Contains(vertex))
                         text += "shape = square ";
-
-                    if (vertex.GetColor() != Graph.VertexExtended.GetDefaultColor())
+                    
+                    if (useColor && vertex.GetColor() != Graph.VertexExtended.GetDefaultColor())
                         text += "fillcolor = " + colorsDictionary[vertex.GetColor()] + " ";
 
                     text += "]";

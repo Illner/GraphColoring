@@ -42,6 +42,7 @@ namespace GraphColoring.Tests
         GraphColoringAlgorithm.CombinationAlgorithm.Tests.CombinationAlgorithmTest combinationAlgorithmTest = new GraphColoringAlgorithm.CombinationAlgorithm.Tests.CombinationAlgorithmTest();
         GraphColoringAlgorithm.GeneticAlgorithm.Tests.GeneticAlgorithmTest geneticAlgorithmTest = new GraphColoringAlgorithm.GeneticAlgorithm.Tests.GeneticAlgorithmTest();
         Graph.GraphProperty.Tests.BridgesCutVerticesTest bridgesCutVerticesTest = new Graph.GraphProperty.Tests.BridgesCutVerticesTest();
+        GraphVisualization.Tests.ConvertGraphToDotTest convertGraphToDotTest = new GraphVisualization.Tests.ConvertGraphToDotTest();
         #endregion
 
         // Enum
@@ -71,6 +72,7 @@ namespace GraphColoring.Tests
             generateGraphErdosRanyiModel,
             combinationAlgorithm,
             graphBridgesCutVertices,
+            convertGraphToDot,
             geneticAlgorithm    // Must be last
         }
         #endregion
@@ -111,7 +113,8 @@ namespace GraphColoring.Tests
                 { TestEnum.generateGraphErdosRanyiModel, new Tuple<ITestInterface, string>(generateGraphErdosRenyiModelTest, TestResource.GenerateGraphErdosRenyiModelStandard) },
                 { TestEnum.combinationAlgorithm, new Tuple<ITestInterface, string>(combinationAlgorithmTest, TestResource.CombinationStandard) },
                 { TestEnum.graphBridgesCutVertices, new Tuple<ITestInterface, string>(bridgesCutVerticesTest, TestResource.GraphBridgesCutVerticesStandard) },
-                { TestEnum.geneticAlgorithm, new Tuple<ITestInterface, string>(geneticAlgorithmTest, TestResource.GeneticAlgorithmStandard) }
+                { TestEnum.convertGraphToDot, new Tuple<ITestInterface, string>(convertGraphToDotTest, TestResource.ConverterGraphToDotStandard) },
+                { TestEnum.geneticAlgorithm, new Tuple<ITestInterface, string>(geneticAlgorithmTest, TestResource.GeneticAlgorithmStandard) }   // Must be last
         };
         }
         #endregion

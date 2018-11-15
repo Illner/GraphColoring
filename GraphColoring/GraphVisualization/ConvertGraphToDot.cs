@@ -74,6 +74,7 @@ namespace GraphColoring.GraphVisualization
                 minimumDegree = graph.GetGraphProperty().GetMinimumVertexDegree();
                 maximumDegree = graph.GetGraphProperty().GetMaximumVertexDegree();
 
+                // Vertices
                 stringBuilder.AppendLine("node[style = filled shape = circle fillcolor = " + fillColorDefault + "]");
                 foreach (Graph.IVertexInterface vertex in verticesList)
                 {
@@ -81,7 +82,7 @@ namespace GraphColoring.GraphVisualization
                     vertexDegree = graph.CountNeighbours(vertex);
 
                     text += vertex.GetUserName() + " [";
-                    // Minimum vertex
+                    
                     if (vertexDegree == minimumDegree)
                         text += "shape = doublecircle ";
 
@@ -90,7 +91,7 @@ namespace GraphColoring.GraphVisualization
 
                     if (cutVerticesList.Contains(vertex))
                         text += "shape = square ";
-                    
+
                     if (useColor && vertex.GetColor() != Graph.VertexExtended.GetDefaultColor())
                         text += "fillcolor = " + colorsDictionary[vertex.GetColor()] + " ";
 

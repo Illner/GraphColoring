@@ -76,11 +76,19 @@
             this.countEdgesGraphPropertiesLabel = new System.Windows.Forms.Label();
             this.countVerticesValueGraphPropertiesLabel = new System.Windows.Forms.Label();
             this.countVerticesGraphPropertiesLabel = new System.Windows.Forms.Label();
+            this.generateGraphGroupBox = new System.Windows.Forms.GroupBox();
+            this.graphDensityGenerateGraphComboBox = new System.Windows.Forms.ComboBox();
+            this.graphDensityGenerateGraphLabel = new System.Windows.Forms.Label();
+            this.countOfVerticesGenerateGraphLabelNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.countOfVerticesGenerateGraphLabel = new System.Windows.Forms.Label();
+            this.generateGraphButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.drawGraphPictureBox)).BeginInit();
             this.graphColoringGroupBox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.drawGraphPanel.SuspendLayout();
             this.graphPropertiesGroupBox.SuspendLayout();
+            this.generateGraphGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countOfVerticesGenerateGraphLabelNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // drawGraphPictureBox
@@ -119,7 +127,7 @@
             this.graphColoringGroupBox.Controls.Add(this.loadGraphButton);
             this.graphColoringGroupBox.Location = new System.Drawing.Point(902, 96);
             this.graphColoringGroupBox.Name = "graphColoringGroupBox";
-            this.graphColoringGroupBox.Size = new System.Drawing.Size(272, 534);
+            this.graphColoringGroupBox.Size = new System.Drawing.Size(272, 385);
             this.graphColoringGroupBox.TabIndex = 3;
             this.graphColoringGroupBox.TabStop = false;
             // 
@@ -138,14 +146,15 @@
             // colorGraphPlanScheduleButton
             // 
             this.colorGraphPlanScheduleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.colorGraphPlanScheduleButton.BackColor = System.Drawing.Color.DarkRed;
             this.colorGraphPlanScheduleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.colorGraphPlanScheduleButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.colorGraphPlanScheduleButton.Location = new System.Drawing.Point(6, 471);
+            this.colorGraphPlanScheduleButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.colorGraphPlanScheduleButton.Location = new System.Drawing.Point(6, 322);
             this.colorGraphPlanScheduleButton.Name = "colorGraphPlanScheduleButton";
             this.colorGraphPlanScheduleButton.Size = new System.Drawing.Size(260, 57);
             this.colorGraphPlanScheduleButton.TabIndex = 4;
             this.colorGraphPlanScheduleButton.Text = "Color graph / Plan schedule";
-            this.colorGraphPlanScheduleButton.UseVisualStyleBackColor = true;
+            this.colorGraphPlanScheduleButton.UseVisualStyleBackColor = false;
             this.colorGraphPlanScheduleButton.Click += new System.EventHandler(this.colorGraphPlanScheduleButton_Click);
             // 
             // algorithmListBox
@@ -156,9 +165,9 @@
             this.algorithmListBox.FormattingEnabled = true;
             this.algorithmListBox.IntegralHeight = false;
             this.algorithmListBox.ItemHeight = 16;
-            this.algorithmListBox.Location = new System.Drawing.Point(6, 207);
+            this.algorithmListBox.Location = new System.Drawing.Point(7, 207);
             this.algorithmListBox.Name = "algorithmListBox";
-            this.algorithmListBox.Size = new System.Drawing.Size(259, 258);
+            this.algorithmListBox.Size = new System.Drawing.Size(259, 109);
             this.algorithmListBox.TabIndex = 3;
             // 
             // saveGraphButton
@@ -652,12 +661,96 @@
             this.countVerticesGraphPropertiesLabel.TabIndex = 0;
             this.countVerticesGraphPropertiesLabel.Text = "Count of vertices: ";
             // 
+            // generateGraphGroupBox
+            // 
+            this.generateGraphGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.generateGraphGroupBox.Controls.Add(this.graphDensityGenerateGraphComboBox);
+            this.generateGraphGroupBox.Controls.Add(this.graphDensityGenerateGraphLabel);
+            this.generateGraphGroupBox.Controls.Add(this.countOfVerticesGenerateGraphLabelNumericUpDown);
+            this.generateGraphGroupBox.Controls.Add(this.countOfVerticesGenerateGraphLabel);
+            this.generateGraphGroupBox.Controls.Add(this.generateGraphButton);
+            this.generateGraphGroupBox.Location = new System.Drawing.Point(902, 487);
+            this.generateGraphGroupBox.Name = "generateGraphGroupBox";
+            this.generateGraphGroupBox.Size = new System.Drawing.Size(272, 143);
+            this.generateGraphGroupBox.TabIndex = 7;
+            this.generateGraphGroupBox.TabStop = false;
+            this.generateGraphGroupBox.Text = "Generate graph";
+            // 
+            // graphDensityGenerateGraphComboBox
+            // 
+            this.graphDensityGenerateGraphComboBox.FormattingEnabled = true;
+            this.graphDensityGenerateGraphComboBox.Location = new System.Drawing.Point(146, 53);
+            this.graphDensityGenerateGraphComboBox.Name = "graphDensityGenerateGraphComboBox";
+            this.graphDensityGenerateGraphComboBox.Size = new System.Drawing.Size(120, 21);
+            this.graphDensityGenerateGraphComboBox.TabIndex = 9;
+            // 
+            // graphDensityGenerateGraphLabel
+            // 
+            this.graphDensityGenerateGraphLabel.AutoSize = true;
+            this.graphDensityGenerateGraphLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.graphDensityGenerateGraphLabel.Location = new System.Drawing.Point(6, 54);
+            this.graphDensityGenerateGraphLabel.Name = "graphDensityGenerateGraphLabel";
+            this.graphDensityGenerateGraphLabel.Size = new System.Drawing.Size(97, 16);
+            this.graphDensityGenerateGraphLabel.TabIndex = 8;
+            this.graphDensityGenerateGraphLabel.Text = "Graph density: ";
+            // 
+            // countOfVerticesGenerateGraphLabelNumericUpDown
+            // 
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Location = new System.Drawing.Point(146, 25);
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Name = "countOfVerticesGenerateGraphLabelNumericUpDown";
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.TabIndex = 7;
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            // 
+            // countOfVerticesGenerateGraphLabel
+            // 
+            this.countOfVerticesGenerateGraphLabel.AutoSize = true;
+            this.countOfVerticesGenerateGraphLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.countOfVerticesGenerateGraphLabel.Location = new System.Drawing.Point(6, 25);
+            this.countOfVerticesGenerateGraphLabel.Name = "countOfVerticesGenerateGraphLabel";
+            this.countOfVerticesGenerateGraphLabel.Size = new System.Drawing.Size(112, 16);
+            this.countOfVerticesGenerateGraphLabel.TabIndex = 6;
+            this.countOfVerticesGenerateGraphLabel.Text = "Count of vertices: ";
+            // 
+            // generateGraphButton
+            // 
+            this.generateGraphButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.generateGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.generateGraphButton.ForeColor = System.Drawing.Color.DarkRed;
+            this.generateGraphButton.Location = new System.Drawing.Point(6, 80);
+            this.generateGraphButton.Name = "generateGraphButton";
+            this.generateGraphButton.Size = new System.Drawing.Size(260, 57);
+            this.generateGraphButton.TabIndex = 5;
+            this.generateGraphButton.Text = "Generate graph";
+            this.generateGraphButton.UseVisualStyleBackColor = true;
+            this.generateGraphButton.Click += new System.EventHandler(this.generateGraphButton_Click);
+            // 
             // GraphColoringForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.generateGraphGroupBox);
             this.Controls.Add(this.graphPropertiesGroupBox);
             this.Controls.Add(this.drawGraphPanel);
             this.Controls.Add(this.statusStrip1);
@@ -674,6 +767,9 @@
             this.drawGraphPanel.PerformLayout();
             this.graphPropertiesGroupBox.ResumeLayout(false);
             this.graphPropertiesGroupBox.PerformLayout();
+            this.generateGraphGroupBox.ResumeLayout(false);
+            this.generateGraphGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countOfVerticesGenerateGraphLabelNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,5 +825,11 @@
         private System.Windows.Forms.Label classValuePropertiesLabel;
         private System.Windows.Forms.Label classPropertiesLabel;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.GroupBox generateGraphGroupBox;
+        private System.Windows.Forms.ComboBox graphDensityGenerateGraphComboBox;
+        private System.Windows.Forms.Label graphDensityGenerateGraphLabel;
+        private System.Windows.Forms.NumericUpDown countOfVerticesGenerateGraphLabelNumericUpDown;
+        private System.Windows.Forms.Label countOfVerticesGenerateGraphLabel;
+        private System.Windows.Forms.Button generateGraphButton;
     }
 }

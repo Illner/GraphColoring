@@ -93,7 +93,7 @@ namespace GraphColoring.Tests {
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid vertex count (0)
-        ///GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm
+        ///Combination algorithm
         ///Graph colored.
         ///Name of graph: Name
         ///Count of vertices: 1
@@ -106,12 +106,16 @@ namespace GraphColoring.Tests {
         ///Vertex color: 
         ///-- Vertex: 5078, color: 1
         ///
-        ///GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm
+        ///Combination algorithm
         ///Graph colored.
         ///Name of graph: Name
         ///Count of vertices: 6
         ///Real count of vertices: 6
-        ///Count of [rest of string was truncated]&quot;;.
+        ///Count of edges: 6
+        ///Vertices: 
+        ///-- Identifier: 5079, userName: 5079
+        ///-- Identifier: 5080, userName: 5080
+        ///-- Identifier: 50 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CombinationStandard {
             get {
@@ -152,6 +156,38 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid vertex count (0)
+        ///converterGraphToDotEnum2
+        ///Name of graph: Name
+        ///Count of vertices: 1
+        ///Real count of vertices: 1
+        ///Count of edges: 0
+        ///Vertices: 
+        ///-- Identifier: 5266, userName: 5266
+        ///Edges: 
+        ///-- Vertex: 5266 (5266)
+        ///
+        ///graph Name
+        ///{
+        ///node[style = filled shape = circle fillcolor = white]
+        ///5266 [shape = doublecircle shape = doubleoctagon ]
+        ///}
+        ///
+        ///converterGraphToDotEnum3
+        ///Name of graph: Name
+        ///Count of vertices: 9
+        ///Real count of vertices: 9
+        ///Count of edges: 12
+        ///Vertices: 
+        ///-- Identifier: 5269, userName: 5 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ConverterGraphToDotStandard {
+            get {
+                return ResourceManager.GetString("ConverterGraphToDotStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to erdosRenyiModelCDividedByNLessThanOne
         ///OK
         ///erdosRenyiModelCDividedByNMoreThanOne
@@ -161,7 +197,7 @@ namespace GraphColoring.Tests {
         ///erdosRenyiModelNotAssigned
         ///OK
         ///invalidVerticesCount
-        ///Byla vyvolána výjimka typu GraphColoring.MyException.GraphInvalidCountVerticesException.
+        ///Byla vyvolána výjimka typu GraphColoring.MyException.GraphException.GraphInvalidCountVerticesException.
         ///
         ///
         ///
@@ -174,7 +210,7 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm
+        ///   Looks up a localized string similar to Genetic algorithm
         ///Graph colored.
         ///Is valid colored: True
         ///
@@ -531,7 +567,7 @@ namespace GraphColoring.Tests {
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid vertex count (0)
-        ///GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet
+        ///Greedy independent set algorithm
         ///Graph colored.
         ///Name of graph: Name
         ///Count of vertices: 1
@@ -544,12 +580,15 @@ namespace GraphColoring.Tests {
         ///Vertex color: 
         ///-- Vertex: 1007, color: 1
         ///
-        ///GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet
+        ///Greedy independent set algorithm
         ///Graph colored.
         ///Name of graph: Name
         ///Count of vertices: 6
         ///Real count of vertices: 6
-        ///Count of [rest of string was truncated]&quot;;.
+        ///Count of edges: 6
+        ///Vertices: 
+        ///-- Identifier: 1009, userName: 1009
+        ///-- Identifier: 1010, userName: 1 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GreedyIndependentSetStandard {
             get {

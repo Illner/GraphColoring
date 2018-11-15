@@ -129,6 +129,8 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // Variable
             List<IVertexInterface> allVertices;
+            cutVertices = new List<IVertexInterface>();
+            bridges = new List<IEdgeInterface>();
             HashSet<IVertexInterface> visitedVertexHashSet = new HashSet<IVertexInterface>();
             Dictionary<IVertexInterface, int> discoveryTimesDictionary = new Dictionary<IVertexInterface, int>();
             Dictionary<IVertexInterface, int> lowDictionary = new Dictionary<IVertexInterface, int>();
@@ -150,8 +152,6 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // Variable
             int children = 0;
-            cutVertices = new List<IVertexInterface>();
-            bridges = new List<IEdgeInterface>();
             List<IVertexInterface> neighboursList = graph.Neighbours(vertex);
 
             visitedVertexHashSet.Add(vertex);
@@ -169,7 +169,7 @@ namespace GraphColoring.Graph.GraphProperty
                 if (!visitedVertexHashSet.Contains(neighbour))
                 {
                     children++;
-                    
+
                     if (!parentDictionary.ContainsKey(neighbour))
                         parentDictionary.Add(neighbour, vertex);
                     else
@@ -179,16 +179,16 @@ namespace GraphColoring.Graph.GraphProperty
 
                     if (!lowDictionary.ContainsKey(neighbour))
                         lowDictionary.Add(neighbour, 0);
-                    
+
                     lowDictionary[vertex] = Math.Min(lowDictionary[vertex], lowDictionary[neighbour]);
-                    
-                    if (!parentDictionary.ContainsKey(vertex) && children > 1)
+
+                    if (!cutVertices.Contains(vertex) && !parentDictionary.ContainsKey(vertex) && children > 1)
                         cutVertices.Add(vertex);
 
-                    if (parentDictionary.ContainsKey(vertex) && lowDictionary[neighbour] >= discoveryTimesDictionary[vertex])
+                    if (!cutVertices.Contains(vertex) && parentDictionary.ContainsKey(vertex) && lowDictionary[neighbour] >= discoveryTimesDictionary[vertex])
                         cutVertices.Add(vertex);
 
-                    if (lowDictionary[neighbour] > discoveryTimesDictionary[vertex])
+                    if (!bridges.Contains(new Edge(vertex, neighbour)) && lowDictionary[neighbour] > discoveryTimesDictionary[vertex])
                         bridges.Add(new Edge(vertex, neighbour));
                 }
                 else

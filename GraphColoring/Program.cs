@@ -18,7 +18,7 @@ namespace GraphColoring
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
             
-            
+          
             /*
             Tests.Tests tests = new Tests.Tests(true);
             tests.Test();
@@ -28,8 +28,8 @@ namespace GraphColoring
             Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
             Console.WriteLine(coloredGraphTest.Test(Graph.ColoredGraph.Tests.ColoredGraphTest.ColoredGraphEnum.valid));
             */
-            //Tests.Tests tests = new Tests.Tests(true);
-            //tests.Test(Tests.Tests.TestEnum.bridgesCutVerticesTest);
+            //Tests.Tests tests = new Tests.Tests(false);
+            //tests.Test(Tests.Tests.TestEnum.convertGraphToDot);
             
             //ReaderWriter.ReaderGraph reader = new ReaderWriter.ReaderGraph(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence5), false);
             //ReaderWriter.Writer writer = new ReaderWriter.Writer(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence5), false);
@@ -55,26 +55,6 @@ namespace GraphColoring
             
             cutVertices.ForEach(x => { Console.WriteLine(x.GetVertex1().GetUserName() + " " + x.GetVertex2().GetUserName()); });
             */
-        }
-
-        public static void TestGraph(int countVerticies)
-        {
-            // Variable
-            Graph.IGraphInterface generatedGraph;
-            Graph.GraphProperty.GraphProperty graphProperty;
-            GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel;
-            //
-            bool isConnected;
-            bool isReguelar;
-            bool isCyclic;
-
-
-            // Generate graph
-            erdosRenyiModel = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(countVerticies);
-            generatedGraph = erdosRenyiModel.GenerateGraph();
-            graphProperty = generatedGraph.GetGraphProperty();
-
-            // Graph property
         }
     }
 }

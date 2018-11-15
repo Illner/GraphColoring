@@ -111,6 +111,12 @@
     <Compile Include="GraphVisualization\FileNameExtension.cs" />
     <Compile Include="GraphVisualization\GraphVisualization.cs" />
     <Compile Include="GraphVisualization\IGraphVisualizationInterface.cs" />
+    <Compile Include="GraphVisualization\Tests\ConvertGraphToDotResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConvertGraphToDotResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphVisualization\Tests\ConvertGraphToDotTest.cs" />
     <Compile Include="Graph\ColoredGraph\ColoredGraph.cs" />
     <Compile Include="Graph\ColoredGraph\IColoredGraphInterface.cs" />
     <Compile Include="Graph\ColoredGraph\Tests\ColoredGraphResource.Designer.cs">
@@ -312,6 +318,11 @@
     <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence3.graph" />
     <None Include="bin\Debug\Testing\GraphColoringAlgorithm\SequenceAlgorithm\LargestFirstSequence\largestFirstSequence4.graph" />
     <None Include="bin\Debug\Testing\GraphExamples\Medium\medium1_48_5.graph" />
+    <None Include="bin\Debug\Testing\GraphVisualization\Converter\converter1.graph" />
+    <None Include="bin\Debug\Testing\GraphVisualization\Converter\converter2.graph" />
+    <None Include="bin\Debug\Testing\GraphVisualization\Converter\converter3.graph" />
+    <None Include="bin\Debug\Testing\GraphVisualization\Converter\converter4.graph" />
+    <None Include="bin\Debug\Testing\GraphVisualization\Converter\converter5.graph" />
     <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass2.graph" />
@@ -459,6 +470,10 @@
     <EmbeddedResource Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\Tests\SmallestLastSequenceResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SmallestLastSequenceResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphVisualization\Tests\ConvertGraphToDotResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConvertGraphToDotResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Graph\ColoredGraph\Tests\ColoredGraphResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -613,6 +628,7 @@
     <None Include="bin\Debug\Testing\Test\GraphBridgesCutVerticesStandard.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\Testing\Test\ConverterGraphToDotStandard.txt" />
     <Content Include="GraphVisualization\DOT\cdt.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

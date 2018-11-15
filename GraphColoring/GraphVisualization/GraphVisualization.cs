@@ -111,7 +111,7 @@ namespace GraphColoring.GraphVisualization
 
             if (sumVertices > MAXALLOWEDVERTICES)
             {
-                CreateImageGraphToLarge();
+                CreateImageGraphWithTest("The graph has so many vertices. \nMaximum " + MAXALLOWEDVERTICES + " vertices are allowed.");
                 return;
             }
 
@@ -159,9 +159,12 @@ namespace GraphColoring.GraphVisualization
                     image = Image.FromStream(stream);
                 }
             }
-            catch (DllNotFoundException e)
+            catch (Exception e)
             {
-                throw new MyException.GraphVisualizationException.GraphVisualizationDLLDontExistException(e.ToString());
+                if (e is DllNotFoundException || e is BadImageFormatException || e is MyException.GraphVisualizationException.GraphVisualizationException)
+                    CreateImageGraphWithTest("Problem with GraphViz library! \nThe graph can't be visualizated!");
+                else
+                    throw;
             }
         }
 
@@ -179,7 +182,7 @@ namespace GraphColoring.GraphVisualization
             return image;
         }
 
-        private void CreateImageGraphToLarge()
+        private void CreateImageGraphWithTest(string text)
         {
             Bitmap bitmap = new Bitmap(500, 500);
 
@@ -190,7 +193,7 @@ namespace GraphColoring.GraphVisualization
             g.SmoothingMode = SmoothingMode.AntiAlias;
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            g.DrawString("The graph has so many vertices. \nMaximum " + MAXALLOWEDVERTICES + " vertices are allowed.", new Font("Ariel", 20), Brushes.Black, rectanglef);
+            g.DrawString(text, new Font("Ariel", 20), Brushes.Black, rectanglef);
 
             g.Flush();
 

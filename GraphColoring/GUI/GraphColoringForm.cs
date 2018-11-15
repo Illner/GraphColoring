@@ -9,6 +9,8 @@ namespace GraphColoring.GUI
     public partial class GraphColoringForm : Form
     {
         // Variable
+        #region
+        private bool generatedGraph;
         private string path;
         private Thread propertyThread;
         private Thread loadGraphThread;
@@ -20,7 +22,10 @@ namespace GraphColoring.GUI
         private List<Graph.IColoredGraphInterface> coloredGraphList;
         private GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum;
         private List<GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum> algorithmListBoxList;
+        #endregion
 
+        // Constructor
+        #region
         public GraphColoringForm()
         {
             InitializeComponent();
@@ -42,8 +47,16 @@ namespace GraphColoring.GUI
                     algorithmListBoxList.Add(enumAlgorithm);
                 }
             }
-        }
 
+            // Fill graph density
+            foreach (var density in Enum.GetValues(typeof(GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum)))
+                graphDensityGenerateGraphComboBox.Items.Add(density);
+            graphDensityGenerateGraphComboBox.SelectedItem = GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.notAssigned;
+        }
+        #endregion
+
+        // Method
+        #region
         /// <summary>
         /// Create instance of algorithm
         /// If enum isn't implemented in switch throw AlgorithmDoesntExist
@@ -110,17 +123,15 @@ namespace GraphColoring.GUI
         private void ShowGraph()
         {
             GraphVisualization.GraphVisualization graphVisualization = new GraphVisualization.GraphVisualization(graphList);
-
+            
             // Thread
-            visualizationThread = new Thread(new ThreadStart(graphVisualization.CreateGraphVisualization));
+            visualizationThread = new Thread(() =>
+            {
+                graphVisualization.CreateGraphVisualization();
+                SetDrawGraphPictureBox(graphVisualization.GetImage());
+            });
             visualizationThread.IsBackground = true;
             visualizationThread.Start();
-            visualizationThread.Join();
-            
-            Image image = graphVisualization.GetImage();
-            
-            drawGraphPictureBox.Image = image;
-            //drawGraphPictureBox.ClientSize = image.Size;
         }
 
         /// <summary>
@@ -129,9 +140,188 @@ namespace GraphColoring.GUI
         /// <param name="text">The text</param>
         private void SetStatusLabel(string text)
         {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetStatusLabel), new object[] { text });
+                return;
+            }
             statusStatusLabel.Text = text;
         }
+
+
+        private void SetDrawGraphPictureBox(Image image)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<Image>(SetDrawGraphPictureBox), new object[] { image });
+                return;
+            }
+            drawGraphPictureBox.Image = image;
+        }
         
+        // Invoke
+        #region
+        private void SetClassValuePropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetClassValuePropertiesLabel), new object[] { text });
+                return;
+            }
+            classValuePropertiesLabel.Text = text;
+        }
+
+        private void SetIsRegularValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetIsRegularValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            isRegularValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetIsCyclicValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetIsCyclicValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            isCyclicValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetMaximumVertexDegreeValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetMaximumVertexDegreeValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            maximumVertexDegreeValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetMinimumVertexDegreeValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetMinimumVertexDegreeValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            minimumVertexDegreeValueGraphPropertiesLabel.Text = text;
+        }
+        
+        private void SetAverageVertexDegreeValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetAverageVertexDegreeValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            averageVertexDegreeValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetCountCutVerticesValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetCountCutVerticesValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            countCutVerticesValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetCountBridgesValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetCountBridgesValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            countBridgesValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetGrithValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetGrithValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            grithValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetCayleysFormulaValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetCayleysFormulaValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            cayleysFormulaValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetIsEulerianValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetIsEulerianValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            isEulerianValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetCountOfUsedColorsValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetCountOfUsedColorsValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            countOfUsedColorsValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetEnableLoadGraphButton(bool enable)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<bool>(SetEnableLoadGraphButton), new object[] { enable });
+                return;
+            }
+            loadGraphButton.Enabled = enable;
+        }
+        
+        private void SetEnableSaveGraphButton(bool enable)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<bool>(SetEnableSaveGraphButton), new object[] { enable });
+                return;
+            }
+            saveGraphButton.Enabled = enable;
+        }
+
+        private void SetEnableGenerateGraphButton(bool enable)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<bool>(SetEnableGenerateGraphButton), new object[] { enable });
+                return;
+            }
+            generateGraphButton.Enabled = enable;
+        }
+        
+        private void SetEnableColorGraphPlanScheduleButton(bool enable)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<bool>(SetEnableColorGraphPlanScheduleButton), new object[] { enable });
+                return;
+            }
+            colorGraphPlanScheduleButton.Enabled = enable;
+        }
+        #endregion
+
         /// <summary>
         /// Show a messageBox
         /// </summary>
@@ -173,13 +363,15 @@ namespace GraphColoring.GUI
             cayleysFormulaGraphPropertiesLabel.ForeColor = Color.Black;
             isEulerianGraphPropertiesLabel.ForeColor = Color.Black;
         }
+        #endregion
 
         // Events
+        #region
         private void loadGraphButton_Click(object sender, EventArgs e)
         {
             // Variable
             ReaderWriter.IReaderGraphInterface reader;
-
+            
             // Dialog
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -197,76 +389,81 @@ namespace GraphColoring.GUI
                     return;
             }
 
-            try
+            SetStatusLabel("The file is loading.");
+            loadGraphThread = new Thread(() =>
             {
-                reader = new ReaderWriter.ReaderGraph(path);
-                graph = reader.ReadFile();
-                coloredGraph = graph.GetColoredGraph();
-
-                // Component
-                loadGraphThread = new Thread(() => { graphList = graph.GetGraphProperty().GetComponents(); });
-                loadGraphThread.IsBackground = true;
-                loadGraphThread.Start();
-                loadGraphThread.Join();
-
-                coloredGraphList = new List<Graph.IColoredGraphInterface>();
-                foreach(Graph.IGraphInterface graph in graphList)
+                try
                 {
-                    coloredGraphList.Add(graph.GetColoredGraph());
+                    // Read a file
+                    reader = new ReaderWriter.ReaderGraph(path);
+                    graph = reader.ReadFile();
+                    coloredGraph = graph.GetColoredGraph();
+
+                    // Get components
+                    graphList = graph.GetGraphProperty().GetComponents();
+
+                    coloredGraphList = new List<Graph.IColoredGraphInterface>();
+                    foreach (Graph.IGraphInterface graph in graphList)
+                    {
+                        coloredGraphList.Add(graph.GetColoredGraph());
+                    }
+
+                    // Graph is connected
+                    if (coloredGraphList.Count == 1)
+                    {
+                        graphList[0] = graph;
+                        coloredGraphList[0] = coloredGraph;
+                    }
                 }
-
-                ResetProperty();
-
-                // Graph is connected
-                if (coloredGraphList.Count == 1)
+                catch (MyException.ReaderWriterException.ReaderWriterInavalidPathException ex)
                 {
-                    graphList[0] = graph;
-                    coloredGraphList[0] = coloredGraph;
-                }
-                // Grayed text
-                else
-                {
-                    classPropertiesLabel.ForeColor = Color.LightGray;
-                    isCyclicGraphPropertiesLabel.ForeColor = Color.LightGray;
-                    isRegularGraphPropertiesLabel.ForeColor = Color.LightGray;
-                    countCutVerticesGraphPropertiesLabel.ForeColor = Color.LightGray;
-                    countBridgesGraphPropertiesLabel.ForeColor = Color.LightGray;
-                    cayleysFormulaGraphPropertiesLabel.ForeColor = Color.LightGray;
-                    isEulerianGraphPropertiesLabel.ForeColor = Color.LightGray;
-                }
-
-                ShowGraph();
-                
-                // Get graph properties - default
-                countVerticesValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountVertices().ToString();
-                countEdgesValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountEdges().ToString();
-                circuitRankValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCircuitRank().ToString();
-                countComponentValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountComponents().ToString();
-                isConnectedValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetIsConnected().ToString();
-                
-                SetStatusLabel("The file has been loaded.");
-            }
-            catch (MyException.ReaderWriterException.ReaderWriterInavalidPathException ex)
-            {
-                ShowMessageBox("Error | Invalid path", "Path doesn't exist! The file has not been loaded!");
-                SetStatusLabel("The file has not been loaded.");
-                path = null;
-
-                Console.WriteLine(ex);
-            }
-            catch (Exception ex)
-            {
-                if (ex is MyException.ReaderWriterException.ReaderWriterException || ex is MyException.GraphException.GraphException)
-                {
-                    ShowMessageBox("Error | Invalid file", "Invalid format of data. \n" + e.GetType().Name);
+                    ShowMessageBox("Error | Invalid path", "Path doesn't exist! The file has not been loaded!");
                     SetStatusLabel("The file has not been loaded.");
                     path = null;
-                }
-                else
-                    ;
 
-                Console.WriteLine(ex);
+                    Console.WriteLine(ex);
+                }
+                catch (Exception ex)
+                {
+                    if (ex is MyException.ReaderWriterException.ReaderWriterException || ex is MyException.GraphException.GraphException)
+                    {
+                        ShowMessageBox("Error | Invalid file", "Invalid format of data. \n" + e.GetType().Name);
+                        SetStatusLabel("The file has not been loaded.");
+                        path = null;
+                    }
+
+                    Console.WriteLine(ex);
+                }
+
+            });
+            loadGraphThread.IsBackground = true;
+            loadGraphThread.Start();
+            loadGraphThread.Join();
+
+            ShowGraph();
+            ResetProperty();
+            generatedGraph = false;
+                
+            // Grayed text
+            if (coloredGraphList.Count != 1)
+            {
+                classPropertiesLabel.ForeColor = Color.LightGray;
+                isCyclicGraphPropertiesLabel.ForeColor = Color.LightGray;
+                isRegularGraphPropertiesLabel.ForeColor = Color.LightGray;
+                countCutVerticesGraphPropertiesLabel.ForeColor = Color.LightGray;
+                countBridgesGraphPropertiesLabel.ForeColor = Color.LightGray;
+                cayleysFormulaGraphPropertiesLabel.ForeColor = Color.LightGray;
+                isEulerianGraphPropertiesLabel.ForeColor = Color.LightGray;
             }
+                
+            // Get graph properties - default
+            countVerticesValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountVertices().ToString();
+            countEdgesValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountEdges().ToString();
+            circuitRankValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCircuitRank().ToString();
+            countComponentValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountComponents().ToString();
+            isConnectedValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetIsConnected().ToString();
+                
+            SetStatusLabel("The file has been loaded.");
         }
 
         private void colorGraphPlanScheduleButton_Click(object sender, EventArgs e)
@@ -287,7 +484,6 @@ namespace GraphColoring.GUI
 
             try
             {
-
                 SetStatusLabel("The graph is coloring!");
 
                 // Reset colored graph
@@ -297,6 +493,12 @@ namespace GraphColoring.GUI
                         coloredGraph.DeinicializationColoredGraph();
                 }
 
+                // Disable buttons
+                SetEnableLoadGraphButton(false);
+                SetEnableSaveGraphButton(false);
+                SetEnableGenerateGraphButton(false);
+                SetEnableColorGraphPlanScheduleButton(false);
+
                 // Algorithm
                 graphColoringAlgorithmEnum = algorithmListBoxList[algorithmListBox.SelectedIndex];
                 computationThread = new Thread(() =>
@@ -305,20 +507,28 @@ namespace GraphColoring.GUI
                     {
                         GraphColoringAlgorithm.IGraphColoringAlgorithmInterface algorithm = InitializeGraphColoringAlgorithm(graphColoringAlgorithmEnum, graph);
                         algorithm.Color();
+
+                        // Get count of used colors
+                        int maxCountOfUsedColors = 0;
+                        coloredGraphList.ForEach(coloredGraph => { if (maxCountOfUsedColors < coloredGraph.GetCountUsedColors()) maxCountOfUsedColors = coloredGraph.GetCountUsedColors(); });
+                        SetCountOfUsedColorsValueGraphPropertiesLabel(maxCountOfUsedColors.ToString());
+
+                        // TODO ShowGraph
+                        ShowGraph();
+                        visualizationThread.Join();
+
+                        SetEnableLoadGraphButton(true);
+                        SetEnableSaveGraphButton(true);
+                        SetEnableGenerateGraphButton(true);
+                        SetEnableColorGraphPlanScheduleButton(true);
+
+                        SetStatusLabel("The graph has been colored!");
                     });
-                });
-                computationThread.IsBackground = true;
+                })
+                {
+                    IsBackground = true
+                };
                 computationThread.Start();
-                computationThread.Join();
-
-                // Get count of used colors
-                int maxCountOfUsedColors = 0;
-                coloredGraphList.ForEach(coloredGraph => { if (maxCountOfUsedColors < coloredGraph.GetCountUsedColors()) maxCountOfUsedColors = coloredGraph.GetCountUsedColors(); });
-                countOfUsedColorsValueGraphPropertiesLabel.Text = maxCountOfUsedColors.ToString();
-
-                ShowGraph();
-
-                SetStatusLabel("The graph has been colored!");
             }
             catch (Exception ex)
             {
@@ -327,10 +537,8 @@ namespace GraphColoring.GUI
                     ShowMessageBox("Error | Something wrong", "Something wrong. The graph isn't colored! Try it again! \n" + ex.GetType().Name);
                     SetStatusLabel("The file has not been loaded.");
                 }
-                else
-                    ;
 
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.ToString());
             }
         }
         
@@ -340,6 +548,12 @@ namespace GraphColoring.GUI
             {
                 ShowMessageBox("Error | No graph loaded", "Please load a file with graph which you want to color!");
                 SetStatusLabel("The file has not been loaded.");
+                return;
+            }
+
+            if (generatedGraph)
+            {
+                ShowMessageBox("Error | Generated graph", "You can't save a generated graph!");
                 return;
             }
 
@@ -381,11 +595,13 @@ namespace GraphColoring.GUI
                 return;
             }
 
-            // Varianle
-            string classType = "", isRegular = "", isCyclic = "", maximumVertexDegree = "", minimumVertexDegree = "", averageVertexDegree = "", countOfCutVertices = "", countOfBridges = "", grith = "", cayleysFormula = "", isEulerian = "";
-            
+            SetStatusLabel("Properties are calculating.");
+
             propertyThread = new Thread(() =>
             {
+                // Variable
+                string classType = "", isRegular = "", isCyclic = "", maximumVertexDegree = "", minimumVertexDegree = "", averageVertexDegree = "", countOfCutVertices = "", countOfBridges = "", grith = "", cayleysFormula = "", isEulerian = "";
+
                 if (graph.GetGraphProperty().GetIsConnected())
                 {
                     classType = Graph.GraphClass.GraphClass.GetGraphClass(graph).ToString();
@@ -396,46 +612,130 @@ namespace GraphColoring.GUI
                     cayleysFormula = graph.GetGraphProperty().GetCayleysFormula().ToString();
                     isEulerian = graph.GetGraphProperty().GetIsEulerian().ToString();
                 }
-                
+
                 maximumVertexDegree = graph.GetGraphProperty().GetMaximumVertexDegree().ToString();
                 minimumVertexDegree = graph.GetGraphProperty().GetMinimumVertexDegree().ToString();
                 averageVertexDegree = graph.GetGraphProperty().GetAverageVertexDegree().ToString();
                 grith = graph.GetGraphProperty().GetGirth().ToString();
-            });
-            
-            propertyThread.IsBackground = true;
+
+                // Display
+                SetClassValuePropertiesLabel(classType);
+                SetIsCyclicValueGraphPropertiesLabel(isCyclic);
+                SetIsRegularValueGraphPropertiesLabel(isRegular);
+                SetCountCutVerticesValueGraphPropertiesLabel(countOfCutVertices);
+                SetCountBridgesValueGraphPropertiesLabel(countOfBridges);
+                SetCayleysFormulaValueGraphPropertiesLabel(cayleysFormula);
+                SetIsEulerianValueGraphPropertiesLabel(isEulerian);
+                SetMaximumVertexDegreeValueGraphPropertiesLabel(maximumVertexDegree);
+                SetMinimumVertexDegreeValueGraphPropertiesLabel(minimumVertexDegree);
+                SetAverageVertexDegreeValueGraphPropertiesLabel(averageVertexDegree);
+                SetGrithValueGraphPropertiesLabel(grith);
+
+                SetStatusLabel("Properties have been calculated!");
+            })
+            {
+                IsBackground = true
+            };
             propertyThread.Start();
-            
-
-            propertyThread.Join();
-            classValuePropertiesLabel.Text = classType;
-            isRegularValueGraphPropertiesLabel.Text = isRegular;
-            isCyclicValueGraphPropertiesLabel.Text = isCyclic;
-            maximumVertexDegreeValueGraphPropertiesLabel.Text = maximumVertexDegree;
-            minimumVertexDegreeValueGraphPropertiesLabel.Text = minimumVertexDegree;
-            averageVertexDegreeValueGraphPropertiesLabel.Text = averageVertexDegree;
-            countCutVerticesValueGraphPropertiesLabel.Text = countOfCutVertices;
-            countBridgesValueGraphPropertiesLabel.Text = countOfBridges;
-            grithValueGraphPropertiesLabel.Text = grith;
-            cayleysFormulaValueGraphPropertiesLabel.Text = cayleysFormula;
-            isEulerianValueGraphPropertiesLabel.Text = isEulerian;
-
-            SetStatusLabel("Properties have been calculated!");
         }
         
         private void resetButton_Click(object sender, EventArgs e)
         {
+            // Thread
+            if (loadGraphThread != null)
+                loadGraphThread.Abort();
+            if (propertyThread != null)
+                propertyThread.Abort();
+            if (computationThread != null)
+                computationThread.Abort();
+            if (visualizationThread != null)
+                visualizationThread.Abort();
+
+            // Enable buttons
+            SetEnableLoadGraphButton(true);
+            SetEnableSaveGraphButton(true);
+            SetEnableGenerateGraphButton(true);
+            SetEnableColorGraphPlanScheduleButton(true);
+
+            // Core
             path = null;
             graph = null;
             coloredGraph = null;
             graphList = null;
             coloredGraphList = null;
-
             drawGraphPictureBox.Image = null;
-
             ResetProperty();
+            generatedGraph = false;
             SetStatusLabel("");
         }
+        
+        private void generateGraphButton_Click(object sender, EventArgs e)
+        {
+            // Variable
+            int countOfVertices;
+            GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum graphDensity;
+
+            // Get count of vertices
+            countOfVertices = (int)countOfVerticesGenerateGraphLabelNumericUpDown.Value;
+
+            // Get graph density
+            graphDensity = (GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum)graphDensityGenerateGraphComboBox.SelectedItem;
+            GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(countOfVertices, graphDensity);
+            
+            SetStatusLabel("The graph is generating.");
+            
+            loadGraphThread = new Thread(() =>
+            {
+                graph = erdosRenyiModel.GenerateGraph();
+                coloredGraph = graph.GetColoredGraph();
+                graphList = graph.GetGraphProperty().GetComponents();
+
+                coloredGraphList = new List<Graph.IColoredGraphInterface>();
+                foreach (Graph.IGraphInterface graph in graphList)
+                {
+                    coloredGraphList.Add(graph.GetColoredGraph());
+                }
+
+                // Graph is connected
+                if (coloredGraphList.Count == 1)
+                {
+                    graphList[0] = graph;
+                    coloredGraphList[0] = coloredGraph;
+                }
+            })
+            {
+                IsBackground = true
+            };
+            loadGraphThread.Start();
+            loadGraphThread.Join();
+
+            ShowGraph();
+
+            ResetProperty();
+            generatedGraph = true;
+            
+            // Grayed text
+            if (coloredGraphList.Count != 1)
+            {
+                classPropertiesLabel.ForeColor = Color.LightGray;
+                isCyclicGraphPropertiesLabel.ForeColor = Color.LightGray;
+                isRegularGraphPropertiesLabel.ForeColor = Color.LightGray;
+                countCutVerticesGraphPropertiesLabel.ForeColor = Color.LightGray;
+                countBridgesGraphPropertiesLabel.ForeColor = Color.LightGray;
+                cayleysFormulaGraphPropertiesLabel.ForeColor = Color.LightGray;
+                isEulerianGraphPropertiesLabel.ForeColor = Color.LightGray;
+            }
+            
+            // Get graph properties - default
+            countVerticesValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountVertices().ToString();
+            countEdgesValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountEdges().ToString();
+            circuitRankValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCircuitRank().ToString();
+            countComponentValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountComponents().ToString();
+            isConnectedValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetIsConnected().ToString();
+
+            SetStatusLabel("The graph has been generated!");
+        }
+        #endregion
 
         // Property - click
         #region

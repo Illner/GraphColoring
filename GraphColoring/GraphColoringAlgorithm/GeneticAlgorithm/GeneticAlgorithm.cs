@@ -273,6 +273,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             int secondPoint;
             Graph.IVertexInterface vertex;
 
+            if (state.Count == 1)
+                return;
+
             firstPoint = random.Next(0, stateSize);
             secondPoint = random.Next(0, stateSize);
 
@@ -288,8 +291,11 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
 	    private void AdjacentSwapMutation(ref List<Graph.IVertexInterface> state)
         {
             // Variable
-            int point;
+            int point = 0;
             Graph.IVertexInterface vertex;
+
+            if (state.Count == 1)
+                return;
 
             point = random.Next(0, stateSize - 1);
 
@@ -306,6 +312,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         {
             // Variable
             int firstPoint, secondPoint;
+
+            if (state.Count == 1)
+                return;
 
             firstPoint = random.Next(0, stateSize + 1);
             secondPoint = random.Next(0, stateSize + 1);

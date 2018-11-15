@@ -121,9 +121,15 @@ namespace GraphColoring.GUI
         /// New thread (visualizationThread)
         /// </summary>
         private void ShowGraph()
-        {
+        {/*
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action(() => ShowGraph()));
+                return;
+            }*/
             GraphVisualization.GraphVisualization graphVisualization = new GraphVisualization.GraphVisualization(graphList);
             
+            //Thread.Sleep(1000);
             // Thread
             visualizationThread = new Thread(() =>
             {
@@ -132,6 +138,9 @@ namespace GraphColoring.GUI
             });
             visualizationThread.IsBackground = true;
             visualizationThread.Start();
+
+            // If we colored graph, we need enable colorButton - Color function doesnt do it!
+            SetEnableColorGraphPlanScheduleButton(true);
         }
 
         /// <summary>
@@ -483,26 +492,26 @@ namespace GraphColoring.GUI
             }
 
             try
-            {
-                SetStatusLabel("The graph is coloring!");
-
-                // Reset colored graph
-                foreach (Graph.IColoredGraphInterface coloredGraph in coloredGraphList)
-                {
-                    if (coloredGraph.GetIsInicializedColoredGraph())
-                        coloredGraph.DeinicializationColoredGraph();
-                }
-
+            {    
                 // Disable buttons
+                SetEnableColorGraphPlanScheduleButton(false);
                 SetEnableLoadGraphButton(false);
                 SetEnableSaveGraphButton(false);
                 SetEnableGenerateGraphButton(false);
-                SetEnableColorGraphPlanScheduleButton(false);
+
+                SetStatusLabel("The graph is coloring!");
 
                 // Algorithm
                 graphColoringAlgorithmEnum = algorithmListBoxList[algorithmListBox.SelectedIndex];
                 computationThread = new Thread(() =>
                 {
+                    // Reset colored graph
+                    foreach (Graph.IColoredGraphInterface coloredGraph in coloredGraphList)
+                    {
+                        if (coloredGraph.GetIsInicializedColoredGraph())
+                            coloredGraph.DeinicializationColoredGraph();
+                    }
+
                     graphList.ForEach(graph =>
                     {
                         GraphColoringAlgorithm.IGraphColoringAlgorithmInterface algorithm = InitializeGraphColoringAlgorithm(graphColoringAlgorithmEnum, graph);
@@ -513,17 +522,16 @@ namespace GraphColoring.GUI
                         coloredGraphList.ForEach(coloredGraph => { if (maxCountOfUsedColors < coloredGraph.GetCountUsedColors()) maxCountOfUsedColors = coloredGraph.GetCountUsedColors(); });
                         SetCountOfUsedColorsValueGraphPropertiesLabel(maxCountOfUsedColors.ToString());
 
-                        // TODO ShowGraph
-                        ShowGraph();
-                        visualizationThread.Join();
+                        Thread.Sleep(100);
 
                         SetEnableLoadGraphButton(true);
                         SetEnableSaveGraphButton(true);
                         SetEnableGenerateGraphButton(true);
-                        SetEnableColorGraphPlanScheduleButton(true);
 
                         SetStatusLabel("The graph has been colored!");
                     });
+
+                    ShowGraph();
                 })
                 {
                     IsBackground = true
@@ -675,6 +683,9 @@ namespace GraphColoring.GUI
             int countOfVertices;
             GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum graphDensity;
 
+            // Disable button
+            SetEnableGenerateGraphButton(false);
+
             // Get count of vertices
             countOfVertices = (int)countOfVerticesGenerateGraphLabelNumericUpDown.Value;
 
@@ -734,6 +745,10 @@ namespace GraphColoring.GUI
             isConnectedValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetIsConnected().ToString();
 
             SetStatusLabel("The graph has been generated!");
+
+            Thread.Sleep(100);
+            // Disable button
+            SetEnableGenerateGraphButton(true);
         }
         #endregion
 

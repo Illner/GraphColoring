@@ -143,9 +143,8 @@ namespace GraphColoring.Tests
             stringBuilder = test.Test();
 
             // :(
-            stringBuilder.AppendLine();
-            stringBuilder.AppendLine();
-            stringBuilder.AppendLine();
+            if (consolePrint)
+                stringBuilder.AppendLine();
 
             if (consolePrint)
             {

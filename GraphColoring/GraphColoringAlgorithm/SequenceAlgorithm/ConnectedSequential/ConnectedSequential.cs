@@ -13,6 +13,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         public ConnectedSequential(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Connected sequenctial algorithm";
+            interchange = false;
         }
         #endregion
 

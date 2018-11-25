@@ -52,20 +52,26 @@ namespace GraphColoring.GraphVisualization
         public string Convert()
         {
             stringBuilder = new StringBuilder();
-            
+
             // Sceleton
             if (graphList.Count == 0)
                 stringBuilder.AppendLine("graph");
             else
-                stringBuilder.AppendLine("graph " + graphList[0].GetName());
+                stringBuilder.AppendLine("graph \"" + graphList[0].GetName() + "\"");
             stringBuilder.AppendLine("{");
 
             foreach (Graph.IGraphInterface graph in graphList)
             {
+                if (graph.GetGraphProperty().GetCountVertices() == 0)
+                    continue;
+
                 // Vertices
                 string text;
                 int vertexDegree;
-                bool useColor = graph.GetColoredGraph().GetCountUsedColors() < MAXCOLORS ? true : false;
+                bool useColor = false;
+                    
+                if (graph.GetColoredGraph().GetIsInicializedColoredGraph())
+                    useColor = graph.GetColoredGraph().GetCountUsedColors() < MAXCOLORS ? true : false;
 
                 // Graph properties
                 verticesList = graph.AllVertices();
@@ -78,10 +84,10 @@ namespace GraphColoring.GraphVisualization
                 stringBuilder.AppendLine("node[style = filled shape = circle fillcolor = " + fillColorDefault + "]");
                 foreach (Graph.IVertexInterface vertex in verticesList)
                 {
-                    text = "";
+                    text = "\"";
                     vertexDegree = graph.CountNeighbours(vertex);
 
-                    text += vertex.GetUserName() + " [";
+                    text += vertex.GetUserName() + "\" [";
                     
                     if (vertexDegree == minimumDegree)
                         text += "shape = doublecircle ";
@@ -114,7 +120,7 @@ namespace GraphColoring.GraphVisualization
                             continue;
 
                         // Neighbour has not been writed
-                        stringBuilder.AppendLine(vertex.GetUserName() + " --  " + neighbour.GetUserName());
+                        stringBuilder.AppendLine("\"" + vertex.GetUserName() + "\" --  \"" + neighbour.GetUserName() + "\"");
                         //Console.WriteLine(bridgesList.Count);
 
                         if (bridgesList.Any(e => ((e.GetVertex1().Equals(vertex) && e.GetVertex2().Equals(neighbour)) ||

@@ -11,6 +11,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         // Variable
         #region
         protected List<Graph.IVertexInterface> vertexSequenceList;
+        protected bool interchange;
         #endregion
 
         // Constructor
@@ -42,8 +43,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
             if (vertexSequenceList.Distinct().Count() != vertexSequenceList.Count())
                 throw new MyException.GraphColoringAlgorithmException.AlgorithmInvalidVertexSequence();
 
-            coloredGraph.GreedyColoring(vertexSequenceList);
-
+            coloredGraph.GreedyColoring(vertexSequenceList, interchange);
             bool isColored = coloredGraph.InicializeColoredGraph();
 
             if (!isColored)
@@ -54,15 +54,6 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         /// Vytvoří posloupnost vrcholů
         /// </summary>
         protected abstract void CreateVertexSequence();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected void TryChangeColoring()
-        {
-            // TODO TryChangeColoring - R1807
-
-        }
         #endregion
 
         // Property

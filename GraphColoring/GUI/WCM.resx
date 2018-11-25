@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ColorGraphErrorStatus" xml:space="preserve">
+    <value>The graph has not been colored!</value>
+  </data>
+  <data name="ColorGraphNoSelectedAlgorithm" xml:space="preserve">
+    <value>An algorithm is not selected. Please select some!</value>
+  </data>
+  <data name="ColorGraphNoSelectedAlgorithmTitle" xml:space="preserve">
+    <value>No selected algorithm</value>
+  </data>
+  <data name="ColorGraphProgressStatus" xml:space="preserve">
+    <value>The graph is coloring!</value>
+  </data>
+  <data name="ColorGraphSomethingWrong" xml:space="preserve">
+    <value>Something wrong. The graph isn't colored! Try it again!</value>
+  </data>
+  <data name="ColorGraphSomethingWrongStatus" xml:space="preserve">
+    <value>The graph has not been colored!</value>
+  </data>
+  <data name="ColorGraphSomethingWrongTitle" xml:space="preserve">
+    <value>Something wrong</value>
+  </data>
+  <data name="ColorGraphStatus" xml:space="preserve">
+    <value>The graph has been colored.</value>
+  </data>
+  <data name="ComplementGraphProgressStatus" xml:space="preserve">
+    <value>It's creating complement graph.</value>
+  </data>
+  <data name="ComplementGraphStatus" xml:space="preserve">
+    <value>The complement graph has been created.</value>
+  </data>
+  <data name="GenerateGraphProgressStatus" xml:space="preserve">
+    <value>The graph is generating.</value>
+  </data>
+  <data name="GenerateGraphStatus" xml:space="preserve">
+    <value>The graph has been generated.</value>
+  </data>
+  <data name="GraphModificationDeleteVertexOne" xml:space="preserve">
+    <value>You can't remove the last vertex in the graph!</value>
+  </data>
+  <data name="GraphModificationDeleteVertexOneTitle" xml:space="preserve">
+    <value>Can't remove vertex</value>
+  </data>
+  <data name="GraphModificationEdgeAlreadyExists" xml:space="preserve">
+    <value>Edge already exists. Please choose another vertices names!</value>
+  </data>
+  <data name="GraphModificationEdgeAlreadyExistsTitle" xml:space="preserve">
+    <value>Edge already exists</value>
+  </data>
+  <data name="GraphModificationEdgeDoesntExist" xml:space="preserve">
+    <value>Edge doesn't exist. Please select another vertices names!</value>
+  </data>
+  <data name="GraphModificationEdgeDoesntExistTitle" xml:space="preserve">
+    <value>Edge doesn't exist</value>
+  </data>
+  <data name="GraphModificationEdgeDoesntInserted" xml:space="preserve">
+    <value>Please insert vertices names for graph modification!</value>
+  </data>
+  <data name="GraphModificationEdgeDoesntInsertedTitle" xml:space="preserve">
+    <value>No vertices name inserted</value>
+  </data>
+  <data name="GraphModificationProgressStatus" xml:space="preserve">
+    <value>The graph is being modified</value>
+  </data>
+  <data name="GraphModificationStatus" xml:space="preserve">
+    <value>The graph has been modified</value>
+  </data>
+  <data name="GraphModificationVertexAlreadyExists" xml:space="preserve">
+    <value>Vertex already exists. Please choose another vertex name!</value>
+  </data>
+  <data name="GraphModificationVertexAlreadyExistsTitle" xml:space="preserve">
+    <value>Vertex already exists</value>
+  </data>
+  <data name="GraphModificationVertexDoesntExist" xml:space="preserve">
+    <value>Vertex doesn't exist. Please select another vertex name!</value>
+  </data>
+  <data name="GraphModificationVertexDoesntExistTitle" xml:space="preserve">
+    <value>Vertex doesn't exist</value>
+  </data>
+  <data name="GraphModificationVertexDoesntInserted" xml:space="preserve">
+    <value>Please insert vertex name for graph modification!</value>
+  </data>
+  <data name="GraphModificationVertexDoesntInsertedTitle" xml:space="preserve">
+    <value>No vertex name inserted</value>
+  </data>
+  <data name="GraphModificationVertexSuppressionInvalidVertex" xml:space="preserve">
+    <value>You choose invalid vertex for this operation!</value>
+  </data>
+  <data name="GraphModificationVertexSuppressionInvalidVertexTitle" xml:space="preserve">
+    <value>Invalid vertex</value>
+  </data>
+  <data name="GraphNoExists" xml:space="preserve">
+    <value>Please load a file with graph which you want to color!</value>
+  </data>
+  <data name="GraphNoExistsTitle" xml:space="preserve">
+    <value>Graph no loaded</value>
+  </data>
+  <data name="LineGraphProgressStatus" xml:space="preserve">
+    <value>It's creating line graph.</value>
+  </data>
+  <data name="LineGraphStatus" xml:space="preserve">
+    <value>The line graph has been created.</value>
+  </data>
+  <data name="LoadGraphInvalidFile" xml:space="preserve">
+    <value>The file is invalid. Please load another one!</value>
+  </data>
+  <data name="LoadGraphInvalidFileStatus" xml:space="preserve">
+    <value>The file has not been loaded!</value>
+  </data>
+  <data name="LoadGraphInvalidFileTitle" xml:space="preserve">
+    <value>Invalid file</value>
+  </data>
+  <data name="LoadGraphInvalidGraph" xml:space="preserve">
+    <value>The graph is invalid. Please load another one!</value>
+  </data>
+  <data name="LoadGraphInvalidGraphStatus" xml:space="preserve">
+    <value>The graph has not been loaded.</value>
+  </data>
+  <data name="LoadGraphInvalidGraphTitle" xml:space="preserve">
+    <value>Invalid graph</value>
+  </data>
+  <data name="LoadGraphInvalidPath" xml:space="preserve">
+    <value>Path doesn't exist! The graph has not been loaded!</value>
+  </data>
+  <data name="LoadGraphInvalidPathStatus" xml:space="preserve">
+    <value>The graph has not been loaded!</value>
+  </data>
+  <data name="LoadGraphInvalidPathTitle" xml:space="preserve">
+    <value>Invalid path</value>
+  </data>
+  <data name="LoadGraphInvalidType" xml:space="preserve">
+    <value>We don't support these files. We support only files with .graph.</value>
+  </data>
+  <data name="LoadGraphInvalidTypeStatus" xml:space="preserve">
+    <value>The graph has not been loaded!</value>
+  </data>
+  <data name="LoadGraphInvalidTypeTitle" xml:space="preserve">
+    <value>Invalid file type</value>
+  </data>
+  <data name="LoadGraphProgressStatus" xml:space="preserve">
+    <value>The graph is loading!</value>
+  </data>
+  <data name="LoadGraphStatus" xml:space="preserve">
+    <value>The graph has been loaded.</value>
+  </data>
+  <data name="NewGraphProgressStatus" xml:space="preserve">
+    <value>The graph is creating.</value>
+  </data>
+  <data name="NewGraphStatus" xml:space="preserve">
+    <value>The graph has been created.</value>
+  </data>
+  <data name="PropertyProgressStatus" xml:space="preserve">
+    <value>Properties are calculating.</value>
+  </data>
+  <data name="PropertyStatus" xml:space="preserve">
+    <value>Properties have been calculated.</value>
+  </data>
+  <data name="WriteGraph" xml:space="preserve">
+    <value>The graph has been saved.</value>
+  </data>
+  <data name="WriteGraphInvalidPath" xml:space="preserve">
+    <value>Path doesn't exist! The graph has not been saved!</value>
+  </data>
+  <data name="WriteGraphInvalidPathStatus" xml:space="preserve">
+    <value>The graph has not been saved!</value>
+  </data>
+  <data name="WriteGraphInvalidPathTitle" xml:space="preserve">
+    <value>Invalid path</value>
+  </data>
+  <data name="WriteGraphProgressStatus" xml:space="preserve">
+    <value>The graph is saving</value>
+  </data>
+  <data name="WriteGraphSomethingWrong" xml:space="preserve">
+    <value>Something wrong. The graph has not been saved! Try it again!</value>
+  </data>
+  <data name="WriteGraphSomethingWrongStatus" xml:space="preserve">
+    <value>The graph has not been saved!</value>
+  </data>
+  <data name="WriteGraphSomethingWrongTitle" xml:space="preserve">
+    <value>Something wrong</value>
+  </data>
+  <data name="WriteGraphStatus" xml:space="preserve">
+    <value>The graph has been saved.</value>
+  </data>
+  <data name="WriteGraphTitle" xml:space="preserve">
+    <value>Saved graph</value>
+  </data>
+</root>

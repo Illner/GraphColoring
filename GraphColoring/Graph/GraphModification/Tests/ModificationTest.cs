@@ -112,79 +112,70 @@ namespace GraphColoring.Graph.GraphModification.Tests
         private void Valid(IGraphInterface graph)
         {
             // Variable
-            IVertexInterface vertex1 = new Vertex("Vrchol 1");
-            IVertexInterface vertex2 = new Vertex("Vrchol 2");
-            IVertexInterface vertex3 = new Vertex("Vrchol 3");
             List<IVertexInterface> vertexList = graph.AllVertices();
-            IVertexInterface lastVertex = vertexList.Last();
-            List<IVertexInterface> vertex2DegreeList = new List<IVertexInterface>();
 
-            graph.VertexAdd(vertex1);
-            graph.VertexAdd(vertex2);
-            graph.VertexAdd(vertex3);
-            
-            graph.EdgeAdd(new Edge(vertex1, vertex2));
-            graph.EdgeAdd(new Edge(vertex2, vertex3));
-            graph.EdgeAdd(new Edge(vertex1, vertexList.First()));
-            graph.EdgeAdd(new Edge(vertex3, vertexList.First()));
-            graph.EdgeAdd(new Edge(vertex1, vertexList.Last()));
-            graph.EdgeAdd(new Edge(vertex3, vertexList.Last()));
-
-            graph.VertexSuppression(vertex2);
-            
-            graph.EdgeContract(new Edge(vertex1, vertex3));
-
-            graph.VertexContract(lastVertex);
+            graph.VertexContraction(vertexList.First());
             vertexList = graph.AllVertices();
 
-            graph.EdgeContract(new Edge(vertexList.First(), vertexList.Last()));
+            graph.VertexSuppression(vertexList.First());
             vertexList = graph.AllVertices();
 
-            graph.VertexDelete(vertexList.First());
-            
-            vertexList = graph.AllVertices();
-            graph.EdgeDelete(new Edge(vertexList.First(), vertexList.Last()));
-
-            graph.VertexContract(vertexList.First());
-            graph.VertexDelete(vertexList.Last());
+            graph.VertexExpansion(vertexList.First());
             vertexList = graph.AllVertices();
 
-            graph.EdgeSubdivision(new Edge(vertexList.First(), vertexList.Last()));
-            vertexList = graph.AllVertices();
-
-            graph.VertexContract(vertexList.First());
-            vertexList = graph.AllVertices();
-
-            graph.EdgeContract(new Edge(vertexList.First(), vertexList.Last()));
+            graph.VertexSuppression(vertexList.Last());
             vertexList = graph.AllVertices();
 
             graph.VertexDelete(vertexList.First());
             vertexList = graph.AllVertices();
 
-            graph.VertexAdd(new Vertex());
+            graph.VertexSuppression(vertexList.Last());
             vertexList = graph.AllVertices();
 
-            graph.VertexContract(vertexList.First());
-            graph.VertexAdd(new Vertex());
+            IVertexInterface v1 = new Vertex("V1");
+            graph.VertexAdd(v1);
             vertexList = graph.AllVertices();
 
-            graph.EdgeAdd(new Edge(vertexList.First(), vertexList.Last()));
-            graph.EdgeDelete(new Edge(vertexList.First(), vertexList.Last()));
-            graph.EdgeAdd(new Edge(vertexList.First(), vertexList.Last()));
+            graph.EdgeAdd(new Edge(vertexList.First(), v1));
+            vertexList = graph.AllVertices();
 
-            graph.EdgeContract(new Edge(vertexList.First(), vertexList.Last()));
+            graph.VertexContraction(v1);
+            vertexList = graph.AllVertices();
+
+            graph.EdgeSubdivision(new Edge(vertexList.First(), vertexList.Skip(1).First()));
+            vertexList = graph.AllVertices();
+
+            graph.EdgeAdd(new Edge(vertexList.First(), vertexList.Skip(1).First()));
+            vertexList = graph.AllVertices();
+
+            graph.EdgeContraction(new Edge(vertexList.First(), vertexList.Skip(1).First()));
+            vertexList = graph.AllVertices();
+
+            graph.EdgeDelete(new Edge(vertexList.First(), vertexList.Skip(1).First()));
+            vertexList = graph.AllVertices();
+
+            graph.VertexDelete(vertexList.Skip(1).First());
+            vertexList = graph.AllVertices();
+
+            graph.VertexSuppression(vertexList.First());
+            vertexList = graph.AllVertices();
+
+            graph.VertexDelete(vertexList.First());
             vertexList = graph.AllVertices();
 
             graph.VertexExpansion(vertexList.First());
             vertexList = graph.AllVertices();
 
-            graph.VertexExpansion(vertexList.First());
-            vertexList = graph.AllVertices();
-            graph.VertexAdd(new Vertex());
+            graph.EdgeContraction(new Edge(vertexList.First(), vertexList.Skip(1).First()));
             vertexList = graph.AllVertices();
 
-            graph.EdgeAdd(new Edge(vertexList.First(), vertexList.Last()));
-            graph.VertexExpansion(vertexList.First());
+            IVertexInterface v2 = new Vertex("V2");
+            graph.VertexAdd(v2);
+            vertexList = graph.AllVertices();
+
+            graph.VertexDelete(vertexList.Skip(1).First());
+
+            graph.VertexAdd(new Vertex("V3"));
         }
 
         private void Invalid(IGraphInterface graph)
@@ -210,7 +201,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
             // Vertex contract
             stringBuilder.AppendLine("Vertex contract");
             stringBuilder.AppendLine("Vertex doesn't exist");
-            try { graph.VertexContract(new Vertex()); }
+            try { graph.VertexContraction(new Vertex()); }
             catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Vertex suppression
@@ -243,7 +234,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
             // Edge contract 
             stringBuilder.AppendLine("Edge contract");
             stringBuilder.AppendLine("Edge doesn't exist");
-            try { graph.EdgeContract(new Edge(new Vertex(), new Vertex())); }
+            try { graph.EdgeContraction(new Edge(new Vertex(), new Vertex())); }
             catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // Edge subdivision

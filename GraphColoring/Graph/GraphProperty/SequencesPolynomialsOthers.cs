@@ -35,7 +35,7 @@ namespace GraphColoring.Graph.GraphProperty
         #region
         /// <summary>
         /// Získá skóre grafu
-        /// degreeSequence
+        /// degreeSequenceInt, degreeSequenceVertex
         /// Time complexity: O(V^2) / O(V)
         /// Space complexity: O(V)
         /// </summary>
@@ -128,6 +128,7 @@ namespace GraphColoring.Graph.GraphProperty
         private void BridgesCutVertices()
         {
             // Variable
+            timeBridgesCutVertices = 0;
             List<IVertexInterface> allVertices;
             cutVertices = new List<IVertexInterface>();
             bridges = new List<IEdgeInterface>();

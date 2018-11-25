@@ -15,9 +15,14 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
 
         // Constructor
         #region
-        public LargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
+        public LargestFirstSequence(Graph.IGraphInterface graph, bool interchange = false) : base(graph)
         {
             name = "Largest first sequence algorithm";
+
+            // Interchange
+            this.interchange = interchange;
+            if (interchange)
+                name = "Largest first sequence interchange algorithm";
         }
         #endregion
 

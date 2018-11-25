@@ -16,16 +16,18 @@ namespace GraphColoring.Graph
         IVertexInterface GetFirstVertex();
         void FullGenerateVertices();
         bool ExistsVertex(IVertexInterface vertex);
+        bool ExistsUserName(string userName);
         bool ExistsEdge(IEdgeInterface edge);
 
+        // Graph modification
         void VertexAdd(IVertexInterface vertex);
         void VertexDelete(IVertexInterface vertex);
-        void VertexContract(IVertexInterface vertex);
+        void VertexContraction(IVertexInterface vertex);
         void VertexSuppression(IVertexInterface vertex);
         void VertexExpansion(IVertexInterface vertex);
         void EdgeAdd(IEdgeInterface edge);
         void EdgeDelete(IEdgeInterface edge);
-        void EdgeContract(IEdgeInterface edge);
+        void EdgeContraction(IEdgeInterface edge);
         void EdgeSubdivision(IEdgeInterface edge);
         #endregion
 

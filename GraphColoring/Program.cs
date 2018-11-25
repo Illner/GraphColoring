@@ -11,34 +11,34 @@ namespace GraphColoring
     class Program
     {
         [STAThread]
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
+            /*
+            Tests.Tests tests = new Tests.Tests(true);
+            tests.Test();
+            */
+
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
             
-          
-            /*
-            Tests.Tests tests = new Tests.Tests(true);
-            tests.Test();
-            */
 
             /*
             Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
             Console.WriteLine(coloredGraphTest.Test(Graph.ColoredGraph.Tests.ColoredGraphTest.ColoredGraphEnum.valid));
             */
             //Tests.Tests tests = new Tests.Tests(false);
-            //tests.Test(Tests.Tests.TestEnum.convertGraphToDot);
-            
-            //ReaderWriter.ReaderGraph reader = new ReaderWriter.ReaderGraph(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence5), false);
+            //tests.Test(Tests.Tests.TestEnum.graphModification);
+            /*
+            ReaderWriter.ReaderGraph reader = new ReaderWriter.ReaderGraph(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence3), false);
             //ReaderWriter.Writer writer = new ReaderWriter.Writer(Tests.Tests.CreateTestFile(GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.Tests.SmallestLastSequenceResource.smallestLastSequence5), false);
 
-            //Graph.IGraphInterface graph = reader.ReadFile();
+            Graph.IGraphInterface graph = reader.ReadFile();
+            
+            Console.WriteLine(graph);
 
-
-            /*
-            GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm algorithm = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 100);
+            GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence algorithm = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, true);
 
             algorithm.Color();
             

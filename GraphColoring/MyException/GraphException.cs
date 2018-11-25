@@ -248,4 +248,17 @@ namespace GraphColoring.MyException.GraphException
 
         public ColoredGraphNotInitializationSaturation(string message, Exception inner) : base(message, inner) { }
     }
+
+    /// <summary>
+    /// Graph Exception
+    /// Graph has to have at least one vertex
+    /// </summary>
+    class GraphHasToHaveAtLeastOneVertexException : GraphException
+    {
+        public GraphHasToHaveAtLeastOneVertexException() { }
+
+        public GraphHasToHaveAtLeastOneVertexException(string message) : base(message) { }
+
+        public GraphHasToHaveAtLeastOneVertexException(string message, Exception inner) : base(message, inner) { }
+    }
 }

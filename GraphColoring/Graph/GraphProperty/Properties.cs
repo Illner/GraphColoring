@@ -70,6 +70,9 @@ namespace GraphColoring.Graph.GraphProperty
             int evenDegrees = 0;
             int oddDegrees = 0;
 
+            if (!GetIsConnected())
+                isEulerian = EulerianGraphEnum.notEulerian;
+
             if (degreeSequence == null)
                 DegreeSequence(false);
 

@@ -10,9 +10,14 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
     {
         // Constructor
         #region
-        public SmallestLastSequence(Graph.IGraphInterface graph) : base(graph)
+        public SmallestLastSequence(Graph.IGraphInterface graph, bool interchange = false) : base(graph)
         {
             name = "Smallest last sequence algorithm";
+
+            // Interchange
+            this.interchange = interchange;
+            if (interchange)
+                name = "Smallest last sequence interchange algorithm";
         }
         #endregion
 

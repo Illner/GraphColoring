@@ -61,11 +61,18 @@ namespace GraphColoring.Graph
         /// <param name="vertexExtended">vrchol, který chceme přidat</param>
         protected void AddVertexToAdjacencyList(VertexExtended vertexExtended)
         {
-            adjacencyList.Add(vertexExtended, new List<VertexExtended>());
-            mapping.Add(vertexExtended.GetIdentifier(), vertexExtended);
-            mappingUserName.Add(vertexExtended.GetUserName(), vertexExtended);
+            try
+            {
+                adjacencyList.Add(vertexExtended, new List<VertexExtended>());
+                mapping.Add(vertexExtended.GetIdentifier(), vertexExtended);
+                mappingUserName.Add(vertexExtended.GetUserName(), vertexExtended);
 
-            IncrementRealCountVertices();
+                IncrementRealCountVertices();
+            }
+            catch (ArgumentException)
+            {
+                throw new MyException.GraphException.GraphVertexAlreadyExistsException();
+            }
 
             if (graphProperty.GetCountVertices() < GetRealCountVertices())
                 throw new MyException.GraphException.GraphInvalidCountVerticesException();
@@ -250,6 +257,19 @@ namespace GraphColoring.Graph
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Return true, if vertex with userName exist, otherwise return false
+        /// </summary>
+        /// <param name="userName">The user name</param>
+        /// <returns>return true, if vertex exists, otherwise return false</returns>
+        public bool ExistsUserName(string userName)
+        {
+            if (!mappingUserName.TryGetValue(userName, out VertexExtended vertexExtended))
+                return false;
+
+            return true;
         }
 
         /// <summary>

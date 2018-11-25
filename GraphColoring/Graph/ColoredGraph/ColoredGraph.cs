@@ -141,7 +141,8 @@ namespace GraphColoring.Graph
             /// Pokud je graf inicializovaný, vrátí vyjímku ColoredGraphAlreadyInitializedException
             /// </summary>
             /// <param name="vertexList">daná posloupnost</param>
-            public void GreedyColoring(List<IVertexInterface> vertexList)
+            /// <param name="interchange">coloring with interchange</param>
+            public void GreedyColoring(List<IVertexInterface> vertexList, bool interchange = false)
             {
                 // Variable
                 VertexExtended vertexExtended;
@@ -154,7 +155,14 @@ namespace GraphColoring.Graph
                 foreach (IVertexInterface vertex in vertexList)
                 {
                     vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
-                    ColorVertex(vertex, GreedyColoring(vertex));
+                    int color = GreedyColoring(vertex);
+
+                    if (interchange && GetCountUsedColors() > 1 && (GetCountUsedColors() < color))
+                    {
+                        color = TryChangeColoring(vertex, color);
+                    }
+
+                    ColorVertex(vertex, color);
                 }
             }
 
@@ -517,6 +525,43 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
+            /// Return List of colors (except default color) which are used in neighbours of vertex
+            /// </summary>
+            /// <param name="vertex">The vertex</param>
+            /// <returns>List of colors</returns>
+            public List<int> ColorsNeighbours(IVertexInterface vertex)
+            {
+                HashSet<int> colorsHashSet = new HashSet<int>();
+                List<IVertexInterface> neighboursList = graph.Neighbours(vertex);
+
+                foreach(IVertexInterface neighbour in neighboursList)
+                {
+                    colorsHashSet.Add(neighbour.GetColor());
+                }
+
+                colorsHashSet.Remove(VertexExtended.GetDefaultColor());
+
+                return colorsHashSet.ToList();
+            }
+
+            /// <summary>
+            /// Return list of vertices which are neighbour of vertex and have color = color
+            /// </summary>
+            /// <param name="color">The color</param>
+            /// <param name="vertex">The vertex</param>
+            /// <returns>list of vertices</returns>
+            public List<IVertexInterface> ColoredNeighbours(int color, IVertexInterface vertex)
+            {
+                // Variable
+                List<IVertexInterface> vertexNeighbourList = new List<IVertexInterface>();
+                List<IVertexInterface> neighboursList = graph.Neighbours(vertex);
+
+                vertexNeighbourList = neighboursList.Where(neighbour => neighbour.GetColor() == color).ToList();
+
+                return vertexNeighbourList;
+            }
+
+            /// <summary>
             /// Pokud jsou všechny vrcholy grafu obarveny, tak vrátí true, jinak false
             /// </summary>
             /// <returns>true, pokud jsou všechny vrcholy grafu obarveny, jinak false</returns>
@@ -526,6 +571,80 @@ namespace GraphColoring.Graph
                     return true;
 
                 return false;
+            }
+
+            private int TryChangeColoring(IVertexInterface mainVertex, int color)
+            {
+                // Variable
+                bool connected;
+                int actualCountOfColors;
+                int color1, color2, color3;
+                Queue<IVertexInterface> vertexQueue;
+                List<IVertexInterface> neighboursList;
+                List<IVertexInterface> neighboursColorList;
+                HashSet<IVertexInterface> visitedVertexHashSet = null;
+                
+                neighboursList = graph.Neighbours(mainVertex);
+                connected = true;
+                color1 = VertexExtended.GetDefaultColor();
+                color2 = VertexExtended.GetDefaultColor();
+                actualCountOfColors = GetCountUsedColors();
+                
+                while (connected && color1 < actualCountOfColors)
+                {
+                    color1++;
+                    color2 = color1;
+
+                    while (connected && color2 < actualCountOfColors)
+                    {
+                        color2++;
+                        neighboursColorList = ColoredNeighbours(color1, mainVertex);
+                        visitedVertexHashSet = new HashSet<IVertexInterface>(neighboursColorList);
+                        vertexQueue = new Queue<IVertexInterface>(neighboursColorList);
+
+                        // Get bichromatic graph with color1 and color2
+                        while (vertexQueue.Count != 0)
+                        {
+                            IVertexInterface vertex = vertexQueue.Dequeue();
+
+                            if (vertex.GetColor() == color1)
+                                color3 = color2;
+                            else
+                                color3 = color1;
+
+                            neighboursColorList = ColoredNeighbours(color3, vertex);
+
+                            foreach(IVertexInterface neighbour in neighboursColorList)
+                            {
+                                if (!visitedVertexHashSet.Contains(neighbour))
+                                {
+                                    visitedVertexHashSet.Add(neighbour);
+                                    vertexQueue.Enqueue(neighbour);
+                                }
+                            }
+                        }
+
+                        // Check if exists path with color1 - ... - color2 => we can't change colors
+                        neighboursColorList = ColoredNeighbours(color2, mainVertex);
+                        connected = visitedVertexHashSet.Any(x => neighboursColorList.Contains(x));               
+                    }
+                }
+
+                // Path doesn't exist, we can change colors
+                if (!connected)
+                {
+                    foreach(IVertexInterface vertex in visitedVertexHashSet)
+                    {
+                        if (vertex.GetColor() == color1)
+                            ColorVertex(vertex, color2);
+                        else
+                            ColorVertex(vertex, color1);
+                    }
+
+                    color = color1;
+                }
+
+                return color;
             }
             #endregion
 

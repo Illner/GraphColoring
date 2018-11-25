@@ -164,7 +164,7 @@ namespace GraphColoring.GraphVisualization
                 if (e is DllNotFoundException || e is BadImageFormatException || e is MyException.GraphVisualizationException.GraphVisualizationException)
                     CreateImageGraphWithTest("Problem with GraphViz library! \nThe graph can't be visualizated!");
                 else
-                    throw;
+                    throw e;
             }
         }
 

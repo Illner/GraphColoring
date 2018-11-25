@@ -17,7 +17,7 @@ namespace GraphColoring.Graph
         public void VertexAdd(IVertexInterface vertex)
         {
             // Vertex exists
-            if (ExistsVertex(vertex))
+            if (ExistsVertex(vertex) || ExistsUserName(vertex.GetUserName()))
                 throw new MyException.GraphException.GraphVertexAlreadyExistsException();
 
             VertexExtended vertexExtended = new VertexExtended(vertex.GetIdentifier());
@@ -37,13 +37,15 @@ namespace GraphColoring.Graph
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().VertexAdd(vertex);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
         /// Odstraní vrchol z grafu
         /// ColoredGraph se deinicializuje
         /// Pokud vrchol neexistuje, vyvolá se výjimka GraphVertexDoesntExistException
+        /// If graph has only one vertex, throw GraphHasToHaveAtLeastOneVertexException
         /// Time complexity: O(V + E)
         /// </summary>
         /// <param name="removeVertex">vrchol, který chceme odstranit</param>
@@ -52,6 +54,11 @@ namespace GraphColoring.Graph
             // Vertex doesn't exist
             if (!ExistsVertex(removeVertex))
                 throw new MyException.GraphException.GraphVertexDoesntExistException();
+            
+            /*
+            if (GetGraphProperty().GetCountVertices() == 1)
+                throw new MyException.GraphException.GraphHasToHaveAtLeastOneVertexException();
+            */
 
             // Variable
             int count = 0;
@@ -73,6 +80,7 @@ namespace GraphColoring.Graph
             }
 
             mapping.Remove(removeVertex.GetIdentifier());
+            mappingUserName.Remove(removeVertex.GetUserName());
 
             DecrementRealCountVertices();
             
@@ -90,7 +98,8 @@ namespace GraphColoring.Graph
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().VertexDelete(removeVertex);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -99,7 +108,7 @@ namespace GraphColoring.Graph
         /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
         /// </summary>
         /// <param name="vertex">vrchol, který chceme kontrahovat</param>
-        public void VertexContract(IVertexInterface vertex)
+        public void VertexContraction(IVertexInterface vertex)
         {
             if (!ExistsVertex(vertex))
                 throw new MyException.GraphException.GraphVertexDoesntExistException();
@@ -139,11 +148,12 @@ namespace GraphColoring.Graph
                 VertexDelete(removeVertex);
 
                 // ColoredGraph
-                coloredGraph.RemoveVertexInHashSets(removeVertex);
+                // coloredGraph.RemoveVertexInHashSets(removeVertex);
             }
-
+            
             // Add vertex
             VertexAdd(newVertex);
+
             // ColoredGraph
             coloredGraph.AddVertexInHashSets(newVertex);
 
@@ -156,7 +166,8 @@ namespace GraphColoring.Graph
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().VertexContraction(vertex);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -181,17 +192,20 @@ namespace GraphColoring.Graph
             vertex2 = Neighbours(vertex).Last();
 
             VertexDelete(vertex);
-            // ColoredGraph
-            coloredGraph.RemoveVertexInHashSets(vertex);
 
-            EdgeAdd(new Edge(vertex1, vertex2));
+            // ColoredGraph
+            //coloredGraph.RemoveVertexInHashSets(vertex);
+
+            if(!ExistsEdge(new Edge(vertex1, vertex2)))
+                EdgeAdd(new Edge(vertex1, vertex2));
 
             // ColoredGraph
             if (coloredGraph.GetIsInicializedColoredGraph())
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().VertexSuppression(vertex);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -211,15 +225,18 @@ namespace GraphColoring.Graph
             List<IVertexInterface> neighboursList;
 
             neighboursList = Neighbours(vertex);
-
+            
             vertex1 = new Vertex(vertex.GetUserName() + " (1)");
             vertex2 = new Vertex(vertex.GetUserName() + " (2)");
-            VertexDelete(vertex);
-            // ColoredGraph
-            coloredGraph.RemoveVertexInHashSets(vertex);
 
             VertexAdd(vertex1);
             VertexAdd(vertex2);
+
+            VertexDelete(vertex);
+
+            // ColoredGraph
+            //coloredGraph.RemoveVertexInHashSets(vertex);
+
             // ColoredGraph
             coloredGraph.AddVertexInHashSets(vertex1);
             coloredGraph.AddVertexInHashSets(vertex2);
@@ -237,7 +254,8 @@ namespace GraphColoring.Graph
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().VertexExpansion(vertex);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -258,7 +276,8 @@ namespace GraphColoring.Graph
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().EdgeAdd(edge);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -288,7 +307,8 @@ namespace GraphColoring.Graph
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().EdgeDelete(edge);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -297,7 +317,7 @@ namespace GraphColoring.Graph
         /// Pokud hrana v grafu neexistuje, vyvolá se výjimka GraphEdgeDoesntExistException
         /// </summary>
         /// <param name="edge">hrana, kterou chceme kontrahovat</param>
-        public void EdgeContract(IEdgeInterface edge)
+        public void EdgeContraction(IEdgeInterface edge)
         {
             if (!ExistsEdge(edge))
                 throw new MyException.GraphException.GraphEdgeDoesntExistException();
@@ -318,12 +338,12 @@ namespace GraphColoring.Graph
 
             IVertexInterface newVertex = new Vertex(edge.GetVertex1().GetUserName() + edge.GetVertex2().GetUserName());
 
+            // Add vertex
+            VertexAdd(newVertex);
+
             // Delete vertices
             VertexDelete(edge.GetVertex1());
             VertexDelete(edge.GetVertex2());
-
-            // Add vertex
-            VertexAdd(newVertex);
 
             // Add edges
             foreach (IVertexInterface neighbour in neighboursList)
@@ -334,7 +354,8 @@ namespace GraphColoring.Graph
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().EdgeContraction(edge);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -361,7 +382,8 @@ namespace GraphColoring.Graph
                 coloredGraph.DeinicializationColoredGraph();
 
             // GraphProperty
-            GetGraphProperty().Reset();
+            GetGraphProperty().EdgeSubdivision(edge);
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
         #endregion
     }

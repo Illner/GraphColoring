@@ -76,7 +76,7 @@ namespace GraphColoring.Graph.ColoredGraph.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -91,6 +91,175 @@ namespace GraphColoring.Graph.ColoredGraph.Tests {
         internal static string coloredGraph1 {
             get {
                 return ResourceManager.GetString("coloredGraph1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph coloring. Graph representation: adjacencyMatrix
+        ///
+        ///Graph name: Name
+        ///Number of vertices: 4
+        ///
+        ///GRAPH
+        ///0 1 0 0
+        ///1 0 0 1
+        ///0 0 0 1
+        ///0 1 1 0
+        ///
+        ///COLORED GRAPH
+        ///Chromatic number: 3
+        ///Used algorithm: optimal
+        ///0 -&gt; 0
+        ///1 -&gt; 0
+        ///2 -&gt; 0
+        ///3 -&gt; 1
+        ///4 -&gt; 0
+        ///5 -&gt; 1
+        ///6 -&gt; 2
+        ///7 -&gt; 1
+        ///8 -&gt; 2
+        ///9 -&gt; 3.
+        /// </summary>
+        internal static string coloredGraph2 {
+            get {
+                return ResourceManager.GetString("coloredGraph2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph coloring. Graph representation: adjacencyMatrix
+        ///
+        ///Graph name: Name
+        ///Number of vertices: 5
+        ///
+        ///GRAPH
+        ///0 0 1 0 1
+        ///0 0 0 1 0
+        ///1 0 0 1 1
+        ///0 1 1 0 1
+        ///1 0 1 1 0
+        ///
+        ///COLORED GRAPH
+        ///Chromatic number: 3
+        ///Used algorithm: optimal
+        ///0 -&gt; 0
+        ///1 -&gt; 0
+        ///2 -&gt; 0
+        ///3 -&gt; 1
+        ///4 -&gt; 0
+        ///5 -&gt; 1
+        ///6 -&gt; 2
+        ///7 -&gt; 1
+        ///8 -&gt; 2
+        ///9 -&gt; 3.
+        /// </summary>
+        internal static string coloredGraph3 {
+            get {
+                return ResourceManager.GetString("coloredGraph3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph coloring. Graph representation: adjacencyMatrix
+        ///
+        ///Graph name: Name
+        ///Number of vertices: 5
+        ///
+        ///GRAPH
+        ///0 1 1 1 1
+        ///1 0 1 1 1
+        ///1 1 0 1 1
+        ///1 1 1 0 1
+        ///1 1 1 1 0
+        ///
+        ///COLORED GRAPH
+        ///Chromatic number: 3
+        ///Used algorithm: optimal
+        ///0 -&gt; 0
+        ///1 -&gt; 0
+        ///2 -&gt; 0
+        ///3 -&gt; 1
+        ///4 -&gt; 0
+        ///5 -&gt; 1
+        ///6 -&gt; 2
+        ///7 -&gt; 1
+        ///8 -&gt; 2
+        ///9 -&gt; 3.
+        /// </summary>
+        internal static string coloredGraph4 {
+            get {
+                return ResourceManager.GetString("coloredGraph4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph coloring. Graph representation: adjacencyMatrix
+        ///
+        ///Graph name: Name
+        ///Number of vertices: 7
+        ///
+        ///GRAPH
+        ///0 0 1 0 1 1 0
+        ///0 0 0 1 1 0 0
+        ///1 0 0 1 1 0 0
+        ///0 1 1 0 1 0 0
+        ///1 1 1 1 0 0 0
+        ///1 0 0 0 0 0 0
+        ///0 0 0 0 0 0 0
+        ///
+        ///COLORED GRAPH
+        ///Chromatic number: 3
+        ///Used algorithm: optimal
+        ///0 -&gt; 0
+        ///1 -&gt; 0
+        ///2 -&gt; 0
+        ///3 -&gt; 1
+        ///4 -&gt; 0
+        ///5 -&gt; 1
+        ///6 -&gt; 2
+        ///7 -&gt; 1
+        ///8 -&gt; 2
+        ///9 -&gt; 3.
+        /// </summary>
+        internal static string coloredGraph5 {
+            get {
+                return ResourceManager.GetString("coloredGraph5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph coloring. Graph representation: adjacencyMatrix
+        ///
+        ///Graph name: Name
+        ///Number of vertices: 12
+        ///
+        ///GRAPH
+        ///0 1 1 1 1 1 0 0 0 0 0 0
+        ///1 0 1 0 1 0 1 0 1 0 0 0
+        ///1 1 0 0 0 1 0 1 1 0 0 0
+        ///1 0 0 0 1 1 0 0 0 1 0 0
+        ///1 1 0 1 0 0 1 0 0 1 1 0
+        ///1 0 1 1 0 0 0 1 0 1 0 1
+        ///0 1 0 0 1 0 0 0 1 0 1 0
+        ///0 0 1 0 0 1 0 0 1 0 0 1
+        ///0 1 1 0 0 0 1 1 0 0 1 1
+        ///0 0 0 1 1 1 0 0 0 0 1 1
+        ///0 0 0 0 1 0 1 0 1 1 0 1
+        ///0 0 0 0 0 1 0 1 1 1 1 0
+        ///
+        ///COLORED GRAPH
+        ///Chromatic number: 3
+        ///Used algorithm: optimal
+        ///0 -&gt; 0
+        ///1 -&gt; 0
+        ///2 -&gt; 0
+        ///3 -&gt; 1
+        ///4 -&gt; 0
+        ///5 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string coloredGraph6 {
+            get {
+                return ResourceManager.GetString("coloredGraph6", resourceCulture);
             }
         }
     }

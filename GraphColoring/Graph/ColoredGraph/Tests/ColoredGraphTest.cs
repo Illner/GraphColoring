@@ -18,6 +18,11 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
         // Paths
         private string testPathColoredGraph = @"Testing\Test\ColoredGraph.txt";
         private string coloredGraph1 = ColoredGraphResource.coloredGraph1;
+        private string coloredGraph2 = ColoredGraphResource.coloredGraph2;
+        private string coloredGraph3 = ColoredGraphResource.coloredGraph3;
+        private string coloredGraph4 = ColoredGraphResource.coloredGraph4;
+        private string coloredGraph5 = ColoredGraphResource.coloredGraph5;
+        private string coloredGraph6 = ColoredGraphResource.coloredGraph6;
         #endregion
 
         // Enum
@@ -26,6 +31,11 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
         {
             valid,
             invalid,
+            interchange1,
+            interchange2,
+            interchange3,
+            interchange4,
+            interchange5
         }
         #endregion
 
@@ -39,7 +49,12 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             testsDictionary = new Dictionary<ColoredGraphEnum, string>
             {
                 { ColoredGraphEnum.valid, coloredGraph1 },
-                { ColoredGraphEnum.invalid, coloredGraph1 }
+                { ColoredGraphEnum.invalid, coloredGraph1 },
+                { ColoredGraphEnum.interchange1, coloredGraph2 },
+                { ColoredGraphEnum.interchange2, coloredGraph3 },
+                { ColoredGraphEnum.interchange3, coloredGraph4 },
+                { ColoredGraphEnum.interchange4, coloredGraph5 },
+                { ColoredGraphEnum.interchange5, coloredGraph6 }
             };
         }
         #endregion
@@ -92,15 +107,24 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
                 {
                     case ColoredGraphEnum.valid:
                         Valid(graph);
+                        stringBuilder.AppendLine("Graph modified.");
                         break;
                     case ColoredGraphEnum.invalid:
                         Invalid(graph);
+                        stringBuilder.AppendLine("Graph modified.");
+                        break;
+                    case ColoredGraphEnum.interchange1:
+                    case ColoredGraphEnum.interchange2:
+                    case ColoredGraphEnum.interchange3:
+                    case ColoredGraphEnum.interchange4:
+                    case ColoredGraphEnum.interchange5:
+                        graph.GetColoredGraph().GreedyColoring(graph.AllVertices(), true);
+                        stringBuilder.AppendLine("Graph colored.");
                         break;
                     default:
                         throw new MyException.TestsException.TestsMissingTestException(coloredGraphEnum.ToString());
                 }
 
-                stringBuilder.AppendLine("Graph modified.");
                 stringBuilder.AppendLine(graph.GetColoredGraph().ToString());
             }
             catch (KeyNotFoundException)

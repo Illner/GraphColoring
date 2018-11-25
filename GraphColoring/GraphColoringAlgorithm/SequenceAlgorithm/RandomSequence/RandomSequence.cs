@@ -10,9 +10,14 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
     {
         // Constructor
         #region
-        public RandomSequence(Graph.IGraphInterface graph) : base(graph)
+        public RandomSequence(Graph.IGraphInterface graph, bool interchange = false) : base(graph)
         {
             name = "Random sequence algorithm";
+
+            // Interchange
+            this.interchange = interchange;
+            if (interchange)
+                name = "Random sequence interchange algorithm";
         }
         #endregion
 

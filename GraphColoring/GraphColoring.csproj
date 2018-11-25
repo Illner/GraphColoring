@@ -225,6 +225,17 @@
     <Compile Include="GUI\GraphColoringForm.Designer.cs">
       <DependentUpon>GraphColoringForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\GraphVisualizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GraphVisualizationForm.Designer.cs">
+      <DependentUpon>GraphVisualizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\WCM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WCM.resx</DependentUpon>
+    </Compile>
     <Compile Include="MyException\GenerateGraphException.cs" />
     <Compile Include="MyException\GraphColoringAlgorithmException.cs" />
     <Compile Include="MyException\GraphException.cs" />
@@ -324,6 +335,11 @@
     <None Include="bin\Debug\Testing\GraphVisualization\Converter\converter4.graph" />
     <None Include="bin\Debug\Testing\GraphVisualization\Converter\converter5.graph" />
     <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph1.graph" />
+    <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph2.graph" />
+    <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph3.graph" />
+    <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph4.graph" />
+    <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph5.graph" />
+    <None Include="bin\Debug\Testing\Graph\ColoredGraph\coloredGraph6.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass2.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphClass\graphClass3.graph" />
@@ -530,6 +546,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\GraphColoringForm.resx">
       <DependentUpon>GraphColoringForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\GraphVisualizationForm.resx">
+      <DependentUpon>GraphVisualizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\WCM.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WCM.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

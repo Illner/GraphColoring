@@ -27,7 +27,7 @@ namespace GraphColoring.ReaderWriter
         /// </summary>
         /// <param name="graph">Obarvený graf</param>
         /// <param name="graphColoringAlgorithm">Algoritmus, který byl využit při obarvení grafu</param>
-        public bool WriteFile(Graph.IGraphInterface graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithm, bool isOptimal)
+        public bool WriteFileColor(Graph.IGraphInterface graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithm, bool isOptimal)
         {
             // Variable
             Graph.IColoredGraphInterface coloredGraph;
@@ -63,6 +63,46 @@ namespace GraphColoring.ReaderWriter
                     streamWriter.WriteLine("- " + color);
                     vertexList.ForEach(vertex => { streamWriter.WriteLine("-- " + vertex.GetUserName() + " (" + vertex.GetIdentifier() + ") "); });
                 }
+            }
+
+            return true;
+        }
+
+        public bool WriteFile(Graph.IGraphInterface graph)
+        {
+            if (!graph.GetIsInitialized())
+                throw new MyException.GraphException.GraphInitializationException();
+
+            if (ExistsFile())
+                DeleteFile();
+
+            CreateFile();
+
+            using (StreamWriter streamWriter = new StreamWriter(GetPath()))
+            {
+                // Header
+                streamWriter.WriteLine(READERWRITERHEADER + Graph.Graph.GraphRepresentationEnum.adjacencyList);
+                streamWriter.WriteLine(READERWRITERBALLAST);
+                streamWriter.WriteLine(READERWRITERNAME + graph.GetName());
+                streamWriter.WriteLine(READERWRITERCOUNTVERTICES + graph.GetRealCountVertices());
+                streamWriter.WriteLine(READERWRITERBALLAST);
+
+                // Graph
+                streamWriter.WriteLine(READERWRITERGRAPH);
+                
+                foreach (Graph.Vertex vertex in graph.AllVertices())
+                {
+                    streamWriter.WriteLine(vertex.GetUserName());
+
+                    foreach(Graph.Vertex neighbour in graph.Neighbours(vertex))
+                    {
+                        streamWriter.WriteLine(LEFTSEPARATORADJACENCYLIST + neighbour.GetUserName() + RIGHTSEPARATORADJACENCYLIST);
+                    }
+                }
+
+                // Colored graph
+                streamWriter.WriteLine(READERWRITERBALLAST);
+                streamWriter.Write(READERWRITERCOLOREDGRAPH);
             }
 
             return true;

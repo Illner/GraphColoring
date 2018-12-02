@@ -167,13 +167,11 @@ namespace GraphColoring.ReaderWriter
             string line;
             bool isK1 = false; // Vrchol, který nemá žádnou hranu
             string firstVertex = "", secondVertex;
-            const string LEFTSEPARATOR = "(";
-            const string RIGHTSEPARATOR = ")";
 
             // Read graph
             while ((line = streamReader.ReadLine()) != "")
             {
-                if (!line.StartsWith(LEFTSEPARATOR) && !line.EndsWith(RIGHTSEPARATOR))
+                if (!line.StartsWith(LEFTSEPARATORADJACENCYLIST) && !line.EndsWith(RIGHTSEPARATORADJACENCYLIST))
                 {
                     if (isK1)
                         graph.AddVertex(firstVertex);
@@ -183,7 +181,7 @@ namespace GraphColoring.ReaderWriter
                     continue;
                 }
 
-                if (line.StartsWith(LEFTSEPARATOR) && line.EndsWith(RIGHTSEPARATOR))
+                if (line.StartsWith(LEFTSEPARATORADJACENCYLIST) && line.EndsWith(RIGHTSEPARATORADJACENCYLIST))
                 {
                     secondVertex = line.Substring(1, line.Length - 2);
                     graph.AddEdge(firstVertex, secondVertex);
@@ -194,6 +192,10 @@ namespace GraphColoring.ReaderWriter
                 throw new MyException.ReaderWriterException.ReaderWriterInvalidDataException("Invalid graph");
             }
 
+            // Last vertex doesn't have any edge
+            if (isK1)
+                graph.AddVertex(firstVertex);
+            
             graph.InitializeGraph();
         }
 

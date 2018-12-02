@@ -18,6 +18,9 @@ namespace GraphColoring.ReaderWriter
         private static char newLine = '\n';
         protected const char SEPARATOR = ' ';
         private const string FILETYPE = ".graph";
+        // Adjacency list
+        protected const string LEFTSEPARATORADJACENCYLIST = "(";
+        protected const string RIGHTSEPARATORADJACENCYLIST = ")";
         #endregion
 
         // Constructor

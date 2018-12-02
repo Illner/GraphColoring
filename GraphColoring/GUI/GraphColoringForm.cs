@@ -588,7 +588,27 @@ namespace GraphColoring.GUI
                             }
                         }
                     });
-                    
+
+                    // Color disconnected graph
+                    if (graph.GetGraphProperty().GetCountComponents() > 1)
+                    {
+                        Graph.IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
+                        if (coloredGraph.GetIsInicializedColoredGraph())
+                            coloredGraph.DeinicializationColoredGraph();
+
+                        foreach (Graph.IGraphInterface componentGraph in graph.GetGraphProperty().GetComponents())
+                        {
+                            Graph.IColoredGraphInterface componentColoredGraph = componentGraph.GetColoredGraph();
+
+                            foreach (Graph.Vertex vertex in componentGraph.AllVertices())
+                            {
+                                coloredGraph.ColorVertex(graph.GetVertex(vertex.GetUserName()), vertex.GetColor());
+                            }
+                        }
+
+                        coloredGraph.InicializeColoredGraph();
+                    }
+
                     ShowGraph();
 
                     // Status
@@ -626,7 +646,31 @@ namespace GraphColoring.GUI
             {
                 return;
             }
-            
+
+            // Variable
+            bool newGraph = false;
+
+            if (path == null)
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.FileName = "graph.graph";
+                    saveFileDialog.Filter = "Graph (*.graph)|*.graph";
+                    saveFileDialog.FilterIndex = 2;
+                    saveFileDialog.RestoreDirectory = true;
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        newGraph = true;
+                        //Get the path of specified file
+                        path = saveFileDialog.FileName;
+                    }
+                    // Path wasn't choosen
+                    else
+                        return;
+                }
+            }
+
             // Disable all buttons
             EnableButtons(false);
 
@@ -640,17 +684,15 @@ namespace GraphColoring.GUI
                     // Variable
                     ReaderWriter.IWriterGraphInterface writer;
 
-                    // generated / modified graph
-                    if (path == null)
-                    {
-                        // TODO save graph
-                    }
-                    else
-                    {
-                        writer = new ReaderWriter.WriterGraph(path);
+                    writer = new ReaderWriter.WriterGraph(path);
 
-                        writer.WriteFile(graph, graphColoringAlgorithmEnum, false);
+                    // generated / modified graph
+                    if (newGraph)
+                    {
+                        writer.WriteFile(graph);
                     }
+                    
+                    writer.WriteFileColor(graph, graphColoringAlgorithmEnum, false);
                      
                     ShowMessageBox(WCM.WriteGraphTitle, WCM.WriteGraph);
                     SetStatusLabel(WCM.WriteGraphStatus);
@@ -668,6 +710,21 @@ namespace GraphColoring.GUI
                     SetStatusLabel(WCM.WriteGraphSomethingWrongStatus);
 
                     Console.WriteLine(ex);
+                }
+                catch (MyException.GraphException.ColoredGraphNotInitializationException ex)
+                {
+                    // New graph will be only saved without coloring
+                    if (!newGraph)
+                    {
+                        ShowMessageBox("Error | " + WCM.WriteGraphNotColoredTitle, WCM.WriteGraphNotColored);
+                        SetStatusLabel(WCM.WriteGraphSomethingWrongStatus);
+
+                        Console.WriteLine(ex);
+                    }
+                    else
+                    {
+                        SetStatusLabel(WCM.WriteGraphStatus);
+                    }
                 }
                 catch (ThreadAbortException ex)
                 {
@@ -787,6 +844,8 @@ namespace GraphColoring.GUI
 
             // Disable all buttons
             EnableButtons(false);
+
+            path = null;
 
             // Status
             SetStatusLabel(WCM.GenerateGraphProgressStatus);

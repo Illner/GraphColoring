@@ -285,6 +285,12 @@
   <data name="WriteGraphInvalidPathTitle" xml:space="preserve">
     <value>Invalid path</value>
   </data>
+  <data name="WriteGraphNotColored" xml:space="preserve">
+    <value>The graph isn't colored. Please, color the graph.</value>
+  </data>
+  <data name="WriteGraphNotColoredTitle" xml:space="preserve">
+    <value>The graph isn't colored!</value>
+  </data>
   <data name="WriteGraphProgressStatus" xml:space="preserve">
     <value>The graph is saving</value>
   </data>

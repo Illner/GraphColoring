@@ -565,6 +565,24 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The graph isn&apos;t colored. Please, color the graph..
+        /// </summary>
+        internal static string WriteGraphNotColored {
+            get {
+                return ResourceManager.GetString("WriteGraphNotColored", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The graph isn&apos;t colored!.
+        /// </summary>
+        internal static string WriteGraphNotColoredTitle {
+            get {
+                return ResourceManager.GetString("WriteGraphNotColoredTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The graph is saving.
         /// </summary>
         internal static string WriteGraphProgressStatus {

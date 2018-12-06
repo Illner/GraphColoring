@@ -20,7 +20,12 @@ namespace GraphColoring.GraphVisualization
         private StringBuilder stringBuilder;
         
         private string fillColorDefault = "white";
-        private string colorBridges = "blue";
+        private string colorDefault = "black";
+        private string colorBridges = "red";
+        private string colorCutVertex = "red";
+        private double widthBridges = 2.0;
+        private double widthCutVertex = 2.0;
+        private double widthDefault = 1.0;
 
         // Initialize Colors
         private static Dictionary<int, String> colorsDictionary = new Dictionary<int, string>()
@@ -81,7 +86,7 @@ namespace GraphColoring.GraphVisualization
                 maximumDegree = graph.GetGraphProperty().GetMaximumVertexDegree();
 
                 // Vertices
-                stringBuilder.AppendLine("node[style = filled shape = circle fillcolor = " + fillColorDefault + "]");
+                stringBuilder.AppendLine("node[style = filled shape = circle fillcolor = " + fillColorDefault + " color = " + colorDefault + " penwidth = " + widthDefault + "]");
                 foreach (Graph.IVertexInterface vertex in verticesList)
                 {
                     text = "\"";
@@ -96,7 +101,7 @@ namespace GraphColoring.GraphVisualization
                         text += "shape = doubleoctagon ";
 
                     if (cutVerticesList.Contains(vertex))
-                        text += "shape = square ";
+                        text += "color = " + colorCutVertex + " , penwidth = " + widthCutVertex + " ";
 
                     if (useColor && vertex.GetColor() != Graph.VertexExtended.GetDefaultColor())
                         text += "fillcolor = " + colorsDictionary[vertex.GetColor()] + " ";
@@ -125,7 +130,7 @@ namespace GraphColoring.GraphVisualization
 
                         if (bridgesList.Any(e => ((e.GetVertex1().Equals(vertex) && e.GetVertex2().Equals(neighbour)) ||
                                                   (e.GetVertex1().Equals(neighbour) && e.GetVertex2().Equals(vertex)))))
-                            stringBuilder.AppendLine(" [color = " + colorBridges + "]");
+                            stringBuilder.AppendLine(" [color = " + colorBridges + ", penwidth = " + widthBridges + "]");
                         else
                             stringBuilder.AppendLine();
                     }

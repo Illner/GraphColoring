@@ -64,7 +64,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Time complexity: O(V^2)
         /// Space complexity: O(V + E)
         /// </summary>
-        private void CycleGirth()
+        private void CycleGirthParallel()
         {
             // Variable
             List<IVertexInterface> allVerticesList;
@@ -75,7 +75,7 @@ namespace GraphColoring.Graph.GraphProperty
 
             Parallel.ForEach(allVerticesList, vertex =>
             {
-                int bestGirth = CycleGirthBFSParallel(vertex);
+                int bestGirth = CycleGirthBFS(vertex);
                 
                 if (actualBestGirth > bestGirth)
                 {
@@ -105,7 +105,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         /// <param name="root">Vrchol, který bude kořenem v BFS</param>
         /// <returns>délku cyklu</returns>
-        private int CycleGirthBFSParallel(IVertexInterface root)
+        private int CycleGirthBFS(IVertexInterface root)
         {
             // Variable
             int bestGirth = int.MaxValue;

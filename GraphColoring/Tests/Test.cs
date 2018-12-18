@@ -43,6 +43,7 @@ namespace GraphColoring.Tests
         GraphColoringAlgorithm.GeneticAlgorithm.Tests.GeneticAlgorithmTest geneticAlgorithmTest = new GraphColoringAlgorithm.GeneticAlgorithm.Tests.GeneticAlgorithmTest();
         Graph.GraphProperty.Tests.BridgesCutVerticesTest bridgesCutVerticesTest = new Graph.GraphProperty.Tests.BridgesCutVerticesTest();
         GraphVisualization.Tests.ConvertGraphToDotTest convertGraphToDotTest = new GraphVisualization.Tests.ConvertGraphToDotTest();
+        Graph.GraphProperty.Tests.ChordalTest chordalTest = new Graph.GraphProperty.Tests.ChordalTest();
         #endregion
 
         // Enum
@@ -73,6 +74,7 @@ namespace GraphColoring.Tests
             combinationAlgorithm,
             graphBridgesCutVertices,
             convertGraphToDot,
+            chordalTest,
             geneticAlgorithm    // Must be last
         }
         #endregion
@@ -114,6 +116,7 @@ namespace GraphColoring.Tests
                 { TestEnum.combinationAlgorithm, new Tuple<ITestInterface, string>(combinationAlgorithmTest, TestResource.CombinationStandard) },
                 { TestEnum.graphBridgesCutVertices, new Tuple<ITestInterface, string>(bridgesCutVerticesTest, TestResource.GraphBridgesCutVerticesStandard) },
                 { TestEnum.convertGraphToDot, new Tuple<ITestInterface, string>(convertGraphToDotTest, TestResource.ConverterGraphToDotStandard) },
+                { TestEnum.chordalTest, new Tuple<ITestInterface, string>(chordalTest, TestResource.GraphChordalStandard) },
                 { TestEnum.geneticAlgorithm, new Tuple<ITestInterface, string>(geneticAlgorithmTest, TestResource.GeneticAlgorithmStandard) }   // Must be last
         };
         }

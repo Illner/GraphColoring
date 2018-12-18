@@ -18,6 +18,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// cutVertices - artikulace grafu
         /// bridges - mosty grafu
         /// eulerianPath - eulerovský cyklus, nebo eulerovský tah v grafu
+        /// perfectEliminationOrderList - perfect elimination ordering (chordal)
         /// </summary>
         private List<KeyValuePair<IVertexInterface, int>> degreeSequence;
         private bool isDegreeSequenceSorted = false;
@@ -28,6 +29,7 @@ namespace GraphColoring.Graph.GraphProperty
         private List<IVertexInterface> cutVertices;
         private List<IEdgeInterface> bridges;
         private int timeBridgesCutVertices = 0;
+        private List<IVertexInterface> perfectEliminationOrderingList;
         // private List<arc> eulerianPath;
         #endregion
 
@@ -288,6 +290,19 @@ namespace GraphColoring.Graph.GraphProperty
                 BridgesCutVertices();
 
             return bridges;
+        }
+
+        /// <summary>
+        /// Return perfect elimination ordering if graph is chordal, otherwise return List with size 0
+        /// Simplicial vertex is the last vertex in the sequence!
+        /// </summary>
+        /// <returns>Perfect elimination ordering if graph is chordal</returns>
+        public List<IVertexInterface> GetPerfectEliminationOrdering()
+        {
+            if (perfectEliminationOrderingList == null)
+                IsChordal();
+
+            return perfectEliminationOrderingList;
         }
         #endregion
     }

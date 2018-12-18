@@ -52,6 +52,10 @@ namespace GraphColoring.Graph.GraphProperty
             maximumVertexDegree = null;
             averageVertexDegree = null;
             cayleysFormula = null;
+
+            // Chordal graph
+            isChordal = null;
+            perfectEliminationOrderingList = null;
         }
 
         public void VertexAdd(IVertexInterface vertex)
@@ -119,6 +123,11 @@ namespace GraphColoring.Graph.GraphProperty
                 //maximumVertexDegree = maximumVertexDegree;
                 averageVertexDegree = null;
             }
+
+            // Chordal
+            //isChordal = isChordal;
+            if (isChordal.HasValue && (bool)isChordal)
+                perfectEliminationOrderingList.Add(vertex);
         }
 
         public void VertexDelete(IVertexInterface vertex)
@@ -137,7 +146,7 @@ namespace GraphColoring.Graph.GraphProperty
                         if (componentGraph.ExistsUserName(vertex.GetUserName()))
                         {
                             myComponentGraph = componentGraph;
-                            myVertexComponent = myComponentGraph.GetVertex(vertex.GetUserName());
+                            myVertexComponent = myComponentGraph.GetVertexByUserName(vertex.GetUserName());
                             break;
                         }
                     }
@@ -203,6 +212,10 @@ namespace GraphColoring.Graph.GraphProperty
             averageVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
+
+            // Chordal
+            isChordal = null;
+            perfectEliminationOrderingList = null;
         }
 
         public void VertexContraction(IVertexInterface vertex)
@@ -221,7 +234,7 @@ namespace GraphColoring.Graph.GraphProperty
                         if (componentGraph.ExistsUserName(vertex.GetUserName()))
                         {
                             myComponentGraph = componentGraph;
-                            myVertexComponent = myComponentGraph.GetVertex(vertex.GetUserName());
+                            myVertexComponent = myComponentGraph.GetVertexByUserName(vertex.GetUserName());
                             break;
                         }
                     }
@@ -261,6 +274,10 @@ namespace GraphColoring.Graph.GraphProperty
             averageVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
+
+            // Chordal
+            isChordal = null;
+            perfectEliminationOrderingList = null;
         }
 
         public void VertexSuppression(IVertexInterface vertex)
@@ -279,7 +296,7 @@ namespace GraphColoring.Graph.GraphProperty
                         if (componentGraph.ExistsUserName(vertex.GetUserName()))
                         {
                             myComponentGraph = componentGraph;
-                            myVertexComponent = myComponentGraph.GetVertex(vertex.GetUserName());
+                            myVertexComponent = myComponentGraph.GetVertexByUserName(vertex.GetUserName());
                             break;
                         }
                     }
@@ -321,6 +338,13 @@ namespace GraphColoring.Graph.GraphProperty
             averageVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
+
+            // Chordal
+            if (isChordal.HasValue && (bool)isChordal)
+            {
+                isChordal = null;
+                perfectEliminationOrderingList = null;
+            }
         }
 
         public void VertexExpansion(IVertexInterface vertex)
@@ -339,7 +363,7 @@ namespace GraphColoring.Graph.GraphProperty
                         if (componentGraph.ExistsUserName(vertex.GetUserName()))
                         {
                             myComponentGraph = componentGraph;
-                            myVertexComponent = myComponentGraph.GetVertex(vertex.GetUserName());
+                            myVertexComponent = myComponentGraph.GetVertexByUserName(vertex.GetUserName());
                             break;
                         }
                     }
@@ -377,13 +401,20 @@ namespace GraphColoring.Graph.GraphProperty
             averageVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
+
+            // Chordal
+            if (isChordal.HasValue && (bool)isChordal)
+            {
+                isChordal = null;
+                perfectEliminationOrderingList = null;
+            }
         }
 
         public void EdgeAdd(IEdgeInterface edge)
         {
             // Variable
-            IVertexInterface vertex1 = graph.GetVertex(edge.GetVertex1().GetUserName());
-            IVertexInterface vertex2 = graph.GetVertex(edge.GetVertex2().GetUserName());
+            IVertexInterface vertex1 = graph.GetVertexByUserName(edge.GetVertex1().GetUserName());
+            IVertexInterface vertex2 = graph.GetVertexByUserName(edge.GetVertex2().GetUserName());
 
             // Component
             if (componentsList != null)
@@ -416,7 +447,7 @@ namespace GraphColoring.Graph.GraphProperty
                     }
                     else
                     {
-                        myComponentGraph.EdgeAdd(new Edge(myComponentGraph.GetVertex(vertex1.GetUserName()), myComponentGraph.GetVertex(vertex2.GetUserName())));
+                        myComponentGraph.EdgeAdd(new Edge(myComponentGraph.GetVertexByUserName(vertex1.GetUserName()), myComponentGraph.GetVertexByUserName(vertex2.GetUserName())));
                     }
                 }
                 else
@@ -495,13 +526,17 @@ namespace GraphColoring.Graph.GraphProperty
                 averageVertexDegree = null;
                 isRegular = null;
             }
+
+            // Chord
+            isChordal = null;
+            perfectEliminationOrderingList = null;
         }
 
         public void EdgeDelete(IEdgeInterface edge)
         {
             // Variable
-            IVertexInterface vertex1 = graph.GetVertex(edge.GetVertex1().GetUserName());
-            IVertexInterface vertex2 = graph.GetVertex(edge.GetVertex2().GetUserName());
+            IVertexInterface vertex1 = graph.GetVertexByUserName(edge.GetVertex1().GetUserName());
+            IVertexInterface vertex2 = graph.GetVertexByUserName(edge.GetVertex2().GetUserName());
 
             // Component
             if (componentsList != null)
@@ -519,7 +554,7 @@ namespace GraphColoring.Graph.GraphProperty
                         }
                     }
 
-                    myComponentGraph.EdgeDelete(new Edge(myComponentGraph.GetVertex(vertex1.GetUserName()), myComponentGraph.GetVertex(vertex2.GetUserName())));
+                    myComponentGraph.EdgeDelete(new Edge(myComponentGraph.GetVertexByUserName(vertex1.GetUserName()), myComponentGraph.GetVertexByUserName(vertex2.GetUserName())));
                     
                     componentsList = null;
                     countComponents = null;
@@ -619,6 +654,10 @@ namespace GraphColoring.Graph.GraphProperty
                 averageVertexDegree = null;
                 isRegular = null;
             }
+
+            // Chordal
+            isChordal = null;
+            perfectEliminationOrderingList = null;
         }
 
         public void EdgeContraction(IEdgeInterface edge)
@@ -660,13 +699,17 @@ namespace GraphColoring.Graph.GraphProperty
             averageVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
+
+            // Chordal
+            isChordal = null;
+            perfectEliminationOrderingList = null;
         }
 
         public void EdgeSubdivision(IEdgeInterface edge)
         {
             // Variable
-            IVertexInterface vertex1 = graph.GetVertex(edge.GetVertex1().GetUserName());
-            IVertexInterface vertex2 = graph.GetVertex(edge.GetVertex2().GetUserName());
+            IVertexInterface vertex1 = graph.GetVertexByUserName(edge.GetVertex1().GetUserName());
+            IVertexInterface vertex2 = graph.GetVertexByUserName(edge.GetVertex2().GetUserName());
 
             // Component
             if (componentsList != null)
@@ -684,7 +727,7 @@ namespace GraphColoring.Graph.GraphProperty
                         }
                     }
 
-                    myComponentGraph.EdgeSubdivision(new Edge(myComponentGraph.GetVertex(vertex1.GetUserName()), myComponentGraph.GetVertex(vertex2.GetUserName())));
+                    myComponentGraph.EdgeSubdivision(new Edge(myComponentGraph.GetVertexByUserName(vertex1.GetUserName()), myComponentGraph.GetVertexByUserName(vertex2.GetUserName())));
                 }
                 else
                 {
@@ -720,6 +763,13 @@ namespace GraphColoring.Graph.GraphProperty
             averageVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
+
+            // Chordal
+            if (isChordal.HasValue && (bool)isChordal)
+            {
+                isChordal = null;
+                perfectEliminationOrderingList = null;
+            }
         }
         #endregion
     }

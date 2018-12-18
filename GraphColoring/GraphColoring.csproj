@@ -160,12 +160,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SubGraphResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Graph\GraphProperty\Chordal.cs" />
     <Compile Include="Graph\GraphProperty\Tests\BridgesCutVerticesResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BridgesCutVerticesResource.resx</DependentUpon>
     </Compile>
     <Compile Include="Graph\GraphProperty\Tests\BridgesCutVerticesTest.cs" />
+    <Compile Include="Graph\GraphProperty\Tests\ChordalResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChordalResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\GraphProperty\Tests\ChordalTest.cs" />
     <Compile Include="Graph\GraphProperty\Tests\ComponentResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -236,12 +243,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WCM.resx</DependentUpon>
     </Compile>
+    <Compile Include="MyDataStructure\FibonacciHeap.cs" />
+    <Compile Include="MyDataStructure\MyLinkedList.cs" />
+    <Compile Include="MyDataStructure\MyNode.cs" />
     <Compile Include="MyException\GenerateGraphException.cs" />
     <Compile Include="MyException\GraphColoringAlgorithmException.cs" />
     <Compile Include="MyException\GraphException.cs" />
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\GraphRepresentationEnum.cs" />
     <Compile Include="MyException\GraphVisualizationException.cs" />
+    <Compile Include="MyException\MyDataStructureException.cs" />
     <Compile Include="MyException\ReaderWriterException.cs" />
     <Compile Include="MyException\TestsException.cs" />
     <Compile Include="MyMath\MyMath.cs" />
@@ -371,6 +382,15 @@
     <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest3.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest4.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\BridgesCutVertices\bridgesCutVerticesTest5.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal1.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal2.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal3.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal4.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal5.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal6.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal7.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal8.graph" />
+    <None Include="bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal9.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent1.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent2.graph" />
     <None Include="bin\Debug\Testing\Graph\GraphProperty\Component\graphComponent3.graph" />
@@ -528,6 +548,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BridgesCutVerticesResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Graph\GraphProperty\Tests\ChordalResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChordalResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Graph\GraphProperty\Tests\ComponentResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ComponentResource.Designer.cs</LastGenOutput>
@@ -652,6 +676,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Testing\Test\ConverterGraphToDotStandard.txt" />
+    <None Include="bin\Debug\Testing\Test\GraphChordalStandard.txt" />
     <Content Include="GraphVisualization\DOT\cdt.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

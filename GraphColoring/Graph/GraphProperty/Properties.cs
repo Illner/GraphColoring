@@ -12,11 +12,13 @@ namespace GraphColoring.Graph.GraphProperty
         /// isConnected - je graf souvislý
         /// isRegular - je graf regulární
         /// isCyclic - je graf cyklický
+        /// isChordal - graph is chordal
         /// isEulerian - je graf eulerovský - EulerianGraphEnum
         /// </summary>
         private Boolean? isConnected;
         private Boolean? isRegular;
         private Boolean? isCyclic;
+        private Boolean? isChordal;
         private EulerianGraphEnum isEulerian = EulerianGraphEnum.undefined;
         #endregion
 
@@ -92,6 +94,24 @@ namespace GraphColoring.Graph.GraphProperty
             if (oddDegrees == 0)
                 isEulerian = EulerianGraphEnum.eulerian;
         }
+
+        /// <summary>
+        /// Determine if graph is chordal
+        /// isChordal, perfectEliminationOrderingList
+        /// Time complexivity: O(V + E)
+        /// Space complexivity: O(V)
+        /// </summary>
+        private void IsChordal()
+        {
+            PerfectEliminationOrdering();
+            IsPerfectEliminationOrderingParallel();
+
+            // The graph is not chordal => need to delete perfectEliminationOrderingList
+            if (!(bool)isChordal)
+            {
+                perfectEliminationOrderingList = new List<IVertexInterface>();
+            }
+        }
         #endregion
 
         // Property 
@@ -130,6 +150,18 @@ namespace GraphColoring.Graph.GraphProperty
                 CycleIsCyclic();
 
             return (bool)isCyclic;
+        }
+
+        /// <summary>
+        /// Return true if graph is chordal, otherwise return false
+        /// </summary>
+        /// <returns>true if graph is chordal</returns>
+        public bool GetIsChordal()
+        {
+            if (!isChordal.HasValue)
+                IsChordal();
+
+            return (bool)isChordal;
         }
 
         /// <summary>

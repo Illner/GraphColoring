@@ -49,7 +49,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
                         copyGraph.VertexDelete(neighbour);
                     }
 
-                    graph.GetColoredGraph().ColorVertex(graph.GetVertex(vertex.GetUserName()), color);
+                    graph.GetColoredGraph().ColorVertex(graph.GetVertexByUserName(vertex.GetUserName()), color);
                 }
 
                 color++;

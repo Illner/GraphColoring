@@ -208,7 +208,7 @@ namespace GraphColoring.Graph.GraphProperty
         public int GetGirth()
         {
             if (!girth.HasValue)
-                CycleGirth();
+                CycleGirthParallel();
 
             return (int)girth;
         }

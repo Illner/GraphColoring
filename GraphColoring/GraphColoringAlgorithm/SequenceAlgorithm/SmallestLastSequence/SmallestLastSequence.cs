@@ -38,7 +38,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             while (copyGraph.GetRealCountVertices() != 0)
             {
                 vertex = copyGraph.GetGraphProperty().GetDegreeSequenceVertex(true).First();
-                VertexList.Add(graph.GetVertex(vertex.GetUserName()));
+                VertexList.Add(graph.GetVertexByUserName(vertex.GetUserName()));
                 copyGraph.VertexDelete(vertex);
             }
 
@@ -64,7 +64,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             foreach (Graph.IVertexInterface vertex in graph.AllVertices())
             {
                 if (vertex.GetColor() != Graph.VertexExtended.GetDefaultColor())
-                    coloredCopyGraph.ColorVertex(copyGraph.GetVertex(vertex.GetUserName()), vertex.GetColor());
+                    coloredCopyGraph.ColorVertex(copyGraph.GetVertexByUserName(vertex.GetUserName()), vertex.GetColor());
             }
 
             foreach (Graph.IVertexInterface vertex in copyGraph.GetColoredGraph().GetColoredVertexList())
@@ -77,7 +77,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             if (copyVertex == null)
                 return null;
 
-            return graph.GetVertex(copyVertex.GetUserName());
+            return graph.GetVertexByUserName(copyVertex.GetUserName());
         }
         #endregion
     }

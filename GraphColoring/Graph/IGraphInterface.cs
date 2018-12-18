@@ -7,7 +7,8 @@ namespace GraphColoring.Graph
     {
         // Method
         #region
-        IVertexInterface GetVertex(string userName);
+        IVertexInterface GetVertexByUserName(string userName);
+        IVertexInterface GetVertexByIdentifier(int identifier);
         void InitializeGraph();
         String ToString();
         List<IVertexInterface> Neighbours(IVertexInterface vertex);

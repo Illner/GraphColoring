@@ -34,19 +34,28 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
             Graph.IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
             optimalVertexList = new List<Graph.IVertexInterface>();
 
-            foreach (var vertexList in MyMath.MyMath.GeneratePermutations(graph.AllVertices()))
+            // If the graph is chordal => use PEO for coloring
+            if (graph.GetGraphProperty().GetIsChordal())
             {
-                coloredGraph.GreedyColoring(vertexList.ToList());
-                coloredGraph.InicializeColoredGraph();
-                countUsedColors = coloredGraph.GetCountUsedColors();
-
-                if (optimalCountColors > countUsedColors)
+                optimalVertexList = graph.GetGraphProperty().GetPerfectEliminationOrdering();
+            }
+            // The graph is not chordal => try all permutation of vertices
+            else
+            {
+                foreach (var vertexList in MyMath.MyMath.GeneratePermutations(graph.AllVertices()))
                 {
-                    optimalCountColors = countUsedColors;
-                    optimalVertexList = vertexList.ToList();
-                }
+                    coloredGraph.GreedyColoring(vertexList.ToList());
+                    coloredGraph.InicializeColoredGraph();
+                    countUsedColors = coloredGraph.GetCountUsedColors();
 
-                coloredGraph.DeinicializationColoredGraph();
+                    if (optimalCountColors > countUsedColors)
+                    {
+                        optimalCountColors = countUsedColors;
+                        optimalVertexList = vertexList.ToList();
+                    }
+
+                    coloredGraph.DeinicializationColoredGraph();
+                }
             }
 
             coloredGraph.GreedyColoring(optimalVertexList);

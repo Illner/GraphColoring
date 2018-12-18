@@ -68,22 +68,22 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 5
         ///Vertices: 
-        ///-- Identifier: 788, userName: 788
-        ///-- Identifier: 789, userName: 789
-        ///-- Identifier: 790, userName: 790
-        ///-- Identifier: 791, userName: 791
-        ///-- Identifier: 792, userName: 792
-        ///-- Identifier: 793, userName: 793
+        ///-- Identifier: 704, userName: 704
+        ///-- Identifier: 705, userName: 705
+        ///-- Identifier: 706, userName: 706
+        ///-- Identifier: 707, userName: 707
+        ///-- Identifier: 708, userName: 708
+        ///-- Identifier: 709, userName: 709
         ///Edges: 
-        ///-- Vertex: 788 (788)
-        ///---- 789 (789) 
-        ///---- 790 (790) 
-        ///---- 791 (791) 
-        ///-- Vertex: 789 (789)
-        ///---- 788 (788) 
-        ///-- Vertex: 790 (790)
-        ///---- 788 (788) 
-        ///-- Vertex: 791 (79 [rest of string was truncated]&quot;;.
+        ///-- Vertex: 704 (704)
+        ///---- 705 (705) 
+        ///---- 706 (706) 
+        ///---- 707 (707) 
+        ///-- Vertex: 705 (705)
+        ///---- 704 (704) 
+        ///-- Vertex: 706 (706)
+        ///---- 704 (704) 
+        ///-- Vertex: 707 (70 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ColoredGraphStandard {
             get {
@@ -100,11 +100,11 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 5078, userName: 5078
+        ///-- Identifier: 5007, userName: 5007
         ///Edges: 
-        ///-- Vertex: 5078 (5078)
+        ///-- Vertex: 5007 (5007)
         ///Vertex color: 
-        ///-- Vertex: 5078, color: 1
+        ///-- Vertex: 5007, color: 1
         ///
         ///Combination algorithm
         ///Graph colored.
@@ -113,8 +113,8 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 6
         ///Vertices: 
-        ///-- Identifier: 5079, userName: 5079
-        ///-- Identifier: 5080, userName: 5080
+        ///-- Identifier: 5008, userName: 5008
+        ///-- Identifier: 5009, userName: 5009
         ///-- Identifier: 50 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CombinationStandard {
@@ -132,11 +132,11 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 967, userName: 967
+        ///-- Identifier: 916, userName: 916
         ///Edges: 
-        ///-- Vertex: 967 (967)
+        ///-- Vertex: 916 (916)
         ///Vertex color: 
-        ///-- Vertex: 967, color: 1
+        ///-- Vertex: 916, color: 1
         ///
         ///connectedSequential3
         ///Graph colored.
@@ -145,9 +145,9 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 9
         ///Count of edges: 12
         ///Vertices: 
-        ///-- Identifier: 969, userName: 969
-        ///-- Identifier: 970, userName: 970
-        ///-- Identifier: 971, userNam [rest of string was truncated]&quot;;.
+        ///-- Identifier: 917, userName: 917
+        ///-- Identifier: 918, userName: 918
+        ///-- Identifier: 919, userNam [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ConnectedSequentialStandard {
             get {
@@ -163,14 +163,14 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 5266, userName: 5266
+        ///-- Identifier: 5145, userName: 5145
         ///Edges: 
-        ///-- Vertex: 5266 (5266)
+        ///-- Vertex: 5145 (5145)
         ///
-        ///graph Name
+        ///graph &quot;Name&quot;
         ///{
-        ///node[style = filled shape = circle fillcolor = white]
-        ///5266 [shape = doublecircle shape = doubleoctagon ]
+        ///node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
+        ///&quot;5145&quot; [shape = doublecircle shape = doubleoctagon ]
         ///}
         ///
         ///converterGraphToDotEnum3
@@ -179,7 +179,7 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 9
         ///Count of edges: 12
         ///Vertices: 
-        ///-- Identifier: 5269, userName: 5 [rest of string was truncated]&quot;;.
+        ///- [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ConverterGraphToDotStandard {
             get {
@@ -197,9 +197,7 @@ namespace GraphColoring.Tests {
         ///erdosRenyiModelNotAssigned
         ///OK
         ///invalidVerticesCount
-        ///Byla vyvolána výjimka typu GraphColoring.MyException.GraphException.GraphInvalidCountVerticesException.
-        ///
-        ///
+        ///Exception of type &apos;GraphColoring.MyException.GraphException.GraphInvalidCountVerticesException&apos; was thrown.
         ///
         ///.
         /// </summary>
@@ -213,8 +211,6 @@ namespace GraphColoring.Tests {
         ///   Looks up a localized string similar to Genetic algorithm
         ///Graph colored.
         ///Is valid colored: True
-        ///
-        ///
         ///
         ///.
         /// </summary>
@@ -232,27 +228,55 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 5
         ///Count of edges: 5
         ///Vertices: 
-        ///-- Identifier: 5173, userName: 1
-        ///-- Identifier: 5174, userName: 0
-        ///-- Identifier: 5175, userName: 2
-        ///-- Identifier: 5176, userName: 3
-        ///-- Identifier: 5177, userName: 4
+        ///-- Identifier: 5102, userName: 1
+        ///-- Identifier: 5103, userName: 0
+        ///-- Identifier: 5104, userName: 2
+        ///-- Identifier: 5105, userName: 3
+        ///-- Identifier: 5106, userName: 4
         ///Edges: 
-        ///-- Vertex: 1 (5173)
-        ///---- 0 (5174) 
-        ///---- 2 (5175) 
-        ///-- Vertex: 0 (5174)
-        ///---- 1 (5173) 
-        ///---- 2 (5175) 
-        ///---- 3 (5176) 
-        ///-- Vertex: 2 (5175)
-        ///---- 0 (5174) 
-        ///---- 1 (5173) 
-        ///-- Vertex: 3 (5176)        /// [rest of string was truncated]&quot;;.
+        ///-- Vertex: 5102 (1)
+        ///---- 5103 (0) 
+        ///---- 5104 (2) 
+        ///-- Vertex: 5103 (0)
+        ///---- 5102 (1) 
+        ///---- 5104 (2) 
+        ///---- 5105 (3) 
+        ///-- Vertex: 5104 (2)
+        ///---- 5103 (0) 
+        ///---- 5102 (1) 
+        ///-- Vertex: 5105 (3)        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphBridgesCutVerticesStandard {
             get {
                 return ResourceManager.GetString("GraphBridgesCutVerticesStandard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to chordal1
+        ///Graph created.
+        ///Name of graph: Chordal
+        ///Count of vertices: 8
+        ///Real count of vertices: 8
+        ///Count of edges: 15
+        ///Vertices: 
+        ///-- Identifier: 5191, userName: 5191
+        ///-- Identifier: 5192, userName: 5192
+        ///-- Identifier: 5193, userName: 5193
+        ///-- Identifier: 5194, userName: 5194
+        ///-- Identifier: 5195, userName: 5195
+        ///-- Identifier: 5196, userName: 5196
+        ///-- Identifier: 5197, userName: 5197
+        ///-- Identifier: 5198, userName: 5198
+        ///Edges: 
+        ///-- Vertex: 5191 (5191)
+        ///---- 5192 (5192) 
+        ///---- 5193 (5193) 
+        ///---- 5194 (519 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string GraphChordalStandard {
+            get {
+                return ResourceManager.GetString("GraphChordalStandard", resourceCulture);
             }
         }
         
@@ -264,22 +288,22 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 9
         ///Vertices: 
-        ///-- Identifier: 409, userName: 409
-        ///-- Identifier: 410, userName: 410
-        ///-- Identifier: 411, userName: 411
-        ///-- Identifier: 412, userName: 412
-        ///-- Identifier: 413, userName: 413
-        ///-- Identifier: 414, userName: 414
+        ///-- Identifier: 399, userName: 399
+        ///-- Identifier: 400, userName: 400
+        ///-- Identifier: 401, userName: 401
+        ///-- Identifier: 402, userName: 402
+        ///-- Identifier: 403, userName: 403
+        ///-- Identifier: 404, userName: 404
         ///Edges: 
-        ///-- Vertex: 409 (409)
-        ///---- 410 (410) 
-        ///---- 412 (412) 
-        ///---- 414 (414) 
-        ///-- Vertex: 410 (410)
-        ///---- 409 (409) 
-        ///---- 411 (411) 
-        ///---- 413 (413) 
-        ///-- Vertex: 411 (4 [rest of string was truncated]&quot;;.
+        ///-- Vertex: 399 (399)
+        ///---- 400 (400) 
+        ///---- 402 (402) 
+        ///---- 404 (404) 
+        ///-- Vertex: 400 (400)
+        ///---- 399 (399) 
+        ///---- 401 (401) 
+        ///---- 403 (403) 
+        ///-- Vertex: 401 (4 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphClassStandard {
             get {
@@ -295,23 +319,23 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 4
         ///Count of edges: 6
         ///Vertices: 
-        ///-- Identifier: 616, userName: 616
-        ///-- Identifier: 617, userName: 617
-        ///-- Identifier: 618, userName: 618
-        ///-- Identifier: 619, userName: 619
+        ///-- Identifier: 532, userName: 532
+        ///-- Identifier: 533, userName: 533
+        ///-- Identifier: 534, userName: 534
+        ///-- Identifier: 535, userName: 535
         ///Edges: 
-        ///-- Vertex: 616 (616)
-        ///---- 617 (617) 
-        ///---- 618 (618) 
-        ///---- 619 (619) 
-        ///-- Vertex: 617 (617)
-        ///---- 616 (616) 
-        ///---- 618 (618) 
-        ///---- 619 (619) 
-        ///-- Vertex: 618 (618)
-        ///---- 616 (616) 
-        ///---- 617 (617) 
-        ///---- 619 (619) 
+        ///-- Vertex: 532 (532)
+        ///---- 533 (533) 
+        ///---- 534 (534) 
+        ///---- 535 (535) 
+        ///-- Vertex: 533 (533)
+        ///---- 532 (532) 
+        ///---- 534 (534) 
+        ///---- 535 (535) 
+        ///-- Vertex: 534 (534)
+        ///---- 532 (532) 
+        ///---- 533 (533) 
+        ///---- 535 (535) 
         ///-- Vertex [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphComplementStandard {
@@ -354,24 +378,24 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 4
         ///Count of edges: 6
         ///Vertices: 
-        ///-- Identifier: 650, userName: 650
-        ///-- Identifier: 651, userName: 651
-        ///-- Identifier: 652, userName: 652
-        ///-- Identifier: 653, userName: 653
+        ///-- Identifier: 566, userName: 566
+        ///-- Identifier: 567, userName: 567
+        ///-- Identifier: 568, userName: 568
+        ///-- Identifier: 569, userName: 569
         ///Edges: 
-        ///-- Vertex: 650 (650)
-        ///---- 651 (651) 
-        ///---- 652 (652) 
-        ///---- 653 (653) 
-        ///-- Vertex: 651 (651)
-        ///---- 650 (650) 
-        ///---- 652 (652) 
-        ///---- 653 (653) 
-        ///-- Vertex: 652 (652)
-        ///---- 650 (650) 
-        ///---- 651 (651) 
-        ///---- 653 (653) 
-        ///-- Vertex: 653  [rest of string was truncated]&quot;;.
+        ///-- Vertex: 566 (566)
+        ///---- 567 (567) 
+        ///---- 568 (568) 
+        ///---- 569 (569) 
+        ///-- Vertex: 567 (567)
+        ///---- 566 (566) 
+        ///---- 568 (568) 
+        ///---- 569 (569) 
+        ///-- Vertex: 568 (568)
+        ///---- 566 (566) 
+        ///---- 567 (567) 
+        ///---- 569 (569) 
+        ///-- Vertex: 569  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphCopyStandard {
             get {
@@ -387,23 +411,23 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 5
         ///Count of edges: 4
         ///Vertices: 
-        ///-- Identifier: 382, userName: 382
-        ///-- Identifier: 383, userName: 383
-        ///-- Identifier: 384, userName: 384
-        ///-- Identifier: 385, userName: 385
-        ///-- Identifier: 386, userName: 386
+        ///-- Identifier: 372, userName: 372
+        ///-- Identifier: 373, userName: 373
+        ///-- Identifier: 374, userName: 374
+        ///-- Identifier: 375, userName: 375
+        ///-- Identifier: 376, userName: 376
         ///Edges: 
-        ///-- Vertex: 382 (382)
-        ///---- 383 (383) 
-        ///---- 384 (384) 
-        ///-- Vertex: 383 (383)
-        ///---- 382 (382) 
-        ///---- 385 (385) 
-        ///-- Vertex: 384 (384)
-        ///---- 382 (382) 
-        ///---- 386 (386) 
-        ///-- Vertex: 385 (385)
-        ///---- 383 [rest of string was truncated]&quot;;.
+        ///-- Vertex: 372 (372)
+        ///---- 373 (373) 
+        ///---- 374 (374) 
+        ///-- Vertex: 373 (373)
+        ///---- 372 (372) 
+        ///---- 375 (375) 
+        ///-- Vertex: 374 (374)
+        ///---- 372 (372) 
+        ///---- 376 (376) 
+        ///-- Vertex: 375 (375)
+        ///---- 373 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphCycleStandard {
             get {
@@ -419,19 +443,19 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 9
         ///Count of edges: 9
         ///Vertices: 
-        ///-- Identifier: 355, userName: 355
-        ///-- Identifier: 356, userName: 356
-        ///-- Identifier: 357, userName: 357
-        ///-- Identifier: 358, userName: 358
-        ///-- Identifier: 359, userName: 359
-        ///-- Identifier: 360, userName: 360
-        ///-- Identifier: 361, userName: 361
-        ///-- Identifier: 362, userName: 362
-        ///-- Identifier: 363, userName: 363
+        ///-- Identifier: 345, userName: 345
+        ///-- Identifier: 346, userName: 346
+        ///-- Identifier: 347, userName: 347
+        ///-- Identifier: 348, userName: 348
+        ///-- Identifier: 349, userName: 349
+        ///-- Identifier: 350, userName: 350
+        ///-- Identifier: 351, userName: 351
+        ///-- Identifier: 352, userName: 352
+        ///-- Identifier: 353, userName: 353
         ///Edges: 
-        ///-- Vertex: 355 (355)
-        ///---- 356 (356) 
-        ///---- 357 ( [rest of string was truncated]&quot;;.
+        ///-- Vertex: 345 (345)
+        ///---- 346 (346) 
+        ///---- 347 ( [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphDegreeSequenceStandard {
             get {
@@ -447,22 +471,22 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 5
         ///Count of edges: 6
         ///Vertices: 
-        ///-- Identifier: 730, userName: 730
-        ///-- Identifier: 731, userName: 731
-        ///-- Identifier: 732, userName: 732
-        ///-- Identifier: 733, userName: 733
-        ///-- Identifier: 734, userName: 734
+        ///-- Identifier: 646, userName: 646
+        ///-- Identifier: 647, userName: 647
+        ///-- Identifier: 648, userName: 648
+        ///-- Identifier: 649, userName: 649
+        ///-- Identifier: 650, userName: 650
         ///Edges: 
-        ///-- Vertex: 730 (730)
-        ///---- 731 (731) 
-        ///---- 732 (732) 
-        ///---- 733 (733) 
-        ///-- Vertex: 731 (731)
-        ///---- 730 (730) 
-        ///---- 734 (734) 
-        ///-- Vertex: 732 (732)
-        ///---- 730 (730) 
-        ///---- 733 (733) 
+        ///-- Vertex: 646 (646)
+        ///---- 647 (647) 
+        ///---- 648 (648) 
+        ///---- 649 (649) 
+        ///-- Vertex: 647 (647)
+        ///---- 646 (646) 
+        ///---- 650 (650) 
+        ///-- Vertex: 648 (648)
+        ///---- 646 (646) 
+        ///---- 649 (649) 
         ///-- Vertex [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphLineGraphStandard {
@@ -479,19 +503,19 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 9
         ///Count of edges: 13
         ///Vertices: 
-        ///-- Identifier: 568, userName: 568
-        ///-- Identifier: 569, userName: 569
-        ///-- Identifier: 570, userName: 570
-        ///-- Identifier: 571, userName: 571
-        ///-- Identifier: 572, userName: 572
-        ///-- Identifier: 573, userName: 573
-        ///-- Identifier: 574, userName: 574
-        ///-- Identifier: 575, userName: 575
-        ///-- Identifier: 576, userName: 576
+        ///-- Identifier: 492, userName: 492
+        ///-- Identifier: 493, userName: 493
+        ///-- Identifier: 494, userName: 494
+        ///-- Identifier: 495, userName: 495
+        ///-- Identifier: 496, userName: 496
+        ///-- Identifier: 497, userName: 497
+        ///-- Identifier: 498, userName: 498
+        ///-- Identifier: 499, userName: 499
+        ///-- Identifier: 500, userName: 500
         ///Edges: 
-        ///-- Vertex: 568 (568)
-        ///---- 569 (569) 
-        ///---- 571 (571) 
+        ///-- Vertex: 492 (492)
+        ///---- 493 (493) 
+        ///---- 495 (495) 
         ///-- Vert [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphModificationStandard {
@@ -508,23 +532,23 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 4
         ///Count of edges: 4
         ///Vertices: 
-        ///-- Identifier: 530, userName: 530
-        ///-- Identifier: 531, userName: 531
-        ///-- Identifier: 532, userName: 532
-        ///-- Identifier: 533, userName: 533
+        ///-- Identifier: 468, userName: 468
+        ///-- Identifier: 469, userName: 469
+        ///-- Identifier: 470, userName: 470
+        ///-- Identifier: 471, userName: 471
         ///Edges: 
-        ///-- Vertex: 530 (530)
-        ///---- 531 (531) 
-        ///---- 532 (532) 
-        ///-- Vertex: 531 (531)
-        ///---- 530 (530) 
-        ///---- 533 (533) 
-        ///-- Vertex: 532 (532)
-        ///---- 530 (530) 
-        ///---- 533 (533) 
-        ///-- Vertex: 533 (533)
-        ///---- 531 (531) 
-        ///---- 532 (532) 
+        ///-- Vertex: 468 (468)
+        ///---- 469 (469) 
+        ///---- 470 (470) 
+        ///-- Vertex: 469 (469)
+        ///---- 468 (468) 
+        ///---- 471 (471) 
+        ///-- Vertex: 470 (470)
+        ///---- 468 (468) 
+        ///---- 471 (471) 
+        ///-- Vertex: 471 (471)
+        ///---- 469 (469) 
+        ///---- 470 (470) 
         ///
         /// [rest of string was truncated]&quot;;.
         /// </summary>
@@ -542,21 +566,21 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 5
         ///Vertices: 
-        ///-- Identifier: 684, userName: 684
-        ///-- Identifier: 685, userName: 685
-        ///-- Identifier: 686, userName: 686
-        ///-- Identifier: 687, userName: 687
-        ///-- Identifier: 688, userName: 688
-        ///-- Identifier: 689, userName: 689
+        ///-- Identifier: 600, userName: 600
+        ///-- Identifier: 601, userName: 601
+        ///-- Identifier: 602, userName: 602
+        ///-- Identifier: 603, userName: 603
+        ///-- Identifier: 604, userName: 604
+        ///-- Identifier: 605, userName: 605
         ///Edges: 
-        ///-- Vertex: 684 (684)
-        ///---- 687 (687) 
-        ///---- 688 (688) 
-        ///---- 689 (689) 
-        ///-- Vertex: 685 (685)
-        ///---- 687 (687) 
-        ///-- Vertex: 686 (686)
-        ///---- 687 (687) 
+        ///-- Vertex: 600 (600)
+        ///---- 603 (603) 
+        ///---- 604 (604) 
+        ///---- 605 (605) 
+        ///-- Vertex: 601 (601)
+        ///---- 603 (603) 
+        ///-- Vertex: 602 (602)
+        ///---- 603 (603) 
         ///-- Vertex [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphSubGraphStandard {
@@ -574,11 +598,11 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 1007, userName: 1007
+        ///-- Identifier: 936, userName: 936
         ///Edges: 
-        ///-- Vertex: 1007 (1007)
+        ///-- Vertex: 936 (936)
         ///Vertex color: 
-        ///-- Vertex: 1007, color: 1
+        ///-- Vertex: 936, color: 1
         ///
         ///Greedy independent set algorithm
         ///Graph colored.
@@ -587,8 +611,9 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 6
         ///Vertices: 
-        ///-- Identifier: 1009, userName: 1009
-        ///-- Identifier: 1010, userName: 1 [rest of string was truncated]&quot;;.
+        ///-- Identifier: 938, userName: 938
+        ///-- Identifier: 939, userName: 939
+        ///-- I [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GreedyIndependentSetStandard {
             get {
@@ -605,11 +630,11 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 843, userName: 843
+        ///-- Identifier: 792, userName: 792
         ///Edges: 
-        ///-- Vertex: 843 (843)
+        ///-- Vertex: 792 (792)
         ///Vertex color: 
-        ///-- Vertex: 843, color: 1
+        ///-- Vertex: 792, color: 1
         ///
         ///largestFirstSequence3
         ///Graph colored.
@@ -618,9 +643,9 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 6
         ///Vertices: 
-        ///-- Identifier: 844, userName: 844
-        ///-- Identifier: 845, userName: 845
-        ///-- Identifier: 846, userNa [rest of string was truncated]&quot;;.
+        ///-- Identifier: 793, userName: 793
+        ///-- Identifier: 794, userName: 794
+        ///-- Identifier: 795, userNa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LargestFirstSequenceStandard {
             get {
@@ -636,22 +661,22 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 10
         ///Vertices: 
-        ///-- Identifier: 921, userName: 921
-        ///-- Identifier: 922, userName: 922
-        ///-- Identifier: 923, userName: 923
-        ///-- Identifier: 924, userName: 924
-        ///-- Identifier: 925, userName: 925
-        ///-- Identifier: 926, userName: 926
+        ///-- Identifier: 870, userName: 870
+        ///-- Identifier: 871, userName: 871
+        ///-- Identifier: 872, userName: 872
+        ///-- Identifier: 873, userName: 873
+        ///-- Identifier: 874, userName: 874
+        ///-- Identifier: 875, userName: 875
         ///Edges: 
-        ///-- Vertex: 921 (921)
-        ///---- 923 (923) 
-        ///---- 925 (925) 
-        ///-- Vertex: 922 (922)
-        ///---- 923 (923) 
-        ///---- 924 (924) 
-        ///---- 925 (925) 
-        ///---- 926 (926) 
-        ///-- Vertex: 923 (923 [rest of string was truncated]&quot;;.
+        ///-- Vertex: 870 (870)
+        ///---- 872 (872) 
+        ///---- 874 (874) 
+        ///-- Vertex: 871 (871)
+        ///---- 872 (872) 
+        ///---- 873 (873) 
+        ///---- 874 (874) 
+        ///---- 875 (875) 
+        ///-- Vertex: 872 (872 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string OptimalStandard {
             get {
@@ -680,7 +705,7 @@ namespace GraphColoring.Tests {
         ///-- Identifier: 9, userName: 4
         ///-- Identifier: 10, userName: 9
         ///Edges: 
-        ///-- Vertex: 0 (1 [rest of string was truncated]&quot;;.
+        ///-- Vertex: 1 (0 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReaderStandard {
             get {
@@ -697,11 +722,11 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 941, userName: 941
+        ///-- Identifier: 890, userName: 890
         ///Edges: 
-        ///-- Vertex: 941 (941)
+        ///-- Vertex: 890 (890)
         ///Vertex color: 
-        ///-- Vertex: 941, color: 1
+        ///-- Vertex: 890, color: 1
         ///
         ///saturationLargestFirstSequence3
         ///Graph colored.
@@ -710,8 +735,8 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 6
         ///Vertices: 
-        ///-- Identifier: 942, userName: 942
-        ///-- Identifier: 943, userName: 943
+        ///-- Identifier: 891, userName: 891
+        ///-- Identifier: 892, userName: 892
         ///-- Ide [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SaturationLargestFirstSequenceStandard {
@@ -729,11 +754,11 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 869, userName: 869
+        ///-- Identifier: 818, userName: 818
         ///Edges: 
-        ///-- Vertex: 869 (869)
+        ///-- Vertex: 818 (818)
         ///Vertex color: 
-        ///-- Vertex: 869, color: 1
+        ///-- Vertex: 818, color: 1
         ///
         ///smallestLastSequence3
         ///Graph colored.
@@ -742,9 +767,9 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 6
         ///Count of edges: 6
         ///Vertices: 
-        ///-- Identifier: 871, userName: 871
-        ///-- Identifier: 872, userName: 872
-        ///-- Identifier: 873, userNa [rest of string was truncated]&quot;;.
+        ///-- Identifier: 820, userName: 820
+        ///-- Identifier: 821, userName: 821
+        ///-- Identifier: 822, userNa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SmallestLastSequenceStandard {
             get {
@@ -759,8 +784,6 @@ namespace GraphColoring.Tests {
         ///OK
         ///first
         ///OK
-        ///
-        ///
         ///
         ///.
         /// </summary>

@@ -602,7 +602,7 @@ namespace GraphColoring.GUI
 
                             foreach (Graph.Vertex vertex in componentGraph.AllVertices())
                             {
-                                coloredGraph.ColorVertex(graph.GetVertex(vertex.GetUserName()), vertex.GetColor());
+                                coloredGraph.ColorVertex(graph.GetVertexByUserName(vertex.GetUserName()), vertex.GetColor());
                             }
                         }
 
@@ -1292,7 +1292,7 @@ namespace GraphColoring.GUI
             {
                 try
                 {
-                    graph.VertexDelete(graph.GetVertex(vertexName));
+                    graph.VertexDelete(graph.GetVertexByUserName(vertexName));
                     ResetProperty();
                     ShowGraph();
 
@@ -1349,7 +1349,7 @@ namespace GraphColoring.GUI
             {
                 try
                 {
-                    graph.VertexContraction(graph.GetVertex(vertexName));
+                    graph.VertexContraction(graph.GetVertexByUserName(vertexName));
                     ResetProperty();
                     ShowGraph();
 
@@ -1406,7 +1406,7 @@ namespace GraphColoring.GUI
             {
                 try
                 {
-                    graph.VertexSuppression(graph.GetVertex(vertexName));
+                    graph.VertexSuppression(graph.GetVertexByUserName(vertexName));
                     ResetProperty();
                     ShowGraph();
 
@@ -1469,7 +1469,7 @@ namespace GraphColoring.GUI
             {
                 try
                 {
-                    graph.VertexExpansion(graph.GetVertex(vertexName));
+                    graph.VertexExpansion(graph.GetVertexByUserName(vertexName));
                     ResetProperty();
                     ShowGraph();
 
@@ -1527,7 +1527,7 @@ namespace GraphColoring.GUI
             {
                 try
                 {
-                    graph.EdgeAdd(new Graph.Edge(graph.GetVertex(firstVertexName), graph.GetVertex(secondVertexName)));
+                    graph.EdgeAdd(new Graph.Edge(graph.GetVertexByUserName(firstVertexName), graph.GetVertexByUserName(secondVertexName)));
                     ResetProperty();
                     ShowGraph();
 
@@ -1587,7 +1587,7 @@ namespace GraphColoring.GUI
             {
                 try
                 {
-                    graph.EdgeDelete(new Graph.Edge(graph.GetVertex(firstVertexName), graph.GetVertex(secondVertexName)));
+                    graph.EdgeDelete(new Graph.Edge(graph.GetVertexByUserName(firstVertexName), graph.GetVertexByUserName(secondVertexName)));
                     ResetProperty();
                     ShowGraph();
 
@@ -1647,7 +1647,7 @@ namespace GraphColoring.GUI
             {
                 try
                 {
-                    graph.EdgeContraction(new Graph.Edge(graph.GetVertex(firstVertexName), graph.GetVertex(secondVertexName)));
+                    graph.EdgeContraction(new Graph.Edge(graph.GetVertexByUserName(firstVertexName), graph.GetVertexByUserName(secondVertexName)));
                     ResetProperty();
                     ShowGraph();
 
@@ -1707,7 +1707,7 @@ namespace GraphColoring.GUI
             {
                 try
                 {
-                    graph.EdgeSubdivision(new Graph.Edge(graph.GetVertex(firstVertexName), graph.GetVertex(secondVertexName)));
+                    graph.EdgeSubdivision(new Graph.Edge(graph.GetVertexByUserName(firstVertexName), graph.GetVertexByUserName(secondVertexName)));
                     ResetProperty();
                     ShowGraph();
 

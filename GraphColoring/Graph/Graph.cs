@@ -134,12 +134,23 @@ namespace GraphColoring.Graph
         /// </summary>
         /// <param name="userName">jméno vrcholu</param>
         /// <returns>vrchol s daným userName</returns>
-        public IVertexInterface GetVertex(string userName)
+        public IVertexInterface GetVertexByUserName(string userName)
         {
             if (!mappingUserName.TryGetValue(userName, out VertexExtended vertexExtended))
                 throw new MyException.GraphException.GraphVertexDoesntExistException();
 
             return vertexExtended;
+        }
+
+        /// <summary>
+        /// Return vertex which has the identifier
+        /// If vertex doesn't exist throw GraphVertexDoesntExistException
+        /// </summary>
+        /// <param name="identifier">Identifier of the vertex</param>
+        /// <returns>The vertex with the identifier</returns>
+        public IVertexInterface GetVertexByIdentifier(int identifier)
+        {
+            return GetVertex(identifier);
         }
 
         /// <summary>
@@ -328,10 +339,10 @@ namespace GraphColoring.Graph
             stringBuilder.AppendLine("Edges: ");
             foreach (KeyValuePair<VertexExtended, List<VertexExtended>> record in adjacencyList)
             {
-                stringBuilder.AppendLine("-- Vertex: " + record.Key.GetUserName() + " (" + record.Key.GetIdentifier() + ")");
+                stringBuilder.AppendLine("-- Vertex: " + record.Key.GetIdentifier() + " (" + record.Key.GetUserName() + ")");
                 foreach (VertexExtended vertexExtended in record.Value)
                 {
-                    stringBuilder.AppendLine("---- " + vertexExtended.GetUserName() + " (" + vertexExtended.GetIdentifier() + ") ");
+                    stringBuilder.AppendLine("---- " + vertexExtended.GetIdentifier() + " (" + vertexExtended.GetUserName() + ") ");
                 }
             }
 

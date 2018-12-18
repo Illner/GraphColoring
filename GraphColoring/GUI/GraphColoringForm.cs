@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
@@ -115,9 +116,60 @@ namespace GraphColoring.GUI
         /// </summary>
         private void ShowGraph()
         {
-            GraphVisualization.GraphVisualization graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents());
-            graphVisualization.CreateGraphVisualization();
-            SetDrawGraphPictureBox(graphVisualization.GetImage());
+            try
+            {
+                // Variable
+                GraphVisualization.GraphVisualization graphVisualization = null;
+
+                if (graph.GetColoredGraph().GetIsInicializedColoredGraph() && scheduleAppearanceCheckBox.Checked)
+                    graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), true);
+                else
+                    graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), false);
+
+                graphVisualization.CreateGraphVisualization();
+                SetDrawGraphPictureBox(graphVisualization.GetImage());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        private void scheduleAppearanceCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ExistsGraph())
+            {
+                return;
+            }
+
+            // Disable all buttons
+            EnableButtons(false);
+
+            // Status
+            SetStatusLabel(WCM.LoadGraphProgressStatus);
+
+            coreThread = new Thread(() =>
+            {
+                try
+                {
+                    ShowGraph();
+
+                    // Status
+                    SetStatusLabel(WCM.LoadGraphStatus);
+                }
+                catch (ThreadAbortException ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                finally
+                {
+                    // Enable all buttons
+                    EnableButtons(true);
+                }
+
+            });
+            coreThread.IsBackground = true;
+            coreThread.Start();
         }
 
         /// <summary>
@@ -175,6 +227,16 @@ namespace GraphColoring.GUI
                 return;
             }
             isCyclicValueGraphPropertiesLabel.Text = text;
+        }
+
+        private void SetIsChordalValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetIsChordalValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            isChordalValueGraphPropertiesLabel.Text = text;
         }
 
         private void SetMaximumVertexDegreeValueGraphPropertiesLabel(string text)
@@ -257,6 +319,16 @@ namespace GraphColoring.GUI
             isEulerianValueGraphPropertiesLabel.Text = text;
         }
 
+        private void SetIsSimplicialVertexValueGraphPropertiesLabel(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetIsSimplicialVertexValueGraphPropertiesLabel), new object[] { text });
+                return;
+            }
+            SimplicialVertexValueGraphPropertiesLabel.Text = text;
+        }
+
         private void SetCountOfUsedColorsValueGraphPropertiesLabel(string text)
         {
             if (InvokeRequired)
@@ -336,6 +408,7 @@ namespace GraphColoring.GUI
             classValuePropertiesLabel.Text = "";
             isRegularValueGraphPropertiesLabel.Text = "";
             isCyclicValueGraphPropertiesLabel.Text = "";
+            isChordalValueGraphPropertiesLabel.Text = "";
             maximumVertexDegreeValueGraphPropertiesLabel.Text = "";
             minimumVertexDegreeValueGraphPropertiesLabel.Text = "";
             averageVertexDegreeValueGraphPropertiesLabel.Text = "";
@@ -344,6 +417,7 @@ namespace GraphColoring.GUI
             girthValueGraphPropertiesLabel.Text = "";
             cayleysFormulaValueGraphPropertiesLabel.Text = "";
             isEulerianValueGraphPropertiesLabel.Text = "";
+            SimplicialVertexValueGraphPropertiesLabel.Text = "";
             countOfUsedColorsValueGraphPropertiesLabel.Text = "";
 
             // Color
@@ -376,6 +450,12 @@ namespace GraphColoring.GUI
                 countComponentValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetCountComponents().ToString();
                 isConnectedValueGraphPropertiesLabel.Text = graph.GetGraphProperty().GetIsConnected().ToString();
             }
+
+            // Modification - inputs
+            vertexNameGraphModificationVertexTextBox.Text = "";
+            newVertexNameGraphModificationVertexTextBox.Text = "";
+            firstVertexNameGraphModificationEdgeTextBox.Text = "";
+            secondVertexNameGraphModificationEdgeTextBox.Text = "";
         }
         
         private void EnableButtons(bool enable)
@@ -392,6 +472,7 @@ namespace GraphColoring.GUI
             colorGraphPlanScheduleButton.Enabled = enable;
             newGraphButton.Enabled = enable;
             generateGraphButton.Enabled = enable;
+            scheduleAppearanceCheckBox.Enabled = enable;
 
             // Second column
             graphPropertiesGroupBox.Enabled = enable;
@@ -400,6 +481,7 @@ namespace GraphColoring.GUI
             lineGraphGraphOperationButton.Enabled = enable;
 
             // Third column
+            changeVertexNameGraphModificationVertexButton.Enabled = enable;
             vertexAddGraphModificationVertexButton.Enabled = enable;
             vertexDeleteGraphModificationVertexButton.Enabled = enable;
             vertexContractionGraphModificationVertexButton.Enabled = enable;
@@ -758,7 +840,7 @@ namespace GraphColoring.GUI
                 try
                 {
                     // Variable
-                    string classType = "", isRegular = "", isCyclic = "", maximumVertexDegree = "", minimumVertexDegree = "", averageVertexDegree = "", countOfCutVertices = "", countOfBridges = "", grith = "", cayleysFormula = "", isEulerian = "";
+                    string classType = "", isRegular = "", isCyclic = "", maximumVertexDegree = "", minimumVertexDegree = "", averageVertexDegree = "", countOfCutVertices = "", countOfBridges = "", grith = "", cayleysFormula = "", isEulerian = "", isChordal = "", simplicialVertexName = "None";
 
                     if (graph.GetGraphProperty().GetIsConnected())
                     {
@@ -775,11 +857,15 @@ namespace GraphColoring.GUI
                     minimumVertexDegree = graph.GetGraphProperty().GetMinimumVertexDegree().ToString();
                     averageVertexDegree = graph.GetGraphProperty().GetAverageVertexDegree().ToString();
                     grith = graph.GetGraphProperty().GetGirth().ToString();
+                    isChordal = graph.GetGraphProperty().GetIsChordal().ToString();
+                    if (graph.GetGraphProperty().GetIsChordal())
+                        simplicialVertexName = graph.GetGraphProperty().GetPerfectEliminationOrdering().First().GetUserName();
 
                     // Display
                     SetClassValuePropertiesLabel(classType);
                     SetIsCyclicValueGraphPropertiesLabel(isCyclic);
                     SetIsRegularValueGraphPropertiesLabel(isRegular);
+                    SetIsChordalValueGraphPropertiesLabel(isChordal);
                     SetCountCutVerticesValueGraphPropertiesLabel(countOfCutVertices);
                     SetCountBridgesValueGraphPropertiesLabel(countOfBridges);
                     SetCayleysFormulaValueGraphPropertiesLabel(cayleysFormula);
@@ -788,6 +874,7 @@ namespace GraphColoring.GUI
                     SetMinimumVertexDegreeValueGraphPropertiesLabel(minimumVertexDegree);
                     SetAverageVertexDegreeValueGraphPropertiesLabel(averageVertexDegree);
                     SetGrithValueGraphPropertiesLabel(grith);
+                    SetIsSimplicialVertexValueGraphPropertiesLabel(simplicialVertexName);
 
                     // Status
                     SetStatusLabel(WCM.PropertyStatus);
@@ -1199,10 +1286,109 @@ namespace GraphColoring.GUI
                 coreThread.Start();
             }
         }
+
+        // Chordal - click
+        private void isChordalGraphPropertiesLabel_Click(object sender, EventArgs e)
+        {
+            if (graph == null)
+                return;
+
+            // Disable all buttons
+            EnableButtons(false);
+
+            coreThread = new Thread(() =>
+            {
+                // Variable
+                string isChordal;
+                string simplicialVertexName = "None";
+
+                isChordal = graph.GetGraphProperty().GetIsChordal().ToString();
+
+                if (graph.GetGraphProperty().GetIsChordal())
+                    simplicialVertexName = graph.GetGraphProperty().GetPerfectEliminationOrdering().First().GetUserName();
+
+                SetIsChordalValueGraphPropertiesLabel(isChordal);
+                SetIsSimplicialVertexValueGraphPropertiesLabel(simplicialVertexName);
+
+                // Enable all buttons
+                EnableButtons(true);
+            });
+            coreThread.IsBackground = true;
+            coreThread.Start();
+        }
         #endregion
 
         // Graph modification - click
         #region
+            
+        private void changeVertexNameGraphModificationVertexButton_Click(object sender, EventArgs e)
+        {
+            if (!ExistsGraph())
+                return;
+
+            string vertexName = vertexNameGraphModificationVertexTextBox.Text;
+            string newVertexName = newVertexNameGraphModificationVertexTextBox.Text;
+
+            if (vertexName == "")
+            {
+                ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntInsertedTitle, WCM.GraphModificationVertexDoesntInserted);
+                return;
+            }
+
+            if (newVertexName == "")
+            {
+                ShowMessageBox("Error | " + WCM.GraphModificationVertexNameDoesntInsertedTitle, WCM.GraphModificationVertexNameDoesntInserted);
+                return;
+            }
+            
+            // Disable all buttons
+            EnableButtons(false);
+            
+            coreThread = new Thread(() =>
+            {
+                try
+                {
+                    graph.RenameVertexUserName(graph.GetVertexByUserName(vertexName), newVertexName);
+
+                    ResetProperty();
+                    ShowGraph();
+
+                    path = null;
+
+                    // Status
+                    SetStatusLabel(WCM.GraphModificationStatus);
+                }
+                catch (MyException.GraphException.GraphVertexUserNameAlreadyExistsException ex)
+                {
+                    ShowMessageBox("Error | " + WCM.GraphModificationVertexUserNameExistsTitle, WCM.GraphModificationVertexUserNameExists);
+
+                    Console.WriteLine(ex);
+                }
+                catch (MyException.GraphException.GraphVertexDoesntExistException ex)
+                {
+                    ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
+
+                    Console.WriteLine(ex);
+                }
+                catch (ThreadAbortException ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                finally
+                {
+                    // Enable all buttons
+                    EnableButtons(true);
+
+                    Console.WriteLine("------------------");
+                    Console.WriteLine(graph);
+                    Console.WriteLine("------------------");
+
+                }
+            });
+            coreThread.IsBackground = true;
+            coreThread.Start();
+        }
+
         private void vertexAddGraphModificationVertexButton_Click(object sender, EventArgs e)
         {
             if (!ExistsGraph())
@@ -1775,6 +1961,11 @@ namespace GraphColoring.GUI
 
             graphVisualizationForm = new GraphVisualizationForm(drawGraphPictureBox.Image);
             graphVisualizationForm.Show();
+        }
+
+        private void drawGraphPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

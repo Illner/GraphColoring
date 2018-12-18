@@ -313,6 +313,24 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please insert a new vertex name for the vertex!.
+        /// </summary>
+        internal static string GraphModificationVertexNameDoesntInserted {
+            get {
+                return ResourceManager.GetString("GraphModificationVertexNameDoesntInserted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No new vertex name inserted!.
+        /// </summary>
+        internal static string GraphModificationVertexNameDoesntInsertedTitle {
+            get {
+                return ResourceManager.GetString("GraphModificationVertexNameDoesntInsertedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You choose invalid vertex for this operation!.
         /// </summary>
         internal static string GraphModificationVertexSuppressionInvalidVertex {
@@ -327,6 +345,24 @@ namespace GraphColoring.GUI {
         internal static string GraphModificationVertexSuppressionInvalidVertexTitle {
             get {
                 return ResourceManager.GetString("GraphModificationVertexSuppressionInvalidVertexTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This name already exists. Please choose something else!.
+        /// </summary>
+        internal static string GraphModificationVertexUserNameExists {
+            get {
+                return ResourceManager.GetString("GraphModificationVertexUserNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name already exists.
+        /// </summary>
+        internal static string GraphModificationVertexUserNameExistsTitle {
+            get {
+                return ResourceManager.GetString("GraphModificationVertexUserNameExistsTitle", resourceCulture);
             }
         }
         

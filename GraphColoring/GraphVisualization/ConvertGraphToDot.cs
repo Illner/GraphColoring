@@ -10,6 +10,7 @@ namespace GraphColoring.GraphVisualization
     class ConvertGraphToDot : IConvertGraphToDotInterface
     {
         // Variable
+        private bool isSchedule;
         private List<Graph.IGraphInterface> graphList;
         private List<Graph.IVertexInterface> cutVerticesList;
         private List<Graph.IEdgeInterface> bridgesList;
@@ -46,15 +47,26 @@ namespace GraphColoring.GraphVisualization
             {14, "darkslategray" },
             {15, "white" }
         };
-        
+
         // Constructor
-        public ConvertGraphToDot(List<Graph.IGraphInterface> graphList)
+        public ConvertGraphToDot(List<Graph.IGraphInterface> graphList, bool isSchedule = false)
         {
             this.graphList = graphList;
+
+            this.isSchedule = isSchedule;
         }
 
         // Method
         public string Convert()
+        {
+            if (isSchedule)
+                return ConvertSchedule();
+            else
+                return ConvertGraph();
+        }
+
+        // For standard graph visualization
+        private string ConvertGraph()
         {
             stringBuilder = new StringBuilder();
 
@@ -74,7 +86,7 @@ namespace GraphColoring.GraphVisualization
                 string text;
                 int vertexDegree;
                 bool useColor = false;
-                    
+
                 if (graph.GetColoredGraph().GetIsInicializedColoredGraph())
                     useColor = graph.GetColoredGraph().GetCountUsedColors() < MAXCOLORS ? true : false;
 
@@ -93,7 +105,7 @@ namespace GraphColoring.GraphVisualization
                     vertexDegree = graph.CountNeighbours(vertex);
 
                     text += vertex.GetUserName() + "\" [";
-                    
+
                     if (vertexDegree == minimumDegree)
                         text += "shape = doublecircle ";
 
@@ -142,5 +154,73 @@ namespace GraphColoring.GraphVisualization
 
             return stringBuilder.ToString();
         }
+
+        // For schedule visualization
+        private string ConvertSchedule()
+        {
+            stringBuilder = new StringBuilder();
+
+            // Sceleton
+            if (graphList.Count == 0)
+                stringBuilder.AppendLine("graph");
+            else
+                stringBuilder.AppendLine("graph \"" + graphList[0].GetName() + "\"");
+            stringBuilder.AppendLine("{");
+
+            // Get max count of used colors
+            int maxUsedColors = 0;
+            foreach (Graph.IGraphInterface graph in graphList)
+            {
+                int usedColors = graph.GetColoredGraph().GetCountUsedColors();
+                if (usedColors > maxUsedColors)
+                    maxUsedColors = usedColors;
+            }
+
+            stringBuilder.AppendLine("node [shape=Mrecord style=filled];");
+
+            // For all colors
+            for (int i = 1; i <= maxUsedColors; i++)
+            {
+                bool first = true;
+                stringBuilder.Append("Color" + i + " [label = \"{");
+
+                // For all graphs
+                foreach (Graph.IGraphInterface graph in graphList)
+                {
+                    if (graph.GetGraphProperty().GetCountVertices() == 0)
+                        continue;
+
+                    // For all vertices with the color i
+                    foreach (Graph.IVertexInterface vertex in graph.GetColoredGraph().ColoredVertices(i))
+                    {
+                        if (first)
+                        {
+                            stringBuilder.Append(vertex.GetUserName());
+                            first = false;
+                        }
+                        else
+                            stringBuilder.Append(" | " + vertex.GetUserName());
+                    }
+                }
+
+                stringBuilder.AppendLine("}\" fillcolor = " + colorsDictionary[i] + "];");
+            }
+            stringBuilder.AppendLine("}");
+
+            return stringBuilder.ToString();
+        }
+
+        // Property
+        #region
+        public bool GetIsSchedule()
+        {
+            return isSchedule;
+        }
+
+        public void SetIsSchedule(bool isSchedule)
+        {
+            this.isSchedule = isSchedule;
+        }
+        #endregion
     }
 }

@@ -10,6 +10,7 @@ namespace GraphColoring.GraphVisualization
     partial class GraphVisualization : IGraphVisualizationInterface
     {
         // Variable
+        private bool isSchedule;
         private Image image;
         private List<Graph.IGraphInterface> graphList;
         private const int MAXALLOWEDVERTICES = 100;
@@ -26,17 +27,19 @@ namespace GraphColoring.GraphVisualization
         /// Default value for fileNameExtensionEnum is jpg
         /// </summary>
         /// <param name="graph">The graph</param>
-        public GraphVisualization(Graph.IGraphInterface graph, FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)
+        public GraphVisualization(Graph.IGraphInterface graph, bool isSchedule, FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)
         {
             graphList = new List<Graph.IGraphInterface>();
             graphList.Add(graph);
             this.fileNameExtensionEnum = fileNameExtensionEnum;
+            this.isSchedule = isSchedule;
         }
 
-        public GraphVisualization(List<Graph.IGraphInterface> graphList, FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)
+        public GraphVisualization(List<Graph.IGraphInterface> graphList, bool isSchedule, FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)
         {
             this.graphList = graphList;
             this.fileNameExtensionEnum = fileNameExtensionEnum;
+            this.isSchedule = isSchedule;
         }
 
         /// 
@@ -116,7 +119,7 @@ namespace GraphColoring.GraphVisualization
             }
 
             // Convertor from graph to DOT
-            convertGraphToDot = new ConvertGraphToDot(graphList);
+            convertGraphToDot = new ConvertGraphToDot(graphList, isSchedule);
             string source = convertGraphToDot.Convert();
             string format = fileNameExtensionEnum.ToString();
             

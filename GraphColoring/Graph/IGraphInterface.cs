@@ -19,6 +19,7 @@ namespace GraphColoring.Graph
         bool ExistsVertex(IVertexInterface vertex);
         bool ExistsUserName(string userName);
         bool ExistsEdge(IEdgeInterface edge);
+        void RenameVertexUserName(IVertexInterface vertex, string newUserName);
 
         // Graph modification
         void VertexAdd(IVertexInterface vertex);

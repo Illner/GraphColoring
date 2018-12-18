@@ -201,11 +201,23 @@
   <data name="GraphModificationVertexDoesntInsertedTitle" xml:space="preserve">
     <value>No vertex name inserted</value>
   </data>
+  <data name="GraphModificationVertexNameDoesntInserted" xml:space="preserve">
+    <value>Please insert a new vertex name for the vertex!</value>
+  </data>
+  <data name="GraphModificationVertexNameDoesntInsertedTitle" xml:space="preserve">
+    <value>No new vertex name inserted!</value>
+  </data>
   <data name="GraphModificationVertexSuppressionInvalidVertex" xml:space="preserve">
     <value>You choose invalid vertex for this operation!</value>
   </data>
   <data name="GraphModificationVertexSuppressionInvalidVertexTitle" xml:space="preserve">
     <value>Invalid vertex</value>
+  </data>
+  <data name="GraphModificationVertexUserNameExists" xml:space="preserve">
+    <value>This name already exists. Please choose something else!</value>
+  </data>
+  <data name="GraphModificationVertexUserNameExistsTitle" xml:space="preserve">
+    <value>Name already exists</value>
   </data>
   <data name="GraphNoExists" xml:space="preserve">
     <value>Please load a file with graph which you want to color!</value>

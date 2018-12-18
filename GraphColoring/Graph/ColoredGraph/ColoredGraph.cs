@@ -521,6 +521,9 @@ namespace GraphColoring.Graph
 
                 usedColorsDictionary.TryGetValue(color, out vertexHashSet);
 
+                if (vertexHashSet == null)
+                    return new List<IVertexInterface>();
+
                 return vertexHashSet.ToList();
             }
 

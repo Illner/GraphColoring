@@ -320,6 +320,24 @@ namespace GraphColoring.Graph
             }
         }
 
+        /// <summary>
+        /// Change the vertex user name
+        /// If the vertex doesn't exist, throw GraphVertexDoesntExistException
+        /// </summary>
+        /// <param name="vertex">the name</param>
+        /// <param name="newUserName">the user name</param>
+        public void RenameVertexUserName(IVertexInterface vertex, string newUserName)
+        {
+            VertexExtended vertexExtended = ConvertVertexToVertexExtended(vertex);
+
+            if (ExistsUserName(newUserName))
+                throw new MyException.GraphException.GraphVertexUserNameAlreadyExistsException();
+
+            mappingUserName.Remove(vertex.GetUserName());
+            vertexExtended.SetUserName(newUserName);
+            mappingUserName.Add(newUserName, vertexExtended);
+        }
+
         override
         public String ToString()
         {

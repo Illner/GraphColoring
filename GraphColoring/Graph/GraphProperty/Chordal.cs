@@ -15,38 +15,45 @@ namespace GraphColoring.Graph.GraphProperty
         /// perfectEliminationOrderingList
         /// Use lex-BFS algorithm
         /// </summary>
-        public void PerfectEliminationOrdering()
+        private void PerfectEliminationOrdering()
         {
             // Variable
-            int shift = graph.GetFirstVertex().GetIdentifier();
             int countVertices = graph.GetRealCountVertices();
             perfectEliminationOrderingList = new List<IVertexInterface>(countVertices);
             MyDataStructure.FibonacciHeap priorityQueue = new MyDataStructure.FibonacciHeap(countVertices);
+            Dictionary<IVertexInterface, int> mappingVertexDictionary = new Dictionary<IVertexInterface, int>();
+            IVertexInterface[] mappingVertexArray = new IVertexInterface[countVertices];
 
-            // Initilize perfectEliminationOrderingList
-            for (int i = 0; i < countVertices; i++)
+            // Initilize perfectEliminationOrderingList + mapping
+            int help = 0;
+            foreach(IVertexInterface vertex in graph.AllVertices())
             {
+                // Mapping
+                mappingVertexDictionary.Add(vertex, help);
+                mappingVertexArray[help] = vertex;
+                help++;
+
                 perfectEliminationOrderingList.Add(null);
             }
 
             // Add vertices to fibonacci heap
             foreach (IVertexInterface vertex in graph.AllVertices())
             {
-                priorityQueue.Insert(vertex.GetIdentifier() - shift, countVertices);
+                priorityQueue.Insert(mappingVertexDictionary[vertex], countVertices);
             }
             
             for (int i = countVertices - 1; i >= 0; i--)
             {
-                int vertexIdentifier = priorityQueue.ExtractMin().GetIdentifier() + shift;
+                IVertexInterface selectedVertex = mappingVertexArray[priorityQueue.ExtractMin().GetIdentifier()];
 
-                foreach (IVertexInterface neighbour in graph.Neighbours(graph.GetVertexByIdentifier(vertexIdentifier)))
+                foreach (IVertexInterface neighbour in graph.Neighbours(selectedVertex))
                 {
-                    int neighbourIdentifier = neighbour.GetIdentifier() - shift;
-                    if (priorityQueue.ElementExists(neighbourIdentifier))
-                        priorityQueue.Decrease(neighbourIdentifier, priorityQueue.GetValue(neighbourIdentifier) - 1);
+                    int neighbourFibonacciIdentifier = mappingVertexDictionary[neighbour];
+                    if (priorityQueue.ElementExists(neighbourFibonacciIdentifier))
+                        priorityQueue.Decrease(neighbourFibonacciIdentifier, priorityQueue.GetValue(neighbourFibonacciIdentifier) - 1);
                 }
 
-                perfectEliminationOrderingList[i] = (graph.GetVertexByIdentifier(vertexIdentifier));
+                perfectEliminationOrderingList[i] = (selectedVertex);
             }
         }
 
@@ -55,7 +62,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// Return true if PEO is correct (it means the graph is chordal), otherwise return false (the graph is not chordal)
         /// isChordal
         /// </summary>
-        public void IsPerfectEliminationOrderingParallel() 
+        private void IsPerfectEliminationOrderingParallel() 
         {
             object locker = new object();
             isChordal = true;

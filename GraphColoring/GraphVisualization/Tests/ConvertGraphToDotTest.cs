@@ -91,6 +91,9 @@ namespace GraphColoring.GraphVisualization.Tests
         {
             try
             {
+                // Variable
+                ConvertGraphToDot convertGraphToDot;
+
                 testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[converterGraphToDotEnum]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
@@ -100,7 +103,24 @@ namespace GraphColoring.GraphVisualization.Tests
 
                 stringBuilder.AppendLine(converterGraphToDotEnum.ToString());
                 stringBuilder.AppendLine(graph.ToString());
-                ConvertGraphToDot convertGraphToDot = new ConvertGraphToDot(graphList);
+
+                stringBuilder.AppendLine("Standard graph");
+                convertGraphToDot = new ConvertGraphToDot(graphList, false);
+                stringBuilder.AppendLine(convertGraphToDot.Convert());
+
+                stringBuilder.AppendLine("Uncolored schedule");
+                convertGraphToDot = new ConvertGraphToDot(graphList, true);
+                stringBuilder.AppendLine(convertGraphToDot.Convert());
+
+                GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence largestFirstSequence;
+                foreach (Graph.IGraphInterface graph in graphList)
+                {
+                    largestFirstSequence = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, false);
+                    largestFirstSequence.Color();
+                }
+
+                stringBuilder.AppendLine("Colored schedule");
+                convertGraphToDot = new ConvertGraphToDot(graphList, true);
                 stringBuilder.AppendLine(convertGraphToDot.Convert());
             }
             catch (KeyNotFoundException)

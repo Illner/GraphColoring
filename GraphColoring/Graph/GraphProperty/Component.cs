@@ -119,7 +119,7 @@ namespace GraphColoring.Graph.GraphProperty
             }
         }
         #endregion
-        
+
         // Property
         #region
         /// <summary>

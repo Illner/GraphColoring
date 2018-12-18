@@ -13,16 +13,16 @@ namespace GraphColoring
         [STAThread]
         static void Main(string[] args)
         {
-            
+            /*
             Tests.Tests tests = new Tests.Tests(true);
             tests.Test();
-            
+            */
 
-            /*
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
-            */
+            
 
             /*
             Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
@@ -80,7 +80,7 @@ namespace GraphColoring
                     else
                         distribution[0]++;
 
-                    if (++counter % 100000 == 0)
+                    if (++counter % 1000 == 0)
                         Console.WriteLine("IsChordal: " + distribution[1] + ", nonChordal: " + distribution[0]);
                 }
                 Console.WriteLine("---- end");

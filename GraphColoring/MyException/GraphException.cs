@@ -107,6 +107,19 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
+    /// Vertex userName exists
+    /// </summary>
+    class GraphVertexUserNameAlreadyExistsException : GraphException
+    {
+        public GraphVertexUserNameAlreadyExistsException() { }
+
+        public GraphVertexUserNameAlreadyExistsException(string message) : base(message) { }
+
+        public GraphVertexUserNameAlreadyExistsException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
     /// Hrana v grafu neexistuje
     /// </summary>
     class GraphEdgeDoesntExistException : GraphException

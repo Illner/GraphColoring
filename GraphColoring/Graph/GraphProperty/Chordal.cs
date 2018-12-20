@@ -32,8 +32,6 @@ namespace GraphColoring.Graph.GraphProperty
                 mappingVertexDictionary.Add(vertex, help);
                 mappingVertexArray[help] = vertex;
                 help++;
-
-                perfectEliminationOrderingList.Add(null);
             }
 
             // Add vertices to fibonacci heap
@@ -42,7 +40,7 @@ namespace GraphColoring.Graph.GraphProperty
                 priorityQueue.Insert(mappingVertexDictionary[vertex], countVertices);
             }
             
-            for (int i = countVertices - 1; i >= 0; i--)
+            for (int i = 0; i < countVertices; i++)
             {
                 IVertexInterface selectedVertex = mappingVertexArray[priorityQueue.ExtractMin().GetIdentifier()];
 
@@ -53,7 +51,7 @@ namespace GraphColoring.Graph.GraphProperty
                         priorityQueue.Decrease(neighbourFibonacciIdentifier, priorityQueue.GetValue(neighbourFibonacciIdentifier) - 1);
                 }
 
-                perfectEliminationOrderingList[i] = (selectedVertex);
+                perfectEliminationOrderingList.Add(selectedVertex);
             }
         }
 
@@ -67,27 +65,27 @@ namespace GraphColoring.Graph.GraphProperty
             object locker = new object();
             isChordal = true;
 
-            for (int index = 0; index < perfectEliminationOrderingList.Count - 2; index++)
+            for (int index = 2; index < perfectEliminationOrderingList.Count; index++)
             {
                 // Variable
                 int pv;
-                List<int> rnvList;
-                List<int> rnpvList;
+                List<int> lnvList;
+                List<int> lnpvList;
 
-                // Get RNv - {pv}
-                rnvList = GetRightNeighborhood(index);
+                // Get LNv - {pv}
+                lnvList = GetLeftNeighborhood(index);
 
                 // If count is equal to 0 or 1, it is trivially true
-                if (rnvList.Count > 1)
+                if (lnvList.Count > 1)
                 {
-                    pv = rnvList.First();
-                    rnvList.Remove(pv);
+                    pv = lnvList.Last();
+                    lnvList.Remove(pv);
 
-                    // Get RNpv
-                    rnpvList = GetRightNeighborhood(pv);
+                    // Get LNpv
+                    lnpvList = GetLeftNeighborhood(pv);
 
-                    // RNv - {pv} is included in RNpv
-                    if (rnvList.Except(rnpvList).Any())
+                    // LNv - {pv} is included in RNpv
+                    if (lnvList.Except(lnpvList).Any())
                     {
                         lock (locker)
                         {
@@ -99,11 +97,11 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Return indexes of neighbors of vertex (with the index) on the right from the vertex in PEO
+        /// Return indexes of neighbors of vertex (with the index) on the left from the vertex in PEO
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>List of indexes</returns>
-        private List<int> GetRightNeighborhood(int index)
+        private List<int> GetLeftNeighborhood(int index)
         {
             // Variable
             IVertexInterface vertex;
@@ -113,7 +111,7 @@ namespace GraphColoring.Graph.GraphProperty
             vertex = perfectEliminationOrderingList[index];
             neighborsList = graph.Neighbours(vertex);
 
-            for (int i = index + 1; i < graph.GetRealCountVertices(); i++)
+            for (int i = 0; i < index; i++)
             {
                 if (neighborsList.Contains(perfectEliminationOrderingList[i]))
                 {

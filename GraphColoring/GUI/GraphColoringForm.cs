@@ -289,11 +289,11 @@ namespace GraphColoring.GUI
             countBridgesValueGraphPropertiesLabel.Text = text;
         }
 
-        private void SetGrithValueGraphPropertiesLabel(string text)
+        private void SetGirthValueGraphPropertiesLabel(string text)
         {
             if (InvokeRequired)
             {
-                this.Invoke(new Action<string>(SetGrithValueGraphPropertiesLabel), new object[] { text });
+                this.Invoke(new Action<string>(SetGirthValueGraphPropertiesLabel), new object[] { text });
                 return;
             }
             girthValueGraphPropertiesLabel.Text = text;
@@ -840,7 +840,7 @@ namespace GraphColoring.GUI
                 try
                 {
                     // Variable
-                    string classType = "", isRegular = "", isCyclic = "", maximumVertexDegree = "", minimumVertexDegree = "", averageVertexDegree = "", countOfCutVertices = "", countOfBridges = "", grith = "", cayleysFormula = "", isEulerian = "", isChordal = "", simplicialVertexName = "None";
+                    string classType = "", isRegular = "", isCyclic = "", maximumVertexDegree = "", minimumVertexDegree = "", averageVertexDegree = "", countOfCutVertices = "", countOfBridges = "", girth = "", cayleysFormula = "", isEulerian = "", isChordal = "", simplicialVertexName = "None";
 
                     if (graph.GetGraphProperty().GetIsConnected())
                     {
@@ -856,10 +856,10 @@ namespace GraphColoring.GUI
                     maximumVertexDegree = graph.GetGraphProperty().GetMaximumVertexDegree().ToString();
                     minimumVertexDegree = graph.GetGraphProperty().GetMinimumVertexDegree().ToString();
                     averageVertexDegree = graph.GetGraphProperty().GetAverageVertexDegree().ToString();
-                    grith = graph.GetGraphProperty().GetGirth().ToString();
+                    girth = graph.GetGraphProperty().GetGirth().ToString();
                     isChordal = graph.GetGraphProperty().GetIsChordal().ToString();
                     if (graph.GetGraphProperty().GetIsChordal())
-                        simplicialVertexName = graph.GetGraphProperty().GetPerfectEliminationOrdering().First().GetUserName();
+                        simplicialVertexName = graph.GetGraphProperty().GetPerfectEliminationOrdering().Last().GetUserName();
 
                     // Display
                     SetClassValuePropertiesLabel(classType);
@@ -873,7 +873,7 @@ namespace GraphColoring.GUI
                     SetMaximumVertexDegreeValueGraphPropertiesLabel(maximumVertexDegree);
                     SetMinimumVertexDegreeValueGraphPropertiesLabel(minimumVertexDegree);
                     SetAverageVertexDegreeValueGraphPropertiesLabel(averageVertexDegree);
-                    SetGrithValueGraphPropertiesLabel(grith);
+                    SetGirthValueGraphPropertiesLabel(girth);
                     SetIsSimplicialVertexValueGraphPropertiesLabel(simplicialVertexName);
 
                     // Status
@@ -1212,8 +1212,8 @@ namespace GraphColoring.GUI
             }
         }
 
-        // Grith - click
-        private void grithGraphPropertiesLabel_Click(object sender, EventArgs e)
+        // Girth - click
+        private void girthGraphPropertiesLabel_Click(object sender, EventArgs e)
         {
             if (graph == null)
                 return;
@@ -1226,7 +1226,7 @@ namespace GraphColoring.GUI
                 string girth = "";
                 girth = graph.GetGraphProperty().GetGirth().ToString();
 
-                SetGrithValueGraphPropertiesLabel(girth);
+                SetGirthValueGraphPropertiesLabel(girth);
 
                 // Enable all buttons
                 EnableButtons(true);
@@ -1305,7 +1305,7 @@ namespace GraphColoring.GUI
                 isChordal = graph.GetGraphProperty().GetIsChordal().ToString();
 
                 if (graph.GetGraphProperty().GetIsChordal())
-                    simplicialVertexName = graph.GetGraphProperty().GetPerfectEliminationOrdering().First().GetUserName();
+                    simplicialVertexName = graph.GetGraphProperty().GetPerfectEliminationOrdering().Last().GetUserName();
 
                 SetIsChordalValueGraphPropertiesLabel(isChordal);
                 SetIsSimplicialVertexValueGraphPropertiesLabel(simplicialVertexName);

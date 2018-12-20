@@ -783,8 +783,8 @@
             this.girthGraphPropertiesLabel.Name = "girthGraphPropertiesLabel";
             this.girthGraphPropertiesLabel.Size = new System.Drawing.Size(41, 16);
             this.girthGraphPropertiesLabel.TabIndex = 20;
-            this.girthGraphPropertiesLabel.Text = "Grith: ";
-            this.girthGraphPropertiesLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grithGraphPropertiesLabel_Click);
+            this.girthGraphPropertiesLabel.Text = "Girth: ";
+            this.girthGraphPropertiesLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.girthGraphPropertiesLabel_Click);
             // 
             // countBridgesValueGraphPropertiesLabel
             // 

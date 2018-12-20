@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace GraphColoring.Graph.GraphProperty
 {
@@ -128,6 +129,9 @@ namespace GraphColoring.Graph.GraphProperty
             //isChordal = isChordal;
             if (isChordal.HasValue && (bool)isChordal)
                 perfectEliminationOrderingList.Add(vertex);
+
+            // GraphClass
+            //graphClass = graphClass;
         }
 
         public void VertexDelete(IVertexInterface vertex)
@@ -216,6 +220,9 @@ namespace GraphColoring.Graph.GraphProperty
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+            
+            // GraphClass
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         public void VertexContraction(IVertexInterface vertex)
@@ -278,6 +285,9 @@ namespace GraphColoring.Graph.GraphProperty
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+
+            // GraphClass
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         public void VertexSuppression(IVertexInterface vertex)
@@ -345,6 +355,9 @@ namespace GraphColoring.Graph.GraphProperty
                 isChordal = null;
                 perfectEliminationOrderingList = null;
             }
+
+            // GraphClass
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         public void VertexExpansion(IVertexInterface vertex)
@@ -408,6 +421,9 @@ namespace GraphColoring.Graph.GraphProperty
                 isChordal = null;
                 perfectEliminationOrderingList = null;
             }
+
+            // GraphClass
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         public void EdgeAdd(IEdgeInterface edge)
@@ -527,9 +543,12 @@ namespace GraphColoring.Graph.GraphProperty
                 isRegular = null;
             }
 
-            // Chord
+            // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+
+            // GraphClass
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         public void EdgeDelete(IEdgeInterface edge)
@@ -658,6 +677,9 @@ namespace GraphColoring.Graph.GraphProperty
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+
+            // GraphClass
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         public void EdgeContraction(IEdgeInterface edge)
@@ -703,6 +725,9 @@ namespace GraphColoring.Graph.GraphProperty
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+
+            // GraphClass
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         public void EdgeSubdivision(IEdgeInterface edge)
@@ -770,6 +795,83 @@ namespace GraphColoring.Graph.GraphProperty
                 isChordal = null;
                 perfectEliminationOrderingList = null;
             }
+
+            // GraphClass
+            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
+        }
+
+        override
+        public string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("Count of vertices: " + GetCountVertices());
+            stringBuilder.AppendLine("Count of edges: " + GetCountEdges());
+
+            // Circuit rank
+            if (circuitRank.HasValue)
+                stringBuilder.AppendLine("Circuit rank: " + GetCircuitRank());
+            
+            // Component
+            if (GetIsInitializedComponent())
+            {
+                stringBuilder.AppendLine("Count of components: " + GetCountComponents());
+                stringBuilder.AppendLine("Is connected: " + GetIsConnected());
+            }
+
+            // Graph class
+            if (graphClass != GraphClass.GraphClass.GraphClassEnum.undefined)
+                stringBuilder.AppendLine("Class: " + GetGraphClass());
+
+            // IsChordal
+            if (isChordal.HasValue)
+                stringBuilder.AppendLine("Is chordal: " + GetIsChordal());
+
+            // IsRegular
+            if (isRegular.HasValue)
+                stringBuilder.AppendLine("Is regular: " + GetIsRegular());
+
+            // IsCyclic
+            if (isCyclic.HasValue)
+                stringBuilder.AppendLine("Is cyclic: " + GetIsCyclic());
+
+            // IsEulerian
+            if (isEulerian != EulerianGraphEnum.undefined)
+                stringBuilder.AppendLine("Is eulerian: " + GetIsEulerian());
+
+            // Vertex degree
+            if (maximumVertexDegree.HasValue)
+            {
+                stringBuilder.AppendLine("Maximum vertex degree: " + GetMaximumVertexDegree());
+                stringBuilder.AppendLine("Minimum vertex degree: " + GetMinimumVertexDegree());
+                stringBuilder.AppendLine("Average vertex degree: " + GetAverageVertexDegree());
+            }
+
+            // Cut vertices and bridges
+            if (cutVertices != null)
+            {
+                stringBuilder.AppendLine("Count of cut vertices: " + GetCutVertices().Count);
+                stringBuilder.AppendLine("Coutn of bridges: " + GetBridges().Count);
+            }
+
+            // Girth
+            if (girth.HasValue)
+                stringBuilder.AppendLine("Girth: " + girth);
+
+            // Cayleys formula
+            if (cayleysFormula.HasValue)
+                stringBuilder.AppendLine("Cayleys formula: " + GetCayleysFormula());
+
+            // Simplicial vertex
+            if (isChordal.HasValue)
+            {
+                if (GetIsChordal())
+                    stringBuilder.AppendLine("Simplicial vertex: " + GetPerfectEliminationOrdering().Last().GetUserName());
+                else
+                    stringBuilder.AppendLine("Simplicial vertex: None");
+            }
+                
+            return stringBuilder.ToString();
         }
         #endregion
     }

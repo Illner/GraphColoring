@@ -14,12 +14,14 @@ namespace GraphColoring.Graph.GraphProperty
         /// isCyclic - je graf cyklický
         /// isChordal - graph is chordal
         /// isEulerian - je graf eulerovský - EulerianGraphEnum
+        /// graphClass - Třída grafu - GraphClassEnum
         /// </summary>
         private Boolean? isConnected;
         private Boolean? isRegular;
         private Boolean? isCyclic;
         private Boolean? isChordal;
         private EulerianGraphEnum isEulerian = EulerianGraphEnum.undefined;
+        private GraphClass.GraphClass.GraphClassEnum graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         #endregion
 
         // Method
@@ -177,6 +179,18 @@ namespace GraphColoring.Graph.GraphProperty
                 IsEulerian();
 
             return isEulerian;
+        }
+        
+        /// <summary>
+        /// Vrátí třídu grafu - GraphClassEnum
+        /// </summary>
+        /// <returns>třídu grafu</returns>
+        public GraphClass.GraphClass.GraphClassEnum GetGraphClass()
+        {
+            if (graphClass == GraphClass.GraphClass.GraphClassEnum.undefined)
+                graphClass = GraphClass.GraphClass.GetGraphClass(graph);
+
+            return graphClass;
         }
         #endregion
     }

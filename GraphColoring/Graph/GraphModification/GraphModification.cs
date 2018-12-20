@@ -38,7 +38,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().VertexAdd(vertex);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -99,7 +98,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().VertexDelete(removeVertex);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -167,7 +165,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().VertexContraction(vertex);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -205,7 +202,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().VertexSuppression(vertex);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -255,7 +251,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().VertexExpansion(vertex);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -277,7 +272,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().EdgeAdd(edge);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -308,7 +302,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().EdgeDelete(edge);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -355,7 +348,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().EdgeContraction(edge);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
 
         /// <summary>
@@ -383,7 +375,6 @@ namespace GraphColoring.Graph
 
             // GraphProperty
             GetGraphProperty().EdgeSubdivision(edge);
-            graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
         #endregion
     }

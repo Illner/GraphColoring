@@ -20,7 +20,6 @@ namespace GraphColoring.Graph
         /// adjacencyList - seznam sousedů grafu
         /// canDeIncreaseCountVertices - určuje, zda se může zavolat metoda IncrementCountVertices / DecrementCountVertices, true - OK, false - vyvolá se výjimka
         /// canDeIncreaseCountEdges - určuje, zda se může zavolat metoda IncrementCountEdges / DecrementCountEdges, true - OK, false - vyvolá se výjimka
-        /// graphClass - Třída grafu - GraphClassEnum
         /// </summary>
         private string name;
         private bool isInitialized;
@@ -31,7 +30,6 @@ namespace GraphColoring.Graph
         protected GraphProperty.GraphProperty graphProperty;
         protected Dictionary<VertexExtended, List<VertexExtended>> adjacencyList;
         private bool canDeIncreaseCountVertices, canDeIncreaseCountEdges;
-        private GraphClass.GraphClass.GraphClassEnum graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         #endregion
 
         // Constructor
@@ -328,14 +326,31 @@ namespace GraphColoring.Graph
         /// <param name="newUserName">the user name</param>
         public void RenameVertexUserName(IVertexInterface vertex, string newUserName)
         {
+            // Variable
+            string oldUserName;
             VertexExtended vertexExtended = ConvertVertexToVertexExtended(vertex);
 
             if (ExistsUserName(newUserName))
                 throw new MyException.GraphException.GraphVertexUserNameAlreadyExistsException();
 
+            oldUserName = vertex.GetUserName();
             mappingUserName.Remove(vertex.GetUserName());
             vertexExtended.SetUserName(newUserName);
             mappingUserName.Add(newUserName, vertexExtended);
+
+            // Change the name in components
+            // The graph has more than one component => need to change vertex name in one of them.
+            if (GetGraphProperty().GetIsInitializedComponent() && GetGraphProperty().GetCountComponents() > 1)
+            {
+                foreach (IGraphInterface componentGraph in GetGraphProperty().GetComponents())
+                {
+                    if (componentGraph.ExistsUserName(oldUserName))
+                    {
+                        componentGraph.RenameVertexUserName(componentGraph.GetVertexByUserName(oldUserName), newUserName);
+                        break;
+                    }
+                }
+            }
         }
 
         override
@@ -408,18 +423,6 @@ namespace GraphColoring.Graph
                 return graphProperty;
 
             throw new MyException.GraphException.GraphNotInitializationException();
-        }
-
-        /// <summary>
-        /// Vrátí třídu grafu - GraphClassEnum
-        /// </summary>
-        /// <returns>třídu grafu</returns>
-        public GraphClass.GraphClass.GraphClassEnum GetGraphClass()
-        {
-            if (graphClass == GraphClass.GraphClass.GraphClassEnum.undefined)
-                graphClass = GraphClass.GraphClass.GetGraphClass(this);
-
-            return graphClass;
         }
 
         /// <summary>

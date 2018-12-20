@@ -38,7 +38,6 @@ namespace GraphColoring.Graph
         int GetRealCountVertices();
         String GetName();
         void SetName(string name);
-        GraphClass.GraphClass.GraphClassEnum GetGraphClass();
         GraphProperty.GraphProperty GetGraphProperty();
         bool GetIsInitialized();
         bool GetCanDeIncreaseCountVertices();

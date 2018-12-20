@@ -12,6 +12,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// componentsList - List of connected components
         /// </summary>
         private List<IGraphInterface> componentsList;
+        private bool isInitializedComponent;
         #endregion
 
         // Method
@@ -28,7 +29,7 @@ namespace GraphColoring.Graph.GraphProperty
             // Variable
             int componentNumber = 0;
             Dictionary<IVertexInterface, int> allVerticesDictionary = graph.AllVertices().ToDictionary(x => x, x => 0);
-            
+
             /* Invalid graph
             if (graph.GetRealCountVertices() == 0)
             {
@@ -38,6 +39,8 @@ namespace GraphColoring.Graph.GraphProperty
                 return;
             }
             */
+            
+            isInitializedComponent = true;
 
             // Core algorithm
             for (int i = 0; i < allVerticesDictionary.Count; i++)
@@ -133,6 +136,15 @@ namespace GraphColoring.Graph.GraphProperty
 
             return componentsList;
         }
+
+        /// <summary>
+        /// Return true if the graph has initialized components, otherwise false
+        /// </summary>
+        /// <returns>true if graph has initialized components</returns>
+        public bool GetIsInitializedComponent()
         #endregion
+        {
+            return isInitializedComponent;
+        }
     }
 }

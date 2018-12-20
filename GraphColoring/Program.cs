@@ -13,16 +13,16 @@ namespace GraphColoring
         [STAThread]
         static void Main(string[] args)
         {
-            
+            /*
             Tests.Tests tests = new Tests.Tests(true);
             tests.Test();
-            
+            */
 
-            /*
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
-            */
+            
 
             /*
             Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
@@ -92,10 +92,31 @@ namespace GraphColoring
             ReaderWriter.ReaderGraph reader = new ReaderWriter.ReaderGraph(@"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\bin\Debug\Testing\Graph\graph.graph");
             Graph.IGraphInterface graph = reader.ReadFile();
             Console.WriteLine(graph);
-            List<Graph.IVertexInterface> peoList = graph.GetGraphProperty().GetPerfectEliminationOrdering();
-            //Console.WriteLine(peoList.Count);
-            Console.WriteLine("----------");
-            peoList.ForEach(x => { Console.WriteLine(x.GetUserName()); });
+            Console.WriteLine("----");
+            Console.WriteLine(graph.GetGraphProperty());
+            Console.ReadKey();
+            graph.GetGraphProperty().GetCircuitRank();
+            graph.GetGraphProperty().GetComponents();
+            Console.WriteLine("----");
+            Console.WriteLine(graph.GetGraphProperty());
+            Console.ReadKey();
+            graph.GetGraphProperty().GetIsChordal();
+            graph.GetGraphProperty().GetIsRegular();
+            graph.GetGraphProperty().GetIsCyclic();
+            graph.GetGraphProperty().GetIsEulerian();
+            Console.WriteLine("----");
+            Console.WriteLine(graph.GetGraphProperty());
+            Console.ReadKey();
+            graph.GetGraphProperty().GetMaximumVertexDegree();
+            graph.GetGraphProperty().GetCutVertices();
+            Console.WriteLine("----");
+            Console.WriteLine(graph.GetGraphProperty());
+            Console.ReadKey();
+            graph.GetGraphProperty().GetGirth();
+            graph.GetGraphProperty().GetCayleysFormula();
+            Console.WriteLine("----");
+            Console.WriteLine(graph.GetGraphProperty());
+            Console.ReadKey();
             */
         }
     }

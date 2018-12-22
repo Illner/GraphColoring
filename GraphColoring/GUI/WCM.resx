@@ -201,17 +201,17 @@
   <data name="GraphModificationVertexDoesntInsertedTitle" xml:space="preserve">
     <value>No vertex name inserted</value>
   </data>
+  <data name="GraphModificationVertexInvalidVertex" xml:space="preserve">
+    <value>You chose invalid vertex for this operation!</value>
+  </data>
+  <data name="GraphModificationVertexInvalidVertexTitle" xml:space="preserve">
+    <value>Invalid vertex</value>
+  </data>
   <data name="GraphModificationVertexNameDoesntInserted" xml:space="preserve">
     <value>Please insert a new vertex name for the vertex!</value>
   </data>
   <data name="GraphModificationVertexNameDoesntInsertedTitle" xml:space="preserve">
     <value>No new vertex name inserted!</value>
-  </data>
-  <data name="GraphModificationVertexSuppressionInvalidVertex" xml:space="preserve">
-    <value>You choose invalid vertex for this operation!</value>
-  </data>
-  <data name="GraphModificationVertexSuppressionInvalidVertexTitle" xml:space="preserve">
-    <value>Invalid vertex</value>
   </data>
   <data name="GraphModificationVertexUserNameExists" xml:space="preserve">
     <value>This name already exists. Please choose something else!</value>
@@ -284,6 +284,12 @@
   </data>
   <data name="PropertyStatus" xml:space="preserve">
     <value>Properties have been calculated.</value>
+  </data>
+  <data name="SaveImageSomethingWrong" xml:space="preserve">
+    <value>The image has not been saved!</value>
+  </data>
+  <data name="SaveImageSomethingWrongTitle" xml:space="preserve">
+    <value>Something wrong</value>
   </data>
   <data name="WriteGraph" xml:space="preserve">
     <value>The graph has been saved.</value>

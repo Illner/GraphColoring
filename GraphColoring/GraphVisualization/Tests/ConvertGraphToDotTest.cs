@@ -94,7 +94,7 @@ namespace GraphColoring.GraphVisualization.Tests
                 // Variable
                 ConvertGraphToDot convertGraphToDot;
 
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[converterGraphToDotEnum]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[converterGraphToDotEnum]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

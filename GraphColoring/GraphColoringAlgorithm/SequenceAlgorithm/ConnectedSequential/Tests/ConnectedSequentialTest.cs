@@ -88,7 +88,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[connectedSequential]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[connectedSequential]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

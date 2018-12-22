@@ -89,7 +89,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[smallestLastSequence]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[smallestLastSequence]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

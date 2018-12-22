@@ -18,6 +18,7 @@ namespace GraphColoring.ReaderWriter
         private static char newLine = '\n';
         protected const char SEPARATOR = ' ';
         private const string FILETYPE = ".graph";
+        private static string fileName = "TestFile.temp";
         // Adjacency list
         protected const string LEFTSEPARATORADJACENCYLIST = "(";
         protected const string RIGHTSEPARATORADJACENCYLIST = ")";
@@ -150,7 +151,29 @@ namespace GraphColoring.ReaderWriter
                 throw new MyException.ReaderWriterException.ReaderWriterNoAuthorizationException("No authorization");
             }
         }
+
+        /// <summary>
+        /// Vytvoří soubor s daným obsahem
+        /// </summary>
+        /// <param name="content">obsah souboru</param>
+        /// <returns>název souboru</returns>
+        public static string CreateTestFile(string content)
+        {
+            File.WriteAllText(fileName, content);
+
+            //File.SetAttributes(fileName, FileAttributes.Hidden);
+
+            return fileName;
+        }
         
+        /// <summary>
+        /// Odstraní soubor
+        /// </summary>
+        public static void DeleteTestFile()
+        {
+            ReaderWriter reader = new ReaderGraph(fileName, false);
+            reader.DeleteFile();
+        }
         #endregion
 
         // Property

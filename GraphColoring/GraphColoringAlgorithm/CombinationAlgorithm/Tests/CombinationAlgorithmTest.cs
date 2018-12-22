@@ -89,7 +89,7 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[combination]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[combination]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

@@ -313,6 +313,24 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You chose invalid vertex for this operation!.
+        /// </summary>
+        internal static string GraphModificationVertexInvalidVertex {
+            get {
+                return ResourceManager.GetString("GraphModificationVertexInvalidVertex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid vertex.
+        /// </summary>
+        internal static string GraphModificationVertexInvalidVertexTitle {
+            get {
+                return ResourceManager.GetString("GraphModificationVertexInvalidVertexTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please insert a new vertex name for the vertex!.
         /// </summary>
         internal static string GraphModificationVertexNameDoesntInserted {
@@ -327,24 +345,6 @@ namespace GraphColoring.GUI {
         internal static string GraphModificationVertexNameDoesntInsertedTitle {
             get {
                 return ResourceManager.GetString("GraphModificationVertexNameDoesntInsertedTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You choose invalid vertex for this operation!.
-        /// </summary>
-        internal static string GraphModificationVertexSuppressionInvalidVertex {
-            get {
-                return ResourceManager.GetString("GraphModificationVertexSuppressionInvalidVertex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid vertex.
-        /// </summary>
-        internal static string GraphModificationVertexSuppressionInvalidVertexTitle {
-            get {
-                return ResourceManager.GetString("GraphModificationVertexSuppressionInvalidVertexTitle", resourceCulture);
             }
         }
         
@@ -561,6 +561,24 @@ namespace GraphColoring.GUI {
         internal static string PropertyStatus {
             get {
                 return ResourceManager.GetString("PropertyStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The image has not been saved!.
+        /// </summary>
+        internal static string SaveImageSomethingWrong {
+            get {
+                return ResourceManager.GetString("SaveImageSomethingWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong.
+        /// </summary>
+        internal static string SaveImageSomethingWrongTitle {
+            get {
+                return ResourceManager.GetString("SaveImageSomethingWrongTitle", resourceCulture);
             }
         }
         

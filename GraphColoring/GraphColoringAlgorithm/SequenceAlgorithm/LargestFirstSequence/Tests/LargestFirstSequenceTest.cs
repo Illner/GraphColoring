@@ -89,7 +89,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[largestFirstSequence]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[largestFirstSequence]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

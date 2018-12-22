@@ -16,6 +16,7 @@ namespace GraphColoring.GUI
         private Thread coreThread;
         private Graph.IGraphInterface graph;
         private GraphVisualizationForm graphVisualizationForm;
+        private const string delimiterNamedGraphComboBox = "-";
         List<GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum> algorithmListBoxList;
         private GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum;
         #endregion
@@ -46,6 +47,22 @@ namespace GraphColoring.GUI
             foreach (var density in Enum.GetValues(typeof(GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum)))
                 graphDensityGenerateGraphComboBox.Items.Add(density);
             graphDensityGenerateGraphComboBox.SelectedItem = GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.notAssigned;
+
+            // Fill namedGraphsComboBox
+            foreach (Dictionary<GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum, string> record in GalleryOfNamedGraphs.NamedGraphs.namedGraphsList)
+            {
+                foreach (GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum namedGraph in record.Keys)
+                {
+                    string itemName;
+
+                    //if (!GalleryOfNamedGraphs.NamedGraphs.WCMNamedGraphsDictionary.TryGetValue(namedGraph, out itemName))
+                        itemName = namedGraph.ToString();
+
+                    namedGraphsComboBox.Items.Add(namedGraph);
+                }
+                namedGraphsComboBox.Items.Add(delimiterNamedGraphComboBox);
+            }
+            namedGraphsComboBox.SelectedIndex = 0;
         }
         #endregion
 
@@ -965,6 +982,22 @@ namespace GraphColoring.GUI
         
         private void newGraphButton_Click(object sender, EventArgs e)
         {
+            // Variable
+            string graphContent = null;
+            string namedGraph = namedGraphsComboBox.SelectedItem.ToString();
+            GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum namedGraphEnum;
+
+            if (namedGraph == delimiterNamedGraphComboBox)
+                return;
+
+            namedGraphEnum = (GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum)Enum.Parse(typeof(GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum), namedGraph, true);
+
+            foreach (Dictionary<GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum, string> record in GalleryOfNamedGraphs.NamedGraphs.namedGraphsList)
+            {
+                if (record.TryGetValue(namedGraphEnum, out graphContent))
+                    break;
+            }
+
             // Disable all buttons
             EnableButtons(false);
 
@@ -976,10 +1009,14 @@ namespace GraphColoring.GUI
                 try
                 {
                     path = null;
-                    Graph.IGraphEdgeListInterface myGraph = new Graph.GraphEdgeList(1);
-                    myGraph.AddVertex("Vertex");
-                    myGraph.InitializeGraph();
-                    graph = myGraph;
+
+                    // Read a file
+                    string pathGraph = ReaderWriter.ReaderWriter.CreateTestFile(graphContent);
+
+                    ReaderWriter.IReaderGraphInterface reader = new ReaderWriter.ReaderGraph(pathGraph, false);
+                    graph = reader.ReadFile();
+
+                    ReaderWriter.ReaderWriter.DeleteTestFile();
 
                     graph.GetGraphProperty().GetCountComponents();
                     ResetProperty();
@@ -1461,13 +1498,13 @@ namespace GraphColoring.GUI
                 ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntInsertedTitle, WCM.GraphModificationVertexDoesntInserted);
                 return;
             }
-
+            
             if (graph.GetGraphProperty().GetCountVertices() == 1)
             {
                 ShowMessageBox("Error | " + WCM.GraphModificationDeleteVertexOneTitle, WCM.GraphModificationDeleteVertexOne);
                 return;
             }
-
+            
             // Disable all buttons
             EnableButtons(false);
 
@@ -1609,7 +1646,7 @@ namespace GraphColoring.GUI
                 }
                 catch (MyException.GraphException.GraphInvalidDegreeVertex ex)
                 {
-                    ShowMessageBox("Error | " + WCM.GraphModificationVertexSuppressionInvalidVertexTitle, WCM.GraphModificationVertexSuppressionInvalidVertex);
+                    ShowMessageBox("Error | " + WCM.GraphModificationVertexInvalidVertexTitle, WCM.GraphModificationVertexInvalidVertex);
 
                     Console.WriteLine(ex);
                 }
@@ -1731,6 +1768,12 @@ namespace GraphColoring.GUI
                 catch (MyException.GraphException.GraphEdgeAlreadyExistsException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationEdgeAlreadyExistsTitle, WCM.GraphModificationEdgeAlreadyExists);
+
+                    Console.WriteLine(ex);
+                }
+                catch (MyException.GraphException.GraphInvalidVertexException ex)
+                {
+                    ShowMessageBox("Error | " + WCM.GraphModificationVertexInvalidVertexTitle, WCM.GraphModificationVertexInvalidVertex);
 
                     Console.WriteLine(ex);
                 }

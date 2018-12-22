@@ -91,7 +91,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[greedyIndependentSet]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[greedyIndependentSet]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

@@ -86,7 +86,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[copyEnum]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[copyEnum]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

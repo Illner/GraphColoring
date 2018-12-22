@@ -120,6 +120,19 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
+    /// Invalid vertex
+    /// </summary>
+    class GraphInvalidVertexException : GraphException
+    {
+        public GraphInvalidVertexException() { }
+
+        public GraphInvalidVertexException(string message) : base(message) { }
+
+        public GraphInvalidVertexException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// Graph exception
     /// Hrana v grafu neexistuje
     /// </summary>
     class GraphEdgeDoesntExistException : GraphException

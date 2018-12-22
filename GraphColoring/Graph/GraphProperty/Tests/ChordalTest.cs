@@ -101,7 +101,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[chordalEnum]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[chordalEnum]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

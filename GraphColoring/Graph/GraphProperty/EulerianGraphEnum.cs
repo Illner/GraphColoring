@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.ComponentModel;
 
 namespace GraphColoring.Graph.GraphProperty
 {
@@ -7,8 +7,11 @@ namespace GraphColoring.Graph.GraphProperty
         public enum EulerianGraphEnum
         {
             undefined,      // Default value
+            [Description("Eulerian graph")]
             eulerian,       // Eulerian cycle
+            [Description("Semi-Eulerian graph")]
             semiEulerian,   // Eulerian path
+            [Description("Not Eulerian graph")]
             notEulerian     // Not eulerian
         }
     }

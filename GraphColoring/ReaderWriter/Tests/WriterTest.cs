@@ -88,7 +88,7 @@ namespace GraphColoring.ReaderWriter.Tests
                 Graph.IGraphInterface graph;
                 GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence randomSequence;
                 GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence largestFirstSequence;
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[pathEnum]);
+                testPath = ReaderWriter.CreateTestFile(testsDictionary[pathEnum]);
                 reader = new ReaderGraph(testPath, false);
                 writer = new WriterGraph(testPath, false);
 

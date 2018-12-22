@@ -79,6 +79,7 @@ namespace GraphColoring.Graph
         /// <summary>
         /// VLoží hranu mezi vrchol vertex1 a vrchol vertex2
         /// Pokud jeden z vrcholů neexistuje, tak vrátí vyjímku GraphVertexDoesntExist
+        /// if vertex1 is equal to vertex2, throws GraphInvalidVertexException
         /// Pokud hrana již existuje, tak vrátí vyjímku GraphDupliciteEdge
         /// </summary>
         /// <param name="vertex1">1. vrchol</param>
@@ -89,6 +90,10 @@ namespace GraphColoring.Graph
             IVertexInterface vertex;
             IVertexInterface vertex1 = edge.GetVertex1();
             IVertexInterface vertex2 = edge.GetVertex2();
+            
+            // If vertex1 is vertex2
+            if (vertex1 == vertex2)
+                throw new MyException.GraphException.GraphInvalidVertexException();
 
             // Symmetry
             for (int i = 0; i < 2; i++)

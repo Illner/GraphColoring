@@ -89,7 +89,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[saturationLargestFirstSequence]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[saturationLargestFirstSequence]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

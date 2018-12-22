@@ -91,7 +91,7 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[optimal]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[optimal]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

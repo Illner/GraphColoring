@@ -47,6 +47,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphs.cs" />
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsEnum.cs" />
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\CompleteBipartiteGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompleteBipartiteGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\CompleteGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompleteGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\CycleGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CycleGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\FriendshipGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FriendshipGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\FullereneGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FullereneGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\NamedGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NamedGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\PlatonicSolidsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlatonicSolidsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\SemiSymmetricGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SemiSymmetricGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\SnarksResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SnarksResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\StarGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StarGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\StronglyRegularGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StronglyRegularGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\SymmetricGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SymmetricGraphsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\TruncatedSolidsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TruncatedSolidsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\WheelGraphsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WheelGraphsResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="GenerateGraph\ErdosRenyiModel\ErdosRenyiModel.cs" />
     <Compile Include="GenerateGraph\ErdosRenyiModel\ErdosRenyiModelProbabilityEnum.cs" />
     <Compile Include="GenerateGraph\ErdosRenyiModel\Tests\ErdosRenyiModelTest.cs" />
@@ -296,6 +368,84 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\NamedGraphs\BidiakisCube.graph" />
+    <None Include="bin\Debug\NamedGraphs\BullGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\ButterflyGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\ChvatalGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete bipartite graphs\K2-3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete bipartite graphs\K2-4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete bipartite graphs\K2_3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete bipartite graphs\K2_4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete bipartite graphs\K3-3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete bipartite graphs\K3-4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete bipartite graphs\K3_3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete bipartite graphs\K3_4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete graphs\K1.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete graphs\K2.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete graphs\K3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete graphs\K4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete graphs\K5.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete graphs\K6.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete graphs\K7.graph" />
+    <None Include="bin\Debug\NamedGraphs\Complete graphs\K8.graph" />
+    <None Include="bin\Debug\NamedGraphs\Cycle graphs\C3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Cycle graphs\C4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Cycle graphs\C5.graph" />
+    <None Include="bin\Debug\NamedGraphs\Cycle graphs\C6.graph" />
+    <None Include="bin\Debug\NamedGraphs\DiamondGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\DurerGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\ErreraGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\FranklinGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Friendship graphs\F2.graph" />
+    <None Include="bin\Debug\NamedGraphs\Friendship graphs\F3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Friendship graphs\F4.graph" />
+    <None Include="bin\Debug\NamedGraphs\FruchtGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Fullerene graphs\20-fullerene .graph" />
+    <None Include="bin\Debug\NamedGraphs\Fullerene graphs\24-fullerene.graph" />
+    <None Include="bin\Debug\NamedGraphs\Fullerene graphs\_20_fullerene.graph" />
+    <None Include="bin\Debug\NamedGraphs\Fullerene graphs\_24_fullerene.graph" />
+    <None Include="bin\Debug\NamedGraphs\Goldner_HararyGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Goldner–HararyGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\GolombGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\GrotzschGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\HerschelGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\HoffmanGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\MarkstromGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\McGeeGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\MoserSpindle.graph" />
+    <None Include="bin\Debug\NamedGraphs\Platonic solids\Cube.graph" />
+    <None Include="bin\Debug\NamedGraphs\Platonic solids\Dodecahedron.graph" />
+    <None Include="bin\Debug\NamedGraphs\Platonic solids\Icosahedron.graph" />
+    <None Include="bin\Debug\NamedGraphs\Platonic solids\Octahedron.graph" />
+    <None Include="bin\Debug\NamedGraphs\PoussinGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\RobertsonGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Semi-symmetric graphs\FolkmanGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Snarks\BlanusaSnark.graph" />
+    <None Include="bin\Debug\NamedGraphs\Snarks\FlowerSnark.graph" />
+    <None Include="bin\Debug\NamedGraphs\Snarks\LoupekineSnark.graph" />
+    <None Include="bin\Debug\NamedGraphs\Snarks\TietzesGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\SousselierGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Star graphs\S3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Star graphs\S4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Star graphs\S5.graph" />
+    <None Include="bin\Debug\NamedGraphs\Star graphs\S6.graph" />
+    <None Include="bin\Debug\NamedGraphs\Strongly regular graphs\ClebschGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Strongly regular graphs\PaleyGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Strongly regular graphs\PetersenGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Symmetric graphs\DesarguesGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Symmetric graphs\HeawoodGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Symmetric graphs\Mobius_KantorGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Symmetric graphs\PappusGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Truncated solids\TruncatedCube.graph" />
+    <None Include="bin\Debug\NamedGraphs\Truncated solids\TruncatedTetrahedron.graph" />
+    <None Include="bin\Debug\NamedGraphs\TuttesFragment.graph" />
+    <None Include="bin\Debug\NamedGraphs\WagnerGraph.graph" />
+    <None Include="bin\Debug\NamedGraphs\Wheel graphs\W4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Wheel graphs\W5.graph" />
+    <None Include="bin\Debug\NamedGraphs\Wheel graphs\W6.graph" />
+    <None Include="bin\Debug\NamedGraphs\Wheel graphs\W7.graph" />
+    <None Include="bin\Debug\NamedGraphs\Wheel graphs\W8.graph" />
+    <None Include="bin\Debug\NamedGraphs\Wheel graphs\W9.graph" />
     <None Include="bin\Debug\Testing\Algorithm\Combination\combination1.graph" />
     <None Include="bin\Debug\Testing\Algorithm\Combination\combination2.graph" />
     <None Include="bin\Debug\Testing\Algorithm\Combination\combination3.graph" />
@@ -479,6 +629,64 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\NamedGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NamedGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\CompleteBipartiteGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CompleteBipartiteGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\CompleteGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>CompleteGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\CycleGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CycleGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\FriendshipGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>FriendshipGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\FullereneGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FullereneGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\PlatonicSolidsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PlatonicSolidsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\SemiSymmetricGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SemiSymmetricGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\SnarksResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SnarksResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\StarGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StarGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\StronglyRegularGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StronglyRegularGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\SymmetricGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SymmetricGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\TruncatedSolidsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TruncatedSolidsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\WheelGraphsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WheelGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GraphColoringAlgorithm\CombinationAlgorithm\Tests\CombinationAlgorithmResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CombinationAlgorithmResource.Designer.cs</LastGenOutput>

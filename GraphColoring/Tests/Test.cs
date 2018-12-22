@@ -10,7 +10,6 @@ namespace GraphColoring.Tests
         // Variable
         #region
         private Boolean consolePrint;
-        private static string fileName = "TestFile.temp";
         private StringBuilder stringBuilder;
         private Dictionary<TestEnum, Tuple<ITestInterface, string>> testsDictionary;
 
@@ -166,30 +165,7 @@ namespace GraphColoring.Tests
                 streamWriter.Flush();
             }
 
-            DeleteTestFile();
-        }
-
-        /// <summary>
-        /// Vytvoří soubor s daným obsahem
-        /// </summary>
-        /// <param name="content">obsah souboru</param>
-        /// <returns>název souboru</returns>
-        public static string CreateTestFile(string content)
-        {
-            File.WriteAllText(fileName, content);
-
-            //File.SetAttributes(fileName, FileAttributes.Hidden);
-
-            return fileName;
-        }
-
-        /// <summary>
-        /// Odstraní soubor
-        /// </summary>
-        public static void DeleteTestFile()
-        {
-            ReaderWriter.ReaderWriter reader = new ReaderWriter.ReaderGraph(fileName, false);
-            reader.DeleteFile();
+            ReaderWriter.ReaderWriter.DeleteTestFile();
         }
         #endregion
     }

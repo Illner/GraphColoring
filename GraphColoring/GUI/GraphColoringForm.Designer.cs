@@ -31,6 +31,7 @@
             this.drawGraphPictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.graphColoringGroupBox = new System.Windows.Forms.GroupBox();
+            this.namedGraphsComboBox = new System.Windows.Forms.ComboBox();
             this.scheduleAppearanceCheckBox = new System.Windows.Forms.CheckBox();
             this.newGraphButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
@@ -161,6 +162,7 @@
             // 
             this.graphColoringGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.graphColoringGroupBox.Controls.Add(this.namedGraphsComboBox);
             this.graphColoringGroupBox.Controls.Add(this.scheduleAppearanceCheckBox);
             this.graphColoringGroupBox.Controls.Add(this.newGraphButton);
             this.graphColoringGroupBox.Controls.Add(this.resetButton);
@@ -173,6 +175,16 @@
             this.graphColoringGroupBox.Size = new System.Drawing.Size(266, 566);
             this.graphColoringGroupBox.TabIndex = 3;
             this.graphColoringGroupBox.TabStop = false;
+            // 
+            // namedGraphsComboBox
+            // 
+            this.namedGraphsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.namedGraphsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.namedGraphsComboBox.FormattingEnabled = true;
+            this.namedGraphsComboBox.Location = new System.Drawing.Point(7, 144);
+            this.namedGraphsComboBox.Name = "namedGraphsComboBox";
+            this.namedGraphsComboBox.Size = new System.Drawing.Size(252, 23);
+            this.namedGraphsComboBox.TabIndex = 7;
             // 
             // scheduleAppearanceCheckBox
             // 
@@ -187,21 +199,22 @@
             // 
             // newGraphButton
             // 
+            this.newGraphButton.BackColor = System.Drawing.Color.DarkRed;
             this.newGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.newGraphButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.newGraphButton.Location = new System.Drawing.Point(7, 144);
+            this.newGraphButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.newGraphButton.Location = new System.Drawing.Point(7, 171);
             this.newGraphButton.Name = "newGraphButton";
             this.newGraphButton.Size = new System.Drawing.Size(253, 57);
             this.newGraphButton.TabIndex = 6;
             this.newGraphButton.Text = "New graph";
-            this.newGraphButton.UseVisualStyleBackColor = true;
+            this.newGraphButton.UseVisualStyleBackColor = false;
             this.newGraphButton.Click += new System.EventHandler(this.newGraphButton_Click);
             // 
             // resetButton
             // 
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.resetButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.resetButton.Location = new System.Drawing.Point(7, 207);
+            this.resetButton.Location = new System.Drawing.Point(6, 234);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(253, 57);
             this.resetButton.TabIndex = 5;
@@ -231,9 +244,9 @@
             this.algorithmListBox.FormattingEnabled = true;
             this.algorithmListBox.IntegralHeight = false;
             this.algorithmListBox.ItemHeight = 16;
-            this.algorithmListBox.Location = new System.Drawing.Point(7, 270);
+            this.algorithmListBox.Location = new System.Drawing.Point(7, 297);
             this.algorithmListBox.Name = "algorithmListBox";
-            this.algorithmListBox.Size = new System.Drawing.Size(252, 211);
+            this.algorithmListBox.Size = new System.Drawing.Size(252, 184);
             this.algorithmListBox.TabIndex = 3;
             // 
             // saveGraphButton
@@ -457,10 +470,12 @@
             // 
             // graphDensityGenerateGraphComboBox
             // 
+            this.graphDensityGenerateGraphComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.graphDensityGenerateGraphComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.graphDensityGenerateGraphComboBox.FormattingEnabled = true;
-            this.graphDensityGenerateGraphComboBox.Location = new System.Drawing.Point(138, 53);
+            this.graphDensityGenerateGraphComboBox.Location = new System.Drawing.Point(102, 51);
             this.graphDensityGenerateGraphComboBox.Name = "graphDensityGenerateGraphComboBox";
-            this.graphDensityGenerateGraphComboBox.Size = new System.Drawing.Size(120, 21);
+            this.graphDensityGenerateGraphComboBox.Size = new System.Drawing.Size(156, 23);
             this.graphDensityGenerateGraphComboBox.TabIndex = 9;
             // 
             // graphDensityGenerateGraphLabel
@@ -475,12 +490,13 @@
             // 
             // countOfVerticesGenerateGraphLabelNumericUpDown
             // 
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.countOfVerticesGenerateGraphLabelNumericUpDown.Increment = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.countOfVerticesGenerateGraphLabelNumericUpDown.Location = new System.Drawing.Point(138, 25);
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Location = new System.Drawing.Point(188, 23);
             this.countOfVerticesGenerateGraphLabelNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -492,7 +508,7 @@
             0,
             0});
             this.countOfVerticesGenerateGraphLabelNumericUpDown.Name = "countOfVerticesGenerateGraphLabelNumericUpDown";
-            this.countOfVerticesGenerateGraphLabelNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.countOfVerticesGenerateGraphLabelNumericUpDown.Size = new System.Drawing.Size(70, 21);
             this.countOfVerticesGenerateGraphLabelNumericUpDown.TabIndex = 7;
             this.countOfVerticesGenerateGraphLabelNumericUpDown.Value = new decimal(new int[] {
             25,
@@ -1306,5 +1322,6 @@
         private System.Windows.Forms.Label simplicialVertexGraphPropertiesLabel;
         private System.Windows.Forms.Label newVertexNameGraphModificationVertexLabel;
         private System.Windows.Forms.TextBox newVertexNameGraphModificationVertexTextBox;
+        private System.Windows.Forms.ComboBox namedGraphsComboBox;
     }
 }

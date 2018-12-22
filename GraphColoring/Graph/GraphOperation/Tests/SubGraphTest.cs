@@ -95,7 +95,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[subGraphEnum].Item1);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[subGraphEnum].Item1);
                 countVertices = testsDictionary[subGraphEnum].Item2;
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);

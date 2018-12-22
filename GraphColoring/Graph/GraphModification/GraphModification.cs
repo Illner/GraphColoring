@@ -263,7 +263,7 @@ namespace GraphColoring.Graph
         {
             if (ExistsEdge(edge))
                 throw new MyException.GraphException.GraphEdgeAlreadyExistsException();
-
+            
             AddEdgeToAdjacencyList(edge);
 
             // ColoredGraph

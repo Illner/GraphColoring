@@ -89,7 +89,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[cycleEnum]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[cycleEnum]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

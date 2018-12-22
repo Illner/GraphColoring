@@ -91,7 +91,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[bridgesCutVerticesEnum]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[bridgesCutVerticesEnum]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

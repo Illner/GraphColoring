@@ -253,7 +253,7 @@ namespace GraphColoring.ReaderWriter.Tests
                 }
                 foreach (string file in fileList)
                 {
-                    reader = new ReaderGraph(GraphColoring.Tests.Tests.CreateTestFile(file), false);
+                    reader = new ReaderGraph(ReaderWriter.CreateTestFile(file), false);
                     Testing();
                 }
             }

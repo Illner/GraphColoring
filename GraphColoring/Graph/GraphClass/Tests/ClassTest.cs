@@ -97,7 +97,7 @@ namespace GraphColoring.Graph.GraphClass.Tests
         {
             try
             {
-                testPath = GraphColoring.Tests.Tests.CreateTestFile(testsDictionary[classEnum]);
+                testPath = ReaderWriter.ReaderWriter.CreateTestFile(testsDictionary[classEnum]);
 
                 reader = new ReaderWriter.ReaderGraph(testPath, false);
                 graph = reader.ReadFile();

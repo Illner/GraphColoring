@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 using System.Drawing;
+using System.ComponentModel;
 
 namespace GraphColoring.GUI
 {
@@ -16,7 +17,6 @@ namespace GraphColoring.GUI
         private Thread coreThread;
         private Graph.IGraphInterface graph;
         private GraphVisualizationForm graphVisualizationForm;
-        private const string delimiterNamedGraphComboBox = "-";
         List<GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum> algorithmListBoxList;
         private GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum;
         #endregion
@@ -44,11 +44,15 @@ namespace GraphColoring.GUI
             }
 
             // Fill graph density - generated graph
+            FillGraphDensityGenerateGraphComboBox();
+            /*
             foreach (var density in Enum.GetValues(typeof(GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum)))
                 graphDensityGenerateGraphComboBox.Items.Add(density);
             graphDensityGenerateGraphComboBox.SelectedItem = GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.notAssigned;
+            */
 
             // Fill namedGraphsComboBox
+            /*
             foreach (Dictionary<GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum, string> record in GalleryOfNamedGraphs.NamedGraphs.namedGraphsList)
             {
                 foreach (GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum namedGraph in record.Keys)
@@ -63,6 +67,8 @@ namespace GraphColoring.GUI
                 namedGraphsComboBox.Items.Add(delimiterNamedGraphComboBox);
             }
             namedGraphsComboBox.SelectedIndex = 0;
+            */
+            FillNamedGraphsComboBox();
         }
         #endregion
 
@@ -154,7 +160,7 @@ namespace GraphColoring.GUI
 
         private void scheduleAppearanceCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!ExistsGraph())
+            if (!ExistsGraph(false))
             {
                 return;
             }
@@ -213,7 +219,7 @@ namespace GraphColoring.GUI
             }
             drawGraphPictureBox.Image = image;
         }
-        
+
         // Invoke
         #region
         private void SetClassValuePropertiesLabel(string text)
@@ -275,7 +281,7 @@ namespace GraphColoring.GUI
             }
             minimumVertexDegreeValueGraphPropertiesLabel.Text = text;
         }
-        
+
         private void SetAverageVertexDegreeValueGraphPropertiesLabel(string text)
         {
             if (InvokeRequired)
@@ -365,7 +371,7 @@ namespace GraphColoring.GUI
             }
             loadGraphButton.Enabled = enable;
         }
-        
+
         private void SetEnableSaveGraphButton(bool enable)
         {
             if (InvokeRequired)
@@ -385,7 +391,7 @@ namespace GraphColoring.GUI
             }
             generateGraphButton.Enabled = enable;
         }
-        
+
         private void SetEnableColorGraphPlanScheduleButton(bool enable)
         {
             if (InvokeRequired)
@@ -474,7 +480,7 @@ namespace GraphColoring.GUI
             firstVertexNameGraphModificationEdgeTextBox.Text = "";
             secondVertexNameGraphModificationEdgeTextBox.Text = "";
         }
-        
+
         private void EnableButtons(bool enable)
         {
             if (InvokeRequired)
@@ -515,11 +521,12 @@ namespace GraphColoring.GUI
         /// Return true if graph != null
         /// </summary>
         /// <returns></returns>
-        private bool ExistsGraph()
+        private bool ExistsGraph(bool showMessageBox = true)
         {
             if (graph == null)
             {
-                ShowMessageBox("Error | " + WCM.GraphNoExistsTitle, WCM.GraphNoExists);
+                if (showMessageBox)
+                    ShowMessageBox("Error | " + WCM.GraphNoExistsTitle, WCM.GraphNoExists);
                 return false;
             }
 
@@ -645,7 +652,7 @@ namespace GraphColoring.GUI
                 SetStatusLabel(WCM.ColorGraphErrorStatus);
                 return;
             }
-            
+
             // Disable all buttons
             EnableButtons(false);
 
@@ -738,7 +745,7 @@ namespace GraphColoring.GUI
             coreThread.IsBackground = true;
             coreThread.Start();
         }
-        
+
         private void saveGraphButton_Click(object sender, EventArgs e)
         {
             if (!ExistsGraph())
@@ -790,9 +797,9 @@ namespace GraphColoring.GUI
                     {
                         writer.WriteFile(graph);
                     }
-                    
+
                     writer.WriteFileColor(graph, graphColoringAlgorithmEnum, false);
-                     
+
                     ShowMessageBox(WCM.WriteGraphTitle, WCM.WriteGraph);
                     SetStatusLabel(WCM.WriteGraphStatus);
                 }
@@ -867,7 +874,11 @@ namespace GraphColoring.GUI
                         countOfCutVertices = graph.GetGraphProperty().GetCutVertices().Count.ToString();
                         countOfBridges = graph.GetGraphProperty().GetBridges().Count.ToString();
                         cayleysFormula = graph.GetGraphProperty().GetCayleysFormula().ToString();
-                        isEulerian = graph.GetGraphProperty().GetIsEulerian().ToString();
+
+                        // Eulerian
+                        Graph.GraphProperty.GraphProperty.EulerianGraphEnum isEulerianEnum = graph.GetGraphProperty().GetIsEulerian();
+                        if (!Graph.GraphProperty.GraphProperty.WCMEulerianGraphDictionary.TryGetValue(isEulerianEnum, out isEulerian))
+                            isEulerian = "";
                     }
 
                     maximumVertexDegree = graph.GetGraphProperty().GetMaximumVertexDegree().ToString();
@@ -907,7 +918,7 @@ namespace GraphColoring.GUI
             coreThread.IsBackground = true;
             coreThread.Start();
         }
-        
+
         private void resetButton_Click(object sender, EventArgs e)
         {
 
@@ -920,12 +931,12 @@ namespace GraphColoring.GUI
                 while (coreThread.ThreadState.HasFlag(ThreadState.Aborted))
                     Thread.Sleep(0);
             }
-            
+
             coreThread = null;
 
             // Enable buttons
             EnableButtons(true);
-            
+
             // Core
             path = null;
             graph = null;
@@ -933,18 +944,18 @@ namespace GraphColoring.GUI
             SetStatusLabel("");
             drawGraphPictureBox.Image = null;
         }
-        
+
         private void generateGraphButton_Click(object sender, EventArgs e)
         {
             // Variable
             int countOfVertices;
             GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum graphDensity;
-            
+
             // Get count of vertices
             countOfVertices = (int)countOfVerticesGenerateGraphLabelNumericUpDown.Value;
 
             // Get graph density
-            graphDensity = (GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum)graphDensityGenerateGraphComboBox.SelectedItem;
+            graphDensity = (GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum)graphDensityGenerateGraphComboBox.SelectedValue;
 
             // Disable all buttons
             EnableButtons(false);
@@ -979,17 +990,15 @@ namespace GraphColoring.GUI
             coreThread.IsBackground = true;
             coreThread.Start();
         }
-        
+
         private void newGraphButton_Click(object sender, EventArgs e)
         {
             // Variable
             string graphContent = null;
-            string namedGraph = namedGraphsComboBox.SelectedItem.ToString();
+            string namedGraph = namedGraphsComboBox.SelectedValue.ToString();
+
             GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum namedGraphEnum;
-
-            if (namedGraph == delimiterNamedGraphComboBox)
-                return;
-
+            
             namedGraphEnum = (GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum)Enum.Parse(typeof(GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum), namedGraph, true);
 
             foreach (Dictionary<GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum, string> record in GalleryOfNamedGraphs.NamedGraphs.namedGraphsList)
@@ -1038,7 +1047,7 @@ namespace GraphColoring.GUI
             coreThread.IsBackground = true;
             coreThread.Start();
         }
-        
+
         private void complementGraphGraphOperationButton_Click(object sender, EventArgs e)
         {
             // Disable all buttons
@@ -1312,7 +1321,9 @@ namespace GraphColoring.GUI
                 coreThread = new Thread(() =>
                 {
                     string isEulerian = "";
-                    isEulerian = graph.GetGraphProperty().GetIsEulerian().ToString();
+                    Graph.GraphProperty.GraphProperty.EulerianGraphEnum isEulerianEnum = graph.GetGraphProperty().GetIsEulerian();
+                    if (!Graph.GraphProperty.GraphProperty.WCMEulerianGraphDictionary.TryGetValue(isEulerianEnum, out isEulerian))
+                        isEulerian = "";
 
                     SetIsEulerianValueGraphPropertiesLabel(isEulerian);
 
@@ -1357,7 +1368,7 @@ namespace GraphColoring.GUI
 
         // Graph modification - click
         #region
-            
+
         private void changeVertexNameGraphModificationVertexButton_Click(object sender, EventArgs e)
         {
             if (!ExistsGraph())
@@ -1377,10 +1388,10 @@ namespace GraphColoring.GUI
                 ShowMessageBox("Error | " + WCM.GraphModificationVertexNameDoesntInsertedTitle, WCM.GraphModificationVertexNameDoesntInserted);
                 return;
             }
-            
+
             // Disable all buttons
             EnableButtons(false);
-            
+
             coreThread = new Thread(() =>
             {
                 try
@@ -1433,7 +1444,7 @@ namespace GraphColoring.GUI
 
             // Variable
             string vertexName = vertexNameGraphModificationVertexTextBox.Text;
-            
+
             if (vertexName == "")
             {
                 ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntInsertedTitle, WCM.GraphModificationVertexDoesntInserted);
@@ -1463,7 +1474,7 @@ namespace GraphColoring.GUI
                 catch (MyException.GraphException.GraphVertexAlreadyExistsException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexAlreadyExistsTitle, WCM.GraphModificationVertexAlreadyExists);
-                    
+
                     Console.WriteLine(ex);
                 }
                 catch (ThreadAbortException ex)
@@ -1498,13 +1509,13 @@ namespace GraphColoring.GUI
                 ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntInsertedTitle, WCM.GraphModificationVertexDoesntInserted);
                 return;
             }
-            
+
             if (graph.GetGraphProperty().GetCountVertices() == 1)
             {
                 ShowMessageBox("Error | " + WCM.GraphModificationDeleteVertexOneTitle, WCM.GraphModificationDeleteVertexOne);
                 return;
             }
-            
+
             // Disable all buttons
             EnableButtons(false);
 
@@ -1850,7 +1861,7 @@ namespace GraphColoring.GUI
             coreThread.IsBackground = true;
             coreThread.Start();
         }
-        
+
         private void edgeContractionGraphModificationEdgeButton_Click(object sender, EventArgs e)
         {
             if (!ExistsGraph())
@@ -2009,6 +2020,37 @@ namespace GraphColoring.GUI
         private void drawGraphPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        // Fill Combobox
+        public void FillNamedGraphsComboBox()
+        {
+            namedGraphsComboBox.DataSource = Enum.GetValues(typeof(GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum))
+                .Cast<Enum>()
+                .Select(value => new
+                {
+                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
+                    value
+                })
+                .OrderBy(item => item.value)
+                .ToList();
+            namedGraphsComboBox.DisplayMember = "Description";
+            namedGraphsComboBox.ValueMember = "value";
+        }
+
+        public void FillGraphDensityGenerateGraphComboBox()
+        {
+            graphDensityGenerateGraphComboBox.DataSource = Enum.GetValues(typeof(GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum))
+                .Cast<Enum>()
+                .Select(value => new
+                {
+                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
+                    value
+                })
+                .OrderBy(item => item.value)
+                .ToList();
+            graphDensityGenerateGraphComboBox.DisplayMember = "Description";
+            graphDensityGenerateGraphComboBox.ValueMember = "value";
         }
     }
 }

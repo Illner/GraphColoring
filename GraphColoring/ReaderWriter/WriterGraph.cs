@@ -61,7 +61,7 @@ namespace GraphColoring.ReaderWriter
                     List<Graph.IVertexInterface> vertexList = coloredGraph.ColoredVertices(color);
 
                     streamWriter.WriteLine("- " + color);
-                    vertexList.ForEach(vertex => { streamWriter.WriteLine("-- " + vertex.GetUserName() + " (" + vertex.GetIdentifier() + ") "); });
+                    vertexList.ForEach(vertex => { streamWriter.WriteLine("-- " + vertex.GetUserName()); });
                 }
             }
 

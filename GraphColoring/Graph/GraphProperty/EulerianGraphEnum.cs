@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace GraphColoring.Graph.GraphProperty
 {
@@ -14,5 +15,12 @@ namespace GraphColoring.Graph.GraphProperty
             [Description("Not Eulerian graph")]
             notEulerian     // Not eulerian
         }
+
+        public static Dictionary<EulerianGraphEnum, string> WCMEulerianGraphDictionary = new Dictionary<EulerianGraphEnum, string>()
+        {
+            { EulerianGraphEnum.eulerian, "Eulerian graph" },
+            { EulerianGraphEnum.semiEulerian, "Semi-Eulerian graph" },
+            { EulerianGraphEnum.notEulerian, "Not Eulerian graph" }
+        };
     }
 }

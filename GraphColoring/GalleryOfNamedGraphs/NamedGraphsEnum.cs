@@ -7,6 +7,23 @@ namespace GraphColoring.GalleryOfNamedGraphs
         // Named graphs
         public enum NamedGraphsEnum
         {
+            // Complete graphs
+            [Description("K1")]
+            K1,
+            [Description("K2")]
+            K2,
+            [Description("K3")]
+            K3,
+            [Description("K4")]
+            K4,
+            [Description("K5")]
+            K5,
+            [Description("K6")]
+            K6,
+            [Description("K7")]
+            K7,
+            [Description("K8")]
+            K8,
 
             [Description("Bidiakis cube")]
             BidiakisCube,
@@ -62,24 +79,6 @@ namespace GraphColoring.GalleryOfNamedGraphs
             K3_3,
             [Description("K3,4")]
             K3_4,
-
-            // Complete graphs
-            [Description("K1")]
-            K1,
-            [Description("K2")]
-            K2,
-            [Description("K3")]
-            K3,
-            [Description("K4")]
-            K4,
-            [Description("K5")]
-            K5,
-            [Description("K6")]
-            K6,
-            [Description("K7")]
-            K7,
-            [Description("K8")]
-            K8,
 
             // Cycle graphs
             [Description("C3")]

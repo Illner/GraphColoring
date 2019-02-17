@@ -2,7 +2,7 @@
 
 namespace GraphColoring.GenerateGraph.ErdosRenyiModel
 {
-    partial class ErdosRenyiModel : IGenerateGraphInterface
+    public partial class ErdosRenyiModel : IGenerateGraphInterface
     {
         public enum ErdosRenyiModelProbabilityEnum
         {

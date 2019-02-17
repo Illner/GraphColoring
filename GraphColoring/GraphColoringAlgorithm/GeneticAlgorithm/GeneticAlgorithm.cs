@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
 {
-    class GeneticAlgorithm : GraphColoringAlgorithm
+    public class GeneticAlgorithm : GraphColoringAlgorithm
     {
         // Variable
         #region

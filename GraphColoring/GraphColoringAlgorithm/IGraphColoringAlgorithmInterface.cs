@@ -2,7 +2,7 @@
 
 namespace GraphColoring.GraphColoringAlgorithm
 {
-    interface IGraphColoringAlgorithmInterface
+    public interface IGraphColoringAlgorithmInterface
     {
         void Color();
         Graph.IGraphInterface GetGraph();

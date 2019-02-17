@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.Graph.GraphClass
 {
-    static partial class GraphClass
+    public static partial class GraphClass
     {
         public enum GraphClassEnum
         {

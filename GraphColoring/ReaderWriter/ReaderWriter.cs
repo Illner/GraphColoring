@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace GraphColoring.ReaderWriter
 {
-    abstract partial class ReaderWriter : IReaderWriterInterface
+    public abstract partial class ReaderWriter : IReaderWriterInterface
     {
         // Variable
         #region

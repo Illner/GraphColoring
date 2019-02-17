@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GraphColoring.GraphColoringAlgorithm.Optimal
 {
-    sealed class Optimal : GraphColoringAlgorithm
+    public sealed class Optimal : GraphColoringAlgorithm
     {
         // Variable
         #region

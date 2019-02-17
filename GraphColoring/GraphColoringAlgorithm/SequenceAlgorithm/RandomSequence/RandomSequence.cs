@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
 {
-    sealed class RandomSequence : GraphColoringSequenceAlgorithm
+    public sealed class RandomSequence : GraphColoringSequenceAlgorithm
     {
         // Constructor
         #region

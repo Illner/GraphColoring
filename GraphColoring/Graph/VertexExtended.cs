@@ -2,7 +2,7 @@
 
 namespace GraphColoring.Graph
 {
-    class VertexExtended : Vertex
+    public class VertexExtended : Vertex
     {
         // Variable
         #region

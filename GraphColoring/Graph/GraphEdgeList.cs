@@ -10,7 +10,7 @@ namespace GraphColoring.Graph
         /// <summary>
         /// mapping - slouží pro snadné nalezení identifikátoru vrcholu na základě userName vrcholu
         /// </summary>
-        private new Dictionary<string, int> mapping;
+        private Dictionary<string, int> mapping;
         #endregion
 
         // Constructor

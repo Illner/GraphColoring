@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace GraphColoring.Graph
 {
-    abstract partial class Graph : IGraphInterface
+    public abstract partial class Graph : IGraphInterface
     {
         private class ColoredGgraph : IColoredGraphInterface
         {

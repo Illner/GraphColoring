@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.Graph
 {
-    abstract partial class Graph : IGraphInterface
+    public abstract partial class Graph : IGraphInterface
     {
         // Variable
         #region
@@ -25,10 +25,10 @@ namespace GraphColoring.Graph
         private bool isInitialized;
         private int realCountVertices;
         private ColoredGgraph coloredGraph;
-        protected Dictionary<int, VertexExtended> mapping;
-        protected Dictionary<string, VertexExtended> mappingUserName;
-        protected GraphProperty.GraphProperty graphProperty;
-        protected Dictionary<VertexExtended, List<VertexExtended>> adjacencyList;
+        private Dictionary<int, VertexExtended> mapping;
+        private Dictionary<string, VertexExtended> mappingUserName;
+        private GraphProperty.GraphProperty graphProperty;
+        private Dictionary<VertexExtended, List<VertexExtended>> adjacencyList;
         private bool canDeIncreaseCountVertices, canDeIncreaseCountEdges;
         #endregion
 

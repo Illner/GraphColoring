@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.Graph
 {
-    interface IVertexInterface
+    public interface IVertexInterface
     {
         bool Equals(IVertexInterface vertex);
         string ToString();

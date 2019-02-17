@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.Graph
 {
-    interface IGraphEdgeListInterface : IGraphInterface
+    public interface IGraphEdgeListInterface : IGraphInterface
     {
         void AddEdge(string userNameVertex1, string userNameVertex2);
         void AddVertex(string userName);

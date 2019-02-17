@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.GenerateGraph.ErdosRenyiModel
 {
-    partial class ErdosRenyiModel : IGenerateGraphInterface
+    public partial class ErdosRenyiModel : IGenerateGraphInterface
     {
         // Variable
         /// <summary>
@@ -64,10 +64,10 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
                     probability = random.Next(10000, 99999) / countVertices;
                     break;
                 case ErdosRenyiModelProbabilityEnum.cDividedByNMoreThanOne:
-                    probability = random.Next(100000, 200000) / countVertices;
+                    probability = random.Next(100000, 300000) / countVertices;
                     break;
                 case ErdosRenyiModelProbabilityEnum.cLogNDividedByN:
-                    probability = (int)(random.Next(100000, 200000) * Math.Log(countVertices) / countVertices);
+                    probability = (int)(random.Next(100000, 300000) * Math.Log(countVertices) / countVertices);
                     break;
                 default:
                     throw new MyException.GenerateGraphException.ErdosReneiModelProbabilityEnumMissing(erdosRenyiModelProbabilityEnum.ToString());

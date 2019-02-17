@@ -5,7 +5,7 @@ namespace GraphColoring.MyException.ReaderWriterException
     /// <summary>
     /// ReaderWriter exceptions
     /// </summary>
-    class ReaderWriterException : Exception
+    public class ReaderWriterException : Exception
     {
         public ReaderWriterException() { }
 
@@ -18,7 +18,7 @@ namespace GraphColoring.MyException.ReaderWriterException
     /// ReaderWriter exception
     /// Navalidní cesta k souboru
     /// </summary>
-    class ReaderWriterInavalidPathException : ReaderWriterException
+    public class ReaderWriterInavalidPathException : ReaderWriterException
     {
         public ReaderWriterInavalidPathException() { }
 
@@ -31,7 +31,7 @@ namespace GraphColoring.MyException.ReaderWriterException
     /// ReaderWriter exception
     /// Uživatel nemá přístup k danému souboru
     /// </summary>
-    class ReaderWriterNoAuthorizationException : ReaderWriterException
+    public class ReaderWriterNoAuthorizationException : ReaderWriterException
     {
         public ReaderWriterNoAuthorizationException() { }
 
@@ -44,7 +44,7 @@ namespace GraphColoring.MyException.ReaderWriterException
     /// ReaderWriter exception
     /// Špatný typ souboru (!= FILETYPE)
     /// </summary>
-    class ReaderWriterInvalidFileTypeException : ReaderWriterException
+    public class ReaderWriterInvalidFileTypeException : ReaderWriterException
     {
         public ReaderWriterInvalidFileTypeException() { }
 
@@ -57,7 +57,7 @@ namespace GraphColoring.MyException.ReaderWriterException
     /// ReaderWriter exception
     /// Špatná hlavičkou souboru (!= READERWRITERHEADER + representation)
     /// </summary>
-    class ReaderWriterInvalidHeaderException : ReaderWriterException
+    public class ReaderWriterInvalidHeaderException : ReaderWriterException
     {
         public ReaderWriterInvalidHeaderException() { }
 
@@ -70,7 +70,7 @@ namespace GraphColoring.MyException.ReaderWriterException
     /// ReaderWriter exception
     /// Špatná core data v souboru.
     /// </summary>
-    class ReaderWriterInvalidDataException : ReaderWriterException
+    public class ReaderWriterInvalidDataException : ReaderWriterException
     {
         public ReaderWriterInvalidDataException() { }
 
@@ -83,7 +83,7 @@ namespace GraphColoring.MyException.ReaderWriterException
     /// ReaderWriter exception
     /// Špatný formát souboru.
     /// </summary>
-    class ReaderWriterInvalidFormatException : ReaderWriterException
+    public class ReaderWriterInvalidFormatException : ReaderWriterException
     {
         public ReaderWriterInvalidFormatException() { }
 

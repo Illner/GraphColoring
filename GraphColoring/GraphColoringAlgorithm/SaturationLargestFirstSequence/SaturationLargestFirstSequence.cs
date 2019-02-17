@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
 {
-    sealed class SaturationLargestFirstSequence : GraphColoringAlgorithm, IGraphColoringAlgorithmStepInterface
+    public sealed class SaturationLargestFirstSequence : GraphColoringAlgorithm, IGraphColoringAlgorithmStepInterface
     {
         // Variable
         #region

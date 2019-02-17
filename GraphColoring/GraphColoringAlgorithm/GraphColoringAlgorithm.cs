@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm
 {
-    abstract partial class GraphColoringAlgorithm : IGraphColoringAlgorithmInterface
+    public abstract partial class GraphColoringAlgorithm : IGraphColoringAlgorithmInterface
     {
         // Variable
         #region

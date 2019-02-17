@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.Graph
 {
-    interface IGraphInterface
+    public interface IGraphInterface
     {
         // Method
         #region

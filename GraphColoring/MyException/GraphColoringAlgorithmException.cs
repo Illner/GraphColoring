@@ -5,7 +5,7 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     /// <summary>
     /// Graph exceptions
     /// </summary>
-    class GraphColoringAlgorithmException : Exception
+    public class GraphColoringAlgorithmException : Exception
     {
          public GraphColoringAlgorithmException() { }
 
@@ -17,7 +17,7 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     /// <summary>
     /// Nevalidní sekvence vrcholů (méně vrcholů, opakující se vrcholy apod.)
     /// </summary>
-    class AlgorithmInvalidVertexSequence : GraphColoringAlgorithmException
+    public class AlgorithmInvalidVertexSequence : GraphColoringAlgorithmException
     {
         public AlgorithmInvalidVertexSequence() { }
 
@@ -29,7 +29,7 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     /// <summary>
     /// Graf není obarven
     /// </summary>
-    class AlgorithmGraphIsNotColored : GraphColoringAlgorithmException
+    public class AlgorithmGraphIsNotColored : GraphColoringAlgorithmException
     {
         public AlgorithmGraphIsNotColored() { }
 
@@ -41,7 +41,7 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     /// <summary>
     /// Invalid number of population
     /// </summary>
-    class AlgorithmGraphGeneticAlgorithmInvalidPopulationCount : GraphColoringAlgorithmException
+    public class AlgorithmGraphGeneticAlgorithmInvalidPopulationCount : GraphColoringAlgorithmException
     {
         public AlgorithmGraphGeneticAlgorithmInvalidPopulationCount() { }
 
@@ -53,7 +53,7 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     /// <summary>
     /// Random is out of range
     /// </summary>
-    class AlgorithmGraphGeneticAlgorithmRandomNumberOutRange : GraphColoringAlgorithmException
+    public class AlgorithmGraphGeneticAlgorithmRandomNumberOutRange : GraphColoringAlgorithmException
     {
         public AlgorithmGraphGeneticAlgorithmRandomNumberOutRange() { }
 
@@ -65,7 +65,7 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     /// <summary>
     /// Algorithm doesn't exist
     /// </summary>
-    class AlgorithmDoesntExist : GraphColoringAlgorithmException
+    public class AlgorithmDoesntExist : GraphColoringAlgorithmException
     {
         public AlgorithmDoesntExist() { }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
 {
-    abstract class GraphColoringSequenceAlgorithm : GraphColoringAlgorithm
+    public abstract class GraphColoringSequenceAlgorithm : GraphColoringAlgorithm
     {
         // Variable
         #region

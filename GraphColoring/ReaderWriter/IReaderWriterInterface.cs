@@ -3,7 +3,7 @@ using System.IO;
 
 namespace GraphColoring.ReaderWriter
 {
-    interface IReaderWriterInterface
+    public interface IReaderWriterInterface
     {
         // Method
         #region

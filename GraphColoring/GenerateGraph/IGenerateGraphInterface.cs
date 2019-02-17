@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GenerateGraph
 {
-    interface IGenerateGraphInterface
+    public interface IGenerateGraphInterface
     {
         Graph.IGraphInterface GenerateGraph();
     }

@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Database.cs" />
+    <Compile Include="Database\GenerateGraphs.cs" />
     <Compile Include="GalleryOfNamedGraphs\NamedGraphs.cs" />
     <Compile Include="GalleryOfNamedGraphs\NamedGraphsEnum.cs" />
     <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\CompleteBipartiteGraphsResource.Designer.cs">
@@ -318,6 +320,7 @@
     <Compile Include="MyDataStructure\FibonacciHeap.cs" />
     <Compile Include="MyDataStructure\MyLinkedList.cs" />
     <Compile Include="MyDataStructure\MyNode.cs" />
+    <Compile Include="MyException\DatabaseException.cs" />
     <Compile Include="MyException\GenerateGraphException.cs" />
     <Compile Include="MyException\GraphColoringAlgorithmException.cs" />
     <Compile Include="MyException\GraphException.cs" />

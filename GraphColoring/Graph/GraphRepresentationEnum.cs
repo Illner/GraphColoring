@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.Graph
 {
-    abstract partial class Graph
+    public abstract partial class Graph
     {
         public enum GraphRepresentationEnum
         {

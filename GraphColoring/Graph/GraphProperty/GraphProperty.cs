@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GraphColoring.Graph.GraphProperty
 {
-    partial class GraphProperty
+    public partial class GraphProperty
     {
         // Variable
         #region

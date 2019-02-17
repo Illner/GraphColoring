@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence
 {
-    class SmallestLastSequence : GraphColoringSequenceAlgorithm, IGraphColoringAlgorithmStepInterface
+    public class SmallestLastSequence : GraphColoringSequenceAlgorithm, IGraphColoringAlgorithmStepInterface
     {
         // Constructor
         #region

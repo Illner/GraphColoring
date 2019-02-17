@@ -11,7 +11,7 @@ namespace GraphColoring.Graph
         /// mapping - slouží pro snadné nalezení identifikátoru vrcholu na základě pořadí vrcholu
         /// actualVertex - slouží jako idendifikátor, na jakém řádku matice jsme a jakému vrcholu nastavujeme sousedy
         /// </summary>
-        private new Dictionary<int, int> mapping;
+        private Dictionary<int, int> mapping;
         private int actualVertex = 0;
         #endregion
 

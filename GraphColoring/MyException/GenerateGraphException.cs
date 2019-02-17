@@ -9,7 +9,7 @@ namespace GraphColoring.MyException.GenerateGraphException
     /// <summary>
     /// Generate graph exceptions
     /// </summary>
-    class GenerateGraphException : Exception
+    public class GenerateGraphException : Exception
     {
         public GenerateGraphException() { }
 
@@ -21,7 +21,7 @@ namespace GraphColoring.MyException.GenerateGraphException
     /// <summary>
     /// Není ošetřen záznam v ErdosReneiModelProbabilityEnum
     /// </summary>
-    class ErdosReneiModelProbabilityEnumMissing : Exception
+    public class ErdosReneiModelProbabilityEnumMissing : Exception
     {
         public ErdosReneiModelProbabilityEnumMissing() { }
 
@@ -33,7 +33,7 @@ namespace GraphColoring.MyException.GenerateGraphException
     /// <summary>
     /// Není vybrána volba p
     /// </summary>
-    class ErdosReneiModelChoosePNotAssigned : Exception
+    public class ErdosReneiModelChoosePNotAssigned : Exception
     {
         public ErdosReneiModelChoosePNotAssigned() { }
 

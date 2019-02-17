@@ -2,7 +2,7 @@
 
 namespace GraphColoring.GraphColoringAlgorithm
 {
-    abstract partial class GraphColoringAlgorithm : IGraphColoringAlgorithmInterface
+    public abstract partial class GraphColoringAlgorithm : IGraphColoringAlgorithmInterface
     {
         public enum GraphColoringAlgorithmEnum
         {

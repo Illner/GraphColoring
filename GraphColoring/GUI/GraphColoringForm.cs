@@ -667,6 +667,10 @@ namespace GraphColoring.GUI
             graphColoringAlgorithmEnum = algorithmListBoxList[algorithmListBox.SelectedIndex];
             coreThread = new Thread(() =>
             {
+                // Test
+                System.Diagnostics.Stopwatch nevim = new System.Diagnostics.Stopwatch();
+                nevim.Start();
+
                 try
                 {
                     // Reset colored graph
@@ -740,6 +744,8 @@ namespace GraphColoring.GUI
                 {
                     // Enable all buttons
                     EnableButtons(true);
+
+                    Console.WriteLine("Cas: " + nevim.ElapsedMilliseconds);
                 }
             });
             coreThread.IsBackground = true;

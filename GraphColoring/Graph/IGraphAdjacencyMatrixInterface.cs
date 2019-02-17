@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.Graph
 {
-    interface IGraphAdjacencyMatrixInterface : IGraphInterface
+    public interface IGraphAdjacencyMatrixInterface : IGraphInterface
     {
         void SetOfNeighborsOfVertex(List<bool> rowAdjacencyMatrix);
     }

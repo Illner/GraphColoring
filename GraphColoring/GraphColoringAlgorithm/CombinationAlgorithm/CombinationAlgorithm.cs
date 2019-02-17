@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
 {
-    sealed class CombinationAlgorithm : GraphColoringAlgorithm
+    public sealed class CombinationAlgorithm : GraphColoringAlgorithm
     {
         // Variable
         #region

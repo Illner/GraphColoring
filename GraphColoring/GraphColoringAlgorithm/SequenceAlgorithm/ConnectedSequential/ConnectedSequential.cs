@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential
 {
-    sealed class ConnectedSequential : GraphColoringSequenceAlgorithm
+    public sealed class ConnectedSequential : GraphColoringSequenceAlgorithm
     {
         // Constructor
         #region

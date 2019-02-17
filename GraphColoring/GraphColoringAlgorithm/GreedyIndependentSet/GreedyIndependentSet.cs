@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
 {
-    sealed class GreedyIndependentSet : GraphColoringAlgorithm
+    public sealed class GreedyIndependentSet : GraphColoringAlgorithm
     {
         // Variable
         #region

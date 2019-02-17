@@ -5,7 +5,7 @@ namespace GraphColoring.MyException.GraphException
     /// <summary>
     /// Graph exceptions
     /// </summary>
-    class GraphException : Exception
+    public class GraphException : Exception
     {
         public GraphException() { }
 
@@ -18,7 +18,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Snaha provést nějakou operaci, která požaduje inicializovaný graf
     /// </summary>
-    class GraphNotInitializationException : GraphException
+    public class GraphNotInitializationException : GraphException
     {
         public GraphNotInitializationException() { }
 
@@ -31,7 +31,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Graf není souvislý. U ConnectedSequentialAlgorithm.
     /// </summary>
-    class GraphIsNotConnected : GraphException
+    public class GraphIsNotConnected : GraphException
     {
         public GraphIsNotConnected() { }
 
@@ -44,7 +44,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Snaha provést nějakou operaci, která požaduje NEinicializovaný graf
     /// </summary>
-    class GraphInitializationException : GraphException
+    public class GraphInitializationException : GraphException
     {
         public GraphInitializationException() { }
 
@@ -57,7 +57,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Graf již byl inicializovaný a požaduje se nová inicializace
     /// </summary>
-    class GraphAlreadyInitializedException : GraphException
+    public class GraphAlreadyInitializedException : GraphException
     {
         public GraphAlreadyInitializedException() { }
 
@@ -70,7 +70,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Do grafu se snažíme vložit hranu, která již existuje
     /// </summary>
-    class GraphDupliciteEdgeException : GraphException
+    public class GraphDupliciteEdgeException : GraphException
     {
         public GraphDupliciteEdgeException() { }
 
@@ -83,7 +83,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Vrchol grafu neexistuje
     /// </summary>
-    class GraphVertexDoesntExistException : GraphException
+    public class GraphVertexDoesntExistException : GraphException
     {
         public GraphVertexDoesntExistException() { }
 
@@ -96,7 +96,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Vrchol grafu již existuje
     /// </summary>
-    class GraphVertexAlreadyExistsException : GraphException
+    public class GraphVertexAlreadyExistsException : GraphException
     {
         public GraphVertexAlreadyExistsException() { }
 
@@ -109,7 +109,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Vertex userName exists
     /// </summary>
-    class GraphVertexUserNameAlreadyExistsException : GraphException
+    public class GraphVertexUserNameAlreadyExistsException : GraphException
     {
         public GraphVertexUserNameAlreadyExistsException() { }
 
@@ -122,7 +122,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Invalid vertex
     /// </summary>
-    class GraphInvalidVertexException : GraphException
+    public class GraphInvalidVertexException : GraphException
     {
         public GraphInvalidVertexException() { }
 
@@ -135,7 +135,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Hrana v grafu neexistuje
     /// </summary>
-    class GraphEdgeDoesntExistException : GraphException
+    public class GraphEdgeDoesntExistException : GraphException
     {
         public GraphEdgeDoesntExistException() { }
 
@@ -148,7 +148,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Hrana v grafu již existuje
     /// </summary>
-    class GraphEdgeAlreadyExistsException : GraphException
+    public class GraphEdgeAlreadyExistsException : GraphException
     {
         public GraphEdgeAlreadyExistsException() { }
 
@@ -161,7 +161,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Pokud počet alokovaných vrcholů (realCountVertices) je větší než počet vrcholů zadaných v konstruktoru (countVertices) 
     /// </summary>
-    class GraphInvalidCountVerticesException : GraphException
+    public class GraphInvalidCountVerticesException : GraphException
     {
         public GraphInvalidCountVerticesException() { }
 
@@ -175,7 +175,7 @@ namespace GraphColoring.MyException.GraphException
     /// Snaha o dekrementaci nulového počtu vrcholů
     /// Nebo není oprávnění k dekrementaci
     /// </summary>
-    class GraphInvalidDecrementCountVertices : GraphException
+    public class GraphInvalidDecrementCountVertices : GraphException
     {
         public GraphInvalidDecrementCountVertices() { }
 
@@ -188,7 +188,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Snaha o dekrementaci nulového počtu hran
     /// </summary>
-    class GraphInvalidDecrementCountEdges : GraphException
+    public class GraphInvalidDecrementCountEdges : GraphException
     {
         public GraphInvalidDecrementCountEdges() { }
 
@@ -201,7 +201,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Snaha o inkrementaci / dekrementaci počtu vrcholů / hran mimo Graph
     /// </summary>
-    class GraphPermissionDeIncrementVerticesEdges : GraphException
+    public class GraphPermissionDeIncrementVerticesEdges : GraphException
     {
         public GraphPermissionDeIncrementVerticesEdges() { }
 
@@ -214,7 +214,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Graf nemá žádné vrcholy
     /// </summary>
-    class GraphDoesntHaveAnyVertices : GraphException
+    public class GraphDoesntHaveAnyVertices : GraphException
     {
         public GraphDoesntHaveAnyVertices() { }
 
@@ -227,7 +227,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph exception
     /// Špatný stupen vrchol
     /// </summary>
-    class GraphInvalidDegreeVertex : GraphException
+    public class GraphInvalidDegreeVertex : GraphException
     {
         public GraphInvalidDegreeVertex() { }
 
@@ -240,7 +240,7 @@ namespace GraphColoring.MyException.GraphException
     /// (Colored) Graph exception
     /// Snaha provést nějakou operaci, která požaduje inicializovaný obarvený graf
     /// </summary>
-    class ColoredGraphNotInitializationException : GraphException
+    public class ColoredGraphNotInitializationException : GraphException
     {
         public ColoredGraphNotInitializationException() { }
 
@@ -253,7 +253,7 @@ namespace GraphColoring.MyException.GraphException
     /// (Colored) Graph Exception
     /// Graf již byl inicializován a je snaha o druhou inicializaci
     /// </summary>
-    class ColoredGraphAlreadyInitializedException : GraphException
+    public class ColoredGraphAlreadyInitializedException : GraphException
     {
         public ColoredGraphAlreadyInitializedException() { }
 
@@ -266,7 +266,7 @@ namespace GraphColoring.MyException.GraphException
     /// (Colored) Graph Exception
     /// Saturation nebyl inicializován (saturation = false)
     /// </summary>
-    class ColoredGraphNotInitializationSaturation : GraphException
+    public class ColoredGraphNotInitializationSaturation : GraphException
     {
         public ColoredGraphNotInitializationSaturation() { }
 
@@ -279,7 +279,7 @@ namespace GraphColoring.MyException.GraphException
     /// Graph Exception
     /// Graph has to have at least one vertex
     /// </summary>
-    class GraphHasToHaveAtLeastOneVertexException : GraphException
+    public class GraphHasToHaveAtLeastOneVertexException : GraphException
     {
         public GraphHasToHaveAtLeastOneVertexException() { }
 

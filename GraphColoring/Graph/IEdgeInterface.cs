@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.Graph
 {
-    interface IEdgeInterface
+    public interface IEdgeInterface
     {
         string ToString();
         IVertexInterface GetVertex1();

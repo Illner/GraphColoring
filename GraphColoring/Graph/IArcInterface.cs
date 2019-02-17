@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphColoring.Graph
 {
-    interface IArcInterface
+    public interface IArcInterface
     {
         IVertexInterface GetVertexFrom();
         IVertexInterface GetVertexTo();

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GraphColoring.Graph
 {
-    class Vertex : IVertexInterface
+    public class Vertex : IVertexInterface
     {
         // Variable
         #region

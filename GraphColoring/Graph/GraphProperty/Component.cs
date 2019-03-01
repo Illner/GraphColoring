@@ -18,11 +18,11 @@ namespace GraphColoring.Graph.GraphProperty
         // Method
         #region
         /// <summary>
-        /// Rozloží graf na komponenty souvislosti
+        /// Partition a graph to connected components
         /// countComponents, componentsList
         /// BFS
         /// Time complexity: O(V + E)
-        /// Space complexity: O(V + E) + vytvořené grafy
+        /// Space complexity: O(V + E) + new graphs
         /// </summary>
         private void Components()
         {
@@ -126,9 +126,9 @@ namespace GraphColoring.Graph.GraphProperty
         // Property
         #region
         /// <summary>
-        /// Vrátí list komponent souvislosti
+        /// Return a list of connected components
         /// </summary>
-        /// <returns>list komponent souvislosti</returns>
+        /// <returns>list of connected components</returns>
         public List<IGraphInterface> GetComponents()
         {
             if (componentsList == null)
@@ -138,9 +138,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Return true if the graph has initialized components, otherwise false
+        /// Return true if a graph has initialized components
         /// </summary>
-        /// <returns>true if graph has initialized components</returns>
+        /// <returns>true if the graph has initialized components, otherwise false</returns>
         public bool GetIsInitializedComponent()
         #endregion
         {

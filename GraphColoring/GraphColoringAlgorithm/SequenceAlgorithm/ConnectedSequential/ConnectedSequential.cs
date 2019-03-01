@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential
 {
@@ -13,6 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         public ConnectedSequential(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Connected sequenctial algorithm";
+            timeComplexity = TimeComplexityEnum.linear;
             interchange = false;
         }
         #endregion
@@ -20,7 +18,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         // Method
         #region
         /// <summary>
-        /// Vytvoří posloupnost vrcholů
+        /// Create a sequence of vertices
+        /// Time complexity: O(n + m) + O(n + m)
         /// </summary>
         override
         protected void CreateVertexSequence()
@@ -32,7 +31,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
             // Graph is not connected
             if (!graph.GetGraphProperty().GetIsConnected())
                 throw new MyException.GraphException.GraphIsNotConnected(graph.ToString());
-                
+
             if (graph.GetRealCountVertices() == 1)
             {
                 VertexList.Add(graph.GetFirstVertex());

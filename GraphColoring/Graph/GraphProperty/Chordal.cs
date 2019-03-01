@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphProperty
 {
@@ -10,7 +8,7 @@ namespace GraphColoring.Graph.GraphProperty
     {
         /// <summary>
         /// Set potrentional Perfect elimination ordering.
-        /// It is correct only if graph is chordal!
+        /// It is correct only if a graph is chordal!
         /// You can check it via IsPerfectEliminationOrderingParallel
         /// perfectEliminationOrderingList
         /// Use lex-BFS algorithm
@@ -56,8 +54,8 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Check if potentional Perfect elimination ordering (perfectEliminationOrderingList) is correct.
-        /// Return true if PEO is correct (it means the graph is chordal), otherwise return false (the graph is not chordal)
+        /// Check if a potentional Perfect elimination ordering (perfectEliminationOrderingList) is correct.
+        /// Return true if the PEO is correct (it means that the graph is chordal), otherwise return false (the graph is not chordal)
         /// isChordal
         /// </summary>
         private void IsPerfectEliminationOrderingParallel() 
@@ -97,10 +95,10 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Return indexes of neighbors of vertex (with the index) on the left from the vertex in PEO
+        /// Return indexes of neighbors of vertex (with the index) on the left from the vertex in a PEO
         /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>List of indexes</returns>
+        /// <param name="index">index</param>
+        /// <returns>list of indexes</returns>
         private List<int> GetLeftNeighborhood(int index)
         {
             // Variable

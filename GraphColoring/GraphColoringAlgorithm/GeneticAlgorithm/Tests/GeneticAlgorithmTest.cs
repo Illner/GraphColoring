@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.Tests
 {
@@ -39,9 +37,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -55,10 +53,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="geneticAlgorithm">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test(GeneticAlgorithmEnum geneticAlgorithm)
         {
             stringBuilder.Clear();

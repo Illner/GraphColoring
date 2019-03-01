@@ -26,6 +26,7 @@ namespace GraphColoring.Graph.GraphProperty
         private int? minimumVertexDegree;
         private int? maximumVertexDegree;
         private double? averageVertexDegree;
+        private int? medianVertexDegree;
         private double? cayleysFormula;
         #endregion
 
@@ -282,6 +283,31 @@ namespace GraphColoring.Graph.GraphProperty
             }
 
             return (double)averageVertexDegree;
+        }
+
+        /// <summary>
+        /// Return median of vertex degree list
+        /// </summary>
+        /// <returns>median of vertex degree list</returns>
+        public int GetMedianVertexDegree()
+        {
+            if (!medianVertexDegree.HasValue)
+            {
+                GetDegreeSequence(true);
+
+                int numberCount = degreeSequenceInt.Count;
+                int halfIndex = degreeSequenceInt.Count / 2;
+                if ((numberCount % 2) == 0)
+                {
+                    medianVertexDegree = ((degreeSequenceInt.ElementAt(halfIndex) + degreeSequenceInt.ElementAt(halfIndex - 1)) / 2);
+                }
+                else
+                {
+                    medianVertexDegree = degreeSequenceInt.ElementAt(halfIndex);
+                }
+            }
+
+            return (int)medianVertexDegree;
         }
 
         /// <summary>

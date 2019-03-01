@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Tests
 {
@@ -56,9 +56,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy grafů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -72,10 +72,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="saturationLargestFirstSequence">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test(SaturationLargestFirstSequenceEnum saturationLargestFirstSequence)
         {
             stringBuilder.Clear();

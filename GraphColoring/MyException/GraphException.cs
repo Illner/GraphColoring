@@ -16,7 +16,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Snaha provést nějakou operaci, která požaduje inicializovaný graf
+    /// Graph is not initialized
     /// </summary>
     public class GraphNotInitializationException : GraphException
     {
@@ -29,7 +29,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Graf není souvislý. U ConnectedSequentialAlgorithm.
+    /// Graph is not connected - ConnectedSequentialAlgorithm
     /// </summary>
     public class GraphIsNotConnected : GraphException
     {
@@ -42,7 +42,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Snaha provést nějakou operaci, která požaduje NEinicializovaný graf
+    /// Graph is initialized
     /// </summary>
     public class GraphInitializationException : GraphException
     {
@@ -55,7 +55,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Graf již byl inicializovaný a požaduje se nová inicializace
+    /// Reinitialization of a graph
     /// </summary>
     public class GraphAlreadyInitializedException : GraphException
     {
@@ -68,20 +68,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Do grafu se snažíme vložit hranu, která již existuje
-    /// </summary>
-    public class GraphDupliciteEdgeException : GraphException
-    {
-        public GraphDupliciteEdgeException() { }
-
-        public GraphDupliciteEdgeException(string message) : base(message) { }
-
-        public GraphDupliciteEdgeException(string message, Exception inner) : base(message, inner) { }
-    }
-
-    /// <summary>
-    /// Graph exception
-    /// Vrchol grafu neexistuje
+    /// Vertex does not exist
     /// </summary>
     public class GraphVertexDoesntExistException : GraphException
     {
@@ -94,7 +81,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Vrchol grafu již existuje
+    /// Attempt ot insert an existing vertex
     /// </summary>
     public class GraphVertexAlreadyExistsException : GraphException
     {
@@ -133,7 +120,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Hrana v grafu neexistuje
+    /// Edge does not exist
     /// </summary>
     public class GraphEdgeDoesntExistException : GraphException
     {
@@ -146,7 +133,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Hrana v grafu již existuje
+    /// Attempt to insert an existing edge
     /// </summary>
     public class GraphEdgeAlreadyExistsException : GraphException
     {
@@ -159,7 +146,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Pokud počet alokovaných vrcholů (realCountVertices) je větší než počet vrcholů zadaných v konstruktoru (countVertices) 
+    /// RealCountVertices is not equal to countVertices (constructor)
     /// </summary>
     public class GraphInvalidCountVerticesException : GraphException
     {
@@ -172,8 +159,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Snaha o dekrementaci nulového počtu vrcholů
-    /// Nebo není oprávnění k dekrementaci
+    /// Attempt to decrement count vertices which is equal to zero
     /// </summary>
     public class GraphInvalidDecrementCountVertices : GraphException
     {
@@ -186,7 +172,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Snaha o dekrementaci nulového počtu hran
+    /// Attempt to decrement count edges which is equal to zero
     /// </summary>
     public class GraphInvalidDecrementCountEdges : GraphException
     {
@@ -199,7 +185,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Snaha o inkrementaci / dekrementaci počtu vrcholů / hran mimo Graph
+    /// No permission for decrementation / incrementation count vertices / edges
     /// </summary>
     public class GraphPermissionDeIncrementVerticesEdges : GraphException
     {
@@ -212,7 +198,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Graf nemá žádné vrcholy
+    /// Graph does not have any vertices
     /// </summary>
     public class GraphDoesntHaveAnyVertices : GraphException
     {
@@ -225,7 +211,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// Graph exception
-    /// Špatný stupen vrchol
+    /// Invalid vertex degree
     /// </summary>
     public class GraphInvalidDegreeVertex : GraphException
     {
@@ -238,7 +224,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// (Colored) Graph exception
-    /// Snaha provést nějakou operaci, která požaduje inicializovaný obarvený graf
+    /// Colored graph is not initialized
     /// </summary>
     public class ColoredGraphNotInitializationException : GraphException
     {
@@ -251,7 +237,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// (Colored) Graph Exception
-    /// Graf již byl inicializován a je snaha o druhou inicializaci
+    /// Reinitialization of a colored graph
     /// </summary>
     public class ColoredGraphAlreadyInitializedException : GraphException
     {
@@ -264,7 +250,7 @@ namespace GraphColoring.MyException.GraphException
 
     /// <summary>
     /// (Colored) Graph Exception
-    /// Saturation nebyl inicializován (saturation = false)
+    /// Saturation has not been initialized (saturation  = false)
     /// </summary>
     public class ColoredGraphNotInitializationSaturation : GraphException
     {
@@ -273,18 +259,5 @@ namespace GraphColoring.MyException.GraphException
         public ColoredGraphNotInitializationSaturation(string message) : base(message) { }
 
         public ColoredGraphNotInitializationSaturation(string message, Exception inner) : base(message, inner) { }
-    }
-
-    /// <summary>
-    /// Graph Exception
-    /// Graph has to have at least one vertex
-    /// </summary>
-    public class GraphHasToHaveAtLeastOneVertexException : GraphException
-    {
-        public GraphHasToHaveAtLeastOneVertexException() { }
-
-        public GraphHasToHaveAtLeastOneVertexException(string message) : base(message) { }
-
-        public GraphHasToHaveAtLeastOneVertexException(string message, Exception inner) : base(message, inner) { }
     }
 }

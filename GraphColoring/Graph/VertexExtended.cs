@@ -12,13 +12,14 @@ namespace GraphColoring.Graph
         // Constructor
         #region
         public VertexExtended() : base() { }
+
         public VertexExtended(String userName) : base(userName) { }
         /// <summary>
-        /// Vytvoří nový vrchol typu VertexExtended s daným identifikátorem
-        /// Bez userName (null) a bez color (0)
-        /// Pouze pro GraphModification.VertexAdd !!!!!!!!!!!!!!!!!!!!!!!!!
+        /// Create a new vertexExtended with a particular identifier
+        /// Without userName (null) and without color (0)
+        /// Only for GraphEdgeList for vertices with zero degree !!!!!!!!!!!!!!!!!!!!!!!!!!
         /// </summary>
-        /// <param name="identifier">Identifikátor vrcholu</param>
+        /// <param name="identifier">identifier of vertex</param>
         public VertexExtended(int identifier) : base(true)
         {
             SetIdentifier(identifier);
@@ -28,8 +29,8 @@ namespace GraphColoring.Graph
         // Method
         #region
         /// <summary>
-        /// Resetuje barvu vrcholu
-        /// Nastaví color na 0
+        /// Reset a color of vertex
+        /// Set color to default (0)
         /// </summary>
         public void ResetColor()
         {
@@ -40,27 +41,27 @@ namespace GraphColoring.Graph
         // Property
         #region
         /// <summary>
-        /// Nastaví barvu vrcholu
+        /// Set a color of vertex
         /// </summary>
-        /// <param name="color">barva vrcholu</param>
+        /// <param name="color">new color of vertex</param>
         public void SetColor(int color)
         {
             this.color = color;
         }
 
         /// <summary>
-        /// Nastaví jméno vrcholu, které určil uživatel
+        /// Set name of vertex which was defined by user
         /// </summary>
-        /// <param name="userName">nový jméno vrcholu</param>
+        /// <param name="userName">new user name of vertex</param>
         new public void SetUserName(string userName)
         {
             base.SetUserName(userName);
         }
 
         /// <summary>
-        /// Vrátí defaultní barvu. Zpravidla 0.
+        /// Return the default color (0)
         /// </summary>
-        /// <returns>defaultní barvu</returns>
+        /// <returns>default color</returns>
         public static int GetDefaultColor()
         {
             return defaultColor;

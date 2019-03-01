@@ -64,9 +64,9 @@ namespace GraphColoring.Graph.GraphClass.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy grafů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -80,10 +80,10 @@ namespace GraphColoring.Graph.GraphClass.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="graphEnum">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="graphEnum">enum (file)</param>
+        /// <returns>report</returns>
         public StringBuilder Test(ClassEnum classEnum)
         {
             stringBuilder.Clear();

@@ -9,10 +9,10 @@ namespace GraphColoring.ReaderWriter
         // Variable
         #region
         /// <summary>
-        /// path - cesta k souboru
-        /// newLine - znak pro odřádkování
-        /// DELIMITER - Oddělovač v souboru
-        /// FILETYPE - přípona podporovaných souboru = .graph
+        /// path - file path
+        /// newLine - char for a new line (\n)
+        /// SEPARATOR - separator in a file
+        /// FILENAME - supported file name extension - ".graph"
         /// </summary>
         private string path;
         private static char newLine = '\n';
@@ -27,10 +27,10 @@ namespace GraphColoring.ReaderWriter
         // Constructor
         #region
         /// <summary>
-        /// Inicializuje ReaderWriter
-        /// Nastaví cestu k souboru
+        /// Initialize ReaderWriter
+        /// Set file path
         /// </summary>
-        /// <param name="path">cesta k souboru</param>
+        /// <param name="path">file path</param>
         protected ReaderWriter(string path)
         {
             SetPath(path);
@@ -38,11 +38,11 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Inicializuje ReaderWriter
-        /// Nastaví cestu k souboru
+        /// Initialize ReaderWriter
+        /// Set file path
         /// </summary>
-        /// <param name="path">cesta k souboru</param>
-        /// <param name="checkPath">má se provádět kontrola cesty</param>
+        /// <param name="path">file path</param>
+        /// <param name="checkPath">check if the path is valid</param>
         protected ReaderWriter(string path, bool checkPath)
         {
             SetPath(path);
@@ -54,7 +54,8 @@ namespace GraphColoring.ReaderWriter
         // Method
         #region
         /// <summary>
-        /// Kontroluje, zda je path správná cesta. Výsledek ukládá do proměnné isPathValid.
+        /// Check if a path is valid - absolute path
+        /// If the path is not valid throws ReaderWriterInavalidPathException("Invalid path")
         /// </summary>
         private void CheckPath()
         {
@@ -80,9 +81,9 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Odstraní daný soubor
-        /// Pokud je neplatná cesta, tak vrátí vyjímku ReaderWriterInavalidPathException
-        /// Pokud není oprávnění na modifikaci se souborem, tak vrátí vyjímku ReaderWriterNoAuthorizationException
+        /// Delete a file
+        /// If the path is not valid throws ReaderWriterInavalidPathException
+        /// If we do not have a permission for modification throws ReaderWriterNoAuthorizationException
         /// </summary>
         public void DeleteFile()
         {
@@ -99,9 +100,8 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Vytvoří nový soubor
-        /// Pokud je neplatná cesta, tak vrátí vyjímku ReaderWriterInavalidPathException
-        /// Pokud není oprávnění na modifikaci se souborem, tak vrátí vyjímku ReaderWriterNoAuthorizationException
+        /// Create a file
+        /// If the path is not valid throws ReaderWriterInavalidPathException
         /// </summary>
         public void CreateFile()
         {
@@ -117,10 +117,10 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Odstraní obsah v daném souboru
-        /// Pokud soubor neexistuje, tak vytvoří nový soubor
-        /// Pokud je neplatná cesta, tak vrátí vyjímku ReaderWriterInavalidPathException
-        /// Pokud není oprávnění na modifikaci se souborem, tak vrátí vyjímku ReaderWriterNoAuthorizationException
+        /// Delete a content in a file
+        /// If the file does not exist then create one
+        /// If the path is not valid throws ReaderWriterInavalidPathException
+        /// If we do not have a permission for modification throws ReaderWriterNoAuthorizationException
         /// </summary>
         public void ClearFile()
         {
@@ -135,11 +135,11 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Kontroluje, zda existuje daný soubor
-        /// Pokud je neplatná cesta, tak vrátí vyjímku ReaderWriterInavalidPathException
-        /// Pokud není oprávnění na modifikaci se souborem, tak vrátí vyjímku ReaderWriterNoAuthorizationException
+        /// Check if a file exists
+        /// If the path is not valid throws ReaderWriterInavalidPathException
+        /// If we do not have a permission for modification throws ReaderWriterNoAuthorizationException
         /// </summary>
-        /// <returns>true pokud soubor existuje, jinak vrátí false</returns>
+        /// <returns>true if the file exists, otherwise false</returns>
         public Boolean ExistsFile()
         {
             try
@@ -153,10 +153,10 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Vytvoří soubor s daným obsahem
+        /// Create a file with a content
         /// </summary>
-        /// <param name="content">obsah souboru</param>
-        /// <returns>název souboru</returns>
+        /// <param name="content">file's content</param>
+        /// <returns>name of file</returns>
         public static string CreateTestFile(string content)
         {
             File.WriteAllText(fileName, content);
@@ -167,7 +167,7 @@ namespace GraphColoring.ReaderWriter
         }
         
         /// <summary>
-        /// Odstraní soubor
+        /// Delete a file
         /// </summary>
         public static void DeleteTestFile()
         {
@@ -179,27 +179,27 @@ namespace GraphColoring.ReaderWriter
         // Property
         #region
         /// <summary>
-        /// Vrací znak pro odřádkování
+        /// Return a char for a new line (\n)
         /// </summary>
-        /// <returns>znak pro odřádkování</returns>
+        /// <returns>char for a new line</returns>
         public static char GetNewLine()
         {
             return newLine;
         }
 
         /// <summary>
-        /// Nastaví cestu k danému souboru
+        /// Set file path - setter
         /// </summary>
-        /// <param name="path">cesta k souboru</param>
+        /// <param name="path">file path</param>
         private void SetPath(string path)
         {
             this.path = path;
         }
 
         /// <summary>
-        /// Vrátí cestu k danému souboru
+        /// Return file path - getter
         /// </summary>
-        /// <returns>cesta k souboru</returns>
+        /// <returns>file path</returns>
         public string GetPath()
         {
             return path;

@@ -15,7 +15,7 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     }
 
     /// <summary>
-    /// Nevalidní sekvence vrcholů (méně vrcholů, opakující se vrcholy apod.)
+    /// Invalid sequence of vertices (less vertices, vertices are repeating etc.)
     /// </summary>
     public class AlgorithmInvalidVertexSequence : GraphColoringAlgorithmException
     {
@@ -27,7 +27,7 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     }
 
     /// <summary>
-    /// Graf není obarven
+    /// Graph is not colored
     /// </summary>
     public class AlgorithmGraphIsNotColored : GraphColoringAlgorithmException
     {

@@ -163,23 +163,27 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 1
         ///Count of edges: 0
         ///Vertices: 
-        ///-- Identifier: 5145, userName: 5145
+        ///-- Identifier: 5076, userName: 5076
         ///Edges: 
-        ///-- Vertex: 5145 (5145)
+        ///-- Vertex: 5076 (5076)
         ///
+        ///Standard graph
         ///graph &quot;Name&quot;
         ///{
         ///node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
-        ///&quot;5145&quot; [shape = doublecircle shape = doubleoctagon ]
+        ///&quot;5076&quot; [shape = doublecircle shape = doubleoctagon ]
         ///}
         ///
-        ///converterGraphToDotEnum3
-        ///Name of graph: Name
-        ///Count of vertices: 9
-        ///Real count of vertices: 9
-        ///Count of edges: 12
-        ///Vertices: 
-        ///- [rest of string was truncated]&quot;;.
+        ///Uncolored schedule
+        ///graph &quot;Name&quot;
+        ///{
+        ///node [shape=Mrecord style=filled];
+        ///}
+        ///
+        ///Colored schedule
+        ///graph &quot;Name&quot;
+        ///{
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ConverterGraphToDotStandard {
             get {
@@ -228,23 +232,23 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 5
         ///Count of edges: 5
         ///Vertices: 
-        ///-- Identifier: 5102, userName: 1
-        ///-- Identifier: 5103, userName: 0
-        ///-- Identifier: 5104, userName: 2
-        ///-- Identifier: 5105, userName: 3
-        ///-- Identifier: 5106, userName: 4
+        ///-- Identifier: 5033, userName: 1
+        ///-- Identifier: 5034, userName: 0
+        ///-- Identifier: 5035, userName: 2
+        ///-- Identifier: 5036, userName: 3
+        ///-- Identifier: 5037, userName: 4
         ///Edges: 
-        ///-- Vertex: 5102 (1)
-        ///---- 5103 (0) 
-        ///---- 5104 (2) 
-        ///-- Vertex: 5103 (0)
-        ///---- 5102 (1) 
-        ///---- 5104 (2) 
-        ///---- 5105 (3) 
-        ///-- Vertex: 5104 (2)
-        ///---- 5103 (0) 
-        ///---- 5102 (1) 
-        ///-- Vertex: 5105 (3)        /// [rest of string was truncated]&quot;;.
+        ///-- Vertex: 5033 (1)
+        ///---- 5034 (0) 
+        ///---- 5035 (2) 
+        ///-- Vertex: 5034 (0)
+        ///---- 5033 (1) 
+        ///---- 5035 (2) 
+        ///---- 5036 (3) 
+        ///-- Vertex: 5035 (2)
+        ///---- 5034 (0) 
+        ///---- 5033 (1) 
+        ///-- Vertex: 5036 (3)        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphBridgesCutVerticesStandard {
             get {
@@ -260,19 +264,19 @@ namespace GraphColoring.Tests {
         ///Real count of vertices: 8
         ///Count of edges: 15
         ///Vertices: 
-        ///-- Identifier: 5191, userName: 5191
-        ///-- Identifier: 5192, userName: 5192
-        ///-- Identifier: 5193, userName: 5193
-        ///-- Identifier: 5194, userName: 5194
-        ///-- Identifier: 5195, userName: 5195
-        ///-- Identifier: 5196, userName: 5196
-        ///-- Identifier: 5197, userName: 5197
-        ///-- Identifier: 5198, userName: 5198
+        ///-- Identifier: 5122, userName: 5122
+        ///-- Identifier: 5123, userName: 5123
+        ///-- Identifier: 5124, userName: 5124
+        ///-- Identifier: 5125, userName: 5125
+        ///-- Identifier: 5126, userName: 5126
+        ///-- Identifier: 5127, userName: 5127
+        ///-- Identifier: 5128, userName: 5128
+        ///-- Identifier: 5129, userName: 5129
         ///Edges: 
-        ///-- Vertex: 5191 (5191)
-        ///---- 5192 (5192) 
-        ///---- 5193 (5193) 
-        ///---- 5194 (519 [rest of string was truncated]&quot;;.
+        ///-- Vertex: 5122 (5122)
+        ///---- 5123 (5123) 
+        ///---- 5124 (5124) 
+        ///---- 5125 (512 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GraphChordalStandard {
             get {

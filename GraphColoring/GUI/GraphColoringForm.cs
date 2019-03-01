@@ -76,7 +76,7 @@ namespace GraphColoring.GUI
         #region
         /// <summary>
         /// Create instance of algorithm
-        /// If enum isn't implemented in switch throw AlgorithmDoesntExist
+        /// If enum isn't implemented in switch throws AlgorithmDoesntExist
         /// </summary>
         /// <param name="graphColoringAlgorithmEnum">type of algorithm - enum</param>
         /// <param name="graph">the graph</param>
@@ -108,9 +108,6 @@ namespace GraphColoring.GUI
                 case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.optimal:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.Optimal.Optimal(graph);
                     break;
-                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.probabilityAlgorithm:
-                    graphColoringAlgorithm = null; // TODO
-                    break;
                 case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph);
                     break;
@@ -125,6 +122,9 @@ namespace GraphColoring.GUI
                     break;
                 case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, true);
+                    break;
+                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI:
+                    graphColoringAlgorithm = new GraphColoringAlgorithm.AI.AI(graph);
                     break;
                 default:
                     throw new MyException.GraphColoringAlgorithmException.AlgorithmDoesntExist(graphColoringAlgorithmEnum.ToString());
@@ -144,11 +144,11 @@ namespace GraphColoring.GUI
                 // Variable
                 GraphVisualization.GraphVisualization graphVisualization = null;
 
-                if (graph.GetColoredGraph().GetIsInicializedColoredGraph() && scheduleAppearanceCheckBox.Checked)
+                if (graph.GetColoredGraph().GetIsInitializedColoredGraph() && scheduleAppearanceCheckBox.Checked)
                     graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), true);
                 else
                     graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), false);
-
+                
                 graphVisualization.CreateGraphVisualization();
                 SetDrawGraphPictureBox(graphVisualization.GetImage());
             }
@@ -667,18 +667,14 @@ namespace GraphColoring.GUI
             graphColoringAlgorithmEnum = algorithmListBoxList[algorithmListBox.SelectedIndex];
             coreThread = new Thread(() =>
             {
-                // Test
-                System.Diagnostics.Stopwatch nevim = new System.Diagnostics.Stopwatch();
-                nevim.Start();
-
                 try
                 {
                     // Reset colored graph
                     foreach (Graph.IGraphInterface graph in graph.GetGraphProperty().GetComponents())
                     {
                         Graph.IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
-                        if (coloredGraph.GetIsInicializedColoredGraph())
-                            coloredGraph.DeinicializationColoredGraph();
+                        if (coloredGraph.GetIsInitializedColoredGraph())
+                            coloredGraph.DeinitializationColoredGraph();
                     }
 
                     // Core color
@@ -703,8 +699,8 @@ namespace GraphColoring.GUI
                     if (graph.GetGraphProperty().GetCountComponents() > 1)
                     {
                         Graph.IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
-                        if (coloredGraph.GetIsInicializedColoredGraph())
-                            coloredGraph.DeinicializationColoredGraph();
+                        if (coloredGraph.GetIsInitializedColoredGraph())
+                            coloredGraph.DeinitializationColoredGraph();
 
                         foreach (Graph.IGraphInterface componentGraph in graph.GetGraphProperty().GetComponents())
                         {
@@ -716,7 +712,7 @@ namespace GraphColoring.GUI
                             }
                         }
 
-                        coloredGraph.InicializeColoredGraph();
+                        coloredGraph.InitializeColoredGraph();
                     }
 
                     ShowGraph();
@@ -744,8 +740,6 @@ namespace GraphColoring.GUI
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("Cas: " + nevim.ElapsedMilliseconds);
                 }
             });
             coreThread.IsBackground = true;
@@ -874,7 +868,7 @@ namespace GraphColoring.GUI
 
                     if (graph.GetGraphProperty().GetIsConnected())
                     {
-                        classType = Graph.GraphClass.GraphClass.GetGraphClass(graph).ToString();
+                        classType = graph.GetGraphProperty().GetGraphClass().ToString();
                         isCyclic = graph.GetGraphProperty().GetIsCyclic().ToString();
                         isRegular = graph.GetGraphProperty().GetIsRegular().ToString();
                         countOfCutVertices = graph.GetGraphProperty().GetCutVertices().Count.ToString();
@@ -1145,7 +1139,7 @@ namespace GraphColoring.GUI
                 coreThread = new Thread(() =>
                 {
                     string classType = "";
-                    classType = Graph.GraphClass.GraphClass.GetGraphClass(graph).ToString();
+                    classType = graph.GetGraphProperty().GetGraphClass().ToString();
 
                     SetClassValuePropertiesLabel(classType);
 

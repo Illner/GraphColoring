@@ -223,7 +223,7 @@
         /// Set a new rank's value
         /// </summary>
         /// <param name="rank">rank</param>
-        public void SetRank(int rank)
+        private void SetRank(int rank)
         {
             this.rank = rank;
         }

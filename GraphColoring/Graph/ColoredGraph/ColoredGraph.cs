@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph
 {
@@ -12,15 +12,15 @@ namespace GraphColoring.Graph
             // Variable
             #region
             /// <summary>
-            /// isInicializedColoredGraph - informace, zda je graf validně obarven
-            /// graph - daný graf
-            /// countUsedColor - dosavadní počet použitých barev pro obarvení grafu
-            /// coloredVertexList - list všech obarvených vrcholů grafu
-            /// unColoredVertexList - list všech NEobarvených vrcholů grafu
-            /// isSaturation - informace, zda se pracuje s nasyceností grafu
-            /// saturationDegreeSequence - dictionary obsahující vrchol a jeho nasycenost
+            /// isInitializedColoredGraph - information if the colored graph is initialized
+            /// graph - the graph
+            /// countUsedColor - actual count of colors uses for coloring the graph
+            /// coloredVertexList - list which contains all colored vertices
+            /// unColoredVertexList - list which contains all UNcolored vertices
+            /// isSaturation - is saturation on
+            /// saturationDegreeSequence - dictionary where the first item is a vertex and the second item is its saturation (isSaturation = true)
             /// </summary>
-            private bool isInicializedColoredGraph;
+            private bool isInitializedColoredGraph;
             private Graph graph;
             private Dictionary<int, HashSet<IVertexInterface>> usedColorsDictionary;
             private HashSet<IVertexInterface> coloredVertexHashSet;
@@ -46,11 +46,11 @@ namespace GraphColoring.Graph
             // Method 
             #region
             /// <summary>
-            /// Zkontroluje, zda daný vrchol je dobře obarven. Tj. je pro něho splněna podmínka obarvení.
-            /// Pokud daný vrchol neexistuje v grafu, tak vyvolá vyjímu GraphVertexDoesntExistException
+            /// Check if the vertex is correctly colored
+            /// If the particular vertex does not exist throws GraphVertexDoesntExistException
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
-            /// <returns>true, pokud vrchol je korektně obarvený, jinak false</returns>
+            /// <param name="vertex">vertex</param>
+            /// <returns>true if the vertex color is valid, otherwise false</returns>
             public bool CheckValidColor(IVertexInterface vertex)
             {
                 // Variable
@@ -75,9 +75,9 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Zkontroluje, zda všechny vrcholy jsou obarveny správně
+            /// Check if all vertices are colored correctly
             /// </summary>
-            /// <returns>seznam vrcholů, které jsou obarveny ŠPATNĚ</returns>
+            /// <returns>list of vertices which are colored INcorrectly</returns>
             public List<IVertexInterface> CheckValidColor()
             {
                 // Variable
@@ -94,14 +94,14 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Obarví daný vrchol danou barvou
-            /// Pokud je graf inicializovaný, vrátí vyjímku ColoredGraphAlreadyInitializedException
+            /// Color the vertex
+            /// If the colored graph is initialized throws ColoredGraphAlreadyInitializedException
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
-            /// <param name="color">daná barva</param>
+            /// <param name="vertex">vertex</param>
+            /// <param name="color">color</param>
             public void ColorVertex(IVertexInterface vertex, int color)
             {
-                if (isInicializedColoredGraph)
+                if (isInitializedColoredGraph)
                     throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
                 VertexExtended vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
@@ -123,12 +123,12 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Vrátí obarvení daného vrcholu
-            /// Pokud vrchol není obarven, tak vrátí VertexExtended.GetDefaultColor()
-            /// Pokud daný vrchol neexistuje v grafu, tak vrátí výjimku GraphVertexDoesntExistException
+            /// Return a color of the vertex
+            /// If the vertex has not a color return VertexExtended.GetDefaultColor()
+            /// If the vertex does not exist in the graph return GraphVertexDoesntExistException
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
-            /// <returns>obarvení vrcholu</returns>
+            /// <param name="vertex">vertex</param>
+            /// <returns>color of vertex</returns>
             public int GetColorVertex(IVertexInterface vertex)
             {
                 VertexExtended vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
@@ -137,17 +137,17 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Hladově obarví vrcholy podle dané posloupnosti
-            /// Pokud je graf inicializovaný, vrátí vyjímku ColoredGraphAlreadyInitializedException
+            /// Greedy coloring using a sequence
+            /// If the graph is initialized throws ColoredGraphAlreadyInitializedException
             /// </summary>
-            /// <param name="vertexList">daná posloupnost</param>
+            /// <param name="vertexList">sequence</param>
             /// <param name="interchange">coloring with interchange</param>
             public void GreedyColoring(List<IVertexInterface> vertexList, bool interchange = false)
             {
                 // Variable
                 VertexExtended vertexExtended;
 
-                if (isInicializedColoredGraph)
+                if (isInitializedColoredGraph)
                     throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
                 ResetColors();
@@ -167,10 +167,10 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Hladově obarví vrchol
+            /// Greedy color a vertex
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
-            /// <returns></returns>
+            /// <param name="vertex">vertex</param>
+            /// <returns>color</returns>
             public int GreedyColoring(IVertexInterface vertex)
             {
                 // Variable
@@ -198,11 +198,11 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Vrátí true, pokud daný vrchol má nastavenou barvu, jinak vrátí false
-            /// Pokud daný vrchol neexistuje v grafu, tak vrátí výjimku GraphVertexDoesntExistException
+            /// Return true if the vertex is colored, otherwise false
+            /// If the vertex does not exist in the graph throws GraphVertexDoesntExistException
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
-            /// <returns>true, pokud je vrchol již obarvený, jinak false</returns>
+            /// <param name="vertex">vertex</param>
+            /// <returns>true if the vertex is colored, otherwise false</returns>
             public bool IsVertexColored(IVertexInterface vertex)
             {
                 VertexExtended vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
@@ -214,14 +214,14 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Resetne obarvení pro daný vrchol (barvu nastaví na VertexExtended.GetDefaultColor())
-            /// Pokud daný vrchol neexistuje v grafu, tak vrátí výjimku GraphVertexDoesntExistException
-            /// Pokud je graf inicializovaný, vrátí vyjímku ColoredGraphAlreadyInitializedException
+            /// Reset the color of the vertex (set the color to default)
+            /// If the vertex does not exist in the graph throws GraphVertexDoesntExistException
+            /// If the graph is initialized throws ColoredGraphAlreadyInitializedException
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
+            /// <param name="vertex">vertex</param>
             public void ResetColorVertex(IVertexInterface vertex)
             {
-                if (isInicializedColoredGraph)
+                if (isInitializedColoredGraph)
                     throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
                 VertexExtended vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
@@ -234,11 +234,11 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Přemístí vertex v usedColorsDictionary
-            /// Přemístí případně vertex v coloredVertexHashSet a unColoredVertexHashSet
+            /// Move a vertex in usedColorsDictionary (depends on color)
+            /// Move the vertex from coloredVertexHashSet to unColoredVertexHashSet or from unColoredVertexHashSet to coloredVertexHashSet (depends on color)
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
-            /// <param name="color">dané obarvení</param>
+            /// <param name="vertex">vertex</param>
+            /// <param name="color">new color</param>
             private void ChangeVertexInHashSets(IVertexInterface vertex, int color)
             {
                 // Variable
@@ -279,10 +279,10 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Přidá vertex do usedColorsDictionary
-            /// Přidá vertex buď do coloredVertexHashSet, nebo do unColoredVertexHashSet
+            /// Add a vertex to usedColorsDictionary
+            /// Add the vertex to coloredVertexHashSet or unColoredVertexHashSet
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
+            /// <param name="vertex">vertex</param>
             public void AddVertexInHashSets(IVertexInterface vertex)
             {
                 // Variable
@@ -302,10 +302,10 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Odebere vertex z usedColorsDictionary
-            /// Odebere vertex z coloredVertexHashSet, nebo z unColoredVertexHashSet
+            /// Remove a vertex from usedColorsDictionary
+            /// Remove the vertex from coloredVertexHashSet or unColoredVertexHashSet
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
+            /// <param name="vertex">vertex</param>
             public void RemoveVertexInHashSets(IVertexInterface vertex)
             {
                 // Variable
@@ -325,9 +325,9 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Vrátí true pokud je graf korektně obarvený. Tj. každý vrchol je obarven nějakou barvou a jsou splněny podmínky pro obarvení.
+            /// Return true if the graph is colored correctly
             /// </summary>
-            /// <returns>true pokud je graf validně obarven, jinak false</returns>
+            /// <returns>true if the graph is colored correctly, otherwise false</returns>
             public bool IsValidColored()
             {
                 if (unColoredVertexHashSet.Count != 0)
@@ -340,39 +340,40 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Inicializuje obarvený graf. Pokud už graf byl inicializovaný, tak vrátí vyjímku ColoredGraphAlreadyInitializedException
+            /// Initialize colored graph
+            /// If the colored graph is initialized throws ColoredGraphAlreadyInitializedException
             /// </summary>
-            /// <returns>true pokud byl graf inicializován, jinak false/returns>
-            public bool InicializeColoredGraph()
+            /// <returns>true if the graph has been initialized, otherwise false/returns>
+            public bool InitializeColoredGraph()
             {
-                if (isInicializedColoredGraph)
+                if (isInitializedColoredGraph)
                     throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
                 if (IsValidColored())
-                    isInicializedColoredGraph = true;
+                    isInitializedColoredGraph = true;
                 else
-                    isInicializedColoredGraph = false;
+                    isInitializedColoredGraph = false;
 
-                return isInicializedColoredGraph;
+                return isInitializedColoredGraph;
             }
 
             /// <summary>
-            /// Deinicializuje obarvený graf.
-            /// Pokud graf NEbyl inicializovaný, tak vrátí vyjímku ColoredGraphNotInitializationException
+            /// Deinitialize colored graph
+            /// If the colored graph is not initialized throws ColoredGraphNotInitializationException
             /// </summary>
-            public void DeinicializationColoredGraph()
+            public void DeinitializationColoredGraph()
             {
-                if (!isInicializedColoredGraph)
+                if (!isInitializedColoredGraph)
                     throw new MyException.GraphException.ColoredGraphNotInitializationException();
-                
-                isInicializedColoredGraph = false;
+
+                isInitializedColoredGraph = false;
 
                 isSaturation = false;
             }
 
             /// <summary>
-            /// Resetuje všechna obarvení vrcholů
-            /// Pokud je graf inicializovaný, vrátí vyjímku ColoredGraphAlreadyInitializedException
+            /// Reset all vertex colors
+            /// If the colored graph is initialized throws ColoredGraphAlreadyInitializedException
             /// </summary>
             public void ResetColors()
             {
@@ -380,7 +381,7 @@ namespace GraphColoring.Graph
                 List<IVertexInterface> vertexList;
                 VertexExtended vertexExtended;
 
-                if (isInicializedColoredGraph)
+                if (isInitializedColoredGraph)
                     throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
                 vertexList = graph.AllVertices();
@@ -398,9 +399,9 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Spočítá nasycenost pro daný vrchol
+            /// Evaluate saturation for the vertex
             /// </summary>
-            /// <param name="vertex">daný vrchol</param>
+            /// <param name="vertex">vertex</param>
             private void EvaluateSaturation(IVertexInterface vertex)
             {
                 // Variable
@@ -428,9 +429,9 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Nastaví saturation
+            /// Set saturation
             /// </summary>
-            /// <param name="saturation">true - pracuje se s nasyceností vrcholů, false - nepracuje se s nasyceností vrcholů</param>
+            /// <param name="saturation">Is saturation on</param>
             public void SetSaturation(bool saturation)
             {
                 if (isSaturation == saturation)
@@ -450,9 +451,9 @@ namespace GraphColoring.Graph
             }
                
             /// <summary>
-            /// Vrátí vrchol, který je nejvíce nasycený
+            /// Return a vertex which is the most saturated
             /// </summary>
-            /// <returns>vrchol s největší nasyceností</returns>
+            /// <returns>vertex which is the most saturated</returns>
             public IVertexInterface GetSaturationDegreeSequence()
             {
                 // Variable
@@ -495,9 +496,9 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Vrátí seznam použitých barev
+            /// Return a list of used colors
             /// </summary>
-            /// <returns>seznam použitých barev</returns>
+            /// <returns>list of used colors</returns>
             public List<int> UsedColors()
             {
                 // Variable
@@ -510,10 +511,10 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Vrátí seznam vrcholů, které jsou obarveny danou barvou
+            /// Return a list of vertices which are colored with the color = color
             /// </summary>
-            /// <param name="color">daná barva</param>
-            /// <returns>seznam vrcholů</returns>
+            /// <param name="color">color</param>
+            /// <returns>list of vertices</returns>
             public List<IVertexInterface> ColoredVertices(int color)
             {
                 // Variable
@@ -528,10 +529,10 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Return List of colors (except default color) which are used in neighbours of vertex
+            /// Return a list of colors (except default color) which are used in neighbours of vertex
             /// </summary>
-            /// <param name="vertex">The vertex</param>
-            /// <returns>List of colors</returns>
+            /// <param name="vertex">vertex</param>
+            /// <returns>list of colors</returns>
             public List<int> ColorsNeighbours(IVertexInterface vertex)
             {
                 HashSet<int> colorsHashSet = new HashSet<int>();
@@ -548,10 +549,10 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Return list of vertices which are neighbour of vertex and have color = color
+            /// Return a list of vertices which are neighbour of vertex and have color = color
             /// </summary>
-            /// <param name="color">The color</param>
-            /// <param name="vertex">The vertex</param>
+            /// <param name="color">color</param>
+            /// <param name="vertex">vertex</param>
             /// <returns>list of vertices</returns>
             public List<IVertexInterface> ColoredNeighbours(int color, IVertexInterface vertex)
             {
@@ -565,9 +566,9 @@ namespace GraphColoring.Graph
             }
 
             /// <summary>
-            /// Pokud jsou všechny vrcholy grafu obarveny, tak vrátí true, jinak false
+            /// If all vertices are colored then return true
             /// </summary>
-            /// <returns>true, pokud jsou všechny vrcholy grafu obarveny, jinak false</returns>
+            /// <returns>true if all vertices are colored, otherwise false</returns>
             public bool AreAllVerticesColored()
             {
                 if (unColoredVertexHashSet.Count == 0)
@@ -654,39 +655,39 @@ namespace GraphColoring.Graph
             // Property
             #region
             /// <summary>
-            /// Vrátí dosavadní počet použítých barev
+            /// Return a count of used colors
             /// </summary>
-            /// <returns>počet barev</returns>
+            /// <returns>count of used colors</returns>
             public int GetCountUsedColors()
             {
                 return usedColorsDictionary.Count() - 1;
             }
 
             /// <summary>
-            /// Vrátí seznam vrcholů, které jsou obarveny
+            /// Return a list which contains all colored vertices
             /// </summary>
-            /// <returns></returns>
+            /// <returns>list which contains all colored vertifces</returns>
             public List<IVertexInterface> GetColoredVertexList()
             {
                 return coloredVertexHashSet.ToList();
             }
 
             /// <summary>
-            /// Vrátí seznam vrcholů, které NEJSOU obarveny
+            /// Return a list which contains all UNcolored vertices
             /// </summary>
-            /// <returns></returns>
+            /// <returns>list which contains all UNcolored vertices</returns>
             public List<IVertexInterface> GetUnColoredVertexList()
             {
                 return unColoredVertexHashSet.ToList();
             }
             
             /// <summary>
-            /// Vrátí informaci zda je graf obarven
+            /// Return true if the colored graph is initialized
             /// </summary>
-            /// <returns>true pokud je graf obarvený, jinak false</returns>
-            public bool GetIsInicializedColoredGraph()
+            /// <returns>true if the colored graph is initialized, otherwise false</returns>
+            public bool GetIsInitializedColoredGraph()
             {
-                return isInicializedColoredGraph;
+                return isInitializedColoredGraph;
             }
             #endregion
         }

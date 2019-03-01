@@ -8,7 +8,7 @@ namespace GraphColoring.Graph
         // Variable
         #region
         /// <summary>
-        /// mapping - slouží pro snadné nalezení identifikátoru vrcholu na základě userName vrcholu
+        /// mapping - The map from userName to identifier
         /// </summary>
         private Dictionary<string, int> mapping;
         #endregion
@@ -16,9 +16,9 @@ namespace GraphColoring.Graph
         // Constructor
         #region
         /// <summary>
-        /// Inicializuje graf
+        /// Initialize graph
         /// </summary>
-        /// <param name="countVertices">Počet vrcholů grafu</param>
+        /// <param name="countVertices">Count of vertices</param>
         public GraphEdgeList(int countVertices) : base(countVertices)
         {
             mapping = new Dictionary<string, int>();
@@ -28,10 +28,10 @@ namespace GraphColoring.Graph
         // Method
         #region
         /// <summary>
-        /// Do grafu vloží příslušnou hranu mezi vrcholem userNameVertex1 a vrcholem userNameVertex2
+        /// Add an edge (userNameVertex1, userNameVertex2) to the graph
         /// </summary>
-        /// <param name="userNameVertex1">1. vrchol</param>
-        /// <param name="userNameVertex2">2. vrchol</param> 
+        /// <param name="userNameVertex1">first vertex</param>
+        /// <param name="userNameVertex2">second vertex</param> 
         public void AddEdge(string userNameVertex1, string userNameVertex2)
         {
             // Variable
@@ -48,11 +48,11 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí identifikátor na zákledě jména, které mu zadal uživatel
-        /// Pokud vrchol neexistuje, tak se vytvoří
+        /// Return an identifier of vertex which user name is userNameVertex
+        /// If the vertex with the identifier does not exist construct one
         /// </summary>
-        /// <param name="userNameVertex">Jméno vrcholu, které určil uživatel</param>
-        /// <returns></returns>
+        /// <param name="userNameVertex">user name of vertex</param>
+        /// <returns>identifier of vertex</returns>
         private int GetIdentifier(string userNameVertex)
         {
             if (mapping.TryGetValue(userNameVertex, out int identifierVertex))
@@ -68,10 +68,10 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vytvoří vrchol s uživatelským jménem
-        /// Používá se pouze u vrcholů, které nemají hrany => Ruční vytvoření
+        /// Create a vertex with the user name
+        /// This use only for vertices which have zero degree (manual creating)
         /// </summary>
-        /// <param name="userName">Uživatelské jméno vrcholu</param>
+        /// <param name="userName">user name of vertex</param>
         public void AddVertex(string userName)
         {
             GetIdentifier(userName);

@@ -16,7 +16,7 @@ namespace GraphColoring.MyException.ReaderWriterException
 
     /// <summary>
     /// ReaderWriter exception
-    /// Navalidní cesta k souboru
+    /// Invalid file path
     /// </summary>
     public class ReaderWriterInavalidPathException : ReaderWriterException
     {
@@ -29,7 +29,7 @@ namespace GraphColoring.MyException.ReaderWriterException
 
     /// <summary>
     /// ReaderWriter exception
-    /// Uživatel nemá přístup k danému souboru
+    /// No permission for modification
     /// </summary>
     public class ReaderWriterNoAuthorizationException : ReaderWriterException
     {
@@ -42,7 +42,7 @@ namespace GraphColoring.MyException.ReaderWriterException
 
     /// <summary>
     /// ReaderWriter exception
-    /// Špatný typ souboru (!= FILETYPE)
+    /// Invalid file name extension ".graph"
     /// </summary>
     public class ReaderWriterInvalidFileTypeException : ReaderWriterException
     {
@@ -55,7 +55,7 @@ namespace GraphColoring.MyException.ReaderWriterException
 
     /// <summary>
     /// ReaderWriter exception
-    /// Špatná hlavičkou souboru (!= READERWRITERHEADER + representation)
+    /// Invalid header in a file (!= READERWRITERHEADER + representation)
     /// </summary>
     public class ReaderWriterInvalidHeaderException : ReaderWriterException
     {
@@ -68,7 +68,7 @@ namespace GraphColoring.MyException.ReaderWriterException
 
     /// <summary>
     /// ReaderWriter exception
-    /// Špatná core data v souboru.
+    /// Invalid core data in a file
     /// </summary>
     public class ReaderWriterInvalidDataException : ReaderWriterException
     {
@@ -81,7 +81,7 @@ namespace GraphColoring.MyException.ReaderWriterException
 
     /// <summary>
     /// ReaderWriter exception
-    /// Špatný formát souboru.
+    /// Invalid format of a file
     /// </summary>
     public class ReaderWriterInvalidFormatException : ReaderWriterException
     {

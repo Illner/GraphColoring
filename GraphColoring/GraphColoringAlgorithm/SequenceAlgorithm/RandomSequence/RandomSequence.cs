@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
 {
@@ -13,18 +9,23 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
         public RandomSequence(Graph.IGraphInterface graph, bool interchange = false) : base(graph)
         {
             name = "Random sequence algorithm";
+            timeComplexity = TimeComplexityEnum.linear;
 
             // Interchange
             this.interchange = interchange;
             if (interchange)
+            {
                 name = "Random sequence interchange algorithm";
+                timeComplexity = TimeComplexityEnum.multiply;
+            }
         }
         #endregion
 
         // Method
         #region
         /// <summary>
-        /// Vytvoří posloupnost vrcholů
+        /// Create a sequence of vertices
+        /// Time complexity: O(n)
         /// </summary>
         override
         protected void CreateVertexSequence()

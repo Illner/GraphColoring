@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence
 {
@@ -18,32 +16,37 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         public LargestFirstSequence(Graph.IGraphInterface graph, bool interchange = false) : base(graph)
         {
             name = "Largest first sequence algorithm";
+            timeComplexity = TimeComplexityEnum.linear;
 
             // Interchange
             this.interchange = interchange;
             if (interchange)
+            {
                 name = "Largest first sequence interchange algorithm";
+                timeComplexity = TimeComplexityEnum.multiply;
+            }
         }
         #endregion
 
         // Method
         #region
         /// <summary>
-        /// Vytvoří posloupnost vrcholů
+        /// Create a sequence of vertices
+        /// Time complexity: O(n) + O(n^2)
         /// </summary>
         override
         protected void CreateVertexSequence()
         {
-            degreeSequenceVertexReverse = graph.GetGraphProperty().GetDegreeSequenceVertex(true).ToList();
+            degreeSequenceVertexReverse = graph.GetGraphProperty().GetDegreeSequenceVertex(true);
             degreeSequenceVertexReverse.Reverse();
             vertexSequenceList = degreeSequenceVertexReverse;
         }
 
         /// <summary>
-        /// Vrátí vrchol s největším stupněm, který ještě není obarven
-        /// Pokud jsou všechny vrcholy obarveny, tak vrátí null
+        /// Return a vertex with the largest degree which has not been colored yet
+        /// If a graph is colored return null
         /// </summary>
-        /// <returns>vrchol</returns>
+        /// <returns>vertex</returns>
         public Graph.IVertexInterface Step()
         {
             if (degreeSequenceVertexReverse == null)

@@ -8,7 +8,6 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
         // Variable
         #region
         private SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence largestFirstSequence;
-        private SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence smallestLastSequence;
         private SaturationLargestFirstSequence.SaturationLargestFirstSequence saturationLargestFirstSequence;
         private List<IGraphColoringAlgorithmStepInterface> algorithmList;
         #endregion
@@ -19,13 +18,15 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
         {
             algorithmList = new List<IGraphColoringAlgorithmStepInterface>();
             name = "Combination algorithm";
+            timeComplexity = TimeComplexityEnum.quadratic;
         }
         #endregion
 
         // Method
         #region
         /// <summary>
-        /// Obarví daný graf
+        /// Color a graph
+        /// Time complexity: O(n^2) + O(n^2) + O(n + m)
         /// </summary>
         override
         public void Color()
@@ -36,26 +37,31 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
 
             // Initialize
             largestFirstSequence = new SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph);
-            smallestLastSequence = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
             saturationLargestFirstSequence = new SaturationLargestFirstSequence.SaturationLargestFirstSequence(graph);
 
             // Fill algorithmList
             algorithmList.Add(largestFirstSequence);
-            algorithmList.Add(smallestLastSequence);
             algorithmList.Add(saturationLargestFirstSequence);
 
             // Saturation
             coloredGraph.SetSaturation(true);
 
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
+
+            coloredGraph.ResetColors();
+
             while (!graph.GetColoredGraph().AreAllVerticesColored())
             {
                 vertex = algorithmList[(helper % algorithmList.Count)].Step();
                 coloredGraph.ColorVertex(vertex, coloredGraph.GreedyColoring(vertex));
-
                 helper++;
             }
 
-            coloredGraph.InicializeColoredGraph();
+            bool isColored = coloredGraph.InitializeColoredGraph();
+
+            if (!isColored)
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
         #endregion
     }

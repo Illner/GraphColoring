@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
 {
@@ -23,16 +21,18 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         // Method
         #region
         /// <summary>
-        /// Obarví daný graf
-        /// Pokud graf je již inicializovaný, tak vrátí ColoredGraphAlreadyInitializedException
-        /// Pokud nesedí sekvence vrcholů, vrátí AlgorithmInvalidVertexSequence
-        /// Něco se nepovedlo - AlgorithmGraphIsNotColored
+        /// Color a graph
+        /// If colored graph is initialized throws ColoredGraphAlreadyInitializedException
+        /// If sequence of vertices is invalid throws AlgorithmInvalidVertexSequence
+        /// Something wrong - AlgorithmGraphIsNotColored
         /// </summary>
         override
         public void Color()
         {
-            if (coloredGraph.GetIsInicializedColoredGraph())
+            if (coloredGraph.GetIsInitializedColoredGraph())
                 throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
+            
+            coloredGraph.ResetColors();
 
             CreateVertexSequence();
 
@@ -44,14 +44,14 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
                 throw new MyException.GraphColoringAlgorithmException.AlgorithmInvalidVertexSequence();
 
             coloredGraph.GreedyColoring(vertexSequenceList, interchange);
-            bool isColored = coloredGraph.InicializeColoredGraph();
+            bool isColored = coloredGraph.InitializeColoredGraph();
 
             if (!isColored)
                 throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
 
         /// <summary>
-        /// Vytvoří posloupnost vrcholů
+        /// Create a sequence of vertices
         /// </summary>
         protected abstract void CreateVertexSequence();
         #endregion

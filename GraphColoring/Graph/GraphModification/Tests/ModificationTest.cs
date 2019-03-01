@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphModification.Tests
 {
@@ -47,9 +47,9 @@ namespace GraphColoring.Graph.GraphModification.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy grafů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -63,10 +63,10 @@ namespace GraphColoring.Graph.GraphModification.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="modificationEnum">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="modificationEnum">enum (file)</param>
+        /// <returns>report</returns>
         public StringBuilder Test(ModificationEnum modificationEnum)
         {
             stringBuilder.Clear();

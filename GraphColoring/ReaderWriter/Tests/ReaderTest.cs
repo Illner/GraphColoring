@@ -197,9 +197,9 @@ namespace GraphColoring.ReaderWriter.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy souborů (PathEnum) a reprezentace grafů (Graph.GraphRepresentationEnum)
+        /// Test all types of files (PathEnum) and representations of graphs (Graph.GraphRepresentationEnum)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -218,11 +218,11 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ souboru a danou reprezentaci grafu
+        /// Test a particular type of file with a particular representation of graph
         /// </summary>
-        /// <param name="graphRepresentation">Reprezentace grafu, kterou chceme otestovat</param>
-        /// <param name="pathEnum">Typ souboru, který chceme otestovat</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="graphRepresentation">representation of graph</param>
+        /// <param name="pathEnum">type of file</param>
+        /// <returns>report</returns>
         public StringBuilder Test(Graph.Graph.GraphRepresentationEnum graphRepresentation, PathEnum pathEnum)
         {
             stringBuilder.Clear();
@@ -268,7 +268,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Přečte soubor s grafem a daný graf vytvoří
+        /// Read a file with a graph and construct it
         /// </summary>
         private void Testing()
         {

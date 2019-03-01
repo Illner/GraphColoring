@@ -39,7 +39,7 @@ namespace GraphColoring.MyException.MyDataStructureException
     }
 
     /// <summary>
-    /// Attempt to insert already exists element
+    /// Attempt to insert an existing element
     /// </summary>
     public class FibonacciHeapInsertIdentifierAlreadyKnownException : Exception
     {

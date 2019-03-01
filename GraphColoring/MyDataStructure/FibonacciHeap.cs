@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.MyDataStructure
 {
@@ -74,7 +74,7 @@ namespace GraphColoring.MyDataStructure
         }
 
         /// <summary>
-        /// Return tru if element with the identifier exists, otherwise return false
+        /// Return true if element with the identifier exists, otherwise return false
         /// </summary>
         /// <param name="identifier">The identifier</param>
         /// <returns>true, if the element exists</returns>

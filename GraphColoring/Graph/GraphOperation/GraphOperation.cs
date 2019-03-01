@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphOperation
 {
@@ -10,10 +9,10 @@ namespace GraphColoring.Graph.GraphOperation
         // Method
         #region
         /// <summary>
-        /// Vrátí komplementární graf
+        /// Return a complement graph
         /// </summary>
-        /// <param name="graph">graf, ze kterého chceme vytvořit komplementární graf</param>
-        /// <returns>komplementární graf</returns>
+        /// <param name="graph">graph</param>
+        /// <returns>complement graph</returns>
         public static IGraphInterface ComplementGraph(IGraphInterface graph)
         {
             // Variable
@@ -52,9 +51,9 @@ namespace GraphColoring.Graph.GraphOperation
         }
 
         /// <summary>
-        /// Vrátí line graf
+        /// Return a line graph
         /// </summary>
-        /// <param name="graph">graf, ze kterého chceme vytvořit line graf</param>
+        /// <param name="graph">graph</param>
         /// <returns>line graf</returns>
         public static IGraphInterface LineGraph(IGraphInterface graph)
         {
@@ -128,11 +127,11 @@ namespace GraphColoring.Graph.GraphOperation
         }
 
         /// <summary>
-        /// Vrátí podgraf grafu
+        /// Return a subgraph
         /// </summary>
-        /// <param name="graph">graf, ze kterého chceme vytvořit podgraf<</param>
-        /// <param name="vertexList">vrcholy, které má graf podgraf obsahovat</param>
-        /// <returns>podgraf</returns>
+        /// <param name="graph">graph</param>
+        /// <param name="vertexList">list of vertices which will be in the subgraph</param>
+        /// <returns>subgraph</returns>
         public static IGraphInterface SubGraph(IGraphInterface graph, List<IVertexInterface> vertexList)
         {
             // Variable
@@ -164,11 +163,12 @@ namespace GraphColoring.Graph.GraphOperation
         }
 
         /// <summary>
-        /// Vytvoří kopii grafu
-        /// Pokud graf není inicializovaný, vyvolá se vyjímka GraphInitializationException
+        /// Copy a graph
+        /// If the graph is not initialized throws GraphInitializationException
+        /// Time complexity: O(V + E)
         /// </summary>
-        /// <param name="graph">graf, který chceme zkopírovat</param>
-        /// <returns>kopie grafu</returns>
+        /// <param name="graph">graph</param>
+        /// <returns>graph copy</returns>
         public static IGraphInterface CopyGraph(IGraphInterface graph)
         {
             if (!graph.GetIsInitialized())

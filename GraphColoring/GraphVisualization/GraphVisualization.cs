@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Drawing;
 using System.IO;
-using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace GraphColoring.GraphVisualization
 {
@@ -24,7 +24,7 @@ namespace GraphColoring.GraphVisualization
         // Constructor
         /// <summary>
         /// Constructor
-        /// Default value for fileNameExtensionEnum is jpg
+        /// Default value for fileNameExtensionEnum is .jpg
         /// </summary>
         /// <param name="graph">The graph</param>
         public GraphVisualization(Graph.IGraphInterface graph, bool isSchedule, FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)

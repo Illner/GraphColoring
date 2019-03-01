@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
 {
@@ -42,13 +41,15 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
 
             this.populationSize = populationSize;
             name = "Genetic algorithm";
+            timeComplexity = TimeComplexityEnum.cubicPlusQuadratic;
         }
         #endregion
 
         // Method
         #region
         /// <summary>
-        /// Color graph
+        /// Color a graph
+        /// Time complexity: O(n^3 + mn^2) + 0
         /// </summary>
         override
         public void Color()
@@ -61,6 +62,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             countOfIteration = stateSize * stateSize;
             coloredGraph = graph.GetColoredGraph();
 
+            coloredGraph.ResetColors();
+
             CreatePopulation();
 
             for (int i = 0; i < countOfIteration; i++)
@@ -70,7 +73,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
                 newPopulationList = new List<List<Graph.IVertexInterface>>();
                 parentPopulationList = new List<Tuple<List<Graph.IVertexInterface>, List<Graph.IVertexInterface>>>();
 
-                // Set parents - parallel
+                // Select parents - parallel
                 Parallel.For(0, populationSize / 2, index  => {
                     // First parent
                     randomDouble = random.NextDouble();
@@ -120,7 +123,10 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             }
 
             coloredGraph.GreedyColoring(bestState);
-            coloredGraph.InicializeColoredGraph();
+            bool isColored = coloredGraph.InitializeColoredGraph();
+
+            if (!isColored)
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
 
         private List<Graph.IVertexInterface> GetRandomVerticesList()
@@ -147,7 +153,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         /// <summary>
         /// 1 / color number
         /// </summary>
-        /// <param name="state">List of vertices</param>
+        /// <param name="state">state (list of vertices)</param>
         /// <returns>1 / color number</returns>
         private double FitnessFunction(List<Graph.IVertexInterface> state)
         {
@@ -192,7 +198,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         }
 
         /// <summary>
-        /// Time complexity: O(n), where n is size population
+        /// Time complexity: O(n), where n is the size of population
         /// </summary>
         private int GetIndexFfitnessFunctionPopulationCumulativeDistributionfunctionList(double number)
         {
@@ -265,7 +271,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         /// <summary>
         /// Choose 2 random points in the encoding and swap between them.
         /// </summary>
-        /// <param name="state">State</param>
+        /// <param name="state">state</param>
 	    private void RandomSwapMutation (ref List<Graph.IVertexInterface> state)
         {
             // Variable
@@ -287,7 +293,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         /// <summary>
         /// Choose 1 random point in the encoding and swap it with the geneto its right.
         /// </summary>
-        /// <param name="state"></param>
+        /// <param name="state">state</param>/param>
 	    private void AdjacentSwapMutation(ref List<Graph.IVertexInterface> state)
         {
             // Variable
@@ -305,9 +311,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         }
 
         /// <summary>
-        /// Select 2 random points in the encoding and invert the order ofthe genes. 
+        /// Select 2 random points in the encoding and invert the order of the genes. 
         /// </summary>
-        /// <param name="state">State</param>
+        /// <param name="state">state</param>
 	    private void InvertedExchangeMutation(ref List<Graph.IVertexInterface> state)
         {
             // Variable
@@ -339,7 +345,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         // Property
         #region
         /// <summary>
-        /// Return size of population
+        /// Return a size of population
         /// </summary>
         /// <returns>size of population</returns>
         public int GetPopulationSize()

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
 {
@@ -19,13 +16,14 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
         public GreedyIndependentSet(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Greedy independent set algorithm";
+            timeComplexity = TimeComplexityEnum.undefined;
         }
         #endregion
 
         // Method
         #region
         /// <summary>
-        /// Obarví daný graf
+        /// Color a graph
         /// </summary>
         override
         public void Color()
@@ -33,6 +31,11 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
             // Variable
             Graph.IVertexInterface vertex;
             List<Graph.IVertexInterface> neighboursVertexList;
+
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
+
+            coloredGraph.ResetColors();
 
             while (!graph.GetColoredGraph().AreAllVerticesColored())
             {
@@ -55,7 +58,10 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
                 color++;
             }
 
-            coloredGraph.InicializeColoredGraph();
+            bool isColored = coloredGraph.InitializeColoredGraph();
+
+            if (!isColored)
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
         #endregion
     }

@@ -17,8 +17,8 @@ namespace GraphColoring.Graph
         void GreedyColoring(List<IVertexInterface> vertexList, bool interchange = false);
         int GreedyColoring(IVertexInterface vertex);
         bool IsValidColored();
-        bool InicializeColoredGraph();
-        void DeinicializationColoredGraph();
+        bool InitializeColoredGraph();
+        void DeinitializationColoredGraph();
         void ResetColors();
         List<int> UsedColors();
         List<IVertexInterface> ColoredVertices(int color);
@@ -34,7 +34,7 @@ namespace GraphColoring.Graph
         int GetCountUsedColors();
         List<IVertexInterface> GetColoredVertexList();
         List<IVertexInterface> GetUnColoredVertexList();
-        bool GetIsInicializedColoredGraph();
+        bool GetIsInitializedColoredGraph();
         #endregion
     }
 }

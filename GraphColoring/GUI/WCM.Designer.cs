@@ -133,7 +133,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It&apos;s creating complement graph..
+        ///   Looks up a localized string similar to It&apos;s creating a complement graph..
         /// </summary>
         internal static string ComplementGraphProgressStatus {
             get {

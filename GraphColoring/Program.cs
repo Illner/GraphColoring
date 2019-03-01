@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace GraphColoring
 {
@@ -13,108 +14,196 @@ namespace GraphColoring
         [STAThread]
         static void Main(string[] args)
         {
+            
             Tests.Tests tests = new Tests.Tests(true);
             tests.Test();
+            
 
             /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
             */
-
+            
             /*
-            Graph.ColoredGraph.Tests.ColoredGraphTest coloredGraphTest = new Graph.ColoredGraph.Tests.ColoredGraphTest();
-            Console.WriteLine(coloredGraphTest.Test(Graph.ColoredGraph.Tests.ColoredGraphTest.ColoredGraphEnum.valid));
-            */
-            /*
-            Tests.Tests tests = new Tests.Tests(false);
-            tests.Test(Tests.Tests.TestEnum.chordalTest);
-            */
-            /*
-            string chordal1 = Graph.GraphProperty.Tests.ChordalResource.graphChordal1;
-            string chordal2 = Graph.GraphProperty.Tests.ChordalResource.graphChordal2;
-            string chordal3 = Graph.GraphProperty.Tests.ChordalResource.graphChordal3;
-            string chordal4 = Graph.GraphProperty.Tests.ChordalResource.graphChordal4;
-            string chordal5 = Graph.GraphProperty.Tests.ChordalResource.graphChordal5;
-            string chordal6 = Graph.GraphProperty.Tests.ChordalResource.graphChordal6;
-            string chordal7 = Graph.GraphProperty.Tests.ChordalResource.graphChordal7;
-            string chordal8 = Graph.GraphProperty.Tests.ChordalResource.graphChordal8;
-            string chordal9 = Graph.GraphProperty.Tests.ChordalResource.graphChordal9;
-
-            List<string> testsList = new List<string>
+            List<Graph.IGraphInterface> graphList = new List<Graph.IGraphInterface>();
+            List<Graph.IGraphInterface> copyGraphList;
+            Stopwatch myStopwatch = new Stopwatch();
+            Random random = new Random();
+            
+            for (int i = 0; i < 3; i++)
             {
-                { chordal1 },
-                { chordal2 },
-                { chordal6 },
-                { chordal7 },
-                { chordal8 },
-                { chordal3 },
-                { chordal4 },
-                { chordal5 },
-                { chordal9 }
-            };
-            int myCount = 0;
-            foreach (string path in testsList)
-            {
-                Console.WriteLine("--------------------------------------------");
-                Console.WriteLine("Chordal" + ++myCount);
+                GenerateGraph.IGenerateGraphInterface generateGraph = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(random.Next(100, 200), GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.cLogNDividedByN);
+                Graph.IGraphInterface graph =  generateGraph.GenerateGraph();
 
-                // Variable
-                int[] distribution = new int[2];
-                distribution[0] = 0;
-                distribution[1] = 0;
-                int counter = 0;
-
-                ReaderWriter.ReaderGraph reader = new ReaderWriter.ReaderGraph(Tests.Tests.CreateTestFile(path), false);
-                Graph.IGraphInterface graph = reader.ReadFile();
-
-                foreach (var vertexList in MyMath.MyMath.GeneratePermutations(graph.AllVertices()))
+                if (!graph.GetGraphProperty().GetIsConnected())
                 {
-                    graph.GetGraphProperty().PerfectEliminationOrdering(vertexList.ToList());
-                    graph.GetGraphProperty().IsPerfectEliminationOrderingParallel();
-
-                    if (graph.GetGraphProperty().GetIsChordal())
-                        distribution[1]++;
-                    else
-                        distribution[0]++;
-
-                    if (++counter % 1000 == 0)
-                        Console.WriteLine("IsChordal: " + distribution[1] + ", nonChordal: " + distribution[0]);
+                    i--;
+                    continue;
                 }
-                Console.WriteLine("---- end");
-                Console.WriteLine("IsChordal: " + distribution[1] + ", nonChordal: " + distribution[0]);
-                Console.WriteLine("--------------------------------------------");
+
+                graphList.Add(graph);
             }
             */
+
             /*
-            ReaderWriter.ReaderGraph reader = new ReaderWriter.ReaderGraph(@"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\GraphColoring\GraphColoring\bin\Debug\Testing\Graph\graph.graph");
-            Graph.IGraphInterface graph = reader.ReadFile();
-            Console.WriteLine(graph);
-            Console.WriteLine("----");
-            Console.WriteLine(graph.GetGraphProperty());
-            Console.ReadKey();
-            graph.GetGraphProperty().GetCircuitRank();
-            graph.GetGraphProperty().GetComponents();
-            Console.WriteLine("----");
-            Console.WriteLine(graph.GetGraphProperty());
-            Console.ReadKey();
-            graph.GetGraphProperty().GetIsChordal();
-            graph.GetGraphProperty().GetIsRegular();
-            graph.GetGraphProperty().GetIsCyclic();
-            graph.GetGraphProperty().GetIsEulerian();
-            Console.WriteLine("----");
-            Console.WriteLine(graph.GetGraphProperty());
-            Console.ReadKey();
-            graph.GetGraphProperty().GetMaximumVertexDegree();
-            graph.GetGraphProperty().GetCutVertices();
-            Console.WriteLine("----");
-            Console.WriteLine(graph.GetGraphProperty());
-            Console.ReadKey();
-            graph.GetGraphProperty().GetGirth();
-            graph.GetGraphProperty().GetCayleysFormula();
-            Console.WriteLine("----");
-            Console.WriteLine(graph.GetGraphProperty());
-            Console.ReadKey();
+            GenerateGraph.IGenerateGraphInterface generateGraph;
+            int minCount = int.MaxValue, maxCount = int.MinValue;
+            Graph.IGraphInterface graphNevim, minGraph = null, maxGraph= null;
+            for (int i = 0; i < 1000; i++)
+            {
+                generateGraph = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(random.Next(250, 250), GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.cLogNDividedByN);
+
+                graphNevim = generateGraph.GenerateGraph();
+                if (graphNevim.GetGraphProperty().GetCountEdges() < minCount)
+                {
+                    minCount = graphNevim.GetGraphProperty().GetCountEdges();
+                    minGraph = graphNevim;
+                }
+
+                if (graphNevim.GetGraphProperty().GetCountEdges() > maxCount)
+                {
+                    maxCount = graphNevim.GetGraphProperty().GetCountEdges();
+                    maxGraph = graphNevim;
+                }
+            }
+            minCount = int.MaxValue;
+            maxCount = int.MinValue;
+
+            graphList.Add(minGraph);
+            graphList.Add(maxGraph);
+            for (int i = 0; i < 1000; i++)
+            {
+                generateGraph = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(random.Next(500, 500), GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.cLogNDividedByN);
+
+                graphNevim = generateGraph.GenerateGraph();
+                if (graphNevim.GetGraphProperty().GetCountEdges() < minCount)
+                {
+                    minCount = graphNevim.GetGraphProperty().GetCountEdges();
+                    minGraph = graphNevim;
+                }
+
+                if (graphNevim.GetGraphProperty().GetCountEdges() > maxCount)
+                {
+                    maxCount = graphNevim.GetGraphProperty().GetCountEdges();
+                    maxGraph = graphNevim;
+                }
+            }
+            graphList.Add(minGraph);
+            graphList.Add(maxGraph);
+
+
+            foreach (GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithm in (GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum[])Enum.GetValues(typeof(GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)))
+            {
+                if (algorithm == GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.optimal ||
+                    algorithm == GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI)
+                    continue;
+
+                copyGraphList = new List<Graph.IGraphInterface>();
+                foreach(Graph.IGraphInterface graph in graphList)
+                {
+                    copyGraphList.Add(Graph.GraphOperation.GraphOperation.CopyGraph(graph));
+                }
+
+                Console.WriteLine("Algorithm: " + algorithm);
+
+                GraphColoringAlgorithm.IGraphColoringAlgorithmInterface algorithmMethod = null;
+
+                foreach (Graph.IGraphInterface graph in copyGraphList)
+                {
+                    switch (algorithm)
+                    {
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, true);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, true);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, true);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence:
+                            algorithmMethod = new GraphColoringAlgorithm.SaturationLargestFirstSequence.SaturationLargestFirstSequence(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
+                            algorithmMethod = new GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm:
+                            algorithmMethod = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
+                            algorithmMethod = new GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph);
+                            break;
+                    }
+
+                    algorithmMethod.Color();
+                    graph.GetColoredGraph().DeinitializationColoredGraph();
+                }
+
+                foreach(Graph.IGraphInterface graph in copyGraphList)
+                {
+                    switch (algorithm)
+                    {
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, true);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, true);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, true);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence:
+                            algorithmMethod = new GraphColoringAlgorithm.SaturationLargestFirstSequence.SaturationLargestFirstSequence(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
+                            algorithmMethod = new GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm:
+                            algorithmMethod = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
+                            algorithmMethod = new GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph);
+                            break;
+                    }
+
+                    Console.WriteLine("Graph: countVertices {0}, countEdges {1}", graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges());
+                    
+                    myStopwatch.Reset();
+                    myStopwatch.Start();
+                    for (int i = 0; i < 1000; i++)
+                    {
+                        algorithmMethod.Color();
+                        graph.GetColoredGraph().DeinitializationColoredGraph();
+                    }
+                    myStopwatch.Stop();
+                    Console.WriteLine("Time: " + myStopwatch.ElapsedMilliseconds);
+                }
+            }
             */
         }
     }

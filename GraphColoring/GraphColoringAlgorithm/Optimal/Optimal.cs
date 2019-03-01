@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.Optimal
 {
@@ -18,13 +17,15 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
         public Optimal(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Optimal algorithm";
+            timeComplexity = TimeComplexityEnum.factorial;
         }
         #endregion
 
         // Method
         #region
         /// <summary>
-        /// Obarví graf
+        /// Color a graph
+        /// Time complexity: O(n! + m)
         /// </summary>
         override
         public void Color()
@@ -33,6 +34,8 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
             int countUsedColors;
             Graph.IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
             optimalVertexList = new List<Graph.IVertexInterface>();
+            
+            coloredGraph.ResetColors();
 
             // If the graph is chordal => use PEO for coloring
             if (graph.GetGraphProperty().GetIsChordal())
@@ -45,7 +48,7 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
                 foreach (var vertexList in MyMath.MyMath.GeneratePermutations(graph.AllVertices()))
                 {
                     coloredGraph.GreedyColoring(vertexList.ToList());
-                    coloredGraph.InicializeColoredGraph();
+                    coloredGraph.InitializeColoredGraph();
                     countUsedColors = coloredGraph.GetCountUsedColors();
 
                     if (optimalCountColors > countUsedColors)
@@ -54,12 +57,15 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
                         optimalVertexList = vertexList.ToList();
                     }
 
-                    coloredGraph.DeinicializationColoredGraph();
+                    coloredGraph.DeinitializationColoredGraph();
                 }
             }
 
             coloredGraph.GreedyColoring(optimalVertexList);
-            coloredGraph.InicializeColoredGraph();
+            bool isColored = coloredGraph.InitializeColoredGraph();
+
+            if (!isColored)
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
         #endregion
     }

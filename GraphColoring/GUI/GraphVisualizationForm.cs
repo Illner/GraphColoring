@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace GraphColoring.GUI
 {
@@ -59,7 +59,7 @@ namespace GraphColoring.GUI
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Get the path of specified file
+                    // Get the path of specified file
                     path = saveFileDialog.FileName;
                 }
                 // Path wasn't choosen

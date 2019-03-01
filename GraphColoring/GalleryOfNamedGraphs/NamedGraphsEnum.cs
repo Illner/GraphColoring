@@ -176,6 +176,7 @@ namespace GraphColoring.GalleryOfNamedGraphs
             [Description("W9")]
             W9
         };
+
         /*
         public static Dictionary<NamedGraphsEnum, string> WCMNamedGraphsDictionary = new Dictionary<NamedGraphsEnum, string>()
         {

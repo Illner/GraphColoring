@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.ReaderWriter
 {
@@ -22,11 +21,12 @@ namespace GraphColoring.ReaderWriter
         // Method
         #region
         /// <summary>
-        /// Do daného souboru zapíše obarvený graf
-        /// Pokud coloredGraph není inicializovaný, tak vrátí výjimku ColoredGraphNotInitializationException
+        /// Write a colored graph to a file
+        /// If the colored graph is not initialized throws ColoredGraphNotInitializationException
         /// </summary>
-        /// <param name="graph">Obarvený graf</param>
-        /// <param name="graphColoringAlgorithm">Algoritmus, který byl využit při obarvení grafu</param>
+        /// <param name="graph">Colored graph</param>
+        /// <param name="graphColoringAlgorithm">Algorithm which was used for coloring the graph</param>
+        /// <param name="isOptimal">Is the algorithm optimal for the graph</param>
         public bool WriteFileColor(Graph.IGraphInterface graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithm, bool isOptimal)
         {
             // Variable
@@ -34,7 +34,7 @@ namespace GraphColoring.ReaderWriter
 
             coloredGraph = graph.GetColoredGraph();
 
-            if (!coloredGraph.GetIsInicializedColoredGraph())
+            if (!coloredGraph.GetIsInitializedColoredGraph())
                 throw new MyException.GraphException.ColoredGraphNotInitializationException();
 
             if (CheckIfRecordExists(graphColoringAlgorithm))
@@ -68,6 +68,12 @@ namespace GraphColoring.ReaderWriter
             return true;
         }
 
+        /// <summary>
+        /// Write a graph to a file
+        /// If the graph is not initialized throws GraphInitializationException
+        /// </summary>
+        /// <param name="graph">graph</param>
+        /// <returns>Is everything OK</returns>
         public bool WriteFile(Graph.IGraphInterface graph)
         {
             if (!graph.GetIsInitialized())

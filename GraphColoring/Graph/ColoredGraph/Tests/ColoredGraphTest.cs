@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph.ColoredGraph.Tests
 {
@@ -62,9 +62,9 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy grafů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -78,10 +78,10 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="coloredGraphEnum">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="coloredGraphEnum">enum (file)</param>
+        /// <returns>report</returns>
         public StringBuilder Test(ColoredGraphEnum coloredGraphEnum)
         {
             stringBuilder.Clear();
@@ -143,30 +143,30 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             List<IVertexInterface> vertexList = graph.AllVertices();
             IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
             
-            if (coloredGraph.InicializeColoredGraph())
+            if (coloredGraph.InitializeColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
 
             coloredGraph.ColorVertex(vertexList.First(), coloredGraph.GreedyColoring(vertexList.First()));
 
-            if (coloredGraph.InicializeColoredGraph())
+            if (coloredGraph.InitializeColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
 
             coloredGraph.ResetColorVertex(vertexList.First());
 
             coloredGraph.GreedyColoring(vertexList);
 
-            if (!coloredGraph.InicializeColoredGraph())
+            if (!coloredGraph.InitializeColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
 
-            coloredGraph.DeinicializationColoredGraph();
-            if (!coloredGraph.InicializeColoredGraph())
+            coloredGraph.DeinitializationColoredGraph();
+            if (!coloredGraph.InitializeColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
-            coloredGraph.DeinicializationColoredGraph();
+            coloredGraph.DeinitializationColoredGraph();
 
             coloredGraph.ResetColors();
             coloredGraph.ResetColors();
 
-            if (coloredGraph.InicializeColoredGraph())
+            if (coloredGraph.InitializeColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
 
             coloredGraph.ColorVertex(vertexList.First(), 1);
@@ -224,14 +224,14 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
                 throw new MyException.TestsException.SomethingWrongTestException();
 
             coloredGraph.GreedyColoring(vertexList);
-            coloredGraph.InicializeColoredGraph();
+            coloredGraph.InitializeColoredGraph();
 
-            if (!coloredGraph.GetIsInicializedColoredGraph())
+            if (!coloredGraph.GetIsInitializedColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
 
             graph.VertexAdd(new Vertex());
 
-            if (coloredGraph.GetIsInicializedColoredGraph())
+            if (coloredGraph.GetIsInitializedColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
 
             vertexList = graph.AllVertices();
@@ -242,12 +242,12 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             coloredGraph.ColorVertex(vertexList.Last(), 2);
             coloredGraph.ColorVertex(vertexList.First(), 2);
 
-            if (coloredGraph.InicializeColoredGraph())
+            if (coloredGraph.InitializeColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
 
             coloredGraph.GreedyColoring(vertexList);
 
-            if (!coloredGraph.InicializeColoredGraph())
+            if (!coloredGraph.InitializeColoredGraph())
                 throw new MyException.TestsException.SomethingWrongTestException();
 
             graph.VertexDelete(vertexList.Last());
@@ -284,7 +284,7 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
 
             coloredGraph.GreedyColoring(vertexList);
-            coloredGraph.InicializeColoredGraph();
+            coloredGraph.InitializeColoredGraph();
 
             // VertexColor - initialization
             stringBuilder.AppendLine("VertexColor - initialization");
@@ -306,16 +306,16 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             try { coloredGraph.ResetColors(); }
             catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
-            // Inicialization - initialization
-            stringBuilder.AppendLine("Inicialization - initialization");
-            try { coloredGraph.InicializeColoredGraph(); }
+            // Initialization - initialization
+            stringBuilder.AppendLine("Initialization - initialization");
+            try { coloredGraph.InitializeColoredGraph(); }
             catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
-            coloredGraph.DeinicializationColoredGraph();
+            coloredGraph.DeinitializationColoredGraph();
 
-            // Deinicialization - initialization
-            stringBuilder.AppendLine("Deinicialization - initialization");
-            try { coloredGraph.DeinicializationColoredGraph(); }
+            // Deinitialization - initialization
+            stringBuilder.AppendLine("Deinitialization - initialization");
+            try { coloredGraph.DeinitializationColoredGraph(); }
             catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
 
             // ColorVertex - Doesn't exist

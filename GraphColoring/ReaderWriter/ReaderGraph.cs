@@ -1,13 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.ReaderWriter
 {
     class ReaderGraph : ReaderWriter, IReaderGraphInterface
     {
+        // Varianle
+        #region
+
+        #endregion
+
         // Constructor
         #region
         public ReaderGraph(string path) : base(path) { }
@@ -17,9 +22,9 @@ namespace GraphColoring.ReaderWriter
         // Method
         #region
         /// <summary>
-        /// Přečte soubor s grafem a vytvoří daný graf.
+        /// Read a file and create a graph
         /// </summary>
-        /// <returns>graf ze souboru</returns>
+        /// <returns>the graph from the file</returns>
         public Graph.IGraphInterface ReadFile()
         {
             // Variable
@@ -159,13 +164,15 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Přečte soubor s grafem, který je reprezentován pomocí seznamu sousedů a daný graf vytvoří.
+        /// Read a file with a graph which is represented by adjacency list and construct it
         /// </summary>
+        /// <param name="graph">graph</param>
+        /// <param name="streamReader">streamReader</param>
         private void ReadFileAdjacencyList(Graph.IGraphEdgeListInterface graph, StreamReader streamReader)
         {
             // Variable
             string line;
-            bool isK1 = false; // Vrchol, který nemá žádnou hranu
+            bool isK1 = false; // A vertex with degree 0
             string firstVertex = "", secondVertex;
 
             // Read graph
@@ -200,8 +207,11 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Přečte soubor s grafem, který je reprezentován pomocí matice sousednosti a daný graf vytvoří.
+        /// Read a file with a graph which is represented by adjacency matrix and constuct it
         /// </summary>
+        /// <param name="graph">graph</param>
+        /// <param name="streamReader">streamReader</param>
+        /// <param name="countVertices">count vertices <=> size of the matrix</param>
         private void ReadFileAdjacencyMatrix(Graph.IGraphAdjacencyMatrixInterface graph, StreamReader streamReader, int countVertices)
         {
             // Variable
@@ -242,8 +252,10 @@ namespace GraphColoring.ReaderWriter
         }
 
         /// <summary>
-        /// Přečte soubor s grafem, který je reprezentován pomocí seznamu hran a daný graf vytvoří.
+        /// Read a file with a graph which is represented by edge list and construct it
         /// </summary>
+        /// <param name="graph">graph</param>
+        /// <param name="streamReader">streamReader</param>
         private void ReadFileEdgeList(Graph.IGraphEdgeListInterface graph, StreamReader streamReader)
         {
             // Variable

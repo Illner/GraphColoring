@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace GraphColoring.ReaderWriter
 {
@@ -10,7 +6,7 @@ namespace GraphColoring.ReaderWriter
     {
         // Variable
         /// <summary>
-        /// READERWRITERHEADER - hlavička soborů .graph
+        /// Headers in .graph files
         /// </summary>
         protected const string READERWRITERHEADER = "Graph coloring. Graph representation: ";
         protected const string READERWRITERBALLAST = "";

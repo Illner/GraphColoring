@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.Tests
 {
@@ -56,9 +56,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy grafů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -72,10 +72,10 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="largestFirstSequence">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="largestFirstSequence">enum (file)</param>
+        /// <returns>report</returns>
         public StringBuilder Test(LargestFirstSequenceEnum largestFirstSequence)
         {
             stringBuilder.Clear();

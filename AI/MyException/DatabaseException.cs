@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.MyException.DatabaseException
 {
-    public class DatabaseException : Exception
+    class DatabaseException : Exception
     {
         public DatabaseException() { }
 
@@ -15,7 +11,11 @@ namespace GraphColoring.MyException.DatabaseException
         public DatabaseException(string message, Exception inner) : base(message, inner) { }
     }
 
-    public class DatabaseNotOpenException : DatabaseException
+    /// <summary>
+    /// Database exception
+    /// Unable to connect to the DB
+    /// </summary>
+    class DatabaseNotOpenException : DatabaseException
     {
         public DatabaseNotOpenException() { }
 
@@ -24,7 +24,11 @@ namespace GraphColoring.MyException.DatabaseException
         public DatabaseNotOpenException(string message, Exception inner) : base(message, inner) { }
     }
 
-    public class DatabaseInvalidArgumentsMinCountMaxCountException : DatabaseException
+    /// <summary>
+    /// Database exception
+    /// MinCount or MaxCount (represents count of vertices) is invalid
+    /// </summary>
+    class DatabaseInvalidArgumentsMinCountMaxCountException : DatabaseException
     {
         public DatabaseInvalidArgumentsMinCountMaxCountException() { }
 

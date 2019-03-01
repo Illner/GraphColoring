@@ -8,8 +8,8 @@ namespace GraphColoring.Graph
         // Variable
         #region
         /// <summary>
-        /// mapping - slouží pro snadné nalezení identifikátoru vrcholu na základě pořadí vrcholu
-        /// actualVertex - slouží jako idendifikátor, na jakém řádku matice jsme a jakému vrcholu nastavujeme sousedy
+        /// mapping - The map from position in adjacency matrix to identifier
+        /// actualVertex - actual row (vertex) in the adjacency matrix
         /// </summary>
         private Dictionary<int, int> mapping;
         private int actualVertex = 0;
@@ -18,9 +18,9 @@ namespace GraphColoring.Graph
         // Constructor
         #region
         /// <summary>
-        /// Inicializuje graf
+        /// Initialize graph
         /// </summary>
-        /// <param name="countVertices">Počet vrcholů grafu</param>
+        /// <param name="countVertices">Count of vertices = size of an adjacency matrix</param>
         public GraphAdjacencyMatrix(int countVertices) : base(countVertices)
         {
             // Variable
@@ -41,9 +41,9 @@ namespace GraphColoring.Graph
         // Method
         #region
         /// <summary>
-        /// Vytvoří hrany pro jeden řádek matice sousednosti
+        /// Create edges for one row in adjacency matrix
         /// </summary>
-        /// <param name="rowAdjacencyMatrix">řádek matice sousednosti</param>
+        /// <param name="rowAdjacencyMatrix">row in adjacency matrix</param>
         public void SetOfNeighborsOfVertex(List<bool> rowAdjacencyMatrix)
         {
             // Variable

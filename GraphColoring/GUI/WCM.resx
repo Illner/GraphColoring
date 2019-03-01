@@ -142,7 +142,7 @@
     <value>The graph has been colored.</value>
   </data>
   <data name="ComplementGraphProgressStatus" xml:space="preserve">
-    <value>It's creating complement graph.</value>
+    <value>It's creating a complement graph.</value>
   </data>
   <data name="ComplementGraphStatus" xml:space="preserve">
     <value>The complement graph has been created.</value>

@@ -7,10 +7,10 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
     {
         // Variable
         /// <summary>
-        /// graph - generovaný graf
-        /// countVertices - počet vrcholů vygenerovaného grafu
-        /// erdosRenyiModelProbabilityEnum - typ pravděpodobnosti
-        /// probability - pravděpodobnost vygenerování hrany mezi dvěma vrcholy (*100)
+        /// graph - generated graph
+        /// countVertices - count vertices of generated graph
+        /// erdosRenyiModelProbabilityEnum - probability attribute
+        /// probability - probability for creating edge between two vertices (* 100)
         /// </summary>
         #region
         private Graph.IGraphInterface graph;
@@ -25,10 +25,10 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
         // Constructor
         #region
         /// <summary>
-        /// Nekladný počet vrcholů vyvolá vyjímku GraphInvalidCountVerticesException
+        /// If count of vertices is less than 1 throws GraphInvalidCountVerticesException
         /// </summary>
-        /// <param name="countVertices">počet vrcholů generovaného grafu</param>
-        /// <param name="erdosRenyiModelProbabilityEnum">parametr u erdo-renyiho modelu - deafult = notAssigned</param>
+        /// <param name="countVertices">count of vertices</param>
+        /// <param name="erdosRenyiModelProbabilityEnum">probability attribute - deafult = notAssigned</param>
         public ErdosRenyiModel(int countVertices, ErdosRenyiModelProbabilityEnum erdosRenyiModelProbabilityEnum = ErdosRenyiModelProbabilityEnum.notAssigned)
         {
             SetCountVertices(countVertices);
@@ -107,9 +107,9 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
         // Property
         #region
         /// <summary>
-        /// Vrátí počet vrcholů generovaného grafu
+        /// Return count of vertices 
         /// </summary>
-        /// <returns>počet vrcholů generovaného grafu</returns>
+        /// <returns>count of vertices</returns>
         public int GetCountVertices()
         {
             return countVertices;
@@ -124,9 +124,9 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
         }
 
         /// <summary>
-        /// Vráti parametr u erdo-renyiho modelu
+        /// Return probability attribute
         /// </summary>
-        /// <returns>parametr u erdo-renyiho modelu</returns>
+        /// <returns>probability attribute</returns>
         public ErdosRenyiModelProbabilityEnum GetErdosRenyiModelProbabilityEnum()
         {
             return erdosRenyiModelProbabilityEnum;

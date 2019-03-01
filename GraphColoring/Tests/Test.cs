@@ -13,7 +13,7 @@ namespace GraphColoring.Tests
         private StringBuilder stringBuilder;
         private Dictionary<TestEnum, Tuple<ITestInterface, string>> testsDictionary;
 
-        // Paths
+        // Path
         private string testPath;
 
         // Instance test
@@ -81,8 +81,8 @@ namespace GraphColoring.Tests
         // Constructor
         #region
         /// <summary>
-        /// consolePrint = true => výpis reportu na obrazovku
-        /// consolePrint = false => výpis reportu do souboru(ů)
+        /// ConsolePrint = true => print a report on the screen
+        /// ConsolePrint = false => Print a report to the files
         /// </summary>
         public Tests(Boolean consolePrint)
         {
@@ -144,7 +144,7 @@ namespace GraphColoring.Tests
 
             stringBuilder = test.Test();
 
-            // :(
+            // :( - Don't know why it is necessary
             if (consolePrint)
                 stringBuilder.AppendLine();
 

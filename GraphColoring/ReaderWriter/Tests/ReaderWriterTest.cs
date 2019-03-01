@@ -3,6 +3,8 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 
+// No active // 
+
 namespace GraphColoring.ReaderWriter.Tests
 {
     class ReaderWriterTest : GraphColoring.Tests.ITestInterface
@@ -14,6 +16,7 @@ namespace GraphColoring.ReaderWriter.Tests
         private Dictionary<PathEnum, string> testsDictionary;
 
         // Paths
+        // EDIT: Invalid paths
         private string testPathReaderWriter = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\Test\ReaderWriter.txt";
         private string readerWriterPathValid = @"D:\Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter\Example.graph";
         private string readerWriterPathInvalid = @"Storage\OneDrive\Škola\Vysoká škola\UK\Bakalářská práce\Program\Testing\ReaderWriter/Example.graph";
@@ -71,9 +74,9 @@ namespace GraphColoring.ReaderWriter.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy souborů (PathEnum)
+        /// Test all value of enums (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -87,10 +90,10 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ souboru (PathEnum)
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="pathEnum">Typ souboru, který chceme otestovat</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="pathEnum">enum (file) which we want to test</param>
+        /// <returns>report</returns>
         public StringBuilder Test(PathEnum pathEnum)
         {
             stringBuilder.Clear();
@@ -101,11 +104,11 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ operace (OperationEnum) na daný typ souboru (pathEnum)
+        /// Test a operation (OperationEnum) on a file (pathEnum)
         /// </summary>
-        /// <param name="operationEnum"></param>
-        /// <param name="pathEnum"></param>
-        /// <returns></returns>
+        /// <param name="operationEnum">type of operation (enum)</param>
+        /// <param name="pathEnum">file path (enum)</param>
+        /// <returns>report</returns>
         public StringBuilder Test(OperationEnum operationEnum, PathEnum pathEnum)
         {
             stringBuilder.Clear();
@@ -159,7 +162,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Na daný soubor provede řadu operací
+        /// Apply some operations on a file
         /// </summary>
         private void Testing()
         {
@@ -214,7 +217,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Odstraní soubor
+        /// Remove a file
         /// </summary>
         private void DeleteFile()
         {
@@ -226,7 +229,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Vytvoří soubor
+        /// Create a file
         /// </summary>
         private void CreateFile()
         {
@@ -238,7 +241,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Odstraní obsah souboru
+        /// Remove a content of a file
         /// </summary>
         private void ClearFile()
         {
@@ -250,7 +253,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Zjistí, zda soubor existuje
+        /// Check if a file exists
         /// </summary>
         private void ExistFile()
         {
@@ -263,7 +266,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Zapíše do souboru text
+        /// Write a text to a file
         /// </summary>
         private void WriteFile()
         {
@@ -281,7 +284,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Zobrazí obsah souboru
+        /// Show a content of a file
         /// </summary>
         private void ReadFile()
         {

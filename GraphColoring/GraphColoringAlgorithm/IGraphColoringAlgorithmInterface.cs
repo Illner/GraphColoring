@@ -6,5 +6,6 @@ namespace GraphColoring.GraphColoringAlgorithm
     {
         void Color();
         Graph.IGraphInterface GetGraph();
+        GraphColoringAlgorithm.TimeComplexityEnum GetTimeComplexity();
     }
 }

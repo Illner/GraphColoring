@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.Tests
 {
@@ -55,9 +53,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy grafů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -71,10 +69,10 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="connectedSequential">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="connectedSequential">enum (file)</param>
+        /// <returns>report</returns>
         public StringBuilder Test(ConnectedSequentialEnum connectedSequential)
         {
             stringBuilder.Clear();

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.MyMath
 {
@@ -16,16 +14,15 @@ namespace GraphColoring.MyMath
         // Method
         #region
         /// <summary>
-        /// Spočítá kombinační číslo
+        /// Compute nCr
         /// </summary>
-        /// <returns>kombinační číslo</returns>
         public static int nCr(int n, int r)
         {
             return (int) (nPr(n, r) / Factorial(r));
         }
 
         /// <summary>
-        /// Spočítá nPr
+        /// Compute nPr
         /// </summary>
         public static long nPr(int n, int r)
         {
@@ -41,10 +38,10 @@ namespace GraphColoring.MyMath
         }
 
         /// <summary>
-        /// Spočítá faktorial
+        /// Compute a factorial
         /// </summary>
-        /// <param name="i">číslo, prokteré chceme spočítat faktorial</param>
-        /// <returns>faktorial</returns>
+        /// <param name="i">number for factorial</param>
+        /// <returns>value of factorial</returns>
         private static long Factorial(int i)
         {
             if (i <= 1)
@@ -55,9 +52,8 @@ namespace GraphColoring.MyMath
 
         /// <summary>
         /// Fisher–Yates shuffle
+        /// Permutation
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
         public static void FisherYatesShuffle<T>(this IList<T> list)
         {
             int n = list.Count;

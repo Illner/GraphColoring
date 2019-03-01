@@ -52,6 +52,7 @@ namespace GraphColoring.Graph.GraphProperty
             minimumVertexDegree = null;
             maximumVertexDegree = null;
             averageVertexDegree = null;
+            medianVertexDegree = null;
             cayleysFormula = null;
 
             // Chordal graph

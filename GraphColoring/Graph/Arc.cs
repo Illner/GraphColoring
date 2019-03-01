@@ -7,8 +7,8 @@ namespace GraphColoring.Graph
         // Variable
         #region
         /// <summary>
-        /// vertexFrom - první složka z uspořádané dvojice vrcholů orientované hrany
-        /// vertexTo - druhá složka z uspořádané dvojice vrcholů orientované hrany
+        /// vertexFrom - First vertex
+        /// vertexTo - Second vertex
         /// vertexFrom -> vertexTo
         /// </summary>
         private IVertexInterface vertexFrom;
@@ -27,18 +27,18 @@ namespace GraphColoring.Graph
         // Property
         #region
         /// <summary>
-        /// Vráí první složku z uspořádané dvojice vrcholů orientované hrany
+        /// Return the first vertex
         /// </summary>
-        /// <returns>první složku z uspořádané dvojice vrcholů orientované hrany</returns>
+        /// <returns>first vertex of the edge</returns>
         public IVertexInterface GetVertexFrom()
         {
             return vertexFrom;
         }
 
         /// <summary>
-        /// Vrátí druhou složku z uspořádané dvojice vrcholů orientované hrany
+        /// Return the second vertex
         /// </summary>
-        /// <returns>druhou složku z uspořádané dvojice vrcholů orientované hrany</returns>
+        /// <returns>second vertex of the edge</returns>
         public IVertexInterface GetVertexTo()
         {
             return vertexTo;

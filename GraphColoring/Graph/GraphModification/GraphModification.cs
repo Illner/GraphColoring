@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph
 {
@@ -9,11 +9,11 @@ namespace GraphColoring.Graph
         // Method
         #region
         /// <summary>
-        /// Přidá vrchol do grafu
-        /// ColoredGraph se deinicializuje
-        /// Pokud vrchol již v grafu existuje, vyvolá výjimku GraphVertexAlreadyExistsException
+        /// Add a new vertex
+        /// Deinitialize colored graph
+        /// If the vertex exists in the graph throws GraphVertexAlreadyExistsException
         /// </summary>
-        /// <param name="vertex">vrchol, který chceme přidat</param>
+        /// <param name="vertex">vertex</param>
         public void VertexAdd(IVertexInterface vertex)
         {
             // Vertex exists
@@ -33,21 +33,21 @@ namespace GraphColoring.Graph
 
             // ColoredGraph
             coloredGraph.AddVertexInHashSets(vertex);
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().VertexAdd(vertex);
         }
 
         /// <summary>
-        /// Odstraní vrchol z grafu
-        /// ColoredGraph se deinicializuje
-        /// Pokud vrchol neexistuje, vyvolá se výjimka GraphVertexDoesntExistException
-        /// If graph has only one vertex, throw GraphHasToHaveAtLeastOneVertexException
+        /// Remove a vertex
+        /// Deinitialize colored graph
+        /// If the vertex does not exist in the graph throws GraphVertexDoesntExistException
+        /// If the graph has only one vertex throws GraphHasToHaveAtLeastOneVertexException
         /// Time complexity: O(V + E)
         /// </summary>
-        /// <param name="removeVertex">vrchol, který chceme odstranit</param>
+        /// <param name="removeVertex">vertex</param>
         public void VertexDelete(IVertexInterface removeVertex)
         {
             // Vertex doesn't exist
@@ -93,19 +93,19 @@ namespace GraphColoring.Graph
 
             // ColoredGraph
             coloredGraph.RemoveVertexInHashSets(removeVertex);
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().VertexDelete(removeVertex);
         }
 
         /// <summary>
-        /// Kontrahuje vrchol v grafu
-        /// ColoredGraph se deinicializuje
-        /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
+        /// Contract a vertex
+        /// Deinitialize colored graph
+        /// If the vertex does not exist in the graph throws GraphVertexDoesntExistException
         /// </summary>
-        /// <param name="vertex">vrchol, který chceme kontrahovat</param>
+        /// <param name="vertex">vertex</param>
         public void VertexContraction(IVertexInterface vertex)
         {
             if (!ExistsVertex(vertex))
@@ -160,20 +160,20 @@ namespace GraphColoring.Graph
                 EdgeAdd(new Edge(newVertex, neighbour));
 
             // ColoredGraph
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().VertexContraction(vertex);
         }
 
         /// <summary>
-        /// Odstraní vrchol z grafu, kde vrchol je stupne 2
-        /// ColoredGraph se deinicializuje
-        /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
-        /// Pokud vrchol má jiny stupen nez 2, vyvolá výjimku GraphInvalidDegreeVertex
+        /// Remove a vertex which has degree 2
+        /// Deinitialize colored graph
+        /// If the vertex does not exist in the graph throws GraphVertexDoesntExistException
+        /// If the vertex does not have degree 2 throws GraphInvalidDegreeVertex
         /// </summary>
-        /// <param name="vertex">Daný vrchol</param>
+        /// <param name="vertex">vertex</param>
         public void VertexSuppression(IVertexInterface vertex)
         {
             if (!ExistsVertex(vertex))
@@ -197,20 +197,19 @@ namespace GraphColoring.Graph
                 EdgeAdd(new Edge(vertex1, vertex2));
 
             // ColoredGraph
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().VertexSuppression(vertex);
         }
 
         /// <summary>
-        /// Expanduje daný vrchol v grafu.
-        /// Daný vrchol se rozdělí na dva vrcholy. Dva nově vzniklé vrcholy budou sousedit se všemi sousedy původního vrcholu.
-        /// ColoredGraph se deinicializuje
-        /// Pokud vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
+        /// Expand a vertex
+        /// Deinitialize colored graph
+        /// If the vertex does not exist in the graph throws GraphVertexDoesntExistException
         /// </summary>
-        /// <param name="vertex">vrchol, který chceme expandovat</param>
+        /// <param name="vertex">vertex</param>
         public void VertexExpansion(IVertexInterface vertex)
         {
             if (!ExistsVertex(vertex))
@@ -246,19 +245,19 @@ namespace GraphColoring.Graph
             EdgeAdd(new Edge(vertex1, vertex2));
 
             // ColoredGraph
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().VertexExpansion(vertex);
         }
 
         /// <summary>
-        /// Přidá hranu do grafu
-        /// ColoredGraph se deinicializuje
-        /// Pokud hrana v grafu již existuje, vyvolá se výjimka GraphEdgeAlreadyExistsException
+        /// Add an edge
+        /// Deinitialize colored graph
+        /// If the edge exists in the graph throws GraphEdgeAlreadyExistsException
         /// </summary>
-        /// <param name="edge">hrana, kterou chceme přidat</param>
+        /// <param name="edge">edge</param>
         public void EdgeAdd(IEdgeInterface edge)
         {
             if (ExistsEdge(edge))
@@ -267,19 +266,19 @@ namespace GraphColoring.Graph
             AddEdgeToAdjacencyList(edge);
 
             // ColoredGraph
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().EdgeAdd(edge);
         }
 
         /// <summary>
-        /// Odstraní hranu v grafu
-        /// ColoredGraph se deinicializuje
-        /// Pokud hrana v grafu neexistuje, vyvolá se výjimka GraphEdgeDoesntExistException
+        /// Remove an edge
+        /// Deinitialize colored graph
+        /// If the edge does not exist in the graph throws GraphEdgeDoesntExistException
         /// </summary>
-        /// <param name="edge">hrana, kterou chceme odstranit</param>
+        /// <param name="edge">edge</param>
         public void EdgeDelete(IEdgeInterface edge)
         {
             if (!ExistsEdge(edge))
@@ -297,19 +296,19 @@ namespace GraphColoring.Graph
             SetCanDeIncreaseCountEdges(false);
 
             // ColoredGraph
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().EdgeDelete(edge);
         }
 
         /// <summary>
-        /// Kontrahuje hranu v grafu
-        /// ColoredGraph se deinicializuje
-        /// Pokud hrana v grafu neexistuje, vyvolá se výjimka GraphEdgeDoesntExistException
+        /// Contract an edge
+        /// Deinitialize coloredGraph
+        /// If the edge does not exist in the graph throws GraphEdgeDoesntExistException
         /// </summary>
-        /// <param name="edge">hrana, kterou chceme kontrahovat</param>
+        /// <param name="edge">edge</param>
         public void EdgeContraction(IEdgeInterface edge)
         {
             if (!ExistsEdge(edge))
@@ -343,19 +342,19 @@ namespace GraphColoring.Graph
                 EdgeAdd(new Edge(newVertex, neighbour));
 
             // ColoredGraph
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().EdgeContraction(edge);
         }
 
         /// <summary>
-        /// Dana hrana se nahradi cestou delky 2
-        /// ColoredGraph se deinicializuje
-        /// Pokud hrana v grafu neexistuje, vrátí výjimku GraphEdgeDoesntExistException
+        /// Subdivide an edge
+        /// Deinitialize colored graph
+        /// If the edge does not exist in the graph throws GraphEdgeDoesntExistException
         /// </summary>
-        /// <param name="edge">daná hrana</param>
+        /// <param name="edge">edge</param>
         public void EdgeSubdivision(IEdgeInterface edge)
         {
             if (!ExistsEdge(edge))
@@ -370,8 +369,8 @@ namespace GraphColoring.Graph
             EdgeAdd(new Edge(newVertex, edge.GetVertex2()));
 
             // ColoredGraph
-            if (coloredGraph.GetIsInicializedColoredGraph())
-                coloredGraph.DeinicializationColoredGraph();
+            if (coloredGraph.GetIsInitializedColoredGraph())
+                coloredGraph.DeinitializationColoredGraph();
 
             // GraphProperty
             GetGraphProperty().EdgeSubdivision(edge);

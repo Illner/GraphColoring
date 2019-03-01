@@ -56,9 +56,9 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy grafů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -72,10 +72,10 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="cycleEnum">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="cycleEnum">enum (file)</param>
+        /// <returns>report</returns>
         public StringBuilder Test(CycleEnum cycleEnum)
         {
             stringBuilder.Clear();

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
 {
@@ -58,9 +56,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy grafů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -74,10 +72,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ grafu
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="greedyIndependentSet">daný typ grafu</param>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test(GreedyIndependentSetEnum greedyIndependentSet)
         {
             stringBuilder.Clear();

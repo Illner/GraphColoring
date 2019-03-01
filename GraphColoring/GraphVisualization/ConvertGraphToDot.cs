@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphVisualization
 {
@@ -87,7 +85,7 @@ namespace GraphColoring.GraphVisualization
                 int vertexDegree;
                 bool useColor = false;
 
-                if (graph.GetColoredGraph().GetIsInicializedColoredGraph())
+                if (graph.GetColoredGraph().GetIsInitializedColoredGraph())
                     useColor = graph.GetColoredGraph().GetCountUsedColors() < MAXCOLORS ? true : false;
 
                 // Graph properties
@@ -132,13 +130,12 @@ namespace GraphColoring.GraphVisualization
 
                     foreach (Graph.IVertexInterface neighbour in neighboursList)
                     {
-                        // Neighbour has been writed
+                        // Neighbour has been written
                         if (visitedVerticesHashSet.Contains(neighbour))
                             continue;
 
-                        // Neighbour has not been writed
+                        // Neighbour has not been written
                         stringBuilder.AppendLine("\"" + vertex.GetUserName() + "\" --  \"" + neighbour.GetUserName() + "\"");
-                        //Console.WriteLine(bridgesList.Count);
 
                         if (bridgesList.Any(e => ((e.GetVertex1().Equals(vertex) && e.GetVertex2().Equals(neighbour)) ||
                                                   (e.GetVertex1().Equals(neighbour) && e.GetVertex2().Equals(vertex)))))

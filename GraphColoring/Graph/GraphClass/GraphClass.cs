@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.Graph.GraphClass
 {
@@ -21,18 +18,25 @@ namespace GraphColoring.Graph.GraphClass
             if (IsCycleGraph(graph))
                 return GraphClassEnum.cycleGraph;
 
-            if (IsBipartiteGraph(graph))
+            Tuple<bool, bool> bipartiteResult = IsBipartiteGraph(graph);
+
+            if (bipartiteResult.Item1)
+            {
+                if (bipartiteResult.Item2)
+                    return GraphClassEnum.completeBipartiteGraph;
+
                 return GraphClassEnum.bipartiteGraph;
+            }
 
             return GraphClassEnum.none;
         }
 
         /// <summary>
-        /// Vrátí true, pokud je graf úplný, jinak vrátí false
+        /// Return true if the graph is complete graph
         /// Time complexity: O(1)
         /// </summary>
-        /// <param name="graph">Graf, u kterého chceme zjistit zda je úplný</param>
-        /// <returns>true pokud je graf úplny, jinak vrátí false</returns>
+        /// <param name="graph">graph</param>
+        /// <returns>true if the graph is complete graph, otherwise false</returns>
         public static bool IsCompleteGraph(IGraphInterface graph)
         {
             // |E| = (|V|)C(2)
@@ -43,11 +47,11 @@ namespace GraphColoring.Graph.GraphClass
         }
 
         /// <summary>
-        /// Vrátí true, pokud je graf strom, jinak vrátí false
+        /// Return true if the graph is tree
         /// Time complexity: O(V + E)
         /// </summary>
-        /// <param name="graph">graf, u kterého chceme zjistit zda je strom</param>
-        /// <returns>true pokud je graf strom, jinak vrátí false</returns>
+        /// <param name="graph">graph</param>
+        /// <returns>true if the graph is tree, otherwise false</returns>
         public static bool IsTreeGraph(IGraphInterface graph)
         {
             // Graph is connected and |E| = |V| - 1 // Euler's formula
@@ -59,11 +63,11 @@ namespace GraphColoring.Graph.GraphClass
         }
 
         /// <summary>
-        /// Vrátí true, pokud je graf kružnice, jinak vrátí false
+        /// Return true if the graph is cycle
         /// Time complexity: O(V + E)
         /// </summary>
-        /// <param name="graph">graf, u kterého chceme zjistit zda je kružnice</param>
-        /// <returns>true pokud je graf kružnice, jinak vrátí false</returns>
+        /// <param name="graph">graph</param>
+        /// <returns>true if the graph is cycle, otherwise false</returns>
         public static bool IsCycleGraph(IGraphInterface graph)
         {
             // Graph is connected and 2-regular
@@ -76,12 +80,15 @@ namespace GraphColoring.Graph.GraphClass
         }
 
         /// <summary>
-        /// Vrátí true, pokud je graf bipartitní, jinak vrátí false
+        /// Return true if the graph is (complete) bipartite
         /// Time complexity: O(V + E)
         /// </summary>
-        /// <param name="graph">graf, u kterého chceme zjistit zda je bipartitní</param>
-        /// <returns>true pokud je graf bipartitní, jinak vrátí false</returns>
-        public static bool IsBipartiteGraph(IGraphInterface graph)
+        /// <param name="graph">graph</param>
+        /// <returns>(bool, bool) - the first item stands for bipartite and the second item stands for complete
+        /// (true, true) - complete bipartite graph
+        /// (true, false) - bipartite graph
+        /// (false, - ) - the graph is not (complete) bipartite</returns>
+        public static Tuple<bool, bool> IsBipartiteGraph(IGraphInterface graph)
         {
             // Variable
             IVertexInterface vertex;
@@ -128,7 +135,26 @@ namespace GraphColoring.Graph.GraphClass
 
             }
 
-            return isBipartite;
+            if (!isBipartite)
+                return new Tuple<bool, bool>(false, false);
+
+            // Variable
+            int countFirstPartiteVertex = firstPartite.Count;
+            int countSecondPartiteVertex = secondPartite.Count;
+
+            // Is the graph a complete bipartite graph
+            foreach(Vertex firstPartiteVertex in firstPartite)
+            {
+                if (graph.CountNeighbours(firstPartiteVertex) != countSecondPartiteVertex)
+                    return new Tuple<bool, bool>(true, false);
+            }
+            foreach (Vertex secondPartiteVertex in secondPartite)
+            {
+                if (graph.CountNeighbours(secondPartiteVertex) != countFirstPartiteVertex)
+                    return new Tuple<bool, bool>(true, false);
+            }
+
+            return new Tuple<bool, bool>(true, true);
         }
         #endregion
     }

@@ -11,7 +11,8 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
         private StringBuilder stringBuilder;
         private ErdosRenyiModel erdosRenyiModel;
         private const int COUNTVERTICES = 1000;
-        // Paths
+
+        // Path
         private string testPathErdosRenyiModel = @"Testing\Test\GenerateGraphErdosRenyiModel.txt";
         #endregion
 
@@ -38,9 +39,9 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy přápadů
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -54,10 +55,10 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="erdosRenyiModelEnum">daný typ</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="erdosRenyiModelEnum">particular enum (file)</param>
+        /// <returns>report</returns>
         public StringBuilder Test(ErdosRenyiModelEnum erdosRenyiModelEnum)
         {
             stringBuilder.Clear();

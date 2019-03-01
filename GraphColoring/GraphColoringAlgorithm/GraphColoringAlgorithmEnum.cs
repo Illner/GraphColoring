@@ -18,7 +18,7 @@ namespace GraphColoring.GraphColoringAlgorithm
 	        greedyIndependentSet,
             combinationAlgorithm,
             geneticAlgortihm,
-            probabilityAlgorithm
+            AI
         }
     }
 }

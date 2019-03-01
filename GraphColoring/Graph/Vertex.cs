@@ -7,12 +7,6 @@ namespace GraphColoring.Graph
     {
         // Variable
         #region
-        /// <summary>
-        /// color - barva vrcholu, pokud vrchol nemá přiřazenou barvu, tak color = 0
-        /// identifier - číselný identifikátor vrcholu
-        /// userName - označení vrcholu uživatelem -> např. A, Vertex1 apod.
-        /// counter - určuje identifikátor pro nový vrchol
-        /// </summary>
         protected int color;
         protected int identifier;
         private string userName;
@@ -22,9 +16,9 @@ namespace GraphColoring.Graph
         // Constructor
         #region
         /// <summary>
-        /// Vytvoří vrchol
-        /// Jméno vrcholu bude stejné jako jeho identifikátor
-        /// Barva vrcholu bude nastavena na 0
+        /// Create a vertex
+        /// User name will be same as identifier
+        /// Color of vertex will be set to default (0)
         /// </summary>
         public Vertex()
         {
@@ -34,10 +28,10 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vytvoří vrchol
-        /// Barva vrcholu bude nastavena na 0
+        /// Create a vertex
+        /// Color of vertex will be set to default (0)
         /// </summary>
-        /// <param name="userName">Jméno vrcholu, které určil uživatel</param>
+        /// <param name="userName">user name of vertex</param>
         public Vertex(String userName)
         {
             SetIdentifier(counter++);
@@ -46,15 +40,22 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Nepoužívat!!!!!!!!!!!!
-        /// Slouží pouze pro VertexExtended(int), aby se neikrementoval counter
+        /// Do not use !!!!!!!!!!!
+        /// Only for vertexExtended(identifier)
+        /// Does not increment the counter
         /// </summary>
-        /// <param name="useless">nic</param>
+        /// <param name="useless">useless</param>
         protected Vertex(Boolean useless) { }
         #endregion
 
         // Method
         #region
+        /// <summary>
+        /// Compare two vertices
+        /// Return true if vertices are equal, otherwise false
+        /// </summary>
+        /// <param name="vertex">the second vertex</param>
+        /// <returns>true if vertices are equal, otherwise false</returns>
         public bool Equals(IVertexInterface vertex)
         {
             if (identifier == vertex.GetIdentifier() && userName == vertex.GetUserName() && GetColor() == vertex.GetColor())
@@ -77,46 +78,45 @@ namespace GraphColoring.Graph
         // Property
         #region
         /// <summary>
-        /// Vrátí identifikátor vrcholu
+        /// Return an identifier of vertex
         /// </summary>
-        /// <returns>číselný identifikátor</returns>
+        /// <returns>identifier of vertex</returns>
         public int GetIdentifier()
         {
             return identifier;
         }
 
         /// <summary>
-        /// Nastaví identifikátor vrcholu
+        /// Set an identifier of vertex
         /// </summary>
-        /// <param name="identifier">nový identifikátor vrcholu</param>
+        /// <param name="identifier">new identifier of vertex</param>
         protected void SetIdentifier(int identifier)
         {
             this.identifier = identifier;
         }
 
         /// <summary>
-        /// Vrátí jméno vrcholu, které určil uživatel
+        /// Return an user name of vertex
         /// </summary>
-        /// <returns>řetězcové jménbo vrcholu</returns>
+        /// <returns>user name of vertex</returns>
         public string GetUserName()
         {
             return userName;
         }
 
         /// <summary>
-        /// Nastaví jméno vrcholu, které určil uživatel
+        /// Set an user name of vertex
         /// </summary>
-        /// <param name="userName">nový jméno vrcholu</param>
+        /// <param name="userName">new user name of vertex</param>
         protected void SetUserName(string userName)
         {
             this.userName = userName;
         }
 
         /// <summary>
-        /// Vrátí barvu vrcholu
-        /// Pokud vrchol nemá přiřazenou barvu, tak vrátí 0
+        /// Return a color of vertex
         /// </summary>
-        /// <returns>barva vrcholu</returns>
+        /// <returns>color of vertex</returns>
         public int GetColor()
         {
             return color;

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.ReaderWriter.Tests
 {
@@ -52,9 +50,9 @@ namespace GraphColoring.ReaderWriter.Tests
         // Method
         #region
         /// <summary>
-        /// Otestuje všechny typy souborů (PathEnum)
+        /// Test all values of enum (files)
         /// </summary>
-        /// <returns>Vrátí report</returns>
+        /// <returns>report</returns>
         public StringBuilder Test()
         {
             stringBuilder.Clear();
@@ -68,10 +66,10 @@ namespace GraphColoring.ReaderWriter.Tests
         }
 
         /// <summary>
-        /// Otestuje daný typ souboru (PathEnum)
+        /// Test a particular enum (file)
         /// </summary>
-        /// <param name="pathEnum">Typ souboru, který chceme otestovat</param>
-        /// <returns>Vrátí report</returns>
+        /// <param name="pathEnum">enum (file) which we want to test</param>
+        /// <returns>report</returns>
         public StringBuilder Test(PathEnum pathEnum)
         {
             stringBuilder.Clear();

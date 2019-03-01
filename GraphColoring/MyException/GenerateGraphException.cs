@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.MyException.GenerateGraphException
 {
@@ -19,7 +15,7 @@ namespace GraphColoring.MyException.GenerateGraphException
     }
 
     /// <summary>
-    /// Není ošetřen záznam v ErdosReneiModelProbabilityEnum
+    /// Enum probability is missing
     /// </summary>
     public class ErdosReneiModelProbabilityEnumMissing : Exception
     {
@@ -31,7 +27,7 @@ namespace GraphColoring.MyException.GenerateGraphException
     }
 
     /// <summary>
-    /// Není vybrána volba p
+    /// Not assigned attribute p
     /// </summary>
     public class ErdosReneiModelChoosePNotAssigned : Exception
     {

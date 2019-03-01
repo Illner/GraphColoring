@@ -17,7 +17,7 @@ namespace GraphColoring.MyException.TestsException
 
     /// <summary>
     /// Tests exception
-    /// Chybí test
+    /// Test is missing
     /// </summary>
     class TestsMissingTestException : TestsException
     {
@@ -30,7 +30,7 @@ namespace GraphColoring.MyException.TestsException
 
     /// <summary>
     /// Tests exception
-    /// Něco je špatně v testu
+    /// Something is wrong in a test
     /// </summary>
     class SomethingWrongTestException : TestsException
     {

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
 {
@@ -18,20 +14,22 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
         public SaturationLargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Saturation largest first sequence algorithm";
+            timeComplexity = TimeComplexityEnum.quadratic;
         }
         #endregion
 
         // Method
         #region
         /// <summary>
-        /// Obarví daný graf
-        /// Pokud graf je již inicializovaný, tak vrátí ColoredGraphAlreadyInitializedException
-        /// Něco se nepovedlo - AlgorithmGraphIsNotColored
+        /// Color a graph
+        /// If the colored graph is initialized throws ColoredGraphAlreadyInitializedException
+        /// Something wrong - AlgorithmGraphIsNotColored
+        /// Time complexity: O(n^2 + m) + 0
         /// </summary>
         override
         public void Color()
         {
-            if (coloredGraph.GetIsInicializedColoredGraph())
+            if (coloredGraph.GetIsInitializedColoredGraph())
                 throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
             coloredGraph.ResetColors();
@@ -46,17 +44,17 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
                 vertex = coloredGraph.GetSaturationDegreeSequence();
             }
 
-            bool isColored = coloredGraph.InicializeColoredGraph();
+            bool isColored = coloredGraph.InitializeColoredGraph();
 
             if (!isColored)
                 throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
 
         /// <summary>
-        /// Vrátí nejnasytěnější vrchol, který není obarvený.
-        /// Pokud jsou všechny obarveny, tak vrátí null
+        /// Return the most saturated vertex which is not colored
+        /// If a graph is colored return null
         /// </summary>
-        /// <returns>vrchol</returns>
+        /// <returns>vertex</returns>
         public Graph.IVertexInterface Step()
         {
             if (!staurationOnStep)

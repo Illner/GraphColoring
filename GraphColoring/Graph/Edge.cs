@@ -7,8 +7,8 @@ namespace GraphColoring.Graph
         // Variable
         #region
         /// <summary>
-        /// vertex1 - První vrchol hrany
-        /// vertex2 - Druhý vrchol hrany
+        /// vertex1 - First vertex
+        /// vertex2 - Second vertex
         /// </summary>
         private IVertexInterface vertex1;
         private IVertexInterface vertex2;
@@ -36,18 +36,18 @@ namespace GraphColoring.Graph
         // Property
         #region
         /// <summary>
-        /// Vrátí první vrchol hrany
+        /// Return the first vertex of the edge
         /// </summary>
-        /// <returns>první vrchol hrany</returns>
+        /// <returns>first vertex</returns>
         public IVertexInterface GetVertex1()
         {
             return vertex1;
         }
 
         /// <summary>
-        /// Vrátí druhý vrchol hrany
+        /// Return the second vertex of the edge
         /// </summary>
-        /// <returns>druhý vrchol hrany</returns>
+        /// <returns>second vertex</returns>
         public IVertexInterface GetVertex2()
         {
             return vertex2;

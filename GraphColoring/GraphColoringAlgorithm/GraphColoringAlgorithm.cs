@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm
 {
@@ -9,10 +8,11 @@ namespace GraphColoring.GraphColoringAlgorithm
         #region
         /// <summary>
         /// name - algorithm name (default: Algorithm)
-        /// graph - daný graf
-        /// coloredGraph - pointer na coloredGraf v grafu
+        /// graph - particular graph which we want to color
+        /// coloredGraph - colored graph
         /// </summary>
         protected string name = "Algorithm";
+        protected TimeComplexityEnum timeComplexity = TimeComplexityEnum.undefined;
         protected Graph.IGraphInterface graph;
         protected Graph.IColoredGraphInterface coloredGraph;
         #endregion
@@ -29,7 +29,7 @@ namespace GraphColoring.GraphColoringAlgorithm
         // Method
         #region
         /// <summary>
-        /// Obarví graf
+        /// Color a graph
         /// Exceptions: AlgorithmInvalidVertexSequence, AlgorithmGraphIsNotColored
         /// </summary>
         public abstract void Color();
@@ -44,21 +44,30 @@ namespace GraphColoring.GraphColoringAlgorithm
         // Properly
         #region
         /// <summary>
-        /// vrátí graf
+        /// Return a graph
         /// </summary>
-        /// <returns>daný graf</returns>
+        /// <returns>graph</returns>
         public Graph.IGraphInterface GetGraph()
         {
             return graph;
         }
 
         /// <summary>
-        /// Vrátí coloredGraph z daného grafu
+        /// Return a colored graph
         /// </summary>
-        /// <returns>coloredGraph</returns>
+        /// <returns>colored graph</returns>
         private Graph.IColoredGraphInterface GetColoredGraph()
         {
             return coloredGraph;
+        }
+
+        /// <summary>
+        /// Return time complexity of algorithm
+        /// </summary>
+        /// <returns>time complexity</returns>
+        public TimeComplexityEnum GetTimeComplexity()
+        {
+            return timeComplexity;
         }
         #endregion
     }

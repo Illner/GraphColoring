@@ -30,6 +30,8 @@ namespace GraphColoring.Graph.GraphProperty
         private List<IEdgeInterface> bridges;
         private int timeBridgesCutVertices = 0;
         private List<IVertexInterface> perfectEliminationOrderingList;
+        private List<IVertexInterface> firstPartite;
+        private List<IVertexInterface> secondPartite;
         // private List<arc> eulerianPath;
         #endregion
 
@@ -303,6 +305,36 @@ namespace GraphColoring.Graph.GraphProperty
                 IsChordal();
 
             return perfectEliminationOrderingList;
+        }
+
+        /// <summary>
+        /// Return the first partite and the second partite
+        /// If the graph is not a bipartite then return null
+        /// </summary>
+        /// <returns>firstPartite, secondPartite</returns>
+        public Tuple<List<IVertexInterface>, List<IVertexInterface>> GetPartites()
+        {
+            if (firstPartite == null || secondPartite == null)
+                return null;
+
+            return new Tuple<List<IVertexInterface>, List<IVertexInterface>>(firstPartite, secondPartite);
+        }
+
+        /// <summary>
+        /// Set the first partite and the second partite
+        /// If the graphClass is not set to undefined ot bipartite throws GraphIsNotBipartiteOrUndefined
+        /// Only for GetGraphClass(IGraphInterface) or IsBipartiteGraph(IGraphInterface)
+        /// firstPartite, secondPartite
+        /// </summary>
+        /// <param name="firstPartite">first partite</param>
+        /// <param name="secondPartite">second partite</param>
+        public void SetPartites(List<IVertexInterface> firstPartite, List<IVertexInterface> secondPartite)
+        {
+            if (graphClass != GraphClass.GraphClass.GraphClassEnum.undefined && graphClass != GraphClass.GraphClass.GraphClassEnum.bipartiteGraph)
+                throw new MyException.GraphException.GraphIsNotBipartiteOrUndefined(graphClass.ToString());
+
+            this.firstPartite = firstPartite;
+            this.secondPartite = secondPartite;
         }
         #endregion
     }

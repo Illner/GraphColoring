@@ -34,34 +34,9 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             bool isColored;
             coloredGraph.ResetColors();
 
-            // Graph is chordal => optimal sequence is PEO
-            if (graph.GetGraphProperty().GetIsChordal())
+            // Try optimal color
+            if (Optimal.Optimal.TryOptimalColorInPolynomalTime(graph))
             {
-                Console.WriteLine("AI: " + graph.GetName() + " - Chordal graph (PEO)");
-                coloredGraph.GreedyColoring(graph.GetGraphProperty().GetPerfectEliminationOrdering());
-
-                isColored = coloredGraph.InitializeColoredGraph();
-
-                if (!isColored)
-                    throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
-
-                return;
-            }
-
-            // Graph is a tree, a cycle or is acyclic => optimal algorithm is a SL
-            if (graph.GetGraphProperty().GetGraphClass() == Graph.GraphClass.GraphClass.GraphClassEnum.treeGraph ||
-                graph.GetGraphProperty().GetGraphClass() == Graph.GraphClass.GraphClass.GraphClassEnum.cycleGraph ||
-                graph.GetGraphProperty().GetIsCyclic() == false)
-            {
-                SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence smallestLastSequence = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, false);
-                Console.WriteLine("AI: " + graph.GetName() + " - " + smallestLastSequence);
-                smallestLastSequence.Color();
-
-                isColored = coloredGraph.InitializeColoredGraph();
-
-                if (!isColored)
-                    throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
-
                 return;
             }
 

@@ -868,7 +868,11 @@ namespace GraphColoring.GUI
 
                     if (graph.GetGraphProperty().GetIsConnected())
                     {
-                        classType = graph.GetGraphProperty().GetGraphClass().ToString();
+                        // Class type
+                        Graph.GraphClass.GraphClass.GraphClassEnum classTypeEnum = graph.GetGraphProperty().GetGraphClass();
+                        if (!Graph.GraphClass.GraphClass.WCMClassGraphDictionary.TryGetValue(classTypeEnum, out classType))
+                            classType = "";
+                        
                         isCyclic = graph.GetGraphProperty().GetIsCyclic().ToString();
                         isRegular = graph.GetGraphProperty().GetIsRegular().ToString();
                         countOfCutVertices = graph.GetGraphProperty().GetCutVertices().Count.ToString();
@@ -1139,7 +1143,11 @@ namespace GraphColoring.GUI
                 coreThread = new Thread(() =>
                 {
                     string classType = "";
-                    classType = graph.GetGraphProperty().GetGraphClass().ToString();
+
+                    // Class type
+                    Graph.GraphClass.GraphClass.GraphClassEnum classTypeEnum = graph.GetGraphProperty().GetGraphClass();
+                    if (!Graph.GraphClass.GraphClass.WCMClassGraphDictionary.TryGetValue(classTypeEnum, out classType))
+                        classType = "";
 
                     SetClassValuePropertiesLabel(classType);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphClass
@@ -137,6 +138,9 @@ namespace GraphColoring.Graph.GraphClass
 
             if (!isBipartite)
                 return new Tuple<bool, bool>(false, false);
+
+            // Set bipartites
+            graph.GetGraphProperty().SetPartites(firstPartite.ToList(), secondPartite.ToList());
 
             // Variable
             int countFirstPartiteVertex = firstPartite.Count;

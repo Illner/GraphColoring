@@ -23,7 +23,7 @@ namespace GraphColoring
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
-            */
+            /*
             
             /*
             List<Graph.IGraphInterface> graphList = new List<Graph.IGraphInterface>();

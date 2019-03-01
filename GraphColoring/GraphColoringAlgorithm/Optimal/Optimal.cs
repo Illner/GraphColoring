@@ -26,6 +26,8 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
         /// <summary>
         /// Color a graph
         /// Time complexity: O(n! + m)
+        /// Time complexity - tree, cycle, complete graph, bipartite graph: O(n + m)
+        /// Time complexity - complete bipartite graph: O(n^2 + nm)
         /// </summary>
         override
         public void Color()
@@ -37,12 +39,13 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
             
             coloredGraph.ResetColors();
 
-            // If the graph is chordal => use PEO for coloring
-            if (graph.GetGraphProperty().GetIsChordal())
+            // Try optimal color
+            if (TryOptimalColorInPolynomalTime(graph))
             {
-                optimalVertexList = graph.GetGraphProperty().GetPerfectEliminationOrdering();
+                return;
             }
-            // The graph is not chordal => try all permutation of vertices
+
+            // The graph can't be optimal colored => try all permutations
             else
             {
                 foreach (var vertexList in MyMath.MyMath.GeneratePermutations(graph.AllVertices()))
@@ -66,6 +69,72 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
 
             if (!isColored)
                 throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
+        }
+
+        /// <summary>
+        /// Return true if a graph has been colored in polynomal time, otherwise false
+        /// </summary>
+        /// <param name="graph">graph</param>
+        /// <returns>true if graph has been colored in polynomal time, otherwise false</returns>
+        public static bool TryOptimalColorInPolynomalTime(Graph.IGraphInterface graph)
+        {
+            bool isColored;
+            IGraphColoringAlgorithmInterface algorithm;
+            List<Graph.IVertexInterface> optimalVertexList;
+            Graph.IColoredGraphInterface coloredGraph = graph.GetColoredGraph();
+
+            coloredGraph.ResetColors();
+
+            // If the graph is chordal => use PEO for coloring
+            if (graph.GetGraphProperty().GetIsChordal())
+            {
+                optimalVertexList = graph.GetGraphProperty().GetPerfectEliminationOrdering();
+
+                coloredGraph.GreedyColoring(optimalVertexList);
+                isColored = coloredGraph.InitializeColoredGraph();
+
+                if (!isColored)
+                    throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
+
+                return true;
+            }
+
+            switch (graph.GetGraphProperty().GetGraphClass())
+            {
+                case Graph.GraphClass.GraphClass.GraphClassEnum.bipartiteGraph:
+                    Tuple<List<Graph.IVertexInterface>, List<Graph.IVertexInterface>> partites = graph.GetGraphProperty().GetPartites();
+
+                    coloredGraph.GreedyColoring(partites.Item1.Concat(partites.Item2).ToList());
+                    isColored = coloredGraph.InitializeColoredGraph();
+
+                    if (!isColored)
+                        throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
+
+                    return true;
+                case Graph.GraphClass.GraphClass.GraphClassEnum.completeBipartiteGraph:
+                    algorithm = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
+
+                    algorithm.Color();
+
+                    return true;
+                case Graph.GraphClass.GraphClass.GraphClassEnum.completeGraph:
+                    coloredGraph.GreedyColoring(graph.AllVertices());
+                    isColored = coloredGraph.InitializeColoredGraph();
+
+                    if (!isColored)
+                        throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
+
+                    return true;
+                case Graph.GraphClass.GraphClass.GraphClassEnum.cycleGraph:
+                case Graph.GraphClass.GraphClass.GraphClassEnum.treeGraph:
+                    algorithm = new SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
+
+                    algorithm.Color();
+
+                    return true;
+            }
+
+            return false;
         }
         #endregion
     }

@@ -223,6 +223,19 @@ namespace GraphColoring.MyException.GraphException
     }
 
     /// <summary>
+    /// Graph exception
+    /// ClassGraph not set to bipartite or undefined
+    /// </summary>
+    public class GraphIsNotBipartiteOrUndefined : GraphException
+    {
+        public GraphIsNotBipartiteOrUndefined() { }
+
+        public GraphIsNotBipartiteOrUndefined(string message) : base(message) { }
+
+        public GraphIsNotBipartiteOrUndefined(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
     /// (Colored) Graph exception
     /// Colored graph is not initialized
     /// </summary>

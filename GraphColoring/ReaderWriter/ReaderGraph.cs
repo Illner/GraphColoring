@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.ReaderWriter
 {
-    class ReaderGraph : ReaderWriter, IReaderGraphInterface
+    public class ReaderGraph : ReaderWriter, IReaderGraphInterface
     {
         // Varianle
         #region

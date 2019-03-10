@@ -61,6 +61,15 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The application has been reseted!.
+        /// </summary>
+        internal static string ApplicationReset {
+            get {
+                return ResourceManager.GetString("ApplicationReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The graph has not been colored!.
         /// </summary>
         internal static string ColorGraphErrorStatus {
@@ -165,6 +174,24 @@ namespace GraphColoring.GUI {
         internal static string GenerateGraphStatus {
             get {
                 return ResourceManager.GetString("GenerateGraphStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The graph is drawing!.
+        /// </summary>
+        internal static string GraphDrawingProgressStatus {
+            get {
+                return ResourceManager.GetString("GraphDrawingProgressStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The graph has been drawn..
+        /// </summary>
+        internal static string GraphDrawingStatus {
+            get {
+                return ResourceManager.GetString("GraphDrawingStatus", resourceCulture);
             }
         }
         

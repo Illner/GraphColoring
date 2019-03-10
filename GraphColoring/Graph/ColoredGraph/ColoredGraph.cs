@@ -577,7 +577,7 @@ namespace GraphColoring.Graph
                 return false;
             }
 
-            private int TryChangeColoring(IVertexInterface mainVertex, int color)
+            public int TryChangeColoring(IVertexInterface mainVertex, int color)
             {
                 // Variable
                 bool connected;

@@ -42,7 +42,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
 
             // VertexDegree
             int vertexDegree0 = 0, vertexDegree1 = 0, vertexDegree2 = 0, vertexDegree3 = 0, vertexDegree4 = 0, vertexDegree5 = 0, vertexDegree6 = 0, vertexDegree7 = 0, vertexDegree8 = 0, vertexDegree9 = 0, vertexDegree10 = 0;
-            foreach(var degree in graph.GetGraphProperty().GetDegreeSequence(false))
+            foreach(var degree in graph.GetGraphProperty().GetDegreeSequenceInt(false))
             {
                 switch (degree)
                 {
@@ -145,7 +145,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 case GraphColoringAlgorithmEnum.greedyIndependentSet:
                     algorithm = new GreedyIndependentSet.GreedyIndependentSet(graph);
                     break;
-                case GraphColoringAlgorithmEnum.geneticAlgortihm:
+                case GraphColoringAlgorithmEnum.geneticAlgorithm:
                     algorithm = new GeneticAlgorithm.GeneticAlgorithm(graph);
                     break;
                 case GraphColoringAlgorithmEnum.combinationAlgorithm:

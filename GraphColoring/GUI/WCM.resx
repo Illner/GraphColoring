@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationReset" xml:space="preserve">
+    <value>The application has been reseted!</value>
+  </data>
   <data name="ColorGraphErrorStatus" xml:space="preserve">
     <value>The graph has not been colored!</value>
   </data>
@@ -152,6 +155,12 @@
   </data>
   <data name="GenerateGraphStatus" xml:space="preserve">
     <value>The graph has been generated.</value>
+  </data>
+  <data name="GraphDrawingProgressStatus" xml:space="preserve">
+    <value>The graph is drawing!</value>
+  </data>
+  <data name="GraphDrawingStatus" xml:space="preserve">
+    <value>The graph has been drawn.</value>
   </data>
   <data name="GraphModificationDeleteVertexOne" xml:space="preserve">
     <value>You can't remove the last vertex in the graph!</value>

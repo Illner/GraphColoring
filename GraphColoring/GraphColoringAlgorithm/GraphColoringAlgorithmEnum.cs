@@ -7,7 +7,9 @@ namespace GraphColoring.GraphColoringAlgorithm
         public enum GraphColoringAlgorithmEnum
         {
             optimal,
-	        randomSequence,
+            AI,
+            IllnerAlgorithm,
+            randomSequence,
 	        largestFirstSequence,
 	        smallestLastSequence,
 	        randomSequenceInterchange,
@@ -17,8 +19,7 @@ namespace GraphColoring.GraphColoringAlgorithm
 	        saturationLargestFirstSequence,
 	        greedyIndependentSet,
             combinationAlgorithm,
-            geneticAlgortihm,
-            AI
+            geneticAlgorithm
         }
     }
 }

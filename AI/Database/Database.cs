@@ -38,7 +38,7 @@ namespace AI.Database
             connection.Open();
 
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             FillDictionaries();
         }
@@ -94,7 +94,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -128,8 +128,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
@@ -146,7 +146,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             string result = null;
@@ -180,8 +180,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
@@ -198,7 +198,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -232,8 +232,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
@@ -250,7 +250,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             string result = null;
@@ -284,8 +284,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
@@ -302,7 +302,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -336,8 +336,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
@@ -354,7 +354,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             string result = null;
@@ -388,8 +388,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
@@ -429,12 +429,12 @@ namespace AI.Database
         /// <param name="CountBridges">@CountBridges</param>
         /// <param name="Girth">@Girth</param>
         /// <param name="VertexDegreeArray">@VertexDegreeArray</param>
-        private bool ExistsGraph(int CountVertices, int CountEdges, int ID_GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, int ID_EulerianGraph,
+        private bool ExistsGraphPrivate(int CountVertices, int CountEdges, int ID_GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, int ID_EulerianGraph,
             int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth, int[] VertexDegreeArray)
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             bool result = false;
@@ -493,8 +493,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
@@ -534,13 +534,13 @@ namespace AI.Database
         /// <param name="CountBridges">@CountBridges</param>
         /// <param name="Girth">@Girth</param>
         /// <param name="VertexDegreeArray">@VertexDegreeArray</param>
-        private void InsertGraph(int CountVertices, int CountEdges, int ID_GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, int ID_EulerianGraph,
+        private void InsertGraphPrivate(int CountVertices, int CountEdges, int ID_GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, int ID_EulerianGraph,
             int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth,
             int[] VertexDegreeArray, int TypeGeneratedGraph = 1)
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Parse VertexDegreeArray
             DataTable tvp = new DataTable();
@@ -584,8 +584,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
         }
 
@@ -624,12 +624,12 @@ namespace AI.Database
         /// <param name="Girth">@Girth</param>
         /// <param name="VertexDegreeArray">@VertexDegreeArray</param>
         /// <returns>Integer</returns>
-        private int GetGraph(int CountVertices, int CountEdges, int ID_GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, int ID_EulerianGraph,
+        private int GetGraphPrivate(int CountVertices, int CountEdges, int ID_GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, int ID_EulerianGraph,
             int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth, int[] VertexDegreeArray)
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -688,11 +688,95 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// create procedure AddCoreProbability(
+        /// @ID_Graph Integer,
+        /// @ID_GraphAlgorithm Integer,
+        /// @CountOfIteration Integer,
+        /// @MinColors Integer,
+        /// @MaxColors Integer
+        /// )
+        /// </summary>
+        /// <param name="ID_Graph">@ID_Graph</param>
+        /// <param name="ID_GraphAlgorithm">@ID_GraphAlgorithm</param>
+        /// <param name="CountOfIteration">@CountOfIteration</param>
+        /// <param name="MinColors">@MinColors</param>
+        /// <param name="MaxColors">@MaxColors</param>
+        private void AddCoreProbability(int ID_Graph, int ID_GraphAlgorithm, int CountOfIterations, int MinColors, int MaxColors)
+        {
+            // Check if it is connected
+            if (GetConnectionState() != ConnectionState.Open)
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+
+            try
+            {
+                // Create a Command object to call procedure Get_Employee_Info
+                SqlCommand cmd = new SqlCommand("AddCoreProbability", connection);
+
+                // Command Type is StoredProcedure
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Add parameter
+                cmd.Parameters.Add("@ID_Graph", SqlDbType.Int).Value = ID_Graph;
+                cmd.Parameters.Add("@ID_GraphAlgorithm", SqlDbType.Int).Value = ID_GraphAlgorithm;
+                cmd.Parameters.Add("@CountOfIteration", SqlDbType.Int).Value = CountOfIterations;
+                cmd.Parameters.Add("@MinColors", SqlDbType.Int).Value = MinColors;
+                cmd.Parameters.Add("@MaxColors", SqlDbType.Int).Value = MaxColors;
+
+                // Execute procedure.
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
+            }
+        }
+
+        /// <summary>
+        /// create procedure AddCore(
+        /// @ID_Graph Integer,
+        /// @ID_GraphAlgorithm Integer,
+        /// @Colors Integer
+        /// )
+        /// </summary>
+        /// <param name="ID_Graph">@ID_Graph</param>
+        /// <param name="ID_GraphAlgorithm">@ID_GraphAlgorithm</param>
+        /// <param name="Colors">@Colors</param>
+        private void AddCore(int ID_Graph, int ID_GraphAlgorithm, int Colors)
+        {
+            // Check if it is connected
+            if (GetConnectionState() != ConnectionState.Open)
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+
+            try
+            {
+                // Create a Command object to call procedure Get_Employee_Info
+                SqlCommand cmd = new SqlCommand("AddCore", connection);
+
+                // Command Type is StoredProcedure
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Add parameter
+                cmd.Parameters.Add("@ID_Graph", SqlDbType.Int).Value = ID_Graph;
+                cmd.Parameters.Add("@ID_GraphAlgorithm", SqlDbType.Int).Value = ID_GraphAlgorithm;
+                cmd.Parameters.Add("@Colors", SqlDbType.Int).Value = Colors;
+
+                // Execute procedure.
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
+            }
         }
 
         /// <summary>
@@ -713,7 +797,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -735,8 +819,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
         }
 
@@ -754,8 +838,8 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
-            
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+
             try
             {
                 // Create a Command object to call procedure Get_Employee_Info
@@ -774,8 +858,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
         }
 
@@ -797,7 +881,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -819,8 +903,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
         }
 
@@ -838,7 +922,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -858,8 +942,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
         }
 
@@ -874,7 +958,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -908,8 +992,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             return result;
@@ -926,7 +1010,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             string result = "";
@@ -960,8 +1044,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
 
             string[] splitedResultArray = result.Split(';');
@@ -986,8 +1070,8 @@ namespace AI.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error: " + e.GetType().Name);
+                //Console.WriteLine(e.StackTrace);
             }
         }
         #endregion
@@ -1004,7 +1088,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new GraphColoring.MyException.DatabaseException.DatabaseNotOpenException();
+                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
 
             SqlCommand cmd = new SqlCommand();
 
@@ -1131,10 +1215,18 @@ namespace AI.Database
             if (graph.GetGraphProperty().GetCountComponents() != 1)
                 throw new GraphColoring.MyException.GraphException.GraphIsNotConnected();
 
-            return ExistsGraph(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
+            return ExistsGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
                 graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), EulerianGraphEnumIDDictionary[graph.GetGraphProperty().GetIsEulerian()], graph.GetGraphProperty().GetMaximumVertexDegree(),
                 graph.GetGraphProperty().GetMinimumVertexDegree(), graph.GetGraphProperty().GetAverageVertexDegree(), graph.GetGraphProperty().GetMedianVertexDegree(), graph.GetGraphProperty().GetCutVertices().Count, 
-                graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequence(false).ToArray());
+                graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequenceInt(false).ToArray());
+        }
+
+        public bool ExistsGraph(int CountVertices, int CountEdges, GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum EulerianGraph,
+            int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth, int[] VertexDegreeArray)
+        {
+            return ExistsGraphPrivate(CountVertices, CountEdges, GraphClassEnumIDDictionary[GraphClass], IsChordal, IsRegular, IsCyclic, EulerianGraphEnumIDDictionary[EulerianGraph],
+                               MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree, CountCutVertices,
+                               CountBridges, Girth, VertexDegreeArray);
         }
 
         /// <summary>
@@ -1142,25 +1234,53 @@ namespace AI.Database
         /// If the graph is not connected throws GraphIsNotConnected
         /// </summary>
         /// <param name="graph">graph</param>
-        /// <returns>graph ID in DB</returns>
-        public int InsertGraph(GraphColoring.Graph.IGraphInterface graph)
+        public void InsertGraph(GraphColoring.Graph.IGraphInterface graph)
         {
             if (graph.GetGraphProperty().GetCountComponents() != 1)
                 throw new GraphColoring.MyException.GraphException.GraphIsNotConnected();
 
-            InsertGraph(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
+            InsertGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
                 graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), EulerianGraphEnumIDDictionary[graph.GetGraphProperty().GetIsEulerian()], graph.GetGraphProperty().GetMaximumVertexDegree(),
                 graph.GetGraphProperty().GetMinimumVertexDegree(), graph.GetGraphProperty().GetAverageVertexDegree(), graph.GetGraphProperty().GetMedianVertexDegree(), graph.GetGraphProperty().GetCutVertices().Count, 
-                graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequence(false).ToArray());
+                graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequenceInt(false).ToArray());
+        }
 
-            return GetGraph(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
+        public void InsertGraph(int CountVertices, int CountEdges, GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum EulerianGraph,
+            int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth, int[] VertexDegreeArray)
+        {
+            InsertGraphPrivate(CountVertices, CountEdges, GraphClassEnumIDDictionary[GraphClass], IsChordal, IsRegular, IsCyclic, EulerianGraphEnumIDDictionary[EulerianGraph],
+                               MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree, CountCutVertices,
+                               CountBridges, Girth, VertexDegreeArray);
+        }
+
+        /// <summary>
+        /// Get ID of the graphs
+        /// If the graph is not connected throws GraphIsNotConnected
+        /// </summary>
+        /// <param name="graph">graph</param>
+        /// <returns>graph ID in DB</returns>
+        public int GetGraph(GraphColoring.Graph.IGraphInterface graph)
+        {
+            if (graph.GetGraphProperty().GetCountComponents() != 1)
+                throw new GraphColoring.MyException.GraphException.GraphIsNotConnected();
+
+            return GetGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
                 graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), EulerianGraphEnumIDDictionary[graph.GetGraphProperty().GetIsEulerian()], graph.GetGraphProperty().GetMaximumVertexDegree(),
-                graph.GetGraphProperty().GetMinimumVertexDegree(), graph.GetGraphProperty().GetAverageVertexDegree(), graph.GetGraphProperty().GetMedianVertexDegree(), graph.GetGraphProperty().GetCutVertices().Count, 
-                graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequence(false).ToArray());
+                graph.GetGraphProperty().GetMinimumVertexDegree(), graph.GetGraphProperty().GetAverageVertexDegree(), graph.GetGraphProperty().GetMedianVertexDegree(), graph.GetGraphProperty().GetCutVertices().Count,
+                graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequenceInt(false).ToArray());
+        }
+
+        public int GetGraph(int CountVertices, int CountEdges, GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum EulerianGraph,
+            int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth, int[] VertexDegreeArray)
+        {
+            return GetGraphPrivate(CountVertices, CountEdges, GraphClassEnumIDDictionary[GraphClass], IsChordal, IsRegular, IsCyclic, EulerianGraphEnumIDDictionary[EulerianGraph],
+                               MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree, CountCutVertices,
+                               CountBridges, Girth, VertexDegreeArray);
         }
 
         /// <summary>
         /// Save a graph coloring to the DB.
+        /// Should not be used. Better use AddGraphColoring
         /// </summary>
         /// <param name="ID_Graph">ID graph</param>
         /// <param name="graphColoringAlgorithmEnum">algorithm</param>
@@ -1175,6 +1295,7 @@ namespace AI.Database
 
         /// <summary>
         /// Save a graph coloring to the DB.
+        /// Should not be used. Better use AddGraphColoring
         /// </summary>
         /// <param name="ID_Graph">ID graph</param>
         /// <param name="graphColoringAlgorithmEnum">algorithm</param>
@@ -1193,6 +1314,7 @@ namespace AI.Database
 
         /// <summary>
         /// Update a graph coloring in the DB.
+        /// Should not be used. Better use AddGraphColoring
         /// </summary>
         /// <param name="ID_Graph">ID graph</param>
         /// <param name="graphColoringAlgorithmEnum">algorithm</param>
@@ -1207,6 +1329,7 @@ namespace AI.Database
 
         /// <summary>
         /// Update a graph coloring in the DB.
+        /// Should not be used. Better use AddGraphColoring
         /// </summary>
         /// <param name="ID_Graph">ID graph</param>
         /// <param name="graphColoringAlgorithmEnum">algorithm</param>
@@ -1219,8 +1342,40 @@ namespace AI.Database
         {
             // Variable
             int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
-
             UpdateCoreProbability(ID_Graph, ID_GraphColoringAlgorithm, countOfIterations, minColors, maxColors);
+        }
+
+        /// <summary>
+        /// Add a graph coloring to the DB.
+        /// If the record exists call Update, otherwise Insert
+        /// </summary>
+        /// <param name="ID_Graph">ID graph</param>
+        /// <param name="graphColoringAlgorithmEnum">algorithm</param>
+        public void AddGraphColoring(int ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum,
+            int countColors)
+        {
+            // Variable
+            int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
+
+            AddCore(ID_Graph, ID_GraphColoringAlgorithm, countColors);
+        }
+
+        /// <summary>
+        /// Add a graph coloring to the DB.
+        /// If the record exists call Update, otherwise Insert
+        /// </summary>
+        /// <param name="ID_Graph">ID graph</param>
+        /// <param name="graphColoringAlgorithmEnum">algorithm</param>
+        /// <param name="countColors">Count of colors</param>
+        /// <param name="countOfIterations">Count of iterations</param>
+        /// <param name="minColors">Minimum colors</param>
+        /// <param name="maxColors">Maximum colors</param>
+        public void AddGraphColoring(int ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum,
+            int countOfIterations, int minColors, int maxColors)
+        {
+            // Variable
+            int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
+            AddCoreProbability(ID_Graph, ID_GraphColoringAlgorithm, countOfIterations, minColors, maxColors);
         }
 
         public void CleanDB()

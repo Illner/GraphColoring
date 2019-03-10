@@ -50,10 +50,11 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential, connectedSequentialModelPath },
                 //{ GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, saturationLargestFirstSequenceModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet, greedyIndependentSetModelPath },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm, geneticAlgorithmModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm, geneticAlgorithmModelPath },
                 //{ GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm, combinationAlgorithmModelPath }
             };
 
+            Console.WriteLine("--------------------------------------------------");
             modelDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, ITransformer>();
             foreach (var record in modelPathDictionary)
             {
@@ -69,8 +70,8 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                     Console.WriteLine("Error loading model - " + record.Key);
                 }
             }
-
             Console.WriteLine("Loaded models: " + modelDictionary.Count);
+            Console.WriteLine("--------------------------------------------------");
 
             // Fill aucDictionary
             aucDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, double>()
@@ -84,7 +85,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm, 0 }
             };
         }
@@ -108,7 +109,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 predictionDictionary.Add(record.Key, algorithmPrediction);
             }
 
-            GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum = GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm;
+            GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum = GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm;
             float score = float.MinValue;
             foreach(var record in predictionDictionary)
             {
@@ -118,9 +119,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                     algorithmEnum = record.Key;
                 }
             }
-
-
-            Console.WriteLine(algorithmEnum);
+            
             return algorithmEnum;
         }
         

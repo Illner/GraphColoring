@@ -25,6 +25,23 @@ namespace GraphColoring.GalleryOfNamedGraphs
             [Description("K8")]
             K8,
 
+            // Path graphs
+            [Description("P3")]
+            P3,
+            [Description("P4")]
+            P4,
+            [Description("P5")]
+            P5,
+            [Description("P6")]
+            P6,
+            [Description("P7")]
+            P7,
+            [Description("P8")]
+            P8,
+            [Description("P9")]
+            P9,
+
+
             [Description("Bidiakis cube")]
             BidiakisCube,
             [Description("Bull graph")]

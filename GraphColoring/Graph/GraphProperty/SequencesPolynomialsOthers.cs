@@ -229,7 +229,7 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         /// <param name="sorted">má se setřídit</param>
         /// <returns>skóre grafu jako list intů</returns>
-        public List<int> GetDegreeSequence(bool sorted)
+        public List<int> GetDegreeSequenceInt(bool sorted)
         {
             if (degreeSequence == null)
                 DegreeSequence(sorted);
@@ -238,6 +238,22 @@ namespace GraphColoring.Graph.GraphProperty
                 DegreeSequence(sorted);
 
             return degreeSequenceInt;
+        }
+        
+        /// <summary>
+        /// Return degree sequence of the graph
+        /// </summary>
+        /// <param name="sorted">sorted degree sequence?</param>
+        /// <returns>List of tuples (vertex, int - degree)</returns>
+        public List<KeyValuePair<IVertexInterface, int>> GetDegreeSequence(bool sorted)
+        {
+            if (degreeSequence == null)
+                DegreeSequence(sorted);
+
+            if (!isDegreeSequenceSorted && sorted)
+                DegreeSequence(sorted);
+
+            return degreeSequence;
         }
 
         /// <summary>

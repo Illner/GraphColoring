@@ -15,8 +15,12 @@ namespace GraphColoring.GUI
         private string path;
         private int maxUsedColors;
         private Thread coreThread;
+        private bool canWrite = true;
+        private bool showError = true;
         private Graph.IGraphInterface graph;
+        private bool isModifiedGraph = false;
         private GraphVisualizationForm graphVisualizationForm;
+        private static string MODIFIEDGRAPHNAME = "Modified graph";
         List<GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum> algorithmListBoxList;
         private GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum;
         #endregion
@@ -93,7 +97,7 @@ namespace GraphColoring.GUI
                 case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
                     break;
-                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm:
+                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
                     break;
                 case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
@@ -126,6 +130,9 @@ namespace GraphColoring.GUI
                 case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.AI.AI(graph);
                     break;
+                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.IllnerAlgorithm:
+                    graphColoringAlgorithm = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
+                    break;
                 default:
                     throw new MyException.GraphColoringAlgorithmException.AlgorithmDoesntExist(graphColoringAlgorithmEnum.ToString());
             }
@@ -143,18 +150,30 @@ namespace GraphColoring.GUI
             {
                 // Variable
                 GraphVisualization.GraphVisualization graphVisualization = null;
+                bool isSchedule;
+                bool showSpanningTree;
+                bool showSimplicialVertex;
+                bool showCutVerticesAndBridges;
+                bool showMaximumAndMinimumDegreeVertices;
 
-                if (graph.GetColoredGraph().GetIsInitializedColoredGraph() && scheduleAppearanceCheckBox.Checked)
-                    graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), true);
+                isSchedule = scheduleAppearanceCheckBox.Checked;
+                showSpanningTree = showSpanningTreeCheckBox.Checked;
+                showSimplicialVertex = showSimplicialVertexCheckBox.Checked;
+                showCutVerticesAndBridges = showCutVerticesAndBridgesCheckBox.Checked;
+                showMaximumAndMinimumDegreeVertices = showMaximumAndMinimumDegreeVerticesCheckBox.Checked;
+
+                if (graph.GetColoredGraph().GetIsInitializedColoredGraph())
+                    graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), isSchedule, showSpanningTree, showSimplicialVertex, showCutVerticesAndBridges, showMaximumAndMinimumDegreeVertices);
                 else
-                    graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), false);
+                    graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), false, showSpanningTree, showSimplicialVertex, showCutVerticesAndBridges, showMaximumAndMinimumDegreeVertices);
                 
                 graphVisualization.CreateGraphVisualization();
                 SetDrawGraphPictureBox(graphVisualization.GetImage());
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e);
+                // Print to console
+                MyWrite(ex.ToString(), WriteEnum.error);
             }
         }
 
@@ -169,7 +188,7 @@ namespace GraphColoring.GUI
             EnableButtons(false);
 
             // Status
-            SetStatusLabel(WCM.LoadGraphProgressStatus);
+            SetStatusLabel(WCM.GraphDrawingProgressStatus);
 
             coreThread = new Thread(() =>
             {
@@ -178,11 +197,51 @@ namespace GraphColoring.GUI
                     ShowGraph();
 
                     // Status
-                    SetStatusLabel(WCM.LoadGraphStatus);
+                    SetStatusLabel(WCM.GraphDrawingStatus);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
+                }
+                finally
+                {
+                    // Enable all buttons
+                    EnableButtons(true);
+                }
+
+            });
+            coreThread.IsBackground = true;
+            coreThread.Start();
+        }
+
+        
+        private void showCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ExistsGraph(false))
+            {
+                return;
+            }
+
+            // Disable all buttons
+            EnableButtons(false);
+
+            // Status
+            SetStatusLabel(WCM.GraphDrawingProgressStatus);
+
+            coreThread = new Thread(() =>
+            {
+                try
+                {
+                    ShowGraph();
+
+                    // Status
+                    SetStatusLabel(WCM.GraphDrawingStatus);
+                }
+                catch (ThreadAbortException)
+                {
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
@@ -414,6 +473,74 @@ namespace GraphColoring.GUI
             MessageBox.Show(message, caption, messageBoxButtons);
         }
 
+        private enum WriteEnum
+        {
+            loadGraph,
+            saveGraph,
+            newGraph,
+            reset,
+            colorGraph,
+            generateGraph,
+            complementGraph,
+            lineGraph,
+            graphProperty,
+            graphModification,
+            error
+        }
+
+        /// <summary>
+        /// If canWrite is true then print the text to console.
+        /// loadGraph, newGraph, generateGraph, complementGraph, lineGraph, lineGraph - print the graph
+        /// WriteEnum, WriteEnum - print nothing
+        /// graphProperty - print the graph properties
+        /// colorGraph - print the coloring graph
+        /// error - if showError is true then print the text, otherwise nothing
+        /// </summary>
+        /// <param name="text">text</param>
+        /// <param name="writeEnum">write enum</param>
+        private void MyWrite(string text, WriteEnum writeEnum)
+        {
+            if (!canWrite)
+                return;
+
+            if (writeEnum != WriteEnum.error)
+            {
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine(text);
+                Console.WriteLine("--------------------------------------------------");
+            }
+
+            switch (writeEnum)
+            {
+                case WriteEnum.loadGraph:
+                case WriteEnum.newGraph:
+                case WriteEnum.generateGraph:
+                case WriteEnum.complementGraph:
+                case WriteEnum.lineGraph:
+                case WriteEnum.graphModification:
+                    Console.WriteLine(graph);
+                    break;
+                case WriteEnum.reset:
+                case WriteEnum.saveGraph:
+                    Console.WriteLine();
+                    break;
+                case WriteEnum.colorGraph:
+                    Console.WriteLine(graph.GetColoredGraph());
+                    break;
+                case WriteEnum.graphProperty:
+                    Console.WriteLine(graph.GetGraphProperty());
+                    break;
+                case WriteEnum.error:
+                    if (showError)
+                    {
+                        Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                        Console.WriteLine(text);
+                        Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    }
+                    break;
+            }
+        }
+
         private void ResetProperty(bool useless = false)
         {
             if (InvokeRequired)
@@ -496,6 +623,10 @@ namespace GraphColoring.GUI
             newGraphButton.Enabled = enable;
             generateGraphButton.Enabled = enable;
             scheduleAppearanceCheckBox.Enabled = enable;
+            showSpanningTreeCheckBox.Enabled = enable;
+            showSimplicialVertexCheckBox.Enabled = enable;
+            showCutVerticesAndBridgesCheckBox.Enabled = enable;
+            showMaximumAndMinimumDegreeVerticesCheckBox.Enabled = enable;
 
             // Second column
             graphPropertiesGroupBox.Enabled = enable;
@@ -515,7 +646,6 @@ namespace GraphColoring.GUI
             edgeContractionGraphModificationEdgeButton.Enabled = enable;
             edgeSubdivisionGraphModificationEdgeButton.Enabled = enable;
         }
-        #endregion
 
         /// <summary>
         /// Return true if graph != null
@@ -532,6 +662,7 @@ namespace GraphColoring.GUI
 
             return true;
         }
+        #endregion
 
         // Events
         #region
@@ -557,6 +688,7 @@ namespace GraphColoring.GUI
             LoadGraph();
         }
 
+        // Used by loadGraphButton_Click and drag and drop
         private void LoadGraph()
         {
             // Disable all buttons
@@ -564,6 +696,8 @@ namespace GraphColoring.GUI
 
             // Status
             SetStatusLabel(WCM.LoadGraphProgressStatus);
+            
+            isModifiedGraph = false;
 
             coreThread = new Thread(() =>
             {
@@ -579,6 +713,9 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.LoadGraphStatus);
+
+                    // Print to console
+                    MyWrite(WCM.LoadGraphStatus, WriteEnum.loadGraph);
                 }
                 catch (MyException.ReaderWriterException.ReaderWriterInvalidFileTypeException ex)
                 {
@@ -589,7 +726,8 @@ namespace GraphColoring.GUI
                     ResetProperty();
                     drawGraphPictureBox.Image = null;
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.ReaderWriterException.ReaderWriterInavalidPathException ex)
                 {
@@ -600,7 +738,8 @@ namespace GraphColoring.GUI
                     ResetProperty();
                     drawGraphPictureBox.Image = null;
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.ReaderWriterException.ReaderWriterException ex)
                 {
@@ -611,7 +750,8 @@ namespace GraphColoring.GUI
                     ResetProperty();
                     drawGraphPictureBox.Image = null;
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.GraphException ex)
                 {
@@ -622,11 +762,13 @@ namespace GraphColoring.GUI
                     ResetProperty();
                     drawGraphPictureBox.Image = null;
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
@@ -719,10 +861,14 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.ColorGraphStatus);
+
+                    // Print to console
+                    MyWrite(WCM.ColorGraphStatus, WriteEnum.colorGraph);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 catch (Exception ex)
                 {
@@ -730,11 +876,12 @@ namespace GraphColoring.GUI
                     {
                         ShowMessageBox("Error | " + WCM.ColorGraphSomethingWrongTitle, WCM.ColorGraphSomethingWrong + "\n" + ex.GetType().Name);
                         SetStatusLabel(WCM.ColorGraphSomethingWrongStatus);
+
+                        // Print to console
+                        MyWrite(ex.ToString(), WriteEnum.error);
                     }
                     else
                         throw ex;
-
-                    Console.WriteLine(ex);
                 }
                 finally
                 {
@@ -802,20 +949,25 @@ namespace GraphColoring.GUI
 
                     ShowMessageBox(WCM.WriteGraphTitle, WCM.WriteGraph);
                     SetStatusLabel(WCM.WriteGraphStatus);
+
+                    // Print to console
+                    MyWrite(WCM.WriteGraphStatus, WriteEnum.saveGraph);
                 }
                 catch (MyException.ReaderWriterException.ReaderWriterInavalidPathException ex)
                 {
                     ShowMessageBox("Error | " + WCM.WriteGraphInvalidPathTitle, WCM.WriteGraphInvalidPath + "\n" + ex.GetType().Name);
                     SetStatusLabel(WCM.WriteGraphInvalidPathStatus);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.ReaderWriterException.ReaderWriterException ex)
                 {
                     ShowMessageBox("Error | " + WCM.WriteGraphSomethingWrongTitle, WCM.WriteGraphSomethingWrong + "\n" + ex.GetType().Name);
                     SetStatusLabel(WCM.WriteGraphSomethingWrongStatus);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.ColoredGraphNotInitializationException ex)
                 {
@@ -825,16 +977,18 @@ namespace GraphColoring.GUI
                         ShowMessageBox("Error | " + WCM.WriteGraphNotColoredTitle, WCM.WriteGraphNotColored);
                         SetStatusLabel(WCM.WriteGraphSomethingWrongStatus);
 
-                        Console.WriteLine(ex);
+                        // Print to console
+                        MyWrite(ex.ToString(), WriteEnum.error);
                     }
                     else
                     {
                         SetStatusLabel(WCM.WriteGraphStatus);
                     }
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
@@ -911,12 +1065,16 @@ namespace GraphColoring.GUI
                     // Status
                     SetStatusLabel(WCM.PropertyStatus);
 
+                    // Print to console
+                    MyWrite(WCM.PropertyStatus, WriteEnum.graphProperty);
+
                     // Enable all buttons
                     EnableButtons(true);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
             });
             coreThread.IsBackground = true;
@@ -925,7 +1083,6 @@ namespace GraphColoring.GUI
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-
             // Thread
             if (coreThread != null && coreThread.IsAlive)
             {
@@ -938,6 +1095,8 @@ namespace GraphColoring.GUI
 
             coreThread = null;
 
+            SetStatusLabel(WCM.ApplicationReset);
+
             // Enable buttons
             EnableButtons(true);
 
@@ -946,6 +1105,7 @@ namespace GraphColoring.GUI
             graph = null;
             ResetProperty();
             SetStatusLabel("");
+            isModifiedGraph = false;
             drawGraphPictureBox.Image = null;
         }
 
@@ -965,6 +1125,7 @@ namespace GraphColoring.GUI
             EnableButtons(false);
 
             path = null;
+            isModifiedGraph = false;
 
             // Status
             SetStatusLabel(WCM.GenerateGraphProgressStatus);
@@ -983,12 +1144,16 @@ namespace GraphColoring.GUI
                     // Status
                     SetStatusLabel(WCM.GenerateGraphStatus);
 
+                    // Print to console
+                    MyWrite(WCM.GenerateGraphStatus, WriteEnum.generateGraph);
+
                     // Enable all buttons
                     EnableButtons(true);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
             });
             coreThread.IsBackground = true;
@@ -999,6 +1164,7 @@ namespace GraphColoring.GUI
         {
             // Variable
             string graphContent = null;
+            isModifiedGraph = false;
             string namedGraph = namedGraphsComboBox.SelectedValue.ToString();
 
             GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum namedGraphEnum;
@@ -1037,10 +1203,14 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.NewGraphStatus);
+
+                    // Print to console
+                    MyWrite(WCM.NewGraphStatus, WriteEnum.newGraph);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
@@ -1066,6 +1236,7 @@ namespace GraphColoring.GUI
                 {
                     path = null;
                     Graph.IGraphInterface complementGraph = Graph.GraphOperation.GraphOperation.ComplementGraph(graph);
+                    complementGraph.SetName("Complement graph - " + graph.GetName());
                     graph = complementGraph;
 
                     graph.GetGraphProperty().GetCountComponents();
@@ -1074,10 +1245,14 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.ComplementGraphStatus);
+
+                    // Print to console
+                    MyWrite(WCM.ComplementGraphStatus, WriteEnum.complementGraph);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
@@ -1103,6 +1278,7 @@ namespace GraphColoring.GUI
                 {
                     path = null;
                     Graph.IGraphInterface lineGraph = Graph.GraphOperation.GraphOperation.LineGraph(graph);
+                    lineGraph.SetName("Line graph - " + graph.GetName());
                     graph = lineGraph;
 
                     graph.GetGraphProperty().GetCountComponents();
@@ -1111,10 +1287,14 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.LineGraphStatus);
+
+                    // Print to console
+                    MyWrite(WCM.LineGraphStatus, WriteEnum.lineGraph);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
@@ -1413,31 +1593,33 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexUserNameAlreadyExistsException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexUserNameExistsTitle, WCM.GraphModificationVertexUserNameExists);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
 
                 }
             });
@@ -1465,6 +1647,13 @@ namespace GraphColoring.GUI
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
 
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
+
             coreThread = new Thread(() =>
             {
                 try
@@ -1478,26 +1667,26 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexAlreadyExistsException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexAlreadyExistsTitle, WCM.GraphModificationVertexAlreadyExists);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
-
                 }
             });
             coreThread.IsBackground = true;
@@ -1529,6 +1718,13 @@ namespace GraphColoring.GUI
 
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
+            
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
 
             coreThread = new Thread(() =>
             {
@@ -1542,25 +1738,26 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
                 }
             });
             coreThread.IsBackground = true;
@@ -1586,6 +1783,13 @@ namespace GraphColoring.GUI
 
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
+            
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
 
             coreThread = new Thread(() =>
             {
@@ -1599,25 +1803,26 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
                 }
             });
             coreThread.IsBackground = true;
@@ -1644,6 +1849,13 @@ namespace GraphColoring.GUI
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
 
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
+
             coreThread = new Thread(() =>
             {
                 try
@@ -1656,31 +1868,33 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.GraphInvalidDegreeVertex ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexInvalidVertexTitle, WCM.GraphModificationVertexInvalidVertex);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
                 }
             });
             coreThread.IsBackground = true;
@@ -1707,6 +1921,13 @@ namespace GraphColoring.GUI
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
 
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
+
             coreThread = new Thread(() =>
             {
                 try
@@ -1719,25 +1940,26 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
                 }
             });
             coreThread.IsBackground = true;
@@ -1765,6 +1987,13 @@ namespace GraphColoring.GUI
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
 
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
+
             coreThread = new Thread(() =>
             {
                 try
@@ -1777,33 +2006,40 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.GraphEdgeAlreadyExistsException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationEdgeAlreadyExistsTitle, WCM.GraphModificationEdgeAlreadyExists);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.GraphInvalidVertexException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexInvalidVertexTitle, WCM.GraphModificationVertexInvalidVertex);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
+                }
+                catch (ThreadAbortException)
+                {
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
                 }
             });
             coreThread.IsBackground = true;
@@ -1831,6 +2067,13 @@ namespace GraphColoring.GUI
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
 
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
+
             coreThread = new Thread(() =>
             {
                 try
@@ -1843,27 +2086,33 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.GraphEdgeDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationEdgeDoesntExistTitle, WCM.GraphModificationEdgeDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
+                }
+                catch (ThreadAbortException)
+                {
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
                 }
             });
             coreThread.IsBackground = true;
@@ -1891,6 +2140,13 @@ namespace GraphColoring.GUI
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
 
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
+
             coreThread = new Thread(() =>
             {
                 try
@@ -1903,27 +2159,33 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.GraphEdgeDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationEdgeDoesntExistTitle, WCM.GraphModificationEdgeDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
+                }
+                catch (ThreadAbortException)
+                {
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
                 }
             });
             coreThread.IsBackground = true;
@@ -1951,6 +2213,13 @@ namespace GraphColoring.GUI
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
 
+            // Change graph name
+            if (!isModifiedGraph)
+            {
+                isModifiedGraph = true;
+                graph.SetName(MODIFIEDGRAPHNAME + " - " + graph.GetName());
+            }
+
             coreThread = new Thread(() =>
             {
                 try
@@ -1963,27 +2232,33 @@ namespace GraphColoring.GUI
 
                     // Status
                     SetStatusLabel(WCM.GraphModificationStatus);
+
+                    // Print to console
+                    MyWrite(WCM.GraphModificationStatus, WriteEnum.graphModification);
                 }
                 catch (MyException.GraphException.GraphVertexDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationVertexDoesntExistTitle, WCM.GraphModificationVertexDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
                 }
                 catch (MyException.GraphException.GraphEdgeDoesntExistException ex)
                 {
                     ShowMessageBox("Error | " + WCM.GraphModificationEdgeDoesntExistTitle, WCM.GraphModificationEdgeDoesntExist);
 
-                    Console.WriteLine(ex);
+                    // Print to console
+                    MyWrite(ex.ToString(), WriteEnum.error);
+                }
+                catch (ThreadAbortException)
+                {
+                    // Print to console
+                    MyWrite(WCM.ApplicationReset, WriteEnum.reset);
                 }
                 finally
                 {
                     // Enable all buttons
                     EnableButtons(true);
-
-                    Console.WriteLine("------------------");
-                    Console.WriteLine(graph);
-                    Console.WriteLine("------------------");
                 }
             });
             coreThread.IsBackground = true;
@@ -1992,6 +2267,7 @@ namespace GraphColoring.GUI
         #endregion
 
         // Drag and drop
+        #region
         private void GraphColoringForm_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -2029,6 +2305,7 @@ namespace GraphColoring.GUI
         {
 
         }
+        #endregion
 
         // Fill Combobox
         public void FillNamedGraphsComboBox()

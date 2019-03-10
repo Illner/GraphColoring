@@ -222,7 +222,7 @@ namespace GraphColoring.Graph.GraphProperty
         {
             if (!minimumVertexDegree.HasValue)
             {
-                GetDegreeSequence(false);
+                GetDegreeSequenceInt(false);
 
                 if (isDegreeSequenceSorted)
                 {
@@ -245,7 +245,7 @@ namespace GraphColoring.Graph.GraphProperty
         public IVertexInterface GetVertexWithDegree(int degree)
         {
             if (degreeSequence == null)
-                GetDegreeSequence(false);
+                GetDegreeSequenceInt(false);
 
             return (from record in degreeSequence where record.Value == degree select record.Key).First();
         }
@@ -258,7 +258,7 @@ namespace GraphColoring.Graph.GraphProperty
         {
             if (!maximumVertexDegree.HasValue)
             {
-                GetDegreeSequence(false);
+                GetDegreeSequenceInt(false);
 
                 if (isDegreeSequenceSorted)
                     maximumVertexDegree = degreeSequenceInt.Last();
@@ -277,7 +277,7 @@ namespace GraphColoring.Graph.GraphProperty
         {
             if (!averageVertexDegree.HasValue)
             {
-                GetDegreeSequence(false);
+                GetDegreeSequenceInt(false);
 
                 averageVertexDegree = degreeSequenceInt.Average();
             }
@@ -293,7 +293,7 @@ namespace GraphColoring.Graph.GraphProperty
         {
             if (!medianVertexDegree.HasValue)
             {
-                GetDegreeSequence(true);
+                GetDegreeSequenceInt(true);
 
                 int numberCount = degreeSequenceInt.Count;
                 int halfIndex = degreeSequenceInt.Count / 2;

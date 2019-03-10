@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.ReaderWriter
 {
-    class WriterGraph : ReaderWriter, IWriterGraphInterface
+    public class WriterGraph : ReaderWriter, IWriterGraphInterface
     {
         // Variable
         #region

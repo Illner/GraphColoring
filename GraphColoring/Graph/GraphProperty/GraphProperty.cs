@@ -846,6 +846,7 @@ namespace GraphColoring.Graph.GraphProperty
                 stringBuilder.AppendLine("Maximum vertex degree: " + GetMaximumVertexDegree());
                 stringBuilder.AppendLine("Minimum vertex degree: " + GetMinimumVertexDegree());
                 stringBuilder.AppendLine("Average vertex degree: " + GetAverageVertexDegree());
+                stringBuilder.AppendLine("Median vertex degree: " + GetMedianVertexDegree());
             }
 
             // Cut vertices and bridges

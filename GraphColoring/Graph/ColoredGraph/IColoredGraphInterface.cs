@@ -27,6 +27,7 @@ namespace GraphColoring.Graph
         void SetSaturation(bool saturation);
         IVertexInterface GetSaturationDegreeSequence();
         bool AreAllVerticesColored();
+        int TryChangeColoring(IVertexInterface mainVertex, int color);
         #endregion
 
         // Property

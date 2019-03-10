@@ -55,6 +55,18 @@ namespace GraphColoring.GalleryOfNamedGraphs
             { NamedGraphsEnum.K8, NamedGraphsResources.CompleteGraphsResource.K8 },
         };
 
+        // Path graphs
+        static Dictionary<NamedGraphsEnum, string> pathGraphsDictionary = new Dictionary<NamedGraphsEnum, string>()
+        {
+            { NamedGraphsEnum.P3, NamedGraphsResources.PathGraphsResources.P3 },
+            { NamedGraphsEnum.P4, NamedGraphsResources.PathGraphsResources.P4 },
+            { NamedGraphsEnum.P5, NamedGraphsResources.PathGraphsResources.P5 },
+            { NamedGraphsEnum.P6, NamedGraphsResources.PathGraphsResources.P6 },
+            { NamedGraphsEnum.P7, NamedGraphsResources.PathGraphsResources.P7 },
+            { NamedGraphsEnum.P8, NamedGraphsResources.PathGraphsResources.P8 },
+            { NamedGraphsEnum.P9, NamedGraphsResources.PathGraphsResources.P9 },
+        };
+
         // Cycle graphs
         static Dictionary<NamedGraphsEnum, string> cycleGraphsDictionary = new Dictionary<NamedGraphsEnum, string>()
         {
@@ -151,6 +163,7 @@ namespace GraphColoring.GalleryOfNamedGraphs
         public static List<Dictionary<NamedGraphsEnum, string>> namedGraphsList = new List<Dictionary<NamedGraphsEnum, string>>()
         {
             completeGraphsDictionary,
+            pathGraphsDictionary,
             namedGraphsDictionary,
             completeBipartiteGraphsDictionary,
             cycleGraphsDictionary,

@@ -91,4 +91,13 @@ namespace GraphColoring.MyException.ReaderWriterException
 
         public ReaderWriterInvalidFormatException(string message, Exception inner) : base(message, inner) { }
     }
+
+    public class ReaderWriterFileDoesNotExist : ReaderWriterException
+    {
+        public ReaderWriterFileDoesNotExist() { }
+
+        public ReaderWriterFileDoesNotExist(string message) : base(message) { }
+
+        public ReaderWriterFileDoesNotExist(string message, Exception inner) : base(message, inner) { }
+    }
 }

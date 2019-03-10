@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 
 namespace AI
@@ -15,7 +16,7 @@ namespace AI
             
             // Variable
             int minCount, maxCount;
-            bool clearDB, writer;
+            bool clear, writer;
             string reader;
             
             Console.WriteLine("MinCount");
@@ -30,14 +31,17 @@ namespace AI
             reader = Console.ReadLine();
             bool.TryParse(reader, out writer);
 
-            Console.WriteLine("ClearDB");
+            Console.WriteLine("Clear");
             reader = Console.ReadLine();
-            bool.TryParse(reader, out clearDB);
+            bool.TryParse(reader, out clear);
             
-            GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphs(writer, clearDB);
+            GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsFile(writer, clear);
             generateGraphs.Generate(minCount, maxCount);
             
-
+            /*
+            GenerateGraphs.GenerateGraphsDatabase generateGraphsDatabase = new GenerateGraphs.GenerateGraphsDatabase();
+            generateGraphsDatabase.SaveDataFromFileToDB();
+            */
             /*
             for (int j = 1; j <= 5; j++)
             {
@@ -50,30 +54,30 @@ namespace AI
                 }
             }
             */
-           /*
-           foreach (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithm in (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum[])Enum.GetValues(typeof(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)))
-           {
-                //foreach (ML.CreateAI.AIEnum aiEnum in (ML.CreateAI.AIEnum[])Enum.GetValues(typeof(ML.CreateAI.AIEnum)))
-                //{
-                    if (algorithm == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.optimal ||
-                        algorithm == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI)
-                        continue;
+            /*
+            foreach (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithm in (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum[])Enum.GetValues(typeof(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)))
+            {
+                 //foreach (ML.CreateAI.AIEnum aiEnum in (ML.CreateAI.AIEnum[])Enum.GetValues(typeof(ML.CreateAI.AIEnum)))
+                 //{
+                     if (algorithm == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.optimal ||
+                         algorithm == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI)
+                         continue;
 
-                    Console.WriteLine("---------------------------------------------");
-                    Console.WriteLine(algorithm.ToString());
-                    ML.CreateAI createAI = new ML.CreateAI(ML.CreateAI.AIEnum.fastTree, algorithm);
-                    createAI.CreateModel();
-                    Console.WriteLine("Accurency: " + createAI.GetAccurancy());
-                    Console.WriteLine("LogLoss: " + createAI.GetLogLoss());
-                    Console.WriteLine("LogLossReduction: " + createAI.GetLogLossReduction());
-                    Console.WriteLine("F1 score: " + createAI.GetF1Score());
-                    Console.WriteLine("Auc: " + createAI.GetAuc());
-                    Console.WriteLine();
-                //}
-                Console.WriteLine();
-            }
-            */
-            
+                     Console.WriteLine("---------------------------------------------");
+                     Console.WriteLine(algorithm.ToString());
+                     ML.CreateAI createAI = new ML.CreateAI(ML.CreateAI.AIEnum.fastTree, algorithm);
+                     createAI.CreateModel();
+                     Console.WriteLine("Accurency: " + createAI.GetAccurancy());
+                     Console.WriteLine("LogLoss: " + createAI.GetLogLoss());
+                     Console.WriteLine("LogLossReduction: " + createAI.GetLogLossReduction());
+                     Console.WriteLine("F1 score: " + createAI.GetF1Score());
+                     Console.WriteLine("Auc: " + createAI.GetAuc());
+                     Console.WriteLine();
+                 //}
+                 Console.WriteLine();
+             }
+             */
+
             /*
             double max = double.MinValue;
             string model = "";
@@ -92,6 +96,10 @@ namespace AI
 
             Console.WriteLine("Max: " + max);
             Console.WriteLine("Path: " + model);
+            */
+            /*
+            GenerateGraphs.GenerateGraphsFile generateGraphsFile = new GenerateGraphs.GenerateGraphsFile(true, false);
+            generateGraphsFile.Pokus();
             */
         }
     }

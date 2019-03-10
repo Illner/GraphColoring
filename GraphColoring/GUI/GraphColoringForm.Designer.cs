@@ -31,6 +31,10 @@
             this.drawGraphPictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.graphColoringGroupBox = new System.Windows.Forms.GroupBox();
+            this.showMaximumAndMinimumDegreeVerticesCheckBox = new System.Windows.Forms.CheckBox();
+            this.showCutVerticesAndBridgesCheckBox = new System.Windows.Forms.CheckBox();
+            this.showSimplicialVertexCheckBox = new System.Windows.Forms.CheckBox();
+            this.showSpanningTreeCheckBox = new System.Windows.Forms.CheckBox();
             this.namedGraphsComboBox = new System.Windows.Forms.ComboBox();
             this.scheduleAppearanceCheckBox = new System.Windows.Forms.CheckBox();
             this.newGraphButton = new System.Windows.Forms.Button();
@@ -162,6 +166,10 @@
             // 
             this.graphColoringGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.graphColoringGroupBox.Controls.Add(this.showMaximumAndMinimumDegreeVerticesCheckBox);
+            this.graphColoringGroupBox.Controls.Add(this.showCutVerticesAndBridgesCheckBox);
+            this.graphColoringGroupBox.Controls.Add(this.showSimplicialVertexCheckBox);
+            this.graphColoringGroupBox.Controls.Add(this.showSpanningTreeCheckBox);
             this.graphColoringGroupBox.Controls.Add(this.namedGraphsComboBox);
             this.graphColoringGroupBox.Controls.Add(this.scheduleAppearanceCheckBox);
             this.graphColoringGroupBox.Controls.Add(this.newGraphButton);
@@ -176,6 +184,62 @@
             this.graphColoringGroupBox.TabIndex = 3;
             this.graphColoringGroupBox.TabStop = false;
             // 
+            // showMaximumAndMinimumDegreeVerticesCheckBox
+            // 
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.AutoSize = true;
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.Checked = true;
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.Location = new System.Drawing.Point(9, 486);
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.Name = "showMaximumAndMinimumDegreeVerticesCheckBox";
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.Size = new System.Drawing.Size(239, 17);
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.TabIndex = 11;
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.Text = "Show maximum and minimum degree vertices";
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.UseVisualStyleBackColor = true;
+            this.showMaximumAndMinimumDegreeVerticesCheckBox.CheckedChanged += new System.EventHandler(this.showCheckBox_CheckedChanged);
+            // 
+            // showCutVerticesAndBridgesCheckBox
+            // 
+            this.showCutVerticesAndBridgesCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.showCutVerticesAndBridgesCheckBox.AutoSize = true;
+            this.showCutVerticesAndBridgesCheckBox.Checked = true;
+            this.showCutVerticesAndBridgesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showCutVerticesAndBridgesCheckBox.Location = new System.Drawing.Point(9, 463);
+            this.showCutVerticesAndBridgesCheckBox.Name = "showCutVerticesAndBridgesCheckBox";
+            this.showCutVerticesAndBridgesCheckBox.Size = new System.Drawing.Size(169, 17);
+            this.showCutVerticesAndBridgesCheckBox.TabIndex = 10;
+            this.showCutVerticesAndBridgesCheckBox.Text = "Show cut vertices and bridges";
+            this.showCutVerticesAndBridgesCheckBox.UseVisualStyleBackColor = true;
+            this.showCutVerticesAndBridgesCheckBox.CheckedChanged += new System.EventHandler(this.showCheckBox_CheckedChanged);
+            // 
+            // showSimplicialVertexCheckBox
+            // 
+            this.showSimplicialVertexCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.showSimplicialVertexCheckBox.AutoSize = true;
+            this.showSimplicialVertexCheckBox.Checked = true;
+            this.showSimplicialVertexCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showSimplicialVertexCheckBox.Location = new System.Drawing.Point(129, 440);
+            this.showSimplicialVertexCheckBox.Name = "showSimplicialVertexCheckBox";
+            this.showSimplicialVertexCheckBox.Size = new System.Drawing.Size(129, 17);
+            this.showSimplicialVertexCheckBox.TabIndex = 9;
+            this.showSimplicialVertexCheckBox.Text = "Show simplicial vertex";
+            this.showSimplicialVertexCheckBox.UseVisualStyleBackColor = true;
+            this.showSimplicialVertexCheckBox.CheckedChanged += new System.EventHandler(this.showCheckBox_CheckedChanged);
+            // 
+            // showSpanningTreeCheckBox
+            // 
+            this.showSpanningTreeCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.showSpanningTreeCheckBox.AutoSize = true;
+            this.showSpanningTreeCheckBox.Checked = true;
+            this.showSpanningTreeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showSpanningTreeCheckBox.Location = new System.Drawing.Point(9, 440);
+            this.showSpanningTreeCheckBox.Name = "showSpanningTreeCheckBox";
+            this.showSpanningTreeCheckBox.Size = new System.Drawing.Size(120, 17);
+            this.showSpanningTreeCheckBox.TabIndex = 8;
+            this.showSpanningTreeCheckBox.Text = "Show spanning tree";
+            this.showSpanningTreeCheckBox.UseVisualStyleBackColor = true;
+            this.showSpanningTreeCheckBox.CheckedChanged += new System.EventHandler(this.showCheckBox_CheckedChanged);
+            // 
             // namedGraphsComboBox
             // 
             this.namedGraphsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -188,8 +252,9 @@
             // 
             // scheduleAppearanceCheckBox
             // 
+            this.scheduleAppearanceCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.scheduleAppearanceCheckBox.AutoSize = true;
-            this.scheduleAppearanceCheckBox.Location = new System.Drawing.Point(9, 484);
+            this.scheduleAppearanceCheckBox.Location = new System.Drawing.Point(9, 417);
             this.scheduleAppearanceCheckBox.Name = "scheduleAppearanceCheckBox";
             this.scheduleAppearanceCheckBox.Size = new System.Drawing.Size(131, 17);
             this.scheduleAppearanceCheckBox.TabIndex = 1;
@@ -238,15 +303,15 @@
             // 
             // algorithmListBox
             // 
-            this.algorithmListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.algorithmListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.algorithmListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.algorithmListBox.FormattingEnabled = true;
             this.algorithmListBox.IntegralHeight = false;
             this.algorithmListBox.ItemHeight = 16;
             this.algorithmListBox.Location = new System.Drawing.Point(7, 297);
             this.algorithmListBox.Name = "algorithmListBox";
-            this.algorithmListBox.Size = new System.Drawing.Size(252, 184);
+            this.algorithmListBox.Size = new System.Drawing.Size(252, 114);
             this.algorithmListBox.TabIndex = 3;
             // 
             // saveGraphButton
@@ -289,7 +354,7 @@
             this.copyrightStatusLabel.Name = "copyrightStatusLabel";
             this.copyrightStatusLabel.Size = new System.Drawing.Size(1297, 17);
             this.copyrightStatusLabel.Spring = true;
-            this.copyrightStatusLabel.Text = "© 2018 Petr Illner. All rights reserved";
+            this.copyrightStatusLabel.Text = "© 2018 - 2019 Petr Illner. All rights reserved";
             // 
             // statusStatusLabel
             // 
@@ -463,7 +528,7 @@
             this.generateGraphGroupBox.Controls.Add(this.generateGraphButton);
             this.generateGraphGroupBox.Location = new System.Drawing.Point(3, 575);
             this.generateGraphGroupBox.Name = "generateGraphGroupBox";
-            this.generateGraphGroupBox.Size = new System.Drawing.Size(264, 149);
+            this.generateGraphGroupBox.Size = new System.Drawing.Size(265, 149);
             this.generateGraphGroupBox.TabIndex = 7;
             this.generateGraphGroupBox.TabStop = false;
             this.generateGraphGroupBox.Text = "Generate graph";
@@ -1323,5 +1388,9 @@
         private System.Windows.Forms.Label newVertexNameGraphModificationVertexLabel;
         private System.Windows.Forms.TextBox newVertexNameGraphModificationVertexTextBox;
         private System.Windows.Forms.ComboBox namedGraphsComboBox;
+        private System.Windows.Forms.CheckBox showCutVerticesAndBridgesCheckBox;
+        private System.Windows.Forms.CheckBox showSimplicialVertexCheckBox;
+        private System.Windows.Forms.CheckBox showSpanningTreeCheckBox;
+        private System.Windows.Forms.CheckBox showMaximumAndMinimumDegreeVerticesCheckBox;
     }
 }

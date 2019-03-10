@@ -96,7 +96,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
                 stringBuilder.AppendLine(graph.ToString());
 
                 // Sorted
-                List<int> degreeSequenceList = graph.GetGraphProperty().GetDegreeSequence(true);
+                List<int> degreeSequenceList = graph.GetGraphProperty().GetDegreeSequenceInt(true);
                 
                 stringBuilder.AppendLine("Degree sequence");
                 foreach (int degree in degreeSequenceList)
@@ -113,7 +113,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
                 graph.GetGraphProperty().Reset();
 
                 // Unsorted
-                degreeSequenceList = graph.GetGraphProperty().GetDegreeSequence(false);
+                degreeSequenceList = graph.GetGraphProperty().GetDegreeSequenceInt(false);
 
                 stringBuilder.AppendLine("Degree sequence");
                 foreach (int degree in degreeSequenceList)

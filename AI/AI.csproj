@@ -134,11 +134,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Database.cs" />
+    <Compile Include="GenerateGraphs\GenerateGraphsDatabase.cs" />
     <Compile Include="GenerateGraphs\GenerateGraphs.cs" />
+    <Compile Include="GenerateGraphs\GenerateGraphsFile.cs" />
     <Compile Include="ML\AIEnum.cs" />
     <Compile Include="ML\CreateAI.cs" />
     <Compile Include="MyException\AIException.cs" />
-    <Compile Include="MyException\DatabaseException.cs" />
+    <Compile Include="MyException\GenerateGraphsException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

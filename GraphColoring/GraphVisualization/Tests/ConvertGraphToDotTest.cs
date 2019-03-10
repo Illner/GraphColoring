@@ -103,11 +103,11 @@ namespace GraphColoring.GraphVisualization.Tests
                 stringBuilder.AppendLine(graph.ToString());
 
                 stringBuilder.AppendLine("Standard graph");
-                convertGraphToDot = new ConvertGraphToDot(graphList, false);
+                convertGraphToDot = new ConvertGraphToDot(graphList, false, true, true, true, true);
                 stringBuilder.AppendLine(convertGraphToDot.Convert());
 
                 stringBuilder.AppendLine("Uncolored schedule");
-                convertGraphToDot = new ConvertGraphToDot(graphList, true);
+                convertGraphToDot = new ConvertGraphToDot(graphList, true, true, true, true, true);
                 stringBuilder.AppendLine(convertGraphToDot.Convert());
 
                 GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence largestFirstSequence;
@@ -118,7 +118,7 @@ namespace GraphColoring.GraphVisualization.Tests
                 }
 
                 stringBuilder.AppendLine("Colored schedule");
-                convertGraphToDot = new ConvertGraphToDot(graphList, true);
+                convertGraphToDot = new ConvertGraphToDot(graphList, true, true, true, true, true);
                 stringBuilder.AppendLine(convertGraphToDot.Convert());
             }
             catch (KeyNotFoundException)

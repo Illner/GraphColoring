@@ -151,6 +151,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NamedGraphsResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\PathGraphsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PathGraphsResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="GalleryOfNamedGraphs\NamedGraphsResources\PlatonicSolidsResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -218,6 +223,7 @@
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\Tests\GreedyIndependentSetTest.cs" />
     <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmInterface.cs" />
     <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmStepInterface.cs" />
+    <Compile Include="GraphColoringAlgorithm\IllnerAlgorithm\IllnerAlgorithm.cs" />
     <Compile Include="GraphColoringAlgorithm\Optimal\Tests\OptimalResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -498,6 +504,13 @@
     <None Include="bin\Debug\NamedGraphs\MarkstromGraph.graph" />
     <None Include="bin\Debug\NamedGraphs\McGeeGraph.graph" />
     <None Include="bin\Debug\NamedGraphs\MoserSpindle.graph" />
+    <None Include="bin\Debug\NamedGraphs\Path graphs\P3.graph" />
+    <None Include="bin\Debug\NamedGraphs\Path graphs\P4.graph" />
+    <None Include="bin\Debug\NamedGraphs\Path graphs\P5.graph" />
+    <None Include="bin\Debug\NamedGraphs\Path graphs\P6.graph" />
+    <None Include="bin\Debug\NamedGraphs\Path graphs\P7.graph" />
+    <None Include="bin\Debug\NamedGraphs\Path graphs\P8.graph" />
+    <None Include="bin\Debug\NamedGraphs\Path graphs\P9.graph" />
     <None Include="bin\Debug\NamedGraphs\Platonic solids\Cube.graph" />
     <None Include="bin\Debug\NamedGraphs\Platonic solids\Dodecahedron.graph" />
     <None Include="bin\Debug\NamedGraphs\Platonic solids\Icosahedron.graph" />
@@ -740,6 +753,10 @@
     <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\FullereneGraphsResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FullereneGraphsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\PathGraphsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PathGraphsResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="GalleryOfNamedGraphs\NamedGraphsResources\PlatonicSolidsResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

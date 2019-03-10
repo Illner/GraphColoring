@@ -165,7 +165,7 @@ namespace GraphColoring.Graph
                 throw new MyException.GraphException.GraphAlreadyInitializedException();
 
             if (GetRealCountVertices() != graphProperty.GetCountVertices())
-                throw new MyException.GraphException.GraphInvalidCountVerticesException();
+                throw new MyException.GraphException.GraphInvalidCountVerticesException("Real count of vertices: " + realCountVertices + ", count of vertices: " + graphProperty.GetCountVertices());
 
             isInitialized = true;
 

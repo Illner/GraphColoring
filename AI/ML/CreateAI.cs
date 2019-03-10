@@ -49,8 +49,8 @@ namespace AI.ML
             // Generate data
             if (generateData)
             {
-                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphs();
-                generateGraphs.GetDatabase().SaveDataFromDatabaseToFile(GetPathData(), algorithmEnum);
+                Database.Database database = new Database.Database();
+                database.SaveDataFromDatabaseToFile(GetPathData(), algorithmEnum);
             }
 
             // Check if data file exists

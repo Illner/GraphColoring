@@ -10,12 +10,17 @@ namespace GraphColoring.GraphVisualization
     partial class GraphVisualization : IGraphVisualizationInterface
     {
         // Variable
-        private bool isSchedule;
         private Image image;
         private List<Graph.IGraphInterface> graphList;
-        private const int MAXALLOWEDVERTICES = 100;
+        private const int MAXALLOWEDVERTICES = 50;
         private FileNameExtensionEnum fileNameExtensionEnum;
         private IConvertGraphToDotInterface convertGraphToDot;
+        
+        private bool isSchedule;
+        private bool showSpanningTree;
+        private bool showSimplicialVertex;
+        private bool showCutVerticesAndBridges;
+        private bool showMaximumAndMinimumDegreeVertices;
 
         private const string LIB_GVC = @".\GraphVisualization\DOT\gvc.dll";
         private const string LIB_GRAPH = @".\GraphVisualization\DOT\cgraph.dll";
@@ -27,19 +32,33 @@ namespace GraphColoring.GraphVisualization
         /// Default value for fileNameExtensionEnum is .jpg
         /// </summary>
         /// <param name="graph">The graph</param>
-        public GraphVisualization(Graph.IGraphInterface graph, bool isSchedule, FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)
+        public GraphVisualization(Graph.IGraphInterface graph,
+            bool isSchedule, bool showSpanningTree, bool showSimplicialVertex, bool showCutVerticesAndBridges, bool showMaximumAndMinimumDegreeVertices,
+            FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)
         {
             graphList = new List<Graph.IGraphInterface>();
             graphList.Add(graph);
             this.fileNameExtensionEnum = fileNameExtensionEnum;
+
             this.isSchedule = isSchedule;
+            this.showSpanningTree = showSpanningTree;
+            this.showSimplicialVertex = showSimplicialVertex;
+            this.showCutVerticesAndBridges = showCutVerticesAndBridges;
+            this.showMaximumAndMinimumDegreeVertices = showMaximumAndMinimumDegreeVertices;
         }
 
-        public GraphVisualization(List<Graph.IGraphInterface> graphList, bool isSchedule, FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)
+        public GraphVisualization(List<Graph.IGraphInterface> graphList, 
+            bool isSchedule, bool showSpanningTree, bool showSimplicialVertex, bool showCutVerticesAndBridges, bool showMaximumAndMinimumDegreeVertices, 
+            FileNameExtensionEnum fileNameExtensionEnum = FileNameExtensionEnum.jpg)
         {
             this.graphList = graphList;
             this.fileNameExtensionEnum = fileNameExtensionEnum;
+
             this.isSchedule = isSchedule;
+            this.showSpanningTree = showSpanningTree;
+            this.showSimplicialVertex = showSimplicialVertex;
+            this.showCutVerticesAndBridges = showCutVerticesAndBridges;
+            this.showMaximumAndMinimumDegreeVertices = showMaximumAndMinimumDegreeVertices;
         }
 
         /// 
@@ -119,7 +138,7 @@ namespace GraphColoring.GraphVisualization
             }
 
             // Convertor from graph to DOT
-            convertGraphToDot = new ConvertGraphToDot(graphList, isSchedule);
+            convertGraphToDot = new ConvertGraphToDot(graphList, isSchedule, showSpanningTree, showSimplicialVertex, showCutVerticesAndBridges, showMaximumAndMinimumDegreeVertices);
             string source = convertGraphToDot.Convert();
             string format = fileNameExtensionEnum.ToString();
             

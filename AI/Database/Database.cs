@@ -60,6 +60,11 @@ namespace AI.Database
             foreach (GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum eulerianGraphEnum in (GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum[])Enum.GetValues(typeof(GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum)))
             {
                 id = GetEulerianGraph_ID(eulerianGraphEnum.ToString());
+
+                // EulerianGraphEnum does not exist in the DB
+                if (id == -1)
+                    continue;
+
                 IDEulerianGraphEnumDictionary.Add(id, eulerianGraphEnum);
                 EulerianGraphEnumIDDictionary.Add(eulerianGraphEnum, id);
             }
@@ -68,6 +73,11 @@ namespace AI.Database
             foreach (GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum graphClassEnum in (GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum[])Enum.GetValues(typeof(GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum)))
             {
                 id = GetGraphClass_ID(graphClassEnum.ToString());
+
+                // GraphClassEnum does not exist in the DB
+                if (id == -1)
+                    continue;
+
                 IDGraphClassEnumDictionary.Add(id, graphClassEnum);
                 GraphClassEnumIDDictionary.Add(graphClassEnum, id);
             }
@@ -76,6 +86,11 @@ namespace AI.Database
             foreach (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum in (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum[])Enum.GetValues(typeof(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)))
             {
                 id = GetGraphColoringAlgorithm_ID(graphColoringAlgorithmEnum.ToString());
+
+                // Algorithm does not exist in the DB
+                if (id == -1)
+                    continue;
+
                 IDGraphColoringAlgorithmEnumDictionary.Add(id, graphColoringAlgorithmEnum);
                 GraphColoringAlgorithmEnumIDDictionary.Add(graphColoringAlgorithmEnum, id);
             }
@@ -1215,8 +1230,18 @@ namespace AI.Database
             if (graph.GetGraphProperty().GetCountComponents() != 1)
                 throw new GraphColoring.MyException.GraphException.GraphIsNotConnected();
 
-            return ExistsGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
-                graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), EulerianGraphEnumIDDictionary[graph.GetGraphProperty().GetIsEulerian()], graph.GetGraphProperty().GetMaximumVertexDegree(),
+            // Get EulerianGraphEnum
+            int eulerianGraphID;
+            if (!EulerianGraphEnumIDDictionary.TryGetValue(graph.GetGraphProperty().GetIsEulerian(), out eulerianGraphID))
+                eulerianGraphID = EulerianGraphEnumIDDictionary[GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum.undefined];
+
+            // Get GraphClassEnum
+            int graphClassID;
+            if (!GraphClassEnumIDDictionary.TryGetValue(graph.GetGraphProperty().GetGraphClass(), out graphClassID))
+                graphClassID = GraphClassEnumIDDictionary[GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum.undefined];
+
+            return ExistsGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), graphClassID, graph.GetGraphProperty().GetIsChordal(),
+                graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), eulerianGraphID, graph.GetGraphProperty().GetMaximumVertexDegree(),
                 graph.GetGraphProperty().GetMinimumVertexDegree(), graph.GetGraphProperty().GetAverageVertexDegree(), graph.GetGraphProperty().GetMedianVertexDegree(), graph.GetGraphProperty().GetCutVertices().Count, 
                 graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequenceInt(false).ToArray());
         }
@@ -1224,7 +1249,17 @@ namespace AI.Database
         public bool ExistsGraph(int CountVertices, int CountEdges, GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum EulerianGraph,
             int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth, int[] VertexDegreeArray)
         {
-            return ExistsGraphPrivate(CountVertices, CountEdges, GraphClassEnumIDDictionary[GraphClass], IsChordal, IsRegular, IsCyclic, EulerianGraphEnumIDDictionary[EulerianGraph],
+            // Get EulerianGraphEnum
+            int eulerianGraphID;
+            if (!EulerianGraphEnumIDDictionary.TryGetValue(EulerianGraph, out eulerianGraphID))
+                eulerianGraphID = EulerianGraphEnumIDDictionary[GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum.undefined];
+
+            // Get GraphClassEnum
+            int graphClassID;
+            if (!GraphClassEnumIDDictionary.TryGetValue(GraphClass, out graphClassID))
+                graphClassID = GraphClassEnumIDDictionary[GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum.undefined];
+
+            return ExistsGraphPrivate(CountVertices, CountEdges, graphClassID, IsChordal, IsRegular, IsCyclic, eulerianGraphID,
                                MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree, CountCutVertices,
                                CountBridges, Girth, VertexDegreeArray);
         }
@@ -1239,8 +1274,18 @@ namespace AI.Database
             if (graph.GetGraphProperty().GetCountComponents() != 1)
                 throw new GraphColoring.MyException.GraphException.GraphIsNotConnected();
 
-            InsertGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
-                graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), EulerianGraphEnumIDDictionary[graph.GetGraphProperty().GetIsEulerian()], graph.GetGraphProperty().GetMaximumVertexDegree(),
+            // Get EulerianGraphEnum
+            int eulerianGraphID;
+            if (!EulerianGraphEnumIDDictionary.TryGetValue(graph.GetGraphProperty().GetIsEulerian(), out eulerianGraphID))
+                eulerianGraphID = EulerianGraphEnumIDDictionary[GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum.undefined];
+
+            // Get GraphClassEnum
+            int graphClassID;
+            if (!GraphClassEnumIDDictionary.TryGetValue(graph.GetGraphProperty().GetGraphClass(), out graphClassID))
+                graphClassID = GraphClassEnumIDDictionary[GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum.undefined];
+
+            InsertGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), graphClassID, graph.GetGraphProperty().GetIsChordal(),
+                graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), eulerianGraphID, graph.GetGraphProperty().GetMaximumVertexDegree(),
                 graph.GetGraphProperty().GetMinimumVertexDegree(), graph.GetGraphProperty().GetAverageVertexDegree(), graph.GetGraphProperty().GetMedianVertexDegree(), graph.GetGraphProperty().GetCutVertices().Count, 
                 graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequenceInt(false).ToArray());
         }
@@ -1248,7 +1293,17 @@ namespace AI.Database
         public void InsertGraph(int CountVertices, int CountEdges, GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum EulerianGraph,
             int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth, int[] VertexDegreeArray)
         {
-            InsertGraphPrivate(CountVertices, CountEdges, GraphClassEnumIDDictionary[GraphClass], IsChordal, IsRegular, IsCyclic, EulerianGraphEnumIDDictionary[EulerianGraph],
+            // Get EulerianGraphEnum
+            int eulerianGraphID;
+            if (!EulerianGraphEnumIDDictionary.TryGetValue(EulerianGraph, out eulerianGraphID))
+                eulerianGraphID = EulerianGraphEnumIDDictionary[GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum.undefined];
+
+            // Get GraphClassEnum
+            int graphClassID;
+            if (!GraphClassEnumIDDictionary.TryGetValue(GraphClass, out graphClassID))
+                graphClassID = GraphClassEnumIDDictionary[GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum.undefined];
+
+            InsertGraphPrivate(CountVertices, CountEdges, graphClassID, IsChordal, IsRegular, IsCyclic, eulerianGraphID,
                                MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree, CountCutVertices,
                                CountBridges, Girth, VertexDegreeArray);
         }
@@ -1264,8 +1319,18 @@ namespace AI.Database
             if (graph.GetGraphProperty().GetCountComponents() != 1)
                 throw new GraphColoring.MyException.GraphException.GraphIsNotConnected();
 
-            return GetGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), GraphClassEnumIDDictionary[graph.GetGraphProperty().GetGraphClass()], graph.GetGraphProperty().GetIsChordal(),
-                graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), EulerianGraphEnumIDDictionary[graph.GetGraphProperty().GetIsEulerian()], graph.GetGraphProperty().GetMaximumVertexDegree(),
+            // Get EulerianGraphEnum
+            int eulerianGraphID;
+            if (!EulerianGraphEnumIDDictionary.TryGetValue(graph.GetGraphProperty().GetIsEulerian(), out eulerianGraphID))
+                eulerianGraphID = EulerianGraphEnumIDDictionary[GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum.undefined];
+
+            // Get GraphClassEnum
+            int graphClassID;
+            if (!GraphClassEnumIDDictionary.TryGetValue(graph.GetGraphProperty().GetGraphClass(), out graphClassID))
+                graphClassID = GraphClassEnumIDDictionary[GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum.undefined];
+
+            return GetGraphPrivate(graph.GetGraphProperty().GetCountVertices(), graph.GetGraphProperty().GetCountEdges(), graphClassID, graph.GetGraphProperty().GetIsChordal(),
+                graph.GetGraphProperty().GetIsRegular(), graph.GetGraphProperty().GetIsCyclic(), eulerianGraphID, graph.GetGraphProperty().GetMaximumVertexDegree(),
                 graph.GetGraphProperty().GetMinimumVertexDegree(), graph.GetGraphProperty().GetAverageVertexDegree(), graph.GetGraphProperty().GetMedianVertexDegree(), graph.GetGraphProperty().GetCutVertices().Count,
                 graph.GetGraphProperty().GetBridges().Count, graph.GetGraphProperty().GetGirth(), graph.GetGraphProperty().GetDegreeSequenceInt(false).ToArray());
         }
@@ -1273,7 +1338,17 @@ namespace AI.Database
         public int GetGraph(int CountVertices, int CountEdges, GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum GraphClass, bool IsChordal, bool IsRegular, bool IsCyclic, GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum EulerianGraph,
             int MaximumVertexDegree, int MinimumVertexDegree, double AverageVertexDegree, int MedianVertexDegree, int CountCutVertices, int CountBridges, int Girth, int[] VertexDegreeArray)
         {
-            return GetGraphPrivate(CountVertices, CountEdges, GraphClassEnumIDDictionary[GraphClass], IsChordal, IsRegular, IsCyclic, EulerianGraphEnumIDDictionary[EulerianGraph],
+            // Get EulerianGraphEnum
+            int eulerianGraphID;
+            if (!EulerianGraphEnumIDDictionary.TryGetValue(EulerianGraph, out eulerianGraphID))
+                eulerianGraphID = EulerianGraphEnumIDDictionary[GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum.undefined];
+
+            // Get GraphClassEnum
+            int graphClassID;
+            if (!GraphClassEnumIDDictionary.TryGetValue(GraphClass, out graphClassID))
+                graphClassID = GraphClassEnumIDDictionary[GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum.undefined];
+
+            return GetGraphPrivate(CountVertices, CountEdges, graphClassID, IsChordal, IsRegular, IsCyclic, eulerianGraphID,
                                MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree, CountCutVertices,
                                CountBridges, Girth, VertexDegreeArray);
         }
@@ -1288,8 +1363,11 @@ namespace AI.Database
             int countColors)
         {
             // Variable
-            int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
+            int ID_GraphColoringAlgorithm;
 
+            if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
+                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+            
             InsertCore(ID_Graph, ID_GraphColoringAlgorithm, countColors);
         }
 
@@ -1307,7 +1385,10 @@ namespace AI.Database
             int countOfIterations, int minColors, int maxColors)
         {
             // Variable
-            int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
+            int ID_GraphColoringAlgorithm;
+
+            if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
+                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
 
             InsertCoreProbability(ID_Graph, ID_GraphColoringAlgorithm, countOfIterations, minColors, maxColors);
         }
@@ -1322,7 +1403,10 @@ namespace AI.Database
             int countColors)
         {
             // Variable
-            int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
+            int ID_GraphColoringAlgorithm;
+
+            if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
+                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
 
             UpdateCore(ID_Graph, ID_GraphColoringAlgorithm, countColors);
         }
@@ -1341,7 +1425,11 @@ namespace AI.Database
             int countOfIterations, int minColors, int maxColors)
         {
             // Variable
-            int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
+            int ID_GraphColoringAlgorithm;
+
+            if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
+                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+
             UpdateCoreProbability(ID_Graph, ID_GraphColoringAlgorithm, countOfIterations, minColors, maxColors);
         }
 
@@ -1355,7 +1443,10 @@ namespace AI.Database
             int countColors)
         {
             // Variable
-            int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
+            int ID_GraphColoringAlgorithm;
+
+            if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
+                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
 
             AddCore(ID_Graph, ID_GraphColoringAlgorithm, countColors);
         }
@@ -1374,7 +1465,11 @@ namespace AI.Database
             int countOfIterations, int minColors, int maxColors)
         {
             // Variable
-            int ID_GraphColoringAlgorithm = GraphColoringAlgorithmEnumIDDictionary[graphColoringAlgorithmEnum];
+            int ID_GraphColoringAlgorithm;
+
+            if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
+                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+
             AddCoreProbability(ID_Graph, ID_GraphColoringAlgorithm, countOfIterations, minColors, maxColors);
         }
 

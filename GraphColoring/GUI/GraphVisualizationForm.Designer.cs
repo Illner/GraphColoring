@@ -32,6 +32,7 @@
             this.graphVisualizationPanel = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.graphVisualizationPictureBox)).BeginInit();
             this.graphVisualizationPanel.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -70,7 +71,8 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveImageToolStripMenuItem});
+            this.saveImageToolStripMenuItem,
+            this.resetToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(800, 24);
@@ -84,6 +86,13 @@
             this.saveImageToolStripMenuItem.Text = "Save";
             this.saveImageToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
             // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.resetToolStripMenuItem.Text = "Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
             // GraphVisualizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,7 +102,8 @@
             this.Controls.Add(this.graphVisualizationPanel);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "GraphVisualizationForm";
-            this.Text = "Graph coloring - graph visialization | Illner";
+            this.Text = "Graph coloring - graph visualization | Illner";
+            this.Resize += new System.EventHandler(this.GraphVisualizationForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.graphVisualizationPictureBox)).EndInit();
             this.graphVisualizationPanel.ResumeLayout(false);
             this.graphVisualizationPanel.PerformLayout();
@@ -110,5 +120,6 @@
         private System.Windows.Forms.Panel graphVisualizationPanel;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
     }
 }

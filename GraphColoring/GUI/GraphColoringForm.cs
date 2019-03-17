@@ -2291,13 +2291,15 @@ namespace GraphColoring.GUI
         {
             if (drawGraphPictureBox.Image == null)
                 return;
-
+            
+            /*
             if (graphVisualizationForm != null)
             {
                 graphVisualizationForm.Close();
             }
+            */
 
-            graphVisualizationForm = new GraphVisualizationForm(drawGraphPictureBox.Image);
+            graphVisualizationForm = new GraphVisualizationForm(drawGraphPictureBox.Image, " - " + graph.GetName());
             graphVisualizationForm.Show();
         }
 

@@ -124,7 +124,7 @@ namespace AI.GenerateGraphs
 
                     // Genetic
                     result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph), true);
-                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm, COUNTITERATIONSPROBABILITY, result.Item1, result.Item2);
+                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm, COUNTITERATIONSPROBABILITY, result.Item1, result.Item2);
 
                     // Illner
 
@@ -295,8 +295,8 @@ namespace AI.GenerateGraphs
                             case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
                                 database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm, int.Parse(lineArray[1]));
                                 break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
+                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm:
+                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
                                 break;
                             default:
                                 throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(lineArray[0]);

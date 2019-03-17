@@ -11,14 +11,17 @@ namespace GraphColoring.GUI
         private int xPos;
         private int yPos;
         private bool Dragging;
+        private Image copyImage;
         private int MINMAX = 3;             // 3 times bigger or smaller than the ctrl
         private double ZOOMFACTOR = 1.25;   // = 25% smaller or larger
 
-        public GraphVisualizationForm(Image image)
+        public GraphVisualizationForm(Image image, string headerText = "")
         {
             InitializeComponent();
+            this.Text += headerText;
             WindowState = FormWindowState.Maximized;
             graphVisualizationPictureBox.Image = image;
+            copyImage = image;
         }
 
         private void GraphVisualizationForm_MouseDown(object sender, MouseEventArgs e)
@@ -81,6 +84,15 @@ namespace GraphColoring.GUI
             }
         }
 
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            graphVisualizationPictureBox.Image = copyImage;
+            graphVisualizationPictureBox.Width = copyImage.Width;
+            graphVisualizationPictureBox.Height = copyImage.Height;
+            graphVisualizationPictureBox.Top = 0;
+            graphVisualizationPictureBox.Left = 0;
+        }
+
         /// <summary>
         /// Show a messageBox
         /// </summary>
@@ -124,6 +136,11 @@ namespace GraphColoring.GUI
                 graphVisualizationPictureBox.Height = Convert.ToInt32(graphVisualizationPictureBox.Height / ZOOMFACTOR);
                 graphVisualizationPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             }
+        }
+
+        private void GraphVisualizationForm_Resize(object sender, EventArgs e)
+        {
+            resetToolStripMenuItem_Click(null, null);
         }
     }
 }

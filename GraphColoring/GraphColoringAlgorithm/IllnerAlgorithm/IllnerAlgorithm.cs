@@ -78,6 +78,7 @@ namespace GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm
             Dictionary<int, int> colorsDictionary;
             for (int i = 0; i < countVertices; i++)
             {
+                //Console.WriteLine("-- " + i + " - " + actualVertex.GetUserName());
                 colorsDictionary = new Dictionary<int, int>();
                 neighborsVertexList = graph.Neighbours(actualVertex);
 
@@ -108,7 +109,8 @@ namespace GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm
                 if (colorsDictionary.Count == 0)
                 {
                     int color = coloredGraph.TryChangeColoring(actualVertex, coloredGraph.GreedyColoring(actualVertex));
-                    coloredGraph.ColorVertex(actualVertex, color); // coloredGraph.GreedyColoring(actualVertex));
+                    coloredGraph.ColorVertex(actualVertex, color);
+                    //coloredGraph.ColorVertex(actualVertex, coloredGraph.GreedyColoring(actualVertex));
 
                     if (fibonacciHeap.GetCountNodes() != 0)
                         actualVertex = mappingVertexArray[fibonacciHeap.ExtractMin().GetIdentifier()];

@@ -23,7 +23,7 @@ namespace GraphColoring
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI.GraphColoringForm()); 
+            Application.Run(new GUI.GraphColoringForm());
             
 
             /*

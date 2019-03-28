@@ -130,7 +130,7 @@ namespace GraphColoring.GUI
                 case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.AI.AI(graph);
                     break;
-                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.IllnerAlgorithm:
+                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
                     break;
                 default:

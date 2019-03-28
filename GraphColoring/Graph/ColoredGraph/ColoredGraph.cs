@@ -27,6 +27,8 @@ namespace GraphColoring.Graph
             private HashSet<IVertexInterface> unColoredVertexHashSet;
             private bool isSaturation;
             private Dictionary<IVertexInterface, int> saturationDegreeSequence;
+            // InterchangeExtended
+            private Dictionary<IVertexInterface, List<int>> availableRecoloringDictionary;
             #endregion
 
             // Constructor
@@ -65,7 +67,7 @@ namespace GraphColoring.Graph
 
                 neighboursList = graph.Neighbours(vertex);
 
-                foreach(IVertexInterface neighbour in neighboursList)
+                foreach (IVertexInterface neighbour in neighboursList)
                 {
                     if (neighbour.GetColor() == colorVertex)
                         return false;
@@ -84,7 +86,7 @@ namespace GraphColoring.Graph
                 List<IVertexInterface> allVerticesList = graph.AllVertices();
                 List<IVertexInterface> invalidColoredVerticesList = new List<IVertexInterface>();
 
-                foreach(IVertexInterface vertex in allVerticesList)
+                foreach (IVertexInterface vertex in allVerticesList)
                 {
                     if (!CheckValidColor(vertex))
                         invalidColoredVerticesList.Add(vertex);
@@ -105,7 +107,7 @@ namespace GraphColoring.Graph
                     throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
 
                 VertexExtended vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
-                
+
                 ChangeVertexInHashSets(vertex, color);
                 vertexExtended.SetColor(color);
 
@@ -159,10 +161,10 @@ namespace GraphColoring.Graph
 
                     if (interchange && GetCountUsedColors() > 1 && (GetCountUsedColors() < color))
                     {
-                        color = TryChangeColoring(vertex, color);
+                        TryChangeColoring(vertex, color);
                     }
-
-                    ColorVertex(vertex, color);
+                    else
+                        ColorVertex(vertex, color);
                 }
             }
 
@@ -182,7 +184,7 @@ namespace GraphColoring.Graph
                 neighboursColorList = new List<int>() { VertexExtended.GetDefaultColor() };
 
                 // Get neighbours colors
-                foreach(IVertexInterface neighbour in neighboursList)
+                foreach (IVertexInterface neighbour in neighboursList)
                 {
                     neighbourColor = neighbour.GetColor();
 
@@ -228,7 +230,7 @@ namespace GraphColoring.Graph
 
                 if (!IsVertexColored(vertex))
                     return;
-                
+
                 ChangeVertexInHashSets(vertex, VertexExtended.GetDefaultColor());
                 vertexExtended.ResetColor();
             }
@@ -247,10 +249,10 @@ namespace GraphColoring.Graph
 
                 vertexExtended = graph.ConvertVertexToVertexExtended(vertex);
                 vertexColor = vertex.GetColor();
-                
+
                 if (vertexColor == color)
                     return;
-                
+
                 // coloredVertexHashSet, unColoredVertexHashSet
                 if (color == VertexExtended.GetDefaultColor())
                 {
@@ -332,7 +334,7 @@ namespace GraphColoring.Graph
             {
                 if (unColoredVertexHashSet.Count != 0)
                     return false;
-                
+
                 if (CheckValidColor().Count != 0)
                     return false;
 
@@ -413,9 +415,9 @@ namespace GraphColoring.Graph
                     saturationDegreeSequence.Remove(vertex);
                     return;
                 }
-                
 
-                foreach(IVertexInterface neighbourVertex in neighboursVertex)
+
+                foreach (IVertexInterface neighbourVertex in neighboursVertex)
                 {
                     int color = neighbourVertex.GetColor();
 
@@ -449,7 +451,7 @@ namespace GraphColoring.Graph
                     }
                 }
             }
-               
+
             /// <summary>
             /// Return a vertex which is the most saturated
             /// </summary>
@@ -489,7 +491,7 @@ namespace GraphColoring.Graph
                 stringBuilder.AppendLine("Vertex color: ");
                 foreach (IVertexInterface vertex in vertexList)
                 {
-                    stringBuilder.AppendLine("-- Vertex: " + vertex.GetIdentifier() + ", color: " + vertex.GetColor());
+                    stringBuilder.AppendLine("-- Vertex (identifier): " + vertex.GetIdentifier() + ", vertex (userName): " + vertex.GetUserName() + ", color: " + vertex.GetColor());
                 }
 
                 return stringBuilder.ToString();
@@ -538,7 +540,7 @@ namespace GraphColoring.Graph
                 HashSet<int> colorsHashSet = new HashSet<int>();
                 List<IVertexInterface> neighboursList = graph.Neighbours(vertex);
 
-                foreach(IVertexInterface neighbour in neighboursList)
+                foreach (IVertexInterface neighbour in neighboursList)
                 {
                     colorsHashSet.Add(neighbour.GetColor());
                 }
@@ -577,23 +579,24 @@ namespace GraphColoring.Graph
                 return false;
             }
 
-            public int TryChangeColoring(IVertexInterface mainVertex, int color)
+            // Interchange
+            public bool TryChangeColoring(IVertexInterface mainVertex, int color)
             {
+                // Test
+                return TryChangeColoringExtended(mainVertex, color);
+
                 // Variable
-                bool connected;
+                bool connected = true;
                 int actualCountOfColors;
                 int color1, color2, color3;
                 Queue<IVertexInterface> vertexQueue;
-                List<IVertexInterface> neighboursList;
                 List<IVertexInterface> neighboursColorList;
                 HashSet<IVertexInterface> visitedVertexHashSet = null;
-                
-                neighboursList = graph.Neighbours(mainVertex);
-                connected = true;
+
                 color1 = VertexExtended.GetDefaultColor();
                 color2 = VertexExtended.GetDefaultColor();
                 actualCountOfColors = GetCountUsedColors();
-                
+
                 while (connected && color1 < actualCountOfColors)
                 {
                     color1++;
@@ -618,7 +621,7 @@ namespace GraphColoring.Graph
 
                             neighboursColorList = ColoredNeighbours(color3, vertex);
 
-                            foreach(IVertexInterface neighbour in neighboursColorList)
+                            foreach (IVertexInterface neighbour in neighboursColorList)
                             {
                                 if (!visitedVertexHashSet.Contains(neighbour))
                                 {
@@ -630,14 +633,14 @@ namespace GraphColoring.Graph
 
                         // Check if exists path with color1 - ... - color2 => we can't change colors
                         neighboursColorList = ColoredNeighbours(color2, mainVertex);
-                        connected = visitedVertexHashSet.Any(x => neighboursColorList.Contains(x));               
+                        connected = visitedVertexHashSet.Any(x => neighboursColorList.Contains(x));
                     }
                 }
 
                 // Path doesn't exist, we can change colors
                 if (!connected)
                 {
-                    foreach(IVertexInterface vertex in visitedVertexHashSet)
+                    foreach (IVertexInterface vertex in visitedVertexHashSet)
                     {
                         if (vertex.GetColor() == color1)
                             ColorVertex(vertex, color2);
@@ -648,7 +651,643 @@ namespace GraphColoring.Graph
                     color = color1;
                 }
 
-                return color;
+                ColorVertex(mainVertex, color);
+
+                if (!connected)
+                    return true;
+
+                return false;
+            }
+
+            // Interchange extended
+            // TODO
+            public bool TryChangeColoringExtended(IVertexInterface mainVertex, int color)
+            {
+                // Test
+                //Console.WriteLine("------------------------------------------");
+                //Console.WriteLine("TryChangeColoringExtended: " + mainVertex.GetUserName());
+                //Console.WriteLine("------------------------------------------");
+                //Console.WriteLine(graph.GetColoredGraph());
+                //Console.WriteLine("------------------------------------------");
+
+                // Variable - standard
+                bool connected = true;
+                int actualCountOfColors;
+                int color1, color2, color3;
+                Queue<IVertexInterface> vertexQueue;
+                List<IVertexInterface> neighboursColorList;
+                HashSet<IVertexInterface> visitedVertexHashSet = null;
+
+                // Variable - extended
+                bool bichromaticGraphCanBeDivided = false;
+                IVertexInterface cutVertexWithProperty = null;
+                List<IVertexInterface> potentionalCutVertices;
+                List<IVertexInterface> neighborsVerticesColor1;
+                List<IVertexInterface> neighborsVerticesColor2;
+                List<IVertexInterface> verticesWeWantToChange = null;
+                HashSet<IVertexInterface> possibleRecoloredVerticesHashSet = null;
+                bool existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2;
+
+                color1 = VertexExtended.GetDefaultColor();
+                color2 = VertexExtended.GetDefaultColor();
+                actualCountOfColors = GetCountUsedColors();
+
+                while ((!bichromaticGraphCanBeDivided && connected) && color1 < actualCountOfColors)
+                {
+                    color1++;
+                    color2 = color1;
+
+                    while ((!bichromaticGraphCanBeDivided && connected) && color2 < actualCountOfColors)
+                    {
+                        color2++;
+                        neighboursColorList = ColoredNeighbours(color1, mainVertex);
+                        visitedVertexHashSet = new HashSet<IVertexInterface>(neighboursColorList);
+                        vertexQueue = new Queue<IVertexInterface>(neighboursColorList);
+
+                        // Test
+                        //Console.WriteLine("Color1: " + color1 + ", color2: " + color2);
+
+                        // Get bichromatic graph with color1 and color2
+                        while (vertexQueue.Count != 0)
+                        {
+                            IVertexInterface vertex = vertexQueue.Dequeue();
+
+                            if (vertex.GetColor() == color1)
+                                color3 = color2;
+                            else
+                                color3 = color1;
+
+                            neighboursColorList = ColoredNeighbours(color3, vertex);
+
+                            foreach (IVertexInterface neighbour in neighboursColorList)
+                            {
+                                if (!visitedVertexHashSet.Contains(neighbour))
+                                {
+                                    visitedVertexHashSet.Add(neighbour);
+                                    vertexQueue.Enqueue(neighbour);
+                                }
+                            }
+                        }
+
+                        // Standard interchange
+                        // Check if exists path with color1 - ... - color2 => we can't change colors
+                        neighboursColorList = ColoredNeighbours(color2, mainVertex);
+                        connected = visitedVertexHashSet.Any(x => neighboursColorList.Contains(x));
+
+                        // Test
+                        //Console.WriteLine("Connected: " + connected);
+
+                        if (!connected)
+                            break;
+
+                        // Initialize valiableRecoloringDictionary
+                        availableRecoloringDictionary = new Dictionary<IVertexInterface, List<int>>();
+
+                        // Extended interchange
+                        neighborsVerticesColor1 = ColoredNeighbours(color1, mainVertex);
+                        neighborsVerticesColor2 = new List<IVertexInterface>();
+                        // Filtr vertices which are neighbors of mainVertex, have color2 and are in the bichromatic graph!
+                        List<IVertexInterface> neighborsVerticesColor2Temp = ColoredNeighbours(color2, mainVertex);
+                        foreach (IVertexInterface vertex in neighborsVerticesColor2Temp)
+                        {
+                            if (visitedVertexHashSet.Contains(vertex))
+                                neighborsVerticesColor2.Add(vertex);
+                        }
+
+                        // Check if any vertex (neighbor of mainVertex) with color1 is connected to any vertex (neighbor of mainVertex) with color2
+                        existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 = false;
+                        IVertexInterface firstVertexTemp = null, secondVertexTemp = null;
+
+                        foreach (IVertexInterface neighbor in neighborsVerticesColor1)
+                        {
+                            foreach (IVertexInterface neighborOfNeighbor in graph.Neighbours(neighbor))
+                            {
+                                /*
+                                if (graph.ExistsEdge(new Edge(neighborOfNeighbor, mainVertex)))
+                                {
+                                    existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 = true;
+
+                                    if (firstVertexTemp != null)
+                                    {
+                                        firstVertexTemp = null;
+                                        secondVertexTemp = null;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        firstVertexTemp = neighbor;
+                                        secondVertexTemp = neighborOfNeighbor;
+                                    }
+                                }
+                                */
+
+                                if (graph.Neighbours(neighbor).Any(x => neighborsVerticesColor2.Contains(x)))
+                                {
+                                    existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 = true;
+
+                                    if (firstVertexTemp != null)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                        }
+
+                        // Test
+                        //Console.WriteLine("existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2: " + existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2);
+
+                        // Exists an edge => does not exist a cut vertex that divide the bichromatic graph into two subgraphs where the first component contains 
+                        // all vertices from the neighborsVerticesColor1 and the second component contains all vertices from the neighborsVerticesColor2
+                        //if (existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 && firstVertexTemp == null)
+                        if (existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2)
+                            continue;
+
+                        // An edge does not exist => we can find all cut vertices in the bichromatic graph
+                        IGraphInterface subGraph = GraphOperation.GraphOperation.SubGraph(graph, visitedVertexHashSet.ToList());
+
+                        // Get vertices correspond to neighborsVerticesColor1 and neighborsVerticesColor2 in the subgraph
+                        List<IVertexInterface> neighborsVerticesColor1SubGraph = new List<IVertexInterface>();
+                        List<IVertexInterface> neighborsVerticesColor2SubGraph = new List<IVertexInterface>();
+                        foreach (IVertexInterface vertex in neighborsVerticesColor1)
+                        {
+                            neighborsVerticesColor1SubGraph.Add(subGraph.GetVertexByUserName(vertex.GetUserName()));
+                        }
+                        foreach (IVertexInterface vertex in neighborsVerticesColor2)
+                        {
+                            neighborsVerticesColor2SubGraph.Add(subGraph.GetVertexByUserName(vertex.GetUserName()));
+                        }
+
+                        // Add two main vertices... the first vertex for the first color and the second one for the second color
+                        IVertexInterface mainVertexColor1 = new Vertex();
+                        IVertexInterface mainVertexColor2 = new Vertex();
+                        subGraph.VertexAdd(mainVertexColor1);
+                        subGraph.VertexAdd(mainVertexColor2);
+                        // Add edges
+                        foreach (IVertexInterface vertexColor1 in neighborsVerticesColor1SubGraph)
+                        {
+                            subGraph.EdgeAdd(new Edge(mainVertexColor1, vertexColor1));
+                        }
+                        // Add edges
+                        foreach (IVertexInterface vertexColor2 in neighborsVerticesColor2SubGraph)
+                        {
+                            subGraph.EdgeAdd(new Edge(mainVertexColor2, vertexColor2));
+                        }
+
+                        // Get potentional cut vertices
+                        potentionalCutVertices = subGraph.GetGraphProperty().GetCutVertices();
+                        /*
+                        if (existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2)
+                        {
+                            List<IVertexInterface> nevim = new List<IVertexInterface>() { firstVertexTemp, secondVertexTemp };
+                            potentionalCutVertices = potentionalCutVertices.Intersect(nevim).ToList();
+                        }
+                        */
+                        // Test
+                        //Console.WriteLine("mainVertexColor1: " + mainVertexColor1);
+                        //Console.WriteLine("mainVertexColor2: " + mainVertexColor2);
+                        //Console.WriteLine("potentionalCutVertices");
+                        //potentionalCutVertices.ForEach(x => Console.WriteLine(x.GetUserName() + " "));
+                        //Console.WriteLine();
+
+                        IGraphInterface firstComponent = null, secondComponent = null;
+
+                        // Check if the cut vertex has the property
+                        foreach (IVertexInterface cutVertex in potentionalCutVertices)
+                        {
+                            // mainVertexColor1 and mainVertexColor2 are not allowed as cut vertices
+                            if (cutVertex.Equals(mainVertexColor1) || cutVertex.Equals(mainVertexColor2))
+                                continue;
+
+                            List<IVertexInterface> cutVertexNeighborsList = subGraph.Neighbours(cutVertex);
+                            subGraph.VertexDelete(cutVertex);
+                            //List<IGraphInterface> componentsList = subGraph.GetGraphProperty().GetComponents();
+
+                            firstComponent = subGraph.GetGraphProperty().GetComponents().First();
+                            secondComponent = subGraph.GetGraphProperty().GetComponents().Skip(1).First();
+
+                            // The mainVertexColor1 is in the first component and the mainVertexColor2 is in the second component (or vice versa)
+                            if ((firstComponent.ExistsUserName(mainVertexColor1.GetUserName()) && secondComponent.ExistsUserName(mainVertexColor2.GetUserName())) ||
+                                (secondComponent.ExistsUserName(mainVertexColor1.GetUserName()) && firstComponent.ExistsUserName(mainVertexColor2.GetUserName())))
+                            {
+                                List<IVertexInterface> possibleRecoloredVerticesList;
+
+                                if (firstComponent.ExistsUserName(mainVertexColor1.GetUserName()))
+                                    possibleRecoloredVerticesList = firstComponent.AllVertices();
+                                else
+                                    possibleRecoloredVerticesList = secondComponent.AllVertices();
+
+                                possibleRecoloredVerticesHashSet = new HashSet<IVertexInterface>();
+                                foreach (IVertexInterface vertex in possibleRecoloredVerticesList)
+                                {
+                                    if (vertex.GetUserName().Equals(mainVertexColor1.GetUserName()) || vertex.GetUserName().Equals(mainVertexColor2.GetUserName()))
+                                        continue;
+
+                                    possibleRecoloredVerticesHashSet.Add(graph.GetVertexByUserName(vertex.GetUserName()));
+                                }
+
+                                // Check if the cut vertex can be recolored
+                                if (CanBeCutVertexRecolored(graph.GetVertexByUserName(cutVertex.GetUserName()), color1, color2, false, possibleRecoloredVerticesHashSet, mainVertex))
+                                {
+                                    cutVertexWithProperty = cutVertex;
+                                    break;
+                                }
+                            }
+
+                            // The cut vertex does not have the property => recovery the bichromatic graph
+                            subGraph.VertexAdd(cutVertex);
+
+                            foreach (IVertexInterface cutVertexNeighbors in cutVertexNeighborsList)
+                            {
+                                subGraph.EdgeAdd(new Edge(cutVertex, cutVertexNeighbors));
+                            }
+                        }
+
+                        // Does not exist a cut vertex with the property
+                        if (cutVertexWithProperty == null)
+                            continue;
+                        // A cut vertex with the property exists => get all vertices which can be recolored
+                        else
+                        {
+                            IVertexInterface mainVertexColorComponent;
+
+                            // Get vertices correspond to mainVertexColor1 and mainVertexColor2 in the subgraph components
+                            // We must recolor vertices in the first component
+                            if (firstComponent.ExistsUserName(mainVertexColor1.GetUserName()))
+                            {
+                                mainVertexColorComponent = firstComponent.GetVertexByUserName(mainVertexColor1.GetUserName());
+
+                                verticesWeWantToChange = firstComponent.AllVertices();
+                            }
+                            // We must recolor vertices in the second component
+                            else
+                            {
+                                mainVertexColorComponent = secondComponent.GetVertexByUserName(mainVertexColor1.GetUserName());
+
+                                verticesWeWantToChange = secondComponent.AllVertices();
+                            }
+
+                            verticesWeWantToChange.Remove(mainVertexColorComponent);
+
+                            bichromaticGraphCanBeDivided = true;
+                        }
+
+                        // Test
+                        //Console.WriteLine("bichromaticGraphCanBeDivided: " + bichromaticGraphCanBeDivided);
+                    }
+
+                    // Test
+                    //Console.WriteLine();
+                }
+
+                // Path doesn't exist, we can change colors
+                if (!connected)
+                {
+                    foreach (IVertexInterface vertex in visitedVertexHashSet)
+                    {
+                        if (vertex.GetColor() == color1)
+                            ColorVertex(vertex, color2);
+                        else
+                            ColorVertex(vertex, color1);
+                    }
+
+                    color = color1;
+                }
+
+                if (bichromaticGraphCanBeDivided)
+                {
+                    // Test
+                    //Console.WriteLine("cutVertexWithProperty: " + cutVertexWithProperty.GetUserName());
+
+                    // Test
+                    //Console.WriteLine("Before cutVertexWithProperty: " + graph.GetVertexByUserName(cutVertexWithProperty.GetUserName()).GetColor());
+
+                    // Recolor the cut vertex
+                    CanBeCutVertexRecolored(graph.GetVertexByUserName(cutVertexWithProperty.GetUserName()), color1, color2, true, possibleRecoloredVerticesHashSet, mainVertex);
+
+                    // Test
+                    //Console.WriteLine("After cutVertexWithProperty: " + graph.GetVertexByUserName(cutVertexWithProperty.GetUserName()).GetColor());
+
+                    // Recolor all vertices in a component
+                    foreach (IVertexInterface vertexInSubGraph in verticesWeWantToChange)
+                    {
+                        IVertexInterface vertex = graph.GetVertexByUserName(vertexInSubGraph.GetUserName());
+
+                        // Test
+                        //Console.WriteLine("vertex: " + vertex.GetColor());
+
+                        if (vertex.GetColor() == color1)
+                            ColorVertex(vertex, color2);
+                        else
+                            ColorVertex(vertex, color1);
+                    }
+
+                    // Recolor the main vertex
+                    /*
+                    if (ColorsNeighbours(mainVertex).Contains(color1))
+                        color = color2;
+                    else
+                        color = color1;
+                    */
+                    color = color1;
+
+                    // Test
+                    //Console.WriteLine("mainVertex: " + color);
+                }
+
+                ColorVertex(mainVertex, color);
+
+                // Test
+                //Console.WriteLine("------------------------------------------");
+                //Console.WriteLine("TryChangeColoringExtended: " + mainVertex.GetUserName());
+                //Console.WriteLine("------------------------------------------");
+                //Console.WriteLine(graph.GetColoredGraph());
+                //Console.WriteLine("------------------------------------------");
+
+                if (bichromaticGraphCanBeDivided || !connected)
+                    return true;
+
+                return false;
+            }
+
+            /// <summary>
+            /// Check if the cut vertex can be recolored
+            /// 1) recolor the vertex without recoloring his neighbors
+            /// 2) recolor his all neighbors which have the same color and their original color use for recoloring the cut vertex
+            /// </summary>
+            /// <param name="cutVertex">Cut vertex which we want to recolor</param>
+            /// <param name="invalidColor1">The first color which the actualVertex must not be colored</param>
+            /// <param name="invalidColor2">The second color which the actualVertex must not be colored</param>
+            /// <param name="recolor">Recolor vertices if it is possible?</param>
+            /// <returns>true if the cut vertex can be recolored, otherwise false</returns>
+            private bool CanBeCutVertexRecolored(IVertexInterface cutVertex, int invalidColor1, int invalidColor2, bool recolor, HashSet<IVertexInterface> possibleRecoloredVerticesHashSet, IVertexInterface mainVertex)
+            {
+                // Test
+                //Console.WriteLine("CanBeCutVertexRecolored: " + cutVertex.GetUserName());
+
+                // Variable
+                List<int> availableRecoloringList;
+                int color2 = invalidColor1;
+
+                if (cutVertex.GetColor() == invalidColor1)
+                    color2 = invalidColor2;
+
+                // Try to recolor the cut vertex without recoloring his neighbors
+                availableRecoloringList = CanBeVertexRecolored(cutVertex, VertexExtended.GetDefaultColor(), invalidColor1, color2, possibleRecoloredVerticesHashSet, mainVertex);
+                availableRecoloringList.Remove(invalidColor1);
+                availableRecoloringList.Remove(invalidColor2);
+
+                // The cut vertex can be recolored without recoloring his neighbors
+                if (availableRecoloringList.Count() > 0)
+                {
+                    // Test
+                    //Console.WriteLine("1)");
+
+                    if (!recolor)
+                        return true;
+                    
+                    ColorVertex(cutVertex, GetMostUsedColorNeighborsNeighbor(cutVertex, availableRecoloringList));
+
+                    return true;
+                }
+
+                // The cut vertex can not be recolored without recoloring his neighbors => try to recolor his neighbors with the same color 
+                foreach (int color in ColorsNeighbours(cutVertex))
+                {
+                    bool canBeNeighborsRecolored = true;
+
+                    if (color == invalidColor1 || color == invalidColor2)
+                        continue;
+
+                    foreach (IVertexInterface neighbor in ColoredNeighbours(color, cutVertex))
+                    {
+                        // Test
+                        //Console.WriteLine("->");
+
+                        if (CanBeVertexRecolored(neighbor, cutVertex.GetColor(), invalidColor1, color2, possibleRecoloredVerticesHashSet, mainVertex).Count() == 0)
+                        {
+                            // Test
+                            //Console.WriteLine("<-");
+                            //Console.WriteLine("Fail");
+
+                            canBeNeighborsRecolored = false;
+                            break;
+                        }
+                        // Test
+                        //Console.WriteLine("<-");
+                    }
+
+                    // Neighbors with the same color can be recolored
+                    if (canBeNeighborsRecolored)
+                    {
+                        // Test
+                        //Console.WriteLine("2)");
+
+                        if (recolor)
+                        {
+                            foreach (IVertexInterface neighbor in ColoredNeighbours(color, cutVertex))
+                            {
+                                availableRecoloringList = CanBeVertexRecolored(neighbor, cutVertex.GetColor(), invalidColor1, color2, possibleRecoloredVerticesHashSet, mainVertex);
+                                
+                                ColorVertex(neighbor, GetMostUsedColorNeighborsNeighbor(neighbor, availableRecoloringList));
+
+                                //ColorVertex(neighbor, availableRecoloringList.First());
+
+                                // Test
+                                //Console.WriteLine("Set: vertex {0} -> {1}", neighbor.GetUserName(), availableRecoloringList.First());
+                            }
+
+                            ColorVertex(cutVertex, color);
+                        }
+
+                        return true;
+                    }
+                }
+
+                // Test
+                //Console.WriteLine("0)");
+
+                return false;
+            }
+
+            /// <summary>
+            /// Return a list which contains all available colors which can be used for recoloring the vertex
+            /// If the count of neighbors with color parentColor is 1 than this color be added to the list
+            /// </summary>
+            /// <param name="vertex">vertex</param>
+            /// <param name="parentColor">cut vertex color</param>
+            /// <returns></returns>
+            private List<int> CanBeVertexRecolored(IVertexInterface vertex, int parentColor, int color1, int color2, HashSet<IVertexInterface> possibleRecoloredVerticesHashSet, IVertexInterface mainVertex)
+            {
+                // Test
+                //Console.WriteLine("CanBeVertexRecolored: Vertex: {0}, parentColor: {1}", vertex.GetUserName(), parentColor);
+
+                // Variable
+                List<int> availableRecoloringList, availableRecoloringListCopy;
+
+                // Check if the vertex avainle is not already computed
+                availableRecoloringDictionary.TryGetValue(vertex, out availableRecoloringList);
+
+                // Vertex has been computed before
+                if (availableRecoloringList != null)
+                {
+                    availableRecoloringListCopy = new List<int>(availableRecoloringList);
+
+                    if (parentColor != VertexExtended.GetDefaultColor() && ColoredNeighbours(parentColor, vertex).Count() == 1)
+                    {
+                        bool isNeighborAnyPossibleRecoloredVertexParent = false;
+
+                        foreach (IVertexInterface neighbor in graph.Neighbours(vertex))
+                        {
+                            if (neighbor.GetColor() == color2 && possibleRecoloredVerticesHashSet.Contains(neighbor))
+                            {
+                                isNeighborAnyPossibleRecoloredVertexParent = true;
+                                break;
+                            }
+                        }
+
+                        if (!isNeighborAnyPossibleRecoloredVertexParent)
+                            availableRecoloringListCopy.Add(parentColor);
+                    }
+                    else
+                    {
+                        bool isNeighborAnyPossibleRecoloredVertexChange = false;
+
+                        foreach (IVertexInterface neighbor in graph.Neighbours(vertex))
+                        {
+                            if (neighbor.GetColor() == parentColor && possibleRecoloredVerticesHashSet.Contains(neighbor))
+                            {
+                                isNeighborAnyPossibleRecoloredVertexChange = true;
+                                break;
+                            }
+                        }
+
+                        if (isNeighborAnyPossibleRecoloredVertexChange)
+                            availableRecoloringListCopy.Remove(color2);
+                    }
+
+                    if (graph.Neighbours(vertex).Exists(x => x.GetUserName() == mainVertex.GetUserName() ? true : false))
+                    {
+                        availableRecoloringListCopy.Remove(color1);
+                    }
+
+                    // Test
+                    //Console.WriteLine("availableRecoloringList");
+                    //availableRecoloringListCopy.ForEach(x => Console.Write(x + " "));
+                    //Console.WriteLine();
+
+                    return availableRecoloringListCopy;
+                }
+
+                // Vertex has not been computed yet
+                // Try to recolor the cut vertex without recoloring his neighbors
+                List<int> usedColors = UsedColors();
+                List<int> invalidColorsForVertex = ColorsNeighbours(vertex);
+                invalidColorsForVertex.Add(vertex.GetColor());
+
+                availableRecoloringList = usedColors.Except(invalidColorsForVertex).ToList();
+
+                availableRecoloringDictionary.Add(vertex, availableRecoloringList);
+                availableRecoloringListCopy = new List<int>(availableRecoloringList);
+
+                if (parentColor != VertexExtended.GetDefaultColor() && ColoredNeighbours(parentColor, vertex).Count() == 1)
+                {
+                    bool isNeighborAnyPossibleRecoloredVertexParent = false;
+
+                    foreach (IVertexInterface neighbor in graph.Neighbours(vertex))
+                    {
+                        if (neighbor.GetColor() == color2 && possibleRecoloredVerticesHashSet.Contains(neighbor))
+                        {
+                            isNeighborAnyPossibleRecoloredVertexParent = true;
+                            break;
+                        }
+                    }
+
+                    if (!isNeighborAnyPossibleRecoloredVertexParent)
+                        availableRecoloringListCopy.Add(parentColor);
+                }
+                else
+                {
+                    bool isNeighborAnyPossibleRecoloredVertexChange = false;
+
+                    foreach (IVertexInterface neighbor in graph.Neighbours(vertex))
+                    {
+                        if (neighbor.GetColor() == parentColor && possibleRecoloredVerticesHashSet.Contains(neighbor))
+                        {
+                            isNeighborAnyPossibleRecoloredVertexChange = true;
+                            break;
+                        }
+                    }
+
+                    if (isNeighborAnyPossibleRecoloredVertexChange)
+                        availableRecoloringListCopy.Remove(color2);
+                }
+
+                if (graph.Neighbours(vertex).Exists(x => x.GetUserName() == mainVertex.GetUserName() ? true : false))
+                {
+                    availableRecoloringListCopy.Remove(color1);
+                }
+
+                // Test
+                //Console.WriteLine("availableRecoloringList (has been computed)");
+                //availableRecoloringListCopy.ForEach(x => Console.Write(x + " "));
+                //Console.WriteLine();
+
+                return availableRecoloringListCopy;
+            }
+
+            /// <summary>
+            /// For the vertex return the most used color by neighbor's neighbor
+            /// If the availableRecoloringList is null throws GraphException
+            /// </summary>
+            /// <param name="availableColorList">list of available colors</param>
+            /// <param name="vertex">vertex</param>
+            /// <returns>the most used color by GetMostUsedColorNeighborsNeighbor's neighbor</returns>
+            public int GetMostUsedColorNeighborsNeighbor(IVertexInterface vertex, List<int> availableColorList)
+            {
+                if (availableColorList == null)
+                    throw new MyException.GraphException.GraphException("Invalid availableRecoloringList");
+
+                if (availableColorList.Count() == 0)
+                    return VertexExtended.GetDefaultColor();
+
+                // Get optimal color
+                Dictionary<int, int> colorsDictionary = new Dictionary<int, int>();
+                List<IVertexInterface> neighborsVertexList = graph.Neighbours(vertex);
+
+                foreach (int colorTemp in availableColorList)
+                {
+                    colorsDictionary.Add(colorTemp, 0);
+                }
+
+                // Set priorities for possible colors
+                foreach (IVertexInterface neighborTemp in neighborsVertexList)
+                {
+                    foreach (IVertexInterface secondNeighbor in graph.Neighbours(neighborTemp))
+                    {
+                        if (secondNeighbor.GetColor() != VertexExtended.GetDefaultColor())
+                        {
+                            if (colorsDictionary.ContainsKey(secondNeighbor.GetColor()))
+                            {
+                                colorsDictionary[secondNeighbor.GetColor()]++;
+                            }
+                        }
+                    }
+                }
+
+                // Get color with the highest priority
+                int maxUsedColor = VertexExtended.GetDefaultColor();
+                int countMaxUsedColor = int.MinValue;
+                foreach (var record in colorsDictionary)
+                {
+                    if (countMaxUsedColor < record.Value)
+                    {
+                        countMaxUsedColor = record.Value;
+                        maxUsedColor = record.Key;
+                    }
+                }
+
+                return maxUsedColor;
             }
             #endregion
 

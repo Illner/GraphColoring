@@ -8,7 +8,7 @@ namespace GraphColoring.GraphColoringAlgorithm
         {
             optimal,
             AI,
-            IllnerAlgorithm,
+            illnerAlgorithm,
             randomSequence,
 	        largestFirstSequence,
 	        smallestLastSequence,

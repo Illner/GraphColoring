@@ -140,7 +140,7 @@ namespace GraphColoring.Graph
         public IVertexInterface GetVertexByUserName(string userName)
         {
             if (!mappingUserName.TryGetValue(userName, out VertexExtended vertexExtended))
-                throw new MyException.GraphException.GraphVertexDoesntExistException();
+                throw new MyException.GraphException.GraphVertexDoesntExistException(userName);
 
             return vertexExtended;
         }

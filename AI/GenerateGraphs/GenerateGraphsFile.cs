@@ -118,6 +118,10 @@ namespace AI.GenerateGraphs
                         result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph), true);
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
 
+                        // Illner
+                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph));
+                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm.ToString() + " " + result.Item1);
+
                         if (writer)
                         {
                             Console.WriteLine("Added graph - countVertices: {0}, iteration: {1}/{2}", countVertices, (iteration + 1), countIterations);

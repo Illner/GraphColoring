@@ -20,12 +20,12 @@ namespace GraphColoring
             tests.Test();
             */
 
-            
+            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI.GraphColoringForm()); 
+            Application.Run(new GUI.GraphColoringForm());
+            */
             
-
             /*
             List<Graph.IGraphInterface> graphList = new List<Graph.IGraphInterface>();
             GenerateGraph.IGenerateGraphInterface generateGraph;
@@ -148,7 +148,7 @@ namespace GraphColoring
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
                             algorithmMethod = new GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph);
                             break;
-                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm:
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm:
                             algorithmMethod = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
@@ -194,7 +194,7 @@ namespace GraphColoring
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
                             algorithmMethod = new GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph);
                             break;
-                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgortihm:
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm:
                             algorithmMethod = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
@@ -218,7 +218,8 @@ namespace GraphColoring
                     Console.WriteLine("Time: " + myStopwatch.ElapsedMilliseconds);
                 }
             }
-            
+            */
+
             /*
             string pathDictionary = @"C:\Users\illner\Desktop\DIMACS\";
             string myPathDictionary = @"C:\Users\illner\Desktop\MyDIMACS\";
@@ -292,6 +293,44 @@ namespace GraphColoring
                 }
             }
             */
+
+            
+            Graph.IGraphInterface graph;
+            int countVertices = 30;
+            GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm illnerAlgorithm;
+            GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm geneticAlgorithm;
+
+            int illnerNumber, geneticNumber;
+
+            while (true)
+            {
+                GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(countVertices);
+                graph = erdosRenyiModel.GenerateGraph();
+
+                if (!graph.GetGraphProperty().GetIsConnected())
+                    continue;
+
+                illnerAlgorithm = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
+                Console.WriteLine(graph);
+                illnerAlgorithm.Color();
+
+                illnerNumber = graph.GetColoredGraph().GetCountUsedColors();
+
+                graph.GetColoredGraph().DeinitializationColoredGraph();
+                /*
+                geneticAlgorithm = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
+                geneticAlgorithm.Color();
+
+                geneticNumber = graph.GetColoredGraph().GetCountUsedColors();
+                
+                if (illnerNumber > geneticNumber)
+                {
+                    Console.WriteLine(graph);
+                    Console.ReadKey();
+                }
+                */
+            }
+            
         }
     }
 }

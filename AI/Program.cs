@@ -16,7 +16,7 @@ namespace AI
             
             // Variable
             int minCount, maxCount;
-            bool clear, writer;
+            bool clear = true, writer = true;
             string reader;
             
             Console.WriteLine("MinCount");

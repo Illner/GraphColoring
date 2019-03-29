@@ -77,84 +77,10 @@ namespace GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm
             }
 
             Graph.IVertexInterface actualVertex = startingVertex;
-            List<Graph.IVertexInterface> neighborsVertexList;
-            Dictionary<int, int> colorsDictionary;
             for (int i = 0; i < countVertices; i++)
             {
                 // Test
-                //Console.WriteLine("-- " + i + " - " + actualVertex.GetUserName());
-                /*
-                colorsDictionary = new Dictionary<int, int>();
-                neighborsVertexList = graph.Neighbours(actualVertex);
-
-                // Get all colors which are used in the graph
-                foreach (int color in coloredGraph.UsedColors())
-                {
-                    colorsDictionary.Add(color, 0);
-                }
-
-                // Get all possible colors which are used in the graph
-                // Add uncolored neighbors to the heap
-                foreach (Graph.IVertexInterface neighbor in neighborsVertexList)
-                {
-                    if (neighbor.GetColor() != Graph.VertexExtended.GetDefaultColor())
-                    {
-                        colorsDictionary.Remove(neighbor.GetColor());
-                    }
-                    else
-                    {
-                        if (!fibonacciHeap.ElementExists(mappingVertexDictionary[neighbor]))
-                        {
-                            fibonacciHeap.Insert(mappingVertexDictionary[neighbor], countVertices - graph.CountNeighbours(neighbor));
-                        }
-                    }
-                }
-
-                // Color the vertex with a new color
-                if (colorsDictionary.Count == 0)
-                {
-                    // Test
-                    if (extended)
-                        coloredGraph.TryChangeColoringExtended(actualVertex, coloredGraph.GreedyColoring(actualVertex));
-                    else
-                        coloredGraph.TryChangeColoring(actualVertex, coloredGraph.GreedyColoring(actualVertex));
-                    
-                    if (fibonacciHeap.GetCountNodes() != 0)
-                        actualVertex = mappingVertexArray[fibonacciHeap.ExtractMin().GetIdentifier()];
-
-                    continue;
-                }
-
-
-                // Set priorities for possible colors
-                foreach (Graph.IVertexInterface neighbor in neighborsVertexList)
-                {
-                    foreach (Graph.IVertexInterface secondNeighbor in graph.Neighbours(neighbor))
-                    {
-                        if (secondNeighbor.GetColor() != Graph.VertexExtended.GetDefaultColor())
-                        {
-                            if (colorsDictionary.ContainsKey(secondNeighbor.GetColor()))
-                            {
-                                colorsDictionary[secondNeighbor.GetColor()]++;
-                            }
-                        }
-                    }
-                }
-
-                // Get color with the highest priority
-                int maxUsedColor = Graph.VertexExtended.GetDefaultColor();
-                int countMaxUsedColor = int.MinValue;
-                foreach (var record in colorsDictionary)
-                {
-                    if (countMaxUsedColor < record.Value)
-                    {
-                        countMaxUsedColor = record.Value;
-                        maxUsedColor = record.Key;
-                    }
-                }
-
-                coloredGraph.ColorVertex(actualVertex, maxUsedColor);
-                */
+                Console.WriteLine("-- " + i + " - " + actualVertex.GetUserName());
 
                 foreach (Graph.IVertexInterface neighbor in graph.Neighbours(actualVertex))
                 {
@@ -181,15 +107,10 @@ namespace GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm
                         coloredGraph.TryChangeColoringExtended(actualVertex, coloredGraph.GreedyColoring(actualVertex));
                     else
                         coloredGraph.TryChangeColoring(actualVertex, coloredGraph.GreedyColoring(actualVertex));
-
-                    if (fibonacciHeap.GetCountNodes() != 0)
-                        actualVertex = mappingVertexArray[fibonacciHeap.ExtractMin().GetIdentifier()];
-
-                    continue;
                 }
                 
                 // Test
-                //Console.WriteLine("i: " + actualVertex.GetUserName() + " -> " + maxUsedColor);
+                Console.WriteLine("i: " + actualVertex.GetUserName() + " -> " + actualVertex.GetColor());
 
                 if (fibonacciHeap.GetCountNodes() != 0)
                     actualVertex = mappingVertexArray[fibonacciHeap.ExtractMin().GetIdentifier()];

@@ -20,11 +20,11 @@ namespace GraphColoring
             tests.Test();
             */
 
-            /*
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
-            */
+            
             
             /*
             List<Graph.IGraphInterface> graphList = new List<Graph.IGraphInterface>();
@@ -294,9 +294,9 @@ namespace GraphColoring
             }
             */
 
-            
+            /*
             Graph.IGraphInterface graph;
-            int countVertices = 30;
+            int countVertices = 100;
             GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm illnerAlgorithm;
             GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm geneticAlgorithm;
 
@@ -328,9 +328,9 @@ namespace GraphColoring
                     Console.WriteLine(graph);
                     Console.ReadKey();
                 }
-                */
+                
             }
-            
+            */
         }
     }
 }

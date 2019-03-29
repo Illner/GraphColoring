@@ -8,17 +8,24 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
     {
         // Constructor
         #region
-        public SmallestLastSequence(Graph.IGraphInterface graph, bool interchange = false) : base(graph)
+        public SmallestLastSequence(Graph.IGraphInterface graph, GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithInterchangeEnum.none) : base(graph)
         {
-            name = "Smallest last sequence algorithm";
-            timeComplexity = TimeComplexityEnum.quadraticPlusMultiply;
-
             // Interchange
-            this.interchange = interchange;
-            if (interchange)
+            this.interchangeEnum = interchangeEnum;
+
+            switch (interchangeEnum)
             {
-                name = "Smallest last sequence interchange algorithm";
-                timeComplexity = TimeComplexityEnum.quadraticPlusMultiply;
+                case GraphColoringAlgorithInterchangeEnum.none:
+                    name = "Smallest last sequence algorithm";
+                    timeComplexity = TimeComplexityEnum.quadraticPlusMultiply;
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchange:
+                    name = "Smallest last sequence interchange algorithm";
+                    timeComplexity = TimeComplexityEnum.quadraticPlusMultiply;
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
+                    name = "Smallest last sequence interchange extended algorithm";
+                    break;
             }
         }
         #endregion

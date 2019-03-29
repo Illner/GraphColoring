@@ -11,7 +11,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         {
             name = "Connected sequenctial algorithm";
             timeComplexity = TimeComplexityEnum.linear;
-            interchange = false;
+            interchangeEnum = GraphColoringAlgorithInterchangeEnum.none;
         }
         #endregion
 

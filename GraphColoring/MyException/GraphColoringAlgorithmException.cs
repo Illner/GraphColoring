@@ -51,6 +51,18 @@ namespace GraphColoring.MyException.GraphColoringAlgorithmException
     }
 
     /// <summary>
+    /// Invalid number of population
+    /// </summary>
+    public class AlgorithmGraphGeneticAlgorithmInvalidExponentCountOfIteration : GraphColoringAlgorithmException
+    {
+        public AlgorithmGraphGeneticAlgorithmInvalidExponentCountOfIteration() { }
+
+        public AlgorithmGraphGeneticAlgorithmInvalidExponentCountOfIteration(string message) : base(message) { }
+
+        public AlgorithmGraphGeneticAlgorithmInvalidExponentCountOfIteration(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
     /// Random is out of range
     /// </summary>
     public class AlgorithmGraphGeneticAlgorithmRandomNumberOutRange : GraphColoringAlgorithmException

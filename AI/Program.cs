@@ -35,7 +35,7 @@ namespace AI
             reader = Console.ReadLine();
             bool.TryParse(reader, out clear);
             
-            GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsDatabase(writer, clear);
+            GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsFile(writer, clear);
             generateGraphs.Generate(minCount, maxCount);
             
             /*

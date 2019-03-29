@@ -53,7 +53,7 @@ namespace AI.GenerateGraphs
                 case 6:
                     return 34;
                 default:
-                    return 1 * (int)Math.Pow(countVertices, 1);
+                    return 2 * (int)Math.Pow(countVertices, 1);
             }
         }
         

@@ -113,7 +113,7 @@ namespace GraphColoring.GraphVisualization.Tests
                 GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence largestFirstSequence;
                 foreach (Graph.IGraphInterface graph in graphList)
                 {
-                    largestFirstSequence = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, false);
+                    largestFirstSequence = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.none);
                     largestFirstSequence.Color();
                 }
 

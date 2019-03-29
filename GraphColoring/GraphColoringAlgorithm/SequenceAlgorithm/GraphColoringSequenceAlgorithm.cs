@@ -9,7 +9,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         // Variable
         #region
         protected List<Graph.IVertexInterface> vertexSequenceList;
-        protected bool interchange;
+        protected GraphColoringAlgorithInterchangeEnum interchangeEnum;
         #endregion
 
         // Constructor
@@ -42,8 +42,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
             // Unique vertices in list
             if (vertexSequenceList.Distinct().Count() != vertexSequenceList.Count())
                 throw new MyException.GraphColoringAlgorithmException.AlgorithmInvalidVertexSequence();
-
-            coloredGraph.GreedyColoring(vertexSequenceList, interchange);
+            
+            coloredGraph.GreedyColoring(vertexSequenceList, interchangeEnum);
             bool isColored = coloredGraph.InitializeColoredGraph();
 
             if (!isColored)

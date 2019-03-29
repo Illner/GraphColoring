@@ -19,19 +19,25 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         private int stateSize;
         private int bestColorUsed = Int32.MaxValue;
         private List<Graph.IVertexInterface> bestState;
+        private int exponentCountOfIteration;
         #endregion
 
         // Constructor
         #region
         /// <summary>
-        /// If populationSize is less than 1, throw exception AlgorithmGraphGeneticAlgorithmInvalidPopulationCount
+        /// If the populationSize is less than 1, throw exception AlgorithmGraphGeneticAlgorithmInvalidPopulationCount
+        /// If the exponentCountOfIteration is less than 1 or greater than 10 throws AlgorithmGraphGeneticAlgorithmInvalidExponentCountOfIteration
         /// </summary>
         /// <param name="graph">Graph</param>
         /// <param name="populationSize">Size of population</param>
-        public GeneticAlgorithm(Graph.IGraphInterface graph, int populationSize = 10) : base(graph)
+        /// <param name="exponentCountOfIteration">Exponent of count of iteration = (populationSize)^(exponentCountOfIteration)</param>
+        public GeneticAlgorithm(Graph.IGraphInterface graph, int exponentCountOfIteration, int populationSize = 10) : base(graph)
         {
             if (populationSize < 1)
                 throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphGeneticAlgorithmInvalidPopulationCount();
+
+            if (exponentCountOfIteration < 1 || exponentCountOfIteration > 10)
+                throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphGeneticAlgorithmInvalidExponentCountOfIteration(exponentCountOfIteration.ToString());
 
             random = new Random();
 
@@ -40,8 +46,9 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
                 populationSize++;
 
             this.populationSize = populationSize;
-            name = "Genetic algorithm";
-            timeComplexity = TimeComplexityEnum.cubicPlusQuadratic;
+            this.exponentCountOfIteration = exponentCountOfIteration;
+            name = "Genetic algorithm (exponent: " + exponentCountOfIteration + ")";
+            //timeComplexity = TimeComplexityEnum.cubicPlusQuadratic;
         }
         #endregion
 
@@ -59,7 +66,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             int indexFirstParent, indexSecondParent;
             
             stateSize = graph.GetRealCountVertices();
-            countOfIteration = stateSize * stateSize;
+            countOfIteration = (int)Math.Pow(stateSize, exponentCountOfIteration);
             coloredGraph = graph.GetColoredGraph();
 
             coloredGraph.ResetColors();

@@ -6,17 +6,24 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
     {
         // Constructor
         #region
-        public RandomSequence(Graph.IGraphInterface graph, bool interchange = false) : base(graph)
+        public RandomSequence(Graph.IGraphInterface graph, GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithInterchangeEnum.none) : base(graph)
         {
-            name = "Random sequence algorithm";
-            timeComplexity = TimeComplexityEnum.linear;
-
             // Interchange
-            this.interchange = interchange;
-            if (interchange)
+            this.interchangeEnum = interchangeEnum;
+
+            switch (interchangeEnum)
             {
-                name = "Random sequence interchange algorithm";
-                timeComplexity = TimeComplexityEnum.multiply;
+                case GraphColoringAlgorithInterchangeEnum.none:
+                    name = "Random sequence algorithm";
+                    timeComplexity = TimeComplexityEnum.linear;
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchange:
+                    name = "Random sequence interchange algorithm";
+                    timeComplexity = TimeComplexityEnum.multiply;
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
+                    name = "Random sequence interchange extended algorithm";
+                    break;
             }
         }
         #endregion

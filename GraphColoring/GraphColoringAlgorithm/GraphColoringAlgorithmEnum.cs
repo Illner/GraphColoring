@@ -10,16 +10,20 @@ namespace GraphColoring.GraphColoringAlgorithm
             AI,
             illnerAlgorithm,
             randomSequence,
-	        largestFirstSequence,
-	        smallestLastSequence,
-	        randomSequenceInterchange,
-	        largestFirstSequenceInterchange,
-	        smallestLastSequenceInterchange,
-	        connectedSequential,
+            randomSequenceInterchange,
+            randomSequenceInterchangeExtended,
+            largestFirstSequence,
+            largestFirstSequenceInterchange,
+            largestFirstSequenceInterchangeExtended,
+            smallestLastSequence,
+            smallestLastSequenceInterchange,
+            smallestLastSequenceInterchangeExtended,
+            connectedSequential,
 	        saturationLargestFirstSequence,
 	        greedyIndependentSet,
             combinationAlgorithm,
-            geneticAlgorithm
+            geneticAlgorithm,
+            geneticAlgorithm2
         }
     }
 }

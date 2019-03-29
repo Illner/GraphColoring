@@ -118,7 +118,7 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
                     case ColoredGraphEnum.interchange3:
                     case ColoredGraphEnum.interchange4:
                     case ColoredGraphEnum.interchange5:
-                        graph.GetColoredGraph().GreedyColoring(graph.AllVertices(), true);
+                        graph.GetColoredGraph().GreedyColoring(graph.AllVertices(), GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange);
                         stringBuilder.AppendLine("Graph colored.");
                         break;
                     default:

@@ -128,13 +128,22 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                     algorithm = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
                     break;
                 case GraphColoringAlgorithmEnum.randomSequenceInterchange:
-                    algorithm = new SequenceAlgorithm.RandomSequence.RandomSequence(graph, true);
+                    algorithm = new SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoringAlgorithInterchangeEnum.interchange);
                     break;
                 case GraphColoringAlgorithmEnum.largestFirstSequenceInterchange:
-                    algorithm = new SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, true);
+                    algorithm = new SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoringAlgorithInterchangeEnum.interchange);
                     break;
                 case GraphColoringAlgorithmEnum.smallestLastSequenceInterchange:
-                    algorithm = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, true);
+                    algorithm = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoringAlgorithInterchangeEnum.interchange);
+                    break;
+                case GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended:
+                    algorithm = new SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtended);
+                    break;
+                case GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended:
+                    algorithm = new SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtended);
+                    break;
+                case GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended:
+                    algorithm = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtended);
                     break;
                 case GraphColoringAlgorithmEnum.connectedSequential:
                     algorithm = new SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
@@ -146,7 +155,10 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                     algorithm = new GreedyIndependentSet.GreedyIndependentSet(graph);
                     break;
                 case GraphColoringAlgorithmEnum.geneticAlgorithm:
-                    algorithm = new GeneticAlgorithm.GeneticAlgorithm(graph);
+                    algorithm = new GeneticAlgorithm.GeneticAlgorithm(graph, 1);
+                    break;
+                case GraphColoringAlgorithmEnum.geneticAlgorithm2:
+                    algorithm = new GeneticAlgorithm.GeneticAlgorithm(graph, 2);
                     break;
                 case GraphColoringAlgorithmEnum.combinationAlgorithm:
                     algorithm = new CombinationAlgorithm.CombinationAlgorithm(graph);

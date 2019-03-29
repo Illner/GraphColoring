@@ -72,7 +72,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.Tests
                 erdosRenyiModel = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(random.Next(15, 25));
                 graph = erdosRenyiModel.GenerateGraph();
 
-                GeneticAlgorithm algorithm = new GeneticAlgorithm(graph, random.Next(250, 300));
+                GeneticAlgorithm algorithm = new GeneticAlgorithm(graph, 2, random.Next(250, 300));
                 algorithm.Color();
 
                 stringBuilder.AppendLine(algorithm.ToString());

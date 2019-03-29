@@ -214,6 +214,7 @@
     <Compile Include="GraphColoringAlgorithm\GeneticAlgorithm\Tests\GeneticAlgorithmTest.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithm.cs" />
     <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithmEnum.cs" />
+    <Compile Include="GraphColoringAlgorithm\GraphColoringAlgorithmInterchangeEnum.cs" />
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\GreedyIndependentSet.cs" />
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\Tests\GreedyIndependentSetResource.Designer.cs">
       <AutoGen>True</AutoGen>

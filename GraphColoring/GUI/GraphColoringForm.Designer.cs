@@ -305,10 +305,9 @@
             // 
             this.algorithmListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.algorithmListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.algorithmListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.algorithmListBox.FormattingEnabled = true;
             this.algorithmListBox.IntegralHeight = false;
-            this.algorithmListBox.ItemHeight = 16;
             this.algorithmListBox.Location = new System.Drawing.Point(7, 297);
             this.algorithmListBox.Name = "algorithmListBox";
             this.algorithmListBox.Size = new System.Drawing.Size(252, 114);

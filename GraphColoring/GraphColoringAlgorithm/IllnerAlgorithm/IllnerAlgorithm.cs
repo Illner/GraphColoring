@@ -80,7 +80,7 @@ namespace GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm
             for (int i = 0; i < countVertices; i++)
             {
                 // Test
-                Console.WriteLine("-- " + i + " - " + actualVertex.GetUserName());
+                //Console.WriteLine("-- " + i + " - " + actualVertex.GetUserName());
 
                 foreach (Graph.IVertexInterface neighbor in graph.Neighbours(actualVertex))
                 {
@@ -110,7 +110,7 @@ namespace GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm
                 }
                 
                 // Test
-                Console.WriteLine("i: " + actualVertex.GetUserName() + " -> " + actualVertex.GetColor());
+                //Console.WriteLine("i: " + actualVertex.GetUserName() + " -> " + actualVertex.GetColor());
 
                 if (fibonacciHeap.GetCountNodes() != 0)
                     actualVertex = mappingVertexArray[fibonacciHeap.ExtractMin().GetIdentifier()];

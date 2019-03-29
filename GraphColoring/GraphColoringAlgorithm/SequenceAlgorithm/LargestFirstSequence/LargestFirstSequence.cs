@@ -13,17 +13,25 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
 
         // Constructor
         #region
-        public LargestFirstSequence(Graph.IGraphInterface graph, bool interchange = false) : base(graph)
+        public LargestFirstSequence(Graph.IGraphInterface graph, GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithInterchangeEnum.none) : base(graph)
         {
-            name = "Largest first sequence algorithm";
-            timeComplexity = TimeComplexityEnum.linear;
-
             // Interchange
-            this.interchange = interchange;
-            if (interchange)
+            this.interchangeEnum = interchangeEnum;
+
+            switch (interchangeEnum)
             {
-                name = "Largest first sequence interchange algorithm";
-                timeComplexity = TimeComplexityEnum.multiply;
+                case GraphColoringAlgorithInterchangeEnum.none:
+                    name = "Largest first sequence algorithm";
+                    timeComplexity = TimeComplexityEnum.linear;
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchange:
+                    name = "Largest first sequence interchange algorithm";
+                    timeComplexity = TimeComplexityEnum.multiply;
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
+                    name = "Largest first sequence interchange extended algorithm";
+
+                    break;
             }
         }
         #endregion

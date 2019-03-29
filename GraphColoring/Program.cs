@@ -85,6 +85,13 @@ namespace GraphColoring
                 generateGraph = new GenerateGraph.ErdosRenyiModel.ErdosRenyiModel(random.Next(500, 500), GenerateGraph.ErdosRenyiModel.ErdosRenyiModel.ErdosRenyiModelProbabilityEnum.cLogNDividedByN);
 
                 graphNevim = generateGraph.GenerateGraph();
+
+                if (!graphNevim.GetGraphProperty().GetIsConnected())
+                {
+                    i--;
+                    continue;
+                }
+
                 if (graphNevim.GetGraphProperty().GetCountEdges() < minCount)
                 {
                     minCount = graphNevim.GetGraphProperty().GetCountEdges();
@@ -100,7 +107,7 @@ namespace GraphColoring
             graphList.Add(minGraph);
             graphList.Add(maxGraph);
 
-
+            
             foreach (GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithm in (GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum[])Enum.GetValues(typeof(GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)))
             {
                 if (algorithm == GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.optimal ||
@@ -131,13 +138,22 @@ namespace GraphColoring
                             algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange:
-                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, true);
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange:
-                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, true);
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange:
-                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, true);
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential:
                             algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
@@ -154,7 +170,7 @@ namespace GraphColoring
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
                             algorithmMethod = new GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph);
                             break;
-                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.IllnerAlgorithm:
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm:
                             algorithmMethod = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
                             break;
                     }
@@ -177,13 +193,22 @@ namespace GraphColoring
                             algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange:
-                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, true);
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange:
-                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, true);
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange:
-                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, true);
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended);
+                            break;
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended:
+                            algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended);
                             break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential:
                             algorithmMethod = new GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
@@ -200,7 +225,7 @@ namespace GraphColoring
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
                             algorithmMethod = new GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph);
                             break;
-                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.IllnerAlgorithm:
+                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm:
                             algorithmMethod = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
                             break;
                     }
@@ -296,7 +321,7 @@ namespace GraphColoring
 
             /*
             Graph.IGraphInterface graph;
-            int countVertices = 100;
+            int countVertices = 200;
             GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm illnerAlgorithm;
             GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm geneticAlgorithm;
 
@@ -311,7 +336,7 @@ namespace GraphColoring
                     continue;
 
                 illnerAlgorithm = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
-                Console.WriteLine(graph);
+                //Console.WriteLine(graph);
                 illnerAlgorithm.Color();
 
                 illnerNumber = graph.GetColoredGraph().GetCountUsedColors();

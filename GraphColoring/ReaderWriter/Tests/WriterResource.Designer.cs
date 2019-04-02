@@ -76,7 +76,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 2
-        ///Used algorithm: RandomSequence
+        ///Used algorithm: randomSequence
         ///- 1
         ///-- 827 (827) 
         ///-- 831 (831) 
@@ -87,7 +87,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///-- 828 (828) 
         ///
         ///Number of colors: 2
-        ///Used algorithm: LargestFirstSequence
+        ///Used algorithm: largestFirstSequence
         ///- 1
         ///-- 842 (842) 
         ///-- 841 (841) 

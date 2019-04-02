@@ -86,7 +86,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -130,7 +130,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -174,7 +174,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///(9)
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -219,7 +219,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number2: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -264,7 +264,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH2
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -309,7 +309,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -354,7 +354,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -399,7 +399,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -444,7 +444,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -489,7 +489,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -534,7 +534,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -579,7 +579,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -624,7 +624,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -669,7 +669,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -714,7 +714,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -759,7 +759,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors2: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -804,7 +804,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm2: XXX
+        ///Used algorithm2: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -849,7 +849,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -894,7 +894,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -939,7 +939,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -976,7 +976,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1013,7 +1013,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1050,7 +1050,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///0 0 0 0 1 0 0 0 1 0
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1088,7 +1088,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number2: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1126,7 +1126,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH2
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1164,7 +1164,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1202,7 +1202,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1240,7 +1240,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1279,7 +1279,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1317,7 +1317,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1355,7 +1355,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1393,7 +1393,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1431,7 +1431,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1469,7 +1469,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1507,7 +1507,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1545,7 +1545,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1583,7 +1583,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1621,7 +1621,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors2: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1659,7 +1659,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm2: XXX
+        ///Used algorithm2: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1697,7 +1697,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1735,7 +1735,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1772,7 +1772,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1809,7 +1809,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1846,7 +1846,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///8 9
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1884,7 +1884,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number2: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1922,7 +1922,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH2
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1960,7 +1960,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -1998,7 +1998,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2035,7 +2035,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2073,7 +2073,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2111,7 +2111,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2149,7 +2149,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2187,7 +2187,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2225,7 +2225,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2263,7 +2263,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2301,7 +2301,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2339,7 +2339,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2377,7 +2377,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2415,7 +2415,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors2: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2453,7 +2453,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm2: XXX
+        ///Used algorithm2: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2491,7 +2491,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2529,7 +2529,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -2567,7 +2567,7 @@ namespace GraphColoring.ReaderWriter.Tests {
         ///
         ///COLORED GRAPH
         ///Number of colors: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0

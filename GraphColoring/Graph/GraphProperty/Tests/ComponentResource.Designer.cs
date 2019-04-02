@@ -102,7 +102,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -139,7 +139,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -176,7 +176,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0
@@ -213,7 +213,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests {
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3
-        ///Used algorithm: XXX
+        ///Used algorithm: optimal
         ///0 -&gt; 0
         ///1 -&gt; 0
         ///2 -&gt; 0

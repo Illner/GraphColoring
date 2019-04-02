@@ -119,192 +119,192 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="GraphAdjacencyListInvalidBallast1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidBallast2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidBallast3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidBallast3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidChromaticNumber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidColoredGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidColoredGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidColoredGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidCoreData1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCoreData1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCoreData1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidCoreData2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCoreData2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCoreData2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidCountVertices1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidCountVertices2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidCountVertices3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidCountVertices4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidCountVertices4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidGraphName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidGraphName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidGraphName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidHeader1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidHeader2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidHeader2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidNumberColors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListInvalidUsedAlgorithm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidUsedAlgorithm.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListInvalidUsedAlgorithm.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListValidChromaticNumber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListValidNumberColors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyListValidVertexName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidVertexName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyList\GraphAdjacencyListValidVertexName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidBallast1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidBallast2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidBallast3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidBallast3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidChromaticNumber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidColoredGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidColoredGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidColoredGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidCoreData1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidCoreData2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidCoreData3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidCoreData4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCoreData4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidCountVertices1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidCountVertices2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidCountVertices3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidCountVertices4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidCountVertices4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidGraphName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidGraphName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidGraphName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidHeader1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidHeader1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidHeader1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidHeader2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidHeader2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidHeader2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidNumberColors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixInvalidUsedAlgorithm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidUsedAlgorithm.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixInvalidUsedAlgorithm.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixValidChromaticNumber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphAdjacencyMatrixValidNumberColors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphAdjacencyMatrix\GraphAdjacencyMatrixValidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidBallast1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidBallast2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidBallast3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidBallast3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidChromaticNumber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidColoredGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidColoredGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidColoredGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidCoreData1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidCoreData2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidCoreData3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidCoreData4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCoreData4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidCountVertices1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidCountVertices2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidCountVertices3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidCountVertices4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidCountVertices4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidGraphName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidGraphName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidGraphName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidHeader1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidHeader1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidHeader1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidHeader2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidHeader2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidHeader2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidNumberColors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListInvalidUsedAlgorithm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidUsedAlgorithm.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListInvalidUsedAlgorithm.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListValidChromaticNumber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidChromaticNumber.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListValidNumberColors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidNumberColors.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphEdgeListValidVertexName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidVertexName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\Tests\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidVertexName.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

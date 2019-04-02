@@ -119,30 +119,30 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="graphChordal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal1.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="graphChordal2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal2.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="graphChordal3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="graphChordal4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="graphChordal5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal5.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal5.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="graphChordal6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal6.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal6.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="graphChordal7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal7.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal7.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="graphChordal8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal8.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal8.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="graphChordal9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\bin\Debug\Testing\Graph\GraphProperty\Chordal\graphChordal9.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\..\Tests\Testing\Graph\GraphProperty\Chordal\graphChordal9.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

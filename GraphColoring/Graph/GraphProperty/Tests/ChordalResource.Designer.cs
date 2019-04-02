@@ -112,7 +112,6 @@ namespace GraphColoring.Graph.GraphProperty.Tests {
         ///1 0 0 0 1 1 0 1
         ///1 0 1 1 1 1 1 0
         ///
-        ///
         ///COLORED GRAPH
         ///Chromatic number: 3
         ///Used algorithm: optimal
@@ -316,15 +315,15 @@ namespace GraphColoring.Graph.GraphProperty.Tests {
         ///Number of vertices: 9
         ///
         ///GRAPH
-        ///0 0 0 0 1 0 0 0 0
-        ///0 0 0 0 1 0 0 0 0
-        ///0 0 0 0 1 0 0 0 0
-        ///0 0 0 0 1 0 0 0 0
-        ///1 1 1 1 0 1 1 1 1
-        ///0 0 0 0 1 0 0 0 0
-        ///0 0 0 0 1 0 0 0 0
-        ///0 0 0 0 1 0 0 0 0
-        ///0 0 0 0 1 0 0 0 0
+        ///0 1 1 1 1 1 1 1 1
+        ///1 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0
+        ///1 0 0 0 0 0 0 0 0
         ///
         ///COLORED GRAPH
         ///Chromatic number: 3

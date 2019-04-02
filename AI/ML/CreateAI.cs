@@ -51,6 +51,7 @@ namespace AI.ML
             // Generate data
             if (generateData)
             {
+                Directory.CreateDirectory(pathFolder);
                 Database.Database database = new Database.Database(databaseLocation, databaseName, databaseUserName, databasePassword);
                 database.SaveDataFromDatabaseToFile(GetPathData(), algorithmEnum);
             }
@@ -196,6 +197,8 @@ namespace AI.ML
         public void SaveModel()
         {
             pathModel = pathFolder + "model" + DateTime.Now.ToString("-dd-MM-yyyy-HH-mm-ss-") + algorithmEnum.ToString() + ".zip";
+
+            Directory.CreateDirectory(pathFolder);
 
             using (var fileStream = new FileStream(pathModel, FileMode.Create, FileAccess.Write, FileShare.Write))
                 mlContext.Model.Save(trainedModel, fileStream);

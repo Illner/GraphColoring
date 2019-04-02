@@ -9,7 +9,7 @@ namespace GraphColoring.Tests
     {
         // Variable
         #region
-        private Boolean consolePrint;
+        private bool consolePrint;
         private StringBuilder stringBuilder;
         private Dictionary<TestEnum, Tuple<ITestInterface, string>> testsDictionary;
 
@@ -159,9 +159,14 @@ namespace GraphColoring.Tests
 
             if (consolePrint)
             {
-                String template = testsDictionary[testEnum].Item2;
+                string template = testsDictionary[testEnum].Item2;
+                string testString = stringBuilder.ToString();
 
-                if (template.Equals(stringBuilder.ToString()))
+                // Because Windows and Unix
+                template = template.Replace("\r\n", "\n");
+                testString = testString.Replace("\r\n", "\n");
+
+                if (template.Equals(testString))
                 {
                     Console.WriteLine("OK   " + testEnum.ToString());
                     result = true;
@@ -174,6 +179,8 @@ namespace GraphColoring.Tests
             }
             else
             {
+                Directory.CreateDirectory(Path.GetDirectoryName(test.GetPath()));
+
                 testPath = test.GetPath();
                 StreamWriter streamWriter = new StreamWriter(testPath);
                 streamWriter.WriteLine(stringBuilder.ToString());

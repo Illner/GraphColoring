@@ -47,6 +47,8 @@ namespace AI.GenerateGraphs
             string graphString;
             int countIterations;
             Tuple<int, int> result;
+            
+            Directory.CreateDirectory(pathFolder);
 
             using (StreamWriter file = File.AppendText(pathFile))
             {

@@ -987,6 +987,31 @@
     <None Include="bin\Debug\Testing\Test\GraphBridgesCutVerticesStandard.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Tests\Testing\Test\WriterStandard.txt" />
+    <None Include="Tests\Testing\Test\ReaderStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphSubGraphStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphSpanningTreeStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphModificationStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphLineGraphStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphDegreeSequenceStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphCycleStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphCopyStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphComponentStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphComplementStandard.txt" />
+    <None Include="Tests\Testing\Test\GenerateGraphErdosRenyiModelStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphClassStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphChordalStandard.txt" />
+    <None Include="Tests\Testing\Test\GraphBridgesCutVerticesStandard.txt" />
+    <None Include="Tests\Testing\Test\ConverterGraphToDotStandard.txt" />
+    <None Include="Tests\Testing\Test\SmallestLastSequenceStandard.txt" />
+    <None Include="Tests\Testing\Test\LargestFirstSequenceStandard.txt" />
+    <None Include="Tests\Testing\Test\ColoredGraphStandard.txt" />
+    <None Include="Tests\Testing\Test\SaturationLargestFirstSequenceStandard.txt" />
+    <None Include="Tests\Testing\Test\OptimalStandard.txt" />
+    <None Include="Tests\Testing\Test\GreedyIndependentSetStandard.txt" />
+    <None Include="Tests\Testing\Test\ConnectedSequentialStandard.txt" />
+    <None Include="Tests\Testing\Test\CombinationStandard.txt" />
+    <None Include="Tests\Testing\Test\GeneticAlgorithmStandard.txt" />
     <None Include="bin\Debug\Testing\Test\ConverterGraphToDotStandard.txt" />
     <None Include="bin\Debug\Testing\Test\GraphChordalStandard.txt" />
     <Content Include="GraphVisualization\DOT\cdt.dll">

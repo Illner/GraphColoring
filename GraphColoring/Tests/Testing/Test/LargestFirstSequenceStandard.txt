@@ -1,0 +1,194 @@
+Invalid vertex count (0)
+largestFirstSequence2
+Graph colored.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 792, userName: 792
+Edges: 
+-- Vertex: 792 (792)
+Vertex color: 
+-- Vertex (identifier): 792, vertex (userName): 792, color: 1
+
+largestFirstSequence3
+Graph colored.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 6
+Vertices: 
+-- Identifier: 793, userName: 793
+-- Identifier: 794, userName: 794
+-- Identifier: 795, userName: 795
+-- Identifier: 796, userName: 796
+-- Identifier: 797, userName: 797
+-- Identifier: 798, userName: 798
+Edges: 
+-- Vertex: 793 (793)
+---- 794 (794) 
+---- 795 (795) 
+-- Vertex: 794 (794)
+---- 793 (793) 
+---- 795 (795) 
+-- Vertex: 795 (795)
+---- 793 (793) 
+---- 794 (794) 
+-- Vertex: 796 (796)
+---- 797 (797) 
+---- 798 (798) 
+-- Vertex: 797 (797)
+---- 796 (796) 
+---- 798 (798) 
+-- Vertex: 798 (798)
+---- 796 (796) 
+---- 797 (797) 
+Vertex color: 
+-- Vertex (identifier): 793, vertex (userName): 793, color: 3
+-- Vertex (identifier): 794, vertex (userName): 794, color: 2
+-- Vertex (identifier): 795, vertex (userName): 795, color: 1
+-- Vertex (identifier): 796, vertex (userName): 796, color: 3
+-- Vertex (identifier): 797, vertex (userName): 797, color: 2
+-- Vertex (identifier): 798, vertex (userName): 798, color: 1
+
+largestFirstSequence4
+Graph colored.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 12
+Vertices: 
+-- Identifier: 799, userName: 799
+-- Identifier: 800, userName: 800
+-- Identifier: 801, userName: 801
+-- Identifier: 802, userName: 802
+-- Identifier: 803, userName: 803
+-- Identifier: 804, userName: 804
+-- Identifier: 805, userName: 805
+-- Identifier: 806, userName: 806
+-- Identifier: 807, userName: 807
+Edges: 
+-- Vertex: 799 (799)
+---- 804 (804) 
+---- 805 (805) 
+---- 806 (806) 
+---- 807 (807) 
+-- Vertex: 800 (800)
+---- 804 (804) 
+---- 805 (805) 
+-- Vertex: 801 (801)
+---- 805 (805) 
+---- 806 (806) 
+-- Vertex: 802 (802)
+---- 806 (806) 
+---- 807 (807) 
+-- Vertex: 803 (803)
+---- 804 (804) 
+---- 807 (807) 
+-- Vertex: 804 (804)
+---- 799 (799) 
+---- 800 (800) 
+---- 803 (803) 
+-- Vertex: 805 (805)
+---- 799 (799) 
+---- 800 (800) 
+---- 801 (801) 
+-- Vertex: 806 (806)
+---- 799 (799) 
+---- 801 (801) 
+---- 802 (802) 
+-- Vertex: 807 (807)
+---- 799 (799) 
+---- 802 (802) 
+---- 803 (803) 
+Vertex color: 
+-- Vertex (identifier): 799, vertex (userName): 799, color: 1
+-- Vertex (identifier): 800, vertex (userName): 800, color: 1
+-- Vertex (identifier): 801, vertex (userName): 801, color: 1
+-- Vertex (identifier): 802, vertex (userName): 802, color: 1
+-- Vertex (identifier): 803, vertex (userName): 803, color: 1
+-- Vertex (identifier): 804, vertex (userName): 804, color: 2
+-- Vertex (identifier): 805, vertex (userName): 805, color: 2
+-- Vertex (identifier): 806, vertex (userName): 806, color: 2
+-- Vertex (identifier): 807, vertex (userName): 807, color: 2
+
+largestFirstSequence5
+Graph colored.
+Name of graph: Name
+Count of vertices: 10
+Real count of vertices: 10
+Count of edges: 19
+Vertices: 
+-- Identifier: 808, userName: 808
+-- Identifier: 809, userName: 809
+-- Identifier: 810, userName: 810
+-- Identifier: 811, userName: 811
+-- Identifier: 812, userName: 812
+-- Identifier: 813, userName: 813
+-- Identifier: 814, userName: 814
+-- Identifier: 815, userName: 815
+-- Identifier: 816, userName: 816
+-- Identifier: 817, userName: 817
+Edges: 
+-- Vertex: 808 (808)
+---- 809 (809) 
+---- 810 (810) 
+-- Vertex: 809 (809)
+---- 808 (808) 
+---- 810 (810) 
+---- 811 (811) 
+---- 812 (812) 
+-- Vertex: 810 (810)
+---- 808 (808) 
+---- 809 (809) 
+---- 812 (812) 
+---- 813 (813) 
+-- Vertex: 811 (811)
+---- 809 (809) 
+---- 812 (812) 
+---- 814 (814) 
+---- 815 (815) 
+---- 816 (816) 
+---- 817 (817) 
+-- Vertex: 812 (812)
+---- 809 (809) 
+---- 810 (810) 
+---- 811 (811) 
+---- 813 (813) 
+---- 814 (814) 
+---- 817 (817) 
+-- Vertex: 813 (813)
+---- 810 (810) 
+---- 812 (812) 
+---- 814 (814) 
+---- 815 (815) 
+---- 816 (816) 
+---- 817 (817) 
+-- Vertex: 814 (814)
+---- 811 (811) 
+---- 812 (812) 
+---- 813 (813) 
+-- Vertex: 815 (815)
+---- 811 (811) 
+---- 813 (813) 
+-- Vertex: 816 (816)
+---- 811 (811) 
+---- 813 (813) 
+-- Vertex: 817 (817)
+---- 811 (811) 
+---- 812 (812) 
+---- 813 (813) 
+Vertex color: 
+-- Vertex (identifier): 808, vertex (userName): 808, color: 1
+-- Vertex (identifier): 809, vertex (userName): 809, color: 4
+-- Vertex (identifier): 810, vertex (userName): 810, color: 3
+-- Vertex (identifier): 811, vertex (userName): 811, color: 1
+-- Vertex (identifier): 812, vertex (userName): 812, color: 2
+-- Vertex (identifier): 813, vertex (userName): 813, color: 1
+-- Vertex (identifier): 814, vertex (userName): 814, color: 3
+-- Vertex (identifier): 815, vertex (userName): 815, color: 2
+-- Vertex (identifier): 816, vertex (userName): 816, color: 2
+-- Vertex (identifier): 817, vertex (userName): 817, color: 3
+
+

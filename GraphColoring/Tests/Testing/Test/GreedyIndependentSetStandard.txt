@@ -1,0 +1,194 @@
+Invalid vertex count (0)
+Greedy independent set algorithm
+Graph colored.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 936, userName: 936
+Edges: 
+-- Vertex: 936 (936)
+Vertex color: 
+-- Vertex (identifier): 936, vertex (userName): 936, color: 1
+
+Greedy independent set algorithm
+Graph colored.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 6
+Vertices: 
+-- Identifier: 938, userName: 938
+-- Identifier: 939, userName: 939
+-- Identifier: 940, userName: 940
+-- Identifier: 941, userName: 941
+-- Identifier: 942, userName: 942
+-- Identifier: 943, userName: 943
+Edges: 
+-- Vertex: 938 (938)
+---- 939 (939) 
+---- 940 (940) 
+-- Vertex: 939 (939)
+---- 938 (938) 
+---- 940 (940) 
+-- Vertex: 940 (940)
+---- 938 (938) 
+---- 939 (939) 
+-- Vertex: 941 (941)
+---- 942 (942) 
+---- 943 (943) 
+-- Vertex: 942 (942)
+---- 941 (941) 
+---- 943 (943) 
+-- Vertex: 943 (943)
+---- 941 (941) 
+---- 942 (942) 
+Vertex color: 
+-- Vertex (identifier): 938, vertex (userName): 938, color: 1
+-- Vertex (identifier): 939, vertex (userName): 939, color: 2
+-- Vertex (identifier): 940, vertex (userName): 940, color: 3
+-- Vertex (identifier): 941, vertex (userName): 941, color: 1
+-- Vertex (identifier): 942, vertex (userName): 942, color: 2
+-- Vertex (identifier): 943, vertex (userName): 943, color: 3
+
+Greedy independent set algorithm
+Graph colored.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 12
+Vertices: 
+-- Identifier: 956, userName: 956
+-- Identifier: 957, userName: 957
+-- Identifier: 958, userName: 958
+-- Identifier: 959, userName: 959
+-- Identifier: 960, userName: 960
+-- Identifier: 961, userName: 961
+-- Identifier: 962, userName: 962
+-- Identifier: 963, userName: 963
+-- Identifier: 964, userName: 964
+Edges: 
+-- Vertex: 956 (956)
+---- 961 (961) 
+---- 962 (962) 
+---- 963 (963) 
+---- 964 (964) 
+-- Vertex: 957 (957)
+---- 961 (961) 
+---- 962 (962) 
+-- Vertex: 958 (958)
+---- 962 (962) 
+---- 963 (963) 
+-- Vertex: 959 (959)
+---- 963 (963) 
+---- 964 (964) 
+-- Vertex: 960 (960)
+---- 961 (961) 
+---- 964 (964) 
+-- Vertex: 961 (961)
+---- 956 (956) 
+---- 957 (957) 
+---- 960 (960) 
+-- Vertex: 962 (962)
+---- 956 (956) 
+---- 957 (957) 
+---- 958 (958) 
+-- Vertex: 963 (963)
+---- 956 (956) 
+---- 958 (958) 
+---- 959 (959) 
+-- Vertex: 964 (964)
+---- 956 (956) 
+---- 959 (959) 
+---- 960 (960) 
+Vertex color: 
+-- Vertex (identifier): 956, vertex (userName): 956, color: 1
+-- Vertex (identifier): 957, vertex (userName): 957, color: 1
+-- Vertex (identifier): 958, vertex (userName): 958, color: 1
+-- Vertex (identifier): 959, vertex (userName): 959, color: 1
+-- Vertex (identifier): 960, vertex (userName): 960, color: 1
+-- Vertex (identifier): 961, vertex (userName): 961, color: 2
+-- Vertex (identifier): 962, vertex (userName): 962, color: 2
+-- Vertex (identifier): 963, vertex (userName): 963, color: 2
+-- Vertex (identifier): 964, vertex (userName): 964, color: 2
+
+Greedy independent set algorithm
+Graph colored.
+Name of graph: Name
+Count of vertices: 10
+Real count of vertices: 10
+Count of edges: 19
+Vertices: 
+-- Identifier: 978, userName: 978
+-- Identifier: 979, userName: 979
+-- Identifier: 980, userName: 980
+-- Identifier: 981, userName: 981
+-- Identifier: 982, userName: 982
+-- Identifier: 983, userName: 983
+-- Identifier: 984, userName: 984
+-- Identifier: 985, userName: 985
+-- Identifier: 986, userName: 986
+-- Identifier: 987, userName: 987
+Edges: 
+-- Vertex: 978 (978)
+---- 979 (979) 
+---- 980 (980) 
+-- Vertex: 979 (979)
+---- 978 (978) 
+---- 980 (980) 
+---- 981 (981) 
+---- 982 (982) 
+-- Vertex: 980 (980)
+---- 978 (978) 
+---- 979 (979) 
+---- 982 (982) 
+---- 983 (983) 
+-- Vertex: 981 (981)
+---- 979 (979) 
+---- 982 (982) 
+---- 984 (984) 
+---- 985 (985) 
+---- 986 (986) 
+---- 987 (987) 
+-- Vertex: 982 (982)
+---- 979 (979) 
+---- 980 (980) 
+---- 981 (981) 
+---- 983 (983) 
+---- 984 (984) 
+---- 987 (987) 
+-- Vertex: 983 (983)
+---- 980 (980) 
+---- 982 (982) 
+---- 984 (984) 
+---- 985 (985) 
+---- 986 (986) 
+---- 987 (987) 
+-- Vertex: 984 (984)
+---- 981 (981) 
+---- 982 (982) 
+---- 983 (983) 
+-- Vertex: 985 (985)
+---- 981 (981) 
+---- 983 (983) 
+-- Vertex: 986 (986)
+---- 981 (981) 
+---- 983 (983) 
+-- Vertex: 987 (987)
+---- 981 (981) 
+---- 982 (982) 
+---- 983 (983) 
+Vertex color: 
+-- Vertex (identifier): 978, vertex (userName): 978, color: 1
+-- Vertex (identifier): 979, vertex (userName): 979, color: 3
+-- Vertex (identifier): 980, vertex (userName): 980, color: 2
+-- Vertex (identifier): 981, vertex (userName): 981, color: 2
+-- Vertex (identifier): 982, vertex (userName): 982, color: 4
+-- Vertex (identifier): 983, vertex (userName): 983, color: 3
+-- Vertex (identifier): 984, vertex (userName): 984, color: 1
+-- Vertex (identifier): 985, vertex (userName): 985, color: 1
+-- Vertex (identifier): 986, vertex (userName): 986, color: 1
+-- Vertex (identifier): 987, vertex (userName): 987, color: 1
+
+

@@ -1,0 +1,194 @@
+Invalid vertex count (0)
+Combination algorithm
+Graph colored.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 5007, userName: 5007
+Edges: 
+-- Vertex: 5007 (5007)
+Vertex color: 
+-- Vertex (identifier): 5007, vertex (userName): 5007, color: 1
+
+Combination algorithm
+Graph colored.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 6
+Vertices: 
+-- Identifier: 5008, userName: 5008
+-- Identifier: 5009, userName: 5009
+-- Identifier: 5010, userName: 5010
+-- Identifier: 5011, userName: 5011
+-- Identifier: 5012, userName: 5012
+-- Identifier: 5013, userName: 5013
+Edges: 
+-- Vertex: 5008 (5008)
+---- 5009 (5009) 
+---- 5010 (5010) 
+-- Vertex: 5009 (5009)
+---- 5008 (5008) 
+---- 5010 (5010) 
+-- Vertex: 5010 (5010)
+---- 5008 (5008) 
+---- 5009 (5009) 
+-- Vertex: 5011 (5011)
+---- 5012 (5012) 
+---- 5013 (5013) 
+-- Vertex: 5012 (5012)
+---- 5011 (5011) 
+---- 5013 (5013) 
+-- Vertex: 5013 (5013)
+---- 5011 (5011) 
+---- 5012 (5012) 
+Vertex color: 
+-- Vertex (identifier): 5008, vertex (userName): 5008, color: 1
+-- Vertex (identifier): 5009, vertex (userName): 5009, color: 3
+-- Vertex (identifier): 5010, vertex (userName): 5010, color: 2
+-- Vertex (identifier): 5011, vertex (userName): 5011, color: 2
+-- Vertex (identifier): 5012, vertex (userName): 5012, color: 3
+-- Vertex (identifier): 5013, vertex (userName): 5013, color: 1
+
+Combination algorithm
+Graph colored.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 12
+Vertices: 
+-- Identifier: 5014, userName: 5014
+-- Identifier: 5015, userName: 5015
+-- Identifier: 5016, userName: 5016
+-- Identifier: 5017, userName: 5017
+-- Identifier: 5018, userName: 5018
+-- Identifier: 5019, userName: 5019
+-- Identifier: 5020, userName: 5020
+-- Identifier: 5021, userName: 5021
+-- Identifier: 5022, userName: 5022
+Edges: 
+-- Vertex: 5014 (5014)
+---- 5019 (5019) 
+---- 5020 (5020) 
+---- 5021 (5021) 
+---- 5022 (5022) 
+-- Vertex: 5015 (5015)
+---- 5019 (5019) 
+---- 5020 (5020) 
+-- Vertex: 5016 (5016)
+---- 5020 (5020) 
+---- 5021 (5021) 
+-- Vertex: 5017 (5017)
+---- 5021 (5021) 
+---- 5022 (5022) 
+-- Vertex: 5018 (5018)
+---- 5019 (5019) 
+---- 5022 (5022) 
+-- Vertex: 5019 (5019)
+---- 5014 (5014) 
+---- 5015 (5015) 
+---- 5018 (5018) 
+-- Vertex: 5020 (5020)
+---- 5014 (5014) 
+---- 5015 (5015) 
+---- 5016 (5016) 
+-- Vertex: 5021 (5021)
+---- 5014 (5014) 
+---- 5016 (5016) 
+---- 5017 (5017) 
+-- Vertex: 5022 (5022)
+---- 5014 (5014) 
+---- 5017 (5017) 
+---- 5018 (5018) 
+Vertex color: 
+-- Vertex (identifier): 5014, vertex (userName): 5014, color: 1
+-- Vertex (identifier): 5015, vertex (userName): 5015, color: 1
+-- Vertex (identifier): 5016, vertex (userName): 5016, color: 1
+-- Vertex (identifier): 5017, vertex (userName): 5017, color: 1
+-- Vertex (identifier): 5018, vertex (userName): 5018, color: 1
+-- Vertex (identifier): 5019, vertex (userName): 5019, color: 2
+-- Vertex (identifier): 5020, vertex (userName): 5020, color: 2
+-- Vertex (identifier): 5021, vertex (userName): 5021, color: 2
+-- Vertex (identifier): 5022, vertex (userName): 5022, color: 2
+
+Combination algorithm
+Graph colored.
+Name of graph: Name
+Count of vertices: 10
+Real count of vertices: 10
+Count of edges: 19
+Vertices: 
+-- Identifier: 5023, userName: 5023
+-- Identifier: 5024, userName: 5024
+-- Identifier: 5025, userName: 5025
+-- Identifier: 5026, userName: 5026
+-- Identifier: 5027, userName: 5027
+-- Identifier: 5028, userName: 5028
+-- Identifier: 5029, userName: 5029
+-- Identifier: 5030, userName: 5030
+-- Identifier: 5031, userName: 5031
+-- Identifier: 5032, userName: 5032
+Edges: 
+-- Vertex: 5023 (5023)
+---- 5024 (5024) 
+---- 5025 (5025) 
+-- Vertex: 5024 (5024)
+---- 5023 (5023) 
+---- 5025 (5025) 
+---- 5026 (5026) 
+---- 5027 (5027) 
+-- Vertex: 5025 (5025)
+---- 5023 (5023) 
+---- 5024 (5024) 
+---- 5027 (5027) 
+---- 5028 (5028) 
+-- Vertex: 5026 (5026)
+---- 5024 (5024) 
+---- 5027 (5027) 
+---- 5029 (5029) 
+---- 5030 (5030) 
+---- 5031 (5031) 
+---- 5032 (5032) 
+-- Vertex: 5027 (5027)
+---- 5024 (5024) 
+---- 5025 (5025) 
+---- 5026 (5026) 
+---- 5028 (5028) 
+---- 5029 (5029) 
+---- 5032 (5032) 
+-- Vertex: 5028 (5028)
+---- 5025 (5025) 
+---- 5027 (5027) 
+---- 5029 (5029) 
+---- 5030 (5030) 
+---- 5031 (5031) 
+---- 5032 (5032) 
+-- Vertex: 5029 (5029)
+---- 5026 (5026) 
+---- 5027 (5027) 
+---- 5028 (5028) 
+-- Vertex: 5030 (5030)
+---- 5026 (5026) 
+---- 5028 (5028) 
+-- Vertex: 5031 (5031)
+---- 5026 (5026) 
+---- 5028 (5028) 
+-- Vertex: 5032 (5032)
+---- 5026 (5026) 
+---- 5027 (5027) 
+---- 5028 (5028) 
+Vertex color: 
+-- Vertex (identifier): 5023, vertex (userName): 5023, color: 3
+-- Vertex (identifier): 5024, vertex (userName): 5024, color: 1
+-- Vertex (identifier): 5025, vertex (userName): 5025, color: 2
+-- Vertex (identifier): 5026, vertex (userName): 5026, color: 2
+-- Vertex (identifier): 5027, vertex (userName): 5027, color: 3
+-- Vertex (identifier): 5028, vertex (userName): 5028, color: 1
+-- Vertex (identifier): 5029, vertex (userName): 5029, color: 4
+-- Vertex (identifier): 5030, vertex (userName): 5030, color: 3
+-- Vertex (identifier): 5031, vertex (userName): 5031, color: 3
+-- Vertex (identifier): 5032, vertex (userName): 5032, color: 4
+
+

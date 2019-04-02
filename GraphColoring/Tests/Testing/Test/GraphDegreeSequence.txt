@@ -1,0 +1,189 @@
+graphDegreeSequence1
+Graph created.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 9
+Vertices: 
+-- Identifier: 345, userName: 345
+-- Identifier: 346, userName: 346
+-- Identifier: 347, userName: 347
+-- Identifier: 348, userName: 348
+-- Identifier: 349, userName: 349
+-- Identifier: 350, userName: 350
+-- Identifier: 351, userName: 351
+-- Identifier: 352, userName: 352
+-- Identifier: 353, userName: 353
+Edges: 
+-- Vertex: 345 (345)
+---- 346 (346) 
+---- 347 (347) 
+-- Vertex: 346 (346)
+---- 345 (345) 
+---- 347 (347) 
+-- Vertex: 347 (347)
+---- 345 (345) 
+---- 346 (346) 
+-- Vertex: 348 (348)
+---- 349 (349) 
+---- 350 (350) 
+-- Vertex: 349 (349)
+---- 348 (348) 
+---- 350 (350) 
+-- Vertex: 350 (350)
+---- 348 (348) 
+---- 349 (349) 
+-- Vertex: 351 (351)
+---- 352 (352) 
+---- 353 (353) 
+-- Vertex: 352 (352)
+---- 351 (351) 
+---- 353 (353) 
+-- Vertex: 353 (353)
+---- 351 (351) 
+---- 352 (352) 
+
+Degree sequence
+2 2 2 2 2 2 2 2 2 
+Minimum vertex degree: 2
+Maximum vertex degree: 2
+Average vertex degree: 2
+Is graph regular: True
+Degree sequence
+2 2 2 2 2 2 2 2 2 
+Minimum vertex degree: 2
+Maximum vertex degree: 2
+Average vertex degree: 2
+Is graph regular: True
+graphDegreeSequence2
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 4
+Vertices: 
+-- Identifier: 354, userName: 354
+-- Identifier: 355, userName: 355
+-- Identifier: 356, userName: 356
+-- Identifier: 357, userName: 357
+-- Identifier: 358, userName: 358
+Edges: 
+-- Vertex: 354 (354)
+---- 355 (355) 
+---- 356 (356) 
+-- Vertex: 355 (355)
+---- 354 (354) 
+---- 356 (356) 
+-- Vertex: 356 (356)
+---- 354 (354) 
+---- 355 (355) 
+-- Vertex: 357 (357)
+---- 358 (358) 
+-- Vertex: 358 (358)
+---- 357 (357) 
+
+Degree sequence
+1 1 2 2 2 
+Minimum vertex degree: 1
+Maximum vertex degree: 2
+Average vertex degree: 1.6
+Is graph regular: False
+Degree sequence
+2 2 2 1 1 
+Minimum vertex degree: 1
+Maximum vertex degree: 2
+Average vertex degree: 1.6
+Is graph regular: False
+graphDegreeSequence3
+Graph created.
+Name of graph: Name
+Count of vertices: 4
+Real count of vertices: 4
+Count of edges: 4
+Vertices: 
+-- Identifier: 359, userName: 359
+-- Identifier: 360, userName: 360
+-- Identifier: 361, userName: 361
+-- Identifier: 362, userName: 362
+Edges: 
+-- Vertex: 359 (359)
+---- 360 (360) 
+---- 361 (361) 
+-- Vertex: 360 (360)
+---- 359 (359) 
+---- 362 (362) 
+-- Vertex: 361 (361)
+---- 359 (359) 
+---- 362 (362) 
+-- Vertex: 362 (362)
+---- 360 (360) 
+---- 361 (361) 
+
+Degree sequence
+2 2 2 2 
+Minimum vertex degree: 2
+Maximum vertex degree: 2
+Average vertex degree: 2
+Is graph regular: True
+Degree sequence
+2 2 2 2 
+Minimum vertex degree: 2
+Maximum vertex degree: 2
+Average vertex degree: 2
+Is graph regular: True
+graphDegreeSequence4
+Graph created.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 8
+Vertices: 
+-- Identifier: 363, userName: 363
+-- Identifier: 364, userName: 364
+-- Identifier: 365, userName: 365
+-- Identifier: 366, userName: 366
+-- Identifier: 367, userName: 367
+-- Identifier: 368, userName: 368
+-- Identifier: 369, userName: 369
+-- Identifier: 370, userName: 370
+-- Identifier: 371, userName: 371
+Edges: 
+-- Vertex: 363 (363)
+---- 367 (367) 
+-- Vertex: 364 (364)
+---- 367 (367) 
+-- Vertex: 365 (365)
+---- 367 (367) 
+-- Vertex: 366 (366)
+---- 367 (367) 
+-- Vertex: 367 (367)
+---- 363 (363) 
+---- 364 (364) 
+---- 365 (365) 
+---- 366 (366) 
+---- 368 (368) 
+---- 369 (369) 
+---- 370 (370) 
+---- 371 (371) 
+-- Vertex: 368 (368)
+---- 367 (367) 
+-- Vertex: 369 (369)
+---- 367 (367) 
+-- Vertex: 370 (370)
+---- 367 (367) 
+-- Vertex: 371 (371)
+---- 367 (367) 
+
+Degree sequence
+1 1 1 1 1 1 1 1 8 
+Minimum vertex degree: 1
+Maximum vertex degree: 8
+Average vertex degree: 1.77777777777778
+Is graph regular: False
+Degree sequence
+1 1 1 1 8 1 1 1 1 
+Minimum vertex degree: 1
+Maximum vertex degree: 8
+Average vertex degree: 1.77777777777778
+Is graph regular: False
+

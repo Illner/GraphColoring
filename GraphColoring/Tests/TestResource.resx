@@ -119,78 +119,78 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ColoredGraphStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\ColoredGraphStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\ColoredGraphStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="CombinationStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\CombinationStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\CombinationStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ConnectedSequentialStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\ConnectedSequentialStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\ConnectedSequentialStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ConverterGraphToDotStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\ConverterGraphToDotStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\ConverterGraphToDotStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GenerateGraphErdosRenyiModelStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GenerateGraphErdosRenyiModelStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GenerateGraphErdosRenyiModelStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GeneticAlgorithmStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GeneticAlgorithmStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GeneticAlgorithmStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphBridgesCutVerticesStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphBridgesCutVerticesStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphBridgesCutVerticesStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphChordalStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphChordalStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphChordalStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphClassStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphClassStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphClassStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphComplementStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphComplementStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphComplementStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphComponentStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphComponentStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphComponentStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphCopyStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphCopyStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphCopyStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphCycleStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphCycleStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphCycleStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphDegreeSequenceStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphDegreeSequenceStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphDegreeSequenceStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphLineGraphStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphLineGraphStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphLineGraphStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphModificationStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphModificationStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphModificationStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphSpanningTreeStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphSpanningTreeStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphSpanningTreeStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GraphSubGraphStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GraphSubGraphStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GraphSubGraphStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GreedyIndependentSetStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\GreedyIndependentSetStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\GreedyIndependentSetStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="LargestFirstSequenceStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\LargestFirstSequenceStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\LargestFirstSequenceStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="OptimalStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\OptimalStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\OptimalStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ReaderStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\ReaderStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\ReaderStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SaturationLargestFirstSequenceStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\SaturationLargestFirstSequenceStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\SaturationLargestFirstSequenceStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SmallestLastSequenceStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\SmallestLastSequenceStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\SmallestLastSequenceStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="WriterStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Testing\Test\WriterStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Testing\Test\WriterStandard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

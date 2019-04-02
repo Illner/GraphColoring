@@ -1,0 +1,154 @@
+Invalid vertex count (0)
+connectedSequential2
+Graph colored.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 916, userName: 916
+Edges: 
+-- Vertex: 916 (916)
+Vertex color: 
+-- Vertex (identifier): 916, vertex (userName): 916, color: 1
+
+connectedSequential3
+Graph colored.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 12
+Vertices: 
+-- Identifier: 917, userName: 917
+-- Identifier: 918, userName: 918
+-- Identifier: 919, userName: 919
+-- Identifier: 920, userName: 920
+-- Identifier: 921, userName: 921
+-- Identifier: 922, userName: 922
+-- Identifier: 923, userName: 923
+-- Identifier: 924, userName: 924
+-- Identifier: 925, userName: 925
+Edges: 
+-- Vertex: 917 (917)
+---- 922 (922) 
+---- 923 (923) 
+---- 924 (924) 
+---- 925 (925) 
+-- Vertex: 918 (918)
+---- 922 (922) 
+---- 923 (923) 
+-- Vertex: 919 (919)
+---- 923 (923) 
+---- 924 (924) 
+-- Vertex: 920 (920)
+---- 924 (924) 
+---- 925 (925) 
+-- Vertex: 921 (921)
+---- 922 (922) 
+---- 925 (925) 
+-- Vertex: 922 (922)
+---- 917 (917) 
+---- 918 (918) 
+---- 921 (921) 
+-- Vertex: 923 (923)
+---- 917 (917) 
+---- 918 (918) 
+---- 919 (919) 
+-- Vertex: 924 (924)
+---- 917 (917) 
+---- 919 (919) 
+---- 920 (920) 
+-- Vertex: 925 (925)
+---- 917 (917) 
+---- 920 (920) 
+---- 921 (921) 
+Vertex color: 
+-- Vertex (identifier): 917, vertex (userName): 917, color: 1
+-- Vertex (identifier): 918, vertex (userName): 918, color: 1
+-- Vertex (identifier): 919, vertex (userName): 919, color: 1
+-- Vertex (identifier): 920, vertex (userName): 920, color: 1
+-- Vertex (identifier): 921, vertex (userName): 921, color: 1
+-- Vertex (identifier): 922, vertex (userName): 922, color: 2
+-- Vertex (identifier): 923, vertex (userName): 923, color: 2
+-- Vertex (identifier): 924, vertex (userName): 924, color: 2
+-- Vertex (identifier): 925, vertex (userName): 925, color: 2
+
+connectedSequential4
+Graph colored.
+Name of graph: Name
+Count of vertices: 10
+Real count of vertices: 10
+Count of edges: 19
+Vertices: 
+-- Identifier: 926, userName: 926
+-- Identifier: 927, userName: 927
+-- Identifier: 928, userName: 928
+-- Identifier: 929, userName: 929
+-- Identifier: 930, userName: 930
+-- Identifier: 931, userName: 931
+-- Identifier: 932, userName: 932
+-- Identifier: 933, userName: 933
+-- Identifier: 934, userName: 934
+-- Identifier: 935, userName: 935
+Edges: 
+-- Vertex: 926 (926)
+---- 927 (927) 
+---- 928 (928) 
+-- Vertex: 927 (927)
+---- 926 (926) 
+---- 928 (928) 
+---- 929 (929) 
+---- 930 (930) 
+-- Vertex: 928 (928)
+---- 926 (926) 
+---- 927 (927) 
+---- 930 (930) 
+---- 931 (931) 
+-- Vertex: 929 (929)
+---- 927 (927) 
+---- 930 (930) 
+---- 932 (932) 
+---- 933 (933) 
+---- 934 (934) 
+---- 935 (935) 
+-- Vertex: 930 (930)
+---- 927 (927) 
+---- 928 (928) 
+---- 929 (929) 
+---- 931 (931) 
+---- 932 (932) 
+---- 935 (935) 
+-- Vertex: 931 (931)
+---- 928 (928) 
+---- 930 (930) 
+---- 932 (932) 
+---- 933 (933) 
+---- 934 (934) 
+---- 935 (935) 
+-- Vertex: 932 (932)
+---- 929 (929) 
+---- 930 (930) 
+---- 931 (931) 
+-- Vertex: 933 (933)
+---- 929 (929) 
+---- 931 (931) 
+-- Vertex: 934 (934)
+---- 929 (929) 
+---- 931 (931) 
+-- Vertex: 935 (935)
+---- 929 (929) 
+---- 930 (930) 
+---- 931 (931) 
+Vertex color: 
+-- Vertex (identifier): 926, vertex (userName): 926, color: 1
+-- Vertex (identifier): 927, vertex (userName): 927, color: 2
+-- Vertex (identifier): 928, vertex (userName): 928, color: 3
+-- Vertex (identifier): 929, vertex (userName): 929, color: 1
+-- Vertex (identifier): 930, vertex (userName): 930, color: 4
+-- Vertex (identifier): 931, vertex (userName): 931, color: 1
+-- Vertex (identifier): 932, vertex (userName): 932, color: 2
+-- Vertex (identifier): 933, vertex (userName): 933, color: 2
+-- Vertex (identifier): 934, vertex (userName): 934, color: 2
+-- Vertex (identifier): 935, vertex (userName): 935, color: 2
+
+

@@ -1,0 +1,472 @@
+chordal1
+Graph created.
+Name of graph: Chordal
+Count of vertices: 8
+Real count of vertices: 8
+Count of edges: 15
+Vertices: 
+-- Identifier: 5122, userName: 5122
+-- Identifier: 5123, userName: 5123
+-- Identifier: 5124, userName: 5124
+-- Identifier: 5125, userName: 5125
+-- Identifier: 5126, userName: 5126
+-- Identifier: 5127, userName: 5127
+-- Identifier: 5128, userName: 5128
+-- Identifier: 5129, userName: 5129
+Edges: 
+-- Vertex: 5122 (5122)
+---- 5123 (5123) 
+---- 5124 (5124) 
+---- 5125 (5125) 
+-- Vertex: 5123 (5123)
+---- 5122 (5122) 
+---- 5124 (5124) 
+---- 5125 (5125) 
+---- 5126 (5126) 
+---- 5129 (5129) 
+-- Vertex: 5124 (5124)
+---- 5122 (5122) 
+---- 5123 (5123) 
+---- 5125 (5125) 
+---- 5127 (5127) 
+---- 5128 (5128) 
+-- Vertex: 5125 (5125)
+---- 5122 (5122) 
+---- 5123 (5123) 
+---- 5124 (5124) 
+---- 5126 (5126) 
+---- 5127 (5127) 
+---- 5128 (5128) 
+-- Vertex: 5126 (5126)
+---- 5123 (5123) 
+---- 5125 (5125) 
+---- 5129 (5129) 
+-- Vertex: 5127 (5127)
+---- 5124 (5124) 
+---- 5125 (5125) 
+---- 5128 (5128) 
+-- Vertex: 5128 (5128)
+---- 5124 (5124) 
+---- 5125 (5125) 
+---- 5127 (5127) 
+-- Vertex: 5129 (5129)
+---- 5123 (5123) 
+---- 5126 (5126) 
+
+isChordal True
+- 5122
+- 5123
+- 5124
+- 5125
+- 5126
+- 5127
+- 5128
+- 5129
+chordal2
+Graph created.
+Name of graph: Chordal
+Count of vertices: 8
+Real count of vertices: 8
+Count of edges: 11
+Vertices: 
+-- Identifier: 5130, userName: 5130
+-- Identifier: 5131, userName: 5131
+-- Identifier: 5132, userName: 5132
+-- Identifier: 5133, userName: 5133
+-- Identifier: 5134, userName: 5134
+-- Identifier: 5135, userName: 5135
+-- Identifier: 5136, userName: 5136
+-- Identifier: 5137, userName: 5137
+Edges: 
+-- Vertex: 5130 (5130)
+---- 5134 (5134) 
+---- 5136 (5136) 
+---- 5137 (5137) 
+-- Vertex: 5131 (5131)
+---- 5133 (5133) 
+-- Vertex: 5132 (5132)
+---- 5137 (5137) 
+-- Vertex: 5133 (5133)
+---- 5131 (5131) 
+---- 5137 (5137) 
+-- Vertex: 5134 (5134)
+---- 5130 (5130) 
+---- 5136 (5136) 
+---- 5137 (5137) 
+-- Vertex: 5135 (5135)
+---- 5136 (5136) 
+---- 5137 (5137) 
+-- Vertex: 5136 (5136)
+---- 5130 (5130) 
+---- 5134 (5134) 
+---- 5135 (5135) 
+---- 5137 (5137) 
+-- Vertex: 5137 (5137)
+---- 5130 (5130) 
+---- 5132 (5132) 
+---- 5133 (5133) 
+---- 5134 (5134) 
+---- 5135 (5135) 
+---- 5136 (5136) 
+
+isChordal True
+- 5130
+- 5134
+- 5136
+- 5137
+- 5135
+- 5133
+- 5132
+- 5131
+chordal3
+Graph created.
+Name of graph: Chordal
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 5138, userName: 5138
+Edges: 
+-- Vertex: 5138 (5138)
+
+isChordal True
+- 5138
+chordal4
+Graph created.
+Name of graph: Chordal
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 9
+Vertices: 
+-- Identifier: 5139, userName: 5139
+-- Identifier: 5140, userName: 5140
+-- Identifier: 5141, userName: 5141
+-- Identifier: 5142, userName: 5142
+-- Identifier: 5143, userName: 5143
+-- Identifier: 5144, userName: 5144
+-- Identifier: 5145, userName: 5145
+-- Identifier: 5146, userName: 5146
+-- Identifier: 5147, userName: 5147
+Edges: 
+-- Vertex: 5139 (5139)
+---- 5140 (5140) 
+---- 5141 (5141) 
+-- Vertex: 5140 (5140)
+---- 5139 (5139) 
+---- 5141 (5141) 
+-- Vertex: 5141 (5141)
+---- 5139 (5139) 
+---- 5140 (5140) 
+-- Vertex: 5142 (5142)
+---- 5143 (5143) 
+---- 5144 (5144) 
+-- Vertex: 5143 (5143)
+---- 5142 (5142) 
+---- 5144 (5144) 
+-- Vertex: 5144 (5144)
+---- 5142 (5142) 
+---- 5143 (5143) 
+-- Vertex: 5145 (5145)
+---- 5146 (5146) 
+---- 5147 (5147) 
+-- Vertex: 5146 (5146)
+---- 5145 (5145) 
+---- 5147 (5147) 
+-- Vertex: 5147 (5147)
+---- 5145 (5145) 
+---- 5146 (5146) 
+
+isChordal True
+- 5139
+- 5140
+- 5141
+- 5142
+- 5143
+- 5144
+- 5145
+- 5146
+- 5147
+chordal5
+Graph created.
+Name of graph: Chordal
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 8
+Vertices: 
+-- Identifier: 5148, userName: 5148
+-- Identifier: 5149, userName: 5149
+-- Identifier: 5150, userName: 5150
+-- Identifier: 5151, userName: 5151
+-- Identifier: 5152, userName: 5152
+-- Identifier: 5153, userName: 5153
+-- Identifier: 5154, userName: 5154
+-- Identifier: 5155, userName: 5155
+-- Identifier: 5156, userName: 5156
+Edges: 
+-- Vertex: 5148 (5148)
+---- 5149 (5149) 
+---- 5150 (5150) 
+---- 5151 (5151) 
+---- 5152 (5152) 
+---- 5153 (5153) 
+---- 5154 (5154) 
+---- 5155 (5155) 
+---- 5156 (5156) 
+-- Vertex: 5149 (5149)
+---- 5148 (5148) 
+-- Vertex: 5150 (5150)
+---- 5148 (5148) 
+-- Vertex: 5151 (5151)
+---- 5148 (5148) 
+-- Vertex: 5152 (5152)
+---- 5148 (5148) 
+-- Vertex: 5153 (5153)
+---- 5148 (5148) 
+-- Vertex: 5154 (5154)
+---- 5148 (5148) 
+-- Vertex: 5155 (5155)
+---- 5148 (5148) 
+-- Vertex: 5156 (5156)
+---- 5148 (5148) 
+
+isChordal True
+- 5148
+- 5149
+- 5150
+- 5151
+- 5152
+- 5153
+- 5154
+- 5155
+- 5156
+nonChordal1
+Graph created.
+Name of graph: NonChordal
+Count of vertices: 8
+Real count of vertices: 8
+Count of edges: 12
+Vertices: 
+-- Identifier: 5157, userName: 5157
+-- Identifier: 5158, userName: 5158
+-- Identifier: 5159, userName: 5159
+-- Identifier: 5160, userName: 5160
+-- Identifier: 5161, userName: 5161
+-- Identifier: 5162, userName: 5162
+-- Identifier: 5163, userName: 5163
+-- Identifier: 5164, userName: 5164
+Edges: 
+-- Vertex: 5157 (5157)
+---- 5161 (5161) 
+---- 5162 (5162) 
+---- 5163 (5163) 
+---- 5164 (5164) 
+-- Vertex: 5158 (5158)
+---- 5159 (5159) 
+---- 5162 (5162) 
+---- 5163 (5163) 
+---- 5164 (5164) 
+-- Vertex: 5159 (5159)
+---- 5158 (5158) 
+---- 5160 (5160) 
+---- 5164 (5164) 
+-- Vertex: 5160 (5160)
+---- 5159 (5159) 
+---- 5161 (5161) 
+-- Vertex: 5161 (5161)
+---- 5157 (5157) 
+---- 5160 (5160) 
+-- Vertex: 5162 (5162)
+---- 5157 (5157) 
+---- 5158 (5158) 
+---- 5163 (5163) 
+-- Vertex: 5163 (5163)
+---- 5157 (5157) 
+---- 5158 (5158) 
+---- 5162 (5162) 
+-- Vertex: 5164 (5164)
+---- 5157 (5157) 
+---- 5158 (5158) 
+---- 5159 (5159) 
+
+isChordal False
+nonChordal2
+Graph created.
+Name of graph: NonChordal
+Count of vertices: 8
+Real count of vertices: 8
+Count of edges: 9
+Vertices: 
+-- Identifier: 5165, userName: 5165
+-- Identifier: 5166, userName: 5166
+-- Identifier: 5167, userName: 5167
+-- Identifier: 5168, userName: 5168
+-- Identifier: 5169, userName: 5169
+-- Identifier: 5170, userName: 5170
+-- Identifier: 5171, userName: 5171
+-- Identifier: 5172, userName: 5172
+Edges: 
+-- Vertex: 5165 (5165)
+---- 5168 (5168) 
+---- 5172 (5172) 
+-- Vertex: 5166 (5166)
+---- 5167 (5167) 
+---- 5169 (5169) 
+---- 5172 (5172) 
+-- Vertex: 5167 (5167)
+---- 5166 (5166) 
+---- 5168 (5168) 
+-- Vertex: 5168 (5168)
+---- 5165 (5165) 
+---- 5167 (5167) 
+-- Vertex: 5169 (5169)
+---- 5166 (5166) 
+---- 5170 (5170) 
+-- Vertex: 5170 (5170)
+---- 5169 (5169) 
+---- 5171 (5171) 
+-- Vertex: 5171 (5171)
+---- 5170 (5170) 
+---- 5172 (5172) 
+-- Vertex: 5172 (5172)
+---- 5165 (5165) 
+---- 5166 (5166) 
+---- 5171 (5171) 
+
+isChordal False
+nonChordal3
+Graph created.
+Name of graph: NonChordal
+Count of vertices: 10
+Real count of vertices: 10
+Count of edges: 22
+Vertices: 
+-- Identifier: 5173, userName: 5173
+-- Identifier: 5174, userName: 5174
+-- Identifier: 5175, userName: 5175
+-- Identifier: 5176, userName: 5176
+-- Identifier: 5177, userName: 5177
+-- Identifier: 5178, userName: 5178
+-- Identifier: 5179, userName: 5179
+-- Identifier: 5180, userName: 5180
+-- Identifier: 5181, userName: 5181
+-- Identifier: 5182, userName: 5182
+Edges: 
+-- Vertex: 5173 (5173)
+---- 5174 (5174) 
+---- 5175 (5175) 
+---- 5176 (5176) 
+---- 5180 (5180) 
+---- 5181 (5181) 
+-- Vertex: 5174 (5174)
+---- 5173 (5173) 
+---- 5175 (5175) 
+---- 5176 (5176) 
+---- 5180 (5180) 
+---- 5181 (5181) 
+-- Vertex: 5175 (5175)
+---- 5173 (5173) 
+---- 5174 (5174) 
+---- 5177 (5177) 
+---- 5180 (5180) 
+---- 5181 (5181) 
+-- Vertex: 5176 (5176)
+---- 5173 (5173) 
+---- 5174 (5174) 
+---- 5177 (5177) 
+---- 5180 (5180) 
+---- 5181 (5181) 
+-- Vertex: 5177 (5177)
+---- 5175 (5175) 
+---- 5176 (5176) 
+---- 5180 (5180) 
+---- 5181 (5181) 
+-- Vertex: 5178 (5178)
+---- 5180 (5180) 
+---- 5181 (5181) 
+-- Vertex: 5179 (5179)
+---- 5182 (5182) 
+-- Vertex: 5180 (5180)
+---- 5173 (5173) 
+---- 5174 (5174) 
+---- 5175 (5175) 
+---- 5176 (5176) 
+---- 5177 (5177) 
+---- 5178 (5178) 
+---- 5182 (5182) 
+-- Vertex: 5181 (5181)
+---- 5173 (5173) 
+---- 5174 (5174) 
+---- 5175 (5175) 
+---- 5176 (5176) 
+---- 5177 (5177) 
+---- 5178 (5178) 
+---- 5182 (5182) 
+-- Vertex: 5182 (5182)
+---- 5179 (5179) 
+---- 5180 (5180) 
+---- 5181 (5181) 
+
+isChordal False
+nonChordal4
+Graph created.
+Name of graph: NonChordal
+Count of vertices: 14
+Real count of vertices: 14
+Count of edges: 12
+Vertices: 
+-- Identifier: 5183, userName: 5183
+-- Identifier: 5184, userName: 5184
+-- Identifier: 5185, userName: 5185
+-- Identifier: 5186, userName: 5186
+-- Identifier: 5187, userName: 5187
+-- Identifier: 5188, userName: 5188
+-- Identifier: 5189, userName: 5189
+-- Identifier: 5190, userName: 5190
+-- Identifier: 5191, userName: 5191
+-- Identifier: 5192, userName: 5192
+-- Identifier: 5193, userName: 5193
+-- Identifier: 5194, userName: 5194
+-- Identifier: 5195, userName: 5195
+-- Identifier: 5196, userName: 5196
+Edges: 
+-- Vertex: 5183 (5183)
+---- 5184 (5184) 
+-- Vertex: 5184 (5184)
+---- 5183 (5183) 
+---- 5185 (5185) 
+-- Vertex: 5185 (5185)
+---- 5184 (5184) 
+---- 5186 (5186) 
+-- Vertex: 5186 (5186)
+---- 5185 (5185) 
+---- 5187 (5187) 
+-- Vertex: 5187 (5187)
+---- 5186 (5186) 
+---- 5188 (5188) 
+-- Vertex: 5188 (5188)
+---- 5187 (5187) 
+---- 5189 (5189) 
+---- 5191 (5191) 
+-- Vertex: 5189 (5189)
+---- 5188 (5188) 
+---- 5190 (5190) 
+-- Vertex: 5190 (5190)
+---- 5189 (5189) 
+-- Vertex: 5191 (5191)
+---- 5188 (5188) 
+-- Vertex: 5192 (5192)
+---- 5193 (5193) 
+---- 5194 (5194) 
+-- Vertex: 5193 (5193)
+---- 5192 (5192) 
+---- 5195 (5195) 
+-- Vertex: 5194 (5194)
+---- 5192 (5192) 
+---- 5195 (5195) 
+-- Vertex: 5195 (5195)
+---- 5193 (5193) 
+---- 5194 (5194) 
+-- Vertex: 5196 (5196)
+
+isChordal False
+

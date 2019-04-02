@@ -1,0 +1,18 @@
+﻿Graph coloring. Graph representation: adjacencyMatrix
+
+Graph name: Name
+Number of vertices: 10
+
+GRAPH
+0 1 1 0 0 0 0 0 0 0
+1 0 1 1 1 0 0 0 0 0
+1 1 0 0 1 1 0 0 0 0
+0 1 0 0 1 0 1 1 1 1
+0 1 1 1 0 1 1 0 0 1
+0 0 1 0 1 0 1 1 1 1
+0 0 0 1 1 1 0 0 0 0
+0 0 0 1 0 1 0 0 0 0
+0 0 0 1 0 1 0 0 0 0
+0 0 0 1 1 1 0 0 0 0
+
+COLORED GRAPH

@@ -1,0 +1,46 @@
+﻿Graph coloring. Graph representation: adjacencyMatrix
+
+Graph name: Name
+Number of vertices: 6
+
+GRAPH
+0 1 1 1 0 0
+1 0 0 0 0 0
+1 0 0 0 0 0
+1 0 0 0 1 1
+0 0 0 1 0 0
+0 0 0 1 0 0
+
+COLORED GRAPH
+Number of colors: 2
+Used algorithm: randomSequence
+- 1
+-- 827 (827) 
+-- 831 (831) 
+-- 832 (832) 
+- 2
+-- 830 (830) 
+-- 829 (829) 
+-- 828 (828) 
+
+Number of colors: 2
+Used algorithm: largestFirstSequence
+- 1
+-- 842 (842) 
+-- 841 (841) 
+-- 840 (840) 
+- 2
+-- 839 (839) 
+-- 844 (844) 
+-- 843 (843) 
+
+Number of colors: 2
+Used algorithm: randomSequence
+- 1
+-- 830 (830) 
+-- 828 (828) 
+-- 829 (829) 
+- 2
+-- 831 (831) 
+-- 832 (832) 
+-- 827 (827) 

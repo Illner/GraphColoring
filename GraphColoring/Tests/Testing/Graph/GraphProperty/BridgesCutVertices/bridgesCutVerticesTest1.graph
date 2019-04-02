@@ -1,0 +1,13 @@
+﻿Graph coloring. Graph representation: edgeList
+
+Graph name: Name
+Number of vertices: 5
+
+GRAPH
+1 0
+0 2
+2 1
+0 3
+3 4
+
+COLORED GRAPH

@@ -1,0 +1,194 @@
+Invalid vertex count (0)
+saturationLargestFirstSequence2
+Graph colored.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 890, userName: 890
+Edges: 
+-- Vertex: 890 (890)
+Vertex color: 
+-- Vertex (identifier): 890, vertex (userName): 890, color: 1
+
+saturationLargestFirstSequence3
+Graph colored.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 6
+Vertices: 
+-- Identifier: 891, userName: 891
+-- Identifier: 892, userName: 892
+-- Identifier: 893, userName: 893
+-- Identifier: 894, userName: 894
+-- Identifier: 895, userName: 895
+-- Identifier: 896, userName: 896
+Edges: 
+-- Vertex: 891 (891)
+---- 892 (892) 
+---- 893 (893) 
+-- Vertex: 892 (892)
+---- 891 (891) 
+---- 893 (893) 
+-- Vertex: 893 (893)
+---- 891 (891) 
+---- 892 (892) 
+-- Vertex: 894 (894)
+---- 895 (895) 
+---- 896 (896) 
+-- Vertex: 895 (895)
+---- 894 (894) 
+---- 896 (896) 
+-- Vertex: 896 (896)
+---- 894 (894) 
+---- 895 (895) 
+Vertex color: 
+-- Vertex (identifier): 891, vertex (userName): 891, color: 1
+-- Vertex (identifier): 892, vertex (userName): 892, color: 2
+-- Vertex (identifier): 893, vertex (userName): 893, color: 3
+-- Vertex (identifier): 894, vertex (userName): 894, color: 1
+-- Vertex (identifier): 895, vertex (userName): 895, color: 2
+-- Vertex (identifier): 896, vertex (userName): 896, color: 3
+
+saturationLargestFirstSequence4
+Graph colored.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 12
+Vertices: 
+-- Identifier: 897, userName: 897
+-- Identifier: 898, userName: 898
+-- Identifier: 899, userName: 899
+-- Identifier: 900, userName: 900
+-- Identifier: 901, userName: 901
+-- Identifier: 902, userName: 902
+-- Identifier: 903, userName: 903
+-- Identifier: 904, userName: 904
+-- Identifier: 905, userName: 905
+Edges: 
+-- Vertex: 897 (897)
+---- 902 (902) 
+---- 903 (903) 
+---- 904 (904) 
+---- 905 (905) 
+-- Vertex: 898 (898)
+---- 902 (902) 
+---- 903 (903) 
+-- Vertex: 899 (899)
+---- 903 (903) 
+---- 904 (904) 
+-- Vertex: 900 (900)
+---- 904 (904) 
+---- 905 (905) 
+-- Vertex: 901 (901)
+---- 902 (902) 
+---- 905 (905) 
+-- Vertex: 902 (902)
+---- 897 (897) 
+---- 898 (898) 
+---- 901 (901) 
+-- Vertex: 903 (903)
+---- 897 (897) 
+---- 898 (898) 
+---- 899 (899) 
+-- Vertex: 904 (904)
+---- 897 (897) 
+---- 899 (899) 
+---- 900 (900) 
+-- Vertex: 905 (905)
+---- 897 (897) 
+---- 900 (900) 
+---- 901 (901) 
+Vertex color: 
+-- Vertex (identifier): 897, vertex (userName): 897, color: 1
+-- Vertex (identifier): 898, vertex (userName): 898, color: 1
+-- Vertex (identifier): 899, vertex (userName): 899, color: 1
+-- Vertex (identifier): 900, vertex (userName): 900, color: 1
+-- Vertex (identifier): 901, vertex (userName): 901, color: 1
+-- Vertex (identifier): 902, vertex (userName): 902, color: 2
+-- Vertex (identifier): 903, vertex (userName): 903, color: 2
+-- Vertex (identifier): 904, vertex (userName): 904, color: 2
+-- Vertex (identifier): 905, vertex (userName): 905, color: 2
+
+saturationLargestFirstSequence5
+Graph colored.
+Name of graph: Name
+Count of vertices: 10
+Real count of vertices: 10
+Count of edges: 19
+Vertices: 
+-- Identifier: 906, userName: 906
+-- Identifier: 907, userName: 907
+-- Identifier: 908, userName: 908
+-- Identifier: 909, userName: 909
+-- Identifier: 910, userName: 910
+-- Identifier: 911, userName: 911
+-- Identifier: 912, userName: 912
+-- Identifier: 913, userName: 913
+-- Identifier: 914, userName: 914
+-- Identifier: 915, userName: 915
+Edges: 
+-- Vertex: 906 (906)
+---- 907 (907) 
+---- 908 (908) 
+-- Vertex: 907 (907)
+---- 906 (906) 
+---- 908 (908) 
+---- 909 (909) 
+---- 910 (910) 
+-- Vertex: 908 (908)
+---- 906 (906) 
+---- 907 (907) 
+---- 910 (910) 
+---- 911 (911) 
+-- Vertex: 909 (909)
+---- 907 (907) 
+---- 910 (910) 
+---- 912 (912) 
+---- 913 (913) 
+---- 914 (914) 
+---- 915 (915) 
+-- Vertex: 910 (910)
+---- 907 (907) 
+---- 908 (908) 
+---- 909 (909) 
+---- 911 (911) 
+---- 912 (912) 
+---- 915 (915) 
+-- Vertex: 911 (911)
+---- 908 (908) 
+---- 910 (910) 
+---- 912 (912) 
+---- 913 (913) 
+---- 914 (914) 
+---- 915 (915) 
+-- Vertex: 912 (912)
+---- 909 (909) 
+---- 910 (910) 
+---- 911 (911) 
+-- Vertex: 913 (913)
+---- 909 (909) 
+---- 911 (911) 
+-- Vertex: 914 (914)
+---- 909 (909) 
+---- 911 (911) 
+-- Vertex: 915 (915)
+---- 909 (909) 
+---- 910 (910) 
+---- 911 (911) 
+Vertex color: 
+-- Vertex (identifier): 906, vertex (userName): 906, color: 1
+-- Vertex (identifier): 907, vertex (userName): 907, color: 2
+-- Vertex (identifier): 908, vertex (userName): 908, color: 3
+-- Vertex (identifier): 909, vertex (userName): 909, color: 3
+-- Vertex (identifier): 910, vertex (userName): 910, color: 1
+-- Vertex (identifier): 911, vertex (userName): 911, color: 2
+-- Vertex (identifier): 912, vertex (userName): 912, color: 4
+-- Vertex (identifier): 913, vertex (userName): 913, color: 1
+-- Vertex (identifier): 914, vertex (userName): 914, color: 1
+-- Vertex (identifier): 915, vertex (userName): 915, color: 4
+
+

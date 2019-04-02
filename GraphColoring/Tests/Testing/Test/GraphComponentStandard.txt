@@ -1,0 +1,473 @@
+graphComponent1
+Graph created.
+Name of graph: Name
+Count of vertices: 13
+Real count of vertices: 13
+Count of edges: 11
+Vertices: 
+-- Identifier: 273, userName: 273
+-- Identifier: 274, userName: 274
+-- Identifier: 275, userName: 275
+-- Identifier: 276, userName: 276
+-- Identifier: 277, userName: 277
+-- Identifier: 278, userName: 278
+-- Identifier: 279, userName: 279
+-- Identifier: 280, userName: 280
+-- Identifier: 281, userName: 281
+-- Identifier: 282, userName: 282
+-- Identifier: 283, userName: 283
+-- Identifier: 284, userName: 284
+-- Identifier: 285, userName: 285
+Edges: 
+-- Vertex: 273 (273)
+---- 277 (277) 
+---- 279 (279) 
+-- Vertex: 274 (274)
+---- 278 (278) 
+---- 280 (280) 
+-- Vertex: 275 (275)
+---- 280 (280) 
+-- Vertex: 276 (276)
+---- 281 (281) 
+-- Vertex: 277 (277)
+---- 273 (273) 
+---- 278 (278) 
+-- Vertex: 278 (278)
+---- 274 (274) 
+---- 277 (277) 
+-- Vertex: 279 (279)
+---- 273 (273) 
+-- Vertex: 280 (280)
+---- 274 (274) 
+---- 275 (275) 
+---- 281 (281) 
+-- Vertex: 281 (281)
+---- 276 (276) 
+---- 280 (280) 
+-- Vertex: 282 (282)
+---- 283 (283) 
+---- 284 (284) 
+-- Vertex: 283 (283)
+---- 282 (282) 
+---- 284 (284) 
+-- Vertex: 284 (284)
+---- 282 (282) 
+---- 283 (283) 
+-- Vertex: 285 (285)
+
+Number of components: 3
+Is graph connected: False
+Circuit rank: 1
+Graph component.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 8
+Vertices: 
+-- Identifier: 286, userName: 273
+-- Identifier: 287, userName: 277
+-- Identifier: 288, userName: 279
+-- Identifier: 289, userName: 274
+-- Identifier: 290, userName: 278
+-- Identifier: 291, userName: 280
+-- Identifier: 292, userName: 275
+-- Identifier: 293, userName: 276
+-- Identifier: 294, userName: 281
+Edges: 
+-- Vertex: 286 (273)
+---- 287 (277) 
+---- 288 (279) 
+-- Vertex: 287 (277)
+---- 286 (273) 
+---- 290 (278) 
+-- Vertex: 288 (279)
+---- 286 (273) 
+-- Vertex: 289 (274)
+---- 290 (278) 
+---- 291 (280) 
+-- Vertex: 290 (278)
+---- 289 (274) 
+---- 287 (277) 
+-- Vertex: 291 (280)
+---- 289 (274) 
+---- 292 (275) 
+---- 294 (281) 
+-- Vertex: 292 (275)
+---- 291 (280) 
+-- Vertex: 293 (276)
+---- 294 (281) 
+-- Vertex: 294 (281)
+---- 293 (276) 
+---- 291 (280) 
+
+Graph component.
+Name of graph: Name
+Count of vertices: 3
+Real count of vertices: 3
+Count of edges: 3
+Vertices: 
+-- Identifier: 295, userName: 282
+-- Identifier: 296, userName: 283
+-- Identifier: 297, userName: 284
+Edges: 
+-- Vertex: 295 (282)
+---- 296 (283) 
+---- 297 (284) 
+-- Vertex: 296 (283)
+---- 295 (282) 
+---- 297 (284) 
+-- Vertex: 297 (284)
+---- 295 (282) 
+---- 296 (283) 
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 298, userName: 285
+Edges: 
+-- Vertex: 298 (285)
+
+graphComponent2
+Graph created.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 299, userName: 299
+Edges: 
+-- Vertex: 299 (299)
+
+Number of components: 1
+Is graph connected: True
+Circuit rank: 0
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 299, userName: 299
+Edges: 
+-- Vertex: 299 (299)
+
+graphComponent3
+Graph created.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 9
+Vertices: 
+-- Identifier: 300, userName: 300
+-- Identifier: 301, userName: 301
+-- Identifier: 302, userName: 302
+-- Identifier: 303, userName: 303
+-- Identifier: 304, userName: 304
+-- Identifier: 305, userName: 305
+-- Identifier: 306, userName: 306
+-- Identifier: 307, userName: 307
+-- Identifier: 308, userName: 308
+Edges: 
+-- Vertex: 300 (300)
+---- 301 (301) 
+---- 302 (302) 
+-- Vertex: 301 (301)
+---- 300 (300) 
+---- 302 (302) 
+-- Vertex: 302 (302)
+---- 300 (300) 
+---- 301 (301) 
+-- Vertex: 303 (303)
+---- 304 (304) 
+---- 305 (305) 
+-- Vertex: 304 (304)
+---- 303 (303) 
+---- 305 (305) 
+-- Vertex: 305 (305)
+---- 303 (303) 
+---- 304 (304) 
+-- Vertex: 306 (306)
+---- 307 (307) 
+---- 308 (308) 
+-- Vertex: 307 (307)
+---- 306 (306) 
+---- 308 (308) 
+-- Vertex: 308 (308)
+---- 306 (306) 
+---- 307 (307) 
+
+Number of components: 3
+Is graph connected: False
+Circuit rank: 3
+Graph component.
+Name of graph: Name
+Count of vertices: 3
+Real count of vertices: 3
+Count of edges: 3
+Vertices: 
+-- Identifier: 309, userName: 300
+-- Identifier: 310, userName: 301
+-- Identifier: 311, userName: 302
+Edges: 
+-- Vertex: 309 (300)
+---- 310 (301) 
+---- 311 (302) 
+-- Vertex: 310 (301)
+---- 309 (300) 
+---- 311 (302) 
+-- Vertex: 311 (302)
+---- 309 (300) 
+---- 310 (301) 
+
+Graph component.
+Name of graph: Name
+Count of vertices: 3
+Real count of vertices: 3
+Count of edges: 3
+Vertices: 
+-- Identifier: 312, userName: 303
+-- Identifier: 313, userName: 304
+-- Identifier: 314, userName: 305
+Edges: 
+-- Vertex: 312 (303)
+---- 313 (304) 
+---- 314 (305) 
+-- Vertex: 313 (304)
+---- 312 (303) 
+---- 314 (305) 
+-- Vertex: 314 (305)
+---- 312 (303) 
+---- 313 (304) 
+
+Graph component.
+Name of graph: Name
+Count of vertices: 3
+Real count of vertices: 3
+Count of edges: 3
+Vertices: 
+-- Identifier: 315, userName: 306
+-- Identifier: 316, userName: 307
+-- Identifier: 317, userName: 308
+Edges: 
+-- Vertex: 315 (306)
+---- 316 (307) 
+---- 317 (308) 
+-- Vertex: 316 (307)
+---- 315 (306) 
+---- 317 (308) 
+-- Vertex: 317 (308)
+---- 315 (306) 
+---- 316 (307) 
+
+graphComponent4
+Graph created.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 8
+Vertices: 
+-- Identifier: 318, userName: 318
+-- Identifier: 319, userName: 319
+-- Identifier: 320, userName: 320
+-- Identifier: 321, userName: 321
+-- Identifier: 322, userName: 322
+-- Identifier: 323, userName: 323
+-- Identifier: 324, userName: 324
+-- Identifier: 325, userName: 325
+-- Identifier: 326, userName: 326
+Edges: 
+-- Vertex: 318 (318)
+---- 322 (322) 
+-- Vertex: 319 (319)
+---- 322 (322) 
+-- Vertex: 320 (320)
+---- 322 (322) 
+-- Vertex: 321 (321)
+---- 322 (322) 
+-- Vertex: 322 (322)
+---- 318 (318) 
+---- 319 (319) 
+---- 320 (320) 
+---- 321 (321) 
+---- 323 (323) 
+---- 324 (324) 
+---- 325 (325) 
+---- 326 (326) 
+-- Vertex: 323 (323)
+---- 322 (322) 
+-- Vertex: 324 (324)
+---- 322 (322) 
+-- Vertex: 325 (325)
+---- 322 (322) 
+-- Vertex: 326 (326)
+---- 322 (322) 
+
+Number of components: 1
+Is graph connected: True
+Circuit rank: 0
+Graph component.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 8
+Vertices: 
+-- Identifier: 318, userName: 318
+-- Identifier: 319, userName: 319
+-- Identifier: 320, userName: 320
+-- Identifier: 321, userName: 321
+-- Identifier: 322, userName: 322
+-- Identifier: 323, userName: 323
+-- Identifier: 324, userName: 324
+-- Identifier: 325, userName: 325
+-- Identifier: 326, userName: 326
+Edges: 
+-- Vertex: 318 (318)
+---- 322 (322) 
+-- Vertex: 319 (319)
+---- 322 (322) 
+-- Vertex: 320 (320)
+---- 322 (322) 
+-- Vertex: 321 (321)
+---- 322 (322) 
+-- Vertex: 322 (322)
+---- 318 (318) 
+---- 319 (319) 
+---- 320 (320) 
+---- 321 (321) 
+---- 323 (323) 
+---- 324 (324) 
+---- 325 (325) 
+---- 326 (326) 
+-- Vertex: 323 (323)
+---- 322 (322) 
+-- Vertex: 324 (324)
+---- 322 (322) 
+-- Vertex: 325 (325)
+---- 322 (322) 
+-- Vertex: 326 (326)
+---- 322 (322) 
+
+graphComponent5
+Graph created.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 0
+Vertices: 
+-- Identifier: 327, userName: 327
+-- Identifier: 328, userName: 328
+-- Identifier: 329, userName: 329
+-- Identifier: 330, userName: 330
+-- Identifier: 331, userName: 331
+-- Identifier: 332, userName: 332
+-- Identifier: 333, userName: 333
+-- Identifier: 334, userName: 334
+-- Identifier: 335, userName: 335
+Edges: 
+-- Vertex: 327 (327)
+-- Vertex: 328 (328)
+-- Vertex: 329 (329)
+-- Vertex: 330 (330)
+-- Vertex: 331 (331)
+-- Vertex: 332 (332)
+-- Vertex: 333 (333)
+-- Vertex: 334 (334)
+-- Vertex: 335 (335)
+
+Number of components: 9
+Is graph connected: False
+Circuit rank: 0
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 336, userName: 327
+Edges: 
+-- Vertex: 336 (327)
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 337, userName: 328
+Edges: 
+-- Vertex: 337 (328)
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 338, userName: 329
+Edges: 
+-- Vertex: 338 (329)
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 339, userName: 330
+Edges: 
+-- Vertex: 339 (330)
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 340, userName: 331
+Edges: 
+-- Vertex: 340 (331)
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 341, userName: 332
+Edges: 
+-- Vertex: 341 (332)
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 342, userName: 333
+Edges: 
+-- Vertex: 342 (333)
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 343, userName: 334
+Edges: 
+-- Vertex: 343 (334)
+
+Graph component.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 344, userName: 335
+Edges: 
+-- Vertex: 344 (335)
+
+

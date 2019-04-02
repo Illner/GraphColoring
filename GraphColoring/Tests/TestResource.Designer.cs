@@ -104,7 +104,7 @@ namespace GraphColoring.Tests {
         ///Edges: 
         ///-- Vertex: 5007 (5007)
         ///Vertex color: 
-        ///-- Vertex: 5007, color: 1
+        ///-- Vertex (identifier): 5007, vertex (userName): 5007, color: 1
         ///
         ///Combination algorithm
         ///Graph colored.
@@ -114,8 +114,7 @@ namespace GraphColoring.Tests {
         ///Count of edges: 6
         ///Vertices: 
         ///-- Identifier: 5008, userName: 5008
-        ///-- Identifier: 5009, userName: 5009
-        ///-- Identifier: 50 [rest of string was truncated]&quot;;.
+        ///-- Identifier: 5 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CombinationStandard {
             get {
@@ -136,7 +135,7 @@ namespace GraphColoring.Tests {
         ///Edges: 
         ///-- Vertex: 916 (916)
         ///Vertex color: 
-        ///-- Vertex: 916, color: 1
+        ///-- Vertex (identifier): 916, vertex (userName): 916, color: 1
         ///
         ///connectedSequential3
         ///Graph colored.
@@ -146,8 +145,7 @@ namespace GraphColoring.Tests {
         ///Count of edges: 12
         ///Vertices: 
         ///-- Identifier: 917, userName: 917
-        ///-- Identifier: 918, userName: 918
-        ///-- Identifier: 919, userNam [rest of string was truncated]&quot;;.
+        ///-- Identifier: 918, userN [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ConnectedSequentialStandard {
             get {
@@ -171,7 +169,7 @@ namespace GraphColoring.Tests {
         ///graph &quot;Name&quot;
         ///{
         ///node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
-        ///&quot;5076&quot; [shape = doublecircle shape = doubleoctagon ]
+        ///&quot;5076&quot; [shape = doublecircle shape = doubleoctagon shape = square ]
         ///}
         ///
         ///Uncolored schedule
@@ -181,9 +179,7 @@ namespace GraphColoring.Tests {
         ///}
         ///
         ///Colored schedule
-        ///graph &quot;Name&quot;
-        ///{
-        /// [rest of string was truncated]&quot;;.
+        ///gr [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ConverterGraphToDotStandard {
             get {
@@ -212,7 +208,7 @@ namespace GraphColoring.Tests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Genetic algorithm
+        ///   Looks up a localized string similar to Genetic algorithm (exponent: 2)
         ///Graph colored.
         ///Is valid colored: True
         ///
@@ -606,7 +602,7 @@ namespace GraphColoring.Tests {
         ///Edges: 
         ///-- Vertex: 936 (936)
         ///Vertex color: 
-        ///-- Vertex: 936, color: 1
+        ///-- Vertex (identifier): 936, vertex (userName): 936, color: 1
         ///
         ///Greedy independent set algorithm
         ///Graph colored.
@@ -616,8 +612,7 @@ namespace GraphColoring.Tests {
         ///Count of edges: 6
         ///Vertices: 
         ///-- Identifier: 938, userName: 938
-        ///-- Identifier: 939, userName: 939
-        ///-- I [rest of string was truncated]&quot;;.
+        ///-- [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GreedyIndependentSetStandard {
             get {
@@ -638,7 +633,7 @@ namespace GraphColoring.Tests {
         ///Edges: 
         ///-- Vertex: 792 (792)
         ///Vertex color: 
-        ///-- Vertex: 792, color: 1
+        ///-- Vertex (identifier): 792, vertex (userName): 792, color: 1
         ///
         ///largestFirstSequence3
         ///Graph colored.
@@ -648,8 +643,7 @@ namespace GraphColoring.Tests {
         ///Count of edges: 6
         ///Vertices: 
         ///-- Identifier: 793, userName: 793
-        ///-- Identifier: 794, userName: 794
-        ///-- Identifier: 795, userNa [rest of string was truncated]&quot;;.
+        ///-- Identifier: 794, user [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LargestFirstSequenceStandard {
             get {
@@ -730,7 +724,7 @@ namespace GraphColoring.Tests {
         ///Edges: 
         ///-- Vertex: 890 (890)
         ///Vertex color: 
-        ///-- Vertex: 890, color: 1
+        ///-- Vertex (identifier): 890, vertex (userName): 890, color: 1
         ///
         ///saturationLargestFirstSequence3
         ///Graph colored.
@@ -740,8 +734,7 @@ namespace GraphColoring.Tests {
         ///Count of edges: 6
         ///Vertices: 
         ///-- Identifier: 891, userName: 891
-        ///-- Identifier: 892, userName: 892
-        ///-- Ide [rest of string was truncated]&quot;;.
+        ///-- I [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SaturationLargestFirstSequenceStandard {
             get {
@@ -762,7 +755,7 @@ namespace GraphColoring.Tests {
         ///Edges: 
         ///-- Vertex: 818 (818)
         ///Vertex color: 
-        ///-- Vertex: 818, color: 1
+        ///-- Vertex (identifier): 818, vertex (userName): 818, color: 1
         ///
         ///smallestLastSequence3
         ///Graph colored.
@@ -772,8 +765,7 @@ namespace GraphColoring.Tests {
         ///Count of edges: 6
         ///Vertices: 
         ///-- Identifier: 820, userName: 820
-        ///-- Identifier: 821, userName: 821
-        ///-- Identifier: 822, userNa [rest of string was truncated]&quot;;.
+        ///-- Identifier: 821, user [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SmallestLastSequenceStandard {
             get {

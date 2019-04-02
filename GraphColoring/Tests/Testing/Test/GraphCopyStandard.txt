@@ -1,0 +1,205 @@
+graphCopy1
+Graph created.
+Name of graph: Name
+Count of vertices: 4
+Real count of vertices: 4
+Count of edges: 6
+Vertices: 
+-- Identifier: 566, userName: 566
+-- Identifier: 567, userName: 567
+-- Identifier: 568, userName: 568
+-- Identifier: 569, userName: 569
+Edges: 
+-- Vertex: 566 (566)
+---- 567 (567) 
+---- 568 (568) 
+---- 569 (569) 
+-- Vertex: 567 (567)
+---- 566 (566) 
+---- 568 (568) 
+---- 569 (569) 
+-- Vertex: 568 (568)
+---- 566 (566) 
+---- 567 (567) 
+---- 569 (569) 
+-- Vertex: 569 (569)
+---- 566 (566) 
+---- 567 (567) 
+---- 568 (568) 
+
+Copied graph.
+Name of graph: Name
+Count of vertices: 4
+Real count of vertices: 4
+Count of edges: 6
+Vertices: 
+-- Identifier: 570, userName: 566
+-- Identifier: 571, userName: 567
+-- Identifier: 572, userName: 568
+-- Identifier: 573, userName: 569
+Edges: 
+-- Vertex: 570 (566)
+---- 571 (567) 
+---- 572 (568) 
+---- 573 (569) 
+-- Vertex: 571 (567)
+---- 570 (566) 
+---- 572 (568) 
+---- 573 (569) 
+-- Vertex: 572 (568)
+---- 570 (566) 
+---- 571 (567) 
+---- 573 (569) 
+-- Vertex: 573 (569)
+---- 570 (566) 
+---- 571 (567) 
+---- 572 (568) 
+
+graphCopy2
+Graph created.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 574, userName: 574
+Edges: 
+-- Vertex: 574 (574)
+
+Copied graph.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 575, userName: 574
+Edges: 
+-- Vertex: 575 (574)
+
+graphCopy3
+Graph created.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 6
+Vertices: 
+-- Identifier: 576, userName: 576
+-- Identifier: 577, userName: 577
+-- Identifier: 578, userName: 578
+-- Identifier: 579, userName: 579
+-- Identifier: 580, userName: 580
+-- Identifier: 581, userName: 581
+Edges: 
+-- Vertex: 576 (576)
+---- 577 (577) 
+-- Vertex: 577 (577)
+---- 576 (576) 
+---- 580 (580) 
+---- 581 (581) 
+-- Vertex: 578 (578)
+---- 579 (579) 
+---- 580 (580) 
+-- Vertex: 579 (579)
+---- 578 (578) 
+---- 581 (581) 
+-- Vertex: 580 (580)
+---- 577 (577) 
+---- 578 (578) 
+-- Vertex: 581 (581)
+---- 577 (577) 
+---- 579 (579) 
+
+Copied graph.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 6
+Vertices: 
+-- Identifier: 582, userName: 576
+-- Identifier: 583, userName: 577
+-- Identifier: 584, userName: 580
+-- Identifier: 585, userName: 581
+-- Identifier: 586, userName: 578
+-- Identifier: 587, userName: 579
+Edges: 
+-- Vertex: 582 (576)
+---- 583 (577) 
+-- Vertex: 583 (577)
+---- 582 (576) 
+---- 584 (580) 
+---- 585 (581) 
+-- Vertex: 584 (580)
+---- 583 (577) 
+---- 586 (578) 
+-- Vertex: 585 (581)
+---- 583 (577) 
+---- 587 (579) 
+-- Vertex: 586 (578)
+---- 587 (579) 
+---- 584 (580) 
+-- Vertex: 587 (579)
+---- 586 (578) 
+---- 585 (581) 
+
+graphCopy4
+Graph created.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 5
+Vertices: 
+-- Identifier: 588, userName: 588
+-- Identifier: 589, userName: 589
+-- Identifier: 590, userName: 590
+-- Identifier: 591, userName: 591
+-- Identifier: 592, userName: 592
+-- Identifier: 593, userName: 593
+Edges: 
+-- Vertex: 588 (588)
+---- 590 (590) 
+---- 591 (591) 
+-- Vertex: 589 (589)
+---- 590 (590) 
+---- 591 (591) 
+-- Vertex: 590 (590)
+---- 588 (588) 
+---- 589 (589) 
+-- Vertex: 591 (591)
+---- 588 (588) 
+---- 589 (589) 
+-- Vertex: 592 (592)
+---- 593 (593) 
+-- Vertex: 593 (593)
+---- 592 (592) 
+
+Copied graph.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 5
+Vertices: 
+-- Identifier: 594, userName: 588
+-- Identifier: 595, userName: 590
+-- Identifier: 596, userName: 591
+-- Identifier: 597, userName: 589
+-- Identifier: 598, userName: 592
+-- Identifier: 599, userName: 593
+Edges: 
+-- Vertex: 594 (588)
+---- 595 (590) 
+---- 596 (591) 
+-- Vertex: 595 (590)
+---- 594 (588) 
+---- 597 (589) 
+-- Vertex: 596 (591)
+---- 594 (588) 
+---- 597 (589) 
+-- Vertex: 597 (589)
+---- 595 (590) 
+---- 596 (591) 
+-- Vertex: 598 (592)
+---- 599 (593) 
+-- Vertex: 599 (593)
+---- 598 (592) 
+
+

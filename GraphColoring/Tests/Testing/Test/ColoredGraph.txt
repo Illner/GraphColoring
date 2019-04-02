@@ -1,0 +1,642 @@
+valid
+Graph created.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 5
+Vertices: 
+-- Identifier: 704, userName: 704
+-- Identifier: 705, userName: 705
+-- Identifier: 706, userName: 706
+-- Identifier: 707, userName: 707
+-- Identifier: 708, userName: 708
+-- Identifier: 709, userName: 709
+Edges: 
+-- Vertex: 704 (704)
+---- 705 (705) 
+---- 706 (706) 
+---- 707 (707) 
+-- Vertex: 705 (705)
+---- 704 (704) 
+-- Vertex: 706 (706)
+---- 704 (704) 
+-- Vertex: 707 (707)
+---- 704 (704) 
+---- 708 (708) 
+---- 709 (709) 
+-- Vertex: 708 (708)
+---- 707 (707) 
+-- Vertex: 709 (709)
+---- 707 (707) 
+
+Graph modified.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 5
+Vertices: 
+-- Identifier: 704, userName: 704
+-- Identifier: 705, userName: 705
+-- Identifier: 706, userName: 706
+-- Identifier: 707, userName: 707
+-- Identifier: 708, userName: 708
+-- Identifier: 709, userName: 709
+Edges: 
+-- Vertex: 704 (704)
+---- 705 (705) 
+---- 706 (706) 
+---- 707 (707) 
+-- Vertex: 705 (705)
+---- 704 (704) 
+-- Vertex: 706 (706)
+---- 704 (704) 
+-- Vertex: 707 (707)
+---- 704 (704) 
+---- 708 (708) 
+---- 709 (709) 
+-- Vertex: 708 (708)
+---- 707 (707) 
+-- Vertex: 709 (709)
+---- 707 (707) 
+Vertex color: 
+-- Vertex (identifier): 704, vertex (userName): 704, color: 1
+-- Vertex (identifier): 705, vertex (userName): 705, color: 2
+-- Vertex (identifier): 706, vertex (userName): 706, color: 2
+-- Vertex (identifier): 707, vertex (userName): 707, color: 2
+-- Vertex (identifier): 708, vertex (userName): 708, color: 1
+-- Vertex (identifier): 709, vertex (userName): 709, color: 1
+
+invalid
+Graph created.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 5
+Vertices: 
+-- Identifier: 712, userName: 712
+-- Identifier: 713, userName: 713
+-- Identifier: 714, userName: 714
+-- Identifier: 715, userName: 715
+-- Identifier: 716, userName: 716
+-- Identifier: 717, userName: 717
+Edges: 
+-- Vertex: 712 (712)
+---- 713 (713) 
+---- 714 (714) 
+---- 715 (715) 
+-- Vertex: 713 (713)
+---- 712 (712) 
+-- Vertex: 714 (714)
+---- 712 (712) 
+-- Vertex: 715 (715)
+---- 712 (712) 
+---- 716 (716) 
+---- 717 (717) 
+-- Vertex: 716 (716)
+---- 715 (715) 
+-- Vertex: 717 (717)
+---- 715 (715) 
+
+VertexColor - initialization
+Exception of type 'GraphColoring.MyException.GraphException.ColoredGraphAlreadyInitializedException' was thrown.
+GreedyColoring - initialization
+Exception of type 'GraphColoring.MyException.GraphException.ColoredGraphAlreadyInitializedException' was thrown.
+Reset - initialization
+Exception of type 'GraphColoring.MyException.GraphException.ColoredGraphAlreadyInitializedException' was thrown.
+Reset - initialization
+Exception of type 'GraphColoring.MyException.GraphException.ColoredGraphAlreadyInitializedException' was thrown.
+Initialization - initialization
+Exception of type 'GraphColoring.MyException.GraphException.ColoredGraphAlreadyInitializedException' was thrown.
+Deinitialization - initialization
+Exception of type 'GraphColoring.MyException.GraphException.ColoredGraphNotInitializationException' was thrown.
+VertexColor - Doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+GreedyColoring - Doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+CheckValidColor - Doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+IsVertexColored - Doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+GetColorVertex - Doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+Graph modified.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 5
+Vertices: 
+-- Identifier: 712, userName: 712
+-- Identifier: 713, userName: 713
+-- Identifier: 714, userName: 714
+-- Identifier: 715, userName: 715
+-- Identifier: 716, userName: 716
+-- Identifier: 717, userName: 717
+Edges: 
+-- Vertex: 712 (712)
+---- 713 (713) 
+---- 714 (714) 
+---- 715 (715) 
+-- Vertex: 713 (713)
+---- 712 (712) 
+-- Vertex: 714 (714)
+---- 712 (712) 
+-- Vertex: 715 (715)
+---- 712 (712) 
+---- 716 (716) 
+---- 717 (717) 
+-- Vertex: 716 (716)
+---- 715 (715) 
+-- Vertex: 717 (717)
+---- 715 (715) 
+Vertex color: 
+-- Vertex (identifier): 712, vertex (userName): 712, color: 1
+-- Vertex (identifier): 713, vertex (userName): 713, color: 2
+-- Vertex (identifier): 714, vertex (userName): 714, color: 2
+-- Vertex (identifier): 715, vertex (userName): 715, color: 2
+-- Vertex (identifier): 716, vertex (userName): 716, color: 1
+-- Vertex (identifier): 717, vertex (userName): 717, color: 1
+
+interchange1
+Graph created.
+Name of graph: Name
+Count of vertices: 4
+Real count of vertices: 4
+Count of edges: 3
+Vertices: 
+-- Identifier: 723, userName: 723
+-- Identifier: 724, userName: 724
+-- Identifier: 725, userName: 725
+-- Identifier: 726, userName: 726
+Edges: 
+-- Vertex: 723 (723)
+---- 724 (724) 
+-- Vertex: 724 (724)
+---- 723 (723) 
+---- 726 (726) 
+-- Vertex: 725 (725)
+---- 726 (726) 
+-- Vertex: 726 (726)
+---- 724 (724) 
+---- 725 (725) 
+
+Graph colored.
+Name of graph: Name
+Count of vertices: 4
+Real count of vertices: 4
+Count of edges: 3
+Vertices: 
+-- Identifier: 723, userName: 723
+-- Identifier: 724, userName: 724
+-- Identifier: 725, userName: 725
+-- Identifier: 726, userName: 726
+Edges: 
+-- Vertex: 723 (723)
+---- 724 (724) 
+-- Vertex: 724 (724)
+---- 723 (723) 
+---- 726 (726) 
+-- Vertex: 725 (725)
+---- 726 (726) 
+-- Vertex: 726 (726)
+---- 724 (724) 
+---- 725 (725) 
+Vertex color: 
+-- Vertex (identifier): 723, vertex (userName): 723, color: 1
+-- Vertex (identifier): 724, vertex (userName): 724, color: 2
+-- Vertex (identifier): 725, vertex (userName): 725, color: 2
+-- Vertex (identifier): 726, vertex (userName): 726, color: 1
+
+interchange2
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 6
+Vertices: 
+-- Identifier: 727, userName: 727
+-- Identifier: 728, userName: 728
+-- Identifier: 729, userName: 729
+-- Identifier: 730, userName: 730
+-- Identifier: 731, userName: 731
+Edges: 
+-- Vertex: 727 (727)
+---- 729 (729) 
+---- 731 (731) 
+-- Vertex: 728 (728)
+---- 730 (730) 
+-- Vertex: 729 (729)
+---- 727 (727) 
+---- 730 (730) 
+---- 731 (731) 
+-- Vertex: 730 (730)
+---- 728 (728) 
+---- 729 (729) 
+---- 731 (731) 
+-- Vertex: 731 (731)
+---- 727 (727) 
+---- 729 (729) 
+---- 730 (730) 
+
+Graph colored.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 6
+Vertices: 
+-- Identifier: 727, userName: 727
+-- Identifier: 728, userName: 728
+-- Identifier: 729, userName: 729
+-- Identifier: 730, userName: 730
+-- Identifier: 731, userName: 731
+Edges: 
+-- Vertex: 727 (727)
+---- 729 (729) 
+---- 731 (731) 
+-- Vertex: 728 (728)
+---- 730 (730) 
+-- Vertex: 729 (729)
+---- 727 (727) 
+---- 730 (730) 
+---- 731 (731) 
+-- Vertex: 730 (730)
+---- 728 (728) 
+---- 729 (729) 
+---- 731 (731) 
+-- Vertex: 731 (731)
+---- 727 (727) 
+---- 729 (729) 
+---- 730 (730) 
+Vertex color: 
+-- Vertex (identifier): 727, vertex (userName): 727, color: 1
+-- Vertex (identifier): 728, vertex (userName): 728, color: 2
+-- Vertex (identifier): 729, vertex (userName): 729, color: 2
+-- Vertex (identifier): 730, vertex (userName): 730, color: 1
+-- Vertex (identifier): 731, vertex (userName): 731, color: 3
+
+interchange3
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 10
+Vertices: 
+-- Identifier: 732, userName: 732
+-- Identifier: 733, userName: 733
+-- Identifier: 734, userName: 734
+-- Identifier: 735, userName: 735
+-- Identifier: 736, userName: 736
+Edges: 
+-- Vertex: 732 (732)
+---- 733 (733) 
+---- 734 (734) 
+---- 735 (735) 
+---- 736 (736) 
+-- Vertex: 733 (733)
+---- 732 (732) 
+---- 734 (734) 
+---- 735 (735) 
+---- 736 (736) 
+-- Vertex: 734 (734)
+---- 732 (732) 
+---- 733 (733) 
+---- 735 (735) 
+---- 736 (736) 
+-- Vertex: 735 (735)
+---- 732 (732) 
+---- 733 (733) 
+---- 734 (734) 
+---- 736 (736) 
+-- Vertex: 736 (736)
+---- 732 (732) 
+---- 733 (733) 
+---- 734 (734) 
+---- 735 (735) 
+
+Graph colored.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 10
+Vertices: 
+-- Identifier: 732, userName: 732
+-- Identifier: 733, userName: 733
+-- Identifier: 734, userName: 734
+-- Identifier: 735, userName: 735
+-- Identifier: 736, userName: 736
+Edges: 
+-- Vertex: 732 (732)
+---- 733 (733) 
+---- 734 (734) 
+---- 735 (735) 
+---- 736 (736) 
+-- Vertex: 733 (733)
+---- 732 (732) 
+---- 734 (734) 
+---- 735 (735) 
+---- 736 (736) 
+-- Vertex: 734 (734)
+---- 732 (732) 
+---- 733 (733) 
+---- 735 (735) 
+---- 736 (736) 
+-- Vertex: 735 (735)
+---- 732 (732) 
+---- 733 (733) 
+---- 734 (734) 
+---- 736 (736) 
+-- Vertex: 736 (736)
+---- 732 (732) 
+---- 733 (733) 
+---- 734 (734) 
+---- 735 (735) 
+Vertex color: 
+-- Vertex (identifier): 732, vertex (userName): 732, color: 1
+-- Vertex (identifier): 733, vertex (userName): 733, color: 2
+-- Vertex (identifier): 734, vertex (userName): 734, color: 3
+-- Vertex (identifier): 735, vertex (userName): 735, color: 4
+-- Vertex (identifier): 736, vertex (userName): 736, color: 5
+
+interchange4
+Graph created.
+Name of graph: Name
+Count of vertices: 7
+Real count of vertices: 7
+Count of edges: 8
+Vertices: 
+-- Identifier: 737, userName: 737
+-- Identifier: 738, userName: 738
+-- Identifier: 739, userName: 739
+-- Identifier: 740, userName: 740
+-- Identifier: 741, userName: 741
+-- Identifier: 742, userName: 742
+-- Identifier: 743, userName: 743
+Edges: 
+-- Vertex: 737 (737)
+---- 739 (739) 
+---- 741 (741) 
+---- 742 (742) 
+-- Vertex: 738 (738)
+---- 740 (740) 
+---- 741 (741) 
+-- Vertex: 739 (739)
+---- 737 (737) 
+---- 740 (740) 
+---- 741 (741) 
+-- Vertex: 740 (740)
+---- 738 (738) 
+---- 739 (739) 
+---- 741 (741) 
+-- Vertex: 741 (741)
+---- 737 (737) 
+---- 738 (738) 
+---- 739 (739) 
+---- 740 (740) 
+-- Vertex: 742 (742)
+---- 737 (737) 
+-- Vertex: 743 (743)
+
+Graph colored.
+Name of graph: Name
+Count of vertices: 7
+Real count of vertices: 7
+Count of edges: 8
+Vertices: 
+-- Identifier: 737, userName: 737
+-- Identifier: 738, userName: 738
+-- Identifier: 739, userName: 739
+-- Identifier: 740, userName: 740
+-- Identifier: 741, userName: 741
+-- Identifier: 742, userName: 742
+-- Identifier: 743, userName: 743
+Edges: 
+-- Vertex: 737 (737)
+---- 739 (739) 
+---- 741 (741) 
+---- 742 (742) 
+-- Vertex: 738 (738)
+---- 740 (740) 
+---- 741 (741) 
+-- Vertex: 739 (739)
+---- 737 (737) 
+---- 740 (740) 
+---- 741 (741) 
+-- Vertex: 740 (740)
+---- 738 (738) 
+---- 739 (739) 
+---- 741 (741) 
+-- Vertex: 741 (741)
+---- 737 (737) 
+---- 738 (738) 
+---- 739 (739) 
+---- 740 (740) 
+-- Vertex: 742 (742)
+---- 737 (737) 
+-- Vertex: 743 (743)
+Vertex color: 
+-- Vertex (identifier): 737, vertex (userName): 737, color: 1
+-- Vertex (identifier): 738, vertex (userName): 738, color: 2
+-- Vertex (identifier): 739, vertex (userName): 739, color: 2
+-- Vertex (identifier): 740, vertex (userName): 740, color: 1
+-- Vertex (identifier): 741, vertex (userName): 741, color: 3
+-- Vertex (identifier): 742, vertex (userName): 742, color: 2
+-- Vertex (identifier): 743, vertex (userName): 743, color: 1
+
+interchange5
+Graph created.
+Name of graph: Name
+Count of vertices: 12
+Real count of vertices: 12
+Count of edges: 30
+Vertices: 
+-- Identifier: 744, userName: 744
+-- Identifier: 745, userName: 745
+-- Identifier: 746, userName: 746
+-- Identifier: 747, userName: 747
+-- Identifier: 748, userName: 748
+-- Identifier: 749, userName: 749
+-- Identifier: 750, userName: 750
+-- Identifier: 751, userName: 751
+-- Identifier: 752, userName: 752
+-- Identifier: 753, userName: 753
+-- Identifier: 754, userName: 754
+-- Identifier: 755, userName: 755
+Edges: 
+-- Vertex: 744 (744)
+---- 745 (745) 
+---- 746 (746) 
+---- 747 (747) 
+---- 748 (748) 
+---- 749 (749) 
+-- Vertex: 745 (745)
+---- 744 (744) 
+---- 746 (746) 
+---- 748 (748) 
+---- 750 (750) 
+---- 752 (752) 
+-- Vertex: 746 (746)
+---- 744 (744) 
+---- 745 (745) 
+---- 749 (749) 
+---- 751 (751) 
+---- 752 (752) 
+-- Vertex: 747 (747)
+---- 744 (744) 
+---- 748 (748) 
+---- 749 (749) 
+---- 753 (753) 
+-- Vertex: 748 (748)
+---- 744 (744) 
+---- 745 (745) 
+---- 747 (747) 
+---- 750 (750) 
+---- 753 (753) 
+---- 754 (754) 
+-- Vertex: 749 (749)
+---- 744 (744) 
+---- 746 (746) 
+---- 747 (747) 
+---- 751 (751) 
+---- 753 (753) 
+---- 755 (755) 
+-- Vertex: 750 (750)
+---- 745 (745) 
+---- 748 (748) 
+---- 752 (752) 
+---- 754 (754) 
+-- Vertex: 751 (751)
+---- 746 (746) 
+---- 749 (749) 
+---- 752 (752) 
+---- 755 (755) 
+-- Vertex: 752 (752)
+---- 745 (745) 
+---- 746 (746) 
+---- 750 (750) 
+---- 751 (751) 
+---- 754 (754) 
+---- 755 (755) 
+-- Vertex: 753 (753)
+---- 747 (747) 
+---- 748 (748) 
+---- 749 (749) 
+---- 754 (754) 
+---- 755 (755) 
+-- Vertex: 754 (754)
+---- 748 (748) 
+---- 750 (750) 
+---- 752 (752) 
+---- 753 (753) 
+---- 755 (755) 
+-- Vertex: 755 (755)
+---- 749 (749) 
+---- 751 (751) 
+---- 752 (752) 
+---- 753 (753) 
+---- 754 (754) 
+
+Graph colored.
+Name of graph: Name
+Count of vertices: 12
+Real count of vertices: 12
+Count of edges: 30
+Vertices: 
+-- Identifier: 744, userName: 744
+-- Identifier: 745, userName: 745
+-- Identifier: 746, userName: 746
+-- Identifier: 747, userName: 747
+-- Identifier: 748, userName: 748
+-- Identifier: 749, userName: 749
+-- Identifier: 750, userName: 750
+-- Identifier: 751, userName: 751
+-- Identifier: 752, userName: 752
+-- Identifier: 753, userName: 753
+-- Identifier: 754, userName: 754
+-- Identifier: 755, userName: 755
+Edges: 
+-- Vertex: 744 (744)
+---- 745 (745) 
+---- 746 (746) 
+---- 747 (747) 
+---- 748 (748) 
+---- 749 (749) 
+-- Vertex: 745 (745)
+---- 744 (744) 
+---- 746 (746) 
+---- 748 (748) 
+---- 750 (750) 
+---- 752 (752) 
+-- Vertex: 746 (746)
+---- 744 (744) 
+---- 745 (745) 
+---- 749 (749) 
+---- 751 (751) 
+---- 752 (752) 
+-- Vertex: 747 (747)
+---- 744 (744) 
+---- 748 (748) 
+---- 749 (749) 
+---- 753 (753) 
+-- Vertex: 748 (748)
+---- 744 (744) 
+---- 745 (745) 
+---- 747 (747) 
+---- 750 (750) 
+---- 753 (753) 
+---- 754 (754) 
+-- Vertex: 749 (749)
+---- 744 (744) 
+---- 746 (746) 
+---- 747 (747) 
+---- 751 (751) 
+---- 753 (753) 
+---- 755 (755) 
+-- Vertex: 750 (750)
+---- 745 (745) 
+---- 748 (748) 
+---- 752 (752) 
+---- 754 (754) 
+-- Vertex: 751 (751)
+---- 746 (746) 
+---- 749 (749) 
+---- 752 (752) 
+---- 755 (755) 
+-- Vertex: 752 (752)
+---- 745 (745) 
+---- 746 (746) 
+---- 750 (750) 
+---- 751 (751) 
+---- 754 (754) 
+---- 755 (755) 
+-- Vertex: 753 (753)
+---- 747 (747) 
+---- 748 (748) 
+---- 749 (749) 
+---- 754 (754) 
+---- 755 (755) 
+-- Vertex: 754 (754)
+---- 748 (748) 
+---- 750 (750) 
+---- 752 (752) 
+---- 753 (753) 
+---- 755 (755) 
+-- Vertex: 755 (755)
+---- 749 (749) 
+---- 751 (751) 
+---- 752 (752) 
+---- 753 (753) 
+---- 754 (754) 
+Vertex color: 
+-- Vertex (identifier): 744, vertex (userName): 744, color: 1
+-- Vertex (identifier): 745, vertex (userName): 745, color: 2
+-- Vertex (identifier): 746, vertex (userName): 746, color: 3
+-- Vertex (identifier): 747, vertex (userName): 747, color: 2
+-- Vertex (identifier): 748, vertex (userName): 748, color: 3
+-- Vertex (identifier): 749, vertex (userName): 749, color: 4
+-- Vertex (identifier): 750, vertex (userName): 750, color: 1
+-- Vertex (identifier): 751, vertex (userName): 751, color: 1
+-- Vertex (identifier): 752, vertex (userName): 752, color: 4
+-- Vertex (identifier): 753, vertex (userName): 753, color: 1
+-- Vertex (identifier): 754, vertex (userName): 754, color: 2
+-- Vertex (identifier): 755, vertex (userName): 755, color: 3
+
+

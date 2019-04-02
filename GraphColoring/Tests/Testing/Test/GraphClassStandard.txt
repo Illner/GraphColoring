@@ -1,0 +1,343 @@
+graphClass1
+Graph created.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 9
+Vertices: 
+-- Identifier: 399, userName: 399
+-- Identifier: 400, userName: 400
+-- Identifier: 401, userName: 401
+-- Identifier: 402, userName: 402
+-- Identifier: 403, userName: 403
+-- Identifier: 404, userName: 404
+Edges: 
+-- Vertex: 399 (399)
+---- 400 (400) 
+---- 402 (402) 
+---- 404 (404) 
+-- Vertex: 400 (400)
+---- 399 (399) 
+---- 401 (401) 
+---- 403 (403) 
+-- Vertex: 401 (401)
+---- 400 (400) 
+---- 402 (402) 
+---- 404 (404) 
+-- Vertex: 402 (402)
+---- 399 (399) 
+---- 401 (401) 
+---- 403 (403) 
+-- Vertex: 403 (403)
+---- 400 (400) 
+---- 402 (402) 
+---- 404 (404) 
+-- Vertex: 404 (404)
+---- 399 (399) 
+---- 401 (401) 
+---- 403 (403) 
+
+Graph class: completeBipartiteGraph
+graphClass2
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 10
+Vertices: 
+-- Identifier: 405, userName: 405
+-- Identifier: 406, userName: 406
+-- Identifier: 407, userName: 407
+-- Identifier: 408, userName: 408
+-- Identifier: 409, userName: 409
+Edges: 
+-- Vertex: 405 (405)
+---- 406 (406) 
+---- 407 (407) 
+---- 408 (408) 
+---- 409 (409) 
+-- Vertex: 406 (406)
+---- 405 (405) 
+---- 407 (407) 
+---- 408 (408) 
+---- 409 (409) 
+-- Vertex: 407 (407)
+---- 405 (405) 
+---- 406 (406) 
+---- 408 (408) 
+---- 409 (409) 
+-- Vertex: 408 (408)
+---- 405 (405) 
+---- 406 (406) 
+---- 407 (407) 
+---- 409 (409) 
+-- Vertex: 409 (409)
+---- 405 (405) 
+---- 406 (406) 
+---- 407 (407) 
+---- 408 (408) 
+
+Graph class: completeGraph
+graphClass3
+Graph created.
+Name of graph: Name
+Count of vertices: 14
+Real count of vertices: 14
+Count of edges: 13
+Vertices: 
+-- Identifier: 410, userName: 410
+-- Identifier: 411, userName: 411
+-- Identifier: 412, userName: 412
+-- Identifier: 413, userName: 413
+-- Identifier: 414, userName: 414
+-- Identifier: 415, userName: 415
+-- Identifier: 416, userName: 416
+-- Identifier: 417, userName: 417
+-- Identifier: 418, userName: 418
+-- Identifier: 419, userName: 419
+-- Identifier: 420, userName: 420
+-- Identifier: 421, userName: 421
+-- Identifier: 422, userName: 422
+-- Identifier: 423, userName: 423
+Edges: 
+-- Vertex: 410 (410)
+---- 411 (411) 
+---- 412 (412) 
+-- Vertex: 411 (411)
+---- 410 (410) 
+---- 413 (413) 
+---- 414 (414) 
+-- Vertex: 412 (412)
+---- 410 (410) 
+---- 415 (415) 
+---- 416 (416) 
+-- Vertex: 413 (413)
+---- 411 (411) 
+---- 417 (417) 
+---- 418 (418) 
+-- Vertex: 414 (414)
+---- 411 (411) 
+---- 419 (419) 
+---- 420 (420) 
+-- Vertex: 415 (415)
+---- 412 (412) 
+---- 421 (421) 
+-- Vertex: 416 (416)
+---- 412 (412) 
+---- 422 (422) 
+---- 423 (423) 
+-- Vertex: 417 (417)
+---- 413 (413) 
+-- Vertex: 418 (418)
+---- 413 (413) 
+-- Vertex: 419 (419)
+---- 414 (414) 
+-- Vertex: 420 (420)
+---- 414 (414) 
+-- Vertex: 421 (421)
+---- 415 (415) 
+-- Vertex: 422 (422)
+---- 416 (416) 
+-- Vertex: 423 (423)
+---- 416 (416) 
+
+Graph class: treeGraph
+graphClass4
+Graph created.
+Name of graph: Name
+Count of vertices: 16
+Real count of vertices: 16
+Count of edges: 15
+Vertices: 
+-- Identifier: 424, userName: 424
+-- Identifier: 425, userName: 425
+-- Identifier: 426, userName: 426
+-- Identifier: 427, userName: 427
+-- Identifier: 428, userName: 428
+-- Identifier: 429, userName: 429
+-- Identifier: 430, userName: 430
+-- Identifier: 431, userName: 431
+-- Identifier: 432, userName: 432
+-- Identifier: 433, userName: 433
+-- Identifier: 434, userName: 434
+-- Identifier: 435, userName: 435
+-- Identifier: 436, userName: 436
+-- Identifier: 437, userName: 437
+-- Identifier: 438, userName: 438
+-- Identifier: 439, userName: 439
+Edges: 
+-- Vertex: 424 (424)
+---- 425 (425) 
+---- 426 (426) 
+---- 427 (427) 
+---- 428 (428) 
+-- Vertex: 425 (425)
+---- 424 (424) 
+---- 429 (429) 
+---- 430 (430) 
+---- 431 (431) 
+-- Vertex: 426 (426)
+---- 424 (424) 
+---- 432 (432) 
+---- 433 (433) 
+---- 434 (434) 
+-- Vertex: 427 (427)
+---- 424 (424) 
+---- 435 (435) 
+---- 436 (436) 
+-- Vertex: 428 (428)
+---- 424 (424) 
+---- 437 (437) 
+---- 438 (438) 
+---- 439 (439) 
+-- Vertex: 429 (429)
+---- 425 (425) 
+-- Vertex: 430 (430)
+---- 425 (425) 
+-- Vertex: 431 (431)
+---- 425 (425) 
+-- Vertex: 432 (432)
+---- 426 (426) 
+-- Vertex: 433 (433)
+---- 426 (426) 
+-- Vertex: 434 (434)
+---- 426 (426) 
+-- Vertex: 435 (435)
+---- 427 (427) 
+-- Vertex: 436 (436)
+---- 427 (427) 
+-- Vertex: 437 (437)
+---- 428 (428) 
+-- Vertex: 438 (438)
+---- 428 (428) 
+-- Vertex: 439 (439)
+---- 428 (428) 
+
+Graph class: treeGraph
+graphClass5
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 5
+Vertices: 
+-- Identifier: 440, userName: 440
+-- Identifier: 441, userName: 441
+-- Identifier: 442, userName: 442
+-- Identifier: 443, userName: 443
+-- Identifier: 444, userName: 444
+Edges: 
+-- Vertex: 440 (440)
+---- 441 (441) 
+---- 442 (442) 
+-- Vertex: 441 (441)
+---- 440 (440) 
+---- 443 (443) 
+-- Vertex: 442 (442)
+---- 440 (440) 
+---- 444 (444) 
+-- Vertex: 443 (443)
+---- 441 (441) 
+---- 444 (444) 
+-- Vertex: 444 (444)
+---- 442 (442) 
+---- 443 (443) 
+
+Graph class: cycleGraph
+graphClass6
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 6
+Vertices: 
+-- Identifier: 445, userName: 445
+-- Identifier: 446, userName: 446
+-- Identifier: 447, userName: 447
+-- Identifier: 448, userName: 448
+-- Identifier: 449, userName: 449
+Edges: 
+-- Vertex: 445 (445)
+---- 446 (446) 
+---- 447 (447) 
+---- 448 (448) 
+-- Vertex: 446 (446)
+---- 445 (445) 
+---- 448 (448) 
+-- Vertex: 447 (447)
+---- 445 (445) 
+---- 449 (449) 
+-- Vertex: 448 (448)
+---- 445 (445) 
+---- 446 (446) 
+---- 449 (449) 
+-- Vertex: 449 (449)
+---- 447 (447) 
+---- 448 (448) 
+
+Graph class: none
+graphClass7
+Graph created.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 4
+Vertices: 
+-- Identifier: 450, userName: 450
+-- Identifier: 451, userName: 451
+-- Identifier: 452, userName: 452
+-- Identifier: 453, userName: 453
+-- Identifier: 454, userName: 454
+-- Identifier: 455, userName: 455
+Edges: 
+-- Vertex: 450 (450)
+---- 451 (451) 
+---- 455 (455) 
+-- Vertex: 451 (451)
+---- 450 (450) 
+---- 452 (452) 
+-- Vertex: 452 (452)
+---- 451 (451) 
+-- Vertex: 453 (453)
+---- 454 (454) 
+-- Vertex: 454 (454)
+---- 453 (453) 
+-- Vertex: 455 (455)
+---- 450 (450) 
+
+Graph class: bipartiteGraph
+graphClass8
+Graph created.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 6
+Vertices: 
+-- Identifier: 462, userName: 462
+-- Identifier: 463, userName: 463
+-- Identifier: 464, userName: 464
+-- Identifier: 465, userName: 465
+-- Identifier: 466, userName: 466
+-- Identifier: 467, userName: 467
+Edges: 
+-- Vertex: 462 (462)
+---- 463 (463) 
+---- 467 (467) 
+-- Vertex: 463 (463)
+---- 462 (462) 
+---- 464 (464) 
+-- Vertex: 464 (464)
+---- 463 (463) 
+---- 465 (465) 
+-- Vertex: 465 (465)
+---- 464 (464) 
+---- 466 (466) 
+---- 467 (467) 
+-- Vertex: 466 (466)
+---- 465 (465) 
+-- Vertex: 467 (467)
+---- 462 (462) 
+---- 465 (465) 
+
+Graph class: none
+

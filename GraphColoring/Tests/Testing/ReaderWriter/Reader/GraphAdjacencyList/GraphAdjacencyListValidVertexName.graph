@@ -1,0 +1,37 @@
+Graph coloring. Graph representation: adjacencyList
+
+Graph name: 
+Number of vertices: 10
+
+GRAPH
+nula
+(číslo pět)
+(7)
+1
+(šest)
+(8)
+číslo dva
+(3)
+(7)
+3
+(8)
+4
+(9)
+číslo pět
+(šest)
+8
+(9)
+
+COLORED GRAPH
+Chromatic number: 3
+Used algorithm: optimal
+0 -> 0
+1 -> 0
+2 -> 0
+3 -> 1
+4 -> 0
+5 -> 1
+6 -> 2
+7 -> 1
+8 -> 2
+9 -> 3

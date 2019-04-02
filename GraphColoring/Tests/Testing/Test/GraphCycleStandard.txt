@@ -1,0 +1,174 @@
+graphCycle1
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 4
+Vertices: 
+-- Identifier: 372, userName: 372
+-- Identifier: 373, userName: 373
+-- Identifier: 374, userName: 374
+-- Identifier: 375, userName: 375
+-- Identifier: 376, userName: 376
+Edges: 
+-- Vertex: 372 (372)
+---- 373 (373) 
+---- 374 (374) 
+-- Vertex: 373 (373)
+---- 372 (372) 
+---- 375 (375) 
+-- Vertex: 374 (374)
+---- 372 (372) 
+---- 376 (376) 
+-- Vertex: 375 (375)
+---- 373 (373) 
+-- Vertex: 376 (376)
+---- 374 (374) 
+
+Is graph cyclic: False
+Gridth: 0
+graphCycle2
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 5
+Vertices: 
+-- Identifier: 377, userName: 377
+-- Identifier: 378, userName: 378
+-- Identifier: 379, userName: 379
+-- Identifier: 380, userName: 380
+-- Identifier: 381, userName: 381
+Edges: 
+-- Vertex: 377 (377)
+---- 378 (378) 
+---- 379 (379) 
+-- Vertex: 378 (378)
+---- 377 (377) 
+---- 380 (380) 
+-- Vertex: 379 (379)
+---- 377 (377) 
+---- 381 (381) 
+-- Vertex: 380 (380)
+---- 378 (378) 
+---- 381 (381) 
+-- Vertex: 381 (381)
+---- 379 (379) 
+---- 380 (380) 
+
+Is graph cyclic: True
+Gridth: 5
+graphCycle3
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 6
+Vertices: 
+-- Identifier: 382, userName: 382
+-- Identifier: 383, userName: 383
+-- Identifier: 384, userName: 384
+-- Identifier: 385, userName: 385
+-- Identifier: 386, userName: 386
+Edges: 
+-- Vertex: 382 (382)
+---- 383 (383) 
+---- 384 (384) 
+-- Vertex: 383 (383)
+---- 382 (382) 
+---- 384 (384) 
+---- 385 (385) 
+-- Vertex: 384 (384)
+---- 382 (382) 
+---- 383 (383) 
+---- 386 (386) 
+-- Vertex: 385 (385)
+---- 383 (383) 
+---- 386 (386) 
+-- Vertex: 386 (386)
+---- 384 (384) 
+---- 385 (385) 
+
+Is graph cyclic: True
+Gridth: 3
+graphCycle4
+Graph created.
+Name of graph: Name
+Count of vertices: 5
+Real count of vertices: 5
+Count of edges: 10
+Vertices: 
+-- Identifier: 387, userName: 387
+-- Identifier: 388, userName: 388
+-- Identifier: 389, userName: 389
+-- Identifier: 390, userName: 390
+-- Identifier: 391, userName: 391
+Edges: 
+-- Vertex: 387 (387)
+---- 388 (388) 
+---- 389 (389) 
+---- 390 (390) 
+---- 391 (391) 
+-- Vertex: 388 (388)
+---- 387 (387) 
+---- 389 (389) 
+---- 390 (390) 
+---- 391 (391) 
+-- Vertex: 389 (389)
+---- 387 (387) 
+---- 388 (388) 
+---- 390 (390) 
+---- 391 (391) 
+-- Vertex: 390 (390)
+---- 387 (387) 
+---- 388 (388) 
+---- 389 (389) 
+---- 391 (391) 
+-- Vertex: 391 (391)
+---- 387 (387) 
+---- 388 (388) 
+---- 389 (389) 
+---- 390 (390) 
+
+Is graph cyclic: True
+Gridth: 3
+graphCycle5
+Graph created.
+Name of graph: Name
+Count of vertices: 7
+Real count of vertices: 7
+Count of edges: 7
+Vertices: 
+-- Identifier: 392, userName: 392
+-- Identifier: 393, userName: 393
+-- Identifier: 394, userName: 394
+-- Identifier: 395, userName: 395
+-- Identifier: 396, userName: 396
+-- Identifier: 397, userName: 397
+-- Identifier: 398, userName: 398
+Edges: 
+-- Vertex: 392 (392)
+---- 394 (394) 
+---- 395 (395) 
+-- Vertex: 393 (393)
+---- 394 (394) 
+---- 395 (395) 
+-- Vertex: 394 (394)
+---- 392 (392) 
+---- 393 (393) 
+-- Vertex: 395 (395)
+---- 392 (392) 
+---- 393 (393) 
+-- Vertex: 396 (396)
+---- 397 (397) 
+---- 398 (398) 
+-- Vertex: 397 (397)
+---- 396 (396) 
+---- 398 (398) 
+-- Vertex: 398 (398)
+---- 396 (396) 
+---- 397 (397) 
+
+Is graph cyclic: True
+Gridth: 3
+

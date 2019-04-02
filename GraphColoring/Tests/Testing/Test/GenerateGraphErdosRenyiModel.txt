@@ -1,0 +1,11 @@
+erdosRenyiModelCDividedByNLessThanOne
+OK
+erdosRenyiModelCDividedByNMoreThanOne
+OK
+erdosRenyiModelCLogNDividedByN
+OK
+erdosRenyiModelNotAssigned
+OK
+invalidVerticesCount
+Exception of type 'GraphColoring.MyException.GraphException.GraphInvalidCountVerticesException' was thrown.
+

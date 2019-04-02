@@ -1,0 +1,200 @@
+valid
+Graph created.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 13
+Vertices: 
+-- Identifier: 492, userName: 492
+-- Identifier: 493, userName: 493
+-- Identifier: 494, userName: 494
+-- Identifier: 495, userName: 495
+-- Identifier: 496, userName: 496
+-- Identifier: 497, userName: 497
+-- Identifier: 498, userName: 498
+-- Identifier: 499, userName: 499
+-- Identifier: 500, userName: 500
+Edges: 
+-- Vertex: 492 (492)
+---- 493 (493) 
+---- 495 (495) 
+-- Vertex: 493 (493)
+---- 492 (492) 
+---- 495 (495) 
+---- 496 (496) 
+---- 499 (499) 
+-- Vertex: 494 (494)
+---- 495 (495) 
+---- 500 (500) 
+-- Vertex: 495 (495)
+---- 492 (492) 
+---- 493 (493) 
+---- 494 (494) 
+---- 496 (496) 
+---- 497 (497) 
+-- Vertex: 496 (496)
+---- 493 (493) 
+---- 495 (495) 
+---- 497 (497) 
+---- 498 (498) 
+---- 499 (499) 
+-- Vertex: 497 (497)
+---- 495 (495) 
+---- 496 (496) 
+---- 498 (498) 
+-- Vertex: 498 (498)
+---- 496 (496) 
+---- 497 (497) 
+-- Vertex: 499 (499)
+---- 493 (493) 
+---- 496 (496) 
+-- Vertex: 500 (500)
+---- 494 (494) 
+
+Graph modified.
+Name of graph: Name
+Count of vertices: 2
+Real count of vertices: 2
+Count of edges: 0
+Vertices: 
+-- Identifier: 511, userName: V2
+-- Identifier: 512, userName: V3
+Edges: 
+-- Vertex: 511 (V2)
+-- Vertex: 512 (V3)
+
+invalid
+Graph created.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 13
+Vertices: 
+-- Identifier: 513, userName: 513
+-- Identifier: 514, userName: 514
+-- Identifier: 515, userName: 515
+-- Identifier: 516, userName: 516
+-- Identifier: 517, userName: 517
+-- Identifier: 518, userName: 518
+-- Identifier: 519, userName: 519
+-- Identifier: 520, userName: 520
+-- Identifier: 521, userName: 521
+Edges: 
+-- Vertex: 513 (513)
+---- 514 (514) 
+---- 516 (516) 
+-- Vertex: 514 (514)
+---- 513 (513) 
+---- 516 (516) 
+---- 517 (517) 
+---- 520 (520) 
+-- Vertex: 515 (515)
+---- 516 (516) 
+---- 521 (521) 
+-- Vertex: 516 (516)
+---- 513 (513) 
+---- 514 (514) 
+---- 515 (515) 
+---- 517 (517) 
+---- 518 (518) 
+-- Vertex: 517 (517)
+---- 514 (514) 
+---- 516 (516) 
+---- 518 (518) 
+---- 519 (519) 
+---- 520 (520) 
+-- Vertex: 518 (518)
+---- 516 (516) 
+---- 517 (517) 
+---- 519 (519) 
+-- Vertex: 519 (519)
+---- 517 (517) 
+---- 518 (518) 
+-- Vertex: 520 (520)
+---- 514 (514) 
+---- 517 (517) 
+-- Vertex: 521 (521)
+---- 515 (515) 
+
+Vertex add
+Vertex exists
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexAlreadyExistsException' was thrown.
+Vertex delete
+Vertex doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+Vertex contract
+Vertex doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+Vertex suppression
+Vertex doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+Invalid vertex degree
+Exception of type 'GraphColoring.MyException.GraphException.GraphInvalidDegreeVertex' was thrown.
+Vertex expansion
+Vertex doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphVertexDoesntExistException' was thrown.
+Edge add
+Edge exists
+Exception of type 'GraphColoring.MyException.GraphException.GraphEdgeAlreadyExistsException' was thrown.
+Edge delete
+Edge doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphEdgeDoesntExistException' was thrown.
+Edge contract
+Edge doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphEdgeDoesntExistException' was thrown.
+Edge subdivision
+Edge doesn't exist
+Exception of type 'GraphColoring.MyException.GraphException.GraphEdgeDoesntExistException' was thrown.
+Graph modified.
+Name of graph: Name
+Count of vertices: 9
+Real count of vertices: 9
+Count of edges: 13
+Vertices: 
+-- Identifier: 513, userName: 513
+-- Identifier: 514, userName: 514
+-- Identifier: 515, userName: 515
+-- Identifier: 516, userName: 516
+-- Identifier: 517, userName: 517
+-- Identifier: 518, userName: 518
+-- Identifier: 519, userName: 519
+-- Identifier: 520, userName: 520
+-- Identifier: 521, userName: 521
+Edges: 
+-- Vertex: 513 (513)
+---- 514 (514) 
+---- 516 (516) 
+-- Vertex: 514 (514)
+---- 513 (513) 
+---- 516 (516) 
+---- 517 (517) 
+---- 520 (520) 
+-- Vertex: 515 (515)
+---- 516 (516) 
+---- 521 (521) 
+-- Vertex: 516 (516)
+---- 513 (513) 
+---- 514 (514) 
+---- 515 (515) 
+---- 517 (517) 
+---- 518 (518) 
+-- Vertex: 517 (517)
+---- 514 (514) 
+---- 516 (516) 
+---- 518 (518) 
+---- 519 (519) 
+---- 520 (520) 
+-- Vertex: 518 (518)
+---- 516 (516) 
+---- 517 (517) 
+---- 519 (519) 
+-- Vertex: 519 (519)
+---- 517 (517) 
+---- 518 (518) 
+-- Vertex: 520 (520)
+---- 514 (514) 
+---- 517 (517) 
+-- Vertex: 521 (521)
+---- 515 (515) 
+
+

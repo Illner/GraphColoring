@@ -1,0 +1,4 @@
+Genetic algorithm (exponent: 2)
+Graph colored.
+Is valid colored: True
+

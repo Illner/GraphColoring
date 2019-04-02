@@ -1,0 +1,170 @@
+optimal1
+Graph colored.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 10
+Vertices: 
+-- Identifier: 870, userName: 870
+-- Identifier: 871, userName: 871
+-- Identifier: 872, userName: 872
+-- Identifier: 873, userName: 873
+-- Identifier: 874, userName: 874
+-- Identifier: 875, userName: 875
+Edges: 
+-- Vertex: 870 (870)
+---- 872 (872) 
+---- 874 (874) 
+-- Vertex: 871 (871)
+---- 872 (872) 
+---- 873 (873) 
+---- 874 (874) 
+---- 875 (875) 
+-- Vertex: 872 (872)
+---- 870 (870) 
+---- 871 (871) 
+---- 874 (874) 
+---- 875 (875) 
+-- Vertex: 873 (873)
+---- 871 (871) 
+---- 875 (875) 
+-- Vertex: 874 (874)
+---- 870 (870) 
+---- 871 (871) 
+---- 872 (872) 
+---- 875 (875) 
+-- Vertex: 875 (875)
+---- 871 (871) 
+---- 872 (872) 
+---- 873 (873) 
+---- 874 (874) 
+Vertex color: 
+-- Vertex (identifier): 870, vertex (userName): 870, color: 1
+-- Vertex (identifier): 871, vertex (userName): 871, color: 1
+-- Vertex (identifier): 872, vertex (userName): 872, color: 2
+-- Vertex (identifier): 873, vertex (userName): 873, color: 2
+-- Vertex (identifier): 874, vertex (userName): 874, color: 3
+-- Vertex (identifier): 875, vertex (userName): 875, color: 4
+
+optimal2
+Graph colored.
+Name of graph: Name
+Count of vertices: 7
+Real count of vertices: 7
+Count of edges: 18
+Vertices: 
+-- Identifier: 876, userName: 876
+-- Identifier: 877, userName: 877
+-- Identifier: 878, userName: 878
+-- Identifier: 879, userName: 879
+-- Identifier: 880, userName: 880
+-- Identifier: 881, userName: 881
+-- Identifier: 882, userName: 882
+Edges: 
+-- Vertex: 876 (876)
+---- 877 (877) 
+---- 878 (878) 
+---- 879 (879) 
+---- 880 (880) 
+---- 881 (881) 
+-- Vertex: 877 (877)
+---- 876 (876) 
+---- 878 (878) 
+---- 879 (879) 
+---- 880 (880) 
+---- 881 (881) 
+---- 882 (882) 
+-- Vertex: 878 (878)
+---- 876 (876) 
+---- 877 (877) 
+---- 879 (879) 
+---- 880 (880) 
+---- 881 (881) 
+-- Vertex: 879 (879)
+---- 876 (876) 
+---- 877 (877) 
+---- 878 (878) 
+---- 881 (881) 
+---- 882 (882) 
+-- Vertex: 880 (880)
+---- 876 (876) 
+---- 877 (877) 
+---- 878 (878) 
+---- 881 (881) 
+---- 882 (882) 
+-- Vertex: 881 (881)
+---- 876 (876) 
+---- 877 (877) 
+---- 878 (878) 
+---- 879 (879) 
+---- 880 (880) 
+---- 882 (882) 
+-- Vertex: 882 (882)
+---- 877 (877) 
+---- 879 (879) 
+---- 880 (880) 
+---- 881 (881) 
+Vertex color: 
+-- Vertex (identifier): 876, vertex (userName): 876, color: 1
+-- Vertex (identifier): 877, vertex (userName): 877, color: 2
+-- Vertex (identifier): 878, vertex (userName): 878, color: 3
+-- Vertex (identifier): 879, vertex (userName): 879, color: 4
+-- Vertex (identifier): 880, vertex (userName): 880, color: 4
+-- Vertex (identifier): 881, vertex (userName): 881, color: 5
+-- Vertex (identifier): 882, vertex (userName): 882, color: 1
+
+Invalid vertex count (0)
+optimal4
+Graph colored.
+Name of graph: Name
+Count of vertices: 1
+Real count of vertices: 1
+Count of edges: 0
+Vertices: 
+-- Identifier: 883, userName: 883
+Edges: 
+-- Vertex: 883 (883)
+Vertex color: 
+-- Vertex (identifier): 883, vertex (userName): 883, color: 1
+
+optimal5
+Graph colored.
+Name of graph: Name
+Count of vertices: 6
+Real count of vertices: 6
+Count of edges: 6
+Vertices: 
+-- Identifier: 884, userName: 884
+-- Identifier: 885, userName: 885
+-- Identifier: 886, userName: 886
+-- Identifier: 887, userName: 887
+-- Identifier: 888, userName: 888
+-- Identifier: 889, userName: 889
+Edges: 
+-- Vertex: 884 (884)
+---- 885 (885) 
+---- 886 (886) 
+-- Vertex: 885 (885)
+---- 884 (884) 
+---- 886 (886) 
+-- Vertex: 886 (886)
+---- 884 (884) 
+---- 885 (885) 
+-- Vertex: 887 (887)
+---- 888 (888) 
+---- 889 (889) 
+-- Vertex: 888 (888)
+---- 887 (887) 
+---- 889 (889) 
+-- Vertex: 889 (889)
+---- 887 (887) 
+---- 888 (888) 
+Vertex color: 
+-- Vertex (identifier): 884, vertex (userName): 884, color: 1
+-- Vertex (identifier): 885, vertex (userName): 885, color: 2
+-- Vertex (identifier): 886, vertex (userName): 886, color: 3
+-- Vertex (identifier): 887, vertex (userName): 887, color: 2
+-- Vertex (identifier): 888, vertex (userName): 888, color: 3
+-- Vertex (identifier): 889, vertex (userName): 889, color: 1
+
+

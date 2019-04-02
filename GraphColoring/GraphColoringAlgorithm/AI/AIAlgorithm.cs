@@ -18,7 +18,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, AlgorithmPrediction> predictionDictionary;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, double> aucDictionary;
 
-        private static string pathModels = @"AIModels/";
+        private static string pathModels = @"GraphColoringAlgorithm/AIModels/";
         private static string illnerAlgorithmModelPath = pathModels + "model-illnerAlgorithm.zip";
         private static string randomSequenceModelPath = pathModels + "model-randomSequence.zip";
         private static string randomSequenceInterchangeModelPath = pathModels + "model-randomSequenceInterchange.zip";

@@ -723,6 +723,97 @@
     <None Include="bin\Debug\Testing\ReaderWriter\Reader\GraphEdgeList\GraphEdgeListValidVertexName.graph" />
     <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph.graph" />
     <None Include="bin\Debug\Testing\ReaderWriter\Writer\graph2.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\BidiakisCube.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\BullGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\ButterflyGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\ChvatalGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete bipartite graphs\K2_3.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete bipartite graphs\K2_4.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete bipartite graphs\K3_3.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete bipartite graphs\K3_4.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete graphs\K1.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete graphs\K2.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete graphs\K3.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete graphs\K4.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete graphs\K5.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete graphs\K6.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete graphs\K7.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Complete graphs\K8.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Cycle graphs\C3.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Cycle graphs\C4.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Cycle graphs\C5.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Cycle graphs\C6.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\DiamondGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\DurerGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\ErreraGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\FranklinGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Friendship graphs\F2.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Friendship graphs\F3.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Friendship graphs\F4.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\FruchtGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Fullerene graphs\_20_fullerene.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Fullerene graphs\_24_fullerene.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\Goldner_HararyGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\GolombGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\GrotzschGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\HerschelGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\HoffmanGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\MarkstromGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\McGeeGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\MoserSpindle.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\PoussinGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\RobertsonGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\SousselierGraph.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\TuttesFragment.graph" />
+    <None Include="GalleryOfNamedGraphs\NamedGraphs\WagnerGraph.graph" />
+    <Content Include="GraphColoringAlgorithm\AIModels\model-combinationAlgorithm.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-connectedSequential.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-geneticAlgorithm.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-geneticAlgorithm2.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-greedyIndependentSet.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-illnerAlgorithm.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-largestFirstSequence.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-largestFirstSequenceInterchange.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-largestFirstSequenceInterchangeExtended.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-randomSequence.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-randomSequenceInterchange.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-randomSequenceInterchangeExtended.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-saturationLargestFirstSequence.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-smallestLastSequence.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-smallestLastSequenceInterchange.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphColoringAlgorithm\AIModels\model-smallestLastSequenceInterchangeExtended.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="GraphVisualization\DOT\config6">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

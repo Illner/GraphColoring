@@ -119,12 +119,12 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ClebschGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Strongly regular graphs\ClebschGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Strongly regular graphs\ClebschGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="PaleyGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Strongly regular graphs\PaleyGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Strongly regular graphs\PaleyGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="PetersenGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Strongly regular graphs\PetersenGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Strongly regular graphs\PetersenGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

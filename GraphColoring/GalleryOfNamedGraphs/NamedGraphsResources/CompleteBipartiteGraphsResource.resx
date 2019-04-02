@@ -119,15 +119,15 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="K2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Complete bipartite graphs\K2_3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Complete bipartite graphs\K2_3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="K2_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Complete bipartite graphs\K2_4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Complete bipartite graphs\K2_4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="K3_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Complete bipartite graphs\K3_3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Complete bipartite graphs\K3_3.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="K3_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Complete bipartite graphs\K3_4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Complete bipartite graphs\K3_4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

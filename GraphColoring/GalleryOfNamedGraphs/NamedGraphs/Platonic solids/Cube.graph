@@ -1,0 +1,40 @@
+Graph coloring. Graph representation: adjacencyList
+
+Graph name: Cube
+Number of vertices: 8
+
+GRAPH
+1
+(2)
+(3)
+(5)
+2
+(1)
+(4)
+(6)
+3
+(1)
+(4)
+(7)
+4
+(2)
+(3)
+(8)
+5
+(1)
+(7)
+(6)
+6
+(2)
+(5)
+(8)
+7
+(3)
+(5)
+(8)
+8
+(4)
+(6)
+(7)
+
+COLORED GRAPH

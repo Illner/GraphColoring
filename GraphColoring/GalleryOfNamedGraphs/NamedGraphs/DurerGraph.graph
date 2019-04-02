@@ -1,0 +1,56 @@
+Graph coloring. Graph representation: adjacencyList
+
+Graph name: Dürer graph
+Number of vertices: 12
+
+GRAPH
+1
+(2)
+(3)
+(5)
+2
+(1)
+(4)
+(8)
+3
+(1)
+(7)
+(9)
+4
+(2)
+(6)
+(10)
+5
+(1)
+(6)
+(11)
+6
+(4)
+(5)
+(10)
+7
+(3)
+(9)
+(8)
+8
+(2)
+(7)
+(12)
+9
+(3)
+(7)
+(11)
+10
+(4)
+(6)
+(12)
+11
+(5)
+(9)
+(12)
+12
+(8)
+(10)
+(11)
+
+COLORED GRAPH

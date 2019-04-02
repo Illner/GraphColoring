@@ -119,21 +119,21 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="W4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Wheel graphs\W4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Wheel graphs\W4.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="W5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Wheel graphs\W5.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Wheel graphs\W5.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="W6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Wheel graphs\W6.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Wheel graphs\W6.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="W7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Wheel graphs\W7.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Wheel graphs\W7.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="W8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Wheel graphs\W8.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Wheel graphs\W8.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="W9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Wheel graphs\W9.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Wheel graphs\W9.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

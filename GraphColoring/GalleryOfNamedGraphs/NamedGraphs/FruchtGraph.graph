@@ -1,0 +1,56 @@
+Graph coloring. Graph representation: adjacencyList
+
+Graph name: Frucht graph
+Number of vertices: 12
+
+GRAPH
+1
+(2)
+(9)
+(7)
+2
+(1)
+(3)
+(11)
+3
+(2)
+(4)
+(11)
+4
+(3)
+(5)
+(12)
+5
+(4)
+(6)
+(12)
+6
+(5)
+(8)
+(7)
+7
+(1)
+(8)
+(6)
+8
+(6)
+(9)
+(7)
+9
+(1)
+(8)
+(10)
+10
+(9)
+(11)
+(12)
+11
+(2)
+(3)
+(10)
+12
+(4)
+(5)
+(10)
+
+COLORED GRAPH

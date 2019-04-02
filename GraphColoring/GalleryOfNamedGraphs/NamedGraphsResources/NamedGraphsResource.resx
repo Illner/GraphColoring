@@ -119,69 +119,69 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BidiakisCube" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\BidiakisCube.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\BidiakisCube.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="BullGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\BullGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\BullGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ButterflyGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\ButterflyGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\ButterflyGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ChvatalGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\ChvatalGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\ChvatalGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="DiamondGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\DiamondGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\DiamondGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="DurerGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\DurerGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\DurerGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ErreraGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\ErreraGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\ErreraGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="FranklinGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\FranklinGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\FranklinGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="FruchtGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\FruchtGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\FruchtGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Goldner_HararyGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\Goldner_HararyGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\Goldner_HararyGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GolombGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\GolombGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\GolombGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GrotzschGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\GrotzschGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\GrotzschGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="HerschelGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\HerschelGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\HerschelGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="HoffmanGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\HoffmanGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\HoffmanGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="MarkstromGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\MarkstromGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\MarkstromGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="McGeeGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\McGeeGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\McGeeGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="MoserSpindle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\MoserSpindle.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\MoserSpindle.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="PoussinGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\PoussinGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\PoussinGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="RobertsonGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\RobertsonGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\RobertsonGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SousselierGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\SousselierGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\SousselierGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="TuttesFragment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\TuttesFragment.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\TuttesFragment.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="WagnerGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\bin\Debug\NamedGraphs\WagnerGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\NamedGraphs\WagnerGraph.graph;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

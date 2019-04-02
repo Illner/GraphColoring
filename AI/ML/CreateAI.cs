@@ -195,7 +195,7 @@ namespace AI.ML
         /// </summary>
         public void SaveModel()
         {
-            pathModel = pathFolder + "model" + DateTime.Now.ToString(" -dd-MM-yyyy-HH-mm-ss-") + algorithmEnum.ToString() + ".zip";
+            pathModel = pathFolder + "model" + DateTime.Now.ToString("-dd-MM-yyyy-HH-mm-ss-") + algorithmEnum.ToString() + ".zip";
 
             using (var fileStream = new FileStream(pathModel, FileMode.Create, FileAccess.Write, FileShare.Write))
                 mlContext.Model.Save(trainedModel, fileStream);

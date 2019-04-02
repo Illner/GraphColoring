@@ -1,0 +1,48 @@
+Graph coloring. Graph representation: adjacencyList
+
+Graph name: Petersen graph
+Number of vertices: 10
+
+GRAPH
+1
+(2)
+(4)
+(3)
+2
+(1)
+(5)
+(9)
+3
+(1)
+(7)
+(8)
+4
+(1)
+(10)
+(6)
+5
+(2)
+(8)
+(6)
+6
+(4)
+(7)
+(5)
+7
+(3)
+(6)
+(9)
+8
+(3)
+(5)
+(10)
+9
+(2)
+(7)
+(10)
+10
+(4)
+(8)
+(9)
+
+COLORED GRAPH

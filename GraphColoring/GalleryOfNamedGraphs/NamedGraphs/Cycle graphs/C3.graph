@@ -1,0 +1,17 @@
+Graph coloring. Graph representation: adjacencyList
+
+Graph name: C3
+Number of vertices: 3
+
+GRAPH
+1
+(2)
+(3)
+2
+(1)
+(3)
+3
+(1)
+(2)
+
+COLORED GRAPH

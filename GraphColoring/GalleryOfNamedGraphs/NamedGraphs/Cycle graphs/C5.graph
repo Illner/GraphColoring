@@ -1,0 +1,23 @@
+Graph coloring. Graph representation: adjacencyList
+
+Graph name: C5
+Number of vertices: 5
+
+GRAPH
+4
+(3)
+(5)
+1
+(2)
+(5)
+2
+(1)
+(3)
+3
+(2)
+(4)
+5
+(4)
+(1)
+
+COLORED GRAPH

@@ -9,7 +9,9 @@ namespace AI.GenerateGraphs
         // Variable
         #region
         public static string graphHeader = "Graph: ";
-        private static string pathFile = @"Data\GeneratedGraphs.txt";
+        private static string fileNameExtension = "graphDB";
+        private static string pathFolder = @"Data\";
+        private static string pathFile = pathFolder + "GeneratedGraphs" + "." + fileNameExtension; 
         #endregion
 
         // Constructor
@@ -18,7 +20,7 @@ namespace AI.GenerateGraphs
         /// Initialize GenerateGraphs
         /// </summary>
         /// <param name="writer">write generated graphs on the screen</param>
-        public GenerateGraphsFile(bool writer = true, bool clear = false) : base(writer)
+        public GenerateGraphsFile(int constant, int exponent, bool writer = true, bool clear = false) : base(constant, exponent, writer)
         {
             if (clear && File.Exists(pathFile))
                 File.WriteAllText(pathFile, string.Empty);
@@ -248,9 +250,27 @@ namespace AI.GenerateGraphs
         /// Return a path file
         /// </summary>
         /// <returns>path file</returns>
-        public static string GetPath()
+        public static string GetPathFile()
         {
             return pathFile;
+        }
+
+        /// <summary>
+        /// Return a path folder
+        /// </summary>
+        /// <returns>path folder</returns>
+        public static string GetPathFolder()
+        {
+            return pathFolder;
+        }
+
+        /// <summary>
+        /// Return a file name extension
+        /// </summary>
+        /// <returns>file name extension</returns>
+        public static string GetFileNameExtension()
+        {
+            return fileNameExtension;
         }
         #endregion
     }

@@ -123,21 +123,30 @@ namespace GraphColoring.Tests
 
         // Method
         #region
-        public void Test()
+        public bool Test()
         {
+            // Variable
+            bool result = true;
+
             foreach (TestEnum testEnum in testsDictionary.Keys)
             {
-                Testing(testEnum);
+                if (!Testing(testEnum))
+                    result = false;
             }
+            
+            return result;
         }
 
-        public void Test(TestEnum testEnum)
+        public bool Test(TestEnum testEnum)
         {
-            Testing(testEnum);
+            return Testing(testEnum);
         }
 
-        private void Testing (TestEnum testEnum)
+        private bool Testing (TestEnum testEnum)
         {
+            // Variable
+            bool result = true;
+
             stringBuilder.Clear();
 
             ITestInterface test = testsDictionary[testEnum].Item1;
@@ -153,9 +162,15 @@ namespace GraphColoring.Tests
                 String template = testsDictionary[testEnum].Item2;
 
                 if (template.Equals(stringBuilder.ToString()))
+                {
                     Console.WriteLine("OK   " + testEnum.ToString());
+                    result = true;
+                }
                 else
+                {
                     Console.WriteLine("NOK  " + testEnum.ToString());
+                    result = false;
+                }
             }
             else
             {
@@ -166,6 +181,8 @@ namespace GraphColoring.Tests
             }
 
             ReaderWriter.ReaderWriter.DeleteTestFile();
+
+            return result;
         }
         #endregion
     }

@@ -12,6 +12,9 @@ namespace AI.GenerateGraphs
         
         protected GraphColoring.Graph.IGraphInterface graph;
         protected GraphColoring.GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel;
+
+        private int constant;
+        private int exponent;
         #endregion
 
         // Constructor
@@ -20,9 +23,11 @@ namespace AI.GenerateGraphs
         /// Initialize GenerateGraphs
         /// </summary>
         /// <param name="writer">write generated graphs on the screen</param>
-        public GenerateGraphs(bool writer = true)
+        public GenerateGraphs(int constant, int exponent, bool writer = true)
         {
             this.writer = writer;
+            this.constant = constant;
+            this.exponent = exponent;
         }
         #endregion
 
@@ -53,7 +58,7 @@ namespace AI.GenerateGraphs
                 case 6:
                     return 34;
                 default:
-                    return 2 * (int)Math.Pow(countVertices, 1);
+                    return constant * (int)Math.Pow(countVertices, 1);
             }
         }
         

@@ -13,10 +13,10 @@ namespace AI.Database
     {
         // Variable
         #region
-        private const string datasource = "127.0.0.1";
-        private const string database = "GraphColoring";
-        private const string username = "GraphColoring";
-        private const string password = "GraphColoring.";
+        private string datasource = "127.0.0.1";
+        private string database = "GraphColoring";
+        private string username = "GraphColoring";
+        private string password = "GraphColoring.";
         
         private SqlConnection connection;
         private Dictionary<int, GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum> IDEulerianGraphEnumDictionary;
@@ -29,8 +29,13 @@ namespace AI.Database
         
         // Constructor
         #region
-        public Database()
+        public Database(string datasource, string database, string username, string password)
         {
+            this.datasource = datasource;
+            this.database = database;
+            this.username = username;
+            this.password = password;
+
             string connectionString = @"Data Source=" + datasource + ";Initial Catalog="
                         + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;
 
@@ -38,7 +43,7 @@ namespace AI.Database
             connection.Open();
 
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             FillDictionaries();
         }
@@ -86,11 +91,11 @@ namespace AI.Database
             foreach (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum in (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum[])Enum.GetValues(typeof(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)))
             {
                 id = GetGraphColoringAlgorithm_ID(graphColoringAlgorithmEnum.ToString());
-
+                
                 // Algorithm does not exist in the DB
                 if (id == -1)
                     continue;
-
+                
                 IDGraphColoringAlgorithmEnumDictionary.Add(id, graphColoringAlgorithmEnum);
                 GraphColoringAlgorithmEnumIDDictionary.Add(graphColoringAlgorithmEnum, id);
             }
@@ -109,7 +114,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -161,7 +166,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             string result = null;
@@ -213,7 +218,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -265,7 +270,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             string result = null;
@@ -317,7 +322,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -369,7 +374,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             string result = null;
@@ -449,7 +454,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             bool result = false;
@@ -555,7 +560,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Parse VertexDegreeArray
             DataTable tvp = new DataTable();
@@ -644,7 +649,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -728,7 +733,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -769,7 +774,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -812,7 +817,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -853,7 +858,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -896,7 +901,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -937,7 +942,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             try
             {
@@ -973,7 +978,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             int result = -1;
@@ -1025,7 +1030,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             // Variable
             string result = "";
@@ -1103,7 +1108,7 @@ namespace AI.Database
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException();
+                throw new MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException();
 
             SqlCommand cmd = new SqlCommand();
 

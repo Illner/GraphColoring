@@ -12,19 +12,6 @@ namespace AI.MyException.GenerateGraphsException
     }
 
     /// <summary>
-    /// Database exception
-    /// Unable to connect to the DB
-    /// </summary>
-    class GenerateGraphsDatabaseNotOpenException : GenerateGraphsException
-    {
-        public GenerateGraphsDatabaseNotOpenException() { }
-
-        public GenerateGraphsDatabaseNotOpenException(string message) : base(message) { }
-
-        public GenerateGraphsDatabaseNotOpenException(string message, Exception inner) : base(message, inner) { }
-    }
-
-    /// <summary>
     /// GenerateGraphs exception
     /// MinCount or MaxCount (represents count of vertices) is invalid
     /// </summary>

@@ -15,17 +15,34 @@ namespace GraphColoring
         [STAThread]
         static void Main(string[] args)
         {
-            /*
-            Tests.Tests tests = new Tests.Tests(true);
-            tests.Test();
-            */
+            // Variable
+            bool result;
 
+            Tests.Tests tests = new Tests.Tests(true);
+            result = tests.Test();
+
+            Console.WriteLine();
+
+            if (!result)
+            {
+                Console.WriteLine("Testing failed. Some features may not be working correctly");
+                Console.WriteLine("Press any key to start application.");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Testing passed.");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("The application is starting ...");
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.GraphColoringForm());
-            
-            
+
+            Console.WriteLine("The application is closing ...");
+
             /*
             List<Graph.IGraphInterface> graphList = new List<Graph.IGraphInterface>();
             GenerateGraph.IGenerateGraphInterface generateGraph;
@@ -321,7 +338,7 @@ namespace GraphColoring
 
             /*
             Graph.IGraphInterface graph;
-            int countVertices = 200;
+            int countVertices = 12;
             GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm illnerAlgorithm;
             GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm geneticAlgorithm;
 
@@ -336,14 +353,14 @@ namespace GraphColoring
                     continue;
 
                 illnerAlgorithm = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
-                //Console.WriteLine(graph);
+                Console.WriteLine(graph);
                 illnerAlgorithm.Color();
 
                 illnerNumber = graph.GetColoredGraph().GetCountUsedColors();
 
                 graph.GetColoredGraph().DeinitializationColoredGraph();
-                /*
-                geneticAlgorithm = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
+                
+                geneticAlgorithm = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2);
                 geneticAlgorithm.Color();
 
                 geneticNumber = graph.GetColoredGraph().GetCountUsedColors();

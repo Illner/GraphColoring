@@ -22,7 +22,9 @@ namespace AI.ML
         private IDataView data, testData, trainingData;
         EstimatorChain<ISingleFeaturePredictionTransformer<IPredictorProducing<float>>> pipeline;
         GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum;
-        private string pathData = @"Data\data.tsv";
+        private static string pathFolder = @"Data\";
+        private string pathData = pathFolder + "data.tsv";
+
         private string pathModel;
 
         private bool modelExists = false;
@@ -44,12 +46,12 @@ namespace AI.ML
         /// <param name="aiEnum">ML binary trainer</param>
         /// <param name="algorithmEnum">algorithm</param>
         /// <param name="generateData">download data from the DB?</param>
-        public CreateAI(AIEnum aiEnum, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum, bool generateData = true)
+        public CreateAI(string databaseLocation, string databaseName, string databaseUserName, string databasePassword, AIEnum aiEnum, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum, bool generateData = true)
         {
             // Generate data
             if (generateData)
             {
-                Database.Database database = new Database.Database();
+                Database.Database database = new Database.Database(databaseLocation, databaseName, databaseUserName, databasePassword);
                 database.SaveDataFromDatabaseToFile(GetPathData(), algorithmEnum);
             }
 
@@ -94,6 +96,10 @@ namespace AI.ML
 
             //Console.WriteLine("=============== Saving the mdoel ===============");
             SaveModel();
+
+            // Delete data file
+            if (File.Exists(GetPathData()))
+                File.Delete(GetPathData());
         }
         
         private void LoadData()
@@ -189,7 +195,7 @@ namespace AI.ML
         /// </summary>
         public void SaveModel()
         {
-            pathModel = @"Data\model" + DateTime.Now.ToString("-dd-MM-yyyy-HH-mm-ss-") + algorithmEnum.ToString() + ".zip";
+            pathModel = pathFolder + "model" + DateTime.Now.ToString(" -dd-MM-yyyy-HH-mm-ss-") + algorithmEnum.ToString() + ".zip";
 
             using (var fileStream = new FileStream(pathModel, FileMode.Create, FileAccess.Write, FileShare.Write))
                 mlContext.Model.Save(trainedModel, fileStream);
@@ -207,6 +213,14 @@ namespace AI.ML
             return pathData;
         }
 
+        /// <summary>
+        /// Return a path folder
+        /// </summary>
+        /// <returns>path folder</returns>
+        public static string GetPathFolder()
+        {
+            return pathFolder;
+        }
         /// <summary>
         /// Return path
         /// If the model doesn't exist throws ModelDoesntExistException

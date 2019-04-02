@@ -140,6 +140,7 @@
     <Compile Include="ML\AIEnum.cs" />
     <Compile Include="ML\CreateAI.cs" />
     <Compile Include="MyException\AIException.cs" />
+    <Compile Include="MyException\DatabaseException.cs" />
     <Compile Include="MyException\GenerateGraphsException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

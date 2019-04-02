@@ -18,10 +18,10 @@ namespace AI.GenerateGraphs
         /// </summary>
         /// <param name="writer">write generated graphs on the screen</param>
         /// <param name="clearDatabase">remove all records in the DB</param>
-        public GenerateGraphsDatabase(bool writer = true, bool clearDatabase = false) : base(writer)
+        public GenerateGraphsDatabase(string databaseLocation, string databaseName, string databaseUserName, string databasePassword, bool writer = true, bool clearDatabase = false, int constant = 1, int exponent = 1) : base(constant, exponent, writer)
         {
 
-            database = new Database.Database();
+            database = new Database.Database(databaseLocation, databaseName, databaseUserName, databasePassword);
 
             while (database.GetConnectionState() == System.Data.ConnectionState.Connecting)
             {
@@ -31,7 +31,7 @@ namespace AI.GenerateGraphs
             }
 
             if (database.GetConnectionState() != System.Data.ConnectionState.Open)
-                throw new MyException.GenerateGraphsException.GenerateGraphsDatabaseNotOpenException(database.GetConnectionState().ToString());
+                throw new MyException.DatabaseException.DatabaseException(database.GetConnectionState().ToString());
 
             if (clearDatabase)
                 database.CleanDB();
@@ -165,10 +165,8 @@ namespace AI.GenerateGraphs
         /// </summary>
         public void SaveDataFromFileToDB()
         {
-            string pathFile = GenerateGraphsFile.GetPath();
-
-            if (!File.Exists(pathFile))
-                throw new GraphColoring.MyException.ReaderWriterException.ReaderWriterFileDoesNotExist(pathFile);
+            string pathFolder = GenerateGraphsFile.GetPathFolder();
+            string pathFileNameExtended = GenerateGraphsFile.GetFileNameExtension();
 
             // Variable
             string line;
@@ -183,166 +181,186 @@ namespace AI.GenerateGraphs
             GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum GraphClass;
             GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum EulerianGraph;
 
-            StreamReader file = new StreamReader(pathFile);
-            while ((line = file.ReadLine()) != null)
+            foreach (string filePath in Directory.EnumerateFiles(pathFolder, "*." + pathFileNameExtended))
             {
-                lineNumber++;
-
-                // Graph
-                if (line.StartsWith(GenerateGraphsFile.graphHeader))
+                Console.WriteLine("Reading file: {0}", filePath);
+                StreamReader file = new StreamReader(filePath);
+                while ((line = file.ReadLine()) != null)
                 {
-                    try
+                    lineNumber++;
+
+                    // Graph
+                    if (line.StartsWith(GenerateGraphsFile.graphHeader))
                     {
-                        error = false;
-                        
-                        if (writer && ID_Graph != 0)
+                        try
                         {
+                            error = false;
+
+                            if (writer && ID_Graph != 0)
+                            {
+                                if (!graphExists)
+                                    Console.WriteLine("Added graph with ID {0}", ID_Graph);
+                                else
+
+                                    Console.WriteLine("Updated graph with ID {0}", ID_Graph);
+                            }
+
+                            string[] lineArray = line.Split(' ');
+                            if (lineArray.Length <= 15)
+                                throw new ArgumentException();
+
+                            // Fill variables
+                            CountVertices = int.Parse(lineArray[1]);
+                            CountEdges = int.Parse(lineArray[2]);
+                            GraphClass = (GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum)Enum.Parse(typeof(GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum), lineArray[3]);
+                            IsChordal = bool.Parse(lineArray[4]);
+                            IsRegular = bool.Parse(lineArray[5]);
+                            IsCyclic = bool.Parse(lineArray[6]);
+                            EulerianGraph = (GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum)Enum.Parse(typeof(GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum), lineArray[7]);
+                            MaximumVertexDegree = int.Parse(lineArray[8]);
+                            MinimumVertexDegree = int.Parse(lineArray[9]);
+                            AverageVertexDegree = double.Parse(lineArray[10]);
+                            MedianVertexDegree = int.Parse(lineArray[11]);
+                            CountCutVertices = int.Parse(lineArray[12]);
+                            CountBridges = int.Parse(lineArray[13]);
+                            Girth = int.Parse(lineArray[14]);
+                            VertexDegreeArray = new int[lineArray.Length - 15];
+                            for (int i = 0; i < VertexDegreeArray.Length; i++)
+                            {
+                                VertexDegreeArray[i] = int.Parse(lineArray[15 + i]);
+                            }
+
+                            if (VertexDegreeArray.Length != CountVertices)
+                                throw new ArgumentException();
+
+                            // DB
+                            graphExists = database.ExistsGraph(CountVertices, CountEdges, GraphClass, IsChordal, IsRegular, IsCyclic, EulerianGraph,
+                                                               MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree,
+                                                               CountCutVertices, CountBridges, Girth, VertexDegreeArray);
                             if (!graphExists)
-                                Console.WriteLine("Added graph with ID {0}", ID_Graph);
-                            else
-
-                                Console.WriteLine("Updated graph with ID {0}", ID_Graph);
-                        }
-
-                        string[] lineArray = line.Split(' ');
-                        if (lineArray.Length <= 15)
-                            throw new ArgumentException();
-
-                        // Fill variables
-                        CountVertices = int.Parse(lineArray[1]);
-                        CountEdges = int.Parse(lineArray[2]);
-                        GraphClass = (GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum)Enum.Parse(typeof(GraphColoring.Graph.GraphClass.GraphClass.GraphClassEnum), lineArray[3]);
-                        IsChordal = bool.Parse(lineArray[4]);
-                        IsRegular = bool.Parse(lineArray[5]);
-                        IsCyclic = bool.Parse(lineArray[6]);
-                        EulerianGraph = (GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum)Enum.Parse(typeof(GraphColoring.Graph.GraphProperty.GraphProperty.EulerianGraphEnum), lineArray[7]);
-                        MaximumVertexDegree = int.Parse(lineArray[8]);
-                        MinimumVertexDegree = int.Parse(lineArray[9]);
-                        AverageVertexDegree = double.Parse(lineArray[10]);
-                        MedianVertexDegree = int.Parse(lineArray[11]);
-                        CountCutVertices = int.Parse(lineArray[12]);
-                        CountBridges = int.Parse(lineArray[13]);
-                        Girth = int.Parse(lineArray[14]);
-                        VertexDegreeArray = new int[lineArray.Length - 15];
-                        for (int i = 0; i < VertexDegreeArray.Length; i++)
-                        {
-                            VertexDegreeArray[i] = int.Parse(lineArray[15 + i]);
-                        }
-
-                        if (VertexDegreeArray.Length != CountVertices)
-                            throw new ArgumentException();
-
-                        // DB
-                        graphExists = database.ExistsGraph(CountVertices, CountEdges, GraphClass, IsChordal, IsRegular, IsCyclic, EulerianGraph,
-                                                           MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree,
-                                                           CountCutVertices, CountBridges, Girth, VertexDegreeArray);
-                        if (!graphExists)
-                            database.InsertGraph(CountVertices, CountEdges, GraphClass, IsChordal, IsRegular, IsCyclic, EulerianGraph,
-                                                 MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree,
-                                                 CountCutVertices, CountBridges, Girth, VertexDegreeArray);
-                        ID_Graph = database.GetGraph(CountVertices, CountEdges, GraphClass, IsChordal, IsRegular, IsCyclic, EulerianGraph,
+                                database.InsertGraph(CountVertices, CountEdges, GraphClass, IsChordal, IsRegular, IsCyclic, EulerianGraph,
                                                      MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree,
                                                      CountCutVertices, CountBridges, Girth, VertexDegreeArray);
-                    }
-                    catch (FormatException)
-                    {
-                        Console.WriteLine("Can't parse this line [{0}] (invalid type): {1}", lineNumber, line);
-
-                        error = true;
-                        ID_Graph = 0;
-                    }
-                    catch (ArgumentException)
-                    {
-                        Console.WriteLine("Can't parse this line [{0}] (invalid count of parameters): {1}", lineNumber, line);
-
-                        error = true;
-                        ID_Graph = 0;
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Something wrong with this line [{0}]: {1}", lineNumber, line);
-
-                        error = true;
-                        ID_Graph = 0;
-                    }
-                }
-                // Algorithms
-                else
-                {
-                    if (error || ID_Graph <= 0)
-                        continue;
-
-                    try
-                    {
-                        string[] lineArray = line.Split(' ');
-                        if (lineArray.Length != 2 && lineArray.Length != 4)
-                            throw new ArgumentException();
-
-                        switch ((GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)Enum.Parse(typeof(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum), lineArray[0], false))
-                        {
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, int.Parse(lineArray[1]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence, int.Parse(lineArray[1]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange, int.Parse(lineArray[1]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, int.Parse(lineArray[1]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential, int.Parse(lineArray[1]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, int.Parse(lineArray[1]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet, int.Parse(lineArray[1]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm, int.Parse(lineArray[1]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
-                                break;
-                            case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm:
-                                database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm, int.Parse(lineArray[1]));
-                                break;
-                            default:
-                                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(lineArray[0]);
+                            ID_Graph = database.GetGraph(CountVertices, CountEdges, GraphClass, IsChordal, IsRegular, IsCyclic, EulerianGraph,
+                                                         MaximumVertexDegree, MinimumVertexDegree, AverageVertexDegree, MedianVertexDegree,
+                                                         CountCutVertices, CountBridges, Girth, VertexDegreeArray);
                         }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Can't parse this line [{0}] (invalid type): {1}", lineNumber, line);
 
+                            error = true;
+                            ID_Graph = 0;
+                        }
+                        catch (ArgumentException)
+                        {
+                            Console.WriteLine("Can't parse this line [{0}] (invalid count of parameters): {1}", lineNumber, line);
+
+                            error = true;
+                            ID_Graph = 0;
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Something wrong with this line [{0}]: {1}", lineNumber, line);
+
+                            error = true;
+                            ID_Graph = 0;
+                        }
                     }
-                    catch (ArgumentException)
+                    // Algorithms
+                    else
                     {
-                        Console.WriteLine("Can't parse this line [{0}] (invalid count of parameters): {1}", lineNumber, line);
-                    }
-                    catch (MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException)
-                    {
-                        Console.WriteLine("Algorithm does not exist: {0}", line);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Something wrong with this line [{0}] : {1}", lineNumber, line);
+                        if (error || ID_Graph <= 0)
+                            continue;
+
+                        try
+                        {
+                            string[] lineArray = line.Split(' ');
+                            if (lineArray.Length != 2 && lineArray.Length != 4)
+                                throw new ArgumentException();
+
+                            switch ((GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)Enum.Parse(typeof(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum), lineArray[0], false))
+                            {
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm, int.Parse(lineArray[1]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
+                                    break;
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm, int.Parse(lineArray[1]));
+                                    break;
+                                default:
+                                    throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(lineArray[0]);
+                            }
+
+                        }
+                        catch (ArgumentException)
+                        {
+                            Console.WriteLine("Can't parse this line [{0}] (invalid count of parameters): {1}", lineNumber, line);
+                        }
+                        catch (MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException)
+                        {
+                            Console.WriteLine("Algorithm does not exist: {0}", line);
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Something wrong with this line [{0}] : {1}", lineNumber, line);
+                        }
                     }
                 }
-            }
-            
-            if (writer && ID_Graph != 0)
-            {
-                if (!graphExists)
-                    Console.WriteLine("Added graph with ID {0}", ID_Graph);
-                else
 
-                    Console.WriteLine("Updated graph with ID {0}", ID_Graph);
+                if (writer && ID_Graph != 0)
+                {
+                    if (!graphExists)
+                        Console.WriteLine("Added graph with ID {0}", ID_Graph);
+                    else
+
+                        Console.WriteLine("Updated graph with ID {0}", ID_Graph);
+                }
+
+                file.Close();
+
+                Console.WriteLine();
             }
         }
         #endregion

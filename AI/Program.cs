@@ -476,6 +476,11 @@ namespace AI
                     Console.WriteLine("Something wrong: " + ex.GetType());
                     return 1;
                 }
+                catch (AggregateException ex)
+                {
+                    Console.WriteLine("Something wrong: " + ex.GetType());
+                    return 1;
+                }
             }
 
             return 0;

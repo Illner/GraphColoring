@@ -11,8 +11,7 @@ namespace AI.Database
 {
     class Database
     {
-        // Variable
-        #region
+        #region Variables
         private string datasource = "127.0.0.1";
         private string database = "GraphColoring";
         private string username = "GraphColoring";

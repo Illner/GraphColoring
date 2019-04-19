@@ -188,6 +188,11 @@ namespace AI.ML
             logLossReduction = metrics.LogLossReduction;
             F1Score = metrics.F1Score;
             auc = metrics.Auc;
+            
+            // Test
+            //var predictionsTraining = trainedModel.Transform(trainingData);
+            //var metricsTraining = mlContext.BinaryClassification.Evaluate(data: predictionsTraining, label: DefaultColumnNames.Label);
+            //Console.WriteLine("Accurrancy (training data): " + metricsTraining.Accuracy);
         }
 
         /// <summary>

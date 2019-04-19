@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.Graph
 {
-    class GraphEdgeList : Graph, IGraphEdgeListInterface
+    public class GraphEdgeList : Graph, IGraphEdgeListInterface
     {
         // Variable
         #region

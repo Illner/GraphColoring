@@ -163,8 +163,8 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 case GraphColoringAlgorithmEnum.combinationAlgorithm:
                     algorithm = new CombinationAlgorithm.CombinationAlgorithm(graph);
                     break;
-                case GraphColoringAlgorithmEnum.illnerAlgorithm:
-                    algorithm = new IllnerAlgorithm.IllnerAlgorithm(graph);
+                case GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended:
+                    algorithm = new ConnectedLargestFirst.ConnectedLargestFirst(graph);
                     break;
                 default:
                     throw new MyException.GraphColoringAlgorithmException.AlgorithmDoesntExist(algorithmEnum.ToString());

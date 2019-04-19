@@ -19,6 +19,7 @@ namespace GraphColoring.GUI
         private bool showError = true;
         private Graph.IGraphInterface graph;
         private bool isModifiedGraph = false;
+        private bool isColoringGraph = false;
         private GraphVisualizationForm graphVisualizationForm;
         private static string MODIFIEDGRAPHNAME = "Modified graph";
         List<GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum> algorithmListBoxList;
@@ -142,8 +143,8 @@ namespace GraphColoring.GUI
                 case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI:
                     graphColoringAlgorithm = new GraphColoringAlgorithm.AI.AI(graph);
                     break;
-                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm:
-                    graphColoringAlgorithm = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
+                case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended:
+                    graphColoringAlgorithm = new GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph);
                     break;
                 default:
                     throw new MyException.GraphColoringAlgorithmException.AlgorithmDoesntExist(graphColoringAlgorithmEnum.ToString());
@@ -471,6 +472,22 @@ namespace GraphColoring.GUI
                 return;
             }
             colorGraphPlanScheduleButton.Enabled = enable;
+        }
+        
+        private void SetIsGraphColoring(bool value)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<bool>(SetIsGraphColoring), new object[] { value });
+                return;
+            }
+            
+            this.isColoringGraph = value;
+
+            if (value)
+                ColoringProgressProgressBar.Value = 0;
+            else
+                ColoringProgressProgressBar.Value = 100;
         }
         #endregion
 
@@ -809,6 +826,7 @@ namespace GraphColoring.GUI
 
             // Disable all buttons
             EnableButtons(false);
+            countOfUsedColorsValueGraphPropertiesLabel.Text = "";
 
             // Status
             SetStatusLabel(WCM.ColorGraphProgressStatus);
@@ -816,6 +834,8 @@ namespace GraphColoring.GUI
             // Variable
             Object obj = new Object();
             maxUsedColors = 0;
+
+            SetIsGraphColoring(true);
 
             // Algorithm
             graphColoringAlgorithmEnum = algorithmListBoxList[algorithmListBox.SelectedIndex];
@@ -897,6 +917,8 @@ namespace GraphColoring.GUI
                 }
                 finally
                 {
+                    SetIsGraphColoring(false);
+
                     // Enable all buttons
                     EnableButtons(true);
                 }
@@ -1108,6 +1130,7 @@ namespace GraphColoring.GUI
             coreThread = null;
 
             SetStatusLabel(WCM.ApplicationReset);
+            countOfUsedColorsValueGraphPropertiesLabel.Text = "";
 
             // Enable buttons
             EnableButtons(true);
@@ -1119,6 +1142,8 @@ namespace GraphColoring.GUI
             SetStatusLabel("");
             isModifiedGraph = false;
             drawGraphPictureBox.Image = null;
+
+            ColoringProgressProgressBar.Value = 0;
         }
 
         private void generateGraphButton_Click(object sender, EventArgs e)
@@ -1135,6 +1160,7 @@ namespace GraphColoring.GUI
 
             // Disable all buttons
             EnableButtons(false);
+            countOfUsedColorsValueGraphPropertiesLabel.Text = "";
 
             path = null;
             isModifiedGraph = false;
@@ -2318,6 +2344,17 @@ namespace GraphColoring.GUI
         private void drawGraphPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        #endregion
+
+        // Timer
+        #region
+        private void ColoringProgressTimer_Tick(object sender, EventArgs e)
+        {
+            if (!isColoringGraph)
+                return;
+
+            ColoringProgressProgressBar.Value = (int)((double)graph.GetColoredGraph().GetColoredVertexList().Count / graph.GetRealCountVertices() * 100);
         }
         #endregion
 

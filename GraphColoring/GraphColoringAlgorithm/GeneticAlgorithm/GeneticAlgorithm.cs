@@ -56,7 +56,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         #region
         /// <summary>
         /// Color a graph
-        /// Time complexity: O(n^3 + mn^2) + 0
+        /// Time complexity: O(k * p * (p * n + m)) + 0
         /// </summary>
         override
         public void Color()

@@ -164,13 +164,13 @@ namespace GraphColoring.Graph
                         switch (interchangeEnum)
                         {
                             case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange:
-                                    TryChangeColoring(vertex, color);
+                                TryChangeColoring(vertex, color);
                                 break;
                             case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended:
-                                    TryChangeColoringExtended(vertex, color);
+                                TryChangeColoringExtended(vertex, color);
                                 break;
                         }
-                        
+
                     }
                     else
                         ColorVertex(vertex, color);
@@ -436,7 +436,7 @@ namespace GraphColoring.Graph
                     neighboursColors.Add(color);
                 }
 
-                saturationDegreeSequence[vertex] = neighboursColors.Count;
+                saturationDegreeSequence[vertex] = neighboursColors.Distinct().Count();
             }
 
             /// <summary>
@@ -766,6 +766,11 @@ namespace GraphColoring.Graph
                         existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 = false;
                         IVertexInterface firstVertexTemp = null, secondVertexTemp = null;
 
+                        bool isOneVertexNeighborWithColor1 = false;
+
+                        if (neighborsVerticesColor1.Count == 1)
+                            isOneVertexNeighborWithColor1 = true;
+
                         foreach (IVertexInterface neighbor in neighborsVerticesColor1)
                         {
                             foreach (IVertexInterface neighborOfNeighbor in ColoredNeighbours(color2, neighbor))
@@ -774,32 +779,19 @@ namespace GraphColoring.Graph
                                 {
                                     existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 = true;
 
-                                    if (firstVertexTemp != null)
-                                    {
-                                        firstVertexTemp = null;
-                                        secondVertexTemp = null;
-                                        break;
-                                    }
-                                    else
+                                    if (BackUpK3Tuple == null && isOneVertexNeighborWithColor1 && firstVertexTemp == null)
                                     {
                                         firstVertexTemp = neighbor;
                                         secondVertexTemp = neighborOfNeighbor;
                                     }
                                 }
-                                
-                                /*
-                                if (graph.Neighbours(neighbor).Any(x => neighborsVerticesColor2.Contains(x)))
-                                {
-                                    existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 = true;
 
-                                    if (firstVertexTemp != null)
-                                    {
-                                        break;
-                                    }
-                                }
-                                */
+                                if ((isOneVertexNeighborWithColor1 && firstVertexTemp != null) || (!isOneVertexNeighborWithColor1 && existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2) || (BackUpK3Tuple != null && existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2))
+                                    break;
                             }
 
+                            if ((isOneVertexNeighborWithColor1 && firstVertexTemp != null) || (!isOneVertexNeighborWithColor1 && existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2) || (BackUpK3Tuple != null && existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2))
+                                break;
                         }
 
                         // Test
@@ -807,75 +799,64 @@ namespace GraphColoring.Graph
                         //Console.WriteLine("firstVertexTemp: " + firstVertexTemp);
                         //Console.WriteLine("secondVertexTemp: " + secondVertexTemp);
 
-                        // Exist at least two edges => does not exist a cut vertex that divide the bichromatic graph into two subgraphs where the first component contains 
+                        // Exist at least one edge => does not exist a cut vertex that divide the bichromatic graph into two subgraphs where the first component contains 
                         // all vertices from the neighborsVerticesColor1 and the second component contains all vertices from the neighborsVerticesColor2
-                        if (existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 && firstVertexTemp == null)
-                        //if (existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2)
+                        // Count of neighbors of mainVertex with color1 is more than 1 => no chance to find and recolor K3
+                        if (existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 && !isOneVertexNeighborWithColor1)
                             continue;
-
-                        // Exists one edge => try to recolor the K3 (firstVertexTemp, secondVertexTemp, mainVertex)
+                        
+                        // Count of neighbors of mainVertex with color1 is 1 => try to find any K3 to recolor
                         if (existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2 && BackUpK3Tuple == null)
                         {
                             // Variable
                             IVertexInterface vertexK3;
-
-                            // firstVertexTemp
+                            
                             List<IVertexInterface> neighborsList = null;
                             recoloredK3 = false;
 
-                            for (int i = 0; i < 2; i++)
+                            neighborsList = graph.Neighbours(firstVertexTemp);
+                            neighborsList.Remove(secondVertexTemp);
+                            vertexK3 = firstVertexTemp;
+
+                            foreach (IVertexInterface neighbor1 in neighborsList)
                             {
-                                if (i == 0)
+                                foreach (IVertexInterface neighbor2 in neighborsList)
                                 {
-                                    neighborsList = graph.Neighbours(firstVertexTemp);
-                                    neighborsList.Remove(secondVertexTemp);
-                                    vertexK3 = firstVertexTemp;
-                                }
-                                else
-                                {
-                                    neighborsList = graph.Neighbours(secondVertexTemp);
-                                    neighborsList.Remove(firstVertexTemp);
-                                    vertexK3 = secondVertexTemp;
+                                    if (neighbor1 == neighbor2)
+                                        continue;
+
+                                    if (graph.ExistsEdge(new Edge(neighbor1, neighbor2)))
+                                    {
+                                        //Console.WriteLine("Computing: {0}, {1}, {2}", vertexK3, neighbor1, neighbor2);
+                                        recoloredK3 = RecolorK3(mainVertex, vertexK3, neighbor1, neighbor2, false);
+                                    }
+
+                                    if (recoloredK3)
+                                    {
+                                        BackUpK3Tuple = new Tuple<IVertexInterface, IVertexInterface, IVertexInterface, IVertexInterface>(mainVertex, vertexK3, neighbor1, neighbor2);
+                                        break;
+                                    }
+
                                 }
 
-                                foreach (IVertexInterface neighbor1 in neighborsList)
-                                {
-                                    foreach (IVertexInterface neighbor2 in neighborsList)
-                                    {
-                                        if (neighbor1 == neighbor2)
-                                            continue;
-                                        
-                                        if (graph.ExistsEdge(new Edge(neighbor1, neighbor2)))
-                                        {
-                                            //Console.WriteLine("Computing: {0}, {1}, {2}", vertexK3, neighbor1, neighbor2);
-                                            recoloredK3 = RecolorK3(mainVertex, vertexK3, neighbor1, neighbor2, false);
-                                        }
-                                        
-                                        if (recoloredK3)
-                                        {
-                                            BackUpK3Tuple = new Tuple<IVertexInterface, IVertexInterface, IVertexInterface, IVertexInterface>(mainVertex, vertexK3, neighbor1, neighbor2);
-                                            break;
-                                        }
-                                        
-                                    }
-                                    
-                                    if (recoloredK3)
-                                        break;
-                                }
-                                
                                 if (recoloredK3)
                                     break;
                             }
+
+                            if (recoloredK3)
+                                break;
+                            
 
                             // Test
                             //Console.WriteLine("recoloredK3: " + recoloredK3);
 
                             //if (recoloredK3)
-                                //bichromaticGraphCanBeDivided = true;
+                            //bichromaticGraphCanBeDivided = true;
 
                             continue;
                         }
 
+                        // Exists BackUpK3Tuple
                         if (existsEdgeBetweenneighborsVerticesColor1AndneighborsVerticesColor2)
                             continue;
 
@@ -920,7 +901,8 @@ namespace GraphColoring.Graph
                         //potentionalCutVertices.ForEach(x => Console.WriteLine(x.GetUserName() + " "));
                         //Console.WriteLine();
 
-                        IGraphInterface firstComponent = null, secondComponent = null;
+                        IGraphInterface component = null;
+                        //IGraphInterface firstComponent = null, secondComponent = null;
 
                         // Check if the cut vertex has the property
                         foreach (IVertexInterface cutVertex in potentionalCutVertices)
@@ -933,19 +915,31 @@ namespace GraphColoring.Graph
                             subGraph.VertexDelete(cutVertex);
                             //List<IGraphInterface> componentsList = subGraph.GetGraphProperty().GetComponents();
 
-                            firstComponent = subGraph.GetGraphProperty().GetComponents().First();
-                            secondComponent = subGraph.GetGraphProperty().GetComponents().Skip(1).First();
+                            foreach(IGraphInterface record in subGraph.GetGraphProperty().GetComponents())
+                            {
+                                if (record.ExistsUserName(mainVertexColor1.GetUserName()))
+                                {
+                                    component = record;
+                                    break;
+                                }
+                            }
+
+                            //firstComponent = subGraph.GetGraphProperty().GetComponents().First();
+                            //secondComponent = subGraph.GetGraphProperty().GetComponents().Skip(1).First();
 
                             // The mainVertexColor1 is in the first component and the mainVertexColor2 is in the second component (or vice versa)
-                            if ((firstComponent.ExistsUserName(mainVertexColor1.GetUserName()) && secondComponent.ExistsUserName(mainVertexColor2.GetUserName())) ||
-                                (secondComponent.ExistsUserName(mainVertexColor1.GetUserName()) && firstComponent.ExistsUserName(mainVertexColor2.GetUserName())))
+                            if (!component.ExistsUserName(mainVertexColor2.GetUserName()))
                             {
                                 List<IVertexInterface> possibleRecoloredVerticesList;
 
+                                possibleRecoloredVerticesList = component.AllVertices();
+
+                                /*
                                 if (firstComponent.ExistsUserName(mainVertexColor1.GetUserName()))
                                     possibleRecoloredVerticesList = firstComponent.AllVertices();
                                 else
                                     possibleRecoloredVerticesList = secondComponent.AllVertices();
+                                */
 
                                 possibleRecoloredVerticesHashSet = new HashSet<IVertexInterface>();
                                 foreach (IVertexInterface vertex in possibleRecoloredVerticesList)
@@ -981,6 +975,7 @@ namespace GraphColoring.Graph
                         {
                             IVertexInterface mainVertexColorComponent;
 
+                            /*
                             // Get vertices correspond to mainVertexColor1 and mainVertexColor2 in the subgraph components
                             // We must recolor vertices in the first component
                             if (firstComponent.ExistsUserName(mainVertexColor1.GetUserName()))
@@ -996,7 +991,11 @@ namespace GraphColoring.Graph
 
                                 verticesWeWantToChange = secondComponent.AllVertices();
                             }
+                            */
 
+                            //verticesWeWantToChange.Remove(mainVertexColorComponent);
+                            verticesWeWantToChange = component.AllVertices();
+                            mainVertexColorComponent = component.GetVertexByUserName(mainVertexColor1.GetUserName());
                             verticesWeWantToChange.Remove(mainVertexColorComponent);
 
                             bichromaticGraphCanBeDivided = true;
@@ -1034,16 +1033,16 @@ namespace GraphColoring.Graph
                     color = color1;
                 }
 
-                if (bichromaticGraphCanBeDivided)
+                if (connected && bichromaticGraphCanBeDivided)
                 {
                     // Test
                     //if (cutVertexWithProperty != null)
-                        //Console.WriteLine("cutVertexWithProperty: " + cutVertexWithProperty.GetUserName());
+                    //Console.WriteLine("cutVertexWithProperty: " + cutVertexWithProperty.GetUserName());
 
                     // Test
                     //if (cutVertexWithProperty != null)
-                        //Console.WriteLine("Before cutVertexWithProperty: " + graph.GetVertexByUserName(cutVertexWithProperty.GetUserName()).GetColor());
-                    
+                    //Console.WriteLine("Before cutVertexWithProperty: " + graph.GetVertexByUserName(cutVertexWithProperty.GetUserName()).GetColor());
+
                     // Recolor the cut vertex
                     CanBeCutVertexRecolored(graph.GetVertexByUserName(cutVertexWithProperty.GetUserName()), color1, color2, true, possibleRecoloredVerticesHashSet, mainVertex);
 
@@ -1123,7 +1122,7 @@ namespace GraphColoring.Graph
 
                     if (!recolor)
                         return true;
-                    
+
                     ColorVertex(cutVertex, GetMostUsedColorNeighborsNeighbor(cutVertex, availableRecoloringList));
 
                     return true;
@@ -1166,7 +1165,7 @@ namespace GraphColoring.Graph
                             foreach (IVertexInterface neighbor in ColoredNeighbours(color, cutVertex))
                             {
                                 availableRecoloringList = CanBeVertexRecolored(neighbor, cutVertex.GetColor(), invalidColor1, color2, possibleRecoloredVerticesHashSet, mainVertex);
-                                
+
                                 ColorVertex(neighbor, GetMostUsedColorNeighborsNeighbor(neighbor, availableRecoloringList));
 
                                 // Test
@@ -1185,7 +1184,7 @@ namespace GraphColoring.Graph
 
                 return false;
             }
-            
+
             /// <summary>
             /// Return a list contains colors which can be used for recoloring the vertex due to bichromatic graph
             /// Conditions:
@@ -1250,7 +1249,7 @@ namespace GraphColoring.Graph
                 {
                     availableRecoloringList.Remove(color1);
                 }
-                
+
                 return availableRecoloringList;
             }
 
@@ -1328,7 +1327,7 @@ namespace GraphColoring.Graph
                     availableRecoloringVertex1List.Add(color2);
                 if (ColoredNeighbours(color3, cutVertex).Count == 1)
                     availableRecoloringVertex1List.Add(color3);
-                
+
                 // Vertex2
                 if (ColoredNeighbours(color1, vertex2).Count == 1)
                     availableRecoloringVertex2List.Add(color1);
@@ -1499,7 +1498,7 @@ namespace GraphColoring.Graph
             {
                 return unColoredVertexHashSet.ToList();
             }
-            
+
             /// <summary>
             /// Return true if the colored graph is initialized
             /// </summary>

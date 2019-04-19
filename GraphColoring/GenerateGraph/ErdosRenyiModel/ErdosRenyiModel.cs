@@ -72,6 +72,9 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
                 default:
                     throw new MyException.GenerateGraphException.ErdosReneiModelProbabilityEnumMissing(erdosRenyiModelProbabilityEnum.ToString());
             }
+
+            if (erdosRenyiModelProbabilityEnum == ErdosRenyiModelProbabilityEnum.cLogNDividedByN)
+                probability += (random.Next(0, 30000));
         }
 
         public Graph.IGraphInterface GenerateGraph()

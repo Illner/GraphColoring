@@ -46,7 +46,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             // Fill dictionaries
             modelPathDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, string>()
             {
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm, illnerAlgorithmModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, illnerAlgorithmModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, randomSequenceModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange, randomSequenceInterchangeModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended, randomSequenceInterchangeExtendedModelPath },
@@ -86,7 +86,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             // Fill aucDictionary
             aucDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, double>()
             {
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended, 0 },

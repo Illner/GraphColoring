@@ -18,7 +18,7 @@ namespace AI.GenerateGraphs
         /// </summary>
         /// <param name="writer">write generated graphs on the screen</param>
         /// <param name="clearDatabase">remove all records in the DB</param>
-        public GenerateGraphsDatabase(string databaseLocation, string databaseName, string databaseUserName, string databasePassword, bool writer = true, bool clearDatabase = false, int constant = 1, int exponent = 1) : base(constant, exponent, writer)
+        public GenerateGraphsDatabase(string databaseLocation, string databaseName, string databaseUserName, string databasePassword, bool writer = true, bool clearDatabase = false, int constant = 1, int exponent = 1, bool useGeneticAlgorithm2 = true) : base(constant, exponent, writer, useGeneticAlgorithm2)
         {
 
             database = new Database.Database(databaseLocation, databaseName, databaseUserName, databasePassword);
@@ -139,12 +139,15 @@ namespace AI.GenerateGraphs
                     database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm, COUNTITERATIONSPROBABILITY, result.Item1, result.Item2);
 
                     // Genetic2
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
-                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2, COUNTITERATIONSPROBABILITY, result.Item1, result.Item2);
+                    if (useGeneticAlgorithm2)
+                    {
+                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
+                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2, COUNTITERATIONSPROBABILITY, result.Item1, result.Item2);
+                    }
 
                     // Illner
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph));
-                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm, result.Item1);
+                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph));
+                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, result.Item1);
                     
                     if (writer)
                     {
@@ -188,6 +191,9 @@ namespace AI.GenerateGraphs
                 while ((line = file.ReadLine()) != null)
                 {
                     lineNumber++;
+
+                    if (line.StartsWith(GenerateGraphsFile.comment))
+                        continue;
 
                     // Graph
                     if (line.StartsWith(GenerateGraphsFile.graphHeader))
@@ -326,8 +332,8 @@ namespace AI.GenerateGraphs
                                 case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2:
                                     database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2, int.Parse(lineArray[1]), int.Parse(lineArray[2]), int.Parse(lineArray[3]));
                                     break;
-                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm:
-                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm, int.Parse(lineArray[1]));
+                                case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended:
+                                    database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, int.Parse(lineArray[1]));
                                     break;
                                 default:
                                     throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(lineArray[0]);

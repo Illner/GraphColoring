@@ -224,7 +224,7 @@
     <Compile Include="GraphColoringAlgorithm\GreedyIndependentSet\Tests\GreedyIndependentSetTest.cs" />
     <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmInterface.cs" />
     <Compile Include="GraphColoringAlgorithm\IGraphColoringAlgorithmStepInterface.cs" />
-    <Compile Include="GraphColoringAlgorithm\IllnerAlgorithm\IllnerAlgorithm.cs" />
+    <Compile Include="GraphColoringAlgorithm\ConnectedLargestFirst\ConnectedLargestFirst.cs" />
     <Compile Include="GraphColoringAlgorithm\Optimal\Tests\OptimalResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

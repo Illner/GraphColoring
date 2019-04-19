@@ -15,6 +15,7 @@ namespace AI.GenerateGraphs
 
         private int constant;
         private int exponent;
+        protected bool useGeneticAlgorithm2;
         #endregion
 
         // Constructor
@@ -23,11 +24,12 @@ namespace AI.GenerateGraphs
         /// Initialize GenerateGraphs
         /// </summary>
         /// <param name="writer">write generated graphs on the screen</param>
-        public GenerateGraphs(int constant, int exponent, bool writer = true)
+        public GenerateGraphs(int constant, int exponent, bool writer = true, bool useGeneticAlgorithm2 = true)
         {
             this.writer = writer;
             this.constant = constant;
             this.exponent = exponent;
+            this.useGeneticAlgorithm2 = useGeneticAlgorithm2;
         }
         #endregion
 
@@ -58,7 +60,7 @@ namespace AI.GenerateGraphs
                 case 6:
                     return 34;
                 default:
-                    return constant * (int)Math.Pow(countVertices, 1);
+                    return constant * (int)Math.Pow(countVertices, exponent);
             }
         }
         

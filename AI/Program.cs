@@ -8,6 +8,10 @@ namespace AI
 {
     class Program
     {
+        // Variable
+        private static string colFileNameExtension = "col";
+        private static string pathFolder = @"Data\";
+        
         static void Main(string[] args)
         {
             Start();
@@ -113,7 +117,7 @@ namespace AI
             Console.WriteLine("Path: " + model);
             */
             /*
-            GenerateGraphs.GenerateGraphsFile generateGraphsFile = new GenerateGraphs.GenerateGraphsFile(true, false);
+            GenerateGraphs.GenerateGraphsFile generateGraphsFile = new GenerateGraphs.GenerateGraphsFile(0, 0);
             generateGraphsFile.Pokus();
             */
         }
@@ -153,6 +157,9 @@ namespace AI
                         exitCode = CreateMls();
                         break;
                     case "5":
+                        exitCode = ConvertFromColToGraph();
+                        break;
+                    case "6":
                         exitCode = 0;
                         quit = true;
                         break;
@@ -174,15 +181,16 @@ namespace AI
 
         public static void ShowMenu()
         {
-            Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("----------- GraphColoring - AI console -----------");
-            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("-----------------------------------------------");
+            Console.WriteLine("----------- GraphColoring - console -----------");
+            Console.WriteLine("-----------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("1) Generate graphs to file");
             Console.WriteLine("2) Generate graphs to database");
             Console.WriteLine("3) Insert graphs from files to database");
             Console.WriteLine("4) Create MLs");
-            Console.WriteLine("5) Exit console");
+            Console.WriteLine("5) Convert from .col to .graph");
+            Console.WriteLine("6) Exit console");
         }
 
         private static void GetDatabaseInformations()
@@ -265,7 +273,7 @@ namespace AI
         {
             // Variable
             string reader;
-            bool writer, clearFile;
+            bool writer, clearFile, useGeneticAlgorithm2;
             int constant = 0, exponent = 0;
             int minCount = 0, maxCount = 0;
         
@@ -281,6 +289,10 @@ namespace AI
             Console.Write("Clear file [true | false]: ");
             reader = Console.ReadLine();
             bool.TryParse(reader, out clearFile);
+
+            Console.Write("Use genetic algorithm (exponent: 2) [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out useGeneticAlgorithm2);
 
             do
             {
@@ -316,7 +328,7 @@ namespace AI
 
             try
             {
-                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsFile(constant, exponent, writer, clearFile);
+                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsFile(constant, exponent, writer, clearFile, useGeneticAlgorithm2);
 
                 Console.WriteLine();
                 Console.WriteLine("Start generating... ");
@@ -346,7 +358,7 @@ namespace AI
         {
             // Variable
             string reader;
-            bool writer, clearDatabase;
+            bool writer, clearDatabase, useGeneticAlgorithm2;
             int constant = 0, exponent = 0;
             int minCount = 0, maxCount = 0;
 
@@ -360,6 +372,10 @@ namespace AI
             Console.Write("Clear database [true | false]: ");
             reader = Console.ReadLine();
             bool.TryParse(reader, out clearDatabase);
+
+            Console.Write("Use genetic algorithm (exponent: 2) [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out useGeneticAlgorithm2);
 
             do
             {
@@ -398,7 +414,7 @@ namespace AI
 
             try
             {
-                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsDatabase(dataSource, database, userName, password, writer, clearDatabase, constant, exponent);
+                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsDatabase(dataSource, database, userName, password, writer, clearDatabase, constant, exponent, useGeneticAlgorithm2);
                 
                 Console.WriteLine();
                 Console.WriteLine("Start generating... ");
@@ -484,6 +500,110 @@ namespace AI
             }
 
             return 0;
+        }
+
+        public static int ConvertFromColToGraph()
+        {
+            // Variable
+            bool writer;
+            string reader;
+            int error = 0;
+            GraphColoring.Graph.IGraphEdgeListInterface graph = null;
+
+            Console.Clear();
+            Console.WriteLine("Convert from .col to .graph");
+
+            Console.WriteLine("Info: the files will be found in " + pathFolder + "*." + colFileNameExtension);
+
+            Console.Write("Write report to console [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out writer);
+            
+            Console.WriteLine();
+            Console.WriteLine("Start converting... ");
+            Console.WriteLine();
+
+            foreach (string filePath in Directory.EnumerateFiles(pathFolder, "*." + colFileNameExtension))
+            {
+                if (writer)
+                    Console.WriteLine("Reading file: " + filePath);
+
+                try
+                {
+                    string line = "";
+                    string firstEdge = "";
+                    string secondEdge = "";
+                    string name = "";
+                    int countOfVertices = 0, countOfEdges = 0;
+                    StreamReader myFile = new StreamReader(filePath);
+
+                    while ((line = myFile.ReadLine()) != null)
+                    {
+                        string[] splitLine = line.Split(' ');
+
+                        if (splitLine.Length == 1)
+                            continue;
+
+                        // Header
+                        if (splitLine[0] == "c" && (splitLine[1] == "FILE:" || splitLine[1] == "File:"))
+                        {
+                            splitLine[2] = splitLine[2].Replace(".col", "");
+
+                            name = splitLine[2];
+                        }
+
+                        // Count of vertices and count of edges
+                        if (splitLine[0] == "p")
+                        {
+                            countOfVertices = int.Parse(splitLine[2]);
+                            countOfEdges = int.Parse(splitLine[3]);
+                            graph = new GraphColoring.Graph.GraphEdgeList(countOfVertices);
+                            graph.SetName(name);
+                        }
+
+                        // Add edges
+                        if (splitLine[0] == "e")
+                        {
+                            firstEdge = splitLine[1];
+                            secondEdge = splitLine[2];
+
+                            graph.AddEdge(firstEdge, secondEdge);
+                        }
+                    }
+
+                    graph.InitializeGraph();
+
+                    if ((2 * graph.GetGraphProperty().GetCountEdges() != countOfEdges) && (graph.GetGraphProperty().GetCountEdges() != countOfEdges))
+                        throw new GraphColoring.MyException.GraphException.GraphInvalidCountVerticesException();
+
+                    GraphColoring.ReaderWriter.WriterGraph writerGraph = new GraphColoring.ReaderWriter.WriterGraph(pathFolder + name + ".graph", false);
+                    writerGraph.WriteFile(graph);
+
+                    if (writer)
+                        Console.WriteLine("Graph added: " + name + ".graph");
+                }
+                catch (GraphColoring.MyException.GraphException.GraphInvalidCountVerticesException)
+                {
+                    Console.WriteLine("Error (" + filePath + "): Invalid count of vertices!");
+                    error = 1;
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine("Something wrong (" + filePath + "): " + ex.GetType() + "!");
+                    error = 1;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Something wrong (" + filePath + "): " + ex.GetType() + "!");
+                    error = 1;
+                }
+            }
+            
+            Console.WriteLine();
+            Console.WriteLine("Graphs have been converted.");
+            Console.WriteLine();
+
+            return error;
         }
     }
 }

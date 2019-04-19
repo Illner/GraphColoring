@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.drawGraphPictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.graphColoringGroupBox = new System.Windows.Forms.GroupBox();
@@ -46,6 +47,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.copyrightStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ColoringProgressProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.drawGraphPanel = new System.Windows.Forms.Panel();
             this.graphModificationEdgeGroupBox = new System.Windows.Forms.GroupBox();
             this.edgeSubdivisionGraphModificationEdgeButton = new System.Windows.Forms.Button();
@@ -120,6 +122,7 @@
             this.firstColumnPanel = new System.Windows.Forms.Panel();
             this.secondColumnPanel = new System.Windows.Forms.Panel();
             this.thirdColumnPanel = new System.Windows.Forms.Panel();
+            this.ColoringProgressTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.drawGraphPictureBox)).BeginInit();
             this.graphColoringGroupBox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -341,7 +344,8 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyrightStatusLabel,
-            this.statusStatusLabel});
+            this.statusStatusLabel,
+            this.ColoringProgressProgressBar});
             this.statusStrip1.Location = new System.Drawing.Point(0, 819);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1584, 22);
@@ -361,6 +365,12 @@
             this.statusStatusLabel.Name = "statusStatusLabel";
             this.statusStatusLabel.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
             this.statusStatusLabel.Size = new System.Drawing.Size(272, 17);
+            // 
+            // ColoringProgressProgressBar
+            // 
+            this.ColoringProgressProgressBar.Name = "ColoringProgressProgressBar";
+            this.ColoringProgressProgressBar.Size = new System.Drawing.Size(100, 16);
+            this.ColoringProgressProgressBar.Visible = false;
             // 
             // drawGraphPanel
             // 
@@ -1253,6 +1263,11 @@
             this.thirdColumnPanel.Size = new System.Drawing.Size(234, 803);
             this.thirdColumnPanel.TabIndex = 10;
             // 
+            // ColoringProgressTimer
+            // 
+            this.ColoringProgressTimer.Interval = 500;
+            this.ColoringProgressTimer.Tick += new System.EventHandler(this.ColoringProgressTimer_Tick);
+            // 
             // GraphColoringForm
             // 
             this.AllowDrop = true;
@@ -1391,5 +1406,7 @@
         private System.Windows.Forms.CheckBox showSimplicialVertexCheckBox;
         private System.Windows.Forms.CheckBox showSpanningTreeCheckBox;
         private System.Windows.Forms.CheckBox showMaximumAndMinimumDegreeVerticesCheckBox;
+        private System.Windows.Forms.ToolStripProgressBar ColoringProgressProgressBar;
+        private System.Windows.Forms.Timer ColoringProgressTimer;
     }
 }

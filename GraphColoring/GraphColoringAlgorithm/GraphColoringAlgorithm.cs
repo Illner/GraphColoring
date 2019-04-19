@@ -15,6 +15,7 @@ namespace GraphColoring.GraphColoringAlgorithm
         protected TimeComplexityEnum timeComplexity = TimeComplexityEnum.undefined;
         protected Graph.IGraphInterface graph;
         protected Graph.IColoredGraphInterface coloredGraph;
+        private int countVertices;
         #endregion
 
         // Constructor
@@ -23,6 +24,7 @@ namespace GraphColoring.GraphColoringAlgorithm
         {
             this.graph = graph;
             coloredGraph = graph.GetColoredGraph();
+            countVertices = graph.GetRealCountVertices();
         }
         #endregion
 
@@ -38,6 +40,15 @@ namespace GraphColoring.GraphColoringAlgorithm
         public string ToString()
         {
             return name;
+        }
+
+        public double ColoringProgress()
+        {
+            //Console.WriteLine("Colored vertices: " + coloredGraph.GetColoredVertexList().Count);
+            //Console.WriteLine("Count vertices: " + countVertices);
+
+
+            return (double)coloredGraph.GetColoredVertexList().Count / countVertices;
         }
         #endregion
 

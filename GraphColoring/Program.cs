@@ -15,6 +15,7 @@ namespace GraphColoring
         [STAThread]
         static void Main(string[] args)
         {
+            
             // Variable
             bool result;
 
@@ -42,7 +43,7 @@ namespace GraphColoring
             Application.Run(new GUI.GraphColoringForm());
 
             Console.WriteLine("The application is closing ...");
-
+            
             /*
             List<Graph.IGraphInterface> graphList = new List<Graph.IGraphInterface>();
             GenerateGraph.IGenerateGraphInterface generateGraph;
@@ -181,9 +182,6 @@ namespace GraphColoring
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
                             algorithmMethod = new GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph);
                             break;
-                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm:
-                            algorithmMethod = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
-                            break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
                             algorithmMethod = new GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph);
                             break;
@@ -236,9 +234,6 @@ namespace GraphColoring
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet:
                             algorithmMethod = new GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph);
                             break;
-                        case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm:
-                            algorithmMethod = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph);
-                            break;
                         case GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm:
                             algorithmMethod = new GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph);
                             break;
@@ -269,6 +264,7 @@ namespace GraphColoring
             
             foreach (string file in Directory.EnumerateFiles(pathDictionary, "*.col"))
             {
+                Console.WriteLine("Reading file: " + file);
                 try
                 {
                     string line = "";
@@ -287,12 +283,9 @@ namespace GraphColoring
                         // Header
                         if (splitLine[0] == "c" && (splitLine[1] == "FILE:" || splitLine[1] == "File:"))
                         {
-                            string[] splitsplitLine;
-                            if (splitLine[2] == "")
-                                splitsplitLine = splitLine[3].Split('.');
-                            else
-                            splitsplitLine = splitLine[2].Split('.');
-                            name = splitsplitLine[0];
+                            splitLine[2] = splitLine[2].Replace(".col", "");
+
+                            name = splitLine[2];
                         }
 
                         // Count of vertices and count of edges
@@ -329,16 +322,18 @@ namespace GraphColoring
                 }
                 catch (ArgumentException ex)
                 {
+                    Console.WriteLine(ex);
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex);
                 }
             }
             */
 
             /*
             Graph.IGraphInterface graph;
-            int countVertices = 12;
+            int countVertices = 250;
             GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm illnerAlgorithm;
             GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm geneticAlgorithm;
 
@@ -353,13 +348,13 @@ namespace GraphColoring
                     continue;
 
                 illnerAlgorithm = new GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph);
-                Console.WriteLine(graph);
+                //Console.WriteLine(graph);
                 illnerAlgorithm.Color();
 
                 illnerNumber = graph.GetColoredGraph().GetCountUsedColors();
 
                 graph.GetColoredGraph().DeinitializationColoredGraph();
-                
+                /*
                 geneticAlgorithm = new GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2);
                 geneticAlgorithm.Color();
 

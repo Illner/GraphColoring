@@ -9,6 +9,7 @@ namespace AI.GenerateGraphs
         // Variable
         #region
         public static string graphHeader = "Graph: ";
+        public static string comment = "Comment: ";
         private static string fileNameExtension = "graphDB";
         private static string pathFolder = @"Data\";
         private static string pathFile = pathFolder + "GeneratedGraphs" + "." + fileNameExtension; 
@@ -20,7 +21,7 @@ namespace AI.GenerateGraphs
         /// Initialize GenerateGraphs
         /// </summary>
         /// <param name="writer">write generated graphs on the screen</param>
-        public GenerateGraphsFile(int constant, int exponent, bool writer = true, bool clear = false) : base(constant, exponent, writer)
+        public GenerateGraphsFile(int constant, int exponent, bool writer = true, bool clear = false, bool useGeneticAlgorithm2 = true) : base(constant, exponent, writer, useGeneticAlgorithm2)
         {
             if (clear && File.Exists(pathFile))
                 File.WriteAllText(pathFile, string.Empty);
@@ -135,12 +136,15 @@ namespace AI.GenerateGraphs
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
 
                         // Genetic2
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                        if (useGeneticAlgorithm2)
+                        {
+                            result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
+                            file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                        }
 
                         // Illner
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm.IllnerAlgorithm(graph));
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.illnerAlgorithm.ToString() + " " + result.Item1);
+                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph));
+                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended.ToString() + " " + result.Item1);
 
                         if (writer)
                         {
@@ -157,8 +161,8 @@ namespace AI.GenerateGraphs
 
         public void Pokus()
         {
-            string path = @"C:\Users\illner\Desktop\MyDIMACS\LEI";
-            string pathFile = @"C:\Users\illner\Desktop\MyDIMACS\LEI\Text.txt";
+            string path = @"C:\Users\illner\Desktop\MyDIMACS\GraphColoringBenchmarkInstances";
+            string pathFile = @"C:\Users\illner\Desktop\MyDIMACS\GraphColoringBenchmarkInstances\Text.txt";
             string graphString;
             Tuple<int, int> result;
 
@@ -175,6 +179,7 @@ namespace AI.GenerateGraphs
                                             graph.GetGraphProperty().GetBridges().Count + " " + graph.GetGraphProperty().GetGirth() + " " + string.Join(" ", graph.GetGraphProperty().GetDegreeSequenceInt(false));
 
                     // Add graph to the file
+                    file.WriteLine(comment + graph.GetName());
                     file.WriteLine(graphHeader + graphString);
                     Console.WriteLine("Coloring graph - {0}", graph.GetName());
 
@@ -236,8 +241,15 @@ namespace AI.GenerateGraphs
                     file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
 
                     // Genetic2
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                    if (useGeneticAlgorithm2)
+                    {
+                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
+                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                    }
+
+                    // Illner
+                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph));
+                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended.ToString() + " " + result.Item1);
 
                     Console.WriteLine("Added graph - {0}", graph.GetName());
                     file.Flush();

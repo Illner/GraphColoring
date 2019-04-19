@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm
+namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
 {
-    public class IllnerAlgorithm : GraphColoringAlgorithm
+    public class ConnectedLargestFirst : GraphColoringAlgorithm
     {
         // Variable
         #region
@@ -15,9 +15,9 @@ namespace GraphColoring.GraphColoringAlgorithm.IllnerAlgorithm
 
         // Constructor
         #region
-        public IllnerAlgorithm(Graph.IGraphInterface graph, bool extended = true) : base(graph)
+        public ConnectedLargestFirst(Graph.IGraphInterface graph, bool extended = true) : base(graph)
         {
-            name = "Illner's algorithm";
+            name = "Connected largest first interchange extended algorithm";
             timeComplexity = TimeComplexityEnum.undefined;
 
             // Test

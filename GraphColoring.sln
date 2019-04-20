@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphColoring", "GraphColoring\GraphColoring.csproj", "{277C6724-5AFC-4193-83D6-781BA6C4A07F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphColoringConsole", "AI\GraphColoringConsole.csproj", "{B1594EDA-34A4-4748-A2FB-1F8709303082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphColoringConsole", "GraphColoringConsole\GraphColoringConsole.csproj", "{B1594EDA-34A4-4748-A2FB-1F8709303082}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

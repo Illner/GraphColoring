@@ -10,7 +10,7 @@ using Microsoft.ML.Training;
 using Microsoft.ML.Core.Data;
 using Microsoft.ML.StaticPipe;
 
-namespace AI.ML
+namespace GraphColoringConsole.ML
 {
     partial class CreateAI
     {

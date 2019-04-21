@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AI.MyException.GenerateGraphsException
+namespace GraphColoringConsole.MyException.GenerateGraphsException
 {
     class GenerateGraphsException : Exception
     {
@@ -22,6 +22,19 @@ namespace AI.MyException.GenerateGraphsException
         public GenerateGraphsInvalidArgumentsMinCountMaxCountException(string message) : base(message) { }
 
         public GenerateGraphsInvalidArgumentsMinCountMaxCountException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// GenerateGraphs exception
+    /// Invalid count of vertices
+    /// </summary>
+    class GenerateGraphsInvalidCountOfVerticesException : GenerateGraphsException
+    {
+        public GenerateGraphsInvalidCountOfVerticesException() { }
+
+        public GenerateGraphsInvalidCountOfVerticesException(string message) : base(message) { }
+
+        public GenerateGraphsInvalidCountOfVerticesException(string message, Exception inner) : base(message, inner) { }
     }
 
     /// <summary>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphOperation
 {
-    static class GraphOperation
+    public static class GraphOperation
     {
         // Method
         #region

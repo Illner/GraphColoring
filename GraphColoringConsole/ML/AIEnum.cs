@@ -1,4 +1,4 @@
-﻿namespace AI.ML
+﻿namespace GraphColoringConsole.ML
 {
     partial class CreateAI
     {

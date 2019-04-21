@@ -26,6 +26,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
                     name = "Smallest last sequence interchange extended algorithm";
                     break;
+                case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
+                    name = "Smallest last sequence interchange extended with K3 algorithm";
+                    break;
             }
         }
         #endregion

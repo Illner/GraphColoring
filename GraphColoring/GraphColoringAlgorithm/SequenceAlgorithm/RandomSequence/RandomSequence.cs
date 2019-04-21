@@ -24,6 +24,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
                     name = "Random sequence interchange extended algorithm";
                     break;
+                case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
+                    name = "Random sequence interchange extended with K3 algorithm";
+                    break;
             }
         }
         #endregion

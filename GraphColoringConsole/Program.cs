@@ -4,7 +4,7 @@ using System.IO;
 using System.Data.SqlClient;
 
 
-namespace AI
+namespace GraphColoringConsole
 {
     class Program
     {
@@ -160,6 +160,9 @@ namespace AI
                         exitCode = ConvertFromColToGraph();
                         break;
                     case "6":
+                        exitCode = TimeComplexity();
+                        break;
+                    case "7":
                         exitCode = 0;
                         quit = true;
                         break;
@@ -190,7 +193,8 @@ namespace AI
             Console.WriteLine("3) Insert graphs from files to database");
             Console.WriteLine("4) Create MLs");
             Console.WriteLine("5) Convert from .col to .graph");
-            Console.WriteLine("6) Exit console");
+            Console.WriteLine("6) Generate time complexity");
+            Console.WriteLine("7) Exit console");
         }
 
         private static void GetDatabaseInformations()
@@ -273,7 +277,7 @@ namespace AI
         {
             // Variable
             string reader;
-            bool writer, clearFile, useGeneticAlgorithm2;
+            bool writer, clearFile, useGeneticAlgorithm2, useInterchangeExtendedK3;
             int constant = 0, exponent = 0;
             int minCount = 0, maxCount = 0;
         
@@ -293,6 +297,10 @@ namespace AI
             Console.Write("Use genetic algorithm (exponent: 2) [true | false]: ");
             reader = Console.ReadLine();
             bool.TryParse(reader, out useGeneticAlgorithm2);
+
+            Console.Write("Use algorithms with interchangeExtended with K3 [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out useInterchangeExtendedK3);
 
             do
             {
@@ -328,7 +336,7 @@ namespace AI
 
             try
             {
-                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsFile(constant, exponent, writer, clearFile, useGeneticAlgorithm2);
+                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsFile(constant, exponent, writer, clearFile, useGeneticAlgorithm2, useInterchangeExtendedK3);
 
                 Console.WriteLine();
                 Console.WriteLine("Start generating... ");
@@ -358,7 +366,7 @@ namespace AI
         {
             // Variable
             string reader;
-            bool writer, clearDatabase, useGeneticAlgorithm2;
+            bool writer, clearDatabase, useGeneticAlgorithm2, useInterchangeExtendedK3;
             int constant = 0, exponent = 0;
             int minCount = 0, maxCount = 0;
 
@@ -376,6 +384,10 @@ namespace AI
             Console.Write("Use genetic algorithm (exponent: 2) [true | false]: ");
             reader = Console.ReadLine();
             bool.TryParse(reader, out useGeneticAlgorithm2);
+
+            Console.Write("Use algorithms with interchangeExtended with K3 [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out useInterchangeExtendedK3);
 
             do
             {
@@ -414,7 +426,7 @@ namespace AI
 
             try
             {
-                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsDatabase(dataSource, database, userName, password, writer, clearDatabase, constant, exponent, useGeneticAlgorithm2);
+                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsDatabase(dataSource, database, userName, password, writer, clearDatabase, constant, exponent, useGeneticAlgorithm2, useInterchangeExtendedK3);
                 
                 Console.WriteLine();
                 Console.WriteLine("Start generating... ");
@@ -604,6 +616,73 @@ namespace AI
             Console.WriteLine();
 
             return error;
+        }
+
+        public static int TimeComplexity()
+        {
+            // Variable
+            string reader;
+            int countOfVertices = 0;
+            bool writer, clearFile, useGeneticAlgorithm2, useInterchangeExtendedK3;
+            GenerateTimeComplexity.GenerateTimeComplexity timeComplexity;
+
+            Console.Clear();
+            Console.WriteLine("Generate time complexity");
+
+            Console.WriteLine("Info: the file will be saved in " + GenerateTimeComplexity.GenerateTimeComplexity.GetPathFile());
+
+            Console.Write("Write report to console [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out writer);
+
+            Console.Write("Clear file [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out clearFile);
+
+            Console.Write("Use genetic algorithm (exponent: 2) [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out useGeneticAlgorithm2);
+
+            Console.Write("Use algorithms with interchangeExtended with K3 [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out useInterchangeExtendedK3);
+
+            do
+            {
+                Console.Write("Count of vertices [positive int]: ");
+                reader = Console.ReadLine();
+                int.TryParse(reader, out countOfVertices);
+            }
+            while (countOfVertices <= 0);
+
+            timeComplexity = new GenerateTimeComplexity.GenerateTimeComplexity(writer, clearFile, useGeneticAlgorithm2, useInterchangeExtendedK3);
+
+            try
+            {
+                Console.WriteLine();
+                Console.WriteLine("Start generating... ");
+                Console.WriteLine();
+
+                timeComplexity.Generate(countOfVertices);
+
+                Console.WriteLine();
+                Console.WriteLine("Time complexity has been generated.");
+                Console.WriteLine();
+
+            }
+            catch (MyException.GenerateGraphsException.GenerateGraphsException ex)
+            {
+                Console.WriteLine("Something wrong: " + ex.GetType());
+                return 1;
+
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Something wrong: " + ex);
+                return 1;
+            }
+
+            return 0;
         }
     }
 }

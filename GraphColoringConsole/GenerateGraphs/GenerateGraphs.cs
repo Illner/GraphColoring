@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace AI.GenerateGraphs
+namespace GraphColoringConsole.GenerateGraphs
 {
     abstract class GenerateGraphs
     {
@@ -16,6 +16,7 @@ namespace AI.GenerateGraphs
         private int constant;
         private int exponent;
         protected bool useGeneticAlgorithm2;
+        protected bool useInterchangeExtendedK3;
         #endregion
 
         // Constructor
@@ -24,12 +25,13 @@ namespace AI.GenerateGraphs
         /// Initialize GenerateGraphs
         /// </summary>
         /// <param name="writer">write generated graphs on the screen</param>
-        public GenerateGraphs(int constant, int exponent, bool writer = true, bool useGeneticAlgorithm2 = true)
+        public GenerateGraphs(int constant, int exponent, bool writer = true, bool useGeneticAlgorithm2 = true, bool useInterchangeExtendedK3 = true)
         {
             this.writer = writer;
             this.constant = constant;
             this.exponent = exponent;
             this.useGeneticAlgorithm2 = useGeneticAlgorithm2;
+            this.useInterchangeExtendedK3 = useInterchangeExtendedK3;
         }
         #endregion
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AI.MyException.AIException
+namespace GraphColoringConsole.MyException.AIException
 {
     class AIException : Exception
     {

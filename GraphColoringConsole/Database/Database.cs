@@ -7,7 +7,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
-namespace AI.Database
+namespace GraphColoringConsole.Database
 {
     class Database
     {
@@ -1370,7 +1370,7 @@ namespace AI.Database
             int ID_GraphColoringAlgorithm;
 
             if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
-                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+                throw new MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
             
             InsertCore(ID_Graph, ID_GraphColoringAlgorithm, countColors);
         }
@@ -1392,7 +1392,7 @@ namespace AI.Database
             int ID_GraphColoringAlgorithm;
 
             if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
-                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+                throw new MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
 
             InsertCoreProbability(ID_Graph, ID_GraphColoringAlgorithm, countOfIterations, minColors, maxColors);
         }
@@ -1410,7 +1410,7 @@ namespace AI.Database
             int ID_GraphColoringAlgorithm;
 
             if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
-                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+                throw new MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
 
             UpdateCore(ID_Graph, ID_GraphColoringAlgorithm, countColors);
         }
@@ -1432,7 +1432,7 @@ namespace AI.Database
             int ID_GraphColoringAlgorithm;
 
             if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
-                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+                throw new MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
 
             UpdateCoreProbability(ID_Graph, ID_GraphColoringAlgorithm, countOfIterations, minColors, maxColors);
         }
@@ -1450,7 +1450,7 @@ namespace AI.Database
             int ID_GraphColoringAlgorithm;
 
             if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
-                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+                throw new MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
 
             AddCore(ID_Graph, ID_GraphColoringAlgorithm, countColors);
         }
@@ -1472,7 +1472,7 @@ namespace AI.Database
             int ID_GraphColoringAlgorithm;
 
             if (!GraphColoringAlgorithmEnumIDDictionary.TryGetValue(graphColoringAlgorithmEnum, out ID_GraphColoringAlgorithm))
-                throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
+                throw new MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException(graphColoringAlgorithmEnum.ToString());
 
             AddCoreProbability(ID_Graph, ID_GraphColoringAlgorithm, countOfIterations, minColors, maxColors);
         }

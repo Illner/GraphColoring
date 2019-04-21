@@ -30,7 +30,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
                     name = "Largest first sequence interchange extended algorithm";
-
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
+                    name = "Largest first sequence interchange extended with K3 algorithm";
                     break;
             }
         }

@@ -19,20 +19,32 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, double> aucDictionary;
 
         private static string pathModels = @"GraphColoringAlgorithm/AIModels/";
-        private static string illnerAlgorithmModelPath = pathModels + "model-illnerAlgorithm.zip";
+
+        private static string connectedLargestFirstAlgorithmModelPath = pathModels + "model-connectedLargestFirst.zip";
+        private static string connectedLargestFirstInterchangeAlgorithmModelPath = pathModels + "model-connectedLargestFirstInterchange.zip";
+        private static string connectedLargestFirstInterchangeExtendedAlgorithmModelPath = pathModels + "model-connectedLargestFirstInterchangeExtended.zip";
+        private static string connectedLargestFirstInterchangeExtendedK3AlgorithmModelPath = pathModels + "model-connectedLargestFirstInterchangeExtendedK3.zip";
+
         private static string randomSequenceModelPath = pathModels + "model-randomSequence.zip";
         private static string randomSequenceInterchangeModelPath = pathModels + "model-randomSequenceInterchange.zip";
         private static string randomSequenceInterchangeExtendedModelPath = pathModels + "model-randomSequenceInterchangeExtended.zip";
+        private static string randomSequenceInterchangeExtendedK3ModelPath = pathModels + "model-randomSequenceInterchangeExtendedK3.zip";
+
         private static string largestFirstSequenceModelPath = pathModels + "model-largestFirstSequence.zip";
         private static string largestFirstSequenceInterchangeModelPath = pathModels + "model-largestFirstSequenceInterchange.zip";
         private static string largestFirstSequenceInterchangeExtendedModelPath = pathModels + "model-largestFirstSequenceInterchangeExtended.zip";
+        private static string largestFirstSequenceInterchangeExtendedK3ModelPath = pathModels + "model-largestFirstSequenceInterchangeExtendedK3.zip";
+
         private static string smallestLastSequenceModelPath = pathModels + "model-smallestLastSequence.zip";
         private static string smallestLastSequenceInterchangeModelPath = pathModels + "model-smallestLastSequenceInterchange.zip";
         private static string smallestLastSequenceInterchangeExtendedModelPath = pathModels + "model-smallestLastSequenceInterchangeExtended.zip";
+        private static string smallestLastSequenceInterchangeExtendedK3ModelPath = pathModels + "model-smallestLastSequenceInterchangeExtendedK3.zip";
+
         private static string connectedSequentialModelPath = pathModels + "model-connectedSequential.zip";
         private static string saturationLargestFirstSequenceModelPath = pathModels + "model-saturationLargestFirstSequence.zip";
         private static string greedyIndependentSetModelPath = pathModels + "model-greedyIndependentSet.zip";
         private static string combinationAlgorithmModelPath = pathModels + "model-combinationAlgorithm.zip";
+
         private static string geneticAlgorithmModelPath = pathModels + "model-geneticAlgorithm.zip";
         private static string geneticAlgorithm2ModelPath = pathModels + "model-geneticAlgorithm2.zip";
         #endregion
@@ -46,16 +58,22 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             // Fill dictionaries
             modelPathDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, string>()
             {
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, illnerAlgorithmModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirst, connectedLargestFirstAlgorithmModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchange, connectedLargestFirstInterchangeAlgorithmModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, connectedLargestFirstInterchangeExtendedAlgorithmModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3, connectedLargestFirstInterchangeExtendedK3AlgorithmModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, randomSequenceModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange, randomSequenceInterchangeModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended, randomSequenceInterchangeExtendedModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3, randomSequenceInterchangeExtendedK3ModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, largestFirstSequenceModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange, largestFirstSequenceInterchangeModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, largestFirstSequenceInterchangeExtendedModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3, largestFirstSequenceInterchangeExtendedK3ModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence, smallestLastSequenceModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, smallestLastSequenceInterchangeModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, smallestLastSequenceInterchangeExtendedModelPath },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3, smallestLastSequenceInterchangeExtendedK3ModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential, connectedSequentialModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, saturationLargestFirstSequenceModelPath },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet, greedyIndependentSetModelPath },
@@ -86,16 +104,22 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             // Fill aucDictionary
             aucDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, double>()
             {
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirst, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchange, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet, 0 },

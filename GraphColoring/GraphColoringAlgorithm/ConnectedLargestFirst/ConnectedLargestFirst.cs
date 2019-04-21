@@ -10,18 +10,33 @@ namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
     {
         // Variable
         #region
-        bool extended;
+        private GraphColoringAlgorithInterchangeEnum interchangeEnum;
         #endregion
 
         // Constructor
         #region
-        public ConnectedLargestFirst(Graph.IGraphInterface graph, bool extended = true) : base(graph)
+        public ConnectedLargestFirst(Graph.IGraphInterface graph, GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithInterchangeEnum.none) : base(graph)
         {
-            name = "Connected largest first interchange extended algorithm";
-            timeComplexity = TimeComplexityEnum.undefined;
+            // Interchange
+            this.interchangeEnum = interchangeEnum;
 
-            // Test
-            this.extended = extended;
+            switch (interchangeEnum)
+            {
+                case GraphColoringAlgorithInterchangeEnum.none:
+                    name = "Connected largest first sequence algorithm";
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchange:
+                    name = "Connected largest first interchange algorithm";
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
+                    name = "Connected largest first interchange extended algorithm";
+                    break;
+                case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
+                    name = "Connected largest first interchange extended with K3 algorithm";
+                    break;
+            }
+
+            timeComplexity = TimeComplexityEnum.undefined;
         }
         #endregion
 
@@ -79,9 +94,6 @@ namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
             Graph.IVertexInterface actualVertex = startingVertex;
             for (int i = 0; i < countVertices; i++)
             {
-                // Test
-                //Console.WriteLine("-- " + i + " - " + actualVertex.GetUserName());
-
                 foreach (Graph.IVertexInterface neighbor in graph.Neighbours(actualVertex))
                 {
                     if (neighbor.GetColor() == Graph.VertexExtended.GetDefaultColor())
@@ -102,22 +114,26 @@ namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
                     coloredGraph.ColorVertex(actualVertex, color);
                 else
                 {
-                    // Test
-                    if (extended)
-                        coloredGraph.TryChangeColoringExtended(actualVertex, coloredGraph.GreedyColoring(actualVertex));
-                    else
-                        coloredGraph.TryChangeColoring(actualVertex, coloredGraph.GreedyColoring(actualVertex));
+                    switch (interchangeEnum)
+                    {
+                        case GraphColoringAlgorithInterchangeEnum.none:
+                            coloredGraph.ColorVertex(actualVertex, coloredGraph.GreedyColoring(actualVertex));
+                            break;
+                        case GraphColoringAlgorithInterchangeEnum.interchange:
+                            coloredGraph.TryChangeColoring(actualVertex, coloredGraph.GreedyColoring(actualVertex));
+                            break;
+                        case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
+                            coloredGraph.TryChangeColoringExtended(actualVertex, coloredGraph.GreedyColoring(actualVertex), false);
+                            break;
+                        case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
+                            coloredGraph.TryChangeColoringExtended(actualVertex, coloredGraph.GreedyColoring(actualVertex), true);
+                            break;
+                    }
                 }
-                
-                // Test
-                //Console.WriteLine("i: " + actualVertex.GetUserName() + " -> " + actualVertex.GetColor());
 
                 if (fibonacciHeap.GetCountNodes() != 0)
                     actualVertex = mappingVertexArray[fibonacciHeap.ExtractMin().GetIdentifier()];
             }
-
-            // Test
-            //Console.WriteLine(graph.GetColoredGraph());
 
             bool isColored = coloredGraph.InitializeColoredGraph();
 

@@ -145,6 +145,15 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 case GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended:
                     algorithm = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtended);
                     break;
+                case GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3:
+                    algorithm = new SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3);
+                    break;
+                case GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3:
+                    algorithm = new SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3);
+                    break;
+                case GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3:
+                    algorithm = new SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3);
+                    break;
                 case GraphColoringAlgorithmEnum.connectedSequential:
                     algorithm = new SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph);
                     break;
@@ -163,8 +172,17 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 case GraphColoringAlgorithmEnum.combinationAlgorithm:
                     algorithm = new CombinationAlgorithm.CombinationAlgorithm(graph);
                     break;
-                case GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended:
+                case GraphColoringAlgorithmEnum.connectedLargestFirst:
                     algorithm = new ConnectedLargestFirst.ConnectedLargestFirst(graph);
+                    break;
+                case GraphColoringAlgorithmEnum.connectedLargestFirstInterchange:
+                    algorithm = new ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoringAlgorithInterchangeEnum.interchange);
+                    break;
+                case GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended:
+                    algorithm = new ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtended);
+                    break;
+                case GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3:
+                    algorithm = new ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3);
                     break;
                 default:
                     throw new MyException.GraphColoringAlgorithmException.AlgorithmDoesntExist(algorithmEnum.ToString());

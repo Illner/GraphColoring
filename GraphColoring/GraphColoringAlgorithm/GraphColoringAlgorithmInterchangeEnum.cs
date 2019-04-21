@@ -12,7 +12,8 @@ namespace GraphColoring.GraphColoringAlgorithm
         {
             none,
             interchange,
-            interchangeExtended
+            interchangeExtended,
+            interchangeExtendedK3
         }
     }
 }

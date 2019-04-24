@@ -178,6 +178,9 @@ namespace GraphColoring.ReaderWriter
             // Read graph
             while ((line = streamReader.ReadLine()) != "")
             {
+                if (line == null)
+                    return;
+
                 if (!line.StartsWith(LEFTSEPARATORADJACENCYLIST) && !line.EndsWith(RIGHTSEPARATORADJACENCYLIST))
                 {
                     if (isK1)

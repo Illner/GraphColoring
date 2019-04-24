@@ -9,16 +9,16 @@ namespace GraphColoringConsole.GenerateTimeComplexity
     {
         // Variable
         #region
-        int countOfVertices;
-        bool writer, clearFile;
-        Stopwatch myStopwatch = new Stopwatch();
-        public static string pathFolder = @"Data\";
-        const int COUNTITERATIONSGENERATEGRAPHS = 100;
-        const int COUNTITERATIONSTIMECOMPLEXITY = 100;
-        bool useGeneticAlgorithm2, useInterchangeExtendedK3;
-        GraphColoring.Graph.IGraphInterface minGraph, maxGraph;
-        public static string timeComplexityFile = "TimeComplexity.txt";
-        public static string pathFile = pathFolder + timeComplexityFile;
+        private int countOfVertices;
+        private bool writer, clearFile;
+        private Stopwatch myStopwatch = new Stopwatch();
+        private static string pathFolder = @"Data\";
+        private const int COUNTITERATIONSGENERATEGRAPHS = 100;
+        private const int COUNTITERATIONSTIMECOMPLEXITY = 100;
+        private bool useGeneticAlgorithm2, useInterchangeExtendedK3;
+        private GraphColoring.Graph.IGraphInterface minGraph, maxGraph;
+        private static string timeComplexityFile = "TimeComplexity.txt";
+        private static string pathFile = pathFolder + timeComplexityFile;
         #endregion
 
         // Constructor
@@ -40,6 +40,12 @@ namespace GraphColoringConsole.GenerateTimeComplexity
                 throw new MyException.GenerateGraphsException.GenerateGraphsInvalidCountOfVerticesException(countOfVertices.ToString());
 
             this.countOfVertices = countOfVertices;
+
+            // Create folder if does not exist
+            if (!Directory.Exists(pathFolder))
+                Directory.CreateDirectory(pathFolder);
+
+            // Clear, create file
             if (clearFile && File.Exists(pathFile))
             {
                 File.Delete(pathFile);
@@ -231,7 +237,6 @@ namespace GraphColoringConsole.GenerateTimeComplexity
 
         // Property
         #region
-
         /// <summary>
         /// Return a path file
         /// </summary>

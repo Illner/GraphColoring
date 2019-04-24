@@ -8,58 +8,29 @@ namespace GraphColoringConsole
 {
     class Program
     {
-        // Variable
-        private static string colFileNameExtension = "col";
-        private static string pathFolder = @"Data\";
-        
         static void Main(string[] args)
         {
-            Start();
-            
-            /*
             // Variable
-            int minCount, maxCount;
-            bool clear = true, writer = true;
-            string reader;
-            int constant;
+            bool error = false;
 
-            
-            Console.WriteLine("MinCount");
-            reader = Console.ReadLine();
-            int.TryParse(reader, out minCount);
-
-            Console.WriteLine("MaxCount");
-            reader = Console.ReadLine();
-            int.TryParse(reader, out maxCount);
-
-            Console.WriteLine("Constant");
-            reader = Console.ReadLine();
-            int.TryParse(reader, out constant);
-
-            Console.WriteLine("Writer");
-            reader = Console.ReadLine();
-            bool.TryParse(reader, out writer);
-
-            Console.WriteLine("Clear");
-            reader = Console.ReadLine();
-            bool.TryParse(reader, out clear);
-            
-            GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphsFile(constant, 1, writer, clear);
-            generateGraphs.Generate(minCount, maxCount);
-            */
-
-            /*
-            Console.WriteLine("Writer");
-            reader = Console.ReadLine();
-            bool.TryParse(reader, out writer);
-
-            Console.WriteLine("Clear");
-            reader = Console.ReadLine();
-            bool.TryParse(reader, out clear);
-
-            GenerateGraphs.GenerateGraphsDatabase generateGraphsDatabase = new GenerateGraphs.GenerateGraphsDatabase(writer, clear);
-            generateGraphsDatabase.SaveDataFromFileToDB();
-            */
+            do
+            {
+                try
+                {
+                    Start();
+                    error = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Something wrong: " + ex.GetType());
+                    Console.WriteLine("Press any key to restart.");
+                    Console.ReadKey();
+                    Console.Clear();
+                    error = true;
+                }
+            }
+            while (error);
 
             /*
             for (int j = 1; j <= 5; j++)
@@ -95,30 +66,6 @@ namespace GraphColoringConsole
                  //}
                  Console.WriteLine();
             }
-            */
-
-            /*
-            double max = double.MinValue;
-            string model = "";
-
-            for (int i = 0; i < 100; i++)
-            {
-                createAI.CreateModel();
-
-                if (createAI.GetMicroAccurancy() > max)
-                {
-                    max = createAI.GetMicroAccurancy();
-                    model = createAI.GetPathModel();
-                    Console.WriteLine(max);
-                }
-            }
-
-            Console.WriteLine("Max: " + max);
-            Console.WriteLine("Path: " + model);
-            */
-            /*
-            GenerateGraphs.GenerateGraphsFile generateGraphsFile = new GenerateGraphs.GenerateGraphsFile(0, 0);
-            generateGraphsFile.Pokus();
             */
         }
 
@@ -163,6 +110,9 @@ namespace GraphColoringConsole
                         exitCode = TimeComplexity();
                         break;
                     case "7":
+                        exitCode = ColorGraphs();
+                        break;
+                    case "8":
                         exitCode = 0;
                         quit = true;
                         break;
@@ -194,7 +144,8 @@ namespace GraphColoringConsole
             Console.WriteLine("4) Create MLs");
             Console.WriteLine("5) Convert from .col to .graph");
             Console.WriteLine("6) Generate time complexity");
-            Console.WriteLine("7) Exit console");
+            Console.WriteLine("7) Color graphs");
+            Console.WriteLine("8) Exit console");
         }
 
         private static void GetDatabaseInformations()
@@ -520,96 +471,24 @@ namespace GraphColoringConsole
             bool writer;
             string reader;
             int error = 0;
-            GraphColoring.Graph.IGraphEdgeListInterface graph = null;
+            ConvertGraphs.ConvertGraphsCOL convertGraphsCOL;
 
             Console.Clear();
             Console.WriteLine("Convert from .col to .graph");
 
-            Console.WriteLine("Info: the files will be found in " + pathFolder + "*." + colFileNameExtension);
+            Console.WriteLine("Info: the files will be found in " + ConvertGraphs.ConvertGraphsCOL.GetPathFolder() + "*." + ConvertGraphs.ConvertGraphsCOL.GetFileNameExtension());
 
             Console.Write("Write report to console [true | false]: ");
             reader = Console.ReadLine();
             bool.TryParse(reader, out writer);
-            
+
+            convertGraphsCOL = new ConvertGraphs.ConvertGraphsCOL(writer);
+
             Console.WriteLine();
             Console.WriteLine("Start converting... ");
             Console.WriteLine();
 
-            foreach (string filePath in Directory.EnumerateFiles(pathFolder, "*." + colFileNameExtension))
-            {
-                if (writer)
-                    Console.WriteLine("Reading file: " + filePath);
-
-                try
-                {
-                    string line = "";
-                    string firstEdge = "";
-                    string secondEdge = "";
-                    string name = "";
-                    int countOfVertices = 0, countOfEdges = 0;
-                    StreamReader myFile = new StreamReader(filePath);
-
-                    while ((line = myFile.ReadLine()) != null)
-                    {
-                        string[] splitLine = line.Split(' ');
-
-                        if (splitLine.Length == 1)
-                            continue;
-
-                        // Header
-                        if (splitLine[0] == "c" && (splitLine[1] == "FILE:" || splitLine[1] == "File:"))
-                        {
-                            splitLine[2] = splitLine[2].Replace(".col", "");
-
-                            name = splitLine[2];
-                        }
-
-                        // Count of vertices and count of edges
-                        if (splitLine[0] == "p")
-                        {
-                            countOfVertices = int.Parse(splitLine[2]);
-                            countOfEdges = int.Parse(splitLine[3]);
-                            graph = new GraphColoring.Graph.GraphEdgeList(countOfVertices);
-                            graph.SetName(name);
-                        }
-
-                        // Add edges
-                        if (splitLine[0] == "e")
-                        {
-                            firstEdge = splitLine[1];
-                            secondEdge = splitLine[2];
-
-                            graph.AddEdge(firstEdge, secondEdge);
-                        }
-                    }
-
-                    graph.InitializeGraph();
-
-                    if ((2 * graph.GetGraphProperty().GetCountEdges() != countOfEdges) && (graph.GetGraphProperty().GetCountEdges() != countOfEdges))
-                        throw new GraphColoring.MyException.GraphException.GraphInvalidCountVerticesException();
-
-                    GraphColoring.ReaderWriter.WriterGraph writerGraph = new GraphColoring.ReaderWriter.WriterGraph(pathFolder + name + ".graph", false);
-                    writerGraph.WriteFile(graph);
-
-                    if (writer)
-                        Console.WriteLine("Graph added: " + name + ".graph");
-                }
-                catch (GraphColoring.MyException.GraphException.GraphInvalidCountVerticesException)
-                {
-                    Console.WriteLine("Error (" + filePath + "): Invalid count of vertices!");
-                    error = 1;
-                }
-                catch (IOException ex)
-                {
-                    Console.WriteLine("Something wrong (" + filePath + "): " + ex.GetType() + "!");
-                    error = 1;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Something wrong (" + filePath + "): " + ex.GetType() + "!");
-                    error = 1;
-                }
-            }
+            error = convertGraphsCOL.Convert();
             
             Console.WriteLine();
             Console.WriteLine("Graphs have been converted.");
@@ -667,6 +546,65 @@ namespace GraphColoringConsole
 
                 Console.WriteLine();
                 Console.WriteLine("Time complexity has been generated.");
+                Console.WriteLine();
+
+            }
+            catch (MyException.GenerateGraphsException.GenerateGraphsException ex)
+            {
+                Console.WriteLine("Something wrong: " + ex.GetType());
+                return 1;
+
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Something wrong: " + ex);
+                return 1;
+            }
+
+            return 0;
+        }
+
+        public static int ColorGraphs()
+        {
+            // Variable
+            string reader;
+            bool writer, clearFile, useGeneticAlgorithm2, useInterchangeExtendedK3;
+            ColorGraphs.ColorGraphsFile colorGraphsFile;
+
+            Console.Clear();
+            Console.WriteLine("Color graphs");
+
+            Console.WriteLine("Info: the files will be found in " + GraphColoringConsole.ColorGraphs.ColorGraphsFile.GetPathFolder() + "*.graph");
+            Console.WriteLine("Info: the colored graphs will be saved in " + GraphColoringConsole.ColorGraphs.ColorGraphsFile.GetPathFile());
+
+            Console.Write("Write report to console [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out writer);
+
+            Console.Write("Clear file [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out clearFile);
+
+            Console.Write("Use genetic algorithm (exponent: 2) [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out useGeneticAlgorithm2);
+
+            Console.Write("Use algorithms with interchangeExtended with K3 [true | false]: ");
+            reader = Console.ReadLine();
+            bool.TryParse(reader, out useInterchangeExtendedK3);
+
+            colorGraphsFile = new ColorGraphs.ColorGraphsFile(writer, clearFile, useGeneticAlgorithm2, useInterchangeExtendedK3);
+
+            try
+            {
+                Console.WriteLine();
+                Console.WriteLine("Start coloring...");
+                Console.WriteLine();
+
+                colorGraphsFile.Color();
+
+                Console.WriteLine();
+                Console.WriteLine("Graphs have been colored.");
                 Console.WriteLine();
 
             }

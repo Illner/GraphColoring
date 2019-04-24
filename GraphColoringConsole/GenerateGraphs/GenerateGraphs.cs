@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Threading;
 
 namespace GraphColoringConsole.GenerateGraphs
 {
-    abstract class GenerateGraphs
+    abstract partial class GenerateGraphs
     {
         // Variable
         #region
         protected bool writer;
-        protected const int COUNTITERATIONSPROBABILITY = 10;
         
         protected GraphColoring.Graph.IGraphInterface graph;
+        protected ColorGraphs.ColorGraphs colorGraphs;
         protected GraphColoring.GenerateGraph.ErdosRenyiModel.ErdosRenyiModel erdosRenyiModel;
 
         private int constant;
@@ -32,6 +31,8 @@ namespace GraphColoringConsole.GenerateGraphs
             this.exponent = exponent;
             this.useGeneticAlgorithm2 = useGeneticAlgorithm2;
             this.useInterchangeExtendedK3 = useInterchangeExtendedK3;
+
+            colorGraphs = new ColorGraphs.ColorGraphs();
         }
         #endregion
 
@@ -64,41 +65,6 @@ namespace GraphColoringConsole.GenerateGraphs
                 default:
                     return constant * (int)Math.Pow(countVertices, exponent);
             }
-        }
-        
-        /// <summary>
-        /// Color a graph with an algorithm
-        /// </summary>
-        /// <param name="algorithm">algorithm</param>
-        /// <param name="probability">probability algorithm?</param>
-        /// <returns>(minColors, maxColors), for non-probability algorithm minColors = maxColors</returns>
-        protected Tuple<int, int> ColorGraph(GraphColoring.GraphColoringAlgorithm.IGraphColoringAlgorithmInterface algorithm, bool probability = false)
-        {
-            if (graph.GetColoredGraph().GetIsInitializedColoredGraph())
-                graph.GetColoredGraph().DeinitializationColoredGraph();
-
-            // Variable
-            int countIterations = 1;
-            int colors, minColors = int.MaxValue, maxColors = int.MinValue;
-
-            if (probability)
-                countIterations = COUNTITERATIONSPROBABILITY;
-
-            for (int i = 0; i < countIterations; i++)
-            {
-                algorithm.Color();
-                colors = graph.GetColoredGraph().GetCountUsedColors();
-
-                if (colors < minColors)
-                    minColors = colors;
-
-                if (colors > maxColors)
-                    maxColors = colors;
-
-                graph.GetColoredGraph().DeinitializationColoredGraph();
-            }
-
-            return new Tuple<int, int>(minColors, maxColors);
         }
         #endregion
     }

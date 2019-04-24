@@ -8,8 +8,6 @@ namespace GraphColoringConsole.GenerateGraphs
     {
         // Variable
         #region
-        public static string graphHeader = "Graph: ";
-        public static string comment = "Comment: ";
         private static string fileNameExtension = "graphDB";
         private static string pathFolder = @"Data\";
         private static string pathFile = pathFolder + "GeneratedGraphs" + "." + fileNameExtension; 
@@ -76,108 +74,108 @@ namespace GraphColoringConsole.GenerateGraphs
                                         graph.GetGraphProperty().GetBridges().Count + " " + graph.GetGraphProperty().GetGirth() + " " + string.Join(" ", graph.GetGraphProperty().GetDegreeSequenceInt(false));
                         
                         // Add graph to the file
-                        file.WriteLine(graphHeader + graphString);
+                        file.WriteLine(GRAPHHEADER + graphString);
 
                         // Algorithm
                         // Random
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph), true);
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph), true);
+                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence.ToString() + " " + colorGraphs.GetCountIterationsProbability() + " " + result.Item1 + " " + result.Item2);
 
                         // Largest first sequence
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence.ToString() + " " + result.Item1);
 
                         // Smallest last sequence
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence.ToString() + " " + result.Item1);
 
                         // Random interchange
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange), true);
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange), true);
+                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange.ToString() + " " + colorGraphs.GetCountIterationsProbability() + " " + result.Item1 + " " + result.Item2);
 
                         // Largest first sequence interchange
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange.ToString() + " " + result.Item1);
 
                         // Smallest last sequence interchange
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange.ToString() + " " + result.Item1);
 
                         // Random interchangeExtended
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended), true);
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended), true);
+                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended.ToString() + " " + colorGraphs.GetCountIterationsProbability() + " " + result.Item1 + " " + result.Item2);
 
                         // Largest first sequence interchangeExtended
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended.ToString() + " " + result.Item1);
 
                         // Smallest last sequence interchangeExtended
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended.ToString() + " " + result.Item1);
 
                         // Random interchangeExtended with K3
                         if (useInterchangeExtendedK3)
                         {
-                            result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3), true);
-                            file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                            result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3), true);
+                            file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3.ToString() + " " + colorGraphs.GetCountIterationsProbability() + " " + result.Item1 + " " + result.Item2);
                         }
 
                         // Largest first sequence interchangeExtended with K3
                         if (useInterchangeExtendedK3)
                         {
-                            result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
+                            result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
                             file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3.ToString() + " " + result.Item1);
                         }
 
                         // Smallest last sequence interchangeExtended with K3
                         if (useInterchangeExtendedK3)
                         {
-                            result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
+                            result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
                             file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3.ToString() + " " + result.Item1);
                         }
                         // Connected sequential
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential.ToString() + " " + result.Item1);
 
                         // Saturation largest first sequence
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.SaturationLargestFirstSequence(graph));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.SaturationLargestFirstSequence(graph));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence.ToString() + " " + result.Item1);
 
                         // Greedy independent set
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet.ToString() + " " + result.Item1);
 
                         // Combination
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm.ToString() + " " + result.Item1);
 
                         // Genetic
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 1), true);
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 1), true);
+                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm.ToString() + " " + colorGraphs.GetCountIterationsProbability() + " " + result.Item1 + " " + result.Item2);
 
                         // Genetic2
                         if (useGeneticAlgorithm2)
                         {
-                            result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
-                            file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
+                            result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
+                            file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2.ToString() + " " + colorGraphs.GetCountIterationsProbability() + " " + result.Item1 + " " + result.Item2);
                         }
 
                         // Connected largest first
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirst.ToString() + " " + result.Item1);
 
                         // Connected largest first interchange
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchange.ToString() + " " + result.Item1);
 
                         // Connected largest first interchangeExtended
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
                         file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended.ToString() + " " + result.Item1);
 
                         // Connected largest first interchangeExtended with K3
                         if (useInterchangeExtendedK3)
                         {
-                            result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
+                            result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
                             file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3.ToString() + " " + result.Item1);
                         }
 
@@ -191,140 +189,6 @@ namespace GraphColoringConsole.GenerateGraphs
                 }
                 
                 file.Flush();
-            }
-        }
-
-        public void Pokus()
-        {
-            string path = @"C:\Users\illner\Desktop\MyDIMACS\GraphColoringBenchmarkInstances";
-            string pathFile = @"C:\Users\illner\Desktop\MyDIMACS\GraphColoringBenchmarkInstances\Text.txt";
-            string graphString;
-            Tuple<int, int> result;
-
-            using (StreamWriter file = File.AppendText(pathFile))
-            {
-                foreach (string fileGraph in Directory.EnumerateFiles(path, "*.graph"))
-                {
-                    GraphColoring.ReaderWriter.ReaderGraph readerGraph = new GraphColoring.ReaderWriter.ReaderGraph(fileGraph);
-                    graph = readerGraph.ReadFile();
-
-                    graphString = graph.GetGraphProperty().GetCountVertices() + " " + graph.GetGraphProperty().GetCountEdges() + " " + graph.GetGraphProperty().GetGraphClass().ToString() + " " + graph.GetGraphProperty().GetIsChordal() + " " +
-                                            graph.GetGraphProperty().GetIsRegular() + " " + graph.GetGraphProperty().GetIsCyclic() + " " + graph.GetGraphProperty().GetIsEulerian().ToString() + " " + graph.GetGraphProperty().GetMaximumVertexDegree() + " " +
-                                            graph.GetGraphProperty().GetMinimumVertexDegree() + " " + graph.GetGraphProperty().GetAverageVertexDegree() + " " + graph.GetGraphProperty().GetMedianVertexDegree() + " " + graph.GetGraphProperty().GetCutVertices().Count + " " +
-                                            graph.GetGraphProperty().GetBridges().Count + " " + graph.GetGraphProperty().GetGirth() + " " + string.Join(" ", graph.GetGraphProperty().GetDegreeSequenceInt(false));
-
-                    // Add graph to the file
-                    file.WriteLine(comment + graph.GetName());
-                    file.WriteLine(graphHeader + graphString);
-                    Console.WriteLine("Coloring graph - {0}", graph.GetName());
-
-                    // Algorithm
-                    // Random
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph), true);
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
-
-                    // Largest first sequence
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence.ToString() + " " + result.Item1);
-
-                    // Smallest last sequence
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence.ToString() + " " + result.Item1);
-
-                    // Random interchange
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange), true);
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
-
-                    // Largest first sequence interchange
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange.ToString() + " " + result.Item1);
-
-                    // Smallest last sequence interchange
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange.ToString() + " " + result.Item1);
-
-                    // Random interchangeExtended
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended), true);
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
-
-                    // Largest first sequence interchangeExtended
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended.ToString() + " " + result.Item1);
-
-                    // Smallest last sequence interchangeExtended
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended.ToString() + " " + result.Item1);
-
-                    // Random interchangeExtended with K3
-                    if (useInterchangeExtendedK3)
-                    {
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence.RandomSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3), true);
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
-                    }
-
-                    // Largest first sequence interchangeExtended with K3
-                    if (useInterchangeExtendedK3)
-                    {
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3.ToString() + " " + result.Item1);
-                    }
-
-                    // Smallest last sequence interchangeExtended with K3
-                    if (useInterchangeExtendedK3)
-                    {
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3.ToString() + " " + result.Item1);
-                    }
-
-                    // Connected sequential
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequential.ConnectedSequential(graph));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential.ToString() + " " + result.Item1);
-
-                    // Saturation largest first sequence
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.SaturationLargestFirstSequence(graph));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence.ToString() + " " + result.Item1);
-
-                    // Greedy independent set
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.GreedyIndependentSet(graph));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet.ToString() + " " + result.Item1);
-
-                    // Combination
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.CombinationAlgorithm(graph));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm.ToString() + " " + result.Item1);
-
-                    // Genetic
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 1), true);
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
-
-                    // Genetic2
-                    if (useGeneticAlgorithm2)
-                    {
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.GeneticAlgorithm(graph, 2), true);
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2.ToString() + " " + COUNTITERATIONSPROBABILITY + " " + result.Item1 + " " + result.Item2);
-                    }
-
-                    // Connected largest first
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirst.ToString() + " " + result.Item1);
-
-                    // Connected largest first interchange
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchange.ToString() + " " + result.Item1);
-
-                    // Connected largest first interchangeExtended
-                    result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
-                    file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended.ToString() + " " + result.Item1);
-
-                    // Connected largest first interchangeExtended with K3
-                    if (useInterchangeExtendedK3)
-                    {
-                        result = ColorGraph(new GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst.ConnectedLargestFirst(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3));
-                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3.ToString() + " " + result.Item1);
-                    }
-
-                    Console.WriteLine("Added graph - {0}", graph.GetName());
-                    file.Flush();
-                }
             }
         }
         #endregion

@@ -14,7 +14,7 @@ namespace GraphColoring.Graph
 
         bool CheckValidColor(IVertexInterface vertex);
         List<IVertexInterface> CheckValidColor();
-        void GreedyColoring(List<IVertexInterface> vertexList, GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm.GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.none);
+        int GreedyColoring(List<IVertexInterface> vertexList, GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm.GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.none);
         int GreedyColoring(IVertexInterface vertex);
         bool IsValidColored();
         bool InitializeColoredGraph();

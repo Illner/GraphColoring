@@ -144,10 +144,12 @@ namespace GraphColoring.Graph
             /// </summary>
             /// <param name="vertexList">sequence</param>
             /// <param name="interchange">coloring with interchange</param>
-            public void GreedyColoring(List<IVertexInterface> vertexList, GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm.GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.none)
+            /// <returns>count of interchange call</returns>
+            public int GreedyColoring(List<IVertexInterface> vertexList, GraphColoringAlgorithm.SequenceAlgorithm.GraphColoringSequenceAlgorithm.GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.none)
             {
                 // Variable
                 VertexExtended vertexExtended;
+                int countInterchangeCall = 0;
 
                 if (isInitializedColoredGraph)
                     throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
@@ -174,10 +176,13 @@ namespace GraphColoring.Graph
                                 break;
                         }
 
+                        countInterchangeCall++;
                     }
                     else
                         ColorVertex(vertex, color);
                 }
+
+                return countInterchangeCall;
             }
 
             /// <summary>

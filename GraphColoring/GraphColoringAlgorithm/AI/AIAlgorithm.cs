@@ -148,7 +148,14 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 predictionDictionary.Add(record.Key, algorithmPrediction);
             }
 
-            GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum = GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm;
+            GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum;
+
+            // In case no models loaded
+            if (graphData.CountVertices < 50)
+                algorithmEnum = GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2;
+            else
+                algorithmEnum = GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended;
+
             float score = float.MinValue;
             foreach(var record in predictionDictionary)
             {

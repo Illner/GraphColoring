@@ -9,6 +9,7 @@ using Microsoft.ML.Data;
 using Microsoft.ML.Training;
 using Microsoft.ML.Core.Data;
 using Microsoft.ML.StaticPipe;
+using Microsoft.ML.Transforms.Normalizers;
 
 namespace GraphColoringConsole.ML
 {
@@ -19,6 +20,7 @@ namespace GraphColoringConsole.ML
         private AIEnum aiEnum;
         private MLContext mlContext;
         private ITransformer trainedModel;
+        private const long MINCOUNTOFDATA = 10000;
         private IDataView data, testData, trainingData;
         EstimatorChain<ISingleFeaturePredictionTransformer<IPredictorProducing<float>>> pipeline;
         GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum;
@@ -36,6 +38,8 @@ namespace GraphColoringConsole.ML
         private double logLossReduction;
         private double F1Score;
         private double auc;
+        private double negativePrecision, positionPrecision;
+        private double negativeRecall, positiveRecall;
         #endregion
 
         // Constructor
@@ -48,13 +52,19 @@ namespace GraphColoringConsole.ML
         /// <param name="generateData">download data from the DB?</param>
         public CreateAI(string databaseLocation, string databaseName, string databaseUserName, string databasePassword, AIEnum aiEnum, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum, bool generateData = true)
         {
+            // Variable
+            int countOfData = 0;
+
             // Generate data
             if (generateData)
             {
                 Directory.CreateDirectory(pathFolder);
                 Database.Database database = new Database.Database(databaseLocation, databaseName, databaseUserName, databasePassword);
-                database.SaveDataFromDatabaseToFile(GetPathData(), algorithmEnum);
+                countOfData = database.SaveDataFromDatabaseToFile(GetPathData(), algorithmEnum);
             }
+
+            if (countOfData < MINCOUNTOFDATA)
+                throw new MyException.AIException.NotEnoughDataToCreateModel(countOfData.ToString());
 
             // Check if data file exists
             if (!File.Exists(GetPathData()))
@@ -83,7 +93,7 @@ namespace GraphColoringConsole.ML
             F1Score = double.NaN;
             auc = double.NaN;
 
-            //Console.WriteLine("=============== Loading the model ===============");
+            //Console.WriteLine("=============== Loading the data ===============");
             LoadData();
             
             //Console.WriteLine("=============== Transforming data ===============");
@@ -145,7 +155,7 @@ namespace GraphColoringConsole.ML
                 .Append(mlContext.Transforms.Categorical.OneHotEncoding(outputColumnName: "IsCyclicOneHot", inputColumnName: "IsCyclic"))
                 .Append(mlContext.Transforms.Categorical.OneHotEncoding(outputColumnName: "IsChordalOneHot", inputColumnName: "IsChordal"))
                 //.Append(mlContext.Transforms.Conversion.MapValueToKey("Label"))
-                /*.Append(mlContext.Transforms.Normalize(
+                .Append(mlContext.Transforms.Normalize(
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "ID_GraphClass", outputColumnName: "ID_GraphClassNormalized", fixZero: true),
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "ID_EulerianGraph", outputColumnName: "ID_EulerianGraphNormalized", fixZero: true),
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "IsRegularOneHot", outputColumnName: "IsRegularOneHotNormalized", fixZero: true),
@@ -160,13 +170,13 @@ namespace GraphColoringConsole.ML
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "MinimumVertexDegree", outputColumnName: "MinimumVertexDegreeNormalized", fixZero: true),
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "MaximumVertexDegree", outputColumnName: "MaximumVertexDegreeNormalized", fixZero: true),
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "AverageVertexDegree", outputColumnName: "AverageVertexDegreeNormalized", fixZero: true),
-                    new NormalizingEstimator.MinMaxColumn(inputColumnName: "MedianVertexDegree", outputColumnName: "MedianVertexDegreeNormalized", fixZero: true)))*/
-                /*.Append(mlContext.Transforms.Concatenate(DefaultColumnNames.Features, "ID_GraphClassNormalized", "ID_EulerianGraphNormalized", "IsRegularOneHotNormalized", "IsCyclicOneHotNormalized", "IsChordalOneHotNormalized",
-                "CountVerticesNormalized", "CountEdgesNormalized", "CountCutVerticesNormalized", "CountBridgesNormalized", "GirthNormalized", "DenseNormalized", "MinimumVertexDegreeNormalized", "MaximumVertexDegreeNormalized", "AverageVertexDegreeNormalized", "MedianVertexDegreeNormalized",
-                "VertexDegree1", "VertexDegree2", "VertexDegree3", "VertexDegree4", "VertexDegree5", "VertexDegree6", "VertexDegree7", "VertexDegree8", "VertexDegree9", "VertexDegree10", "VertexDegree"))*/
-                .Append(mlContext.Transforms.Concatenate(DefaultColumnNames.Features, "ID_GraphClass", "ID_EulerianGraph", "IsRegularOneHot", "IsCyclicOneHot", "IsChordalOneHot",
-                "CountVertices", "CountEdges", "CountCutVertices", /*"CountBridges",*/ "Girth", "Dense", "MinimumVertexDegree", "MaximumVertexDegree", "AverageVertexDegree", /*"MedianVertexDegree",*/
-                "VertexDegree1", "VertexDegree2", "VertexDegree3", "VertexDegree4", "VertexDegree5", "VertexDegree6", "VertexDegree7", "VertexDegree8", "VertexDegree9", "VertexDegree10"))//, "VertexDegree"))
+                    new NormalizingEstimator.MinMaxColumn(inputColumnName: "MedianVertexDegree", outputColumnName: "MedianVertexDegreeNormalized", fixZero: true)))
+               .Append(mlContext.Transforms.Concatenate(DefaultColumnNames.Features, "ID_GraphClassNormalized", "ID_EulerianGraphNormalized", "IsRegularOneHotNormalized", "IsCyclicOneHotNormalized", "IsChordalOneHotNormalized",
+                "CountVerticesNormalized", "CountEdgesNormalized", "CountCutVerticesNormalized", /*"CountBridgesNormalized",*/ "GirthNormalized", "DenseNormalized", "MinimumVertexDegreeNormalized", "MaximumVertexDegreeNormalized", "AverageVertexDegreeNormalized"//, /*"MedianVertexDegreeNormalized",*/
+                /*"VertexDegree1", "VertexDegree2", "VertexDegree3", "VertexDegree4", "VertexDegree5", "VertexDegree6", "VertexDegree7", "VertexDegree8", "VertexDegree9", "VertexDegree10"*/))//, "VertexDegree"))
+                //.Append(mlContext.Transforms.Concatenate(DefaultColumnNames.Features, "ID_GraphClass", "ID_EulerianGraph", "IsRegularOneHot", "IsCyclicOneHot", "IsChordalOneHot",
+                //"CountVertices", "CountEdges", "CountCutVertices", /*"CountBridges",*/ "Girth", "Dense", "MinimumVertexDegree", "MaximumVertexDegree", "AverageVertexDegree", /*"MedianVertexDegree",*/
+                //"VertexDegree1", "VertexDegree2", "VertexDegree3", "VertexDegree4", "VertexDegree5", "VertexDegree6", "VertexDegree7", "VertexDegree8", "VertexDegree9", "VertexDegree10"))//, "VertexDegree"))
                 .AppendCacheCheckpoint(mlContext)
             //.Append(mlContext.BinaryClassification.Trainers.AveragedPerceptron(labelColumn: DefaultColumnNames.Label, featureColumn: DefaultColumnNames.Features));
             .Append(trainer);
@@ -188,11 +198,10 @@ namespace GraphColoringConsole.ML
             logLossReduction = metrics.LogLossReduction;
             F1Score = metrics.F1Score;
             auc = metrics.Auc;
-            
-            // Test
-            //var predictionsTraining = trainedModel.Transform(trainingData);
-            //var metricsTraining = mlContext.BinaryClassification.Evaluate(data: predictionsTraining, label: DefaultColumnNames.Label);
-            //Console.WriteLine("Accurrancy (training data): " + metricsTraining.Accuracy);
+            negativePrecision = metrics.NegativePrecision;
+            negativeRecall = metrics.NegativeRecall;
+            positionPrecision = metrics.PositivePrecision;
+            positiveRecall = metrics.PositiveRecall;
         }
 
         /// <summary>
@@ -295,6 +304,38 @@ namespace GraphColoringConsole.ML
                 throw new MyException.AIException.ModelDoesntExistException();
 
             return auc;
+        }
+
+        public double GetPositiveRecall()
+        {
+            if (!modelExists)
+                throw new MyException.AIException.ModelDoesntExistException();
+
+            return positiveRecall;
+        }
+
+        public double GetPositivePrecision()
+        {
+            if (!modelExists)
+                throw new MyException.AIException.ModelDoesntExistException();
+
+            return positionPrecision;
+        }
+
+        public double GetNegativeRecall()
+        {
+            if (!modelExists)
+                throw new MyException.AIException.ModelDoesntExistException();
+
+            return negativeRecall;
+        }
+
+        public double GetNegativePrecision()
+        {
+            if (!modelExists)
+                throw new MyException.AIException.ModelDoesntExistException();
+
+            return negativePrecision;
         }
 
         /// <summary>

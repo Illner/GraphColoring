@@ -263,7 +263,7 @@
     </Compile>
     <Compile Include="GraphColoringAlgorithm\SequenceAlgorithm\SmallestLastSequence\Tests\SmallestLastSequenceTest.cs" />
     <Compile Include="GraphColoringAlgorithm\TimeComplexityEnum.cs" />
-    <Compile Include="GraphVisualization\FileNameExtension.cs" />
+    <Compile Include="GraphVisualization\FileNameExtensionEnum.cs" />
     <Compile Include="GraphVisualization\GraphVisualization.cs" />
     <Compile Include="GraphVisualization\IGraphVisualizationInterface.cs" />
     <Compile Include="GraphVisualization\Tests\ConvertGraphToDotResource.Designer.cs">

@@ -65,6 +65,7 @@ namespace GraphColoring
             Console.WriteLine("The application is closing ...");
             
 
+            // Find SHC
             /*
             Graph.IGraphInterface graph;
             int countVertices = 6;

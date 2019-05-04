@@ -65,16 +65,19 @@ namespace GraphColoring.Graph
 
             adjacencyList.Remove(ConvertVertexToVertexExtended(removeVertex));
 
-            foreach (List<VertexExtended> vertexExtendedList in adjacencyList.Values)
+            foreach (HashSet<VertexExtended> vertexExtendedHashSet in adjacencyList.Values)
             {
-                foreach (VertexExtended vertexExtended in vertexExtendedList)
+                foreach (VertexExtended vertexExtended in vertexExtendedHashSet)
                 {
                     if (vertexExtended.Equals(removeVertex))
+                    {
                         removeVertexList.Add(vertexExtended);
+                        break;
+                    }
                 }
                 count += removeVertexList.Count;
 
-                vertexExtendedList.RemoveAll(x => removeVertexList.Contains(x));
+                vertexExtendedHashSet.RemoveWhere(x => removeVertexList.Contains(x));
                 removeVertexList.Clear();
             }
 
@@ -285,11 +288,11 @@ namespace GraphColoring.Graph
                 throw new MyException.GraphException.GraphEdgeDoesntExistException();
 
             // Variable
-            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex1()), out List<VertexExtended> neighbooursList);
-            neighbooursList.Remove(ConvertVertexToVertexExtended(edge.GetVertex2()));
+            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex1()), out HashSet<VertexExtended> neighbooursHashSet);
+            neighbooursHashSet.Remove(ConvertVertexToVertexExtended(edge.GetVertex2()));
 
-            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex2()), out neighbooursList);
-            neighbooursList.Remove(ConvertVertexToVertexExtended(edge.GetVertex1()));
+            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex2()), out neighbooursHashSet);
+            neighbooursHashSet.Remove(ConvertVertexToVertexExtended(edge.GetVertex1()));
 
             SetCanDeIncreaseCountEdges(true);
             GetGraphProperty().DecrementCountEdges();

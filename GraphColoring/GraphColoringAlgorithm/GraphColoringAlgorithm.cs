@@ -16,6 +16,7 @@ namespace GraphColoring.GraphColoringAlgorithm
         protected Graph.IGraphInterface graph;
         protected Graph.IColoredGraphInterface coloredGraph;
         private int countVertices;
+        protected int countInterchangeCalls;
         #endregion
 
         // Constructor
@@ -23,6 +24,7 @@ namespace GraphColoring.GraphColoringAlgorithm
         public GraphColoringAlgorithm(Graph.IGraphInterface graph)
         {
             this.graph = graph;
+            countInterchangeCalls = 0;
             coloredGraph = graph.GetColoredGraph();
             countVertices = graph.GetRealCountVertices();
         }
@@ -44,10 +46,6 @@ namespace GraphColoring.GraphColoringAlgorithm
 
         public double ColoringProgress()
         {
-            //Console.WriteLine("Colored vertices: " + coloredGraph.GetColoredVertexList().Count);
-            //Console.WriteLine("Count vertices: " + countVertices);
-
-
             return (double)coloredGraph.GetColoredVertexList().Count / countVertices;
         }
         #endregion
@@ -79,6 +77,15 @@ namespace GraphColoring.GraphColoringAlgorithm
         public TimeComplexityEnum GetTimeComplexity()
         {
             return timeComplexity;
+        }
+
+        /// <summary>
+        /// Return count of interchange calls
+        /// </summary>
+        /// <returns>count of interchange calls</returns>
+        public int GetCountInterchangeCalls()
+        {
+            return countInterchangeCalls;
         }
         #endregion
     }

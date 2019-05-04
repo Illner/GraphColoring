@@ -13,6 +13,7 @@ namespace GraphColoring.GraphVisualization
         private Image image;
         private List<Graph.IGraphInterface> graphList;
         private const int MAXALLOWEDVERTICES = 50;
+        private const int MAXCOLORS = 14;
         private FileNameExtensionEnum fileNameExtensionEnum;
         private IConvertGraphToDotInterface convertGraphToDot;
         
@@ -128,12 +129,27 @@ namespace GraphColoring.GraphVisualization
             
             // Max count of vertices
             int sumVertices = 0;
+            int maxCountColors = 0;
+
             foreach (Graph.IGraphInterface graph in graphList)
+            {
                 sumVertices += graph.GetRealCountVertices();
+                if (graph.GetColoredGraph().GetIsInitializedColoredGraph())
+                {
+                    if (maxCountColors < graph.GetColoredGraph().GetCountUsedColors())
+                        maxCountColors = graph.GetColoredGraph().GetCountUsedColors();
+                }
+            }
 
             if (sumVertices > MAXALLOWEDVERTICES)
             {
                 CreateImageGraphWithTest("The graph has so many vertices. \nMaximum " + MAXALLOWEDVERTICES + " vertices are allowed.");
+                return;
+            }
+
+            if (maxCountColors > MAXCOLORS)
+            {
+                CreateImageGraphWithTest("The graph has so many colors. \nMaximum " + MAXCOLORS + " colors are allowed.");
                 return;
             }
 

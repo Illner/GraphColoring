@@ -1103,7 +1103,8 @@ namespace GraphColoringConsole.Database
         /// </summary>
         /// <param name="path">file's path</param>
         /// <param name="algorithmEnum">algorithm</param>
-        public void SaveDataFromDatabaseToFile(string path, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum)
+        /// <returns>Count of data</returns>
+        public int SaveDataFromDatabaseToFile(string path, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithmEnum)
         {
             // Check if it is connected
             if (GetConnectionState() != ConnectionState.Open)
@@ -1125,16 +1126,13 @@ namespace GraphColoringConsole.Database
             int countVerticesDegreeSequence;
             SortedDictionary<int, int> degreeSequenceDictionary;
             StringBuilder degreeSequenceStringBuilder;
-
-            int CountVertices, CountEdges;
-            int ID_GraphClass, ID_EulerianGraph;
-            int CountCutVertices, CountBridges;
-            int IsRegular, IsCyclic, IsChordal, Girth;
-            double Dense;
-            int MinimumVertexDegree, MaximumVertexDegree, MedianVertexDegree; double AverageVertexDegree;
-            bool ID_GraphColoringAlgorithm;
+            
             string GraphColoringAlgorithms;
             string DegreeSequence;
+            
+            List<GraphColoring.GraphColoringAlgorithm.AI.GraphData> positiveData = new List<GraphColoring.GraphColoringAlgorithm.AI.GraphData>();
+            List<GraphColoring.GraphColoringAlgorithm.AI.GraphData> negativeData = new List<GraphColoring.GraphColoringAlgorithm.AI.GraphData>();
+            List<GraphColoring.GraphColoringAlgorithm.AI.GraphData> data = new List<GraphColoring.GraphColoringAlgorithm.AI.GraphData>();
 
             // Delete the file if exists
             if (File.Exists(path))
@@ -1143,42 +1141,41 @@ namespace GraphColoringConsole.Database
             }
             using (File.Create(path)) { }
 
-            cmd.CommandTimeout = 240;
+            cmd.CommandTimeout = 3600;
 
-            // Read query and save text to the file
+            // Read query
             using (DbDataReader reader = cmd.ExecuteReader())
-            using (StreamWriter sw = File.CreateText(path))
             {
-                sw.WriteLine("ID_GraphColoringAlgorithm\tID_GraphClass\tID_EulerianGraph\tIsRegular\tIsCyclic\tIsChordal\tCountVertices\tCountEdges\tCountCutVertices\tCountBridges\tGirth\tDense\tMinimumVertexDegree\tMaximumVertexDegree\tAverageVertexDegree\tMedianVertexDegree");
-
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        CountVertices = Convert.ToInt32(reader.GetValue(0));
-                        CountEdges = Convert.ToInt32(reader.GetValue(1));
-                        ID_GraphClass = Convert.ToInt32(reader.GetValue(2));
-                        ID_EulerianGraph = Convert.ToInt32(reader.GetValue(3));
-                        CountCutVertices = Convert.ToInt32(reader.GetValue(4));
-                        CountBridges = Convert.ToInt32(reader.GetValue(5));
-                        IsRegular = Convert.ToInt32(reader.GetValue(6));
-                        IsCyclic = Convert.ToInt32(reader.GetValue(7));
-                        IsChordal = Convert.ToInt32(reader.GetValue(8));
-                        Girth = Convert.ToInt32(reader.GetValue(9));
-                        Dense = Convert.ToDouble(reader.GetValue(10));
-                        MinimumVertexDegree = Convert.ToInt32(reader.GetValue(11));
-                        MaximumVertexDegree = Convert.ToInt32(reader.GetValue(12));
-                        AverageVertexDegree = Convert.ToDouble(reader.GetValue(13));
-                        MedianVertexDegree = Convert.ToInt32(reader.GetValue(14));
+                        GraphColoring.GraphColoringAlgorithm.AI.GraphData graphData = new GraphColoring.GraphColoringAlgorithm.AI.GraphData();
+
+                        graphData.CountVertices = Convert.ToInt32(reader.GetValue(0));
+                        graphData.CountEdges = Convert.ToInt32(reader.GetValue(1));
+                        graphData.ID_GraphClass = Convert.ToInt32(reader.GetValue(2));
+                        graphData.ID_EulerianGraph = Convert.ToInt32(reader.GetValue(3));
+                        graphData.CountCutVertices = Convert.ToInt32(reader.GetValue(4));
+                        graphData.CountBridges = Convert.ToInt32(reader.GetValue(5));
+                        graphData.IsRegular = Convert.ToBoolean(reader.GetValue(6));
+                        graphData.IsCyclic = Convert.ToBoolean(reader.GetValue(7));
+                        graphData.IsChordal = Convert.ToBoolean(reader.GetValue(8));
+                        graphData.Girth = Convert.ToInt32(reader.GetValue(9));
+                        graphData.Dense = Convert.ToSingle(reader.GetValue(10));
+                        graphData.MinimumVertexDegree = Convert.ToInt32(reader.GetValue(11));
+                        graphData.MaximumVertexDegree = Convert.ToInt32(reader.GetValue(12));
+                        graphData.AverageVertexDegree = Convert.ToSingle(reader.GetValue(13));
+                        graphData.MedianVertexDegree = Convert.ToInt32(reader.GetValue(14));
                         GraphColoringAlgorithms = Convert.ToString(reader.GetValue(15));
                         DegreeSequence = Convert.ToString(reader.GetValue(16));
-                        
+
                         degreeSequenceDictionary = new SortedDictionary<int, int>();
-                        
+
                         // Parse DegreeSequence
                         string[] tupleDegreeSequenceArray = DegreeSequence.Split(delim);
 
-                        foreach(string record in tupleDegreeSequenceArray)
+                        foreach (string record in tupleDegreeSequenceArray)
                         {
                             if (record == "")
                                 break;
@@ -1192,35 +1189,117 @@ namespace GraphColoringConsole.Database
                         }
 
                         degreeSequenceStringBuilder = new StringBuilder();
-                        for (int i = 0; i < 51; i++)
+                        for (int i = 0; i <= 10; i++)
                         {
                             int value = 0;
                             degreeSequenceDictionary.TryGetValue(i, out value);
 
-                            degreeSequenceStringBuilder.Append(value + "\t");
+                            // Fill degress
+                            switch (i)
+                            {
+                                case 0:
+                                    graphData.VertexDegree0 = value;
+                                    break;
+                                case 1:
+                                    graphData.VertexDegree1 = value;
+                                    break;
+                                case 2:
+                                    graphData.VertexDegree2 = value;
+                                    break;
+                                case 3:
+                                    graphData.VertexDegree3 = value;
+                                    break;
+                                case 4:
+                                    graphData.VertexDegree4 = value;
+                                    break;
+                                case 5:
+                                    graphData.VertexDegree5 = value;
+                                    break;
+                                case 6:
+                                    graphData.VertexDegree6 = value;
+                                    break;
+                                case 7:
+                                    graphData.VertexDegree7 = value;
+                                    break;
+                                case 8:
+                                    graphData.VertexDegree8 = value;
+                                    break;
+                                case 9:
+                                    graphData.VertexDegree9 = value;
+                                    break;
+                                case 10:
+                                    graphData.VertexDegree10 = value;
+                                    break;
+                            }
                         }
 
                         // Parse ID_GraphColoringAlgorithm
                         string[] algorithmArray = GraphColoringAlgorithms.Split(delim);
                         int IDAlgorithm = GraphColoringAlgorithmEnumIDDictionary[algorithmEnum];
-                        ID_GraphColoringAlgorithm = false;
+                        graphData.Label = false;
 
                         foreach (string algorithm in algorithmArray)
                         {
                             if (Int32.Parse(algorithm) == IDAlgorithm)
                             {
-                                ID_GraphColoringAlgorithm = true;
+                                graphData.Label = true;
                                 break;
                             }
                         }
 
-                        sw.WriteLine(ID_GraphColoringAlgorithm + "\t" + ID_GraphClass + "\t" + ID_EulerianGraph + "\t" +
-                            IsRegular + "\t" + IsCyclic + "\t" + IsChordal + "\t" + CountVertices + "\t" + CountEdges + "\t" +
-                            CountCutVertices + "\t" + CountBridges + "\t" + Girth + "\t" + Dense + "\t" + MinimumVertexDegree + "\t" +
-                            MaximumVertexDegree + "\t" + AverageVertexDegree + "\t" + MedianVertexDegree + "\t" + degreeSequenceStringBuilder.ToString());
+                        if (graphData.Label)
+                            positiveData.Add(graphData);
+                        else
+                            negativeData.Add(graphData);
                     }
                 }
             }
+
+            int minLength;
+            List<GraphColoring.GraphColoringAlgorithm.AI.GraphData> minData, maxData;
+
+            if (positiveData.Count() < negativeData.Count())
+            {
+                minData = positiveData;
+                maxData = negativeData;
+            }
+            else
+            {
+                minData = negativeData;
+                maxData = positiveData;
+            }
+            minLength = minData.Count();
+
+            // Copy the first list
+            data = minData.ToList();
+
+            // Permutate the second list
+            GraphColoring.MyMath.MyMath.FisherYatesShuffle(maxData);
+
+            // Short the second list
+            maxData.RemoveRange(minLength, maxData.Count() - minLength);
+            
+            data = data.Concat(maxData).ToList();
+            GraphColoring.MyMath.MyMath.FisherYatesShuffle(data);
+
+            // Save text to the file
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine("ID_GraphColoringAlgorithm\tID_GraphClass\tID_EulerianGraph\tIsRegular\tIsCyclic\tIsChordal\tCountVertices\tCountEdges\tCountCutVertices\tCountBridges\tGirth\tDense\tMinimumVertexDegree\tMaximumVertexDegree\tAverageVertexDegree\tMedianVertexDegree");
+
+                foreach (var record in data)
+                {
+                    sw.WriteLine(record.Label + "\t" + record.ID_GraphClass + "\t" + record.ID_EulerianGraph + "\t" +
+                            record.IsRegular + "\t" + record.IsCyclic + "\t" + record.IsChordal + "\t" + record.CountVertices + "\t" + record.CountEdges + "\t" +
+                            record.CountCutVertices + "\t" + record.CountBridges + "\t" + record.Girth + "\t" + record.Dense + "\t" + record.MinimumVertexDegree + "\t" +
+                            record.MaximumVertexDegree + "\t" + record.AverageVertexDegree + "\t" + record.MedianVertexDegree + "\t" + record.VertexDegree0 + "\t" + 
+                            record.VertexDegree1 + "\t" + record.VertexDegree2 + "\t" + record.VertexDegree3 + "\t" + record.VertexDegree4 + "\t" + record.VertexDegree5 + "\t" + 
+                            record.VertexDegree6 + "\t" + record.VertexDegree7 + "\t" + record.VertexDegree8 + "\t" + record.VertexDegree9 + "\t" + record.VertexDegree10);
+                    
+                }
+            }
+            
+            return data.Count();
         }
 
         /// <summary>
@@ -1483,6 +1562,7 @@ namespace GraphColoringConsole.Database
         }
 
         #endregion
+        
         // Property
         #region
         public ConnectionState GetConnectionState()

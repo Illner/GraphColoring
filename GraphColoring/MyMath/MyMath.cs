@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GraphColoring.MyMath
 {
-    static class MyMath
+    public static class MyMath
     {
         // Variable
         #region

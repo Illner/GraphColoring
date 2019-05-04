@@ -49,4 +49,17 @@ namespace GraphColoringConsole.MyException.AIException
 
         public InvalidTestFractionException(string message, Exception inner) : base(message, inner) { }
     }
+
+    /// <summary>
+    /// AI exception
+    /// Not enough data to create model
+    /// </summary>
+    class NotEnoughDataToCreateModel : AIException
+    {
+        public NotEnoughDataToCreateModel() { }
+
+        public NotEnoughDataToCreateModel(string message) : base(message) { }
+
+        public NotEnoughDataToCreateModel(string message, Exception inner) : base(message, inner) { }
+    }
 }

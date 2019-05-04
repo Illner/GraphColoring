@@ -31,42 +31,6 @@ namespace GraphColoringConsole
                 }
             }
             while (error);
-
-            /*
-            for (int j = 1; j <= 5; j++)
-            {
-                ML.CreateAI createAI = new ML.CreateAI(ML.CreateAI.AIEnum.sdca);
-                GenerateGraphs.GenerateGraphs generateGraphs = new GenerateGraphs.GenerateGraphs();
-                generateGraphs.GetDatabase().SaveDataFromDatabaseToFile(createAI.GetPathData(), j);
-                for (int i = 1; i <= 8; i++)
-                {
-                    createAI.CreateModel(i);
-                }
-            }
-            */
-            /*
-            foreach (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum algorithm in (GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum[])Enum.GetValues(typeof(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum)))
-            {
-                 //foreach (ML.CreateAI.AIEnum aiEnum in (ML.CreateAI.AIEnum[])Enum.GetValues(typeof(ML.CreateAI.AIEnum)))
-                 //{
-                     if (algorithm == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.optimal ||
-                         algorithm == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI)
-                         continue;
-
-                     Console.WriteLine("---------------------------------------------");
-                     Console.WriteLine(algorithm.ToString());
-                     ML.CreateAI createAI = new ML.CreateAI("127.0.0.1", "GraphColoring", "GraphColoring", "GraphColoring.", ML.CreateAI.AIEnum.stochasticDualCoordinateAscent, algorithm);
-                     createAI.CreateModel();
-                     Console.WriteLine("Accurency: " + createAI.GetAccurancy());
-                     Console.WriteLine("LogLoss: " + createAI.GetLogLoss());
-                     Console.WriteLine("LogLossReduction: " + createAI.GetLogLossReduction());
-                     Console.WriteLine("F1 score: " + createAI.GetF1Score());
-                     Console.WriteLine("Auc: " + createAI.GetAuc());
-                     Console.WriteLine();
-                 //}
-                 Console.WriteLine();
-            }
-            */
         }
 
         private static string dataSource;
@@ -141,7 +105,7 @@ namespace GraphColoringConsole
             Console.WriteLine("1) Generate graphs to file");
             Console.WriteLine("2) Generate graphs to database");
             Console.WriteLine("3) Insert graphs from files to database");
-            Console.WriteLine("4) Create MLs");
+            Console.WriteLine("4) Create models for AI");
             Console.WriteLine("5) Convert from .col to .graph");
             Console.WriteLine("6) Generate time complexity");
             Console.WriteLine("7) Color graphs");
@@ -200,7 +164,7 @@ namespace GraphColoringConsole
                 generateGraphsDatabase.SaveDataFromFileToDB();
 
                 Console.WriteLine();
-                Console.WriteLine("Graphs have been inserted.");
+                Console.WriteLine("Graphs were inserted.");
                 Console.WriteLine();
             }
             catch (MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException)
@@ -296,7 +260,7 @@ namespace GraphColoringConsole
                 generateGraphs.Generate(minCount, maxCount);
 
                 Console.WriteLine();
-                Console.WriteLine("Graphs have been generated and saved.");
+                Console.WriteLine("Graphs were generated and saved.");
                 Console.WriteLine();
             }
             catch (GraphColoring.MyException.ReaderWriterException.ReaderWriterException ex)
@@ -386,7 +350,7 @@ namespace GraphColoringConsole
                 generateGraphs.Generate(minCount, maxCount);
                 
                 Console.WriteLine();
-                Console.WriteLine("Graphs have been generated and saved.");
+                Console.WriteLine("Graphs were generated and saved.");
                 Console.WriteLine();
             }
             catch (MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException)
@@ -408,7 +372,7 @@ namespace GraphColoringConsole
         private static int CreateMls()
         {
             Console.Clear();
-            Console.WriteLine("Create MLs");
+            Console.WriteLine("Create models for AI");
 
             Console.WriteLine("Info: models will be saved in " + ML.CreateAI.GetPathFolder());
 
@@ -436,8 +400,17 @@ namespace GraphColoringConsole
                     Console.WriteLine("LogLossReduction: " + createAI.GetLogLossReduction());
                     Console.WriteLine("F1 score: " + createAI.GetF1Score());
                     Console.WriteLine("Auc: " + createAI.GetAuc());
-                    Console.WriteLine("Model has been saved: " + createAI.GetPathModel());
+                    Console.WriteLine("Negative precision: " + createAI.GetNegativePrecision());
+                    Console.WriteLine("Positive precision: " + createAI.GetPositivePrecision());
+                    Console.WriteLine("Negative recall: " + createAI.GetNegativeRecall());
+                    Console.WriteLine("Positive recall: " + createAI.GetPositiveRecall());
+
+                    Console.WriteLine("The model was saved: " + createAI.GetPathModel());
                     Console.WriteLine();
+                }
+                catch (MyException.AIException.NotEnoughDataToCreateModel)
+                {
+                    Console.WriteLine("The model was not created because not enough data to create model!");
                 }
                 catch (MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException)
                 {
@@ -491,7 +464,7 @@ namespace GraphColoringConsole
             error = convertGraphsCOL.Convert();
             
             Console.WriteLine();
-            Console.WriteLine("Graphs have been converted.");
+            Console.WriteLine("Graphs were converted.");
             Console.WriteLine();
 
             return error;
@@ -501,7 +474,7 @@ namespace GraphColoringConsole
         {
             // Variable
             string reader;
-            int countOfVertices = 0;
+            int countOfVertices = 0, countOfGraphs = 0;
             bool writer, clearFile, useGeneticAlgorithm2, useInterchangeExtendedK3;
             GenerateTimeComplexity.GenerateTimeComplexity timeComplexity;
 
@@ -528,6 +501,14 @@ namespace GraphColoringConsole
 
             do
             {
+                Console.Write("Count of graphs [positive int]: ");
+                reader = Console.ReadLine();
+                int.TryParse(reader, out countOfGraphs);
+            }
+            while (countOfGraphs <= 0);
+
+            do
+            {
                 Console.Write("Count of vertices [positive int]: ");
                 reader = Console.ReadLine();
                 int.TryParse(reader, out countOfVertices);
@@ -542,10 +523,10 @@ namespace GraphColoringConsole
                 Console.WriteLine("Start generating... ");
                 Console.WriteLine();
 
-                timeComplexity.Generate(countOfVertices);
+                timeComplexity.Generate(countOfVertices, countOfGraphs);
 
                 Console.WriteLine();
-                Console.WriteLine("Time complexity has been generated.");
+                Console.WriteLine("Time complexity was generated.");
                 Console.WriteLine();
 
             }
@@ -604,7 +585,7 @@ namespace GraphColoringConsole
                 colorGraphsFile.Color();
 
                 Console.WriteLine();
-                Console.WriteLine("Graphs have been colored.");
+                Console.WriteLine("Graphs were colored.");
                 Console.WriteLine();
 
             }

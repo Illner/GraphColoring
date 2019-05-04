@@ -8,5 +8,6 @@ namespace GraphColoring.GraphColoringAlgorithm
         Graph.IGraphInterface GetGraph();
         GraphColoringAlgorithm.TimeComplexityEnum GetTimeComplexity();
         double ColoringProgress();
+        int GetCountInterchangeCalls();
     }
 }

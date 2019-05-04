@@ -58,6 +58,9 @@ namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
             MyDataStructure.FibonacciHeap fibonacciHeap = new MyDataStructure.FibonacciHeap(countVertices);
             Dictionary<Graph.IVertexInterface, int> mappingVertexDictionary = new Dictionary<Graph.IVertexInterface, int>();
 
+            // Reset
+            countInterchangeCalls = 0;
+
             if (coloredGraph.GetIsInitializedColoredGraph())
                 throw new MyException.GraphException.ColoredGraphAlreadyInitializedException();
             
@@ -129,6 +132,9 @@ namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
                             coloredGraph.TryChangeColoringExtended(actualVertex, coloredGraph.GreedyColoring(actualVertex), true);
                             break;
                     }
+
+                    if (interchangeEnum != GraphColoringAlgorithInterchangeEnum.none)
+                        countInterchangeCalls++;
                 }
 
                 if (fibonacciHeap.GetCountNodes() != 0)

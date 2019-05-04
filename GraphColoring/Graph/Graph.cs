@@ -28,8 +28,9 @@ namespace GraphColoring.Graph
         private Dictionary<int, VertexExtended> mapping;
         private Dictionary<string, VertexExtended> mappingUserName;
         private GraphProperty.GraphProperty graphProperty;
-        private Dictionary<VertexExtended, List<VertexExtended>> adjacencyList;
+        private Dictionary<VertexExtended, HashSet<VertexExtended>> adjacencyList;
         private bool canDeIncreaseCountVertices, canDeIncreaseCountEdges;
+        private const string DEFAULTGRAPHNAME = "My graph";
         #endregion
 
         // Constructor
@@ -42,11 +43,11 @@ namespace GraphColoring.Graph
         {
             graphProperty = new GraphProperty.GraphProperty(this, countVertices);
 
-            adjacencyList = new Dictionary<VertexExtended, List<VertexExtended>>();
+            adjacencyList = new Dictionary<VertexExtended, HashSet<VertexExtended>>();
             mapping = new Dictionary<int, VertexExtended>();
             mappingUserName = new Dictionary<string, VertexExtended>();
 
-            SetName("My graph");
+            SetName(DEFAULTGRAPHNAME);
         }
         #endregion
 
@@ -61,7 +62,7 @@ namespace GraphColoring.Graph
         {
             try
             {
-                adjacencyList.Add(vertexExtended, new List<VertexExtended>());
+                adjacencyList.Add(vertexExtended, new HashSet<VertexExtended>());
                 mapping.Add(vertexExtended.GetIdentifier(), vertexExtended);
                 mappingUserName.Add(vertexExtended.GetUserName(), vertexExtended);
 
@@ -98,14 +99,14 @@ namespace GraphColoring.Graph
             // Symmetry
             for (int i = 0; i < 2; i++)
             {
-                if (!adjacencyList.TryGetValue(ConvertVertexToVertexExtended(vertex1), out List<VertexExtended> adjacencyListVertexExtended))
+                if (!adjacencyList.TryGetValue(ConvertVertexToVertexExtended(vertex1), out HashSet<VertexExtended> adjacencyHashSetVertexExtended))
                     throw new MyException.GraphException.GraphVertexDoesntExistException();
 
-                if (adjacencyListVertexExtended.Contains(ConvertVertexToVertexExtended(vertex2)))
+                if (adjacencyHashSetVertexExtended.Contains(ConvertVertexToVertexExtended(vertex2)))
                     return;
-                    // throw new MyException.GraphDupliciteEdge();
+                // throw new MyException.GraphDupliciteEdge();
 
-                adjacencyListVertexExtended.Add(ConvertVertexToVertexExtended(vertex2));
+                adjacencyHashSetVertexExtended.Add(ConvertVertexToVertexExtended(vertex2));
 
                 // Swap variables
                 vertex = vertex1;
@@ -297,7 +298,7 @@ namespace GraphColoring.Graph
             if (!ExistsVertex(edge.GetVertex1()) || !ExistsVertex(edge.GetVertex2()))
                 return false;
 
-            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex1()), out List<VertexExtended> neighboursList);
+            adjacencyList.TryGetValue(ConvertVertexToVertexExtended(edge.GetVertex1()), out HashSet<VertexExtended> neighboursList);
 
             if (neighboursList == null)
                 return false;
@@ -375,7 +376,7 @@ namespace GraphColoring.Graph
             }
 
             stringBuilder.AppendLine("Edges: ");
-            foreach (KeyValuePair<VertexExtended, List<VertexExtended>> record in adjacencyList)
+            foreach (KeyValuePair<VertexExtended, HashSet<VertexExtended>> record in adjacencyList)
             {
                 stringBuilder.AppendLine("-- Vertex: " + record.Key.GetIdentifier() + " (" + record.Key.GetUserName() + ")");
                 foreach (VertexExtended vertexExtended in record.Value)

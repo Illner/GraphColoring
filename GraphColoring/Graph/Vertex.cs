@@ -32,7 +32,7 @@ namespace GraphColoring.Graph
         /// Color of vertex will be set to default (0)
         /// </summary>
         /// <param name="userName">user name of vertex</param>
-        public Vertex(String userName)
+        public Vertex(string userName)
         {
             SetIdentifier(counter++);
             SetUserName(userName);
@@ -45,7 +45,7 @@ namespace GraphColoring.Graph
         /// Does not increment the counter
         /// </summary>
         /// <param name="useless">useless</param>
-        protected Vertex(Boolean useless) { }
+        protected Vertex(bool useless) { }
         #endregion
 
         // Method
@@ -65,7 +65,7 @@ namespace GraphColoring.Graph
         }
 
         override
-        public String ToString()
+        public string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
 

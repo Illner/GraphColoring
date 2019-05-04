@@ -94,28 +94,6 @@ namespace GraphColoringConsole.GenerateGraphs
                         Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence);
                     }
 
-                    // Largest first sequencetry
-                    try
-                    {
-                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph));
-                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, result.Item1);
-                    }
-                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
-                    {
-                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence);
-                    }
-
-                    // Smallest last sequence
-                    try
-                    {
-                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph));
-                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence, result.Item1);
-                    }
-                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
-                    {
-                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence);
-                    }
-
                     // Random interchange
                     try
                     {
@@ -127,28 +105,6 @@ namespace GraphColoringConsole.GenerateGraphs
                         Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange);
                     }
 
-                    // Largest first sequence interchange
-                    try
-                    {
-                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
-                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange, result.Item1);
-                    }
-                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
-                    {
-                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange);
-                    }
-
-                    // Smallest last sequence interchange
-                    try
-                    {
-                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
-                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, result.Item1);
-                    }
-                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
-                    {
-                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange);
-                    }
-
                     // Random interchangeExtended
                     try
                     {
@@ -158,28 +114,6 @@ namespace GraphColoringConsole.GenerateGraphs
                     catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
                     {
                         Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended);
-                    }
-
-                    // Largest first sequence interchangeExtended
-                    try
-                    {
-                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
-                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, result.Item1);
-                    }
-                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
-                    {
-                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended);
-                    }
-
-                    // Smallest last sequence interchangeExtended
-                    try
-                    {
-                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
-                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, result.Item1);
-                    }
-                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
-                    {
-                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended);
                     }
 
                     // Random interchangeExtended with K3
@@ -196,6 +130,39 @@ namespace GraphColoringConsole.GenerateGraphs
                         Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3);
                     }
 
+                    // Largest first sequence
+                    try
+                    {
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph));
+                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, result.Item1);
+                    }
+                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
+                    {
+                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence);
+                    }
+
+                    // Largest first sequence interchange
+                    try
+                    {
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
+                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange, result.Item1);
+                    }
+                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
+                    {
+                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange);
+                    }
+
+                    // Largest first sequence interchangeExtended
+                    try
+                    {
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
+                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, result.Item1);
+                    }
+                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
+                    {
+                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended);
+                    }
+
                     // Largest first sequence interchangeExtended with K3
                     try
                     {
@@ -208,6 +175,39 @@ namespace GraphColoringConsole.GenerateGraphs
                     catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
                     {
                         Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3);
+                    }
+
+                    // Smallest last sequence
+                    try
+                    {
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph));
+                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence, result.Item1);
+                    }
+                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
+                    {
+                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence);
+                    }
+
+                    // Smallest last sequence interchange
+                    try
+                    {
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchange));
+                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, result.Item1);
+                    }
+                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
+                    {
+                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange);
+                    }
+
+                    // Smallest last sequence interchangeExtended
+                    try
+                    {
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSequence.SmallestLastSequence(graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithInterchangeEnum.interchangeExtended));
+                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, result.Item1);
+                    }
+                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
+                    {
+                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended);
                     }
 
                     // Smallest last sequence interchangeExtended with K3
@@ -469,9 +469,13 @@ namespace GraphColoringConsole.GenerateGraphs
                                 error = true;
                                 ID_Graph = 0;
                             }
+                            catch (MyException.DatabaseException.GenerateGraphsDatabaseNotOpenException ex)
+                            {
+                                throw ex;
+                            }
                             catch (Exception)
                             {
-                                Console.WriteLine("Something wrong with this line [{0}]: {1}", lineNumber, line);
+                                Console.WriteLine("Something wrong with this line [{0}]: {1}", lineNumber , line);
 
                                 error = true;
                                 ID_Graph = 0;

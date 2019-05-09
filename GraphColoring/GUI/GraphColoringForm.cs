@@ -10,8 +10,7 @@ namespace GraphColoring.GUI
 {
     public partial class GraphColoringForm : Form
     {
-        // Variable
-        #region
+        #region Variable
         private string path;
         private int maxUsedColors;
         private Thread coreThread;
@@ -25,9 +24,8 @@ namespace GraphColoring.GUI
         List<GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum> algorithmListBoxList;
         private GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public GraphColoringForm()
         {
             InitializeComponent();
@@ -76,9 +74,8 @@ namespace GraphColoring.GUI
             FillNamedGraphsComboBox();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Create instance of algorithm
         /// If enum isn't implemented in switch throws AlgorithmDoesntExist
@@ -710,9 +707,8 @@ namespace GraphColoring.GUI
             return true;
         }
         #endregion
-
-        // Events
-        #region
+        
+        #region Event
         private void loadGraphButton_Click(object sender, EventArgs e)
         {
             // Dialog
@@ -1362,9 +1358,8 @@ namespace GraphColoring.GUI
             coreThread.Start();
         }
         #endregion
-
-        // Property - click
-        #region
+        
+        #region Property - click
         // Class click
         private void classPropertiesLabel_Click(object sender, EventArgs e)
         {
@@ -1609,9 +1604,8 @@ namespace GraphColoring.GUI
             coreThread.Start();
         }
         #endregion
-
-        // Graph modification - click
-        #region
+        
+        #region Graph modification - click
 
         private void changeVertexNameGraphModificationVertexButton_Click(object sender, EventArgs e)
         {
@@ -2321,9 +2315,8 @@ namespace GraphColoring.GUI
             coreThread.Start();
         }
         #endregion
-
-        // Drag and drop
-        #region
+        
+        #region Drag and drop
         private void GraphColoringForm_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -2364,9 +2357,8 @@ namespace GraphColoring.GUI
 
         }
         #endregion
-
-        // Timer
-        #region
+        
+        #region Timer
         private void ColoringProgressTimer_Tick(object sender, EventArgs e)
         {
             if (!isColoringGraph)

@@ -7,8 +7,7 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
 {
     class ColoredGraphTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -24,9 +23,8 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
         private string coloredGraph5 = ColoredGraphResource.coloredGraph5;
         private string coloredGraph6 = ColoredGraphResource.coloredGraph6;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum ColoredGraphEnum
         {
             valid,
@@ -38,9 +36,8 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             interchange5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ColoredGraphTest()
         {
             stringBuilder = new StringBuilder();
@@ -58,9 +55,8 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -344,9 +340,8 @@ namespace GraphColoring.Graph.ColoredGraph.Tests
             catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathColoredGraph;

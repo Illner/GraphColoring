@@ -6,8 +6,7 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
 {
     class CombinationAlgorithmTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -22,9 +21,8 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
         private string algorithmCombination4 = CombinationAlgorithmResource.combination4;
         private string algorithmCombination5 = CombinationAlgorithmResource.combination5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum CombinationEnum
         {
             combinationEnum1,
@@ -34,9 +32,8 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
             combinationEnum5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public CombinationAlgorithmTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -110,9 +106,8 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathAlgorithmCombination;

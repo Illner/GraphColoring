@@ -7,8 +7,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
 {
     class SubGraphTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private int countVertices;
@@ -26,9 +25,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private string graphSubGraph5 = SubGraphResource.graphSubGraph4;
         private string graphSubGraph6 = SubGraphResource.graphSubGraph4;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum SubGraphEnum
         {
             graphSubGraph1,
@@ -39,9 +37,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             graphSubGraph6
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public SubGraphTest()
         {
             stringBuilder = new StringBuilder();
@@ -58,9 +55,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (file)
         /// </summary>
@@ -120,9 +116,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathGraphSubGraph;

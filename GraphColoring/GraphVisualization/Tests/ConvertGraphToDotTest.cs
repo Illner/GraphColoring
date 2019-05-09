@@ -6,8 +6,7 @@ namespace GraphColoring.GraphVisualization.Tests
 {
     class ConvertGraphToDotTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -22,9 +21,8 @@ namespace GraphColoring.GraphVisualization.Tests
         private string converterGraphToDot4 = ConvertGraphToDotResource.converter4;
         private string converterGraphToDot5 = ConvertGraphToDotResource.converter5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum ConverterGraphToDotEnum
         {
             converterGraphToDotEnum1,
@@ -34,9 +32,8 @@ namespace GraphColoring.GraphVisualization.Tests
             converterGraphToDotEnum5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ConvertGraphToDotTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.GraphVisualization.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -131,9 +127,8 @@ namespace GraphColoring.GraphVisualization.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathConverterGraphToDot;

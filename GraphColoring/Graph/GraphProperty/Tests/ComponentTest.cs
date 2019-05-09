@@ -6,8 +6,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 {
     class ComponentTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -23,9 +22,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private string graphComponent4 = ComponentResource.graphComponent4;
         private string graphComponent5 = ComponentResource.graphComponent5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum ComponentEnum
         {
             graphComponent1,
@@ -35,9 +33,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             graphComponent5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ComponentTest()
         {
             stringBuilder = new StringBuilder();
@@ -53,9 +50,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -121,9 +117,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathGraphComponent;

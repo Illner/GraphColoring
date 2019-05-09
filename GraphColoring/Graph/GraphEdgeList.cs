@@ -5,16 +5,14 @@ namespace GraphColoring.Graph
 {
     public class GraphEdgeList : Graph, IGraphEdgeListInterface
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
         /// mapping - The map from userName to identifier
         /// </summary>
         private Dictionary<string, int> mapping;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// Initialize graph
         /// </summary>
@@ -24,9 +22,8 @@ namespace GraphColoring.Graph
             mapping = new Dictionary<string, int>();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Add an edge (userNameVertex1, userNameVertex2) to the graph
         /// </summary>

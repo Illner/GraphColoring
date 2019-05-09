@@ -2,8 +2,7 @@
 {
     class MyNode
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
         /// identifier - identifier of the node
         /// value - value of the node
@@ -20,9 +19,8 @@
         private int rank;
         private bool feature;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public MyNode(int identifier, int value)
         {
             this.identifier = identifier;
@@ -67,9 +65,8 @@
             return text;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Return true if this node has a parent, otherwise false
         /// </summary>
@@ -121,9 +118,8 @@
             SetRightNode(this);
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return the identifier of this node
         /// </summary>

@@ -9,8 +9,7 @@ namespace GraphColoring.ReaderWriter.Tests
 {
     class ReaderWriterTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private StringBuilder stringBuilder;
         private string readerWriterText = "Lorem impsum.";
         private Dictionary<PathEnum, string> testsDictionary;
@@ -28,9 +27,8 @@ namespace GraphColoring.ReaderWriter.Tests
         // Instance
         private ReaderWriter readerWriter;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum PathEnum
         {
             valid,
@@ -51,9 +49,8 @@ namespace GraphColoring.ReaderWriter.Tests
             readFile
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ReaderWriterTest()
         {
             stringBuilder = new StringBuilder();
@@ -70,9 +67,8 @@ namespace GraphColoring.ReaderWriter.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all value of enums (files)
         /// </summary>
@@ -302,9 +298,8 @@ namespace GraphColoring.ReaderWriter.Tests
             stringBuilder.AppendLine("File contents: " + content);
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathReaderWriter;

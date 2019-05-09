@@ -6,8 +6,7 @@ namespace GraphColoring.Graph.GraphClass
 {
     public static partial class GraphClass
     {
-        // Method
-        #region
+        #region Method
         public static GraphClassEnum GetGraphClass(IGraphInterface graph)
         {
             if (IsCompleteGraph(graph))

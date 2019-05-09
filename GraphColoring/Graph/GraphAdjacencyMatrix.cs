@@ -5,8 +5,7 @@ namespace GraphColoring.Graph
 {
     class GraphAdjacencyMatrix : Graph, IGraphAdjacencyMatrixInterface
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
         /// mapping - The map from position in adjacency matrix to identifier
         /// actualVertex - actual row (vertex) in the adjacency matrix
@@ -14,9 +13,8 @@ namespace GraphColoring.Graph
         private Dictionary<int, int> mapping;
         private int actualVertex = 0;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// Initialize graph
         /// </summary>
@@ -37,9 +35,8 @@ namespace GraphColoring.Graph
             }
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Create edges for one row in adjacency matrix
         /// </summary>

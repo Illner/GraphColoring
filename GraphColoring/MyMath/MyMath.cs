@@ -6,13 +6,11 @@ namespace GraphColoring.MyMath
 {
     public static class MyMath
     {
-        // Variable
-        #region
+        #region Variable
         private static Random random = new Random();
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Compute nCr
         /// </summary>

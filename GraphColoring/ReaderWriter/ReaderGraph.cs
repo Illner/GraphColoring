@@ -8,19 +8,12 @@ namespace GraphColoring.ReaderWriter
 {
     public class ReaderGraph : ReaderWriter, IReaderGraphInterface
     {
-        // Varianle
-        #region
-
-        #endregion
-
-        // Constructor
-        #region
+        #region Constructor
         public ReaderGraph(string path) : base(path) { }
         public ReaderGraph(string path, bool checkPath) : base(path, checkPath) { }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Read a file and create a graph
         /// </summary>

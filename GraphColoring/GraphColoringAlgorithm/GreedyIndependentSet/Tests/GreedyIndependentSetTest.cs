@@ -6,8 +6,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
 {
     class GreedyIndependentSetTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -22,9 +21,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
         private string algorithmGreedyIndependentSet4 = GreedyIndependentSetResource.greedyIndependentSet4;
         private string algorithmGreedyIndependentSet5 = GreedyIndependentSetResource.greedyIndependentSet5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum GreedyIndependentSetEnum
         {
             greedyIndependentSetEnum1,
@@ -34,9 +32,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
             greedyIndependentSetEnum5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public GreedyIndependentSetTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -110,9 +106,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathAlgorithmGreedyIndependentSet;

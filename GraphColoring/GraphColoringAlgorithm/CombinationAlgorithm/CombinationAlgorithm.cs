@@ -5,15 +5,13 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
 {
     public sealed class CombinationAlgorithm : GraphColoringAlgorithm
     {
-        // Variable
-        #region
+        #region Variable
         private SequenceAlgorithm.LargestFirstSequence.LargestFirstSequence largestFirstSequence;
         private SaturationLargestFirstSequence.SaturationLargestFirstSequence saturationLargestFirstSequence;
         private List<IGraphColoringAlgorithmStepInterface> algorithmList;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public CombinationAlgorithm(Graph.IGraphInterface graph) : base(graph)
         {
             algorithmList = new List<IGraphColoringAlgorithmStepInterface>();
@@ -21,9 +19,8 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
             timeComplexity = TimeComplexityEnum.quadratic;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// Time complexity: O(n^2) + O(n^2) + O(n + m)

@@ -7,8 +7,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
 {
     public class GeneticAlgorithm : GraphColoringAlgorithm
     {
-        // Variable
-        #region
+        #region Variable
         private List<List<Graph.IVertexInterface>> populationList;
         private List<List<Graph.IVertexInterface>> newPopulationList;
         private List<Tuple<List<Graph.IVertexInterface>, List<Graph.IVertexInterface>>> parentPopulationList;
@@ -21,9 +20,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
         private List<Graph.IVertexInterface> bestState;
         private int exponentCountOfIteration;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// If the populationSize is less than 1, throw exception AlgorithmGraphGeneticAlgorithmInvalidPopulationCount
         /// If the exponentCountOfIteration is less than 1 or greater than 10 throws AlgorithmGraphGeneticAlgorithmInvalidExponentCountOfIteration
@@ -51,9 +49,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             //timeComplexity = TimeComplexityEnum.cubicPlusQuadratic;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// Time complexity: O(k * p * (p * n + m)) + 0
@@ -348,9 +345,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             state.Reverse();
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a size of population
         /// </summary>

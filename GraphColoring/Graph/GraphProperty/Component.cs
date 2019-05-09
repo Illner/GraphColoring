@@ -6,21 +6,18 @@ namespace GraphColoring.Graph.GraphProperty
 {
     partial class GraphProperty
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
-        /// componentsList - List of connected components
+        /// componentsList - list of connected components
         /// </summary>
         private List<IGraphInterface> componentsList;
         private bool isInitializedComponent;
         #endregion
 
-        // Method
-        #region
+        #region Method
         /// <summary>
         /// Partition a graph to connected components
-        /// countComponents, componentsList
-        /// BFS
+        /// Change: countComponents, componentsList, isConnected
         /// Time complexity: O(V + E)
         /// Space complexity: O(V + E) + new graphs
         /// </summary>
@@ -93,6 +90,10 @@ namespace GraphColoring.Graph.GraphProperty
                 graphComponent.InitializeGraph();
                 componentsList.Add(graphComponent);
             }
+
+            isConnected = true;
+            if (countComponents != 1)
+                isConnected = false;
         }
 
         private void ComponentsBFS(IVertexInterface root, Dictionary<IVertexInterface, int> vertexDictionary, int componentNumber)
@@ -122,9 +123,8 @@ namespace GraphColoring.Graph.GraphProperty
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a list of connected components
         /// </summary>
@@ -142,9 +142,9 @@ namespace GraphColoring.Graph.GraphProperty
         /// </summary>
         /// <returns>true if the graph has initialized components, otherwise false</returns>
         public bool GetIsInitializedComponent()
-        #endregion
         {
             return isInitializedComponent;
         }
+        #endregion
     }
 }

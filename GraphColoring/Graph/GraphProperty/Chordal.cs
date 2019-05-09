@@ -6,12 +6,16 @@ namespace GraphColoring.Graph.GraphProperty
 {
     partial class GraphProperty
     {
+        private Dictionary<int, List<int>> righNeighborhoodDictionary;
+
         /// <summary>
         /// Set potrentional Perfect elimination ordering.
         /// It is correct only if a graph is chordal!
         /// You can check it via IsPerfectEliminationOrderingParallel
-        /// perfectEliminationOrderingList
+        /// Change: perfectEliminationOrderingList
         /// Use lex-BFS algorithm
+        /// Time complexity: O(V * log(V) + E)
+        /// Space complexity: O(V)
         /// </summary>
         private void PerfectEliminationOrdering()
         {
@@ -56,11 +60,12 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Check if a potentional Perfect elimination ordering (perfectEliminationOrderingList) is correct.
         /// Return true if the PEO is correct (it means that the graph is chordal), otherwise return false (the graph is not chordal)
-        /// isChordal
+        /// Change: isChordal
+        /// Time complexity: O(V * (V + Delta(G)^2))
+        /// Space complexity: O(V * Delta(G))
         /// </summary>
-        private void IsPerfectEliminationOrderingParallel() 
+        private void IsPerfectEliminationOrdering() 
         {
-            object locker = new object();
             isChordal = true;
 
             for (int index = 2; index < perfectEliminationOrderingList.Count; index++)
@@ -85,17 +90,19 @@ namespace GraphColoring.Graph.GraphProperty
                     // LNv - {pv} is included in RNpv
                     if (lnvList.Except(lnpvList).Any())
                     {
-                        lock (locker)
-                        {
-                            isChordal = false;
-                        }
+                        isChordal = false;
                     }
                 }
+
+                if (!(bool)isChordal)
+                    return;
             };
         }
 
         /// <summary>
         /// Return indexes of neighbors of vertex (with the index) on the left from the vertex in a PEO
+        /// Time complexity: O(V)
+        /// Space complexity: O(V * Delta(G))
         /// </summary>
         /// <param name="index">index</param>
         /// <returns>list of indexes</returns>
@@ -103,8 +110,23 @@ namespace GraphColoring.Graph.GraphProperty
         {
             // Variable
             IVertexInterface vertex;
-            List<int> righNeighborhoodList = new List<int>();
+            List<int> righNeighborhoodList;
             List<IVertexInterface> neighborsList;
+
+            // Initialize righNeighborhoodDictionary
+            if (righNeighborhoodDictionary == null)
+            {
+                righNeighborhoodDictionary = new Dictionary<int, List<int>>();
+            }
+
+            if (righNeighborhoodDictionary.TryGetValue(index, out righNeighborhoodList))
+            {
+                // Record exists
+                return new List<int>(righNeighborhoodList);
+            }
+
+            // Record does not exist
+            righNeighborhoodList = new List<int>();
 
             vertex = perfectEliminationOrderingList[index];
             neighborsList = graph.Neighbours(vertex);
@@ -117,7 +139,9 @@ namespace GraphColoring.Graph.GraphProperty
                 }
             }
 
-            return righNeighborhoodList;
+            righNeighborhoodDictionary.Add(index, righNeighborhoodList);
+
+            return new List<int>(righNeighborhoodList);
         }
     }
 }

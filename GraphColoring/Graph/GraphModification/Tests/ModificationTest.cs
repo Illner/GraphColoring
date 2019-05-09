@@ -7,8 +7,7 @@ namespace GraphColoring.Graph.GraphModification.Tests
 {
     class ModificationTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -19,18 +18,16 @@ namespace GraphColoring.Graph.GraphModification.Tests
         private string testPathGraphModification = @"Testing\Test\GraphModification.txt";
         private string graphModification1 = ModificationResource.graphModification;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum ModificationEnum
         {
             valid,
             invalid
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ModificationTest()
         {
             stringBuilder = new StringBuilder();
@@ -43,9 +40,8 @@ namespace GraphColoring.Graph.GraphModification.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -244,9 +240,8 @@ namespace GraphColoring.Graph.GraphModification.Tests
             catch (MyException.GraphException.GraphException e) { stringBuilder.AppendLine(e.Message); }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathGraphModification;

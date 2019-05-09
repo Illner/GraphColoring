@@ -6,8 +6,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
 {
     class ComplementTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -21,9 +20,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private string graphComplement3 = ComplementResource.graphComplement3;
         private string graphComplement4 = ComplementResource.graphComplement4;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum ComplementEnum
         {
             graphComplement1,
@@ -32,9 +30,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             graphComplement4
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ComplementTest()
         {
             stringBuilder = new StringBuilder();
@@ -49,9 +46,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -110,9 +106,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathGraphComplement;

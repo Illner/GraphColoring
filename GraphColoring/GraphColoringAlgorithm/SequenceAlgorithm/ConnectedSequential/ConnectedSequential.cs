@@ -5,8 +5,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
 {
     public sealed class ConnectedSequential : GraphColoringSequenceAlgorithm
     {
-        // Constructor
-        #region
+        #region Constructor
         public ConnectedSequential(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Connected sequenctial algorithm";
@@ -14,9 +13,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
             interchangeEnum = GraphColoringAlgorithInterchangeEnum.none;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Create a sequence of vertices
         /// Time complexity: O(n + m) + O(n + m)

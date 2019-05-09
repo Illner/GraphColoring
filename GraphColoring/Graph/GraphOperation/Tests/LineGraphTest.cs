@@ -6,8 +6,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
 {
     class LineGraphTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -22,9 +21,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private string graphLineGraph4 = LineGraphResource.graphLineGraph4;
         private string graphLineGraph5 = LineGraphResource.graphLineGraph5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum LineGraphEnum
         {
             graphLineGraph1,
@@ -34,9 +32,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             graphLineGraph5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public LineGraphTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -113,9 +109,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathGraphLineGraph;

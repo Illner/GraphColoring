@@ -6,15 +6,13 @@ namespace GraphColoringConsole.GenerateGraphs
 {
     class GenerateGraphsFile : GenerateGraphs
     {
-        // Variable
-        #region
+        #region Variable
         private static string fileNameExtension = "graphDB";
         private static string pathFolder = @"Data\";
         private static string pathFile = pathFolder + "GeneratedGraphs" + "." + fileNameExtension; 
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// Initialize GenerateGraphs
         /// </summary>
@@ -25,9 +23,8 @@ namespace GraphColoringConsole.GenerateGraphs
                 File.WriteAllText(pathFile, string.Empty);
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Generate graphs with count of vertices greater than or equal to minCount and less than or equal to maxCount
         /// For invalid minCount and maxCount returns GenerateGraphsInvalidArgumentsMinCountMaxCountException
@@ -192,9 +189,8 @@ namespace GraphColoringConsole.GenerateGraphs
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a path file
         /// </summary>

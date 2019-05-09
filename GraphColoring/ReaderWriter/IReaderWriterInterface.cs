@@ -4,16 +4,14 @@ namespace GraphColoring.ReaderWriter
 {
     public interface IReaderWriterInterface
     {
-        // Method
-        #region
+        #region Method
         void DeleteFile();
         void CreateFile();
         Boolean ExistsFile();
         void ClearFile();
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         string GetPath();
         #endregion
     }

@@ -7,19 +7,18 @@ namespace GraphColoring.Graph.GraphProperty
 {
     partial class GraphProperty
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
-        /// cycleDisjointSetDictionary (CycleIsCyclic) - struktura pro získání reprezentanta vrcholu
+        /// cycleDisjointSetDictionary - union-find structure
         /// </summary>
         private Dictionary<IVertexInterface, IVertexInterface> cycleDisjointSetDictionary;
         #endregion
-
+        
+        #region Help class - CycleNode
         /// <summary>
-        /// Používá CycleGirth
+        /// Help class used by CycleGirth
         /// </summary>
         class CycleNode
-        #region
         {
             // Variable
             private int depth;
@@ -53,13 +52,11 @@ namespace GraphColoring.Graph.GraphProperty
         }
         #endregion
 
-        // Method
-        #region
+        #region Method
         /// <summary>
-        /// Zjistí délku nejkratšího cyklu
-        /// girth, isCyclic
-        /// BFS Parallel
-        /// Time complexity: O(V^2)
+        /// Determine the shortest cycle
+        /// Change: girth, isCyclic
+        /// Time complexity: O(V * (V + E))
         /// Space complexity: O(V + E)
         /// </summary>
         private void CycleGirthParallel()
@@ -96,13 +93,13 @@ namespace GraphColoring.Graph.GraphProperty
                 isCyclic = true;
             }
         }
-        
+
         /// <summary>
-        /// Pro daný vrchol zjistí nejmenší cyklus pomocí BFS
-        /// Pokud cyklus neexistuje, tak vrátí int.MaxValue
+        /// Determine the shortest cycle which contains the vertex
+        /// If the cycle does not exist returns int.MaxValue
         /// </summary>
-        /// <param name="root">Vrchol, který bude kořenem v BFS</param>
-        /// <returns>délku cyklu</returns>
+        /// <param name="root">vertex</param>
+        /// <returns>the shortest cycle which contains the vertex</returns>
         private int CycleGirthBFS(IVertexInterface root)
         {
             // Variable
@@ -124,7 +121,7 @@ namespace GraphColoring.Graph.GraphProperty
 
                 foreach (IVertexInterface vertexNeighbour in vertexNeighboursList)
                 {
-                    // Tento vrchol jsme doposud neviděli
+                    // We have not seen this vertex yet
                     if (!nodeDictionary.ContainsKey(vertexNeighbour))
                     {
                         nodeBFSQueue.Enqueue(new CycleNode(vertexNeighbour, depth));
@@ -132,7 +129,7 @@ namespace GraphColoring.Graph.GraphProperty
                     }
                     else
                     {
-                        // Cyklus liché délky
+                        // Odd cycle
                         if (nodeDictionary[vertexNeighbour] == depth - 1)
                         {
                             if (depth * 2 - 1 < bestGirth)
@@ -142,7 +139,7 @@ namespace GraphColoring.Graph.GraphProperty
                         }
                         else
                         {
-                            // Cyklus sudé délky
+                            // Even cycle
                             if (nodeDictionary[vertexNeighbour] == depth)
                             {
                                 if (depth * 2 < bestGirth)
@@ -157,15 +154,67 @@ namespace GraphColoring.Graph.GraphProperty
 
             return bestGirth;
         }
-
+    
         /// <summary>
-        /// Zjistí zda je graf cyklický
-        /// isCyclic
-        /// Union-Find
-        /// Time complexity: O(V * E)
+        /// Determine if the graph is cyclic
+        /// Change: isCyclic
+        /// Time complexity: O(V + E)
         /// Space complexity: O(V + E)
         /// </summary>
-        private void CycleIsCyclic()
+        protected void CycleIsCyclic()
+        {
+            // Variable
+            Queue<IVertexInterface> verticesQueue;
+            HashSet<IVertexInterface> visitedVerticesHashSet;
+            Dictionary<IVertexInterface, IVertexInterface> parentsDictionary;
+
+            verticesQueue = new Queue<IVertexInterface>();
+            visitedVerticesHashSet = new HashSet<IVertexInterface>();
+            parentsDictionary = new Dictionary<IVertexInterface, IVertexInterface>();
+
+            verticesQueue.Enqueue(graph.GetFirstVertex());
+            visitedVerticesHashSet.Add(graph.GetFirstVertex());
+
+            isCyclic = false;
+
+            // Initialize parentsDictionary
+            foreach (IVertexInterface vertex in graph.AllVertices())
+            {
+                parentsDictionary.Add(vertex, null);
+            }
+
+            while (verticesQueue.Count != 0)
+            {
+                IVertexInterface vertex = verticesQueue.Dequeue();
+
+                foreach (IVertexInterface neighbor in graph.Neighbours(vertex))
+                {
+                    if (!visitedVerticesHashSet.Contains(neighbor))
+                    {
+                        visitedVerticesHashSet.Add(neighbor);
+                        verticesQueue.Enqueue(neighbor);
+                        parentsDictionary[neighbor] = vertex;
+                    }
+                    else
+                    {
+                        if (parentsDictionary[vertex] != neighbor)
+                        {
+                            isCyclic = true;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Determine if the graph is cyclic
+        /// Change: isCyclic
+        /// Using: Union-Find
+        /// Time complexity: O(V^2 + E)
+        /// Space complexity: O(V + E)
+        /// </summary>
+        private void CycleIsCyclicUnionFind()
         {
             // Variable
             List<IVertexInterface> allVerticesList;
@@ -211,27 +260,30 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí reprezentanta k danému vrcholu
+        /// Find a representant
         /// Time complexity: O(1)
         /// </summary>
-        /// <param name="vertex">vrchol, ke kterému hledáme reprezentanta</param>
-        /// <returns>reprezentant vrcholu</returns>
+        /// <param name="vertex">vertex</param>
+        /// <returns>representant of the vertex</returns>
         private IVertexInterface CycleFind(IVertexInterface vertex)
         {
             return cycleDisjointSetDictionary[vertex];
         }
 
         /// <summary>
-        /// Spojí dvě komponenty obsahující dané vrcholy
+        /// Union two components
         /// Time complexity: O(V)
         /// </summary>
-        /// <param name="vertex1">vrchol z první komponenty</param>
-        /// <param name="vertex2">vrchol z druhé komponenty</param>
+        /// <param name="vertex1">first vertex</param>
+        /// <param name="vertex2">second vertex</param>
         private void CycleUnion(IVertexInterface vertex1, IVertexInterface vertex2)
         {
             IVertexInterface vertex1Representative = CycleFind(vertex1);
             IVertexInterface vertex2Representative = CycleFind(vertex2);
-            
+
+            if (vertex1Representative == vertex2Representative)
+                return;
+
             for (int i = 0; i < cycleDisjointSetDictionary.Count; i++)
             {
                 IVertexInterface vertex = cycleDisjointSetDictionary.ElementAt(i).Key;

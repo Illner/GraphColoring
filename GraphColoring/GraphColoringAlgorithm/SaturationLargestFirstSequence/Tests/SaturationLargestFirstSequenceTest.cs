@@ -6,8 +6,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
 {
     class SaturationLargestFirstSequenceTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -22,9 +21,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
         private string algorithmSaturationLargestFirstSequence4 = SaturationLargestFirstSequenceResource.saturationLF4;
         private string algorithmSaturationLargestFirstSequence5 = SaturationLargestFirstSequenceResource.saturationLF5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum SaturationLargestFirstSequenceEnum
         {
             saturationLargestFirstSequence1,
@@ -34,9 +32,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
             saturationLargestFirstSequence5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public SaturationLargestFirstSequenceTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -110,9 +106,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence.Te
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathAlgorithmSaturationLargestFirstSequence;

@@ -6,8 +6,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 {
     class SpanningTreeTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -21,9 +20,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private string graphSpanningTree3 = SpanningTreeResource.graphSpanningTree3;
         private string graphSpanningTree4 = SpanningTreeResource.graphSpanningTree4;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum SpanningTreeEnum
         {
             graphSpanningTree1,
@@ -32,9 +30,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             graphSpanningTree4
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public SpanningTreeTest()
         {
             stringBuilder = new StringBuilder();
@@ -49,9 +46,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -113,9 +109,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathGraphSpanningTree;

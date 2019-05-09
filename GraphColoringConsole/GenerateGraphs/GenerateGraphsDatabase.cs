@@ -7,13 +7,11 @@ namespace GraphColoringConsole.GenerateGraphs
 {
     class GenerateGraphsDatabase : GenerateGraphs
     {
-        // Variable
-        #region
+        #region Variable
         private Database.Database database;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// Initialize GenerateGraphs
         /// </summary>
@@ -38,9 +36,8 @@ namespace GraphColoringConsole.GenerateGraphs
                 database.CleanDB();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Generate graphs with count of vertices greater than or equal to minCount and less than or equal to maxCount
         /// For invalid minCount and maxCount returns GenerateGraphsInvalidArgumentsMinCountMaxCountException
@@ -598,9 +595,8 @@ namespace GraphColoringConsole.GenerateGraphs
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return the DB
         /// </summary>

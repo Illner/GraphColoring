@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationReset" xml:space="preserve">
-    <value>The application has been reseted!</value>
+    <value>The application was reseted!</value>
   </data>
   <data name="ColorGraphErrorStatus" xml:space="preserve">
-    <value>The graph has not been colored!</value>
+    <value>The graph was not colored!</value>
   </data>
   <data name="ColorGraphNoSelectedAlgorithm" xml:space="preserve">
     <value>An algorithm is not selected. Please select some!</value>
@@ -133,34 +133,34 @@
     <value>The graph is coloring!</value>
   </data>
   <data name="ColorGraphSomethingWrong" xml:space="preserve">
-    <value>Something wrong. The graph isn't colored! Try it again!</value>
+    <value>Something wrong. The graph was not colored! Try it again!</value>
   </data>
   <data name="ColorGraphSomethingWrongStatus" xml:space="preserve">
-    <value>The graph has not been colored!</value>
+    <value>The graph was not colored!</value>
   </data>
   <data name="ColorGraphSomethingWrongTitle" xml:space="preserve">
     <value>Something wrong</value>
   </data>
   <data name="ColorGraphStatus" xml:space="preserve">
-    <value>The graph has been colored.</value>
+    <value>The graph was colored.</value>
   </data>
   <data name="ComplementGraphProgressStatus" xml:space="preserve">
     <value>It's creating a complement graph.</value>
   </data>
   <data name="ComplementGraphStatus" xml:space="preserve">
-    <value>The complement graph has been created.</value>
+    <value>The complement graph was created.</value>
   </data>
   <data name="GenerateGraphProgressStatus" xml:space="preserve">
     <value>The graph is generating.</value>
   </data>
   <data name="GenerateGraphStatus" xml:space="preserve">
-    <value>The graph has been generated.</value>
+    <value>The graph was generated.</value>
   </data>
   <data name="GraphDrawingProgressStatus" xml:space="preserve">
     <value>The graph is drawing!</value>
   </data>
   <data name="GraphDrawingStatus" xml:space="preserve">
-    <value>The graph has been drawn.</value>
+    <value>The graph was drawn.</value>
   </data>
   <data name="GraphModificationDeleteVertexOne" xml:space="preserve">
     <value>You can't remove the last vertex in the graph!</value>
@@ -190,7 +190,7 @@
     <value>The graph is being modified</value>
   </data>
   <data name="GraphModificationStatus" xml:space="preserve">
-    <value>The graph has been modified</value>
+    <value>The graph was modified</value>
   </data>
   <data name="GraphModificationVertexAlreadyExists" xml:space="preserve">
     <value>Vertex already exists. Please choose another vertex name!</value>
@@ -238,13 +238,13 @@
     <value>It's creating line graph.</value>
   </data>
   <data name="LineGraphStatus" xml:space="preserve">
-    <value>The line graph has been created.</value>
+    <value>The line graph was created.</value>
   </data>
   <data name="LoadGraphInvalidFile" xml:space="preserve">
     <value>The file is invalid. Please load another one!</value>
   </data>
   <data name="LoadGraphInvalidFileStatus" xml:space="preserve">
-    <value>The file has not been loaded!</value>
+    <value>The file was not loaded!</value>
   </data>
   <data name="LoadGraphInvalidFileTitle" xml:space="preserve">
     <value>Invalid file</value>
@@ -253,16 +253,16 @@
     <value>The graph is invalid. Please load another one!</value>
   </data>
   <data name="LoadGraphInvalidGraphStatus" xml:space="preserve">
-    <value>The graph has not been loaded.</value>
+    <value>The graph was not loaded.</value>
   </data>
   <data name="LoadGraphInvalidGraphTitle" xml:space="preserve">
     <value>Invalid graph</value>
   </data>
   <data name="LoadGraphInvalidPath" xml:space="preserve">
-    <value>Path doesn't exist! The graph has not been loaded!</value>
+    <value>Path doesn't exist! The graph was not loaded!</value>
   </data>
   <data name="LoadGraphInvalidPathStatus" xml:space="preserve">
-    <value>The graph has not been loaded!</value>
+    <value>The graph was not loaded!</value>
   </data>
   <data name="LoadGraphInvalidPathTitle" xml:space="preserve">
     <value>Invalid path</value>
@@ -271,7 +271,7 @@
     <value>We don't support these files. We support only files with .graph.</value>
   </data>
   <data name="LoadGraphInvalidTypeStatus" xml:space="preserve">
-    <value>The graph has not been loaded!</value>
+    <value>The graph was not loaded!</value>
   </data>
   <data name="LoadGraphInvalidTypeTitle" xml:space="preserve">
     <value>Invalid file type</value>
@@ -280,34 +280,34 @@
     <value>The graph is loading!</value>
   </data>
   <data name="LoadGraphStatus" xml:space="preserve">
-    <value>The graph has been loaded.</value>
+    <value>The graph was loaded.</value>
   </data>
   <data name="NewGraphProgressStatus" xml:space="preserve">
     <value>The graph is creating.</value>
   </data>
   <data name="NewGraphStatus" xml:space="preserve">
-    <value>The graph has been created.</value>
+    <value>The graph was created.</value>
   </data>
   <data name="PropertyProgressStatus" xml:space="preserve">
     <value>Properties are calculating.</value>
   </data>
   <data name="PropertyStatus" xml:space="preserve">
-    <value>Properties have been calculated.</value>
+    <value>Properties were calculated.</value>
   </data>
   <data name="SaveImageSomethingWrong" xml:space="preserve">
-    <value>The image has not been saved!</value>
+    <value>The image was not saved!</value>
   </data>
   <data name="SaveImageSomethingWrongTitle" xml:space="preserve">
     <value>Something wrong</value>
   </data>
   <data name="WriteGraph" xml:space="preserve">
-    <value>The graph has been saved.</value>
+    <value>The graph was saved.</value>
   </data>
   <data name="WriteGraphInvalidPath" xml:space="preserve">
-    <value>Path doesn't exist! The graph has not been saved!</value>
+    <value>Path doesn't exist! The graph was not saved!</value>
   </data>
   <data name="WriteGraphInvalidPathStatus" xml:space="preserve">
-    <value>The graph has not been saved!</value>
+    <value>The graph was not saved!</value>
   </data>
   <data name="WriteGraphInvalidPathTitle" xml:space="preserve">
     <value>Invalid path</value>
@@ -322,16 +322,16 @@
     <value>The graph is saving</value>
   </data>
   <data name="WriteGraphSomethingWrong" xml:space="preserve">
-    <value>Something wrong. The graph has not been saved! Try it again!</value>
+    <value>Something wrong. The graph was not saved! Try it again!</value>
   </data>
   <data name="WriteGraphSomethingWrongStatus" xml:space="preserve">
-    <value>The graph has not been saved!</value>
+    <value>The graph was not saved!</value>
   </data>
   <data name="WriteGraphSomethingWrongTitle" xml:space="preserve">
     <value>Something wrong</value>
   </data>
   <data name="WriteGraphStatus" xml:space="preserve">
-    <value>The graph has been saved.</value>
+    <value>The graph was saved.</value>
   </data>
   <data name="WriteGraphTitle" xml:space="preserve">
     <value>Saved graph</value>

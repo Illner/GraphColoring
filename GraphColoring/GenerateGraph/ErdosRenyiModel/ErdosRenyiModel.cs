@@ -5,14 +5,13 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
 {
     public partial class ErdosRenyiModel : IGenerateGraphInterface
     {
-        // Variable
+        #region Variable
         /// <summary>
         /// graph - generated graph
         /// countVertices - count vertices of generated graph
         /// erdosRenyiModelProbabilityEnum - probability attribute
         /// probability - probability for creating edge between two vertices (* 100)
         /// </summary>
-        #region
         private Graph.IGraphInterface graph;
         private int countVertices;
         private Random random;
@@ -21,9 +20,8 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
         private const string GRAPHNAME = "RandomGraph";
         private HashSet<Graph.IVertexInterface> usedVerticesHashSet;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// If count of vertices is less than 1 throws GraphInvalidCountVerticesException
         /// </summary>
@@ -45,9 +43,8 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
             SetRandom();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         private void SetRandom()
         {
             random = new Random();
@@ -106,9 +103,8 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
             return graph;
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return count of vertices 
         /// </summary>

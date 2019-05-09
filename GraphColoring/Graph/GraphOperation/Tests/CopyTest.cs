@@ -6,8 +6,7 @@ namespace GraphColoring.Graph.GraphOperation.Tests
 {
     class CopyTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -21,9 +20,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
         private string graphCopy3 = CopyResource.graphCopy3;
         private string graphCopy4 = CopyResource.graphCopy4;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum CopyEnum
         {
             graphCopy1,
@@ -32,9 +30,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             graphCopy4
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public CopyTest()
         {
             stringBuilder = new StringBuilder();
@@ -49,9 +46,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -110,9 +106,8 @@ namespace GraphColoring.Graph.GraphOperation.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathGraphCopy;

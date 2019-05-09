@@ -6,8 +6,7 @@ namespace GraphColoring.Graph
 {
     abstract partial class Graph
     {
-        // Method
-        #region
+        #region Method
         /// <summary>
         /// Add a new vertex
         /// Deinitialize colored graph

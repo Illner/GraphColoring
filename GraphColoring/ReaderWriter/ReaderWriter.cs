@@ -6,8 +6,7 @@ namespace GraphColoring.ReaderWriter
 {
     public abstract partial class ReaderWriter : IReaderWriterInterface
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
         /// path - file path
         /// newLine - char for a new line (\n)
@@ -23,9 +22,8 @@ namespace GraphColoring.ReaderWriter
         protected const string LEFTSEPARATORADJACENCYLIST = "(";
         protected const string RIGHTSEPARATORADJACENCYLIST = ")";
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// Initialize ReaderWriter
         /// Set file path
@@ -50,9 +48,8 @@ namespace GraphColoring.ReaderWriter
                 CheckPath();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Check if a path is valid - absolute path
         /// If the path is not valid throws ReaderWriterInavalidPathException("Invalid path")
@@ -175,9 +172,8 @@ namespace GraphColoring.ReaderWriter
             reader.DeleteFile();
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a char for a new line (\n)
         /// </summary>

@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoring.Graph.GraphProperty
 {
     partial class GraphProperty
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
-        /// order - the number of vertices
-        /// size - the number of edges
-        /// countComponents - Number of connected components
-        /// circuitRank - a linear combination of the numbers of edges, vertices, and components
+        /// order - number of vertices
+        /// size - number of edges
+        /// countComponents - number of connected components
+        /// circuitRank - a linear combination of the numbers of edges, vertices and components
         /// girth - the length of the shortest cycle
         /// cayleysFormula - number of spanning trees
         /// </summary>
@@ -30,11 +26,12 @@ namespace GraphColoring.Graph.GraphProperty
         private double? cayleysFormula;
         #endregion
 
-        // Method
-        #region
+        #region Method
         /// <summary>
-        /// Inkrementuje počet hran o jedna
-        /// Pokud není nastavená proměnná canDeIncreaseCountEdges, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
+        /// Increment number of edges
+        /// If canDeIncreaseCountEdges is false, throws GraphPermissionDeIncrementVerticesEdges
+        /// Change: size
+        /// Time complexity: O(1)
         /// </summary>
         public void IncrementCountEdges()
         {
@@ -45,9 +42,11 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Dekrementuje počet hran o jedna
-        /// Pokud není nastavená proměnná canDeIncreaseCountEdges, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
-        /// Pokud je počet hran 0, vyvolá se vyjímka GraphInvalidDecrementCountEdges
+        /// Decrement number of edges
+        /// If canDeIncreaseCountEdges is false, throws GraphPermissionDeIncrementVerticesEdges
+        /// If count of edges is equal to 0, throws GraphInvalidDecrementCountEdges
+        /// Change: size
+        /// Time complexity: O(1)
         /// </summary>
         public void DecrementCountEdges()
         {
@@ -61,11 +60,13 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Dekrementuje počet hran o count
-        /// Pokud není nastavená proměnná canDeIncreaseCountEdges, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
-        /// Pokud po dekrementaci bude min nez 0 hran, vyvolá se vyjímka GraphInvalidDecrementCountEdges
+        /// Decrement number of edges
+        /// If canDeIncreaseCountEdges is false, throws GraphPermissionDeIncrementVerticesEdges
+        /// If the new value is less than 0, throws GraphInvalidDecrementCountEdges
+        /// Change: size
+        /// Time complexity: O(1)
         /// </summary>
-        /// <param name="count">Počet hran pro dekrementaci</param>
+        /// <param name="count">number of edges to decrease</param>
         public void DecrementCountEdges(int count)
         {
             if (!graph.GetCanDeIncreaseCountEdges())
@@ -78,8 +79,10 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Inkrementuje počet vrcholu o jedna
-        /// Pokud není nastavená proměnná canDeIncreaseCountVertices, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
+        /// Increment number of vertices
+        /// If canDeIncreaseCountVertices is false, throws GraphPermissionDeIncrementVerticesEdges
+        /// Change: order
+        /// Time complexity: O(1)
         /// </summary>
         public void IncrementCountVertices()
         {
@@ -90,9 +93,11 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Dekrementuje počet vrcholu o jedna
-        /// Pokud není nastavená proměnná canDeIncreaseCountVertices, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
-        /// Pokud je počet vrcholů 0, vyvolá se vyjímka GraphInvalidDecrementCountVertices
+        /// Decrement number of vertices
+        /// If canDeIncreaseCountVertices is false, throws GraphPermissionDeIncrementVerticesEdges
+        /// If count of vertices is equal to 0, throws GraphInvalidDecrementCountVertices
+        /// Change: order
+        /// Time complexity: O(1)
         /// </summary>
         public void DecrementCountVertices()
         {
@@ -106,11 +111,13 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Dekrementuje počet vrcholu o coun
-        /// Pokud není nastavená proměnná canDeIncreaseCountVertices, vyvolá výjimku GraphPermissionDeIncrementVerticesEdges
-        /// Pokud je počet vrcholů 0, vyvolá se vyjímka GraphInvalidDecrementCountVertices
+        /// Decrement number of vertices
+        /// If canDeIncreaseCountVertices is false, throws GraphPermissionDeIncrementVerticesEdges
+        /// If the new value is less than 0, throws GraphInvalidDecrementCountVertices
+        /// Change: order
+        /// Time complexity: O(1)
         /// </summary>
-        /// <param name="count">Počet vrcholu pro dekrementaci</param>
+        /// <param name="count">number of vertices to decrease</param>
         public void DecrementCountVertices(int count)
         {
             if (!graph.GetCanDeIncreaseCountVertices())
@@ -123,11 +130,10 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Zjistí circuit rank
-        /// circuitRank, countComponents, componentsList
-        /// BFS
+        /// Determine circuit rank
+        /// Change: circuitRank, countComponents, componentsList
         /// Time complexity: O(V + E)
-        /// Sace complexity: O(V + E) + vytvořené grafy
+        /// Sace complexity: O(V + E) + new graphs
         /// </summary>
         private void CircuitRank()
         {
@@ -138,8 +144,8 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Zjistí celkový počet koster
-        /// cayleysFormula
+        /// Compute number of spanning trees
+        /// Change: cayleysFormula
         /// Time complexity: O(1)
         /// Space complexity: O(1)
         /// </summary>
@@ -148,40 +154,39 @@ namespace GraphColoring.Graph.GraphProperty
             cayleysFormula = Math.Pow(GetCountVertices(), (GetCountVertices() - 2));
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
-        /// Vrátí počet vrcholů
+        /// Return number of vertices (order)
         /// </summary>
-        /// <returns>počet vrcholů</returns>
+        /// <returns>number of vertices</returns>
         public int GetCountVertices()
         {
             return order;
         }
 
         /// <summary>
-        /// Nastaví počet vrcholů
+        /// Set number of vertices
         /// </summary>
-        /// <param name="countVertices">počet vrcholů</param>
+        /// <param name="countVertices">new number of vertices</param>
         private void SetCountVertices(int countVertices)
         {
             order = countVertices;
         }
         
         /// <summary>
-        /// Vrátí počet hran
+        /// Return number of edges (size)
         /// </summary>
-        /// <returns>počet hran</returns>
+        /// <returns>number of edges</returns>
         public int GetCountEdges()
         {
             return size;
         }
         
         /// <summary>
-        /// Vrátí počet komponent souvislosti
+        /// Return number of components
         /// </summary>
-        /// <returns>počet komponent souvislosti</returns>
+        /// <returns>number of components</returns>
         public int GetCountComponents()
         {
             if (!countComponents.HasValue)
@@ -191,7 +196,7 @@ namespace GraphColoring.Graph.GraphProperty
         }
         
         /// <summary>
-        /// Vrátí circuit rank
+        /// Return circuit rank
         /// </summary>
         /// <returns>circuit rank</returns>
         public int GetCircuitRank()
@@ -203,7 +208,7 @@ namespace GraphColoring.Graph.GraphProperty
         }
         
         /// <summary>
-        /// Vrátí girth
+        /// Return girth
         /// </summary>
         /// <returns>girth</returns>
         public int GetGirth()
@@ -215,9 +220,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí minimální stupeň vrcholu
+        /// Return minimal vertex degree
         /// </summary>
-        /// <returns>minimální stupeň vrcholu</returns>
+        /// <returns>minimal vertex degree</returns>
         public int GetMinimumVertexDegree()
         {
             if (!minimumVertexDegree.HasValue)
@@ -238,10 +243,11 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí první vrchol s daným stupněm.
+        /// Return vertex with the degree
+        /// If the vertex does not exist returns null
         /// </summary>
-        /// <param name="degree">daný stupěň</param>
-        /// <returns>vrchol s daným stupněm</returns>
+        /// <param name="degree">degree</param>
+        /// <returns>vertex with the degree</returns>
         public IVertexInterface GetVertexWithDegree(int degree)
         {
             if (degreeSequence == null)
@@ -251,9 +257,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí maximální stupeň vrcholu
+        /// Return maximal vertex degree
         /// </summary>
-        /// <returns>maximální stupeň vrcholu</returns>
+        /// <returns>maximal vertex degree</returns>
         public int GetMaximumVertexDegree()
         {
             if (!maximumVertexDegree.HasValue)
@@ -270,9 +276,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí průměrný stupeň vrcholu
+        /// Return average vertex degree
         /// </summary>
-        /// <returns>průměrný stupeň vrcholu</returns>
+        /// <returns>average vertex degree</returns>
         public double GetAverageVertexDegree()
         {
             if (!averageVertexDegree.HasValue)
@@ -286,9 +292,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Return median of vertex degree list
+        /// Return median of the vertex degree list
         /// </summary>
-        /// <returns>median of vertex degree list</returns>
+        /// <returns>median of the vertex degree list</returns>
         public int GetMedianVertexDegree()
         {
             if (!medianVertexDegree.HasValue)
@@ -311,9 +317,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí celkový počet koster grafu
+        /// Return number of spanning trees
         /// </summary>
-        /// <returns>celkový počet koster grafu</returns>
+        /// <returns>number of spanning trees</returns>
         public double GetCayleysFormula()
         {
             if (!cayleysFormula.HasValue)

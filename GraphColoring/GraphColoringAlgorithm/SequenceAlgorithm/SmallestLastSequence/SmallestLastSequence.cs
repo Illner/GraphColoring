@@ -6,8 +6,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
 {
     public class SmallestLastSequence : GraphColoringSequenceAlgorithm
     {
-        // Constructor
-        #region
+        #region Constructor
         public SmallestLastSequence(Graph.IGraphInterface graph, GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithInterchangeEnum.none) : base(graph)
         {
             // Interchange
@@ -32,9 +31,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             }
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Create a sequence of vertices
         /// Time complexity: O(n^2 + nm) + 0

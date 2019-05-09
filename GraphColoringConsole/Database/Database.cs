@@ -26,8 +26,7 @@ namespace GraphColoringConsole.Database
         private Dictionary<GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum, int> GraphColoringAlgorithmEnumIDDictionary;
         #endregion
         
-        // Constructor
-        #region
+        #region Constructor
         public Database(string datasource, string database, string username, string password)
         {
             this.datasource = datasource;
@@ -48,8 +47,7 @@ namespace GraphColoringConsole.Database
         }
         #endregion
         
-        // Method
-        #region
+        #region Method
         private void FillDictionaries()
         {
             int id;
@@ -100,8 +98,7 @@ namespace GraphColoringConsole.Database
             }
         }
         
-        // Core SQL function / procedure
-        #region
+        #region Core SQL function / procedure
         /// <summary>
         /// create function GetEulerianGraph_ID(
         /// @name varchar(30)
@@ -1563,8 +1560,7 @@ namespace GraphColoringConsole.Database
 
         #endregion
         
-        // Property
-        #region
+        #region Property
         public ConnectionState GetConnectionState()
         {
             return connection.State;

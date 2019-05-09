@@ -6,8 +6,7 @@ namespace GraphColoring.ReaderWriter.Tests
 {
     class WriterTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IReaderGraphInterface reader;
         private WriterGraph writer;
         private String testPath;
@@ -20,9 +19,8 @@ namespace GraphColoring.ReaderWriter.Tests
         private string writerGraph2 = WriterResource.graph2;
 
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum PathEnum
         {
             write,
@@ -30,9 +28,8 @@ namespace GraphColoring.ReaderWriter.Tests
             first
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public WriterTest()
         {
             stringBuilder = new StringBuilder();
@@ -46,9 +43,8 @@ namespace GraphColoring.ReaderWriter.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -145,9 +141,8 @@ namespace GraphColoring.ReaderWriter.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathWriter;

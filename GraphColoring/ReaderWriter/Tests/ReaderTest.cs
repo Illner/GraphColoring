@@ -7,8 +7,7 @@ namespace GraphColoring.ReaderWriter.Tests
 {
     class ReaderTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private ReaderGraph reader;
         private Graph.IGraphInterface graph;
         private StringBuilder stringBuilder;
@@ -115,9 +114,8 @@ namespace GraphColoring.ReaderWriter.Tests
 
         private string readerGraphAdjacencyListInvalidUsedAlgorithm = ReaderResource.GraphAdjacencyListInvalidUsedAlgorithm;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum PathEnum
         {
             valid,
@@ -133,8 +131,7 @@ namespace GraphColoring.ReaderWriter.Tests
         }
         #endregion
 
-        // Constructor
-        #region
+        #region Constructor
         public ReaderTest()
         {
             stringBuilder = new StringBuilder();
@@ -193,9 +190,8 @@ namespace GraphColoring.ReaderWriter.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all types of files (PathEnum) and representations of graphs (Graph.GraphRepresentationEnum)
         /// </summary>
@@ -287,9 +283,8 @@ namespace GraphColoring.ReaderWriter.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathReader;

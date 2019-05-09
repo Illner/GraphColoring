@@ -5,8 +5,7 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
 {
     class ErdosRenyiModelTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
         private StringBuilder stringBuilder;
         private ErdosRenyiModel erdosRenyiModel;
@@ -15,9 +14,8 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
         // Path
         private string testPathErdosRenyiModel = @"Testing\Test\GenerateGraphErdosRenyiModel.txt";
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum ErdosRenyiModelEnum
         {
             erdosRenyiModelCDividedByNLessThanOne,
@@ -27,17 +25,15 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
             invalidVerticesCount
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ErdosRenyiModelTest()
         {
             stringBuilder = new StringBuilder();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -132,9 +128,8 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathErdosRenyiModel;

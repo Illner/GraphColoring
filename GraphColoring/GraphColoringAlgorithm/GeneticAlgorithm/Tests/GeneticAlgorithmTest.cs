@@ -6,8 +6,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.Tests
 {
     class GeneticAlgorithmTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
         private StringBuilder stringBuilder;
         private Random random;
@@ -16,26 +15,23 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.Tests
         // Paths
         private string testPathAlgorithmGenetic = @"Testing\Test\GeneticAlgorithm.txt";
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum GeneticAlgorithmEnum
         {
             randomGraphs
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public GeneticAlgorithmTest()
         {
             stringBuilder = new StringBuilder();
             random = new Random();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -89,9 +85,8 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathAlgorithmGenetic;

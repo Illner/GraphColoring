@@ -7,8 +7,7 @@ namespace GraphColoringConsole.GenerateTimeComplexity
 {
     public class GenerateTimeComplexity
     {
-        // Variable
-        #region
+        #region Variable
         private int countOfVertices;
         private bool writer, clearFile;
         private Stopwatch myStopwatch = new Stopwatch();
@@ -20,9 +19,8 @@ namespace GraphColoringConsole.GenerateTimeComplexity
         private static string timeComplexityFile = "TimeComplexity.txt";
         private static string pathFile = pathFolder + timeComplexityFile;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public GenerateTimeComplexity(bool writer = true, bool clearFile = false, bool useGeneticAlgorithm2 = true, bool useInterchangeExtendedK3 = true)
         {
             this.writer = writer;
@@ -31,9 +29,8 @@ namespace GraphColoringConsole.GenerateTimeComplexity
             this.useInterchangeExtendedK3 = useInterchangeExtendedK3;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         public void Generate(int countOfVertices, int countOfGraphs)
         {
             if (countOfVertices <= 0)
@@ -60,11 +57,14 @@ namespace GraphColoringConsole.GenerateTimeComplexity
 
             for (int c = 0; c < countOfGraphs; c++)
             {
-                Console.WriteLine("------------------------");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("Count of graphs: {0} / {1}", (c + 1), countOfGraphs);
-                Console.WriteLine("------------------------");
-                Console.WriteLine("------------------------");
+                if (writer)
+                {
+                    Console.WriteLine("------------------------");
+                    Console.WriteLine("------------------------");
+                    Console.WriteLine("Count of graphs: {0} / {1}", (c + 1), countOfGraphs);
+                    Console.WriteLine("------------------------");
+                    Console.WriteLine("------------------------");
+                }
 
                 GenerateGraphs();
 
@@ -87,7 +87,8 @@ namespace GraphColoringConsole.GenerateTimeComplexity
                         algorithmEnum == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI)
                         continue;
 
-                    if (!useGeneticAlgorithm2 && algorithmEnum == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2)
+                    if (!useGeneticAlgorithm2 && (algorithmEnum == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2 ||
+                        algorithmEnum == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm))
                         continue;
 
                     if (!useInterchangeExtendedK3 && (algorithmEnum == GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3 ||
@@ -266,10 +267,10 @@ namespace GraphColoringConsole.GenerateTimeComplexity
                 {
                     file.WriteLine("Algorithm: " + record.Key);
                     file.WriteLine("Sparse: ");
-                    file.WriteLine("Time: " + record.Value.First / (COUNTITERATIONSTIMECOMPLEXITY * countOfGraphs));
+                    file.WriteLine("Time (average): " + record.Value.First / (COUNTITERATIONSTIMECOMPLEXITY * countOfGraphs));
                     file.WriteLine("Count of interchange calls: " + countInterchangeCallsDictionary[record.Key].First / countOfGraphs);
                     file.WriteLine("Dense: ");
-                    file.WriteLine("Time: " + record.Value.Second / (COUNTITERATIONSTIMECOMPLEXITY * countOfGraphs));
+                    file.WriteLine("Time (average): " + record.Value.Second / (COUNTITERATIONSTIMECOMPLEXITY * countOfGraphs));
                     file.WriteLine("Count of interchange calls: " + countInterchangeCallsDictionary[record.Key].Second / countOfGraphs);
                 }
             }
@@ -317,9 +318,8 @@ namespace GraphColoringConsole.GenerateTimeComplexity
             public T2 Second { get; set; }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a path file
         /// </summary>

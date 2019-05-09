@@ -61,7 +61,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The application has been reseted!.
+        ///   Looks up a localized string similar to The application was reseted!.
         /// </summary>
         internal static string ApplicationReset {
             get {
@@ -70,7 +70,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has not been colored!.
+        ///   Looks up a localized string similar to The graph was not colored!.
         /// </summary>
         internal static string ColorGraphErrorStatus {
             get {
@@ -106,7 +106,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Something wrong. The graph isn&apos;t colored! Try it again!.
+        ///   Looks up a localized string similar to Something wrong. The graph was not colored! Try it again!.
         /// </summary>
         internal static string ColorGraphSomethingWrong {
             get {
@@ -115,7 +115,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has not been colored!.
+        ///   Looks up a localized string similar to The graph was not colored!.
         /// </summary>
         internal static string ColorGraphSomethingWrongStatus {
             get {
@@ -133,7 +133,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has been colored..
+        ///   Looks up a localized string similar to The graph was colored..
         /// </summary>
         internal static string ColorGraphStatus {
             get {
@@ -151,7 +151,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The complement graph has been created..
+        ///   Looks up a localized string similar to The complement graph was created..
         /// </summary>
         internal static string ComplementGraphStatus {
             get {
@@ -169,7 +169,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has been generated..
+        ///   Looks up a localized string similar to The graph was generated..
         /// </summary>
         internal static string GenerateGraphStatus {
             get {
@@ -187,7 +187,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has been drawn..
+        ///   Looks up a localized string similar to The graph was drawn..
         /// </summary>
         internal static string GraphDrawingStatus {
             get {
@@ -277,7 +277,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has been modified.
+        ///   Looks up a localized string similar to The graph was modified.
         /// </summary>
         internal static string GraphModificationStatus {
             get {
@@ -421,7 +421,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The line graph has been created..
+        ///   Looks up a localized string similar to The line graph was created..
         /// </summary>
         internal static string LineGraphStatus {
             get {
@@ -439,7 +439,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The file has not been loaded!.
+        ///   Looks up a localized string similar to The file was not loaded!.
         /// </summary>
         internal static string LoadGraphInvalidFileStatus {
             get {
@@ -466,7 +466,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has not been loaded..
+        ///   Looks up a localized string similar to The graph was not loaded..
         /// </summary>
         internal static string LoadGraphInvalidGraphStatus {
             get {
@@ -484,7 +484,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Path doesn&apos;t exist! The graph has not been loaded!.
+        ///   Looks up a localized string similar to Path doesn&apos;t exist! The graph was not loaded!.
         /// </summary>
         internal static string LoadGraphInvalidPath {
             get {
@@ -493,7 +493,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has not been loaded!.
+        ///   Looks up a localized string similar to The graph was not loaded!.
         /// </summary>
         internal static string LoadGraphInvalidPathStatus {
             get {
@@ -520,7 +520,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has not been loaded!.
+        ///   Looks up a localized string similar to The graph was not loaded!.
         /// </summary>
         internal static string LoadGraphInvalidTypeStatus {
             get {
@@ -547,7 +547,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has been loaded..
+        ///   Looks up a localized string similar to The graph was loaded..
         /// </summary>
         internal static string LoadGraphStatus {
             get {
@@ -565,7 +565,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has been created..
+        ///   Looks up a localized string similar to The graph was created..
         /// </summary>
         internal static string NewGraphStatus {
             get {
@@ -583,7 +583,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Properties have been calculated..
+        ///   Looks up a localized string similar to Properties were calculated..
         /// </summary>
         internal static string PropertyStatus {
             get {
@@ -592,7 +592,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The image has not been saved!.
+        ///   Looks up a localized string similar to The image was not saved!.
         /// </summary>
         internal static string SaveImageSomethingWrong {
             get {
@@ -610,7 +610,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has been saved..
+        ///   Looks up a localized string similar to The graph was saved..
         /// </summary>
         internal static string WriteGraph {
             get {
@@ -619,7 +619,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Path doesn&apos;t exist! The graph has not been saved!.
+        ///   Looks up a localized string similar to Path doesn&apos;t exist! The graph was not saved!.
         /// </summary>
         internal static string WriteGraphInvalidPath {
             get {
@@ -628,7 +628,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has not been saved!.
+        ///   Looks up a localized string similar to The graph was not saved!.
         /// </summary>
         internal static string WriteGraphInvalidPathStatus {
             get {
@@ -673,7 +673,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Something wrong. The graph has not been saved! Try it again!.
+        ///   Looks up a localized string similar to Something wrong. The graph was not saved! Try it again!.
         /// </summary>
         internal static string WriteGraphSomethingWrong {
             get {
@@ -682,7 +682,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has not been saved!.
+        ///   Looks up a localized string similar to The graph was not saved!.
         /// </summary>
         internal static string WriteGraphSomethingWrongStatus {
             get {
@@ -700,7 +700,7 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The graph has been saved..
+        ///   Looks up a localized string similar to The graph was saved..
         /// </summary>
         internal static string WriteGraphStatus {
             get {

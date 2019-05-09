@@ -10,8 +10,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
 {
     public static class AIAlgorithm
     {
-        // Variable
-        #region
+        #region Variable
         private static MLContext mlContext;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, string> modelPathDictionary;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, ITransformer> modelDictionary;
@@ -48,9 +47,8 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
         private static string geneticAlgorithmModelPath = pathModels + "model-geneticAlgorithm.zip";
         private static string geneticAlgorithm2ModelPath = pathModels + "model-geneticAlgorithm2.zip";
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         static AIAlgorithm()
         {
             mlContext = new MLContext();
@@ -129,9 +127,8 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Return "the best" algorithm for a graph
         /// </summary>
@@ -203,11 +200,6 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
 
             return loadedModel;
         }
-        #endregion
-
-        // Property
-        #region
-
         #endregion
     }
 }

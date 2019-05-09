@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphProperty
 {
     partial class GraphProperty
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
+        /// degreeSequence - graph score
+        /// isDegreeSequenceSorted - is sorted graph score
         /// degreeSequence - skóre grafu
-        /// isDegreeSequenceSorted - je setříděné skóre grafu
-        /// spanningTree - kostra grafu
-        /// matching - maximální párování grafu
-        /// cutVertices - artikulace grafu
-        /// bridges - mosty grafu
-        /// eulerianPath - eulerovský cyklus, nebo eulerovský tah v grafu
-        /// perfectEliminationOrderList - perfect elimination ordering (chordal)
+        /// perfectEliminationOrderList - perfect elimination ordering (if graph is chordal)
         /// </summary>
         private List<KeyValuePair<IVertexInterface, int>> degreeSequence;
         private bool isDegreeSequenceSorted = false;
@@ -32,18 +25,17 @@ namespace GraphColoring.Graph.GraphProperty
         private List<IVertexInterface> perfectEliminationOrderingList;
         private List<IVertexInterface> firstPartite;
         private List<IVertexInterface> secondPartite;
-        // private List<arc> eulerianPath;
         #endregion
 
-        // Method
-        #region
+        #region Method
         /// <summary>
-        /// Získá skóre grafu
-        /// degreeSequenceInt, degreeSequenceVertex
-        /// Time complexity: O(V^2) / O(V)
+        /// Get graph score
+        /// Change: degreeSequenceInt, degreeSequenceVertex
+        /// Time complexity (unsorted): O(V + E)
+        /// Time complexity (sorted): O(V^2)
         /// Space complexity: O(V)
         /// </summary>
-        /// <param name="sorted">setřídit skóre</param>
+        /// <param name="sorted">sorted graph score</param>
         private void DegreeSequence(bool sorted)
         {
             // Variable
@@ -70,9 +62,8 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Získá kostru grafu pomocí BFS
-        /// spanningTreeBFS
-        /// BFS
+        /// Get (BFS) spanning tree
+        /// Change: spanningTreeBFS
         /// Time complexity: O(V + E)
         /// Space complexity: O(V + E)
         /// </summary>
@@ -113,21 +104,21 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Získá maximální párování grafu
-        /// matching
+        /// Get maximal matching (Edmons algorithm)
+        /// Change: matching
+        /// Not implemented!
         /// </summary>
         private void Matching()
         {
-            // TODO Matching - R1809
+            throw new NotImplementedException();
         }
 
         /// <summary>
         /// Get all bridges and cut vertices
-        /// bridges, cutVertices
-        /// Must be connected!
-        /// DFS
+        /// Change: bridges, cutVertices
+        /// Graph must be connected!
         /// Time complexity: O(V + E)
-        /// Space complexity: O(V)
+        /// Space complexity: O(V + E)
         /// </summary>
         private void BridgesCutVertices()
         {
@@ -205,14 +196,12 @@ namespace GraphColoring.Graph.GraphProperty
         }
         #endregion
 
-        // Property
-        #region
-
+        #region Property
         /// <summary>
-        /// Vrátí skóre grafu
+        /// Get graph score
         /// </summary>
-        /// <param name="sorted">má se setřídit</param>
-        /// <returns>skóre grafu jako list Vertexů</returns>
+        /// <param name="sorted">sorted degree sequence</param>
+        /// <returns>graph score - only list of vertices</returns>
         public List<IVertexInterface> GetDegreeSequenceVertex(bool sorted)
         {
             if (degreeSequence == null)
@@ -225,10 +214,10 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí skóre grafu
+        /// Get graph score
         /// </summary>
-        /// <param name="sorted">má se setřídit</param>
-        /// <returns>skóre grafu jako list intů</returns>
+        /// <param name="sorted">sorted degree sequence</param>
+        /// <returns>graph score - only list of degrees (int)</returns>
         public List<int> GetDegreeSequenceInt(bool sorted)
         {
             if (degreeSequence == null)
@@ -243,8 +232,8 @@ namespace GraphColoring.Graph.GraphProperty
         /// <summary>
         /// Return degree sequence of the graph
         /// </summary>
-        /// <param name="sorted">sorted degree sequence?</param>
-        /// <returns>List of tuples (vertex, int - degree)</returns>
+        /// <param name="sorted">sorted degree sequence</param>
+        /// <returns>graph score - list of tuples (vertex, int - degree)</returns>
         public List<KeyValuePair<IVertexInterface, int>> GetDegreeSequence(bool sorted)
         {
             if (degreeSequence == null)
@@ -257,10 +246,10 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí kostru grafu
-        /// Pokud graf není souvislý, tak vrátí prázdnou kostru
+        /// Get spanning tree
+        /// If the graph is not connected returns empty set of edges
         /// </summary>
-        /// <returns>kostru grafu jako list</returns>
+        /// <returns>spanning tree - list of edges</returns>
         public List<IEdgeInterface> GetSpanningTree()
         {
             if (spanningTreeBFS == null)
@@ -275,9 +264,10 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí párování grafu
+        /// Get maximal matching
+        /// Not implemented!
         /// </summary>
-        /// <returns>párování grafu jako list hran</returns>
+        /// <returns>matching - list of vertices</returns>
         public List<IEdgeInterface> GetMatching()
         {
             if (matching == null)
@@ -287,9 +277,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
         
         /// <summary>
-        /// Vrátí artikulace grafu
+        /// Get cut vertices
         /// </summary>
-        /// <returns>artikulace grafu jako list vrcholů</returns>
+        /// <returns>cut vertices - list of vertices</returns>
         public List<IVertexInterface> GetCutVertices()
         {
             if (cutVertices == null)
@@ -299,9 +289,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
         
         /// <summary>
-        /// Vrátí mosty grafu
+        /// Get bridges
         /// </summary>
-        /// <returns>mosty grafu jako list hran</returns>
+        /// <returns>bridges - list of edges</returns>
         public List<IEdgeInterface> GetBridges()
         {
             if (bridges == null)
@@ -311,10 +301,10 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Return perfect elimination ordering if graph is chordal, otherwise return List with size 0
+        /// Return perfect elimination ordering if the graph is chordal, otherwise return List with size 0
         /// Simplicial vertex is the last vertex in the sequence!
         /// </summary>
-        /// <returns>Perfect elimination ordering if graph is chordal</returns>
+        /// <returns>Perfect elimination ordering</returns>
         public List<IVertexInterface> GetPerfectEliminationOrdering()
         {
             if (perfectEliminationOrderingList == null)
@@ -338,9 +328,9 @@ namespace GraphColoring.Graph.GraphProperty
 
         /// <summary>
         /// Set the first partite and the second partite
-        /// If the graphClass is not set to undefined ot bipartite throws GraphIsNotBipartiteOrUndefined
+        /// If the graphClass is not set to undefined or bipartite throws GraphIsNotBipartiteOrUndefined
         /// Only for GetGraphClass(IGraphInterface) or IsBipartiteGraph(IGraphInterface)
-        /// firstPartite, secondPartite
+        /// Change: firstPartite, secondPartite
         /// </summary>
         /// <param name="firstPartite">first partite</param>
         /// <param name="secondPartite">second partite</param>

@@ -6,23 +6,20 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal
 {
     public sealed class Optimal : GraphColoringAlgorithm
     {
-        // Variable
-        #region
+        #region Variable
         private List<Graph.IVertexInterface> optimalVertexList;
         private int optimalCountColors = int.MaxValue;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public Optimal(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Optimal algorithm";
             timeComplexity = TimeComplexityEnum.factorial;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// Time complexity: O(n! + m)

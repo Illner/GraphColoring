@@ -4,8 +4,7 @@ namespace GraphColoringConsole.GenerateGraphs
 {
     abstract partial class GenerateGraphs
     {
-        // Variable
-        #region
+        #region Variable
         protected bool writer;
         
         protected GraphColoring.Graph.IGraphInterface graph;
@@ -17,9 +16,8 @@ namespace GraphColoringConsole.GenerateGraphs
         protected bool useGeneticAlgorithm2;
         protected bool useInterchangeExtendedK3;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// Initialize GenerateGraphs
         /// </summary>
@@ -35,9 +33,8 @@ namespace GraphColoringConsole.GenerateGraphs
             colorGraphs = new ColorGraphs.ColorGraphs();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Generate graphs with count of vertices greater than or equal to minCount and less than or equal to maxCount
         /// For invalid minCount and maxCount returns GenerateGraphsInvalidArgumentsMinCountMaxCountException

@@ -5,23 +5,20 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
 {
     public sealed class GreedyIndependentSet : GraphColoringAlgorithm
     {
-        // Variable
-        #region
+        #region Variable
         private int color = 1;
         private Graph.IGraphInterface copyGraph;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public GreedyIndependentSet(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Greedy independent set algorithm";
             timeComplexity = TimeComplexityEnum.undefined;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// </summary>

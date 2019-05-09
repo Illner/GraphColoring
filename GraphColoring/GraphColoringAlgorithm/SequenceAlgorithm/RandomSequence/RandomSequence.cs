@@ -4,8 +4,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
 {
     public sealed class RandomSequence : GraphColoringSequenceAlgorithm
     {
-        // Constructor
-        #region
+        #region Constructor
         public RandomSequence(Graph.IGraphInterface graph, GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithInterchangeEnum.none) : base(graph)
         {
             // Interchange
@@ -30,9 +29,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
             }
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Create a sequence of vertices
         /// Time complexity: O(n)

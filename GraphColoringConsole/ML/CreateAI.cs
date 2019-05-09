@@ -15,8 +15,7 @@ namespace GraphColoringConsole.ML
 {
     partial class CreateAI
     {
-        // Variable
-        #region
+        #region Variable
         private AIEnum aiEnum;
         private MLContext mlContext;
         private ITransformer trainedModel;
@@ -41,9 +40,8 @@ namespace GraphColoringConsole.ML
         private double negativePrecision, positionPrecision;
         private double negativeRecall, positiveRecall;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// Initialize CreateAI
         /// </summary>
@@ -74,9 +72,8 @@ namespace GraphColoringConsole.ML
             this.algorithmEnum = algorithmEnum;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Create a binary classification model
         /// </summary>
@@ -218,9 +215,8 @@ namespace GraphColoringConsole.ML
                 mlContext.Model.Save(trainedModel, fileStream);
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a path
         /// </summary>

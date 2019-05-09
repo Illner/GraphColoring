@@ -6,8 +6,7 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
 {
     class OptimalTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -22,9 +21,8 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
         private string algorithmOptimal4 = OptimalResource.optimal4;
         private string algorithmOptimal5 = OptimalResource.optimal5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum OptimalEnum
         {
             optimal1,
@@ -34,9 +32,8 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
             optimal5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public OptimalTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -110,9 +106,8 @@ namespace GraphColoring.GraphColoringAlgorithm.Optimal.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathAlgorithmOptimal;

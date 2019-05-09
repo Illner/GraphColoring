@@ -5,16 +5,14 @@ namespace GraphColoring.Graph
 {
     public class Vertex : IVertexInterface
     {
-        // Variable
-        #region
+        #region Variable
         protected int color;
         protected int identifier;
         private string userName;
         private static int counter = 1;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// Create a vertex
         /// User name will be same as identifier
@@ -47,9 +45,8 @@ namespace GraphColoring.Graph
         /// <param name="useless">useless</param>
         protected Vertex(bool useless) { }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Compare two vertices
         /// Return true if vertices are equal, otherwise false
@@ -74,9 +71,8 @@ namespace GraphColoring.Graph
             return stringBuilder.ToString();
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return an identifier of vertex
         /// </summary>

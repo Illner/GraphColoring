@@ -6,13 +6,11 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
 {
     public sealed class LargestFirstSequence : GraphColoringSequenceAlgorithm, IGraphColoringAlgorithmStepInterface
     {
-        // Variable
-        #region
+        #region Variable
         private List<Graph.IVertexInterface> degreeSequenceVertexReverse;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public LargestFirstSequence(Graph.IGraphInterface graph, GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithInterchangeEnum.none) : base(graph)
         {
             // Interchange
@@ -37,9 +35,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             }
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Create a sequence of vertices
         /// Time complexity: O(n) + O(n^2)

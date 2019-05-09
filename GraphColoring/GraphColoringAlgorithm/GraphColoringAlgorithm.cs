@@ -4,8 +4,7 @@ namespace GraphColoring.GraphColoringAlgorithm
 {
     public abstract partial class GraphColoringAlgorithm : IGraphColoringAlgorithmInterface
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
         /// name - algorithm name (default: Algorithm)
         /// graph - particular graph which we want to color
@@ -18,9 +17,8 @@ namespace GraphColoring.GraphColoringAlgorithm
         private int countVertices;
         protected int countInterchangeCalls;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public GraphColoringAlgorithm(Graph.IGraphInterface graph)
         {
             this.graph = graph;
@@ -29,9 +27,8 @@ namespace GraphColoring.GraphColoringAlgorithm
             countVertices = graph.GetRealCountVertices();
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// Exceptions: AlgorithmInvalidVertexSequence, AlgorithmGraphIsNotColored
@@ -49,9 +46,8 @@ namespace GraphColoring.GraphColoringAlgorithm
             return (double)coloredGraph.GetColoredVertexList().Count / countVertices;
         }
         #endregion
-
-        // Properly
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a graph
         /// </summary>

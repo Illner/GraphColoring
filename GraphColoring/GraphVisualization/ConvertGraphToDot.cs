@@ -7,7 +7,7 @@ namespace GraphColoring.GraphVisualization
 {
     class ConvertGraphToDot : IConvertGraphToDotInterface
     {
-        // Variable
+        #region Variable
         private List<Graph.IGraphInterface> graphList;
         private const int MAXCOLORS = 15;
         private StringBuilder stringBuilder;
@@ -26,6 +26,7 @@ namespace GraphColoring.GraphVisualization
         private double widthSpanningTree = 4.0;
         private double widthCutVertex = 2.0;
         private double widthDefault = 1.0;
+        #endregion
 
         // Initialize Colors
         private static Dictionary<int, String> colorsDictionary = new Dictionary<int, string>()
@@ -46,8 +47,8 @@ namespace GraphColoring.GraphVisualization
             {14, "darkslategray" },
             {15, "white" }
         };
-
-        // Constructor
+        
+        #region Constructor
         public ConvertGraphToDot(List<Graph.IGraphInterface> graphList, bool isSchedule, bool showSpanningTree, bool showSimplicialVertex,
             bool showCutVerticesAndBridges, bool showMaximumAndMinimumDegreeVertices)
         {
@@ -59,8 +60,9 @@ namespace GraphColoring.GraphVisualization
             this.showCutVerticesAndBridges = showCutVerticesAndBridges;
             this.showMaximumAndMinimumDegreeVertices = showMaximumAndMinimumDegreeVertices;
         }
-
-        // Method
+        #endregion
+        
+        #region Method
         public string Convert()
         {
             if (isSchedule)
@@ -231,9 +233,9 @@ namespace GraphColoring.GraphVisualization
 
             return stringBuilder.ToString();
         }
-
-        // Property
-        #region
+        #endregion
+        
+        #region Property
         public bool GetIsSchedule()
         {
             return isSchedule;

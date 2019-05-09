@@ -6,8 +6,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
 {
     class LargestFirstSequenceTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -22,9 +21,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         private string algorithmLargestFirstSequence4 = LargestFirstSequenceResource.largestFirstSequence4;
         private string algorithmLargestFirstSequence5 = LargestFirstSequenceResource.largestFirstSequence5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum LargestFirstSequenceEnum
         {
             largestFirstSequence1,
@@ -34,9 +32,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             largestFirstSequence5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public LargestFirstSequenceTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -111,9 +107,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathAlgorithmLargestFirstSequence;

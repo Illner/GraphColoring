@@ -5,23 +5,20 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
 {
     class AI : GraphColoringAlgorithm
     {
-        // Variable
-        #region
+        #region Variable
         GraphColoringAlgorithmEnum algorithmEnum;
         IGraphColoringAlgorithmInterface algorithm;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public AI(Graph.IGraphInterface graph) : base(graph)
         {
             name = "AI";
             timeComplexity = TimeComplexityEnum.undefined;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// </summary>
@@ -195,11 +192,6 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             if (!isColored)
                 throw new MyException.GraphColoringAlgorithmException.AlgorithmGraphIsNotColored();
         }
-        #endregion
-
-        // Property
-        #region
-
         #endregion
     }
 }

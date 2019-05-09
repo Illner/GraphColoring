@@ -670,7 +670,7 @@
             this.SimplicialVertexValueGraphPropertiesLabel.AutoSize = true;
             this.SimplicialVertexValueGraphPropertiesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.SimplicialVertexValueGraphPropertiesLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.SimplicialVertexValueGraphPropertiesLabel.Location = new System.Drawing.Point(126, 515);
+            this.SimplicialVertexValueGraphPropertiesLabel.Location = new System.Drawing.Point(116, 517);
             this.SimplicialVertexValueGraphPropertiesLabel.Name = "SimplicialVertexValueGraphPropertiesLabel";
             this.SimplicialVertexValueGraphPropertiesLabel.Size = new System.Drawing.Size(29, 16);
             this.SimplicialVertexValueGraphPropertiesLabel.TabIndex = 38;

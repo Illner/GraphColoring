@@ -9,7 +9,7 @@ namespace GraphColoring.GraphVisualization
 {
     partial class GraphVisualization : IGraphVisualizationInterface
     {
-        // Variable
+        #region Variable
         private Image image;
         private List<Graph.IGraphInterface> graphList;
         private const int MAXALLOWEDVERTICES = 50;
@@ -26,8 +26,9 @@ namespace GraphColoring.GraphVisualization
         private const string LIB_GVC = @".\GraphVisualization\DOT\gvc.dll";
         private const string LIB_GRAPH = @".\GraphVisualization\DOT\cgraph.dll";
         private const int SUCCESS = 0;
-
-        // Constructor
+        #endregion
+        
+        #region Constructor
         /// <summary>
         /// Constructor
         /// Default value for fileNameExtensionEnum is .jpg
@@ -61,6 +62,7 @@ namespace GraphColoring.GraphVisualization
             this.showCutVerticesAndBridges = showCutVerticesAndBridges;
             this.showMaximumAndMinimumDegreeVertices = showMaximumAndMinimumDegreeVertices;
         }
+        #endregion
 
         /// 
         /// Creates a new Graphviz context.
@@ -121,7 +123,7 @@ namespace GraphColoring.GraphVisualization
         [DllImport(LIB_GVC, CallingConvention = CallingConvention.Cdecl)]
         private static extern int gvFreeRenderData(IntPtr result);
 
-        // Method
+        #region Method
         public void CreateGraphVisualization()
         {
             if (image != null)
@@ -205,8 +207,9 @@ namespace GraphColoring.GraphVisualization
                     throw e;
             }
         }
+        #endregion
 
-        // Property
+        #region Property
         public List<Graph.IGraphInterface> GetGraphList()
         {
             return graphList;
@@ -237,5 +240,6 @@ namespace GraphColoring.GraphVisualization
 
             image = bitmap;
         }
+        #endregion
     }
 }

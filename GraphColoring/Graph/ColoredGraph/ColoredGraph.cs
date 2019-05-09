@@ -9,8 +9,7 @@ namespace GraphColoring.Graph
     {
         private class ColoredGgraph : IColoredGraphInterface
         {
-            // Variable
-            #region
+            #region Variable
             /// <summary>
             /// isInitializedColoredGraph - information if the colored graph is initialized
             /// graph - the graph
@@ -30,9 +29,8 @@ namespace GraphColoring.Graph
             // InterchangeExtended
             private Dictionary<IVertexInterface, List<int>> availableRecoloringDictionary;
             #endregion
-
-            // Constructor
-            #region
+            
+            #region Constructor
             public ColoredGgraph(Graph graph)
             {
                 this.graph = graph;
@@ -44,9 +42,8 @@ namespace GraphColoring.Graph
                 };
             }
             #endregion
-
-            // Method 
-            #region
+            
+            #region Method
             /// <summary>
             /// Check if the vertex is correctly colored
             /// If the particular vertex does not exist throws GraphVertexDoesntExistException
@@ -1379,9 +1376,8 @@ namespace GraphColoring.Graph
                 return maxUsedColor;
             }
             #endregion
-
-            // Property
-            #region
+            
+            #region Property
             /// <summary>
             /// Return a count of used colors
             /// </summary>

@@ -7,19 +7,17 @@ namespace GraphColoring.Graph
 {
     public abstract partial class Graph : IGraphInterface
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
-        /// name - Jméno daného grafu (implicitně My graph)
-        /// isInitialized - informace zda je graf inicializován, tj. byly do něj vloženy hrany
-        /// realCountVertices - skutečný počet naalokovaných vrcholů, nikoliv předpokládaný počet vrcholů (parametr konstruktoru)
-        /// coloredGraph - obarvení grafu
-        /// mapping - slouží pro snadné nalezení vrcholu na základě identifikátoru
-        /// mappingUserName - slouží pro snadné nalezení vrcholu na základě userName
-        /// graphProperty - vlastnosti grafu
-        /// adjacencyList - seznam sousedů grafu
-        /// canDeIncreaseCountVertices - určuje, zda se může zavolat metoda IncrementCountVertices / DecrementCountVertices, true - OK, false - vyvolá se výjimka
-        /// canDeIncreaseCountEdges - určuje, zda se může zavolat metoda IncrementCountEdges / DecrementCountEdges, true - OK, false - vyvolá se výjimka
+        /// name - graph name (default My graph)
+        /// realCountVertices - real count of vertices (different from count of vertics in constructor)
+        /// coloredGraph - coloredGraph instance
+        /// mapping - mapping from identifier to user name
+        /// mappingUserName - mapping from user name to identifier
+        /// graphProperty - graphProperty instance
+        /// adjacencyList - core adjacency list
+        /// canDeIncreaseCountVertices - determine if the count of vertices can be changed
+        /// canDeIncreaseCountEdges - determine if the count of edges can be cahnged
         /// </summary>
         private string name;
         private bool isInitialized;
@@ -32,13 +30,8 @@ namespace GraphColoring.Graph
         private bool canDeIncreaseCountVertices, canDeIncreaseCountEdges;
         private const string DEFAULTGRAPHNAME = "My graph";
         #endregion
-
-        // Constructor
-        #region
-        /// <summary>
-        /// Inicializuje graf
-        /// </summary>
-        /// <param name="countVertices">Počet vrcholů grafu</param>
+        
+        #region Constructor
         public Graph(int countVertices)
         {
             graphProperty = new GraphProperty.GraphProperty(this, countVertices);
@@ -51,13 +44,12 @@ namespace GraphColoring.Graph
         }
         #endregion
 
-        // Method
-        #region
+        #region Method
         /// <summary>
-        /// Přidá do AdjacencyList nový vrchol s prázdným listem hran
-        /// Pokud countVertices je menší než realCountVertices, tak vrátí vyjímku GraphInvalidCountVertices
+        /// Add a vertex to AdjacencyList (no neighbors)
+        /// If countVertices is less than realCountVertices throws GraphInvalidCountVertices
         /// </summary>
-        /// <param name="vertexExtended">vrchol, který chceme přidat</param>
+        /// <param name="vertexExtended">new vertex</param>
         protected void AddVertexToAdjacencyList(VertexExtended vertexExtended)
         {
             try
@@ -78,13 +70,13 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// VLoží hranu mezi vrchol vertex1 a vrchol vertex2
-        /// Pokud jeden z vrcholů neexistuje, tak vrátí vyjímku GraphVertexDoesntExist
-        /// if vertex1 is equal to vertex2, throws GraphInvalidVertexException
-        /// Pokud hrana již existuje, tak vrátí vyjímku GraphDupliciteEdge
+        /// Add a new edge
+        /// If any vertex does not exist throws GraphVertexDoesntExist
+        /// If vertex1 = vertex2 throws GraphInvalidVertexException
+        /// If the edge already exists throws GraphDupliciteEdge
         /// </summary>
-        /// <param name="vertex1">1. vrchol</param>
-        /// <param name="vertex2">2. vrchol</param>
+        /// <param name="vertex1">first vertex</param>
+        /// <param name="vertex2">second vertex</param>
         protected void AddEdgeToAdjacencyList(IEdgeInterface edge)
         {
             // Variable
@@ -120,10 +112,11 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí vrchol na základě identifikátoru
+        /// Return a vertex with the identifier
+        /// If the vertex does not exist throws GraphVertexDoesntExistException
         /// </summary>
-        /// <param name="identifier">identifikátor vrcholu</param>
-        /// <returns>vrchol s daným identifikátorem</returns>
+        /// <param name="identifier">vertex identifier</param>
+        /// <returns>vertex with the identifier</returns>
         protected VertexExtended GetVertex(int identifier)
         {
             if (!mapping.TryGetValue(identifier, out VertexExtended vertexExtended))
@@ -133,11 +126,11 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí Vertex s daným userName
-        /// Pokud daný vrchol neexistuje, vyvolá výjimku GraphVertexDoesntExistException
+        /// Return a vertex with the user name
+        /// If the vertex does not exist throws GraphVertexDoesntExistException
         /// </summary>
-        /// <param name="userName">jméno vrcholu</param>
-        /// <returns>vrchol s daným userName</returns>
+        /// <param name="userName">vertex user name</param>
+        /// <returns>vertex with the user name</returns>
         public IVertexInterface GetVertexByUserName(string userName)
         {
             if (!mappingUserName.TryGetValue(userName, out VertexExtended vertexExtended))
@@ -147,18 +140,19 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Return vertex which has the identifier
-        /// If vertex doesn't exist throw GraphVertexDoesntExistException
+        /// Return a vertex with the identifier
+        /// If the vertex doesn't exist throws GraphVertexDoesntExistException
         /// </summary>
-        /// <param name="identifier">Identifier of the vertex</param>
-        /// <returns>The vertex with the identifier</returns>
+        /// <param name="identifier">vertex identifier</param>
+        /// <returns>vertex with the identifier</returns>
         public IVertexInterface GetVertexByIdentifier(int identifier)
         {
             return GetVertex(identifier);
         }
 
         /// <summary>
-        /// Inicializuje graf. Pokud už graf byl inicializovaný, tak vrátí vyjímku GraphAlreadyInitializedException
+        /// Initialize graph
+        /// If the graph has been already initialized throws GraphAlreadyInitializedException
         /// </summary>
         public void InitializeGraph()
         {
@@ -176,11 +170,11 @@ namespace GraphColoring.Graph
 
 
         /// <summary>
-        /// Vrátí list sousedů vrcholu vertex
-        /// Pokud graf není inicializovaný, tak vrátí vyjímku GraphInitializationException
+        /// Return a list of neighbors
+        /// If the graph is not initialized throwsGraphInitializationException
         /// </summary>
-        /// <param name="vertex">vrchol pro který vracíme list sousedů</param>
-        /// <returns>list sousedů</returns>
+        /// <param name="vertex">vertex</param>
+        /// <returns>list of neighbors</returns>
         public List<IVertexInterface> Neighbours(IVertexInterface vertex)
         {
             if (!isInitialized)
@@ -190,10 +184,11 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí počet sousedu vrcholu vertex
+        /// Return count of neighbors
+        /// If the graph is not initialized throwsGraphInitializationException
         /// </summary>
-        /// <param name="vertex">vrchol, pro který chceme zjistit počet sousedů</param>
-        /// <returns>počet sousedů</returns>
+        /// <param name="vertex">vertex</param>
+        /// <returns>count of neighbors</returns>
         public int CountNeighbours(IVertexInterface vertex)
         {
             if (!isInitialized)
@@ -203,16 +198,16 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí list všech vrcholů v grafu
+        /// Return a list with all vertices
         /// </summary>
-        /// <returns>lsit všech vrcholů v grafu</returns>
+        /// <returns>list with all vertices</returns>
         public List<IVertexInterface> AllVertices()
         {
             return new List<IVertexInterface>(adjacencyList.Keys);
         }
 
         /// <summary>
-        /// Inkrementuje počet naalokovaných vrcholů (realCountVertices)
+        /// Increment number of realCountVertices
         /// </summary>
         private void IncrementRealCountVertices()
         {
@@ -220,7 +215,7 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Dekrementuje počet naalokovaných vrcholů (realCountVertices)
+        /// Decrement number of realCountVertices
         /// </summary>
         private void DecrementRealCountVertices()
         {
@@ -228,10 +223,10 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí první vrchol grafu, tj vrchol, který byl jako první inicializovaný
-        /// Pokud graf nemá žádný vrchol, vrátí výjimku GraphDoesntHaveAnyVertices
+        /// Return some vertex (deterministic - first created vertex)
+        /// If the graph has not any vertices throws GraphDoesntHaveAnyVertices
         /// </summary>
-        /// <returns>první vrchol</returns>
+        /// <returns>vertex</returns>
         public IVertexInterface GetFirstVertex()
         {
             if (adjacencyList.Count == 0)
@@ -242,7 +237,7 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Doinicializuje zbývající vrcholy (do realCountVertex)
+        /// Create new vertices (number of vertices: countVertices - realCountVertex)
         /// </summary>
         public void FullGenerateVertices()
         {
@@ -257,11 +252,11 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí true, pokud daný vrchol v grafu existuje, jinak vrátí false
+        /// Return true if a vertex exists in the graph, otherwise false
         /// Time complexity: O(1)
         /// </summary>
-        /// <param name="vertex">daný vrchol</param>
-        /// <returns>true, pokud vrchol existuje, jinak false</returns>
+        /// <param name="vertex">vertex</param>
+        /// <returns>true if the vertex exists in the graph, otherwise false</returns>
         public bool ExistsVertex(IVertexInterface vertex)
         {
             try
@@ -275,10 +270,10 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Return true, if vertex with userName exist, otherwise return false
+        /// Return true if a vertex (with userName) exists, otherwise false
         /// </summary>
-        /// <param name="userName">The user name</param>
-        /// <returns>return true, if vertex exists, otherwise return false</returns>
+        /// <param name="userName">user name</param>
+        /// <returns>return true if the vertex exists, otherwise return false</returns>
         public bool ExistsUserName(string userName)
         {
             if (!mappingUserName.TryGetValue(userName, out VertexExtended vertexExtended))
@@ -288,11 +283,11 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí true, pokud daná hrana existuje v grafu, jinak vrátí false
+        /// Return true if an edge exists in the graph, otherwise false
         /// Time complexity: O(1)
         /// </summary>
-        /// <param name="edge">daná hrana</param>
-        /// <returns>true, pokud hrana existuje, jinak false</returns>
+        /// <param name="edge">edge</param>
+        /// <returns>true if the edge exists in the graph, otherwise false</returns>
         public bool ExistsEdge(IEdgeInterface edge)
         {
             if (!ExistsVertex(edge.GetVertex1()) || !ExistsVertex(edge.GetVertex2()))
@@ -307,11 +302,11 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Konvertuje Vertex na VertexExtended
-        /// Pokud daný vrchol neexistuje v grafu, tak vrátí výjimku GraphVertexDoesntExistException
+        /// Convertor from Vertex to VertexExtended
+        /// If the vertex does not exist in the graph throws GraphVertexDoesntExistException
         /// </summary>
-        /// <param name="vertex">daný Vertex</param>
-        /// <returns>daný VertexExtended</returns>
+        /// <param name="vertex">vertex</param>
+        /// <returns>vertexExtended</returns>
         protected VertexExtended ConvertVertexToVertexExtended(IVertexInterface vertex)
         {
             try
@@ -325,11 +320,11 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Change the vertex user name
-        /// If the vertex doesn't exist, throw GraphVertexDoesntExistException
+        /// Change a vertex user name
+        /// If the vertex doesn't exist throws GraphVertexDoesntExistException
         /// </summary>
-        /// <param name="vertex">the name</param>
-        /// <param name="newUserName">the user name</param>
+        /// <param name="vertex">name</param>
+        /// <param name="newUserName">user name</param>
         public void RenameVertexUserName(IVertexInterface vertex, string newUserName)
         {
             // Variable
@@ -388,41 +383,40 @@ namespace GraphColoring.Graph
             return stringBuilder.ToString();
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
-        /// Vrátí počet naalokovaných vrcholů grafu
+        /// Return count of vertices
         /// </summary>
-        /// <returns>počet naalokovaných vrcholů</returns>
+        /// <returns>count of vertices</returns>
         public int GetRealCountVertices()
         {
             return realCountVertices;
         }
 
         /// <summary>
-        /// Vrátí název grafu
+        /// Return graph name
         /// </summary>
-        /// <returns>název grafu</returns>
+        /// <returns>graph name</returns>
         public string GetName()
         {
             return name;
         }
 
         /// <summary>
-        /// Nastaví název daného grafu
+        /// Set graph name
         /// </summary>
-        /// <param name="name">název grafu</param>
+        /// <param name="name">new graph name</param>
         public void SetName(string name)
         {
             this.name = name;
         }
 
         /// <summary>
-        /// Vrátí referenci na GraphProperty
-        /// Pokud graf není inicializování, vyvolá se vyjímka GraphWasNotInitializedException
+        /// Return GraphProperty instance
+        /// If the graph is not initialized throws GraphWasNotInitializedException
         /// </summary>
-        /// <returns>referenci na GraphProperty</returns>
+        /// <returns>GraphProperty instance</returns>
         public GraphProperty.GraphProperty GetGraphProperty()
         {
             if (isInitialized)
@@ -432,57 +426,55 @@ namespace GraphColoring.Graph
         }
 
         /// <summary>
-        /// Vrátí informaci zda je graf inicializovaný
+        /// Return true if the graph is initialized, otherwise false
         /// </summary>
-        /// <returns>true pokud je graf inicializovaný, jinak vrátí false</returns>
+        /// <returns>true if the graph is initialized, ottherwise false</returns>
         public bool GetIsInitialized()
         {
             return isInitialized;
         }
 
         /// <summary>
-        /// Vráti informaci zda je mozné dekrementovat / inkrementovat pocet vrcholu
-        /// Kvuli omezeni volani funkce IncrementCountVertices a DecrementCountVertices v GraphProperty mimo Graph
+        /// Return true if count of edges can be changed, otherwise false
         /// </summary>
-        /// <returns>true pokud je mozno menit hodnotu, jinak vrátí false</returns>
+        /// <returns>true if count of edges can be changed, otherwise false</returns>
         public bool GetCanDeIncreaseCountVertices()
         {
             return canDeIncreaseCountVertices;
         }
 
         /// <summary>
-        /// Nastaví hodnotu canDeIncreaseCountVertices
+        /// Set canDeIncreaseCountVertices
         /// </summary>
-        /// <param name="value">hodnota, která se má nastavit</param>
+        /// <param name="value">new value</param>
         private void SetCanDeIncreaseCountVertices(bool value)
         {
             canDeIncreaseCountVertices = value;
         }
 
         /// <summary>
-        /// Vráti informaci zda je mozné dekrementovat / inkrementovat pocet hran
-        /// Kvuli omezeni volani funkce IncrementCountEdges a DecrementCountEdges v GraphProperty mimo Graph
+        /// Return true if count of vertices can be changed, otherwise false
         /// </summary>
-        /// <returns>true pokud je mozno menit hodnotu, jinak vrátí false</returns>
+        /// <returns>true if count of vertices can be changed, otherwise false</returns>
         public bool GetCanDeIncreaseCountEdges()
         {
             return canDeIncreaseCountEdges;
         }
 
         /// <summary>
-        /// Nastaví hodnotu canDeIncreaseCountVertices
+        /// Set canDeIncreaseCountVertices
         /// </summary>
-        /// <param name="value">hodnota, která se má nastavit</param>
+        /// <param name="value">new value</param>
         private void SetCanDeIncreaseCountEdges(bool value)
         {
             canDeIncreaseCountEdges = value;
         }
 
         /// <summary>
-        /// Vrátí referenci na ColoredGraph
-        /// Pokud graf není inicializování, vyvolá se vyjímka GraphWasNotInitializedException
+        /// Return ColoredGraph instance
+        /// If the graph is not initialized throws GraphWasNotInitializedException
         /// </summary>
-        /// <returns>referenci na ColoredGraph</returns>
+        /// <returns>ColoredGraph instance</returns>
         public IColoredGraphInterface GetColoredGraph()
         {
             if (isInitialized)

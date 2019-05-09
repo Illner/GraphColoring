@@ -6,10 +6,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
 {
     class SmallestLastSequenceTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
-        private String testPath;
+        private string testPath;
         private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<SmallestLastSequenceEnum, string> testsDictionary;
@@ -22,9 +21,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
         private string algorithmSmallestLastSequence4 = SmallestLastSequenceResource.smallestLastSequence4;
         private string algorithmSmallestLastSequence5 = SmallestLastSequenceResource.smallestLastSequence5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region enum
         public enum SmallestLastSequenceEnum
         {
             smallestLastSequence1,
@@ -34,9 +32,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             smallestLastSequence5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public SmallestLastSequenceTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -111,9 +107,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathAlgorithmSmallestLastSequence;

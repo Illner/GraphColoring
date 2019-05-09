@@ -6,8 +6,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 {
     class ChordalTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private String testPath;
         private IGraphInterface graph;
         private StringBuilder stringBuilder;
@@ -26,9 +25,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private string chordal8 = ChordalResource.graphChordal8;
         private string chordal9 = ChordalResource.graphChordal9;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum ChordalTestEnum
         {
             chordal1,
@@ -42,9 +40,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             nonChordal4
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ChordalTest()
         {
             stringBuilder = new StringBuilder();
@@ -64,9 +61,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -131,9 +127,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathGraphChordal;

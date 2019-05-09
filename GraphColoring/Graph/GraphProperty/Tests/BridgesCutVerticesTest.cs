@@ -6,8 +6,7 @@ namespace GraphColoring.Graph.GraphProperty.Tests
 {
     class BridgesCutVerticesTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private IGraphInterface graph;
         private String testPath;
         private ReaderWriter.IReaderGraphInterface reader;
@@ -22,9 +21,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
         private string bridgesCutVertices4 = BridgesCutVerticesResource.bridgesCutVerticesTest4;
         private string bridgesCutVertices5 = BridgesCutVerticesResource.bridgesCutVerticesTest5;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum BridgesCutVerticesEnum
         {
             bridgesCutVertices1,
@@ -34,9 +32,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             bridgesCutVertices5
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public BridgesCutVerticesTest()
         {
             stringBuilder = new StringBuilder();
@@ -52,9 +49,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -123,9 +119,8 @@ namespace GraphColoring.Graph.GraphProperty.Tests
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathBridgesCutVertices;

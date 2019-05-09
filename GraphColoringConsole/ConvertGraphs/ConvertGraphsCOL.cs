@@ -6,24 +6,21 @@ namespace GraphColoringConsole.ConvertGraphs
 {
     class ConvertGraphsCOL
     {
-        // Variable
-        #region
+        #region Variable
         private bool writer;
         private static string fileNameExtension = "col";
         private static string pathFolder = @"Data\";
         private GraphColoring.Graph.IGraphEdgeListInterface graph = null;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ConvertGraphsCOL(bool writer = true)
         {
             this.writer = writer;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         public int Convert()
         {
             // Variable
@@ -117,9 +114,8 @@ namespace GraphColoringConsole.ConvertGraphs
             return error;
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a path folder
         /// </summary>

@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
 {
     public class ConnectedLargestFirst : GraphColoringAlgorithm
     {
-        // Variable
-        #region
+        #region Variable
         private GraphColoringAlgorithInterchangeEnum interchangeEnum;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ConnectedLargestFirst(Graph.IGraphInterface graph, GraphColoringAlgorithInterchangeEnum interchangeEnum = GraphColoringAlgorithInterchangeEnum.none) : base(graph)
         {
             // Interchange
@@ -39,9 +35,8 @@ namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
             timeComplexity = TimeComplexityEnum.undefined;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// </summary>

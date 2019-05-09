@@ -6,8 +6,7 @@ namespace GraphColoring.MyDataStructure
 {
     class FibonacciHeap
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
         /// rootLinkedList - linked list contained roots
         /// countNodes - count of nodes
@@ -21,9 +20,8 @@ namespace GraphColoring.MyDataStructure
         private MyNode[] nodeMappingArray;
         private int sizeRankArray;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public FibonacciHeap(int maxCountNodes)
         {
             this.maxCountNodes = maxCountNodes;
@@ -36,9 +34,8 @@ namespace GraphColoring.MyDataStructure
             sizeRankArray = (int)Math.Ceiling(2 * Math.Log(maxCountNodes, 2));
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Return (and delete) smallest item in Fibonacci heap
         /// </summary>
@@ -313,9 +310,8 @@ namespace GraphColoring.MyDataStructure
             return stringBuilder.ToString();
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return count of nodes in Fibonacci heap
         /// </summary>

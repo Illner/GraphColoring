@@ -5,8 +5,7 @@ namespace GraphColoringConsole.ColorGraphs
 {
     class ColorGraphsFile : ColorGraphs
     {
-        // Variable
-        #region
+        #region Variable
         private bool writer, clearFile;
         private static string pathFolder = @"Data\";
         private static string fileNameExtension = "graphDB";
@@ -14,8 +13,7 @@ namespace GraphColoringConsole.ColorGraphs
         private static string pathFile = pathFolder + "ColoredGraphs" + "." + fileNameExtension;
         #endregion
 
-        // Constructor
-        #region
+        #region Constructor
         public ColorGraphsFile(bool writer = true, bool clearFile = false, bool useGeneticAlgorithm2 = true, bool useInterchangeExtendedK3 = true)
         {
             this.writer = writer;
@@ -24,9 +22,8 @@ namespace GraphColoringConsole.ColorGraphs
             this.useInterchangeExtendedK3 = useInterchangeExtendedK3;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         public void Color()
         {
             string graphString;
@@ -180,9 +177,8 @@ namespace GraphColoringConsole.ColorGraphs
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return a path file
         /// </summary>

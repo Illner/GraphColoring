@@ -2,14 +2,12 @@
 {
     class MyLinkedList
     {
-        // Variable
-        #region
+        #region Variable
         private MyNode representant;
         private int countElements;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public MyLinkedList()
         {
             representant = null;
@@ -23,9 +21,8 @@
             countElements = 1;
         }
         #endregion
-
-        // Mehtod
-        #region
+        
+        #region Method
         /// <summary>
         /// Add element to linkedList
         /// Duplicit values are allowed!
@@ -162,9 +159,8 @@
             return text += "\n";
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return representant of the linked list
         /// </summary>

@@ -6,10 +6,10 @@ namespace GraphColoring.Graph.GraphOperation
 {
     public static class GraphOperation
     {
-        // Method
-        #region
+        #region Method
         /// <summary>
         /// Return a complement graph
+        /// If the graph is not initialized throws GraphInitializationException
         /// </summary>
         /// <param name="graph">graph</param>
         /// <returns>complement graph</returns>
@@ -20,6 +20,9 @@ namespace GraphColoring.Graph.GraphOperation
             List<IVertexInterface> vertexList;
             List<IVertexInterface> neighboursList;
             List<IVertexInterface> intersectionVertexAndNeighboursList;
+
+            if (!graph.GetIsInitialized())
+                throw new MyException.GraphException.GraphInitializationException();
 
             complementGraph = new GraphEdgeList(graph.GetRealCountVertices());
             complementGraph.SetName("Complement graph - " + graph.GetName());
@@ -52,6 +55,7 @@ namespace GraphColoring.Graph.GraphOperation
 
         /// <summary>
         /// Return a line graph
+        /// If the graph is not initialized throws GraphInitializationException
         /// </summary>
         /// <param name="graph">graph</param>
         /// <returns>line graf</returns>
@@ -66,6 +70,9 @@ namespace GraphColoring.Graph.GraphOperation
             List<IVertexInterface> neighboursList;
             Dictionary<string, IVertexInterface> vertexMap;
             List<IVertexInterface> neighboursNewList;
+
+            if (!graph.GetIsInitialized())
+                throw new MyException.GraphException.GraphInitializationException();
 
             lineGraph = new GraphEdgeList(graph.GetGraphProperty().GetCountEdges());
             lineGraph.SetName("Line graph - " + graph.GetName());
@@ -128,6 +135,9 @@ namespace GraphColoring.Graph.GraphOperation
 
         /// <summary>
         /// Return a subgraph
+        /// If the graph is not initialized throws GraphInitializationException
+        /// Time complexity: O(V + E)
+        /// Space complexity: O(V + E)
         /// </summary>
         /// <param name="graph">graph</param>
         /// <param name="vertexList">list of vertices which will be in the subgraph</param>
@@ -137,6 +147,9 @@ namespace GraphColoring.Graph.GraphOperation
             // Variable
             IGraphEdgeListInterface subGraph;
             List<IVertexInterface> neighboursList;
+            
+            if (!graph.GetIsInitialized())
+                throw new MyException.GraphException.GraphInitializationException();
 
             subGraph = new GraphEdgeList(vertexList.Count);
             subGraph.SetName("Subgraph - " + graph.GetName());
@@ -166,6 +179,7 @@ namespace GraphColoring.Graph.GraphOperation
         /// Copy a graph
         /// If the graph is not initialized throws GraphInitializationException
         /// Time complexity: O(V + E)
+        /// Space complexity: O(V + E)
         /// </summary>
         /// <param name="graph">graph</param>
         /// <returns>graph copy</returns>

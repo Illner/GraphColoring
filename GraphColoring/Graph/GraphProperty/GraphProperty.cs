@@ -7,24 +7,22 @@ namespace GraphColoring.Graph.GraphProperty
 {
     public partial class GraphProperty
     {
-        // Variable
-        #region
+        #region Variable
         private Graph graph;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public GraphProperty(Graph graph, int countVertices)
         {
             this.graph = graph;
             SetCountVertices(countVertices);
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
-        /// Resetuje všechny vlastnosti grafu
+        /// Reset all graph's properties
+        /// Time complexity: O(1)
         /// </summary>
         public void Reset()
         {
@@ -58,6 +56,7 @@ namespace GraphColoring.Graph.GraphProperty
             // Chordal graph
             isChordal = null;
             perfectEliminationOrderingList = null;
+            righNeighborhoodDictionary = null;
         }
 
         public void VertexAdd(IVertexInterface vertex)
@@ -67,7 +66,7 @@ namespace GraphColoring.Graph.GraphProperty
             {
                 if (countComponents > 2)
                 {
-                    // Create new component with the vertex
+                    // Create a new component with the vertex
                     IGraphEdgeListInterface newGraph = new GraphEdgeList(1);
                     newGraph.AddVertex(vertex.GetUserName());
                     newGraph.InitializeGraph();
@@ -114,6 +113,7 @@ namespace GraphColoring.Graph.GraphProperty
                 }
                 else
                 {
+                    degreeSequence = null;
                     degreeSequenceVertex = null;
                     degreeSequenceInt = null;
                     isDegreeSequenceSorted = false;
@@ -124,12 +124,15 @@ namespace GraphColoring.Graph.GraphProperty
 
                 //maximumVertexDegree = maximumVertexDegree;
                 averageVertexDegree = null;
+                medianVertexDegree = null;
             }
 
             // Chordal
             //isChordal = isChordal;
             if (isChordal.HasValue && (bool)isChordal)
+            {
                 perfectEliminationOrderingList.Add(vertex);
+            }
 
             // GraphClass
             //graphClass = graphClass;
@@ -215,13 +218,15 @@ namespace GraphColoring.Graph.GraphProperty
             maximumVertexDegree = null;
             minimumVertexDegree = null;
             averageVertexDegree = null;
+            medianVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
 
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
-            
+            righNeighborhoodDictionary = null;
+
             // GraphClass
             graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         }
@@ -280,12 +285,14 @@ namespace GraphColoring.Graph.GraphProperty
             maximumVertexDegree = null;
             minimumVertexDegree = null;
             averageVertexDegree = null;
+            medianVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
 
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+            righNeighborhoodDictionary = null;
 
             // GraphClass
             graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
@@ -347,6 +354,7 @@ namespace GraphColoring.Graph.GraphProperty
             maximumVertexDegree = null;
             minimumVertexDegree = null;
             averageVertexDegree = null;
+            medianVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
 
@@ -355,6 +363,7 @@ namespace GraphColoring.Graph.GraphProperty
             {
                 isChordal = null;
                 perfectEliminationOrderingList = null;
+                righNeighborhoodDictionary = null;
             }
 
             // GraphClass
@@ -413,6 +422,7 @@ namespace GraphColoring.Graph.GraphProperty
             maximumVertexDegree = null;
             minimumVertexDegree = null;
             averageVertexDegree = null;
+            medianVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
 
@@ -421,6 +431,7 @@ namespace GraphColoring.Graph.GraphProperty
             {
                 isChordal = null;
                 perfectEliminationOrderingList = null;
+                righNeighborhoodDictionary = null;
             }
 
             // GraphClass
@@ -541,12 +552,14 @@ namespace GraphColoring.Graph.GraphProperty
                 }
 
                 averageVertexDegree = null;
+                medianVertexDegree = null;
                 isRegular = null;
             }
 
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+            righNeighborhoodDictionary = null;
 
             // GraphClass
             graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
@@ -672,12 +685,14 @@ namespace GraphColoring.Graph.GraphProperty
                 }
 
                 averageVertexDegree = null;
+                medianVertexDegree = null;
                 isRegular = null;
             }
 
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+            righNeighborhoodDictionary = null;
 
             // GraphClass
             graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
@@ -720,12 +735,14 @@ namespace GraphColoring.Graph.GraphProperty
             maximumVertexDegree = null;
             minimumVertexDegree = null;
             averageVertexDegree = null;
+            medianVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
 
             // Chordal
             isChordal = null;
             perfectEliminationOrderingList = null;
+            righNeighborhoodDictionary = null;
 
             // GraphClass
             graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
@@ -787,6 +804,7 @@ namespace GraphColoring.Graph.GraphProperty
             maximumVertexDegree = null;
             minimumVertexDegree = null;
             averageVertexDegree = null;
+            medianVertexDegree = null;
             isDegreeSequenceSorted = false;
             isRegular = null;
 
@@ -795,6 +813,7 @@ namespace GraphColoring.Graph.GraphProperty
             {
                 isChordal = null;
                 perfectEliminationOrderingList = null;
+                righNeighborhoodDictionary = null;
             }
 
             // GraphClass

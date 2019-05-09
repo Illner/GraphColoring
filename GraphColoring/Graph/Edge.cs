@@ -4,8 +4,7 @@ namespace GraphColoring.Graph
 {
     class Edge : IEdgeInterface
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
         /// vertex1 - First vertex
         /// vertex2 - Second vertex
@@ -13,17 +12,16 @@ namespace GraphColoring.Graph
         private IVertexInterface vertex1;
         private IVertexInterface vertex2;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public Edge(IVertexInterface vertex1, IVertexInterface vertex2)
         {
             this.vertex1 = vertex1;
             this.vertex2 = vertex2;
         }
         #endregion
-
-        // Method
+        
+        #region Method
         public bool Equals(IEdgeInterface edge)
         {
             if ((edge.GetVertex1().Equals(vertex1) && edge.GetVertex2().Equals(vertex2)) ||
@@ -32,9 +30,9 @@ namespace GraphColoring.Graph
 
             return false;
         }
-
-        // Property
-        #region
+        #endregion
+        
+        #region Property
         /// <summary>
         /// Return the first vertex of the edge
         /// </summary>

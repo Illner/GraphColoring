@@ -7,8 +7,7 @@ namespace GraphColoring.Tests
 {
     class Tests
     {
-        // Variable
-        #region
+        #region Variable
         private bool consolePrint;
         private StringBuilder stringBuilder;
         private Dictionary<TestEnum, Tuple<ITestInterface, string>> testsDictionary;
@@ -44,9 +43,8 @@ namespace GraphColoring.Tests
         GraphVisualization.Tests.ConvertGraphToDotTest convertGraphToDotTest = new GraphVisualization.Tests.ConvertGraphToDotTest();
         Graph.GraphProperty.Tests.ChordalTest chordalTest = new Graph.GraphProperty.Tests.ChordalTest();
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum TestEnum
         {
             readerWriter,
@@ -77,9 +75,8 @@ namespace GraphColoring.Tests
             geneticAlgorithm    // Must be last
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         /// <summary>
         /// ConsolePrint = true => print a report on the screen
         /// ConsolePrint = false => Print a report to the files
@@ -120,9 +117,8 @@ namespace GraphColoring.Tests
         };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         public bool Test()
         {
             // Variable

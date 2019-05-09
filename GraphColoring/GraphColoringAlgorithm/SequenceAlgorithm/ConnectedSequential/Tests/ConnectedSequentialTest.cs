@@ -6,10 +6,9 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
 {
     class ConnectedSequentialTest : GraphColoring.Tests.ITestInterface
     {
-        // Variable
-        #region
+        #region Variable
         private Graph.IGraphInterface graph;
-        private String testPath;
+        private string testPath;
         private ReaderWriter.IReaderGraphInterface reader;
         private StringBuilder stringBuilder;
         private Dictionary<ConnectedSequentialEnum, string> testsDictionary;
@@ -21,9 +20,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         private string algorithmConnectedSequential3 = ConnectedSequentialResource.connectedSequential3;
         private string algorithmConnectedSequential4 = ConnectedSequentialResource.connectedSequential4;
         #endregion
-
-        // Enum
-        #region
+        
+        #region Enum
         public enum ConnectedSequentialEnum
         {
             connectedSequential1,
@@ -32,9 +30,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
             connectedSequential4
         }
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ConnectedSequentialTest()
         {
             stringBuilder = new StringBuilder();
@@ -49,9 +46,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
             };
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Test all values of enum (files)
         /// </summary>
@@ -108,9 +104,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
             }
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public string GetPath()
         {
             return testPathAlgorithmConnectedSequential;

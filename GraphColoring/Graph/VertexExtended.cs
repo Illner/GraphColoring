@@ -4,13 +4,11 @@ namespace GraphColoring.Graph
 {
     public class VertexExtended : Vertex
     {
-        // Variable
-        #region
+        #region Variable
         private static int defaultColor = 0;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public VertexExtended() : base() { }
 
         public VertexExtended(String userName) : base(userName) { }
@@ -25,9 +23,8 @@ namespace GraphColoring.Graph
             SetIdentifier(identifier);
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Reset a color of vertex
         /// Set color to default (0)
@@ -37,9 +34,8 @@ namespace GraphColoring.Graph
             color = GetDefaultColor();
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Set a color of vertex
         /// </summary>

@@ -4,8 +4,7 @@ namespace GraphColoring.Graph
 {
     class Arc : IArcInterface
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
         /// vertexFrom - First vertex
         /// vertexTo - Second vertex
@@ -14,18 +13,16 @@ namespace GraphColoring.Graph
         private IVertexInterface vertexFrom;
         private IVertexInterface vertexTo;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public Arc(IVertexInterface vertexFrom, IVertexInterface vertexTo)
         {
             this.vertexFrom = vertexFrom;
             this.vertexTo = vertexTo;
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         /// <summary>
         /// Return the first vertex
         /// </summary>

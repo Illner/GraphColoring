@@ -6,20 +6,17 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
 {
     public abstract class GraphColoringSequenceAlgorithm : GraphColoringAlgorithm
     {
-        // Variable
-        #region
+        #region Variable
         protected List<Graph.IVertexInterface> vertexSequenceList;
         protected GraphColoringAlgorithInterchangeEnum interchangeEnum;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public GraphColoringSequenceAlgorithm(Graph.IGraphInterface graph) : base(graph)
         { }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// If colored graph is initialized throws ColoredGraphAlreadyInitializedException
@@ -55,9 +52,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         /// </summary>
         protected abstract void CreateVertexSequence();
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public List<Graph.IVertexInterface> GetVertextexSequenceList()
         {
             return vertexSequenceList;

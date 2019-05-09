@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphColoringConsole.ColorGraphs
 {
     public class ColorGraphs
     {
-        // Variable
-        #region
+        #region Variable
         protected const int COUNTITERATIONSPROBABILITY = 10;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public ColorGraphs() { }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph with an algorithm
         /// </summary>
@@ -57,9 +50,8 @@ namespace GraphColoringConsole.ColorGraphs
             return new Tuple<int, int>(minColors, maxColors);
         }
         #endregion
-
-        // Property
-        #region
+        
+        #region Property
         public int GetCountIterationsProbability()
         {
             return COUNTITERATIONSPROBABILITY;

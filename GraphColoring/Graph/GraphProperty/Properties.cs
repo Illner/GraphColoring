@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace GraphColoring.Graph.GraphProperty
 {
     partial class GraphProperty
     {
-        // Variable
-        #region
+        #region Variable
         /// <summary>
-        /// isConnected - je graf souvislý
-        /// isRegular - je graf regulární
-        /// isCyclic - je graf cyklický
-        /// isChordal - graph is chordal
-        /// isEulerian - je graf eulerovský - EulerianGraphEnum
-        /// graphClass - Třída grafu - GraphClassEnum
+        /// isEulerian - EulerianGraphEnum
+        /// graphClass - GraphClassEnum
         /// </summary>
         private Boolean? isConnected;
         private Boolean? isRegular;
@@ -24,14 +18,12 @@ namespace GraphColoring.Graph.GraphProperty
         private GraphClass.GraphClass.GraphClassEnum graphClass = GraphClass.GraphClass.GraphClassEnum.undefined;
         #endregion
 
-        // Method
-        #region
+        #region Method
         /// <summary>
-        /// Zjistí zda je graf souvislý
-        /// countComponents, componentsList
-        /// BFS
+        /// Determine if the graph is connected
+        /// Change: countComponents, componentsList
         /// Time complexity: O(V + E)
-        /// Sace complexity: O(V + E) + vytvořené grafy
+        /// Sace complexity: O(V + E) + new graphs
         /// </summary>
         private void IsConnected()
         {
@@ -43,9 +35,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Zjistí zda je graf regulární
-        /// isRegular, degreeSequence
-        /// Time complexity: O(V)
+        /// Determine if the graph is regular
+        /// Change: isRegular, degreeSequence, minimumVertexDegree, maximumVertexDegree
+        /// Time complexity: O(V + E)
         /// Space complexity: O(V)
         /// </summary>
         private void IsRegular()
@@ -63,9 +55,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Zjistí zda je graf eulerovský
-        /// isEulerian, degreeSequence
-        /// Time complexity: O(V)
+        /// Determine if the graph is eulerian
+        /// Change: isEulerian, degreeSequence
+        /// Time complexity: O(V + E)
         /// Space complexity: O(V)
         /// </summary>
         private void IsEulerian()
@@ -98,30 +90,30 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Determine if graph is chordal
-        /// isChordal, perfectEliminationOrderingList
-        /// Time complexivity: O(V + E)
-        /// Space complexivity: O(V)
+        /// Determine if the graph is chordal
+        /// Change: isChordal, perfectEliminationOrderingList
+        /// Time complexity: O(V * (V + Delta(G)^2))
+        /// Space complexivity: O(V * Delta(G))
         /// </summary>
         private void IsChordal()
         {
             PerfectEliminationOrdering();
-            IsPerfectEliminationOrderingParallel();
+            IsPerfectEliminationOrdering();
 
-            // The graph is not chordal => need to delete perfectEliminationOrderingList
+            // The graph is not chordal => need to delete perfectEliminationOrderingList and righNeighborhoodDictionary
             if (!(bool)isChordal)
             {
                 perfectEliminationOrderingList = new List<IVertexInterface>();
+                righNeighborhoodDictionary = new Dictionary<int, List<int>>();
             }
         }
         #endregion
-
-        // Property 
-        #region
+        
+        #region Property
         /// <summary>
-        /// Vrátí true pokud je graf souvislý, jinak vrátí false
+        /// Return true if the graph is connected, otherwise false
         /// </summary>
-        /// <returns>true pokud je graf souvislý, jinak vrátí false</returns>
+        /// <returns>true if the graph is connected</returns>
         public bool GetIsConnected()
         {
             if (!isConnected.HasValue)
@@ -131,9 +123,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
  
         /// <summary>
-        /// Vrátí true pokud je graf regulární, jinak vrátí false
+        /// Return true if the graph is regular, otherwise false
         /// </summary>
-        /// <returns>true pokud je graf regulární, jinak vrátí false</returns>
+        /// <returns>true if the graph is regular</returns>
         public bool GetIsRegular()
         {
             if (!isRegular.HasValue)
@@ -143,9 +135,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí true pokud je graf cyklická, jinak vrátí false
+        /// Return true if the graph is cyclic, otherwise false
         /// </summary>
-        /// <returns>true pokud je graf cyklický, jinak vrátí false</returns>
+        /// <returns>true if the graph is cyclic</returns>
         public bool GetIsCyclic()
         {
             if (!isCyclic.HasValue)
@@ -155,9 +147,9 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Return true if graph is chordal, otherwise return false
+        /// Return true if the graph is chordal, otherwise false
         /// </summary>
-        /// <returns>true if graph is chordal</returns>
+        /// <returns>true if the graph is chordal</returns>
         public bool GetIsChordal()
         {
             if (!isChordal.HasValue)
@@ -167,10 +159,10 @@ namespace GraphColoring.Graph.GraphProperty
         }
 
         /// <summary>
-        /// Vrátí:
-        /// eulerian, pokud graf obsahuje eulerovský cyklus
-        /// semiEulerian, pokud graf obsahuje eulerovský tah
-        /// notEulerian, pokud graf neobsahuje ani eulerovský cyklus, ani eulerovský tah
+        /// Return:
+        /// EulerianGraphEnum.eulerian if the graph contains eulerian cycle,
+        /// EulerianGraphEnum.semi-eulerian if the graph contains eulerian trail, otherwise
+        /// EulerianGraphEnum.notEulerian
         /// </summary>
         /// <returns>EulerianGraphEnum</returns>
         public EulerianGraphEnum GetIsEulerian()
@@ -180,11 +172,11 @@ namespace GraphColoring.Graph.GraphProperty
 
             return isEulerian;
         }
-        
+
         /// <summary>
-        /// Vrátí třídu grafu - GraphClassEnum
+        /// Return graph class - GraphClassEnum
         /// </summary>
-        /// <returns>třídu grafu</returns>
+        /// <returns>graph calss - GraphClassEnum</returns>
         public GraphClass.GraphClass.GraphClassEnum GetGraphClass()
         {
             if (graphClass == GraphClass.GraphClass.GraphClassEnum.undefined)

@@ -6,20 +6,13 @@ using System.Collections.Generic;
 namespace GraphColoring.ReaderWriter
 {
     public class WriterGraph : ReaderWriter, IWriterGraphInterface
-    {
-        // Variable
-        #region
-
-        #endregion
-
-        // Constructor
-        #region
+    {        
+        #region Constructor
         public WriterGraph(string path) : base(path) { }
         public WriterGraph(string path, bool checkPath) : base(path, checkPath) { }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Write a colored graph to a file
         /// If the colored graph is not initialized throws ColoredGraphNotInitializationException

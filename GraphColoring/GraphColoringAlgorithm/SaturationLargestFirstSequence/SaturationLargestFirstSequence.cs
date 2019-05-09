@@ -4,22 +4,19 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
 {
     public sealed class SaturationLargestFirstSequence : GraphColoringAlgorithm, IGraphColoringAlgorithmStepInterface
     {
-        // Variable
-        #region
+        #region Variable
         bool staurationOnStep;
         #endregion
-
-        // Constructor
-        #region
+        
+        #region Constructor
         public SaturationLargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Saturation largest first sequence algorithm";
             timeComplexity = TimeComplexityEnum.quadratic;
         }
         #endregion
-
-        // Method
-        #region
+        
+        #region Method
         /// <summary>
         /// Color a graph
         /// If the colored graph is initialized throws ColoredGraphAlreadyInitializedException

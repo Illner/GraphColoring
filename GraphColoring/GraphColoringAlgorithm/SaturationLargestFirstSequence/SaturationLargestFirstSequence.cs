@@ -12,7 +12,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
         public SaturationLargestFirstSequence(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Saturation largest first sequence algorithm";
-            timeComplexity = TimeComplexityEnum.quadratic;
+            timeComplexity = TimeComplexityEnum.cubic;
         }
         #endregion
         
@@ -21,7 +21,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SaturationLargestFirstSequence
         /// Color a graph
         /// If the colored graph is initialized throws ColoredGraphAlreadyInitializedException
         /// Something wrong - AlgorithmGraphIsNotColored
-        /// Time complexity: O(n^2 + m) + 0
+        /// Time complexity: O(V^3) + 0
         /// </summary>
         override
         public void Color()

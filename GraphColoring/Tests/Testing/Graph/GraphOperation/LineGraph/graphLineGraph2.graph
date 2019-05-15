@@ -4,7 +4,9 @@ Graph name: Name
 Number of vertices: 1
 
 GRAPH
-0
+0 1 1
+1 0 1
+1 1 0
 
 COLORED GRAPH
 Chromatic number: 3

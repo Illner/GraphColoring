@@ -16,14 +16,14 @@ namespace GraphColoring.GraphColoringAlgorithm.CombinationAlgorithm
         {
             algorithmList = new List<IGraphColoringAlgorithmStepInterface>();
             name = "Combination algorithm";
-            timeComplexity = TimeComplexityEnum.quadratic;
+            timeComplexity = TimeComplexityEnum.cubic;
         }
         #endregion
         
         #region Method
         /// <summary>
         /// Color a graph
-        /// Time complexity: O(n^2) + O(n^2) + O(n + m)
+        /// Time complexity: O(V^2) + O(V^3) + O(V + E)
         /// </summary>
         override
         public void Color()

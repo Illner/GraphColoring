@@ -18,13 +18,15 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchange:
                     name = "Random sequence interchange algorithm";
-                    timeComplexity = TimeComplexityEnum.multiply;
+                    timeComplexity = TimeComplexityEnum.cubic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
                     name = "Random sequence interchange extended algorithm";
+                    timeComplexity = TimeComplexityEnum.quartic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
                     name = "Random sequence interchange extended with K3 algorithm";
+                    timeComplexity = TimeComplexityEnum.quintic;
                     break;
             }
         }
@@ -33,7 +35,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.RandomSequence
         #region Method
         /// <summary>
         /// Create a sequence of vertices
-        /// Time complexity: O(n)
+        /// Time complexity: O(V)
         /// </summary>
         override
         protected void CreateVertexSequence()

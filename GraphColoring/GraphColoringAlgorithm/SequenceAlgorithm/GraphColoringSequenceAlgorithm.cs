@@ -22,6 +22,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm
         /// If colored graph is initialized throws ColoredGraphAlreadyInitializedException
         /// If sequence of vertices is invalid throws AlgorithmInvalidVertexSequence
         /// Something wrong - AlgorithmGraphIsNotColored
+        /// Time complexity: O(V + E)
         /// </summary>
         override
         public void Color()

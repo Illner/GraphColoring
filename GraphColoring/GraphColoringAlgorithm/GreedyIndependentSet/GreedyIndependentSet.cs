@@ -14,7 +14,7 @@ namespace GraphColoring.GraphColoringAlgorithm.GreedyIndependentSet
         public GreedyIndependentSet(Graph.IGraphInterface graph) : base(graph)
         {
             name = "Greedy independent set algorithm";
-            timeComplexity = TimeComplexityEnum.undefined;
+            timeComplexity = TimeComplexityEnum.cubic;
         }
         #endregion
         

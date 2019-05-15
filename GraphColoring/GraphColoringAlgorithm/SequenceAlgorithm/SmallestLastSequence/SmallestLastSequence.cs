@@ -20,13 +20,15 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchange:
                     name = "Smallest last sequence interchange algorithm";
-                    timeComplexity = TimeComplexityEnum.quadraticPlusMultiply;
+                    timeComplexity = TimeComplexityEnum.cubic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
                     name = "Smallest last sequence interchange extended algorithm";
+                    timeComplexity = TimeComplexityEnum.quartic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
                     name = "Smallest last sequence interchange extended with K3 algorithm";
+                    timeComplexity = TimeComplexityEnum.quintic;
                     break;
             }
         }
@@ -35,7 +37,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
         #region Method
         /// <summary>
         /// Create a sequence of vertices
-        /// Time complexity: O(n^2 + nm) + 0
+        /// Time complexity: O(V^2 + V * E) + 0
         /// </summary>
         override
         protected void CreateVertexSequence()
@@ -48,9 +50,8 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
             copyGraph = Graph.GraphOperation.GraphOperation.CopyGraph(graph);
             while (copyGraph.GetRealCountVertices() != 0)
             {
-                // Because delete
                 int minDegree = int.MaxValue;
-                foreach(Graph.IVertexInterface myVertex in copyGraph.GetGraphProperty().GetDegreeSequenceVertex(false))
+                foreach (Graph.IVertexInterface myVertex in copyGraph.GetGraphProperty().GetDegreeSequenceVertex(false))
                 {
                     if (minDegree > copyGraph.CountNeighbours(myVertex))
                     {
@@ -58,6 +59,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.SmallestLastSeq
                         minDegree = copyGraph.CountNeighbours(myVertex);
                     }
                 }
+
                 VertexList.Add(graph.GetVertexByUserName(vertex.GetUserName()));
                 copyGraph.VertexDelete(vertex);
             }

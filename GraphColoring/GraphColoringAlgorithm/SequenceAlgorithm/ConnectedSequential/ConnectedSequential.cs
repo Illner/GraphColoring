@@ -17,7 +17,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.ConnectedSequen
         #region Method
         /// <summary>
         /// Create a sequence of vertices
-        /// Time complexity: O(n + m) + O(n + m)
+        /// Time complexity: O(V + E) + O(V + E)
         /// </summary>
         override
         protected void CreateVertexSequence()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace GraphColoring.GraphColoringAlgorithm
 {
@@ -6,18 +7,26 @@ namespace GraphColoring.GraphColoringAlgorithm
     {
         public enum TimeComplexityEnum
         {
-            constant,               // O(c)
-            logarithmic,
-            linear,                 // O(n + m)
-            quadratic,              // O(n^2 + m)
-            multiply,               // O(nm)
-            quadraticPlusMultiply,  // O(n^2 + nm)
-            cubic,                  // O(n^3)
-            cubicPlusQuadratic,     // O(n^3 + mn^2)
-            quartic,                // O(n^4)
-            exponential,
-            factorial,              // O(n! + m)
+            linear,                 // O(V + E)
+            quadratic,              // O(V^2)
+            multiply,               // O(V * E)
+            cubic,                  // O(V^3)
+            quadraticPlusMultiply,  // O(V^2 + V * E)
+            quartic,                // O(V^4)
+            cubicPlusQuadratic,     // O(V^3 + V^2 * E)
+            quintic,                // O(V^5)
+            factorial,              // O(V!)
             undefined
+        }
+
+        /// <summary>
+        /// Get enum order
+        /// </summary>
+        /// <param name="State">enum</param>
+        /// <returns>order</returns>
+        public static int GetOrder(TimeComplexityEnum state)
+        {
+            return Enum.GetValues(typeof(TimeComplexityEnum)).Cast<TimeComplexityEnum>().Select((x, i) => new { item = x, index = i }).Single(x => x.item == state).index;
         }
     }
 }

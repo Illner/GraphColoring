@@ -46,14 +46,27 @@ namespace GraphColoring.GraphColoringAlgorithm.GeneticAlgorithm
             this.populationSize = populationSize;
             this.exponentCountOfIteration = exponentCountOfIteration;
             name = "Genetic algorithm (exponent: " + exponentCountOfIteration + ")";
-            //timeComplexity = TimeComplexityEnum.cubicPlusQuadratic;
+
+            timeComplexity = TimeComplexityEnum.undefined;
+            if (populationSize == 10)
+            {
+                switch (exponentCountOfIteration)
+                {
+                    case 1:
+                        timeComplexity = TimeComplexityEnum.quadraticPlusMultiply;
+                        break;
+                    case 2:
+                        timeComplexity = TimeComplexityEnum.cubicPlusQuadratic;
+                        break;
+                }
+            }
         }
         #endregion
         
         #region Method
         /// <summary>
         /// Color a graph
-        /// Time complexity: O(k * p * (p * n + m)) + 0
+        /// Time complexity: O(k * p * (p * V + E)) + 0
         /// </summary>
         override
         public void Color()

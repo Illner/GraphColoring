@@ -236,6 +236,19 @@ namespace GraphColoring.MyException.GraphException
     }
 
     /// <summary>
+    /// Graph exception
+    /// Can't create line because 0 edges
+    /// </summary>
+    public class GraphLineGraphInvalidCountOfEdges : GraphException
+    {
+        public GraphLineGraphInvalidCountOfEdges() { }
+
+        public GraphLineGraphInvalidCountOfEdges(string message) : base(message) { }
+
+        public GraphLineGraphInvalidCountOfEdges(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
     /// (Colored) Graph exception
     /// Colored graph is not initialized
     /// </summary>

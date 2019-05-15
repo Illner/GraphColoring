@@ -240,6 +240,12 @@
   <data name="LineGraphStatus" xml:space="preserve">
     <value>The line graph was created.</value>
   </data>
+  <data name="LineGraphZeroEdges" xml:space="preserve">
+    <value>Can't create a line graph because the graph has 0 edges.</value>
+  </data>
+  <data name="LineGraphZeroEdgesTitle" xml:space="preserve">
+    <value>The line graph was not created</value>
+  </data>
   <data name="LoadGraphInvalidFile" xml:space="preserve">
     <value>The file is invalid. Please load another one!</value>
   </data>

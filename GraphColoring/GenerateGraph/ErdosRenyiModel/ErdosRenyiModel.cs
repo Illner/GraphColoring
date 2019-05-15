@@ -64,14 +64,11 @@ namespace GraphColoring.GenerateGraph.ErdosRenyiModel
                     probability = random.Next(100000, 300000) / countVertices;
                     break;
                 case ErdosRenyiModelProbabilityEnum.cLogNDividedByN:
-                    probability = (int)(random.Next(100000, 300000) * Math.Log(countVertices) / countVertices);
+                    probability = (int)(random.Next(100000, 600000) * Math.Log(countVertices) / countVertices);
                     break;
                 default:
                     throw new MyException.GenerateGraphException.ErdosReneiModelProbabilityEnumMissing(erdosRenyiModelProbabilityEnum.ToString());
             }
-
-            if (erdosRenyiModelProbabilityEnum == ErdosRenyiModelProbabilityEnum.cLogNDividedByN)
-                probability += (random.Next(0, 30000));
         }
 
         public Graph.IGraphInterface GenerateGraph()

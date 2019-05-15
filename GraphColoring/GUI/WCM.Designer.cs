@@ -430,6 +430,24 @@ namespace GraphColoring.GUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t create a line graph because the graph has 0 edges..
+        /// </summary>
+        internal static string LineGraphZeroEdges {
+            get {
+                return ResourceManager.GetString("LineGraphZeroEdges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The line graph was not created.
+        /// </summary>
+        internal static string LineGraphZeroEdgesTitle {
+            get {
+                return ResourceManager.GetString("LineGraphZeroEdgesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file is invalid. Please load another one!.
         /// </summary>
         internal static string LoadGraphInvalidFile {

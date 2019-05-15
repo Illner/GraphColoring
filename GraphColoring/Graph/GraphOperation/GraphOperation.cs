@@ -56,6 +56,7 @@ namespace GraphColoring.Graph.GraphOperation
         /// <summary>
         /// Return a line graph
         /// If the graph is not initialized throws GraphInitializationException
+        /// If teh graph has 0 edges throws GraphLineGraphInvalidCountOfEdges
         /// </summary>
         /// <param name="graph">graph</param>
         /// <returns>line graf</returns>
@@ -73,6 +74,9 @@ namespace GraphColoring.Graph.GraphOperation
 
             if (!graph.GetIsInitialized())
                 throw new MyException.GraphException.GraphInitializationException();
+
+            if (graph.GetGraphProperty().GetCountEdges() == 0)
+                throw new MyException.GraphException.GraphLineGraphInvalidCountOfEdges(graph.GetGraphProperty().GetCountEdges().ToString());
 
             lineGraph = new GraphEdgeList(graph.GetGraphProperty().GetCountEdges());
             lineGraph.SetName("Line graph - " + graph.GetName());

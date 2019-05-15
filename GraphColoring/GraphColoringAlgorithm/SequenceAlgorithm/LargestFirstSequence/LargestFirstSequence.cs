@@ -20,17 +20,19 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
             {
                 case GraphColoringAlgorithInterchangeEnum.none:
                     name = "Largest first sequence algorithm";
-                    timeComplexity = TimeComplexityEnum.linear;
+                    timeComplexity = TimeComplexityEnum.quadratic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchange:
                     name = "Largest first sequence interchange algorithm";
-                    timeComplexity = TimeComplexityEnum.multiply;
+                    timeComplexity = TimeComplexityEnum.cubic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
                     name = "Largest first sequence interchange extended algorithm";
+                    timeComplexity = TimeComplexityEnum.quartic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
                     name = "Largest first sequence interchange extended with K3 algorithm";
+                    timeComplexity = TimeComplexityEnum.quintic;
                     break;
             }
         }
@@ -39,7 +41,7 @@ namespace GraphColoring.GraphColoringAlgorithm.SequenceAlgorithm.LargestFirstSeq
         #region Method
         /// <summary>
         /// Create a sequence of vertices
-        /// Time complexity: O(n) + O(n^2)
+        /// Time complexity: O(V) + O(V^2)
         /// </summary>
         override
         protected void CreateVertexSequence()

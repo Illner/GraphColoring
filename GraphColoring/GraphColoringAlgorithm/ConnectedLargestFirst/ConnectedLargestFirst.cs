@@ -20,19 +20,21 @@ namespace GraphColoring.GraphColoringAlgorithm.ConnectedLargestFirst
             {
                 case GraphColoringAlgorithInterchangeEnum.none:
                     name = "Connected largest first sequence algorithm";
+                    timeComplexity = TimeComplexityEnum.quadratic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchange:
                     name = "Connected largest first interchange algorithm";
+                    timeComplexity = TimeComplexityEnum.cubic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtended:
                     name = "Connected largest first interchange extended algorithm";
+                    timeComplexity = TimeComplexityEnum.quartic;
                     break;
                 case GraphColoringAlgorithInterchangeEnum.interchangeExtendedK3:
                     name = "Connected largest first interchange extended with K3 algorithm";
+                    timeComplexity = TimeComplexityEnum.quintic;
                     break;
             }
-
-            timeComplexity = TimeComplexityEnum.undefined;
         }
         #endregion
         

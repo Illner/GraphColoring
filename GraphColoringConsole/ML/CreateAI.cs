@@ -52,7 +52,7 @@ namespace GraphColoringConsole.ML
         {
             // Variable
             int countOfData = 0;
-
+        
             // Generate data
             if (generateData)
             {

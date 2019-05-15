@@ -24,7 +24,7 @@ namespace GraphColoring.GUI
         List<GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum> algorithmListBoxList;
         private GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum graphColoringAlgorithmEnum;
         #endregion
-        
+
         #region Constructor
         public GraphColoringForm()
         {
@@ -61,10 +61,8 @@ namespace GraphColoring.GUI
                 foreach (GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum namedGraph in record.Keys)
                 {
                     string itemName;
-
                     //if (!GalleryOfNamedGraphs.NamedGraphs.WCMNamedGraphsDictionary.TryGetValue(namedGraph, out itemName))
                         itemName = namedGraph.ToString();
-
                     namedGraphsComboBox.Items.Add(namedGraph);
                 }
                 namedGraphsComboBox.Items.Add(delimiterNamedGraphComboBox);
@@ -74,7 +72,7 @@ namespace GraphColoring.GUI
             FillNamedGraphsComboBox();
         }
         #endregion
-        
+
         #region Method
         /// <summary>
         /// Create instance of algorithm
@@ -194,9 +192,11 @@ namespace GraphColoring.GUI
                     graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), isSchedule, showSpanningTree, showSimplicialVertex, showCutVerticesAndBridges, showMaximumAndMinimumDegreeVertices);
                 else
                     graphVisualization = new GraphVisualization.GraphVisualization(graph.GetGraphProperty().GetComponents(), false, showSpanningTree, showSimplicialVertex, showCutVerticesAndBridges, showMaximumAndMinimumDegreeVertices);
-                
+
                 graphVisualization.CreateGraphVisualization();
                 SetDrawGraphPictureBox(graphVisualization.GetImage());
+
+                Thread.Sleep(500);
             }
             catch (Exception ex)
             {
@@ -243,7 +243,7 @@ namespace GraphColoring.GUI
             coreThread.Start();
         }
 
-        
+
         private void showCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!ExistsGraph(false))
@@ -488,7 +488,7 @@ namespace GraphColoring.GUI
             }
             colorGraphPlanScheduleButton.Enabled = enable;
         }
-        
+
         private void SetIsGraphColoring(bool value)
         {
             if (InvokeRequired)
@@ -496,7 +496,7 @@ namespace GraphColoring.GUI
                 this.Invoke(new Action<bool>(SetIsGraphColoring), new object[] { value });
                 return;
             }
-            
+
             this.isColoringGraph = value;
 
             if (value)
@@ -707,7 +707,7 @@ namespace GraphColoring.GUI
             return true;
         }
         #endregion
-        
+
         #region Event
         private void loadGraphButton_Click(object sender, EventArgs e)
         {
@@ -739,7 +739,7 @@ namespace GraphColoring.GUI
 
             // Status
             SetStatusLabel(WCM.LoadGraphProgressStatus);
-            
+
             isModifiedGraph = false;
 
             coreThread = new Thread(() =>
@@ -1074,7 +1074,7 @@ namespace GraphColoring.GUI
                         Graph.GraphClass.GraphClass.GraphClassEnum classTypeEnum = graph.GetGraphProperty().GetGraphClass();
                         if (!Graph.GraphClass.GraphClass.WCMClassGraphDictionary.TryGetValue(classTypeEnum, out classType))
                             classType = "";
-                        
+
                         isCyclic = graph.GetGraphProperty().GetIsCyclic().ToString();
                         isRegular = graph.GetGraphProperty().GetIsRegular().ToString();
                         countOfCutVertices = graph.GetGraphProperty().GetCutVertices().Count.ToString();
@@ -1220,7 +1220,7 @@ namespace GraphColoring.GUI
             string namedGraph = namedGraphsComboBox.SelectedValue.ToString();
 
             GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum namedGraphEnum;
-            
+
             namedGraphEnum = (GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum)Enum.Parse(typeof(GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum), namedGraph, true);
 
             foreach (Dictionary<GalleryOfNamedGraphs.NamedGraphs.NamedGraphsEnum, string> record in GalleryOfNamedGraphs.NamedGraphs.namedGraphsList)
@@ -1343,6 +1343,13 @@ namespace GraphColoring.GUI
                     // Print to console
                     MyWrite(WCM.LineGraphStatus, WriteEnum.lineGraph);
                 }
+                catch (MyException.GraphException.GraphLineGraphInvalidCountOfEdges)
+                {
+                    ShowMessageBox("Error | " + WCM.LineGraphZeroEdgesTitle, WCM.LineGraphZeroEdges);
+                    SetStatusLabel(WCM.LineGraphZeroEdgesTitle);
+
+                    MyWrite(WCM.LineGraphZeroEdges, WriteEnum.error);
+                }
                 catch (ThreadAbortException)
                 {
                     // Print to console
@@ -1358,7 +1365,7 @@ namespace GraphColoring.GUI
             coreThread.Start();
         }
         #endregion
-        
+
         #region Property - click
         // Class click
         private void classPropertiesLabel_Click(object sender, EventArgs e)
@@ -1604,7 +1611,7 @@ namespace GraphColoring.GUI
             coreThread.Start();
         }
         #endregion
-        
+
         #region Graph modification - click
 
         private void changeVertexNameGraphModificationVertexButton_Click(object sender, EventArgs e)
@@ -1768,7 +1775,7 @@ namespace GraphColoring.GUI
 
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
-            
+
             // Change graph name
             if (!isModifiedGraph)
             {
@@ -1833,7 +1840,7 @@ namespace GraphColoring.GUI
 
             // Status
             SetStatusLabel(WCM.GraphModificationProgressStatus);
-            
+
             // Change graph name
             if (!isModifiedGraph)
             {
@@ -2315,7 +2322,7 @@ namespace GraphColoring.GUI
             coreThread.Start();
         }
         #endregion
-        
+
         #region Drag and drop
         private void GraphColoringForm_DragEnter(object sender, DragEventArgs e)
         {
@@ -2340,7 +2347,7 @@ namespace GraphColoring.GUI
         {
             if (drawGraphPictureBox.Image == null)
                 return;
-            
+
             /*
             if (graphVisualizationForm != null)
             {
@@ -2357,7 +2364,7 @@ namespace GraphColoring.GUI
 
         }
         #endregion
-        
+
         #region Timer
         private void ColoringProgressTimer_Tick(object sender, EventArgs e)
         {

@@ -67,25 +67,7 @@ Edges:
 ---- 660 (648649) 
 ---- 658 (647650) 
 
-graphLineGraph2
-Graph created.
-Name of graph: Name
-Count of vertices: 1
-Real count of vertices: 1
-Count of edges: 0
-Vertices: 
--- Identifier: 663, userName: 663
-Edges: 
--- Vertex: 663 (663)
-
-Line graph.
-Name of graph: Line graph - Name
-Count of vertices: 0
-Real count of vertices: 0
-Count of edges: 0
-Vertices: 
-Edges: 
-
+Invalid graph
 graphLineGraph3
 Graph created.
 Name of graph: Name

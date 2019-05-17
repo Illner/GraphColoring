@@ -332,10 +332,24 @@ namespace GraphColoringConsole.GenerateGraphs
                             database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3, result.Item1);
                         }
                     }
+
                     catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
                     {
                         Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3);
                     }
+
+                    /*
+                    // AI
+                    try
+                    {
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.AI.AI(graph));
+                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI, result.Item1);
+                    }
+                    catch (MyException.DatabaseException.DatabaseAlgorithmDoesNotExistException)
+                    {
+                        Console.WriteLine("Algorithm does not exist in DB: {0}", GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirst);
+                    }
+                    */
 
                     if (writer)
                     {
@@ -557,6 +571,9 @@ namespace GraphColoringConsole.GenerateGraphs
                                         break;
                                     case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3:
                                         database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3, int.Parse(lineArray[1]));
+                                        break;
+                                    case GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI:
+                                        database.AddGraphColoring(ID_Graph, GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI, int.Parse(lineArray[1]));
                                         break;
                                     default:
                                         throw new MyException.GenerateGraphsException.GenerateGraphsAlgorithmDoesNotExistException(lineArray[0]);

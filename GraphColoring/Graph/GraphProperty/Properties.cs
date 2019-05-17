@@ -117,7 +117,12 @@ namespace GraphColoring.Graph.GraphProperty
         public bool GetIsConnected()
         {
             if (!isConnected.HasValue)
-                IsConnected();
+            {
+                if (GetCountEdges() < GetCountVertices() - 1)
+                    isConnected = false;
+                else
+                    IsConnected();
+            }
 
             return (bool)isConnected;
         }

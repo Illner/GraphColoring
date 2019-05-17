@@ -151,7 +151,6 @@ namespace GraphColoringConsole.ML
             pipeline = mlContext.Transforms.Categorical.OneHotEncoding(outputColumnName: "IsRegularOneHot", inputColumnName: "IsRegular")
                 .Append(mlContext.Transforms.Categorical.OneHotEncoding(outputColumnName: "IsCyclicOneHot", inputColumnName: "IsCyclic"))
                 .Append(mlContext.Transforms.Categorical.OneHotEncoding(outputColumnName: "IsChordalOneHot", inputColumnName: "IsChordal"))
-                //.Append(mlContext.Transforms.Conversion.MapValueToKey("Label"))
                 .Append(mlContext.Transforms.Normalize(
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "ID_GraphClass", outputColumnName: "ID_GraphClassNormalized", fixZero: true),
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "ID_EulerianGraph", outputColumnName: "ID_EulerianGraphNormalized", fixZero: true),
@@ -169,13 +168,8 @@ namespace GraphColoringConsole.ML
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "AverageVertexDegree", outputColumnName: "AverageVertexDegreeNormalized", fixZero: true),
                     new NormalizingEstimator.MinMaxColumn(inputColumnName: "MedianVertexDegree", outputColumnName: "MedianVertexDegreeNormalized", fixZero: true)))
                .Append(mlContext.Transforms.Concatenate(DefaultColumnNames.Features, "ID_GraphClassNormalized", "ID_EulerianGraphNormalized", "IsRegularOneHotNormalized", "IsCyclicOneHotNormalized", "IsChordalOneHotNormalized",
-                "CountVerticesNormalized", "CountEdgesNormalized", "CountCutVerticesNormalized", /*"CountBridgesNormalized",*/ "GirthNormalized", "DenseNormalized", "MinimumVertexDegreeNormalized", "MaximumVertexDegreeNormalized", "AverageVertexDegreeNormalized"//, /*"MedianVertexDegreeNormalized",*/
-                /*"VertexDegree1", "VertexDegree2", "VertexDegree3", "VertexDegree4", "VertexDegree5", "VertexDegree6", "VertexDegree7", "VertexDegree8", "VertexDegree9", "VertexDegree10"*/))//, "VertexDegree"))
-                //.Append(mlContext.Transforms.Concatenate(DefaultColumnNames.Features, "ID_GraphClass", "ID_EulerianGraph", "IsRegularOneHot", "IsCyclicOneHot", "IsChordalOneHot",
-                //"CountVertices", "CountEdges", "CountCutVertices", /*"CountBridges",*/ "Girth", "Dense", "MinimumVertexDegree", "MaximumVertexDegree", "AverageVertexDegree", /*"MedianVertexDegree",*/
-                //"VertexDegree1", "VertexDegree2", "VertexDegree3", "VertexDegree4", "VertexDegree5", "VertexDegree6", "VertexDegree7", "VertexDegree8", "VertexDegree9", "VertexDegree10"))//, "VertexDegree"))
-                .AppendCacheCheckpoint(mlContext)
-            //.Append(mlContext.BinaryClassification.Trainers.AveragedPerceptron(labelColumn: DefaultColumnNames.Label, featureColumn: DefaultColumnNames.Features));
+                "CountVerticesNormalized", "CountEdgesNormalized", "CountCutVerticesNormalized", /*"CountBridgesNormalized",*/ "GirthNormalized", "DenseNormalized", "MinimumVertexDegreeNormalized", "MaximumVertexDegreeNormalized", "AverageVertexDegreeNormalized"//, /*"MedianVertexDegreeNormalized",*/ 
+                ))
             .Append(trainer);
         }
 

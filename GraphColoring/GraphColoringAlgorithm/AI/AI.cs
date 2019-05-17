@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GraphColoring.GraphColoringAlgorithm.AI
 {
-    class AI : GraphColoringAlgorithm
+    public class AI : GraphColoringAlgorithm
     {
         #region Variable
         GraphColoringAlgorithmEnum algorithmEnum;

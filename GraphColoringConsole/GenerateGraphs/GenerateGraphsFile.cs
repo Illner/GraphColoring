@@ -176,11 +176,17 @@ namespace GraphColoringConsole.GenerateGraphs
                             file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3.ToString() + " " + result.Item1);
                         }
 
+                        /*
+                        // AI
+                        result = colorGraphs.ColorGraph(new GraphColoring.GraphColoringAlgorithm.AI.AI(graph));
+                        file.WriteLine(GraphColoring.GraphColoringAlgorithm.GraphColoringAlgorithm.GraphColoringAlgorithmEnum.AI.ToString() + " " + result.Item1);
+                        */
+
                         if (writer)
                         {
                             Console.WriteLine("Added graph - countVertices: {0}, iteration: {1}/{2}", countVertices, (iteration + 1), countIterations);
                         }
-                        
+
                         file.Flush();
                     }
                 }

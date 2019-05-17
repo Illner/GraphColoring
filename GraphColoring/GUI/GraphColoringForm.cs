@@ -196,7 +196,7 @@ namespace GraphColoring.GUI
                 graphVisualization.CreateGraphVisualization();
                 SetDrawGraphPictureBox(graphVisualization.GetImage());
 
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
             }
             catch (Exception ex)
             {

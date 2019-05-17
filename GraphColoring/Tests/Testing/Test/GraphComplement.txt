@@ -5,27 +5,27 @@ Count of vertices: 4
 Real count of vertices: 4
 Count of edges: 6
 Vertices: 
--- Identifier: 532, userName: 532
--- Identifier: 533, userName: 533
--- Identifier: 534, userName: 534
--- Identifier: 535, userName: 535
+-- Identifier: 526, userName: 526
+-- Identifier: 527, userName: 527
+-- Identifier: 528, userName: 528
+-- Identifier: 529, userName: 529
 Edges: 
--- Vertex: 532 (532)
----- 533 (533) 
----- 534 (534) 
----- 535 (535) 
--- Vertex: 533 (533)
----- 532 (532) 
----- 534 (534) 
----- 535 (535) 
--- Vertex: 534 (534)
----- 532 (532) 
----- 533 (533) 
----- 535 (535) 
--- Vertex: 535 (535)
----- 532 (532) 
----- 533 (533) 
----- 534 (534) 
+-- Vertex: 526 (526)
+---- 527 (527) 
+---- 528 (528) 
+---- 529 (529) 
+-- Vertex: 527 (527)
+---- 526 (526) 
+---- 528 (528) 
+---- 529 (529) 
+-- Vertex: 528 (528)
+---- 526 (526) 
+---- 527 (527) 
+---- 529 (529) 
+-- Vertex: 529 (529)
+---- 526 (526) 
+---- 527 (527) 
+---- 528 (528) 
 
 Complement graph.
 Name of graph: Complement graph - Name
@@ -33,15 +33,15 @@ Count of vertices: 4
 Real count of vertices: 4
 Count of edges: 0
 Vertices: 
--- Identifier: 536, userName: 532
--- Identifier: 537, userName: 533
--- Identifier: 538, userName: 534
--- Identifier: 539, userName: 535
+-- Identifier: 530, userName: 526
+-- Identifier: 531, userName: 527
+-- Identifier: 532, userName: 528
+-- Identifier: 533, userName: 529
 Edges: 
--- Vertex: 536 (532)
--- Vertex: 537 (533)
--- Vertex: 538 (534)
--- Vertex: 539 (535)
+-- Vertex: 530 (526)
+-- Vertex: 531 (527)
+-- Vertex: 532 (528)
+-- Vertex: 533 (529)
 
 graphComplement2
 Graph created.
@@ -50,9 +50,9 @@ Count of vertices: 1
 Real count of vertices: 1
 Count of edges: 0
 Vertices: 
--- Identifier: 540, userName: 540
+-- Identifier: 534, userName: 534
 Edges: 
--- Vertex: 540 (540)
+-- Vertex: 534 (534)
 
 Complement graph.
 Name of graph: Complement graph - Name
@@ -60,9 +60,9 @@ Count of vertices: 1
 Real count of vertices: 1
 Count of edges: 0
 Vertices: 
--- Identifier: 541, userName: 540
+-- Identifier: 535, userName: 534
 Edges: 
--- Vertex: 541 (540)
+-- Vertex: 535 (534)
 
 graphComplement3
 Graph created.
@@ -71,31 +71,31 @@ Count of vertices: 6
 Real count of vertices: 6
 Count of edges: 6
 Vertices: 
--- Identifier: 542, userName: 542
--- Identifier: 543, userName: 543
--- Identifier: 544, userName: 544
--- Identifier: 545, userName: 545
--- Identifier: 546, userName: 546
--- Identifier: 547, userName: 547
+-- Identifier: 536, userName: 536
+-- Identifier: 537, userName: 537
+-- Identifier: 538, userName: 538
+-- Identifier: 539, userName: 539
+-- Identifier: 540, userName: 540
+-- Identifier: 541, userName: 541
 Edges: 
--- Vertex: 542 (542)
----- 543 (543) 
--- Vertex: 543 (543)
----- 542 (542) 
----- 546 (546) 
----- 547 (547) 
--- Vertex: 544 (544)
----- 545 (545) 
----- 546 (546) 
--- Vertex: 545 (545)
----- 544 (544) 
----- 547 (547) 
--- Vertex: 546 (546)
----- 543 (543) 
----- 544 (544) 
--- Vertex: 547 (547)
----- 543 (543) 
----- 545 (545) 
+-- Vertex: 536 (536)
+---- 537 (537) 
+-- Vertex: 537 (537)
+---- 536 (536) 
+---- 540 (540) 
+---- 541 (541) 
+-- Vertex: 538 (538)
+---- 539 (539) 
+---- 540 (540) 
+-- Vertex: 539 (539)
+---- 538 (538) 
+---- 541 (541) 
+-- Vertex: 540 (540)
+---- 537 (537) 
+---- 538 (538) 
+-- Vertex: 541 (541)
+---- 537 (537) 
+---- 539 (539) 
 
 Complement graph.
 Name of graph: Complement graph - Name
@@ -103,37 +103,37 @@ Count of vertices: 6
 Real count of vertices: 6
 Count of edges: 9
 Vertices: 
--- Identifier: 548, userName: 542
--- Identifier: 549, userName: 544
--- Identifier: 550, userName: 545
--- Identifier: 551, userName: 546
--- Identifier: 552, userName: 547
--- Identifier: 553, userName: 543
+-- Identifier: 542, userName: 536
+-- Identifier: 543, userName: 538
+-- Identifier: 544, userName: 539
+-- Identifier: 545, userName: 540
+-- Identifier: 546, userName: 541
+-- Identifier: 547, userName: 537
 Edges: 
--- Vertex: 548 (542)
----- 549 (544) 
----- 550 (545) 
----- 551 (546) 
----- 552 (547) 
--- Vertex: 549 (544)
----- 548 (542) 
----- 553 (543) 
----- 552 (547) 
--- Vertex: 550 (545)
----- 548 (542) 
----- 553 (543) 
----- 551 (546) 
--- Vertex: 551 (546)
----- 548 (542) 
----- 550 (545) 
----- 552 (547) 
--- Vertex: 552 (547)
----- 548 (542) 
----- 549 (544) 
----- 551 (546) 
--- Vertex: 553 (543)
----- 549 (544) 
----- 550 (545) 
+-- Vertex: 542 (536)
+---- 543 (538) 
+---- 544 (539) 
+---- 545 (540) 
+---- 546 (541) 
+-- Vertex: 543 (538)
+---- 542 (536) 
+---- 547 (537) 
+---- 546 (541) 
+-- Vertex: 544 (539)
+---- 542 (536) 
+---- 547 (537) 
+---- 545 (540) 
+-- Vertex: 545 (540)
+---- 542 (536) 
+---- 544 (539) 
+---- 546 (541) 
+-- Vertex: 546 (541)
+---- 542 (536) 
+---- 543 (538) 
+---- 545 (540) 
+-- Vertex: 547 (537)
+---- 543 (538) 
+---- 544 (539) 
 
 graphComplement4
 Graph created.
@@ -142,29 +142,29 @@ Count of vertices: 6
 Real count of vertices: 6
 Count of edges: 5
 Vertices: 
--- Identifier: 554, userName: 554
--- Identifier: 555, userName: 555
--- Identifier: 556, userName: 556
--- Identifier: 557, userName: 557
--- Identifier: 558, userName: 558
--- Identifier: 559, userName: 559
+-- Identifier: 548, userName: 548
+-- Identifier: 549, userName: 549
+-- Identifier: 550, userName: 550
+-- Identifier: 551, userName: 551
+-- Identifier: 552, userName: 552
+-- Identifier: 553, userName: 553
 Edges: 
--- Vertex: 554 (554)
----- 556 (556) 
----- 557 (557) 
--- Vertex: 555 (555)
----- 556 (556) 
----- 557 (557) 
--- Vertex: 556 (556)
----- 554 (554) 
----- 555 (555) 
--- Vertex: 557 (557)
----- 554 (554) 
----- 555 (555) 
--- Vertex: 558 (558)
----- 559 (559) 
--- Vertex: 559 (559)
----- 558 (558) 
+-- Vertex: 548 (548)
+---- 550 (550) 
+---- 551 (551) 
+-- Vertex: 549 (549)
+---- 550 (550) 
+---- 551 (551) 
+-- Vertex: 550 (550)
+---- 548 (548) 
+---- 549 (549) 
+-- Vertex: 551 (551)
+---- 548 (548) 
+---- 549 (549) 
+-- Vertex: 552 (552)
+---- 553 (553) 
+-- Vertex: 553 (553)
+---- 552 (552) 
 
 Complement graph.
 Name of graph: Complement graph - Name
@@ -172,38 +172,38 @@ Count of vertices: 6
 Real count of vertices: 6
 Count of edges: 10
 Vertices: 
--- Identifier: 560, userName: 554
--- Identifier: 561, userName: 555
--- Identifier: 562, userName: 558
--- Identifier: 563, userName: 559
--- Identifier: 564, userName: 556
--- Identifier: 565, userName: 557
+-- Identifier: 554, userName: 548
+-- Identifier: 555, userName: 549
+-- Identifier: 556, userName: 552
+-- Identifier: 557, userName: 553
+-- Identifier: 558, userName: 550
+-- Identifier: 559, userName: 551
 Edges: 
--- Vertex: 560 (554)
----- 561 (555) 
----- 562 (558) 
----- 563 (559) 
--- Vertex: 561 (555)
----- 560 (554) 
----- 562 (558) 
----- 563 (559) 
--- Vertex: 562 (558)
----- 560 (554) 
----- 561 (555) 
----- 564 (556) 
----- 565 (557) 
--- Vertex: 563 (559)
----- 560 (554) 
----- 561 (555) 
----- 564 (556) 
----- 565 (557) 
--- Vertex: 564 (556)
----- 565 (557) 
----- 562 (558) 
----- 563 (559) 
--- Vertex: 565 (557)
----- 564 (556) 
----- 562 (558) 
----- 563 (559) 
+-- Vertex: 554 (548)
+---- 555 (549) 
+---- 556 (552) 
+---- 557 (553) 
+-- Vertex: 555 (549)
+---- 554 (548) 
+---- 556 (552) 
+---- 557 (553) 
+-- Vertex: 556 (552)
+---- 554 (548) 
+---- 555 (549) 
+---- 558 (550) 
+---- 559 (551) 
+-- Vertex: 557 (553)
+---- 554 (548) 
+---- 555 (549) 
+---- 558 (550) 
+---- 559 (551) 
+-- Vertex: 558 (550)
+---- 559 (551) 
+---- 556 (552) 
+---- 557 (553) 
+-- Vertex: 559 (551)
+---- 558 (550) 
+---- 556 (552) 
+---- 557 (553) 
 
 

@@ -5,15 +5,15 @@ Count of vertices: 1
 Real count of vertices: 1
 Count of edges: 0
 Vertices: 
--- Identifier: 5076, userName: 5076
+-- Identifier: 5057, userName: 5057
 Edges: 
--- Vertex: 5076 (5076)
+-- Vertex: 5057 (5057)
 
 Standard graph
 graph "Name"
 {
 node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
-"5076" [shape = doublecircle shape = doubleoctagon shape = square ]
+"5057" [shape = doublecircle shape = doubleoctagon shape = square ]
 }
 
 Uncolored schedule
@@ -26,7 +26,7 @@ Colored schedule
 graph "Name"
 {
 node [shape=Mrecord style=filled];
-Color1 [label = "{5076}" fillcolor = blue];
+Color1 [label = "{5057}" fillcolor = blue];
 }
 
 converterGraphToDotEnum3
@@ -34,6 +34,262 @@ Name of graph: Name
 Count of vertices: 9
 Real count of vertices: 9
 Count of edges: 12
+Vertices: 
+-- Identifier: 5058, userName: 5058
+-- Identifier: 5059, userName: 5059
+-- Identifier: 5060, userName: 5060
+-- Identifier: 5061, userName: 5061
+-- Identifier: 5062, userName: 5062
+-- Identifier: 5063, userName: 5063
+-- Identifier: 5064, userName: 5064
+-- Identifier: 5065, userName: 5065
+-- Identifier: 5066, userName: 5066
+Edges: 
+-- Vertex: 5058 (5058)
+---- 5063 (5063) 
+---- 5064 (5064) 
+---- 5065 (5065) 
+---- 5066 (5066) 
+-- Vertex: 5059 (5059)
+---- 5063 (5063) 
+---- 5064 (5064) 
+-- Vertex: 5060 (5060)
+---- 5064 (5064) 
+---- 5065 (5065) 
+-- Vertex: 5061 (5061)
+---- 5065 (5065) 
+---- 5066 (5066) 
+-- Vertex: 5062 (5062)
+---- 5063 (5063) 
+---- 5066 (5066) 
+-- Vertex: 5063 (5063)
+---- 5058 (5058) 
+---- 5059 (5059) 
+---- 5062 (5062) 
+-- Vertex: 5064 (5064)
+---- 5058 (5058) 
+---- 5059 (5059) 
+---- 5060 (5060) 
+-- Vertex: 5065 (5065)
+---- 5058 (5058) 
+---- 5060 (5060) 
+---- 5061 (5061) 
+-- Vertex: 5066 (5066)
+---- 5058 (5058) 
+---- 5061 (5061) 
+---- 5062 (5062) 
+
+Standard graph
+graph "Name"
+{
+node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
+"5058" [shape = doubleoctagon ]
+"5059" [shape = doublecircle ]
+"5060" [shape = doublecircle ]
+"5061" [shape = doublecircle ]
+"5062" [shape = doublecircle ]
+"5063" []
+"5064" []
+"5065" []
+"5066" []
+"5058" --  "5063"
+
+ [penwidth = 4]
+"5058" --  "5064"
+
+ [penwidth = 4]
+"5058" --  "5065"
+
+ [penwidth = 4]
+"5058" --  "5066"
+
+ [penwidth = 4]
+"5059" --  "5063"
+
+ [penwidth = 4]
+"5059" --  "5064"
+
+"5060" --  "5064"
+
+ [penwidth = 4]
+"5060" --  "5065"
+
+"5061" --  "5065"
+
+ [penwidth = 4]
+"5061" --  "5066"
+
+"5062" --  "5063"
+
+ [penwidth = 4]
+"5062" --  "5066"
+
+}
+
+Uncolored schedule
+graph "Name"
+{
+node [shape=Mrecord style=filled];
+}
+
+Colored schedule
+graph "Name"
+{
+node [shape=Mrecord style=filled];
+Color1 [label = "{5058 | 5062 | 5061 | 5060 | 5059}" fillcolor = blue];
+Color2 [label = "{5066 | 5065 | 5064 | 5063}" fillcolor = chartreuse];
+}
+
+converterGraphToDotEnum4
+Name of graph: Name
+Count of vertices: 10
+Real count of vertices: 10
+Count of edges: 19
+Vertices: 
+-- Identifier: 5067, userName: 5067
+-- Identifier: 5068, userName: 5068
+-- Identifier: 5069, userName: 5069
+-- Identifier: 5070, userName: 5070
+-- Identifier: 5071, userName: 5071
+-- Identifier: 5072, userName: 5072
+-- Identifier: 5073, userName: 5073
+-- Identifier: 5074, userName: 5074
+-- Identifier: 5075, userName: 5075
+-- Identifier: 5076, userName: 5076
+Edges: 
+-- Vertex: 5067 (5067)
+---- 5068 (5068) 
+---- 5069 (5069) 
+-- Vertex: 5068 (5068)
+---- 5067 (5067) 
+---- 5069 (5069) 
+---- 5070 (5070) 
+---- 5071 (5071) 
+-- Vertex: 5069 (5069)
+---- 5067 (5067) 
+---- 5068 (5068) 
+---- 5071 (5071) 
+---- 5072 (5072) 
+-- Vertex: 5070 (5070)
+---- 5068 (5068) 
+---- 5071 (5071) 
+---- 5073 (5073) 
+---- 5074 (5074) 
+---- 5075 (5075) 
+---- 5076 (5076) 
+-- Vertex: 5071 (5071)
+---- 5068 (5068) 
+---- 5069 (5069) 
+---- 5070 (5070) 
+---- 5072 (5072) 
+---- 5073 (5073) 
+---- 5076 (5076) 
+-- Vertex: 5072 (5072)
+---- 5069 (5069) 
+---- 5071 (5071) 
+---- 5073 (5073) 
+---- 5074 (5074) 
+---- 5075 (5075) 
+---- 5076 (5076) 
+-- Vertex: 5073 (5073)
+---- 5070 (5070) 
+---- 5071 (5071) 
+---- 5072 (5072) 
+-- Vertex: 5074 (5074)
+---- 5070 (5070) 
+---- 5072 (5072) 
+-- Vertex: 5075 (5075)
+---- 5070 (5070) 
+---- 5072 (5072) 
+-- Vertex: 5076 (5076)
+---- 5070 (5070) 
+---- 5071 (5071) 
+---- 5072 (5072) 
+
+Standard graph
+graph "Name"
+{
+node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
+"5067" [shape = doublecircle ]
+"5068" []
+"5069" []
+"5070" [shape = doubleoctagon ]
+"5071" [shape = doubleoctagon ]
+"5072" [shape = doubleoctagon ]
+"5073" []
+"5074" [shape = doublecircle ]
+"5075" [shape = doublecircle ]
+"5076" []
+"5067" --  "5068"
+
+ [penwidth = 4]
+"5067" --  "5069"
+
+ [penwidth = 4]
+"5068" --  "5069"
+
+"5068" --  "5070"
+
+ [penwidth = 4]
+"5068" --  "5071"
+
+ [penwidth = 4]
+"5069" --  "5071"
+
+"5069" --  "5072"
+
+ [penwidth = 4]
+"5070" --  "5071"
+
+"5070" --  "5073"
+
+ [penwidth = 4]
+"5070" --  "5074"
+
+ [penwidth = 4]
+"5070" --  "5075"
+
+ [penwidth = 4]
+"5070" --  "5076"
+
+ [penwidth = 4]
+"5071" --  "5072"
+
+"5071" --  "5073"
+
+"5071" --  "5076"
+
+"5072" --  "5073"
+
+"5072" --  "5074"
+
+"5072" --  "5075"
+
+"5072" --  "5076"
+
+}
+
+Uncolored schedule
+graph "Name"
+{
+node [shape=Mrecord style=filled];
+}
+
+Colored schedule
+graph "Name"
+{
+node [shape=Mrecord style=filled];
+Color1 [label = "{5072 | 5070 | 5067}" fillcolor = blue];
+Color2 [label = "{5071 | 5075 | 5074}" fillcolor = chartreuse];
+Color3 [label = "{5069 | 5076 | 5073}" fillcolor = cadetblue];
+Color4 [label = "{5068}" fillcolor = coral];
+}
+
+converterGraphToDotEnum5
+Name of graph: Name
+Count of vertices: 13
+Real count of vertices: 13
+Count of edges: 10
 Vertices: 
 -- Identifier: 5077, userName: 5077
 -- Identifier: 5078, userName: 5078
@@ -44,348 +300,92 @@ Vertices:
 -- Identifier: 5083, userName: 5083
 -- Identifier: 5084, userName: 5084
 -- Identifier: 5085, userName: 5085
-Edges: 
--- Vertex: 5077 (5077)
----- 5082 (5082) 
----- 5083 (5083) 
----- 5084 (5084) 
----- 5085 (5085) 
--- Vertex: 5078 (5078)
----- 5082 (5082) 
----- 5083 (5083) 
--- Vertex: 5079 (5079)
----- 5083 (5083) 
----- 5084 (5084) 
--- Vertex: 5080 (5080)
----- 5084 (5084) 
----- 5085 (5085) 
--- Vertex: 5081 (5081)
----- 5082 (5082) 
----- 5085 (5085) 
--- Vertex: 5082 (5082)
----- 5077 (5077) 
----- 5078 (5078) 
----- 5081 (5081) 
--- Vertex: 5083 (5083)
----- 5077 (5077) 
----- 5078 (5078) 
----- 5079 (5079) 
--- Vertex: 5084 (5084)
----- 5077 (5077) 
----- 5079 (5079) 
----- 5080 (5080) 
--- Vertex: 5085 (5085)
----- 5077 (5077) 
----- 5080 (5080) 
----- 5081 (5081) 
-
-Standard graph
-graph "Name"
-{
-node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
-"5077" [shape = doubleoctagon ]
-"5078" [shape = doublecircle ]
-"5079" [shape = doublecircle ]
-"5080" [shape = doublecircle ]
-"5081" [shape = doublecircle ]
-"5082" []
-"5083" []
-"5084" []
-"5085" []
-"5077" --  "5082"
-
- [penwidth = 4]
-"5077" --  "5083"
-
- [penwidth = 4]
-"5077" --  "5084"
-
- [penwidth = 4]
-"5077" --  "5085"
-
- [penwidth = 4]
-"5078" --  "5082"
-
- [penwidth = 4]
-"5078" --  "5083"
-
-"5079" --  "5083"
-
- [penwidth = 4]
-"5079" --  "5084"
-
-"5080" --  "5084"
-
- [penwidth = 4]
-"5080" --  "5085"
-
-"5081" --  "5082"
-
- [penwidth = 4]
-"5081" --  "5085"
-
-}
-
-Uncolored schedule
-graph "Name"
-{
-node [shape=Mrecord style=filled];
-}
-
-Colored schedule
-graph "Name"
-{
-node [shape=Mrecord style=filled];
-Color1 [label = "{5077 | 5081 | 5080 | 5079 | 5078}" fillcolor = blue];
-Color2 [label = "{5085 | 5084 | 5083 | 5082}" fillcolor = chartreuse];
-}
-
-converterGraphToDotEnum4
-Name of graph: Name
-Count of vertices: 10
-Real count of vertices: 10
-Count of edges: 19
-Vertices: 
 -- Identifier: 5086, userName: 5086
 -- Identifier: 5087, userName: 5087
 -- Identifier: 5088, userName: 5088
 -- Identifier: 5089, userName: 5089
--- Identifier: 5090, userName: 5090
--- Identifier: 5091, userName: 5091
--- Identifier: 5092, userName: 5092
--- Identifier: 5093, userName: 5093
--- Identifier: 5094, userName: 5094
--- Identifier: 5095, userName: 5095
 Edges: 
+-- Vertex: 5077 (5077)
+---- 5078 (5078) 
+---- 5079 (5079) 
+---- 5080 (5080) 
+---- 5081 (5081) 
+-- Vertex: 5078 (5078)
+---- 5077 (5077) 
+-- Vertex: 5079 (5079)
+---- 5077 (5077) 
+-- Vertex: 5080 (5080)
+---- 5077 (5077) 
+-- Vertex: 5081 (5081)
+---- 5077 (5077) 
+---- 5082 (5082) 
+-- Vertex: 5082 (5082)
+---- 5081 (5081) 
+-- Vertex: 5083 (5083)
+---- 5084 (5084) 
+-- Vertex: 5084 (5084)
+---- 5083 (5083) 
+---- 5085 (5085) 
+-- Vertex: 5085 (5085)
+---- 5084 (5084) 
 -- Vertex: 5086 (5086)
 ---- 5087 (5087) 
 ---- 5088 (5088) 
+---- 5089 (5089) 
 -- Vertex: 5087 (5087)
 ---- 5086 (5086) 
----- 5088 (5088) 
----- 5089 (5089) 
----- 5090 (5090) 
 -- Vertex: 5088 (5088)
 ---- 5086 (5086) 
----- 5087 (5087) 
----- 5090 (5090) 
----- 5091 (5091) 
 -- Vertex: 5089 (5089)
----- 5087 (5087) 
----- 5090 (5090) 
----- 5092 (5092) 
----- 5093 (5093) 
----- 5094 (5094) 
----- 5095 (5095) 
--- Vertex: 5090 (5090)
----- 5087 (5087) 
----- 5088 (5088) 
----- 5089 (5089) 
----- 5091 (5091) 
----- 5092 (5092) 
----- 5095 (5095) 
--- Vertex: 5091 (5091)
----- 5088 (5088) 
----- 5090 (5090) 
----- 5092 (5092) 
----- 5093 (5093) 
----- 5094 (5094) 
----- 5095 (5095) 
--- Vertex: 5092 (5092)
----- 5089 (5089) 
----- 5090 (5090) 
----- 5091 (5091) 
--- Vertex: 5093 (5093)
----- 5089 (5089) 
----- 5091 (5091) 
--- Vertex: 5094 (5094)
----- 5089 (5089) 
----- 5091 (5091) 
--- Vertex: 5095 (5095)
----- 5089 (5089) 
----- 5090 (5090) 
----- 5091 (5091) 
+---- 5086 (5086) 
 
 Standard graph
 graph "Name"
 {
 node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
-"5086" [shape = doublecircle ]
-"5087" []
-"5088" []
-"5089" [shape = doubleoctagon ]
-"5090" [shape = doubleoctagon ]
-"5091" [shape = doubleoctagon ]
-"5092" []
-"5093" [shape = doublecircle ]
-"5094" [shape = doublecircle ]
-"5095" []
+"5077" [shape = doubleoctagon color = red , penwidth = 2 ]
+"5078" [shape = doublecircle ]
+"5079" [shape = doublecircle ]
+"5080" [shape = doublecircle ]
+"5081" [color = red , penwidth = 2 ]
+"5082" [shape = doublecircle shape = square ]
+"5077" --  "5078"
+ [color = red, penwidth = 1]
+ [penwidth = 4]
+"5077" --  "5079"
+ [color = red, penwidth = 1]
+ [penwidth = 4]
+"5077" --  "5080"
+ [color = red, penwidth = 1]
+ [penwidth = 4]
+"5077" --  "5081"
+ [color = red, penwidth = 1]
+ [penwidth = 4]
+"5081" --  "5082"
+ [color = red, penwidth = 1]
+ [penwidth = 4]
+node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
+"5083" [shape = doublecircle ]
+"5084" [shape = doubleoctagon color = red , penwidth = 2 ]
+"5085" [shape = doublecircle shape = square ]
+"5083" --  "5084"
+ [color = red, penwidth = 1]
+ [penwidth = 4]
+"5084" --  "5085"
+ [color = red, penwidth = 1]
+ [penwidth = 4]
+node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
+"5086" [shape = doubleoctagon color = red , penwidth = 2 ]
+"5087" [shape = doublecircle ]
+"5088" [shape = doublecircle shape = square ]
+"5089" [shape = doublecircle ]
 "5086" --  "5087"
-
+ [color = red, penwidth = 1]
  [penwidth = 4]
 "5086" --  "5088"
-
- [penwidth = 4]
-"5087" --  "5088"
-
-"5087" --  "5089"
-
- [penwidth = 4]
-"5087" --  "5090"
-
- [penwidth = 4]
-"5088" --  "5090"
-
-"5088" --  "5091"
-
- [penwidth = 4]
-"5089" --  "5090"
-
-"5089" --  "5092"
-
- [penwidth = 4]
-"5089" --  "5093"
-
- [penwidth = 4]
-"5089" --  "5094"
-
- [penwidth = 4]
-"5089" --  "5095"
-
- [penwidth = 4]
-"5090" --  "5091"
-
-"5090" --  "5092"
-
-"5090" --  "5095"
-
-"5091" --  "5092"
-
-"5091" --  "5093"
-
-"5091" --  "5094"
-
-"5091" --  "5095"
-
-}
-
-Uncolored schedule
-graph "Name"
-{
-node [shape=Mrecord style=filled];
-}
-
-Colored schedule
-graph "Name"
-{
-node [shape=Mrecord style=filled];
-Color1 [label = "{5091 | 5089 | 5086}" fillcolor = blue];
-Color2 [label = "{5090 | 5094 | 5093}" fillcolor = chartreuse];
-Color3 [label = "{5088 | 5095 | 5092}" fillcolor = cadetblue];
-Color4 [label = "{5087}" fillcolor = coral];
-}
-
-converterGraphToDotEnum5
-Name of graph: Name
-Count of vertices: 13
-Real count of vertices: 13
-Count of edges: 10
-Vertices: 
--- Identifier: 5096, userName: 5096
--- Identifier: 5097, userName: 5097
--- Identifier: 5098, userName: 5098
--- Identifier: 5099, userName: 5099
--- Identifier: 5100, userName: 5100
--- Identifier: 5101, userName: 5101
--- Identifier: 5102, userName: 5102
--- Identifier: 5103, userName: 5103
--- Identifier: 5104, userName: 5104
--- Identifier: 5105, userName: 5105
--- Identifier: 5106, userName: 5106
--- Identifier: 5107, userName: 5107
--- Identifier: 5108, userName: 5108
-Edges: 
--- Vertex: 5096 (5096)
----- 5097 (5097) 
----- 5098 (5098) 
----- 5099 (5099) 
----- 5100 (5100) 
--- Vertex: 5097 (5097)
----- 5096 (5096) 
--- Vertex: 5098 (5098)
----- 5096 (5096) 
--- Vertex: 5099 (5099)
----- 5096 (5096) 
--- Vertex: 5100 (5100)
----- 5096 (5096) 
----- 5101 (5101) 
--- Vertex: 5101 (5101)
----- 5100 (5100) 
--- Vertex: 5102 (5102)
----- 5103 (5103) 
--- Vertex: 5103 (5103)
----- 5102 (5102) 
----- 5104 (5104) 
--- Vertex: 5104 (5104)
----- 5103 (5103) 
--- Vertex: 5105 (5105)
----- 5106 (5106) 
----- 5107 (5107) 
----- 5108 (5108) 
--- Vertex: 5106 (5106)
----- 5105 (5105) 
--- Vertex: 5107 (5107)
----- 5105 (5105) 
--- Vertex: 5108 (5108)
----- 5105 (5105) 
-
-Standard graph
-graph "Name"
-{
-node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
-"5096" [shape = doubleoctagon color = red , penwidth = 2 ]
-"5097" [shape = doublecircle ]
-"5098" [shape = doublecircle ]
-"5099" [shape = doublecircle ]
-"5100" [color = red , penwidth = 2 ]
-"5101" [shape = doublecircle shape = square ]
-"5096" --  "5097"
  [color = red, penwidth = 1]
  [penwidth = 4]
-"5096" --  "5098"
- [color = red, penwidth = 1]
- [penwidth = 4]
-"5096" --  "5099"
- [color = red, penwidth = 1]
- [penwidth = 4]
-"5096" --  "5100"
- [color = red, penwidth = 1]
- [penwidth = 4]
-"5100" --  "5101"
- [color = red, penwidth = 1]
- [penwidth = 4]
-node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
-"5102" [shape = doublecircle ]
-"5103" [shape = doubleoctagon color = red , penwidth = 2 ]
-"5104" [shape = doublecircle shape = square ]
-"5102" --  "5103"
- [color = red, penwidth = 1]
- [penwidth = 4]
-"5103" --  "5104"
- [color = red, penwidth = 1]
- [penwidth = 4]
-node[style = filled shape = circle fillcolor = white color = black penwidth = 1]
-"5105" [shape = doubleoctagon color = red , penwidth = 2 ]
-"5106" [shape = doublecircle ]
-"5107" [shape = doublecircle shape = square ]
-"5108" [shape = doublecircle ]
-"5105" --  "5106"
- [color = red, penwidth = 1]
- [penwidth = 4]
-"5105" --  "5107"
- [color = red, penwidth = 1]
- [penwidth = 4]
-"5105" --  "5108"
+"5086" --  "5089"
  [color = red, penwidth = 1]
  [penwidth = 4]
 }
@@ -400,8 +400,8 @@ Colored schedule
 graph "Name"
 {
 node [shape=Mrecord style=filled];
-Color1 [label = "{5096 | 5101 | 5103 | 5105}" fillcolor = blue];
-Color2 [label = "{5100 | 5099 | 5098 | 5097 | 5104 | 5102 | 5108 | 5107 | 5106}" fillcolor = chartreuse];
+Color1 [label = "{5077 | 5082 | 5084 | 5086}" fillcolor = blue];
+Color2 [label = "{5081 | 5080 | 5079 | 5078 | 5085 | 5083 | 5089 | 5088 | 5087}" fillcolor = chartreuse];
 }
 
 

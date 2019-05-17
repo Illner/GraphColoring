@@ -5,51 +5,51 @@ Count of vertices: 9
 Real count of vertices: 9
 Count of edges: 13
 Vertices: 
+-- Identifier: 486, userName: 486
+-- Identifier: 487, userName: 487
+-- Identifier: 488, userName: 488
+-- Identifier: 489, userName: 489
+-- Identifier: 490, userName: 490
+-- Identifier: 491, userName: 491
 -- Identifier: 492, userName: 492
 -- Identifier: 493, userName: 493
 -- Identifier: 494, userName: 494
--- Identifier: 495, userName: 495
--- Identifier: 496, userName: 496
--- Identifier: 497, userName: 497
--- Identifier: 498, userName: 498
--- Identifier: 499, userName: 499
--- Identifier: 500, userName: 500
 Edges: 
+-- Vertex: 486 (486)
+---- 487 (487) 
+---- 489 (489) 
+-- Vertex: 487 (487)
+---- 486 (486) 
+---- 489 (489) 
+---- 490 (490) 
+---- 493 (493) 
+-- Vertex: 488 (488)
+---- 489 (489) 
+---- 494 (494) 
+-- Vertex: 489 (489)
+---- 486 (486) 
+---- 487 (487) 
+---- 488 (488) 
+---- 490 (490) 
+---- 491 (491) 
+-- Vertex: 490 (490)
+---- 487 (487) 
+---- 489 (489) 
+---- 491 (491) 
+---- 492 (492) 
+---- 493 (493) 
+-- Vertex: 491 (491)
+---- 489 (489) 
+---- 490 (490) 
+---- 492 (492) 
 -- Vertex: 492 (492)
----- 493 (493) 
----- 495 (495) 
+---- 490 (490) 
+---- 491 (491) 
 -- Vertex: 493 (493)
----- 492 (492) 
----- 495 (495) 
----- 496 (496) 
----- 499 (499) 
+---- 487 (487) 
+---- 490 (490) 
 -- Vertex: 494 (494)
----- 495 (495) 
----- 500 (500) 
--- Vertex: 495 (495)
----- 492 (492) 
----- 493 (493) 
----- 494 (494) 
----- 496 (496) 
----- 497 (497) 
--- Vertex: 496 (496)
----- 493 (493) 
----- 495 (495) 
----- 497 (497) 
----- 498 (498) 
----- 499 (499) 
--- Vertex: 497 (497)
----- 495 (495) 
----- 496 (496) 
----- 498 (498) 
--- Vertex: 498 (498)
----- 496 (496) 
----- 497 (497) 
--- Vertex: 499 (499)
----- 493 (493) 
----- 496 (496) 
--- Vertex: 500 (500)
----- 494 (494) 
+---- 488 (488) 
 
 Graph modified.
 Name of graph: Name
@@ -57,11 +57,11 @@ Count of vertices: 2
 Real count of vertices: 2
 Count of edges: 0
 Vertices: 
--- Identifier: 511, userName: V2
--- Identifier: 512, userName: V3
+-- Identifier: 505, userName: V2
+-- Identifier: 506, userName: V3
 Edges: 
--- Vertex: 511 (V2)
--- Vertex: 512 (V3)
+-- Vertex: 505 (V2)
+-- Vertex: 506 (V3)
 
 invalid
 Graph created.
@@ -70,51 +70,51 @@ Count of vertices: 9
 Real count of vertices: 9
 Count of edges: 13
 Vertices: 
+-- Identifier: 507, userName: 507
+-- Identifier: 508, userName: 508
+-- Identifier: 509, userName: 509
+-- Identifier: 510, userName: 510
+-- Identifier: 511, userName: 511
+-- Identifier: 512, userName: 512
 -- Identifier: 513, userName: 513
 -- Identifier: 514, userName: 514
 -- Identifier: 515, userName: 515
--- Identifier: 516, userName: 516
--- Identifier: 517, userName: 517
--- Identifier: 518, userName: 518
--- Identifier: 519, userName: 519
--- Identifier: 520, userName: 520
--- Identifier: 521, userName: 521
 Edges: 
+-- Vertex: 507 (507)
+---- 508 (508) 
+---- 510 (510) 
+-- Vertex: 508 (508)
+---- 507 (507) 
+---- 510 (510) 
+---- 511 (511) 
+---- 514 (514) 
+-- Vertex: 509 (509)
+---- 510 (510) 
+---- 515 (515) 
+-- Vertex: 510 (510)
+---- 507 (507) 
+---- 508 (508) 
+---- 509 (509) 
+---- 511 (511) 
+---- 512 (512) 
+-- Vertex: 511 (511)
+---- 508 (508) 
+---- 510 (510) 
+---- 512 (512) 
+---- 513 (513) 
+---- 514 (514) 
+-- Vertex: 512 (512)
+---- 510 (510) 
+---- 511 (511) 
+---- 513 (513) 
 -- Vertex: 513 (513)
----- 514 (514) 
----- 516 (516) 
+---- 511 (511) 
+---- 512 (512) 
 -- Vertex: 514 (514)
----- 513 (513) 
----- 516 (516) 
----- 517 (517) 
----- 520 (520) 
+---- 508 (508) 
+---- 511 (511) 
 -- Vertex: 515 (515)
----- 516 (516) 
----- 521 (521) 
--- Vertex: 516 (516)
----- 513 (513) 
----- 514 (514) 
----- 515 (515) 
----- 517 (517) 
----- 518 (518) 
--- Vertex: 517 (517)
----- 514 (514) 
----- 516 (516) 
----- 518 (518) 
----- 519 (519) 
----- 520 (520) 
--- Vertex: 518 (518)
----- 516 (516) 
----- 517 (517) 
----- 519 (519) 
--- Vertex: 519 (519)
----- 517 (517) 
----- 518 (518) 
--- Vertex: 520 (520)
----- 514 (514) 
----- 517 (517) 
--- Vertex: 521 (521)
----- 515 (515) 
+---- 509 (509) 
 
 Vertex add
 Vertex exists
@@ -151,50 +151,50 @@ Count of vertices: 9
 Real count of vertices: 9
 Count of edges: 13
 Vertices: 
+-- Identifier: 507, userName: 507
+-- Identifier: 508, userName: 508
+-- Identifier: 509, userName: 509
+-- Identifier: 510, userName: 510
+-- Identifier: 511, userName: 511
+-- Identifier: 512, userName: 512
 -- Identifier: 513, userName: 513
 -- Identifier: 514, userName: 514
 -- Identifier: 515, userName: 515
--- Identifier: 516, userName: 516
--- Identifier: 517, userName: 517
--- Identifier: 518, userName: 518
--- Identifier: 519, userName: 519
--- Identifier: 520, userName: 520
--- Identifier: 521, userName: 521
 Edges: 
+-- Vertex: 507 (507)
+---- 508 (508) 
+---- 510 (510) 
+-- Vertex: 508 (508)
+---- 507 (507) 
+---- 510 (510) 
+---- 511 (511) 
+---- 514 (514) 
+-- Vertex: 509 (509)
+---- 510 (510) 
+---- 515 (515) 
+-- Vertex: 510 (510)
+---- 507 (507) 
+---- 508 (508) 
+---- 509 (509) 
+---- 511 (511) 
+---- 512 (512) 
+-- Vertex: 511 (511)
+---- 508 (508) 
+---- 510 (510) 
+---- 512 (512) 
+---- 513 (513) 
+---- 514 (514) 
+-- Vertex: 512 (512)
+---- 510 (510) 
+---- 511 (511) 
+---- 513 (513) 
 -- Vertex: 513 (513)
----- 514 (514) 
----- 516 (516) 
+---- 511 (511) 
+---- 512 (512) 
 -- Vertex: 514 (514)
----- 513 (513) 
----- 516 (516) 
----- 517 (517) 
----- 520 (520) 
+---- 508 (508) 
+---- 511 (511) 
 -- Vertex: 515 (515)
----- 516 (516) 
----- 521 (521) 
--- Vertex: 516 (516)
----- 513 (513) 
----- 514 (514) 
----- 515 (515) 
----- 517 (517) 
----- 518 (518) 
--- Vertex: 517 (517)
----- 514 (514) 
----- 516 (516) 
----- 518 (518) 
----- 519 (519) 
----- 520 (520) 
--- Vertex: 518 (518)
----- 516 (516) 
----- 517 (517) 
----- 519 (519) 
--- Vertex: 519 (519)
----- 517 (517) 
----- 518 (518) 
--- Vertex: 520 (520)
----- 514 (514) 
----- 517 (517) 
--- Vertex: 521 (521)
----- 515 (515) 
+---- 509 (509) 
 
 

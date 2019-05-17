@@ -766,9 +766,6 @@
     <None Include="GalleryOfNamedGraphs\NamedGraphs\SousselierGraph.graph" />
     <None Include="GalleryOfNamedGraphs\NamedGraphs\TuttesFragment.graph" />
     <None Include="GalleryOfNamedGraphs\NamedGraphs\WagnerGraph.graph" />
-    <None Include="GraphColoringAlgorithm\AIModels\model-connectedLargestFirstInterchange.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="GraphColoringAlgorithm\AIModels\model-connectedLargestFirstInterchangeExtended.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -779,21 +776,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="GraphColoringAlgorithm\AIModels\model-largestFirstSequenceInterchangeExtended.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="GraphColoringAlgorithm\AIModels\model-largestFirstSequenceInterchangeExtendedK3.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="GraphColoringAlgorithm\AIModels\model-randomSequenceInterchangeExtended.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="GraphColoringAlgorithm\AIModels\model-randomSequenceInterchangeExtendedK3.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="GraphColoringAlgorithm\AIModels\model-saturationLargestFirstSequence.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="GraphColoringAlgorithm\AIModels\model-smallestLastSequenceInterchange.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="GraphColoringAlgorithm\AIModels\model-smallestLastSequenceInterchangeExtended.zip">

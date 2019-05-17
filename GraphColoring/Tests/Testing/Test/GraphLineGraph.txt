@@ -5,29 +5,29 @@ Count of vertices: 5
 Real count of vertices: 5
 Count of edges: 6
 Vertices: 
--- Identifier: 646, userName: 646
--- Identifier: 647, userName: 647
--- Identifier: 648, userName: 648
--- Identifier: 649, userName: 649
--- Identifier: 650, userName: 650
+-- Identifier: 640, userName: 640
+-- Identifier: 641, userName: 641
+-- Identifier: 642, userName: 642
+-- Identifier: 643, userName: 643
+-- Identifier: 644, userName: 644
 Edges: 
--- Vertex: 646 (646)
----- 647 (647) 
----- 648 (648) 
----- 649 (649) 
--- Vertex: 647 (647)
----- 646 (646) 
----- 650 (650) 
--- Vertex: 648 (648)
----- 646 (646) 
----- 649 (649) 
--- Vertex: 649 (649)
----- 646 (646) 
----- 648 (648) 
----- 650 (650) 
--- Vertex: 650 (650)
----- 647 (647) 
----- 649 (649) 
+-- Vertex: 640 (640)
+---- 641 (641) 
+---- 642 (642) 
+---- 643 (643) 
+-- Vertex: 641 (641)
+---- 640 (640) 
+---- 644 (644) 
+-- Vertex: 642 (642)
+---- 640 (640) 
+---- 643 (643) 
+-- Vertex: 643 (643)
+---- 640 (640) 
+---- 642 (642) 
+---- 644 (644) 
+-- Vertex: 644 (644)
+---- 641 (641) 
+---- 643 (643) 
 
 Line graph.
 Name of graph: Line graph - Name
@@ -35,57 +35,39 @@ Count of vertices: 6
 Real count of vertices: 6
 Count of edges: 9
 Vertices: 
--- Identifier: 654, userName: 646647
--- Identifier: 655, userName: 646648
--- Identifier: 656, userName: 646649
--- Identifier: 658, userName: 647650
--- Identifier: 660, userName: 648649
--- Identifier: 662, userName: 649650
+-- Identifier: 648, userName: 640641
+-- Identifier: 649, userName: 640642
+-- Identifier: 650, userName: 640643
+-- Identifier: 652, userName: 641644
+-- Identifier: 654, userName: 642643
+-- Identifier: 656, userName: 643644
 Edges: 
--- Vertex: 654 (646647)
----- 655 (646648) 
----- 656 (646649) 
----- 658 (647650) 
--- Vertex: 655 (646648)
----- 654 (646647) 
----- 656 (646649) 
----- 660 (648649) 
--- Vertex: 656 (646649)
----- 654 (646647) 
----- 655 (646648) 
----- 660 (648649) 
----- 662 (649650) 
--- Vertex: 658 (647650)
----- 654 (646647) 
----- 662 (649650) 
--- Vertex: 660 (648649)
----- 655 (646648) 
----- 656 (646649) 
----- 662 (649650) 
--- Vertex: 662 (649650)
----- 656 (646649) 
----- 660 (648649) 
----- 658 (647650) 
+-- Vertex: 648 (640641)
+---- 649 (640642) 
+---- 650 (640643) 
+---- 652 (641644) 
+-- Vertex: 649 (640642)
+---- 648 (640641) 
+---- 650 (640643) 
+---- 654 (642643) 
+-- Vertex: 650 (640643)
+---- 648 (640641) 
+---- 649 (640642) 
+---- 654 (642643) 
+---- 656 (643644) 
+-- Vertex: 652 (641644)
+---- 648 (640641) 
+---- 656 (643644) 
+-- Vertex: 654 (642643)
+---- 649 (640642) 
+---- 650 (640643) 
+---- 656 (643644) 
+-- Vertex: 656 (643644)
+---- 650 (640643) 
+---- 654 (642643) 
+---- 652 (641644) 
 
-graphLineGraph2
-Graph created.
-Name of graph: Name
-Count of vertices: 1
-Real count of vertices: 1
-Count of edges: 0
-Vertices: 
--- Identifier: 663, userName: 663
-Edges: 
--- Vertex: 663 (663)
-
-Line graph.
-Name of graph: Line graph - Name
-Count of vertices: 0
-Real count of vertices: 0
-Count of edges: 0
-Vertices: 
-Edges: 
-
+Invalid graph
 graphLineGraph3
 Graph created.
 Name of graph: Name
@@ -93,13 +75,13 @@ Count of vertices: 2
 Real count of vertices: 2
 Count of edges: 1
 Vertices: 
--- Identifier: 664, userName: 664
--- Identifier: 665, userName: 665
+-- Identifier: 658, userName: 658
+-- Identifier: 659, userName: 659
 Edges: 
--- Vertex: 664 (664)
----- 665 (665) 
--- Vertex: 665 (665)
----- 664 (664) 
+-- Vertex: 658 (658)
+---- 659 (659) 
+-- Vertex: 659 (659)
+---- 658 (658) 
 
 Line graph.
 Name of graph: Line graph - Name
@@ -107,9 +89,9 @@ Count of vertices: 1
 Real count of vertices: 1
 Count of edges: 0
 Vertices: 
--- Identifier: 667, userName: 664665
+-- Identifier: 661, userName: 658659
 Edges: 
--- Vertex: 667 (664665)
+-- Vertex: 661 (658659)
 
 graphLineGraph4
 Graph created.
@@ -118,23 +100,23 @@ Count of vertices: 4
 Real count of vertices: 4
 Count of edges: 4
 Vertices: 
--- Identifier: 668, userName: 668
--- Identifier: 669, userName: 669
--- Identifier: 670, userName: 670
--- Identifier: 671, userName: 671
+-- Identifier: 662, userName: 662
+-- Identifier: 663, userName: 663
+-- Identifier: 664, userName: 664
+-- Identifier: 665, userName: 665
 Edges: 
--- Vertex: 668 (668)
----- 669 (669) 
----- 671 (671) 
--- Vertex: 669 (669)
----- 668 (668) 
----- 670 (670) 
--- Vertex: 670 (670)
----- 669 (669) 
----- 671 (671) 
--- Vertex: 671 (671)
----- 668 (668) 
----- 670 (670) 
+-- Vertex: 662 (662)
+---- 663 (663) 
+---- 665 (665) 
+-- Vertex: 663 (663)
+---- 662 (662) 
+---- 664 (664) 
+-- Vertex: 664 (664)
+---- 663 (663) 
+---- 665 (665) 
+-- Vertex: 665 (665)
+---- 662 (662) 
+---- 664 (664) 
 
 Line graph.
 Name of graph: Line graph - Name
@@ -142,23 +124,23 @@ Count of vertices: 4
 Real count of vertices: 4
 Count of edges: 4
 Vertices: 
--- Identifier: 674, userName: 668669
--- Identifier: 675, userName: 668671
--- Identifier: 677, userName: 669670
--- Identifier: 679, userName: 670671
+-- Identifier: 668, userName: 662663
+-- Identifier: 669, userName: 662665
+-- Identifier: 671, userName: 663664
+-- Identifier: 673, userName: 664665
 Edges: 
--- Vertex: 674 (668669)
----- 675 (668671) 
----- 677 (669670) 
--- Vertex: 675 (668671)
----- 674 (668669) 
----- 679 (670671) 
--- Vertex: 677 (669670)
----- 674 (668669) 
----- 679 (670671) 
--- Vertex: 679 (670671)
----- 677 (669670) 
----- 675 (668671) 
+-- Vertex: 668 (662663)
+---- 669 (662665) 
+---- 671 (663664) 
+-- Vertex: 669 (662665)
+---- 668 (662663) 
+---- 673 (664665) 
+-- Vertex: 671 (663664)
+---- 668 (662663) 
+---- 673 (664665) 
+-- Vertex: 673 (664665)
+---- 671 (663664) 
+---- 669 (662665) 
 
 graphLineGraph5
 Graph created.
@@ -167,39 +149,39 @@ Count of vertices: 8
 Real count of vertices: 8
 Count of edges: 8
 Vertices: 
+-- Identifier: 674, userName: 674
+-- Identifier: 675, userName: 675
+-- Identifier: 676, userName: 676
+-- Identifier: 677, userName: 677
+-- Identifier: 678, userName: 678
+-- Identifier: 679, userName: 679
 -- Identifier: 680, userName: 680
 -- Identifier: 681, userName: 681
--- Identifier: 682, userName: 682
--- Identifier: 683, userName: 683
--- Identifier: 684, userName: 684
--- Identifier: 685, userName: 685
--- Identifier: 686, userName: 686
--- Identifier: 687, userName: 687
 Edges: 
+-- Vertex: 674 (674)
+---- 675 (675) 
+---- 677 (677) 
+-- Vertex: 675 (675)
+---- 674 (674) 
+---- 676 (676) 
+-- Vertex: 676 (676)
+---- 675 (675) 
+---- 677 (677) 
+-- Vertex: 677 (677)
+---- 674 (674) 
+---- 676 (676) 
+-- Vertex: 678 (678)
+---- 679 (679) 
+---- 681 (681) 
+-- Vertex: 679 (679)
+---- 678 (678) 
+---- 680 (680) 
 -- Vertex: 680 (680)
+---- 679 (679) 
 ---- 681 (681) 
----- 683 (683) 
 -- Vertex: 681 (681)
+---- 678 (678) 
 ---- 680 (680) 
----- 682 (682) 
--- Vertex: 682 (682)
----- 681 (681) 
----- 683 (683) 
--- Vertex: 683 (683)
----- 680 (680) 
----- 682 (682) 
--- Vertex: 684 (684)
----- 685 (685) 
----- 687 (687) 
--- Vertex: 685 (685)
----- 684 (684) 
----- 686 (686) 
--- Vertex: 686 (686)
----- 685 (685) 
----- 687 (687) 
--- Vertex: 687 (687)
----- 684 (684) 
----- 686 (686) 
 
 Line graph.
 Name of graph: Line graph - Name
@@ -207,38 +189,38 @@ Count of vertices: 8
 Real count of vertices: 8
 Count of edges: 8
 Vertices: 
--- Identifier: 690, userName: 680681
--- Identifier: 691, userName: 680683
--- Identifier: 693, userName: 681682
--- Identifier: 695, userName: 682683
--- Identifier: 698, userName: 684685
--- Identifier: 699, userName: 684687
--- Identifier: 701, userName: 685686
--- Identifier: 703, userName: 686687
+-- Identifier: 684, userName: 674675
+-- Identifier: 685, userName: 674677
+-- Identifier: 687, userName: 675676
+-- Identifier: 689, userName: 676677
+-- Identifier: 692, userName: 678679
+-- Identifier: 693, userName: 678681
+-- Identifier: 695, userName: 679680
+-- Identifier: 697, userName: 680681
 Edges: 
--- Vertex: 690 (680681)
----- 691 (680683) 
----- 693 (681682) 
--- Vertex: 691 (680683)
----- 690 (680681) 
----- 695 (682683) 
--- Vertex: 693 (681682)
----- 690 (680681) 
----- 695 (682683) 
--- Vertex: 695 (682683)
----- 693 (681682) 
----- 691 (680683) 
--- Vertex: 698 (684685)
----- 699 (684687) 
----- 701 (685686) 
--- Vertex: 699 (684687)
----- 698 (684685) 
----- 703 (686687) 
--- Vertex: 701 (685686)
----- 698 (684685) 
----- 703 (686687) 
--- Vertex: 703 (686687)
----- 701 (685686) 
----- 699 (684687) 
+-- Vertex: 684 (674675)
+---- 685 (674677) 
+---- 687 (675676) 
+-- Vertex: 685 (674677)
+---- 684 (674675) 
+---- 689 (676677) 
+-- Vertex: 687 (675676)
+---- 684 (674675) 
+---- 689 (676677) 
+-- Vertex: 689 (676677)
+---- 687 (675676) 
+---- 685 (674677) 
+-- Vertex: 692 (678679)
+---- 693 (678681) 
+---- 695 (679680) 
+-- Vertex: 693 (678681)
+---- 692 (678679) 
+---- 697 (680681) 
+-- Vertex: 695 (679680)
+---- 692 (678679) 
+---- 697 (680681) 
+-- Vertex: 697 (680681)
+---- 695 (679680) 
+---- 693 (678681) 
 
 

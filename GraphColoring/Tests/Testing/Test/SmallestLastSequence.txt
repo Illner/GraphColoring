@@ -6,11 +6,11 @@ Count of vertices: 1
 Real count of vertices: 1
 Count of edges: 0
 Vertices: 
--- Identifier: 818, userName: 818
+-- Identifier: 812, userName: 812
 Edges: 
--- Vertex: 818 (818)
+-- Vertex: 812 (812)
 Vertex color: 
--- Vertex (identifier): 818, vertex (userName): 818, color: 1
+-- Vertex (identifier): 812, vertex (userName): 812, color: 1
 
 smallestLastSequence3
 Graph colored.
@@ -19,38 +19,38 @@ Count of vertices: 6
 Real count of vertices: 6
 Count of edges: 6
 Vertices: 
--- Identifier: 820, userName: 820
--- Identifier: 821, userName: 821
--- Identifier: 822, userName: 822
--- Identifier: 823, userName: 823
--- Identifier: 824, userName: 824
--- Identifier: 825, userName: 825
+-- Identifier: 814, userName: 814
+-- Identifier: 815, userName: 815
+-- Identifier: 816, userName: 816
+-- Identifier: 817, userName: 817
+-- Identifier: 818, userName: 818
+-- Identifier: 819, userName: 819
 Edges: 
--- Vertex: 820 (820)
----- 821 (821) 
----- 822 (822) 
--- Vertex: 821 (821)
----- 820 (820) 
----- 822 (822) 
--- Vertex: 822 (822)
----- 820 (820) 
----- 821 (821) 
--- Vertex: 823 (823)
----- 824 (824) 
----- 825 (825) 
--- Vertex: 824 (824)
----- 823 (823) 
----- 825 (825) 
--- Vertex: 825 (825)
----- 823 (823) 
----- 824 (824) 
+-- Vertex: 814 (814)
+---- 815 (815) 
+---- 816 (816) 
+-- Vertex: 815 (815)
+---- 814 (814) 
+---- 816 (816) 
+-- Vertex: 816 (816)
+---- 814 (814) 
+---- 815 (815) 
+-- Vertex: 817 (817)
+---- 818 (818) 
+---- 819 (819) 
+-- Vertex: 818 (818)
+---- 817 (817) 
+---- 819 (819) 
+-- Vertex: 819 (819)
+---- 817 (817) 
+---- 818 (818) 
 Vertex color: 
--- Vertex (identifier): 820, vertex (userName): 820, color: 3
--- Vertex (identifier): 821, vertex (userName): 821, color: 2
--- Vertex (identifier): 822, vertex (userName): 822, color: 1
--- Vertex (identifier): 823, vertex (userName): 823, color: 3
--- Vertex (identifier): 824, vertex (userName): 824, color: 2
--- Vertex (identifier): 825, vertex (userName): 825, color: 1
+-- Vertex (identifier): 814, vertex (userName): 814, color: 3
+-- Vertex (identifier): 815, vertex (userName): 815, color: 2
+-- Vertex (identifier): 816, vertex (userName): 816, color: 1
+-- Vertex (identifier): 817, vertex (userName): 817, color: 3
+-- Vertex (identifier): 818, vertex (userName): 818, color: 2
+-- Vertex (identifier): 819, vertex (userName): 819, color: 1
 
 smallestLastSequence4
 Graph colored.
@@ -59,59 +59,59 @@ Count of vertices: 9
 Real count of vertices: 9
 Count of edges: 12
 Vertices: 
+-- Identifier: 826, userName: 826
+-- Identifier: 827, userName: 827
+-- Identifier: 828, userName: 828
+-- Identifier: 829, userName: 829
+-- Identifier: 830, userName: 830
+-- Identifier: 831, userName: 831
 -- Identifier: 832, userName: 832
 -- Identifier: 833, userName: 833
 -- Identifier: 834, userName: 834
--- Identifier: 835, userName: 835
--- Identifier: 836, userName: 836
--- Identifier: 837, userName: 837
--- Identifier: 838, userName: 838
--- Identifier: 839, userName: 839
--- Identifier: 840, userName: 840
 Edges: 
+-- Vertex: 826 (826)
+---- 831 (831) 
+---- 832 (832) 
+---- 833 (833) 
+---- 834 (834) 
+-- Vertex: 827 (827)
+---- 831 (831) 
+---- 832 (832) 
+-- Vertex: 828 (828)
+---- 832 (832) 
+---- 833 (833) 
+-- Vertex: 829 (829)
+---- 833 (833) 
+---- 834 (834) 
+-- Vertex: 830 (830)
+---- 831 (831) 
+---- 834 (834) 
+-- Vertex: 831 (831)
+---- 826 (826) 
+---- 827 (827) 
+---- 830 (830) 
 -- Vertex: 832 (832)
----- 837 (837) 
----- 838 (838) 
----- 839 (839) 
----- 840 (840) 
+---- 826 (826) 
+---- 827 (827) 
+---- 828 (828) 
 -- Vertex: 833 (833)
----- 837 (837) 
----- 838 (838) 
+---- 826 (826) 
+---- 828 (828) 
+---- 829 (829) 
 -- Vertex: 834 (834)
----- 838 (838) 
----- 839 (839) 
--- Vertex: 835 (835)
----- 839 (839) 
----- 840 (840) 
--- Vertex: 836 (836)
----- 837 (837) 
----- 840 (840) 
--- Vertex: 837 (837)
----- 832 (832) 
----- 833 (833) 
----- 836 (836) 
--- Vertex: 838 (838)
----- 832 (832) 
----- 833 (833) 
----- 834 (834) 
--- Vertex: 839 (839)
----- 832 (832) 
----- 834 (834) 
----- 835 (835) 
--- Vertex: 840 (840)
----- 832 (832) 
----- 835 (835) 
----- 836 (836) 
+---- 826 (826) 
+---- 829 (829) 
+---- 830 (830) 
 Vertex color: 
--- Vertex (identifier): 832, vertex (userName): 832, color: 1
--- Vertex (identifier): 833, vertex (userName): 833, color: 1
--- Vertex (identifier): 834, vertex (userName): 834, color: 1
--- Vertex (identifier): 835, vertex (userName): 835, color: 1
--- Vertex (identifier): 836, vertex (userName): 836, color: 1
--- Vertex (identifier): 837, vertex (userName): 837, color: 2
--- Vertex (identifier): 838, vertex (userName): 838, color: 2
--- Vertex (identifier): 839, vertex (userName): 839, color: 2
--- Vertex (identifier): 840, vertex (userName): 840, color: 2
+-- Vertex (identifier): 826, vertex (userName): 826, color: 1
+-- Vertex (identifier): 827, vertex (userName): 827, color: 1
+-- Vertex (identifier): 828, vertex (userName): 828, color: 1
+-- Vertex (identifier): 829, vertex (userName): 829, color: 1
+-- Vertex (identifier): 830, vertex (userName): 830, color: 1
+-- Vertex (identifier): 831, vertex (userName): 831, color: 2
+-- Vertex (identifier): 832, vertex (userName): 832, color: 2
+-- Vertex (identifier): 833, vertex (userName): 833, color: 2
+-- Vertex (identifier): 834, vertex (userName): 834, color: 2
 
 smallestLastSequence5
 Graph colored.
@@ -120,75 +120,75 @@ Count of vertices: 10
 Real count of vertices: 10
 Count of edges: 19
 Vertices: 
+-- Identifier: 844, userName: 844
+-- Identifier: 845, userName: 845
+-- Identifier: 846, userName: 846
+-- Identifier: 847, userName: 847
+-- Identifier: 848, userName: 848
+-- Identifier: 849, userName: 849
 -- Identifier: 850, userName: 850
 -- Identifier: 851, userName: 851
 -- Identifier: 852, userName: 852
 -- Identifier: 853, userName: 853
--- Identifier: 854, userName: 854
--- Identifier: 855, userName: 855
--- Identifier: 856, userName: 856
--- Identifier: 857, userName: 857
--- Identifier: 858, userName: 858
--- Identifier: 859, userName: 859
 Edges: 
+-- Vertex: 844 (844)
+---- 845 (845) 
+---- 846 (846) 
+-- Vertex: 845 (845)
+---- 844 (844) 
+---- 846 (846) 
+---- 847 (847) 
+---- 848 (848) 
+-- Vertex: 846 (846)
+---- 844 (844) 
+---- 845 (845) 
+---- 848 (848) 
+---- 849 (849) 
+-- Vertex: 847 (847)
+---- 845 (845) 
+---- 848 (848) 
+---- 850 (850) 
+---- 851 (851) 
+---- 852 (852) 
+---- 853 (853) 
+-- Vertex: 848 (848)
+---- 845 (845) 
+---- 846 (846) 
+---- 847 (847) 
+---- 849 (849) 
+---- 850 (850) 
+---- 853 (853) 
+-- Vertex: 849 (849)
+---- 846 (846) 
+---- 848 (848) 
+---- 850 (850) 
+---- 851 (851) 
+---- 852 (852) 
+---- 853 (853) 
 -- Vertex: 850 (850)
----- 851 (851) 
----- 852 (852) 
+---- 847 (847) 
+---- 848 (848) 
+---- 849 (849) 
 -- Vertex: 851 (851)
----- 850 (850) 
----- 852 (852) 
----- 853 (853) 
----- 854 (854) 
+---- 847 (847) 
+---- 849 (849) 
 -- Vertex: 852 (852)
----- 850 (850) 
----- 851 (851) 
----- 854 (854) 
----- 855 (855) 
+---- 847 (847) 
+---- 849 (849) 
 -- Vertex: 853 (853)
----- 851 (851) 
----- 854 (854) 
----- 856 (856) 
----- 857 (857) 
----- 858 (858) 
----- 859 (859) 
--- Vertex: 854 (854)
----- 851 (851) 
----- 852 (852) 
----- 853 (853) 
----- 855 (855) 
----- 856 (856) 
----- 859 (859) 
--- Vertex: 855 (855)
----- 852 (852) 
----- 854 (854) 
----- 856 (856) 
----- 857 (857) 
----- 858 (858) 
----- 859 (859) 
--- Vertex: 856 (856)
----- 853 (853) 
----- 854 (854) 
----- 855 (855) 
--- Vertex: 857 (857)
----- 853 (853) 
----- 855 (855) 
--- Vertex: 858 (858)
----- 853 (853) 
----- 855 (855) 
--- Vertex: 859 (859)
----- 853 (853) 
----- 854 (854) 
----- 855 (855) 
+---- 847 (847) 
+---- 848 (848) 
+---- 849 (849) 
 Vertex color: 
--- Vertex (identifier): 850, vertex (userName): 850, color: 2
--- Vertex (identifier): 851, vertex (userName): 851, color: 4
+-- Vertex (identifier): 844, vertex (userName): 844, color: 2
+-- Vertex (identifier): 845, vertex (userName): 845, color: 4
+-- Vertex (identifier): 846, vertex (userName): 846, color: 1
+-- Vertex (identifier): 847, vertex (userName): 847, color: 2
+-- Vertex (identifier): 848, vertex (userName): 848, color: 3
+-- Vertex (identifier): 849, vertex (userName): 849, color: 2
+-- Vertex (identifier): 850, vertex (userName): 850, color: 1
+-- Vertex (identifier): 851, vertex (userName): 851, color: 1
 -- Vertex (identifier): 852, vertex (userName): 852, color: 1
--- Vertex (identifier): 853, vertex (userName): 853, color: 2
--- Vertex (identifier): 854, vertex (userName): 854, color: 3
--- Vertex (identifier): 855, vertex (userName): 855, color: 2
--- Vertex (identifier): 856, vertex (userName): 856, color: 1
--- Vertex (identifier): 857, vertex (userName): 857, color: 1
--- Vertex (identifier): 858, vertex (userName): 858, color: 1
--- Vertex (identifier): 859, vertex (userName): 859, color: 1
+-- Vertex (identifier): 853, vertex (userName): 853, color: 1
 
 

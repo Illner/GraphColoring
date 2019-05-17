@@ -5,27 +5,27 @@ Count of vertices: 5
 Real count of vertices: 5
 Count of edges: 5
 Vertices: 
--- Identifier: 5033, userName: 1
--- Identifier: 5034, userName: 0
--- Identifier: 5035, userName: 2
--- Identifier: 5036, userName: 3
--- Identifier: 5037, userName: 4
+-- Identifier: 5027, userName: 1
+-- Identifier: 5028, userName: 0
+-- Identifier: 5029, userName: 2
+-- Identifier: 5030, userName: 3
+-- Identifier: 5031, userName: 4
 Edges: 
--- Vertex: 5033 (1)
----- 5034 (0) 
----- 5035 (2) 
--- Vertex: 5034 (0)
----- 5033 (1) 
----- 5035 (2) 
----- 5036 (3) 
--- Vertex: 5035 (2)
----- 5034 (0) 
----- 5033 (1) 
--- Vertex: 5036 (3)
----- 5034 (0) 
----- 5037 (4) 
--- Vertex: 5037 (4)
----- 5036 (3) 
+-- Vertex: 5027 (1)
+---- 5028 (0) 
+---- 5029 (2) 
+-- Vertex: 5028 (0)
+---- 5027 (1) 
+---- 5029 (2) 
+---- 5030 (3) 
+-- Vertex: 5029 (2)
+---- 5028 (0) 
+---- 5027 (1) 
+-- Vertex: 5030 (3)
+---- 5028 (0) 
+---- 5031 (4) 
+-- Vertex: 5031 (4)
+---- 5030 (3) 
 
 Number of cut vertices: 2
 Cut vertices: 
@@ -44,21 +44,21 @@ Count of vertices: 4
 Real count of vertices: 4
 Count of edges: 3
 Vertices: 
--- Identifier: 5038, userName: 0
--- Identifier: 5039, userName: 1
--- Identifier: 5040, userName: 2
--- Identifier: 5041, userName: 3
+-- Identifier: 5032, userName: 0
+-- Identifier: 5033, userName: 1
+-- Identifier: 5034, userName: 2
+-- Identifier: 5035, userName: 3
 Edges: 
--- Vertex: 5038 (0)
----- 5039 (1) 
--- Vertex: 5039 (1)
----- 5038 (0) 
----- 5040 (2) 
--- Vertex: 5040 (2)
----- 5039 (1) 
----- 5041 (3) 
--- Vertex: 5041 (3)
----- 5040 (2) 
+-- Vertex: 5032 (0)
+---- 5033 (1) 
+-- Vertex: 5033 (1)
+---- 5032 (0) 
+---- 5034 (2) 
+-- Vertex: 5034 (2)
+---- 5033 (1) 
+---- 5035 (3) 
+-- Vertex: 5035 (3)
+---- 5034 (2) 
 
 Number of cut vertices: 2
 Cut vertices: 
@@ -78,37 +78,37 @@ Count of vertices: 7
 Real count of vertices: 7
 Count of edges: 8
 Vertices: 
--- Identifier: 5042, userName: 0
--- Identifier: 5043, userName: 1
--- Identifier: 5044, userName: 2
--- Identifier: 5045, userName: 3
--- Identifier: 5046, userName: 4
--- Identifier: 5047, userName: 6
--- Identifier: 5048, userName: 5
+-- Identifier: 5036, userName: 0
+-- Identifier: 5037, userName: 1
+-- Identifier: 5038, userName: 2
+-- Identifier: 5039, userName: 3
+-- Identifier: 5040, userName: 4
+-- Identifier: 5041, userName: 6
+-- Identifier: 5042, userName: 5
 Edges: 
--- Vertex: 5042 (0)
----- 5043 (1) 
----- 5044 (2) 
--- Vertex: 5043 (1)
----- 5042 (0) 
----- 5044 (2) 
----- 5045 (3) 
----- 5046 (4) 
----- 5047 (6) 
--- Vertex: 5044 (2)
----- 5043 (1) 
----- 5042 (0) 
--- Vertex: 5045 (3)
----- 5043 (1) 
----- 5048 (5) 
--- Vertex: 5046 (4)
----- 5043 (1) 
----- 5048 (5) 
--- Vertex: 5047 (6)
----- 5043 (1) 
--- Vertex: 5048 (5)
----- 5045 (3) 
----- 5046 (4) 
+-- Vertex: 5036 (0)
+---- 5037 (1) 
+---- 5038 (2) 
+-- Vertex: 5037 (1)
+---- 5036 (0) 
+---- 5038 (2) 
+---- 5039 (3) 
+---- 5040 (4) 
+---- 5041 (6) 
+-- Vertex: 5038 (2)
+---- 5037 (1) 
+---- 5036 (0) 
+-- Vertex: 5039 (3)
+---- 5037 (1) 
+---- 5042 (5) 
+-- Vertex: 5040 (4)
+---- 5037 (1) 
+---- 5042 (5) 
+-- Vertex: 5041 (6)
+---- 5037 (1) 
+-- Vertex: 5042 (5)
+---- 5039 (3) 
+---- 5040 (4) 
 
 Number of cut vertices: 1
 Cut vertices: 
@@ -125,9 +125,9 @@ Count of vertices: 1
 Real count of vertices: 1
 Count of edges: 0
 Vertices: 
--- Identifier: 5049, userName: 5049
+-- Identifier: 5043, userName: 5043
 Edges: 
--- Vertex: 5049 (5049)
+-- Vertex: 5043 (5043)
 
 Number of cut vertices: 0
 Cut vertices: 
@@ -142,6 +142,12 @@ Count of vertices: 13
 Real count of vertices: 13
 Count of edges: 10
 Vertices: 
+-- Identifier: 5044, userName: 5044
+-- Identifier: 5045, userName: 5045
+-- Identifier: 5046, userName: 5046
+-- Identifier: 5047, userName: 5047
+-- Identifier: 5048, userName: 5048
+-- Identifier: 5049, userName: 5049
 -- Identifier: 5050, userName: 5050
 -- Identifier: 5051, userName: 5051
 -- Identifier: 5052, userName: 5052
@@ -149,46 +155,40 @@ Vertices:
 -- Identifier: 5054, userName: 5054
 -- Identifier: 5055, userName: 5055
 -- Identifier: 5056, userName: 5056
--- Identifier: 5057, userName: 5057
--- Identifier: 5058, userName: 5058
--- Identifier: 5059, userName: 5059
--- Identifier: 5060, userName: 5060
--- Identifier: 5061, userName: 5061
--- Identifier: 5062, userName: 5062
 Edges: 
+-- Vertex: 5044 (5044)
+---- 5045 (5045) 
+---- 5046 (5046) 
+---- 5047 (5047) 
+---- 5048 (5048) 
+-- Vertex: 5045 (5045)
+---- 5044 (5044) 
+-- Vertex: 5046 (5046)
+---- 5044 (5044) 
+-- Vertex: 5047 (5047)
+---- 5044 (5044) 
+-- Vertex: 5048 (5048)
+---- 5044 (5044) 
+---- 5049 (5049) 
+-- Vertex: 5049 (5049)
+---- 5048 (5048) 
 -- Vertex: 5050 (5050)
 ---- 5051 (5051) 
----- 5052 (5052) 
----- 5053 (5053) 
----- 5054 (5054) 
 -- Vertex: 5051 (5051)
 ---- 5050 (5050) 
+---- 5052 (5052) 
 -- Vertex: 5052 (5052)
----- 5050 (5050) 
+---- 5051 (5051) 
 -- Vertex: 5053 (5053)
----- 5050 (5050) 
--- Vertex: 5054 (5054)
----- 5050 (5050) 
----- 5055 (5055) 
--- Vertex: 5055 (5055)
 ---- 5054 (5054) 
--- Vertex: 5056 (5056)
----- 5057 (5057) 
--- Vertex: 5057 (5057)
+---- 5055 (5055) 
 ---- 5056 (5056) 
----- 5058 (5058) 
--- Vertex: 5058 (5058)
----- 5057 (5057) 
--- Vertex: 5059 (5059)
----- 5060 (5060) 
----- 5061 (5061) 
----- 5062 (5062) 
--- Vertex: 5060 (5060)
----- 5059 (5059) 
--- Vertex: 5061 (5061)
----- 5059 (5059) 
--- Vertex: 5062 (5062)
----- 5059 (5059) 
+-- Vertex: 5054 (5054)
+---- 5053 (5053) 
+-- Vertex: 5055 (5055)
+---- 5053 (5053) 
+-- Vertex: 5056 (5056)
+---- 5053 (5053) 
 
 Exception of type 'GraphColoring.MyException.GraphException.GraphIsNotConnected' was thrown.
 

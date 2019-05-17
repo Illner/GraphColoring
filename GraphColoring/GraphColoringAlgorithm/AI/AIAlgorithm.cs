@@ -16,7 +16,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, string> modelPathDictionary;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, ITransformer> modelDictionary;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, AlgorithmPrediction> predictionDictionary;
-        private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, double> accuracyDictionary;
+        private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, float> accuracyDictionary;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, GraphColoringAlgorithm.TimeComplexityEnum> timeComplexityDictionary;
 
         private static string pathModels = @"GraphColoringAlgorithm/AIModels/";
@@ -102,30 +102,30 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             Console.WriteLine("--------------------------------------------------");
 
             // Fill accuracyDictionary
-            accuracyDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, double>()
+            accuracyDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, float>()
             {
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirst, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchange, 1.557 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, 1.475 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3, 1.721 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchange, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, 0.737f },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3, 0.84f },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended, 1.669 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3, 1.689 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, 1.495 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3, 1.64 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, 0.76f },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, 1.579 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, 1.494 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3, 1.73 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, 0 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, 0.79f },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3, 0.825f },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, 1.549 },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.combinationAlgorithm, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2, 1.912 }
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2, 0.956f }
             };
 
             // Fill timeComplexityDictionary
@@ -180,44 +180,48 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
 
             if (modelDictionary.Count == 1)
                 return modelDictionary.First().Key;
-
+            
             foreach (var record in modelDictionary)
             {
+                if (graphData.CountVertices > 60 && record.Key == GraphColoringAlgorithm.GraphColoringAlgorithmEnum.geneticAlgorithm2)
+                    continue;
+
                 algorithmPrediction = GetPrediction(record.Value, graphData);
+                if (!algorithmPrediction.Prediction)
+                    continue;
+
+                accuracyDictionary.TryGetValue(record.Key, out var temp);
+                algorithmPrediction.Score = algorithmPrediction.Probability + 0.4f * temp;
                 predictionDictionary.Add(record.Key, algorithmPrediction);
             }
-            
+
+            if (predictionDictionary.Count == 0)
+                return GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended;
+
             // Some models exist - sort models
             List<GraphColoringAlgorithm.GraphColoringAlgorithmEnum> sortedAlgorithmsList = (from entry in predictionDictionary
                                                                                             orderby entry.Value.Score
                                                                                             descending
                                                                                             select entry.Key).Take(2).ToList();
 
+            if (sortedAlgorithmsList.Count == 1)
+                return sortedAlgorithmsList[0];
+
             // Variable
             GraphColoringAlgorithm.GraphColoringAlgorithmEnum firstAlgorithm, secondAlgorithm;
             float firstScore, secondScore;
-            double firstAccuracy = 0, secondAccuracy = 0;
 
             firstAlgorithm = sortedAlgorithmsList[0];
             secondAlgorithm = sortedAlgorithmsList[1];
 
             predictionDictionary.TryGetValue(firstAlgorithm, out var temp1);
-            firstScore = temp1.Score;
+            firstScore = temp1.Probability;
             predictionDictionary.TryGetValue(secondAlgorithm, out var temp2);
-            secondScore = temp2.Score;
-
-            accuracyDictionary.TryGetValue(firstAlgorithm, out firstAccuracy);
-            accuracyDictionary.TryGetValue(secondAlgorithm, out secondAccuracy);
-
-            if (firstAccuracy > secondAccuracy)
-                return firstAlgorithm;
+            secondScore = temp2.Probability;
 
             // Similar scores
-            if (Math.Abs(firstScore - secondScore) < 1.5)
+            if (Math.Abs(firstScore - secondScore) < 0.01)
             {
-                // Similar accuracies
-                if (Math.Abs(firstAccuracy - secondAccuracy) < 0.02)
-                {
                     // Variable
                     GraphColoringAlgorithm.TimeComplexityEnum firstTimeComplexity = GraphColoringAlgorithm.TimeComplexityEnum.undefined, 
                                                               secondTimeComplexity = GraphColoringAlgorithm.TimeComplexityEnum.undefined;
@@ -229,12 +233,6 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                         return firstAlgorithm;
                     else
                         return secondAlgorithm;
-                }
-
-                if (firstAccuracy >= secondAccuracy)
-                    return firstAlgorithm;
-                else
-                    return secondAlgorithm;
             }
 
             return firstAlgorithm;

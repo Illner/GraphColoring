@@ -16,7 +16,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, string> modelPathDictionary;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, ITransformer> modelDictionary;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, AlgorithmPrediction> predictionDictionary;
-        private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, float> accuracyDictionary;
+        private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, float> weightDictionary;
         private static Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, GraphColoringAlgorithm.TimeComplexityEnum> timeComplexityDictionary;
 
         private static string pathModels = @"GraphColoringAlgorithm/AIModels/";
@@ -102,24 +102,24 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
             Console.WriteLine("--------------------------------------------------");
 
             // Fill accuracyDictionary
-            accuracyDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, float>()
+            weightDictionary = new Dictionary<GraphColoringAlgorithm.GraphColoringAlgorithmEnum, float>()
             {
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirst, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchange, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, 0.737f },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3, 0.84f },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtended, 0.78f },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedLargestFirstInterchangeExtendedK3, 0.72f },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchange, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtended, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.randomSequenceInterchangeExtendedK3, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchange, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, 0.76f },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtended, 0.80f },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.largestFirstSequenceInterchangeExtendedK3, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchange, 0 },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, 0.79f },
-                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3, 0.825f },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtended, 0.92f },
+                { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.smallestLastSequenceInterchangeExtendedK3, 0.76f },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.connectedSequential, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.saturationLargestFirstSequence, 0 },
                 { GraphColoringAlgorithm.GraphColoringAlgorithmEnum.greedyIndependentSet, 0 },
@@ -190,7 +190,7 @@ namespace GraphColoring.GraphColoringAlgorithm.AI
                 if (!algorithmPrediction.Prediction)
                     continue;
 
-                accuracyDictionary.TryGetValue(record.Key, out var temp);
+                weightDictionary.TryGetValue(record.Key, out var temp);
                 algorithmPrediction.Score = algorithmPrediction.Probability + 0.4f * temp;
                 predictionDictionary.Add(record.Key, algorithmPrediction);
             }
